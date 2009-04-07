@@ -1,0 +1,552 @@
+%!TEX root = thesis.tex
+\ProvidesPackage{thesis-preamble}
+
+%%% PACKAGES
+
+\RequirePackage[T1]{fontenc}
+\RequirePackage{textcomp} % provide lots of new symbols
+\RequirePackage{lmodern}
+\RequirePackage[sc,osf]{mathpazo}
+\RequirePackage[protrusion=true,expansion=false]{microtype}
+\RequirePackage{pifont}
+\newcommand\diameter{\Pisymbol{psy}{'306}}
+\linespread{1.1}        % Palatino needs more leading
+\normalfont
+
+\RequirePackage[utf8]{inputenc}
+\DeclareUnicodeCharacter{2014}{\dash}
+\DeclareUnicodeCharacter{2022}{\item}
+
+\RequirePackage[noload=abbr]{siunitx}
+\protected\def\sipi{\mbox{\ensuremath{\pi}}}
+\sisetup{numaddn=\sipi}
+
+\RequirePackage{
+  calc,
+  colortbl,
+  graphicx,
+  epstopdf,
+  etex,
+  import,
+  multicol,
+  psfrag,
+  refstyle,
+  soul,
+  suffix,
+  varioref,
+  xcolor,
+  zref,
+}
+\RequirePackage[draft,inline,nomargin]{fixme}
+\let\oldfixme\fixme
+\DeclareRobustCommand\fixme{\oldfixme}
+
+\RequirePackage[
+  crop=pdfcrop,
+  ps2pdf-options={-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress},
+  cleanup={.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
+           .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
+  ]{pstool}
+\RequirePackage{asyfig}
+
+\RequirePackage{caption}
+\captionsetup[table]{position=top}
+
+\RequirePackage{csquotes}
+\MakeOuterQuote{"}
+
+%% Hyperref
+\RequirePackage[colorlinks,breaklinks,
+            plainpages=false,pdfpagelabels,linktocpage]{hyperref}
+\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black}
+
+\definecolor{darkred}{rgb}{0.4,0,0}
+\definecolor{darkgreen}{rgb}{0,0.4,0}
+\definecolor{darkblue}{rgb}{0,0,0.4}
+\hypersetup{linkcolor=darkred,citecolor=darkblue,filecolor=black,urlcolor=black}
+\AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
+
+
+\@ifpackageloaded{hyperref}{}{%
+  \PackageError{hyperref}{I am not loaded!}
+    {\string\pdfdef\space requires hyperref.}}
+\def\pdfdef#1{%
+  \def\@tempa{#1}%
+  \afterassignment\@pdfdef
+  \expandafter\def\csname pdfdef@\string#1\endcsname}
+\def\@pdfdef{%
+    \expandafter\expandafter\expandafter\pdfstringdefDisableCommands
+    \expandafter\expandafter\expandafter{%
+    \expandafter\expandafter\expandafter\let\expandafter\@tempa
+      \csname pdfdef@\expandafter\string\@tempa\endcsname}}
+
+\RequirePackage[open,openlevel=4]{bookmark}
+\RequirePackage{hypcap}
+
+%% biblatex
+\RequirePackage[
+  hyperref,backref,
+  defernums,sortcites,
+  date=short,
+  bibencoding=inputenc,
+  maxnames=3,
+  minnames=2,
+  firstinits=true,
+  sorting=nyt,
+  bibstyle=numeric,
+  citestyle=numeric-comp,
+    ]{biblatex}
+\def\bibfont{\small}
+\bibliography{journals,phd}
+\renewcommand\bibname{References}
+
+
+%%%%%%%%%%%%%%%%%%%%
+
+%% MATHS
+\RequirePackage{amsmath,amssymb,bm,cool,mathtools}
+\@ifpackageloaded{mathpazo}{\PassOptionsToPackage{mathpazo}{flexisym}}{}
+\@ifpackageloaded{mathptmx}{\PassOptionsToPackage{mathptmx}{flexisym}}{}
+\RequirePackage{breqn,mlist}
+\setkeys{breqn}{labelprefix=eq:}
+\RequirePackage{thesis-maths}
+
+%%%%%%%%%%%%%%%%%
+%%% FIGURES
+
+\def\phdpath{PhD/}
+\asypath{\phdpath Figures/}
+\def\coilpath{\phdpath Coil/fig/}
+\absolutepath{/Users/will/PhD/Thesis/}
+
+\newcommand\grf[2][]{\includegraphics[#1]{\phdpath #2}}
+
+\newcommand\ImportIfFileExists[4]{%
+  \IfFileExists{#1#2}
+    {\import{#1}{#2}#3}
+    {#4}}
+
+% Symmetric ragged commands
+\newcommand\IfOddPage{%
+  \checkoddpage
+  \ifoddpage\expandafter\@firstoftwo
+  \else\expandafter\@secondoftwo\fi}
+\newcommand\raggedout{\IfOddPage\raggedright\raggedleft}
+\newcommand\raggedin{\IfOddPage\raggedleft\raggedright}
+
+% Subfigures
+\newsubfloat{figure}
+\newenvironment{subfigure}{%
+  \ifnum\c@subfigure>0\hfill\fi
+  \begin{minipage}[t]{0.45\linewidth}
+    \centering
+    \let\caption\subcaption
+}{%
+  \end{minipage}%
+}
+
+% wide:
+\newenvironment{wide}{%
+  \strictpagecheck
+  \begin{adjustwidth*}{0pt}{-\marginparsep-\marginparwidth}
+    \raggedout
+}{%
+  \end{adjustwidth*}%
+}
+
+%% MathPSfrag & Matlabfrag
+\def\PFGstyle{\small}
+\def\matlabtextA{\small}
+
+%%
+\newcommand\gridIV[5][1em]{%
+  #2\hspace{#1}#3\\
+  [#1]#4\hspace{#1}#5}
+\newcommand\gridVI[7][0.5em]{%
+  #2\hspace{#1}#3\hspace{#1}#4\\[#1]
+  #5\hspace{#1}#6\hspace{#1}#7}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+% See <http://groups.google.com/group/comp.text.tex/msg/4111d98fc7627748?dmode=source>
+%%%%%%%%%%%%%%%%%%%%%%%%
+%%% page check for even/odd 
+% Stolen from komascript. 
+\def\mh@newevenodd@label@nn#1#2{% 
+   \expandafter\gdef\csname mh@evenodd@#1\endcsname{#2}% 
+} 
+
+\def\mh@getevenodd@n #1{% 
+   \@ifundefined{mh@evenodd@#1}{\value{page}}% 
+   {\@nameuse{mh@evenodd@#1}}} 
+\def\mh@evenodd{0} 
+\DeclareRobustCommand\IfOddPageTF{% 
+   \begingroup 
+   \@tempcnta=\mh@evenodd\relax 
+   \advance\@tempcnta by\@ne 
+   \xdef\mh@evenodd{\the\@tempcnta}% 
+   \@bsphack 
+   \protected@write\@auxout{}{% 
+     \string\mh@newevenodd@label@nn{\mh@evenodd}{\noexpand\the\value{page}}}% 
+   \@esphack 
+   \count@\mh@getevenodd@n{\mh@evenodd}\relax 
+   \expandafter\endgroup 
+   \ifodd\count@ 
+     \expandafter\@firstoftwo 
+   \else 
+     \expandafter\@secondoftwo 
+   \fi 
+} 
+
+%%% 
+% recall the boxes can't be 0pt, otherwise TeX might put it on a 
+% separate line so we make them almost 0pt. 
+\def\mh@print@in@outer@margin#1{% 
+   \if@twoside 
+     \IfOddPageTF 
+       {\makebox[1sp][l]{%
+        \hspace{\tagmarginsep}%
+        \makebox[\marginparwidth][c]{#1}}}% 
+       {\makebox[1sp][r]{%
+        \makebox[\marginparwidth][c]{#1}%
+        \hspace{\textwidth}%
+        \hspace{\tagmarginsep}}}% 
+   \else 
+     {\makebox[1sp][l]{%
+        \hspace{\tagmarginsep}%
+        \makebox[\marginparwidth][c]{#1}}}% 
+   \fi 
+} 
+% 1sp = 5.363 nanometres, so I think we'll be okay
+
+\newlength\tagmarginsep 
+\setlength\tagmarginsep{\marginparsep} 
+\def\print@eqnum{\mh@print@in@outer@margin{\tagform@\theequation}} 
+\def\make@df@tag@@#1{% 
+   \gdef\df@tag{\mh@print@in@outer@margin 
+     {\maketag@@@{#1}\def\@currentlabel{#1}}}} 
+
+\def\make@df@tag@@@#1{% 
+   \gdef\df@tag{% 
+     \mh@print@in@outer@margin{\tagform@{#1}}% 
+     \toks@\@xp{\p@equation{#1}}% 
+     \edef\@currentlabel{\the\toks@}% 
+   }% 
+} 
+
+\def\endmathdisplay@a{% 
+   \if@eqnsw 
+     \gdef\df@tag{% 
+       \mh@print@in@outer@margin{\tagform@\theequation}% 
+     }% 
+   \fi 
+   \if@fleqn \@xp\endmathdisplay@fleqn 
+   \else \ifx\df@tag\@empty \else \veqno \alt@tag \df@tag \fi 
+     \ifx\df@label\@empty \else \@xp\ltx@label\@xp{\df@label}\fi 
+   \fi 
+   \ifnum\dspbrk@lvl>\m@ne 
+     \postdisplaypenalty -\@getpen\dspbrk@lvl 
+     \global\dspbrk@lvl\m@ne 
+   \fi 
+} 
+
+%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\strictpagecheck
+
+% Make maths use lining numbers: (old-style look bad most-times)
+\DeclareMathSymbol{0}{0}{letters}{'060}
+\DeclareMathSymbol{1}{0}{letters}{'061}
+\DeclareMathSymbol{2}{0}{letters}{'062}
+\DeclareMathSymbol{3}{0}{letters}{'063}
+\DeclareMathSymbol{4}{0}{letters}{'064}
+\DeclareMathSymbol{5}{0}{letters}{'065}
+\DeclareMathSymbol{6}{0}{letters}{'066}
+\DeclareMathSymbol{7}{0}{letters}{'067}
+\DeclareMathSymbol{8}{0}{letters}{'070}
+\DeclareMathSymbol{9}{0}{letters}{'071}
+
+%%%%%%%%%%%%%
+%! FLOATS 
+\renewcommand{\topfraction}{.85}
+\renewcommand{\bottomfraction}{.7}
+\renewcommand{\textfraction}{.15}
+\renewcommand{\floatpagefraction}{.66}
+\renewcommand{\dbltopfraction}{.66}
+\renewcommand{\dblfloatpagefraction}{.66}
+\setcounter{topnumber}{9}
+\setcounter{bottomnumber}{9}
+\setcounter{totalnumber}{20}
+\setcounter{dbltopnumber}{9}
+
+\renewenvironment{figure}[1][\fps@figure]
+                 {\edef\@tempa{\noexpand\@float{figure}[#1]}
+                  \@tempa\capstart\centering}
+                 {\end@float}
+\renewenvironment{table}[1][\fps@table]
+                 {\edef\@tempa{\noexpand\@float{table}[#1]}
+                  \@tempa\capstart\centering}
+                 {\end@float}
+
+
+%% Floats & captions
+\captionnamefont{\scshape}
+%\setlength\captionwidth{0.9\linewidth} 
+%\changecaptionwidth
+
+\newcommand\lofcaption[2]{\caption[#1]{#1#2}}
+\DeclareRobustCommand\periodifnocomma{\@ifnextchar,{}{.}}
+
+%%%%%%%%%%%%
+% These are the varioref definitions:
+\newcommand{\varioprefix}{See~}
+\newcommand{\myvariohook}[1]{\marginpar{\small\centering \varioprefix #1}}
+\def\reftextcurrent{}
+\def\reftextfaceafter{}
+\def\reftextfacebefore{}
+\def\reftextafter{~on the \reftextvario{following}{next} page}
+\def\reftextbefore{~on the \reftextvario{previous page}{preceding page}}
+\def\reftextafter{}
+\def\reftextbefore{}
+\def\reftextfaraway#1{\myvariohook{p.\,\pageref{#1}}}
+\def\reftextpagerange#1#2{\myvariohook{pp.\,\pageref{#1}--\pageref{#2}}}
+
+%%%%%%%%%%%%%%%%%%%%%
+%! MEMOIR CUSTOMISE
+
+\maxsecnumdepth{subsection} % number  subsections
+\maxtocdepth{subsection}    % include subsections in ToC
+\g@addto@macro\mainmatter{\setsecnumdepth{subsubsection}}
+
+\renewcommand{\cftchapterpagefont}{}
+\renewcommand{\cftchapterfont}{}     % no bold!
+\renewcommand\cftdotsep{999} % no dots
+
+% for page numbers:
+\newcommand\thesispage{\normalfont p.\,\thepage}
+
+%%% CHAPTERS
+\makechapterstyle{wspr}{%
+  \setlength\beforechapskip{0pt}
+  \setlength\midchapskip{0pt}
+  \setlength\afterchapskip{40pt}
+  \renewcommand\chapnamefont{%
+    \normalfont\centering\large\scshape\MakeLowercase}
+  \renewcommand\chapnumfont{%
+    \normalfont\centering\fontsize{60pt}{0pt}\selectfont}
+  \renewcommand\chaptitlefont{%
+    \normalfont\HUGE\bfseries\centering}
+  \renewcommand\printchaptername{%
+    \marginpar{\chapnamefont{\@chapapp}}}
+  \renewcommand\chapternamenum{}
+  \renewcommand\printchapternum{%
+    \marginpar{\chapnumfont\thechapter}}
+    \makeoddfoot{plain}{}{\thesispage}{}
+}
+\chapterstyle{wspr}
+
+
+%%% SECTIONS
+\newcommand\marginnum[2]{%
+  \noindent
+  \let\@tempa\relax
+  \savebox\@tempboxa{#2}%
+  \null\marginpar{#1\@tempa}%
+  #1#2}
+
+\def\secstyle{\centering\scshape}
+\def\subsecstyle{\centering\itshape}
+\def\subsubsecstyle{\centering\small\itshape}
+
+\setsecheadstyle{\marginnum\secstyle}
+\setsubsecheadstyle{\marginnum\subsecstyle}
+\setsubsubsecheadstyle{\marginnum\subsubsecstyle}
+
+\setsecnumformat{\unexpanded{%
+  \protected@xdef\@tempa{\upshape\S\csname the#1\endcsname}}}
+
+%%%%%
+
+%% Page headers
+\setlength{\headheight}{\baselineskip}
+\setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
+\makepagestyle{wspr}
+\makepsmarks{wspr}{% 
+  \let\@mkboth\markboth%
+  \def\chaptermark##1{%
+    \markboth{%
+      \if@mainmatter 
+        \textsc{Chapter \thechapter:} %
+      \fi
+      ##1}{##1}}% 
+  \def\sectionmark##1{%
+    \markright{%
+      \if@mainmatter 
+        \textsc{\S\thesection:} % 
+      \fi
+      ##1}}}
+\makerunningwidth{wspr}{\headwidth}
+\makeheadposition{wspr}{flushright}{flushleft}{}{} 
+\makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark} 
+\makeoddhead{wspr} {\small\rightmark}              {} {\thesispage} 
+\pagestyle{wspr}
+
+
+%%% LISTS
+\renewcommand*{\descriptionlabel}[1]{\hspace\labelsep\normalfont\itshape #1}
+\tightlists
+
+\newif   \ifshorttoc
+\newenvironment {hideshorttoc} {
+  \addtocontents{toc}{ \protect\ifshorttoc \protect\else }
+}{
+  \addtocontents{toc}{ \protect\fi }
+}
+
+\newcommand*{\setupshorttoc}{%
+  \shorttoctrue
+  \renewcommand*{\contentsname}{Short contents}
+  \let\oldchangetocdepth\changetocdepth
+  \renewcommand{\precistoctext}[1]{%
+    \nobreak
+    \begin{quote}
+      \leftskip    = 0cm plus  0.5fil 
+      \rightskip   = 0cm plus -0.5fil 
+      \parfillskip = 0cm plus    1fil 
+      \footnotesize ##1
+    \end{quote}
+  }
+  \let\oldcftchapterfillnum\cftchapterfillnum
+  \renewcommand*{\changetocdepth}[1]{}
+  \setcounter{tocdepth}{0}% chapters
+  %
+  \renewcommand*{\cftchapterfont}{\hfill}
+  \renewcommand*{\cftchapterfillnum}[1]{%
+    \quad \nobreak p.\,##1\hfill \null \par
+  }
+  %
+  \renewcommand*{\cftpartfont}{\hfill \bfseries}
+  \renewcommand*{\cftpartfillnum}[1]{\hfill\null\par}
+}
+
+\newcommand*{\setupparasubsecs}{%
+  \shorttocfalse
+  \let\oldnumberline\numberline
+  \renewcommand \cftsubsectionfont     {\small}
+  \renewcommand \cftsubsectionpagefont {\small}
+  \renewcommand \l@subsection [2] {
+    \ifnum\c@tocdepth > 1
+      \def\numberline####1{\textit{####1}~}%
+      \leftskip=\cftsubsectionindent
+      \rightskip=\@tocrmarg
+      \advance\rightskip 0pt plus 2em
+      \parfillskip=\fill
+      \ifhmode ,\ \ \else\noindent\fi
+      \ignorespaces 
+      {\cftsubsectionfont ##1}~{\cftsubsectionpagefont##2}%
+       \let\numberline\oldnumberline\ignorespaces
+    \fi
+  }%
+}
+
+\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
+
+\newcommand*{\setupmaintoc}{%
+  \renewcommand{\contentsname}{Contents}
+  \let\changetocdepth\oldchangetocdepth
+  \renewcommand{\precistoctext}[1]{}
+  \let\cftchapterfillnum\oldcftchapterfillnum
+  \addtodef{\cftchapterbreak}{\par}{}
+  \renewcommand*{\cftchapterfont}{\normalfont}
+  \renewcommand*{\cftchapterleader}{\cftdotfill{\cftchapterdotsep}}
+  \renewcommand*{\cftchapterafterpnum}{}
+  \renewcommand{\cftchapterbreak}{\par\addpenalty{-\@highpenalty}}
+  \setpnumwidth{2.55em}
+  \setrmarg{3.55em}
+  \setcounter{tocdepth}{2}
+  \let\cftpartformatpnum\oldcftpartformatpnum
+  \addtodef{\cftpartbreak}{\par}{}
+  \let\cftbookformatpnum\oldcftbookformatpnum
+  \addtodef{\cftbookbreak}{\par}{}
+}
+
+\renewcommand\chapterprecistoc[1]{%
+  \addtocontents{toc}{\protect\precistoctext{#1}}%
+}
+
+\renewcommand\chapterprecishere[1]{}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+%%% SHORTCUTS
+
+\RequirePackage[english]{shortwrite}
+
+\newcommand\note[1]{\unskip\footnote{#1}}
+
+\DeclareRobustCommand\dash{%
+  \unskip\nobreak\thinspace\textemdash\allowbreak\thinspace\ignorespaces}
+\pdfdef\dash{ — }
+
+\newcommand\define[1]{\textit{#1}}
+
+\newcommand\acro[1]{\textsc{\MakeLowercase{#1}}}
+\newcommand\newacro[1]{\@namedef{#1}{\acro{#1}}}
+
+\newcommand{\pdftex}{pdf\/\TeX} % note the italic correction!
+\newcommand{\pdflatex}{pdf\/\LaTeX} % note the italic correction!
+
+\newcommand{\ANSYS}{ANSYS}
+\newcommand\Matlab{Matlab}
+\newcommand{\maglev}{maglev}
+\newcommand{\bhcurve}{$B$--$H$ curve}
+\newcommand\Hinf{\ensuremath{H^\infty}}
+\newcommand\magnetorh{magnetorheological}
+
+\newcommand\threeD{\textsc{3d}}
+\newcommand\twoD{\textsc{2d}}
+
+\newacro{FEA}
+\newacro{FFT}
+\newacro{FEM}
+\newacro{PDF}
+\newacro{EMF}
+\newacro{RMS}
+\newacro{PID}
+\newacro{PI}
+
+\def\AC{time varying}
+
+\newcommand\PhD{Ph.\,D\sw@ensuresingleperiod}
+\newcommand\qzs{quasi--zero stiffness}
+\newcommand\QZS{Quasi--zero stiffness}
+
+% COMPOUND WORDS
+\newcommand \compound [2] {#1\-#2}
+
+
+
+%%% put this somewhere %%%
+
+\renewcommand\t[1]{\theta_#1}
+\def\nl{\text{~\color[gray]{0.7}\small\dots}\\}
+
+\newcounter{wspr}
+\newcommand\p[1]{%
+  \setcounter{wspr}{1}
+  \varphi_#1(x_1\whiledo{\value{wspr}<#1}{%
+    \stepcounter{wspr}%
+    ,x_\thewspr})}
+
+
+

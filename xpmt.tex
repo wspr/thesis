@@ -1,0 +1,599 @@
+%!TEX root = thesis.tex
+
+\chapter{Prototype low-stiffness magnetic spring}
+\chaplabel{xpmt}
+
+\chapterprecis{
+  And finally, some experiments that use magnets and measure vibrations. First, I
+  describe the rig and other implementation details, including various tangents
+  on appropriate sensor types and future designs that could be implemented
+  in the future. Experimental results from the rig that was commissioned are
+  presented, demonstrating the `\qzs' design where the resonant frequency
+  of a passive system is reduced with attractive magnets, and further
+  improvements gained from applying standard velocity feedback control.
+}
+
+This chapter covers the implementation details and results of the
+experimental apparatus.
+
+\section{Magnets}
+
+K\,\&\,J~Magnetics\note{\url{http://www.kjmagnetics.com/}}
+is an American supplier of surplus rare earth magnets in
+various geometrical shapes.
+They offer a large range of sizes, \eg, from
+one-sixteenth inch cubes (100 for \textsc{us\$}6.00) to one inch
+cubes, (\textsc{us\$}14.85 each), and even larger.
+\note{Prices correct as of April 2009.} Price has an
+approximately linear relationship with magnet volume,
+as shown in the graph of magnet volume versus price in
+\figref{mag-price}.
+
+\begin{figure}
+  \psfragfig{\phdpath Rig/latex/mag-price}
+  \caption{Magnet price versus magnet volume for rare earth magnets.
+    Data obtained for cube magnets of magnetisation grade \acro{N42}.}
+  \figlabel{mag-price}
+\end{figure}
+
+The magnets used for the experimental apparatus were chosen
+based on ease of availability and construction. Cylindrical
+magnets were used of dimensions $\mbox{\diameter}\,\SI{12.7}{mm}\times\SI{9.5}{mm}$
+and material properties as shown in \tabref{magnet-prop}.
+
+\begin{table}
+  \caption{Material properties for the magnets in the experimental apparatus.}
+  \tablabel{magnet-prop}
+  \begin{tabular}{lc}
+    \toprule
+    Diameter & \SI{12.7}{mm} \\
+    Height   & \SI{9.5}{mm}  \\
+    Grade    & \acro{N42} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Actuators}
+\seclabel{actuators}
+
+While electromagnetic actuators are usually designed in push-pull configurations,
+\textcite{nandi2009} demonstrate a single-sided design in which a bias current
+is used to keep the structure in permanently `sprung' position; relaxing the
+current is the equivalent of a repulsive force, while increasing the current
+is the usual `pull' or attractive force of a regular electromagnetic actuator.
+This design is relatively inefficient since it requires a continuous energy
+expenditure to remain in equilibrium.
+
+An alternative single-sided design that could be investigated is described
+here. Rather than a coil and iron setup, the floating element could be a
+permanent magnet; changing the direction of the current flowing in the coil
+would then produce an alternating force on the magnet.
+
+The dual-coil electromagnetic arrangement described in \secref{dualcoil} was
+custom-built for the actuator for the experimental apparatus. I could add
+a schematic and some dimensions here but I don't know necessary that would be.
+
+\section{Sensors}
+
+There are four main choices for non-contact distance sensing.
+\begin{description}
+\item[Ultra-sonic] 
+    These sensors work by sending out modulated
+    ultra-sonic pulses to be reflected off the target. The time spent
+    in the round trip gives a linear indicator of the
+    distance. Ultra-sonic sensors are cheap, but slow and
+    inaccurate. They are unsuited for use in this project.
+\item[Inductive] 
+    An inductive, or Hall effect, sensor works by
+    exciting a coil with a high frequency sinusoidal current which
+    induces eddy currents in the target.  These eddy currents may be
+    measured very accurately, but the whole effect is very dependent
+    on a lack of magnetic noise. This makes these type of sensors
+    difficult to use in magnetic applications.
+\item[Capacitive] 
+    A capacitive sensor measures the capacitance
+    between a plate and the target.  It can be very accurate and quite
+    fast. To measure large distances, however, a large capacitive head
+    is required (approx.\ $1$\,cm diameter for every $1$\,mm of
+    range.) They are also very expensive due to the conditioning
+    electronics required.
+\item[Laser] 
+    A laser sensor uses interferometry to calculate position
+    of the target. For their price, they offer very good accuracy and
+    speed; also, they do not suffer from electrical noise.
+\end{description}
+
+See \textcite{boehm1993} for a more detailed overview.
+
+The sensor purchased for the experimental apparatus is the Wenglor~05\,MGV\,80
+opto-electronic sensor, which uses a laser to measure distance over a
+range of \SI{10}{mm}. This sensor was purchased from a local supplier at a reduced
+price. It was selected for its convenient availability, flexibility of application,
+and good performance characteristics. Relevant operating properties are listed in \tabref{wenglor}.
+
+\begin{table}
+  \caption{Some properties of the Wenglor~05\,MGV\,80 laser distance sensor.}
+  \tablabel{wenglor}
+  \begin{tabular}{@{}lc@{}}
+    \toprule
+    Measurement offset & \SI{43}{mm} \\
+    Measurement range & \SI{10}{mm} \\
+    \midrule
+    Working range & \SI{43}{mm}--\SI{53}{mm} \\
+    Output range & \SI{10}{V}--\SI{0}{V} \\
+    \midrule
+    Resolution & $<\SI{10}{\micro m}$ \\
+    Response time & \SI{0.5}{ms} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\section{Design of the experimental apparatus}
+
+A schematic of the experimental apparatus that was designed and built as part of
+this project is shown in \figref{rig}. Physical parameters of the design
+are shown in \tabref{rigprop}.
+
+\begin{figure}
+  \asyfig{Rig/rig-schematic}
+  \caption{Schematic of the experimental rig.}
+  \figlabel{rig}
+\end{figure}
+
+\begin{table}
+\caption{Physical properties of the experimental rig.}
+\tablabel{rigprop}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+                   Property &              Symbol &         Value \\
+\midrule
+                  Beam mass &         $\MassBeam$ &     \SI{0}{kg} \\
+                Beam length &       $\LengthBeam$ &   \SI{320}{mm} \\
+                Beam height &       $\HeightBeam$ &    \SI{25}{mm} \\
+                 Beam width &        $\WidthBeam$ &    \SI{40}{mm} \\
+             Beam thickness &    $\ThicknessBeam$ &     \SI{2}{mm} \\
+\midrule
+      Magnet support height & $\HeightRigMagnets$ &    \SI{78.5}{mm} \\
+   Magnet support lever arm & $\LengthRigMagnets$ &   \SI{310}{mm} \\
+        Magnet support mass &   $\MassRigMagnets$ &    \SI{87}{g} \\
+             Magnets height &        $\HeightMag$ &    \SI{10}{mm} \\
+           Magnets diameter &          $\DiamMag$ &    \SI{12.7}{mm} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Physical/geometric design}
+
+The main mass of the vibrationary component of the rig is composed of a
+rigid square cross-section beam. This beam is used to constrain the system
+of moving magnets to motion in a single degree of freedom. After taking a small
+approximation, this motion can be assumed to be largely linear in the vertical
+direction. This assumption is verified in \secref{coil-design}.
+
+Having established that the rotational system imposes a linear constraint on
+the system under small enough displacements, it is better to examine the
+response of the system as if it were a linear system. This involves writing
+the dynamics of the system in terms of rotational motion and coercing the
+variables into linear ones using a small angle approximation.
+
+The rotational equation of motion for the beam--magnet system, neglecting
+damping, is given by
+\begin{dmath}[label=rig-moment-dynamics]
+  \InertiaMomentTotal \ddot\AngleMag - \MomentMag = 0
+\end{dmath}.
+But the system has been designed such that the rotation of the system is
+small and the motion at the magnets-end of the beam can be considered to be 
+constrained in the vertical translational direction alone. The equation of motion
+is re-written in terms of vertical displacement, $\DispMag$, arising from the
+small angle approximation of $\AngleMag$. 
+That is, 
+\begin{dmath}
+\AngleMag\approx\Sin{\AngleMag}=\DispMag/\LengthRigMagnets
+\end{dmath}.
+The moment on the beam due to the magnet force is 
+$\MomentMag=\LengthRigMagnets\ForceRigMagnets$; \eqref{rig-moment-dynamics} can
+be re-written as
+\begin{dmath}[label=rig-force-dynamics]
+  \frac{\InertiaMomentTotal}{\LengthRigMagnets^2}\ddot\DispMag 
+    - \ForceRigMagnets = 0
+\end{dmath}.
+
+\subsubsection{Moment of inertia calculation}
+
+A rectangular cross-section with a centre of rotation around a point offset in
+one direction is shown in \figref{moment-of-inertia}. The moment of inertia in
+the $x$--$y$ plane of such a cross section, of length $\BlockInertiaLength$
+and height $\BlockInertiaHeight$, and offset $\BlockInertiaOffset$ from the
+midpoint in the $y$ direction is
+\begin{dmath}[label=InertiaMoment]
+  \InertiaMoment\fn{
+    \BlockInertiaMass,
+    \BlockInertiaLength,
+    \BlockInertiaHeight,
+    \BlockInertiaOffset} 
+  = \frac{1}{12} 
+    \BlockInertiaMass 
+    \gp{ 4\BlockInertiaLength^2 + \BlockInertiaHeight^2 } 
+    + \BlockInertiaMass \BlockInertiaOffset^2
+\end{dmath}.
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Rig/moment-of-inertia}
+    \caption{Schematic for calculating the moment of inertia of a block that
+    is not rotating around the midpoint of an edge.\figlabel{moment-of-inertia}}
+  \end{subfigure}
+  \begin{subfigure}
+    \asyfig{Rig/moment-beam}
+    \caption{Model of a square-cross section beam for calculating the moment 
+      of inertia around the centre of rotation shown.
+      \figlabel{moment-beam}}
+  \end{subfigure}
+  \caption{Diagrams for calculating moments of inertia.}
+\end{figure}
+
+The moment of inertia for a square-section beam, $\InertiaMomentBeam$, can be
+calculated by applying \eqref{InertiaMoment} to the four sides of the beam and
+summing the results.
+\begin{dgroup*}
+\begin{dmath}
+  \InertiaMomentBeam = \InertiaMoment_{\text{top}} 
+    + 2\InertiaMoment_{\text{side}} + \InertiaMoment_{\text{bottom}}
+\end{dmath},
+\intertext{where}
+\begin{dmath}
+  \InertiaMoment_{\text{top}} = 
+    \InertiaMoment\fn{\MassBeamTop,\LengthBeam,\ThicknessBeam,\half\ThicknessBeam}
+\end{dmath},
+\begin{dmath}
+  \InertiaMoment_{\text{side}} = 
+    \InertiaMoment\fn{\MassBeamSide,\LengthBeam,\HeightBeam,\half\HeightBeam}
+\end{dmath},
+\begin{dmath}
+  \InertiaMoment_{\text{bottom}} = 
+    \InertiaMoment\fn{\MassBeamTop,\LengthBeam,\ThicknessBeam,\HeightBeam+\half\ThicknessBeam}
+\end{dmath},
+\intertext{and}
+\begin{dmath}
+  \MassBeamTop = \half \MassBeam \frac{\WidthBeam}{\WidthBeam+\HeightBeam}
+\end{dmath},
+\begin{dmath}
+  \MassBeamSide = \half \MassBeam \frac{\HeightBeam}{\WidthBeam+\HeightBeam}
+\end{dmath}.
+\end{dgroup*}
+
+The total moment of inertia $\InertiaMomentTotal$ of the motional element of
+the experimental rig is given by
+\begin{dmath}
+  \InertiaMomentTotal = \InertiaMomentBeam + \InertiaMomentMagnets
+\end{dmath}.
+The moment of inertia of the magnets and their supports,
+$\InertiaMomentMagnets$, is assumed to contribute to total moment of inertia
+as a point mass, since they act at a large distance from the axis of
+revolution over a small and little-changing range of displacements from the
+axis.
+\begin{dmath}
+  \InertiaMomentMagnets = \MassRigMagnets \LengthRigMagnets^2
+\end{dmath}
+
+From the numbers tabulated in \tabref{rigprop}, the total moment of inertia
+of the motional beam is calculated to be
+\begin{dmath}[label=InertiaMomentTotal]
+  \InertiaMomentTotal = \SI{0.0156}{kg.m^2}
+\end{dmath}.
+
+\subsubsection{Equivalent mass calculation}
+
+This produces the `equivalent mass' of the system
+  $\EquivMassRig\equiv\inlinefrac{\InertiaMomentTotal}{\LengthRigMagnets^2}$ 
+as if the arrangement of magnets was self-contained. From \eqref{InertiaMomentTotal},
+this equivalent mass is 
+\begin{dmath}[label=EquivMassRig]
+  \EquivMassRig = \SI{0.173}{kg}
+\end{dmath}.
+This equivalent mass figure will be used later \fixme{crossref} to estimate
+the equivalent stiffness of the system in different configurations.
+
+\subsection{Coil design}
+\seclabel{coil-design}
+
+The geometry of the coil was designed from theory developed in \secref{emforces}.
+The separation required between the permanent magnets in order to incorporate
+an inline coil for actuation lead the design of the minimum dimensions of the coil.
+\note{Generally, the author feels that for anyone else this sort of design 
+  would be acceptable to determine empirically — \ie, guess — but a  
+  combination between understanding one's limitations of practical design and 
+  a tendency of over-analysing insignificant details produced the work in this 
+  section.}
+
+A long, rigid square-section beam was used to constrain the magnets to motion
+in the predominantly vertical direction. Due to vertical motion from the 
+ground, the magnets moving on the arc of beam experience some small horizontal
+motion. Since the magnet section is held inside the coil, enough
+tolerance is necessary to avoid contact between the moving magnet and the fixed coil.
+On the other hand, the smaller the inner radius of the coil, the greater the
+forces imparted by the coil on the magnet.
+
+A simplified geometry of the moving magnet arrangement is used to calculate
+the minimum tolerance required to avoid contact with the coil as a function
+of the vertical motion of the magnets. This geometry is shown in 
+\figref{horiz-tolerance}, where the L-shaped magnet support is shown
+in the `rest' position $\overline{OAB}$ and in a rotated position $\overline{OA'B'}$.
+
+\begin{figure}
+  \asyfig{Rig/horiz-tolerance}
+  \caption{Geometry for calculating the horizontal tolerance of the inner
+           dimensions of the coil.}
+  \figlabel{horiz-tolerance}
+\end{figure}
+
+The horizontal displacement of the highest point after rotation, $x$, can be
+calculated as a function of rotation angle $\theta$
+\begin{dgroup}
+\begin{dmath}
+  x = h \Sin{\theta} + f
+\end{dmath},
+\begin{dmath}
+  f = l - l \Cos{\theta}
+\end{dmath},
+\end{dgroup}
+where $l$ is the horizontal length of the magnet arrangement, and $h$ is the 
+vertical height.
+This can be expressed in terms of the vertical displacement of the main beam,
+$z$, with $\Sin{\theta}=z/l$ and using the trigonometric relationship $\Cos{\ArcSin{a}}=\sqrt{1-a^2}$:
+\begin{dmath}
+  x = h z / l + l - \sqrt{l^2-z^2}
+\end{dmath}.
+
+From the dimensions chosen for the rig, $l=\SI{300}{mm}$ and $h=\SI{78.5}{mm}$,
+the minimum horizontal tolerance for a vertical displacement $z=\SI{1}{mm}$ is
+\SI{0.26}{mm} and for $z=\SI{2}{mm}$ is \SI{0.53}{mm}. 
+(The relationship between $x$ and $z$ being fairly linear for most values
+of $l$ and $h$ with small ranges of $z$.)
+This tolerance was judged to be small enough to wrap a coil around.
+
+\section{Experimental results}
+
+A number of measurements were performed using the experimental apparatus;
+in the sections following, data recorded is presented for 
+\begin{enumerate}
+	\item Magnet gap versus beam displacement;
+	\item Open loop frequency responses for a range of magnet gaps; and,
+	\item Velocity feedback in a single configuration.
+\end{enumerate}
+
+\subsection{Displacement calibration}
+
+The upper magnet's position was varied until the limit of stability was
+reached. The lower fixed magnet was kept fixed, which means that the position
+of \qzs\ was changing; with counter-threaded mounts for the upper and lower magnets,
+they could be adjusted in parallel to achieve a fixed \qzs\ location.
+
+As the upper magnet placement was lowered, the rest position of the beam moved
+closer to the \qzs\ position (as more force was supported by the upper magnet).
+This relationship is shown in \figref{turns-qzs}. From the geometry of the rig,
+the position of the upper magnet was used to calculate the normalised magnet
+gap between the magnets at \qzs; this parameter is used here and below to
+represent the varied configuration of the spring.
+
+\begin{figure}
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/turns-qzs}
+  \caption{Rest position of the system as the magnet position varies.}
+  \figlabel{turns-qzs}
+\end{figure}
+
+\subsection{Open loop measurements}
+
+As the position of the upper magnet is varied, the amount of negative
+stiffness added to the system changes. This predominantly affects the rest
+position and the resonance frequency, along with with small changes in damping.
+
+Frequency response measurements were taken at a number of discrete locations
+to observe the changes in dynamics as the rest position of the system approached
+the \qzs\ position.
+
+Due to the low damping and low resonance frequency of the system, very long
+sample times were required to achieve results with enough frequency resolution
+and sufficient coherence to characterise the response. The spectrum analysis
+parameters are shown in \tabref{rig-ol-spect}.
+
+\begin{table}
+  \begin{tabular}{lc}
+    \toprule
+      Sample rate        & \SI{1000}{Hz}           \\
+      \FFT\ points       & $2^{16}$                \\
+      Sample time        & $\approx$\SI{17.5}{min} \\
+      Average overlap    & $0.75$                  \\
+      Number of non-overlapping averages & $16$    \\ 
+    \bottomrule
+  \end{tabular}
+  \caption{Parameters used in the signal and spectrum analysis for the
+   experimental measurements.}
+  \tablabel{rig-ol-spect}
+\end{table}
+
+Open loop measurements were taken both with and without the electromagnetic
+actuator connected (wired up as both a short circuit and an open circuit). In
+the closed circuit configuration, the coil adds damping via induced eddy
+currents from the moving magnet. As an open circuit, the coil has no effect on
+the dynamics of the system.
+
+Open loop measurements without the coil connected are shown in \figref{ol-undamped-frflin}.
+and measurements taken with the coil (\ie, with added damping) shown in \figref{ol-damped-frflin}.
+For both of these results, the transmissibility, \transmissibility, shown is the transfer function
+between the accelerometer measurements of the base and magnet-supported beam:
+\note{Calculated with \Matlab's \texttt{tfestimate} command.}
+\begin{dmath}[label=Tbm]
+	\transmissibility = \frac{\crossSpectMagnetBase}{\powerSpectBase}
+\end{dmath}.
+
+\begin{figure}[p]
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frflin}
+  \caption{Open loop measurements with the electromagnetic coil connected in
+           an open circuit; no additional damping is added to the system.}
+  \figlabel{ol-undamped-frflin}
+\end{figure}
+
+\begin{figure}[p]
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-damped-frflin}
+  \caption{Open loop measurements, with the electromagnetic coil connected
+           in a closed circuit. The coil adds damping to the system, which can
+           be seen by the reduction in height of the resonant peaks in comparison 
+           to \figref{ol-undamped-frflin}.}
+  \figlabel{ol-damped-frflin}
+\end{figure}
+
+\subsection{Analysis of the open loop data}
+
+From the measurements shown in the previous section, curve fitting was
+used to extract information from the raw data.
+
+The model used to fit the data to is the simple system of vibration isolation,
+\eqref{simple-isolation-freq}
+in terms of the resonant frequency, $\natfreq=\sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio=\damping/(2\sqrt{\stiffness\mass})$. The resulting expression is
+\begin{dmath}[label=fit-model]
+  \transmissibility\fn{\freq} = \frac
+    {2\ii\dampingratio\freq\natfreq + \natfreq^2}
+    {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2},
+\end{dmath}
+where $\freq$ is the frequency at which to calculate the transmissibility
+$\transmissibility$. The data is fit \note{Using \Matlab's
+\texttt{fminsearch}.} to \eqref{fit-model} between
+$\half\natfreq\le\freq\le2\natfreq$, returning good estimates of the resonance
+frequency and damping ratio of the system corresponding to each measurement
+taken.
+Plots of the curve fit models shown against the measured data are shown in
+\figref{ol-undamped-frflin-fit,ol-damped-frflin-fit}. Due to the influence
+of higher-order dynamics in the system, the model starts to deviate from the
+data at higher frequencies. The resonance frequencies and damping ratios
+are shown in \figref{ol-results}.
+
+\begin{figure}[p]
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frflin-fit}
+  \caption{Curve fit model of \figref{ol-undamped-frflin}. Grey lines show the original data.}
+  \figlabel{ol-undamped-frflin-fit}
+\end{figure}
+
+\begin{figure}[p]
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-damped-frflin-fit}
+  \caption{Curve fit model of \figref{ol-damped-frflin}.  Grey lines show the original data.}
+  \figlabel{ol-damped-frflin-fit}
+\end{figure}
+
+\begin{figure}
+  \begin{wide}
+  \begin{subfigure}
+    \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-reson}
+    \caption{Model-derived resonant frequencies\figlabel{ol-reson}}
+  \end{subfigure}
+  \begin{subfigure}
+    \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-dampi}
+    \caption{Model-derived damping ratio\figlabel{ol-dampi}}
+  \end{subfigure}
+  \end{wide}
+  \caption{Analysed results from fitting the open loop measurements to 
+  the isolator model of \eqref{fit-model}.}
+  \figlabel{ol-results}
+\end{figure}
+
+From \figref{ol-reson} it can be seen that the resonant frequency remains
+unaffected by the presence of the electromagnetic coil (which can also be
+observed by comparing \figref{ol-undamped-frflin,ol-damped-frflin}) but the
+damping is increased significantly.
+
+
+\subsection{Observed nonlinear behaviour}
+
+The dynamics shown in the undamped case are more nonlinear than the damped
+case; this is due to the greater displacements experienced by the beam moving
+the magnets through greater ranges of stiffness variation. When the
+transmissibility is calculated as the transfer function between the input and
+output signals, the system is assumed to be linear and nonlinearities are
+rejected by the ratio of the cross-spectrum and power-spectrum terms in \eqref{Tbm}. 
+A different result can be shown by calculating the transmissibility instead with a ratio of the
+individual power spectra of the base and magnet:
+\begin{dmath}[label=frfnl]
+  \transmissibility\fn{\freq} = \sqrt{\powerSpectMagnet/\powerSpectBase},
+\end{dmath}
+where $\powerSpectMagnet$ is the power spectra of the accelerometer measurements at the
+moving magnet and $\powerSpectMagnet$ is the power spectra of the accelerometer measurements
+of the base. In this case, any nonlinearities in the signals are retained in the final result.
+
+The transmissibility calculated with this method is shown in
+\figref{ol-undamped-frfnl}. In this case, the nonlinearities present in the
+system are more prominent, and a clear peak is shown at close to twice the `natural'
+resonance frequency.
+
+\begin{figure}
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frfnl}
+  \caption{Open loop measurements without the coil connected; the transmissibility
+  is calculated with \eqref{frfnl}. Black markers show resonant frequencies and
+  the points at twice each resonant frequency, indicating the higher-order dynamics.}
+  \figlabel{ol-undamped-frfnl}
+\end{figure}
+
+\subsection{Velocity feedback results}
+
+For this experiment, the rest position of the spring was chosen to some low
+resonant frequency (approximately \SI{3.5}{Hz}) and velocity feedback applied
+to the system. Sampling parameters are as shown previously in
+\tabref{rig-ol-spect}.
+
+In this position, the electromagnetic coil was used in a simple velocity
+feedback controller in an attempt to reduce the height of the resonance peak.
+The gain of the feedback control was increased until the system became close
+to instability. Frequency response measurements over this range of feedback
+gains are shown in \figref{cl-results}.
+
+To measure the velocity of the moving beam, the accelerometer measurement is
+integrated by the charge amplifier with a cut-on frequency was \SI{0.5}{Hz}. Because the
+accelerometers were now being used to measure velocity, the transmissibility
+curves shown below were calculated from the ratio of the velocity measurements
+instead.
+
+Due to the presence of higher-order dynamics in the structure, a low pass filter
+was used to reject signals above \SI{50}{Hz} \fixme{check!}.
+
+The appearance of a low frequency peak in \figref{cl-results} as the feedback
+gain is increased is explained by the presence of the low-pass filter and the
+time delays associated with digital control. This exact behaviour is shown
+by \textcite{brennan2007} for single degree of freedom structures with velocity
+feedback.
+
+\begin{figure}
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/cl-results}
+  \caption{Closed loop measurements.}
+  \figlabel{cl-results}
+\end{figure}
+
+The overall improvement to the vibration isolation can be shown by calculating
+the root-mean-square of the transmissibility over a certain frequency range.
+\begin{dmath}
+  \transmissibility_{\text{RMS}} = 
+  \sqrt{\Sum{\transmissibility\fn{\freq}^2}{\freq,\freq_1,\freq_2}}
+\end{dmath}
+The results become very noisy in \figref{cl-results} below
+$\freq_1=\SI{1}{Hz}$, so this is defined as our lower frequency
+limit. The upper frequency limit $\freq_2=\SI{11}{Hz}$ is chosen
+as the higher-order dynamics (not shown in \figref{cl-results}) have little
+impact yet.
+
+\Figref{cl-reduction} shows the reduction in `overall transmissibility'
+$\transmissibility_{\text{RMS}}$ as the negative feedback gain increases. The
+resonance appearing in the lower frequencies of \figref{cl-results} causes the
+overall transmissibility reduction to have a local minimum.
+
+\begin{figure}
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/cl-reduction}
+  \caption{Reduction in overall transmissiblity between \SI{1}{Hz} and \SI{11}{Hz}.}
+  \figlabel{cl-reduction}
+\end{figure}
+
+\paragraph{The feedback gain magnitude} \Figref{cl-results,cl-reduction} plot
+results in terms of a `feedback gain' given in dimensionless units. This gain
+is the multiplier from the controller on the velocity signal that also
+incorporates the effects of the amplifiers for both sensors and actuators;
+therefore, the absolute magnitude of this number is unimportant and is used
+purely to demonstrate the range of behaviours seen as the gain is increased
+until instability appears.
+

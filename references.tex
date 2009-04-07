@@ -1,0 +1,53 @@
+%!TEX root = thesis.tex
+
+\chapter{References}
+
+To add coherency to the bibliography and to aid browsing, references are
+ordered alphabetically by first author and grouped by major topic:
+\begin{description} 
+  \item[-- Vibrations] on page \secpageref{refvib}, 
+  \item[-- Levitation] on page \secpageref{reflev}, 
+  \item[-- Forces] on page \secpageref{refforce}, and 
+  \item[-- Other] (none of the above) on page \secpageref{refother}. 
+\end{description}
+
+Some citations fall into more than one category (this very thesis is an
+example \cite{robertson-thesis}), in which case the reference will appear in
+multiple locations in the bibliography; these are conspicuous as their
+citation numbers will be out-of-order.
+
+\defbibheading{levitation}{%
+  \section{Levitation; magnetic and otherwise}%
+  \seclabel{reflev}}
+\defbibheading{forces}{%
+  \section{Forces between magnets and electromagnets}%
+  \seclabel{refforce}}
+\defbibheading{vibrations}{%
+  \section{Active and passive vibration}%
+  \seclabel{refvib}}
+\defbibheading{other}{\section{Other}\seclabel{refother}}
+
+% this allows the use of double upright quotes inside bib titles:
+\DeleteQuotes
+\MakeInnerQuote{"}
+
+\printbibliography[
+  maxnames=9,minnames=9,
+  heading=vibrations,
+  keyword=Vibrations]
+  
+\printbibliography[
+  maxnames=9,minnames=9,
+  heading=levitation,
+  keyword=Levitation]
+  
+\printbibliography[
+  maxnames=9,minnames=9,
+  heading=forces,
+  keyword=Forces]
+  
+\printbibliography[
+  maxnames=9,minnames=9,
+  heading=other,
+  notkeyword=Vibrations,notkeyword=Levitation,notkeyword=Forces]
+

@@ -1,0 +1,240 @@
+%!TEX root = thesis.tex
+
+\chapter{Introduction}
+
+\epigraph{In my experience I found that the most effective way to express
+something in order to make others understand is to use the simplest language.
+Also I learned from teaching that the more rigid the language the less
+effective it is.}{\textcite{mahathera1990}}
+
+\section{One paragraph summary of the thesis}
+
+Vibration disturbance is a consistent complaint that will always exist to
+negatively influence equipment and processes. The theme of this thesis
+investigates using permanent magnets in the design of a vibration isolation
+mount. Permanent magnets can be used to either support load or to reduce the
+fundamental resonance frequency of a system. In the first half of the thesis,
+simple permanent magnet arrangements are examined for load bearing, with
+multiple designs suitable for a variety of objectives. In this vein,
+electromagnetic coil forces and multipole (or Halbach) arrays of magnets are
+also investigated. In the second half of the thesis, more attention is paid on
+realising these systems for vibration isolation, namely, by reducing the
+resonant frequency with stiffness-reducing elements. Usually these
+stiffness-reducing elements are permanent magnets in attraction, but
+mechanical springs are analysed briefly as well. Some different active control
+techniques are investigated for further improvements to the low-frequency
+isolating design. An experimental prototype tying together the major concepts
+of work is shown last, demonstrating results of an permanent magnet, active,
+low-frequency, vibration-isolating apparatus.
+
+\section{Project exposition}
+
+The purpose of this project is to design and build a vibration
+isolation table using non-contact magnetic springs. This goal can be
+split into two: the design of a non-contact magnetic spring (suitable
+for a vibration isolation table); and the design of the vibration
+isolation table itself.
+
+Vibration isolation tables are generally designed to attenuate natural
+disturbances from the ground to the tabletop. These are used for
+example in optics systems as well as in situations that involve
+vibration-sensitive equipment. Current commercial models use pneumatic
+springs to perform this task, and this project arose out of curiosity:
+could magnetic springs be used instead?
+
+Since the invention of the rare-earth magnet, there have been great
+strides in creating wonderful inventions such as the maglev train and
+the planar levitator. To date, comparatively little work has been
+undertaken on vibration isolation of large loads using predominantly
+passive elements. While levitating trains are heavy, they require
+little positioning accuracy; meanwhile, planar levitators are
+astonishingly accurate, but may only bear small loads. A vibration
+isolation table must do both.
+
+Using magnets for load bearing brings its own set of challenges. For
+completely non-contact support, active control must be used to
+stabilise \emph{at least} one degree of freedom. For the design to be
+worth investigating, some advantage to using magnets should also be
+demonstrated.\footnote{Although I took much pleasure in explaining
+  over the years that my \PhD\ project was to `build a table that
+  floats on magnets'.}
+
+
+\section{Topical applications of magnetic forces}
+
+\textcite{coey2002} discusses a broad range of magnetic applications,
+summarised in \tabref{magnet-applications}.
+
+\begin{table}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Field & Magnetic effect & Examples \\
+\midrule
+Uniform & Zeeman splitting & Magnetic resonance imaging \\
+& Torque & Alignment of magnetic powder \\
+& Hall effect, magnetoresistance & Sensors, read-heads \\
+& Force on conductor & Dynamic Motors, actuators, loudspeakers \\
+& Induced emf & Generators, microphones \\
+Nonuniform & Force on charged particles & Beam control, 
+radiation sources (microwave, uv; X-ray) \\
+& Force on magnet & Bearings, couplings, Maglev \\
+& Force on paramagnet & Mineral separation \\
+Time varying & Varying field & Dynamic Magnetometers \\
+& Force on iron & Dynamic Switchable clamps, holding magnets \\
+& Eddy currents & Metal separation, brakes \\
+\bottomrule
+\end{tabular}
+\caption{Applications of permanent magnet materials, 
+adapted from \textcite{coey2002}.}
+\tablabel{magnet-applications}
+\end{table}
+
+
+That magnets can apply forces to one another over a distance is
+quite a novel concept in a mechanical world accustomed to
+friction. It has been a short while, relatively speaking, that
+it has been possible to even \emph{produce} magnets with enough
+coercive force to apply useful mechanical forces. Non-contact
+magnetics in mechanical systems is advantageous due to high
+precision and wear-free operation due to lack of friction. This
+section looks broadly at some of the main applications of the
+field.
+
+\subsection{Maglev transportation}
+
+The largest body of research into magnetic levitation is on
+so-called `maglev' transportation. Its well-known goal is to
+use a levitated train or car to provide extremely fast and
+efficient transportation. This field, which is rather diverse
+in terms of the techniques under investigation, is finally now
+achieving commercial application in the real world after some
+20 or 30 years of research.  While it has some concepts in
+common with this research (large loads, magnets), the
+techniques used tend to be rather distanced from those that
+will be applied for this project because they focus on
+transportation rather than \emph{elimination} of movement.
+
+
+\subsection{Magnetic actuators}
+
+In more recent years, another application for magnetic
+levitation has been investigated, which is the precision
+control of a levitated platform.  Commonly cited for use in
+the semiconductor industry for photolithography, these
+levitators were first researched around 20 years ago.
+
+The first designs allowed travel in a single direction, \eg,
+\textcite{trumper1992}, while more recent developments allow
+more directions of control.  Such devices are capable of
+supporting small loads, and applying horizontal translation
+forces to effect displacements of up to around \SI{200}{mm}
+with nanometre precision. Two planar devices are invented in
+the independent theses of \textcite{kim1997} and
+\textcite{molenaar2000}. Most recently, a six degree of
+freedom non-contact actuator was demonstrated by
+\textcite{verma2004}. See also the device built by
+\textcite{kim2007} to support around \SI{2}{kg} over a travel
+of $\SI{5}{mm}\times\SI{5}{mm}$ with nanometre precision. The
+high performance and mechanical simplicity of their design is
+note-worthy.
+
+Here're some more to look at: \textcite{boeij2008,zhang2008a}
+
+The reason these devices are unsuitable for this research is
+due to their travelling capability. Rather than using the
+primarly magnetic flux for load support, these designs use it
+in order to provide positioning control in the horizontal
+directions.
+
+Here's something new: \textcite{shameli2008}.
+
+A recent six degree of freedom actuator has been demonstrated
+by \textcite{jansen2008}, which supports loads in the order of
+\SI{10}{kg} with a relatively large air gap (\SI{1}{mm}--\SI{2}{mm}) 
+and large stroke ($\SI{230}{mm}\times\SI{230}{mm}$).
+
+[\textcite{dasilveira2005}] Analytical expression for the normal force
+between two magnets on a back-iron plate and a perpendicular coil. The system
+is for a planar actuator, and the motivation is to be able to determine the
+amount of out-of-plane force generated by a particular design. Could very well
+be useful for some of my ideas.
+
+\subsection{Interesting devices}
+
+I like magnetic levitation of objects in a wind tunnel
+\cite{higuchi2008}.
+
+Magnetic fields can be used for a vast array of scientific uses. For example,
+noncontact sensing of material properties that involve variable conductivity,
+including fatigue cracks, defects in printed circuit boards, and even plastic
+landmine detection \cite{mukhopadhyay2005}.
+
+Here would be a good place to cite the brain, nerve, stuff, etc
+\parencite{lu2008,demachi2008}
+
+
+Here's a fun application of magnetics where a computer input device is built
+with magnetic sensors placed on the wrist in order to sense single finger-tip
+motion from the opposite hand \parencite{han2008}.
+
+I don't know if I care, but \textcite{vanwest2007} created a
+haptic interface for manuipulating small objects with magnetic
+levitation using the so-called `zero power' technique well
+known due to Mizuno.
+
+\textcite{park2008} demonstrates a MIMO controller for a flywheel energy
+storage mechanism using magnetic bearings while applying active vibration
+isolation.
+
+[\textcite{tomie2005}] This paper's a bit of fun; uses a magnet attached
+to a cantilever, excited by an external field in a water tank, to propel a
+robotic fish. Only left-right oscillations were produced, so the fish was
+constrained to move in a plane; two turning methods are investigated.
+
+
+
+
+\section{Digression}
+
+The method for literature review taken in this thesis may be considered rather
+eccentric. During the course of my research, I couldn't help but notice the
+flood of literature to be an almost unstoppable flow of information that was
+rather difficult to remain `on top of'. Certainly required some expenditure of
+effort on my part. And perhaps to my detriment, the bibliography in this
+thesis is rather large — although certainly not exceeding that of a single
+literature review in certain specific fields.
+
+This thesis is a drop of water in the ocean of this literature that is
+increasing every month. It will be a defining problem in the next few decades,
+I believe, to attempt a unification and consolidation of the amount of
+information that is currently available and, also, and more importantly, the
+way that new work is published.
+
+\section{Notation}
+
+The mathematics in this thesis is typeset consistently but somewhat
+differently than might be expected. Here's an arbitrary example:
+\begin{dmath*}
+f\fn{x} = \half\gp{x+\Sin{x}}.
+\end{dmath*}
+
+
+Here's a nice big glossary section that will take me fucking ages to get
+right. Maybe I should just scrap it.
+
+\section{Typesetting}
+The typesetting of this thesis has been carefully designed with the following main objectives:
+\begin{enumerate}
+\item Ease of reading content, and
+\item Ease of finding information.
+\end{enumerate}
+For the first point, a highly legible font has been chosen and the size of the
+text calculated for optimal reading properties. For the second point, the
+outer margins of the page have been utilised for holding `markers' such as
+equation numbers and section numbers; this places such information close the
+edge of the paper to aid `flicking through' the thesis. It also moves them
+away from the main text where their encroachment of the material in the main
+text is less useful.
+
+In the \PDF\ version of this document, clickable hyperlinks have been inserted in
+all relevant cross-referencing situations to aid navigation.

@@ -1,0 +1,1318 @@
+%!TEX root = thesis.tex
+
+\chapter{Control}
+\chaplabel{control}
+
+\chapterprecis{
+  More unfinished work; the work here deals with an impossible control system
+  to stabilise a `\qzs' magnetic spring and use it for vibration isolation
+  system. Two works are presented that correspond to papers presented at
+  separate conferences; both deal with backstepping controllers for the
+  aformentioned system, the second more complex and robust than the first.
+  Neither have been shown to be effective in practise, however.
+}
+
+I have to fit this somewhere in here: ``die
+Gleichgewichtzustandwiederherstellungsmoeglichkeit'' is German for
+``the possibility of re-establishing a condition of equilibrium.''
+
+
+\section{Stabilities of nonlinear springs}
+
+To start with, look at Lyapunov stability. Our system is
+\begin{dmath}[label=general-system]
+\dot x = f(x,t),
+\end{dmath}
+with some conditions \cite[pg.\,22]{krstic1995}. Then any $V$ that
+is positive definite and unbounded, and that satisfies
+\begin{dmath}
+\dot V = \pd{V(x)}{x}f(x,t) \leq -W(x) \leq 0
+\end{dmath}
+for the continuous function $W$ means that solutions of
+\eqref{general-system} are globally uniformly bounded, and for an
+equilibrium defined at $x=0$ is globally uniformly asymptotically
+stable. By the way, $\lim_{t\approaches\infty}W(x(t))=0$ in this
+case.
+
+Lyapunov functions provide a powerful method for establishing the
+stability of a system. The states of a damped vibratory system are
+\begin{dgroup}[label=linear-vibra-sys]
+\begin{dmath*}
+  \dot x_1 = x_2
+\end{dmath*},
+\begin{dmath*}
+  \dot x_2 = -\stiffnessLinear/\mass x_1 -\damping/\mass x_2
+\end{dmath*},
+\end{dgroup}
+with displacement $x_1$, velocity $x_2$, stiffness $\stiffnessLinear$, damping $\damping$
+and mass $\mass$. This system can be shown to be stable by defining
+the Lyapunov function
+\begin{dmath}
+  \lyapunov = \half \lyaGainA x_1^2 + \half \lyaGainB x_2^2 
+\end{dmath},
+and showing that its time derivative is negative semi-definite:
+\begin{dmath}
+  \dot\lyapunov
+   = \lyaGainA x_1 \dot x_1 + \lyaGainB x_2 \dot x_2 
+   = -\lyaGainB(\damping/\mass) x_2^2 + 
+      (\lyaGainA-\lyaGainB\stiffnessLinear/\mass) x_1 x_2 
+\end{dmath}.
+The first term here is always negative semi-definite, but the second term is a
+little more ambiguous. One of the arts in Lyapunov functions is to recognise
+that the gains in the Lyapunov function $\lyapunov$ may be arbitrarily chosen;
+since the sign of $x_1 x_2$ can vary with time the second term cannot be
+forced negative definite. Instead, by choosing
+$\lyaGainA=\lyaGainB\stiffnessLinear/\mass$ this troublesome term disappears,
+and the desired result of $\dot\lyapunov\le0$ is achieved; thus it is shown
+that \eqref{linear-vibra-sys} is stable.
+
+A linear spring has equivalent state equation $\dot x = -\stiffnessLinear x$.
+To show stability, the Lyapunov function $L=\half x^2$ with derivative $\dot L
+= x \dot x$ is used here and below:
+\begin{dmath}
+  \dot L = x \dot x = -\stiffnessLinear x^2 \le 0 \forall x .  
+\end{dmath}
+
+A quadratic spring (for example, as created in a zero stiffness
+magnetic system) is only stable for $x<0$:
+\begin{dmath}
+  \dot x = \stiffnessQuad x^2 , \\
+  \dot L = x \dot x = \stiffnessQuad x^3 \le 0 \text{~for~} x\le 0 .  
+\end{dmath}
+
+On the other hand, a cubic spring (a zero stiffness mechanical spring)
+is stable:
+\begin{dmath}
+  \dot x = -\stiffnessDuffing x^3 , \\
+  \dot L = x \dot x = -\stiffnessDuffing x^4 \le 0 \forall x .  
+\end{dmath}
+
+\fixme{draw accompanying graphs}
+
+These are all intuitive results. Both the quadratic and cubic force
+curves have a local zero stiffness at $x=0$. However, the quadratic
+force curve has the advantage in practice (\fixme{crossref}) of
+quasi-zero stiffness in all degrees of freedom. Could a virtual cubic
+stiffness be applied with a controller to stabilise this system while
+ensuring quasi-zero stiffness? The state equation is
+\begin{dmath}
+  \dot x = \stiffnessQuad x^2 -\stiffnessDuffing x^3 
+\end{dmath}
+with $\stiffnessQuad > 0$ and $\stiffnessDuffing$ freely able to be
+chosen in the control law. The derivative of the Lyapunov function is
+\begin{dmath}
+  \dot L  = \stiffnessQuad x^3 -\stiffnessDuffing x^4 
+          = x^2 \gp{\stiffnessQuad x -\stiffnessDuffing x^2} .
+\end{dmath}.
+Since $x^2\ge0$, for stability 
+\begin{dmath}[compact]
+  \stiffnessQuad x -\stiffnessDuffing x^2 \le 0
+  \implies x\gp{\gamma-x} \le 0
+\end{dmath}.
+This is only true for $x\le0$ and $x\ge\gamma$, and this system is
+therefore not stable for all $x$. However, there is a local maximum in
+the region $0<x<\gamma$, and the addition of a further linear term to
+the controller can have the effect of moving this global maxima below zero.
+
+The state equation now contains the augmenting linear term
+$\stiffnessLinear$ that can also be freely chosen in the control law:
+\begin{dmath}
+  \dot x = -\stiffnessLinear x + \stiffnessQuad x^2 - \stiffnessDuffing x^3. 
+\end{dmath}
+Similarly to before (\fixme{crossref??}), for stability
+\begin{dmath}
+  -\stiffnessDuffing x^2 + \stiffnessQuad x - \stiffnessLinear \le 0.
+\end{dmath}
+This is true for all $x$ for $\stiffnessQuad^2 \le
+4\stiffnessLinear\stiffnessDuffing$ (no real roots of the quatratic
+characteristic equation).
+
+This analysis does not take into account factors such as knowledge of
+the system parameters, so it is only the very beginning of a nonlinear
+control law for a quadratic-force system. Furthermore, it shifts the
+position of the local zero stiffness operating point. However, it does
+demonstrate the feasibility of adding virtual stiffnesses to the
+system in order to add stability without affecting the possibility of
+quasi--zero stiffness.
+
+
+\section{Backstepping}
+
+This section is based on work presented at the Active 2006 conference,
+where I first showed that nonlinear backstepping control of a zero
+stiffness system, in theory, had some merit.
+
+\subsection{Introduction}
+In a large load vibration isolation system, significant static
+forces are required to counter the effects of gravity. For a
+conventional linear isolator, this compensating force is $F=-k x_0$,
+for stiffness $k$ and static deflection $x_0$. Accordingly, for
+large forces the stiffness and/or the static deflection must also be
+large.
+
+While low stiffness is advantageous for vibration isolation, there
+is a practical lower limit on obtaining a stiffness to support a
+large load. {The disadvantage of increasing the stiffness of the
+system is due to the corresponding increase in the resonant
+frequency $\natfreq=\sqrt{k/m}$, for mass $m$. This results in poor
+passive vibration isolation for frequencies below
+$\sqrt{2}\cdot\natfreq$.} Accordingly, a method of supporting large
+loads while keeping the stiffness low is desirable. For an active
+system, it will be shown that, in this case, the further advantage
+is gained of reduced control effort in actuating the device.
+
+In this paper, a permanent magnetic configuration is demonstrated
+that can reduce the passive stiffness to zero at unstable
+equilibrium while still providing a supporting force.  The magnetic
+design is scalable, which provides for the capability of large load
+bearing. Non-linear control laws are proposed to stabilise the
+system and are demonstrated via simulation.  Finally, implementation
+issues are discussed for a practical system.
+
+\subsection{Permanent magnet springs}
+
+The simplest form of magnetic suspension is the vertically
+attractive pair in \figref{spring-vattr}, in which a fixed upper
+magnet supports the lower in an unstable manner. Due to the inherent
+instability resulting from negative stiffness and the nonlinear
+forces involved, this system is often used for demonstrations of the
+efficacy of active control techniques.
+
+While all permanent magnet levitations are unstable by nature
+\cite{earnshaw1842,tonks1940}, in a completely passive magnetic
+spring instability in directions other than the supporting direction
+can be controlled with rigid guides (for example, see the isolator
+of \textcite{puppin2002}). Such a configuration,
+shown in \figref{spring-vrepl}, consists of a vertical pair of
+magnets in repulsion, with the lower magnet providing the supporting
+forces.
+
+Zero stiffness structures for vibration isolation from the ground
+have been examined by \textcite{nijsse2001}, who introduced the
+magnet arrangement shown in \figref{spring-vcomb}, a combination of
+the two aforementioned magnetic springs. \textcite{xing2005}
+have examined the general solution for feedback control systems
+achieving zero and infinite stiffness. \iffalse The latter, for
+rejection of direct disturbance on the supported stage, has been
+researched by \textcite{mizuno2003b}, in which the series
+combination of a conventional positive spring and a negative
+magnetic spring results in theoretically infinite static stiffness
+in total:
+\begin{align*}
+\frac{1}{k} & = \frac{1}{k_1} + \frac{1}{k_2} , &
+\therefore k & = \frac{k_1k_2}{k_1+k_2} = \infty, \text{~if~} k_1+k_2=0 .
+\end{align*}
+\fi
+
+This paper further develops the concept of zero stiffness through
+the parallel combination of two magnetic springs, $k = k_1+k_2 = 0$,
+via theoretical modelling and simulated nonlinear control.
+
+\begin{figure}
+ %\subfloat[Vertically attracting spring \figlabel{spring-vattr}]
+ %  {\parbox[s][\heightof{\empuse{spring-vcomb}}]{0.3\linewidth}
+ %    {\centering\empuse{spring-vattr}}}%
+ %\subfloat[Vertically repelling spring \figlabel{spring-vrepl}]
+ %  {\parbox[s][\heightof{\empuse{spring-vcomb}}]{0.3\linewidth}
+ %    {\centering\vfill\empuse{spring-vrepl}}}%
+ %\subfloat[s][Combination spring \figlabel{spring-vcomb}]
+ %  {\parbox{0.3\linewidth}
+ %    {\centering\empuse{spring-vcomb}}}%
+  \caption{%
+    Magnetic springs for bearing vertical loads. The shaded magnet
+    in each is supported against gravity ($F_g$) by the respective
+    magnetic forces ($F_{m_i}$). Arrows within the magnets indicate their
+    directions of magnetisation.}
+  \figlabel{vsprings}
+\end{figure}
+
+\subsection{Zero stiffness}
+
+The term `zero stiffness' strictly denotes a decoupling between
+displacement and force for two disparate objects in space;
+\begin{dmath}[compact,label=zero-stiffness]
+  \func\force\displacement=
+  \lim_{\stiffness\approaches0}-\stiffness\displacement=0
+\end{dmath}.
+However, for any practical quasi-zero stiffness system (also see the
+mechanically zero stiffness spring of \textcite{carrella2006}) the stiffness varies by position, so
+perturbations from the equilibrium point eliminate the zero
+stiffness property. On the other hand, small perturbations lead only
+to small changes in the stiffness, which will therefore remain close
+to zero.
+
+Taking the inverse of \eqref{zero-stiffness} naïvely implies that
+for a totally zero stiffness system, applied force will effect a
+displacement without bound:
+$\func\displacement\force=\lim_{\stiffness
+  \approaches0}-\force/\stiffness=\infty$. In a more realistic case, the lower
+the stiffness the more easily the system can be actuated.
+
+\subsection{Permanent magnet design}
+
+In this section, the stabilities through displacement in the load
+bearing direction for the three springs shown in \figref{vsprings}
+are analysed in order to show the desirable properties of the zero
+stiffness magnetic spring.
+
+\subsubsection{Mathematical models}
+
+The solution shown previously in \eqref{akoun}, and others like it, provide a
+convenient way to analyse the behaviour of any simple permanent magnet
+configuration. Since the coercivity of rare earth magnetic material is
+great enough to ensure that nearby magnets will not demagnetise each
+other, the forces follow the principle of superposition. That is,
+referring back to \figref{vsprings}, $F_{m_3}=F_{m_1}+F_{m_2}$.
+
+\subsubsection{Stability analyses}
+
+The stability of a magnetic configuration may be investigated by
+examination of the stiffnesses in each direction, which may be
+calculated via application of \eqref{akounk}. Stability exists for
+negative force gradients (positive stiffness), where the reaction
+forces act to oppose perturbatory displacements. In the following
+analyses, cube magnets of side length 20\,mm are used with
+magnetisations of~1\,T.
+
+The stiffness in each translatory direction for the vertically
+attracting spring (\figref{spring-vattr}) experiencing vertical
+deflection is shown in \figref{K-V-attr}. It can be seen that this
+spring is unstable (i.e., it has negative stiffness) in the vertical
+direction, but stable (positive stiffness) in both horizontal
+directions.
+
+\begin{figure}[p]
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-vattr-kz}
+    \caption{Vertical stiffness (unstable).\figlabel{K-V-attr-Z}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-vattr-ky}
+    \caption{Horizontal stiffnesses (stable).\figlabel{K-V-attr-Y}}
+  \end{subfigure}
+  \caption{Stiffnesses of the vertically attracting spring (\figref{spring-vattr}).}
+  \figlabel{K-V-attr}
+\end{figure}
+
+A similar analysis has been performed on the vertically repelling
+spring (\figref{spring-vrepl}), for which the results are displayed
+in \figref{K-V-repl}. These show opposite tendencies to the previous
+spring: both horizontal directions are unstable, but the vertical,
+load-bearing, direction is stable.
+
+\begin{figure}[p]
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-vrepl-kz}
+    \caption{Vertical stiffness (stable).\figlabel{K-V-repl-Z}}  
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-vrepl-ky}
+    \caption{Horizontal stiffnesses (unstable).\figlabel{K-V-repl-Y}}
+  \end{subfigure}
+  \caption{Stiffnesses of the vertically repelling spring (\figref{spring-vrepl}).}
+  \figlabel{K-V-repl}
+\end{figure}
+
+When these two springs are combined to create the spring shown in
+\figref{spring-vcomb}, the stiffnesses in each bearing direction
+have each a point of inflexion, as shown in \figref{K-V-comb}. This
+inflexion, equidistant between the two magnets, is the point of zero
+stiffness in both vertical and horizontal directions. The supporting
+force at this point is a function of the gap. This relationship is
+shown in \figref{active-zerok-fxrange}, which plots vertical force
+vs.\ vertical displacement for a zero stiffness spring with varying
+gaps.
+
+The curves shown in \figref{active-zerok-fgap} demonstrate the
+nominal load-bearing force of a zero stiffness spring with
+increasing cube magnet side-lengths. This figure indicates that a
+large design space is possible with appropriately chosen parameters.
+
+\begin{figure}[p]
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-vzerok-kz}
+    \caption{Stiffness in the vertical direction 
+     (stable for negative displacements).\figlabel{K-V-zerok-Z}}
+   \end{subfigure}
+  \hfill
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-vzerok-ky}
+    \caption{Stiffnesses in the horizontal directions 
+     (stable for positive displacements).\figlabel{K-V-zerok-Y}}
+  \end{subfigure}
+  \caption{Stiffnesses of the zero stiffness spring (\figref{spring-vcomb}).}
+  \figlabel{K-V-comb}
+\end{figure}
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-zerok-fxrange}
+    \caption{Force/displacement curves for the magnetic arrangement shown
+        in \figref{spring-vcomb}. 20\,mm cube magnets
+        are used with various gaps.
+        \figlabel{active-zerok-fxrange}}  
+  \end{subfigure}
+  \par
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-zerok-fgap}
+    \caption{Supporting force/gap curves for various magnet sizes
+     at zero displacement. In each case, the gap range is 1--2 magnet dimensions.
+     Increasing force results from increasing magnet size.
+     \figlabel{active-zerok-fgap}}   
+  \end{subfigure}
+     \caption{Dependence of the supporting force on geometry of the
+       zero stiffness spring.}
+\end{figure}
+
+\subsubsection{Development of more advanced magnetic geometries}
+
+\fixme{refer back to the lit review here}
+
+The results in \figref{K-V-repl} show that the vertically repelling
+spring is unstable in both horizontal directions. Since
+$k_x+k_y+k_z=0$, there are two options for the design of the
+behaviour of the horizontal dynamics. Stabilisation in one of these
+directions is possible through the addition of horizontally located
+magnets \cite{robertson2005}. In this case, at rest, $k_z=0$ and
+$k_y=-k_x>0$; \emph{passive} stabilisation in one horizontal degree
+of freedom is achieved.
+
+Alternatively, with the proposed combination (zero stiffness) spring
+(\figref{spring-vcomb}), the horizontal stiffnesses in
+\figref{K-V-zerok-Y} are also zero at the midpoint: $k_x=k_y=k_z=0$.
+With stabilising controllers (equivalent to those shown later in
+this paper) in every degree of freedom, an object may be supported
+with zero stiffness in each translatory direction.
+
+For increasing the load bearing ability of a magnetic spring, simple
+scaling of the magnetic volume is inefficient \cite{yonnet1991}.
+Greater forces over shorter distances may be achieved with multipole
+(`Halbach') arrays, which are an approximation of a sinusoidally
+polarised magnet \cite{robertson2005}. The tenet of zero stiffness
+for such structures remains the same as for homogeneous magnets,
+however, and these structures will not be analysed further here.
+
+\subsection{Control strategies}
+
+The basic zero stiffness configuration that is under examination is
+marginally stable at its operating point. The stable effects of the
+lower magnet and the unstable effects of the upper magnet combine to
+produce a unique force/displacement characteristic (zero slope) as
+seen in \figref{active-zerok-fxrange} on the previous page.
+
+To a good approximation, over the range of several millimetres this
+relationship may be modelled as quadratic: $F_m = K x^2 + F_0$, for
+displacement $x$ from the rest position at the point of zero
+stiffness, balanced midway between the two fixed magnets, with a
+supporting force $F_0$. When summed with the load due to gravity,
+this simplifies to $F = F_m - mg = K x^2$.
+
+For this stage of the analysis, the damping of the system is
+neglected, as its effect will be small. The approximate dynamic
+equation of motion of the zero stiffness spring is therefore (for
+mass $m$)
+\begin{dmath}
+m\ddot x - K x^2 = 0 . \eqlabel{dynamics}
+\end{dmath}
+A controller for this unstable system may now be designed for the
+purposes of stable operation at the zero stiffness position. The
+design for a linear controller might proceed from here by (Jacobian)
+linearisation around the operating point; linear stiffness $k =
+\partial F/\partial x |_{x=0}$. This linearised system in state space form is
+\begin{dmath}[label=linearised-dynamics]
+\inlinematr{ \ddot x ; 
+              \dot x } = \inlinematr{ 0 , 0 ; 
+                                      1 , 0 } 
+                         \inlinematr{ \dot x ; 
+                                      x      }
+                       + \inlinematr{ 1/m ; 
+                                      0   } u 
+\end{dmath}.
+A standard linear controller designed around this model fails to
+stabilise the actual system robustly, due to the large gains that
+would be required to overcome the strong nonlinear destabilising
+term. This can be shown using Lyapunov stability criterion
+\cite{khalil1992}. Consequently, a simple backstepping
+controller~\cite{krstic1995} will be used that can accommodate such
+nonlinear problems.
+
+In order to compare the results from the controlled zero stiffness
+spring to a more conventional system, the same analysis will also be
+performed on the vertically repelling spring, which has behaviour
+similar to a standard linear spring. For the purposes of vibration
+isolation, it is desired to examine the vibration response due to
+indirect excitation through the (previously assumed fixed) base,
+representing undesirable ground vibration. Schematics for the two
+systems are shown in \figref{base-excitation}, which defines $U_1$
+and $U_2$ as inputs to the vertically repelling and zero stiffness
+springs, respectively.
+
+\begin{figure}
+  \fixme{Draw asy schematics for magnetic springs}
+ %\null\hfill
+ %\subfloat
+ %  [Vertically repelling spring.
+ %   \figlabel{vrepl-base-excitation}]
+ %  {\quad\empuse{vrepl-base-excitation}\quad}
+ %\hfill
+ %\subfloat
+ %  [Zero stiffness spring.
+ %   \figlabel{zspring-base-excitation}]
+ %  {\empuse{zspring-base-excitation}}
+ %\hfill
+ %\null
+  \caption{Schematics of the simulated springs, for displacement $x$,
+     disturbed by base excitation $y$, and controlled by input force $U$.}
+  \figlabel{base-excitation}
+\end{figure}
+
+The dynamic equation for these systems, assuming some linear viscous
+damping, $d$, and a nonlinear stiffness force
+$\func{F_k}{{\cdot}}$, is
+\begin{dmath}
+  m\ddot\x + d\group{\dot\x-\dot\vv} - \func{F_k}{\x-\vv} = U .
+  \eqlabel{motion}
+\end{dmath}
+The actual forces $\func{F_k}{x-y}$ for each system may be
+calculated via application of \eqref{akoun}. From such numerical
+results, approximations can be derived as follows for use in the
+control laws:
+\begin{dmath}
+  \func{F_{k_1}}{\bar x} \approx \q3\bar x^3+\q2\bar x^2+\q1\bar x , \text{(vertically repelling)} \eqlabel{cubic}
+\end{dmath}
+\begin{dmath}
+  \func{F_{k_2}}{\bar x} \approx \Q\bar x^2 , \text{(zero stiffness)} \eqlabel{quadratic}
+\end{dmath}
+in which cancelation of the static force with the gravity load has
+been taken into account.
+
+\subsubsection{Controller derivation for the zero stiffness spring}
+
+The approximate nonlinear system dynamics for the zero stiffness
+spring may be written in the following form:
+\begin{dgroup}
+\begin{dmath}[label=xdot]
+\dot \x = \y  
+\end{dmath},
+\begin{dmath}
+\dot \y = k\xv^2 + u
+\end{dmath},
+\end{dgroup}
+where $\x$ is the displacement state, $\y$ is the velocity state, $k
+= \Q/m$ from \eqref{dynamics,quadratic}, and $u = U_2/m$ is the
+normalised input force.
+
+An initial control Lyapunov function is chosen (typical for
+mechanical systems) around which to design a stability controller
+for the system:
+\begin{dgroup}
+\begin{dmath*}
+V_1 \eqdef \half \x^2
+\end{dmath*},
+\begin{dmath*}
+\dot V_1 = \x\dot\x = \x\y
+\end{dmath*}.
+\end{dgroup}
+The velocity term can now be considered (mathematically) as a
+virtual input for this system, $\y = \yy + \z $, where $\yy$ is the
+desired value of $\y$ and $\z$ is the associated error:
+\begin{dmath}
+\dot V_1 = \x\yy + \x\z.\eqlabel{vdot1}
+\end{dmath}
+The term $\yy$ is chosen such that the first term in \eqref{vdot1}
+is negative definite:
+\begin{align}
+\yy & \eqdef -\cc\x , \quad\cc\in\mathbb{R}^+ & \dot\yy & = -\cc\dot\x
+= -\cc\y , \\
+\therefore \dot V_1 & = -\cc\x^2 + \x\z.
+\end{align}
+The virtual state error term, $\z=\y-\yy$, is now
+\begin{dgroup}
+  \begin{dmath*}
+    \z = \y+\cc\x 
+  \end{dmath*} ,
+  \begin{dmath*}
+    \dot\z = k\xv^2+u+\cc\y 
+  \end{dmath*} .
+\end{dgroup}
+Backstepping one integrator to incorporate $\dot\z$, and hence the
+input $u$, a second control Lyapunov function is defined:
+\begin{dgroup}
+  \begin{dmath}
+    V_2  \eqdef V_1 + \half\z^2 
+  \end{dmath},
+  \begin{dmath}
+    \dot V_2 = \dot V_1 + \z\dot\z 
+             = \group{\x\z + \x\yy} + \z\group{ u+k\xv^2+\cc\y } 
+             = -\cc\x^2 + \z\group{ u+\x+k\xv^2+\cc\y } 
+  \end{dmath}.
+\end{dgroup}
+The simplest route to stability is taken when the nonlinearities
+are simply cancelled by the input control force, $u$:
+\begin{align}
+u & \eqdef -\d\z - \x - k\xv^2 - \cc\y , \quad \d\in\mathbb{R}^+  \notag\\
+  & = -\x\group{\cc\d+1} - \y\group{\cc+\d} - k\xv^2 ,
+  \eqlabel{active-linearised-feedback}\\
+\therefore \dot V_2 & = -\cc\x^2 -\d\z^2 < 0 \mathbin{\forall} \x,\z
+\neq 0 \eqlabel{prove-stability}
+\end{align}
+For an ideal system, proof of global asymptotic stability of the
+controlled system follows from \eqref{prove-stability}
+\cite{khalil1992}.
+
+This controller design is equivalent to feedback linearisation
+(note, \emph{not} linearisation of the dynamics around the operating
+point as in \eqref{linearised-dynamics}) since the choice for $u$
+simply cancels the nonlinearity and applies controller gains on the
+states $\x$ and~$\y$. Substituting
+\eqref{active-linearised-feedback} into \eqref{xdot} results in the
+closed loop system, for some controller gains $\cc$ and $\d$,
+\begin{dmath}
+\ddot \x = -\x\group{\cc\d+1} - \dot\x\group{\cc+\d} .
+\eqlabel{cl-dynamics}
+\end{dmath}
+Note that these closed loop dynamics are independent of the
+disturbance $\vv$. For an ideal system, attenuation is therefore
+infinite. However, errors will occur as the true dynamics deviate
+from the approximation used to derive the controller in
+\eqref{active-linearised-feedback}. While these errors can lead to
+instability, increasing the controller gains $\cc$ and $\d$ is
+sufficient to create a local region of stability around the nominal
+position that is large enough to contain the effects of the
+disturbance. It is possible, however, to design a more involved
+backstepping controller to compensate robustly for this problem.
+
+An equivalent controller to \eqref{active-linearised-feedback} can
+be designed for the vertically repelling spring, resulting in
+identical closed loop dynamics (\eqref{cl-dynamics}). Referring to
+\figref{base-excitation}, the two controllers are:
+\begin{dgroup}
+\begin{dmath}[label=controller1]
+  U_2 = -mx\group{\cc\d+1} - m\dot x\group{\cc+\d}-\Q\xv^2
+\end{dmath},
+\begin{dmath}[label=controller2]
+  U_1 = \underbrace{ 
+          -mx\group{\cc\d+1} - m\dot x\group{\cc+\d}
+        }_{\text{Controller dynamics}}
+        - 
+        \underbrace{
+          \q3\xv^3-\q2\xv^2 - \q1\xv
+        }_{\text{Cancelation of open loop dynamics}} 
+\end{dmath}.
+\end{dgroup}
+
+\subsection{Simulation results}
+
+Results are obtained by investigating the dynamics in numerical
+simulation of the more conventional vertically repelling spring and
+the zero stiffness spring, both under equivalent forms of control,
+as derived in the previous section.
+
+For the simulations to follow, the `true' magnet dynamics are
+modelled using forces obtained from \eqref{akoun}. The magnets are
+\SI{20}{mm} cubes, and the zero stiffness spring is chosen to have a
+magnet gap (see \figref{spring-vcomb}) of \SI{20}{mm}. Without loss of
+generality, the mass supported by the springs is chosen to be equal
+to the minima of the force vs.\ displacement curve of the zero
+stiffness spring, producing the zero stiffness condition. That is,
+mass $m=\SI{1.836}{kg}$. For a different mass, a different gap
+would be chosen.
+
+The disturbance input is assumed to be Gaussian-distributed random
+displacement with a standard deviation of \SI{1}{mm}; this is
+numerically differentiated to obtain the input velocities for a
+linear damping of 5\%, shown by $d$ in \eqref{motion}. This damping
+term is included to approximate within an order of magnitude the
+real-world effects of air resistance and eddy currents.
+
+Several simulations are presented with different controller gains.
+Initially, they are chosen to be large enough to overcome
+instability through the controller approximation errors given the
+specified input disturbance. Successively greater values were then
+selected to demonstrate the limits of the control performance. In
+total, simulations were performed for three sets of controller gains
+on each of the two springs with the controllers respectively shown
+in \eqref{controller1,controller2}.
+
+A summary of the results are shown in \tabref{rms}, tabulating
+\textsc{rms} average values of displacement and force experienced by
+the support and the control force exerted to effect the control. The
+zero stiffness spring has both a greater vibration attenuation and
+an order of magnitude smaller control effort compared to the
+vertically repelling spring.
+
+\begin{table}
+  \caption{\RMS\ values of the displacements, total forces, and control
+  forces on the two springs for increasing control gains $\cc$, $\d$.}
+  \begin{tabular}{@{} lccccc @{}}
+    \toprule
+    \multicolumn{3}{c}{System} & \multicolumn{3}{c}{\textsc{rms} values} \\
+    \cmidrule(r){1-3}  \cmidrule(l){4-6}
+    Spring & $\cc$ & $\d$ & Disp. (mm) & Force (N) & Control (N) \\
+    \midrule
+    Vertically repelling & 20  & 10  & 0.376  & 2.04  & 2.14  \\
+                         & 50  & 25  & 0.129  & 1.48  & 6.25  \\
+                         & 100 & 50  & 0.042  & 1.32  & 8.20  \\
+    \midrule
+    Zero stiffness       & 20  & 10  & 0.146 & 0.197 & 0.142 \\
+                         & 50  & 25  & 0.100 & 0.263 & 0.199 \\
+                         & 100 & 50  & 0.006 & 0.201 & 0.167 \\
+    \bottomrule
+  \end{tabular}
+  \tablabel{rms}
+\end{table}
+
+Figures \ref{fig:active-disp} and~\ref{fig:active-force}
+show time traces of the displacements and forces experienced by the
+controlled springs for the lowest value of the controller gains.
+
+\figref{active-Txd} shows the vibration transmissibilities of the
+springs, calculated as the ratio between the output displacement and
+input disturbance power spectra. Power spectra ratios were used
+rather than frequency response functions (the ratio of the
+cross-spectra to output auto-spectra) due to the nonlinear
+response.
+
+\begin{figure}
+\begin{wide}
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-sim5-disp}    
+    \caption{Vertically repelling spring.\figlabel{active-sim5-disp}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-sim2-disp}
+    \caption{Zero stiffness spring.\figlabel{active-sim2-disp}}  
+     \end{subfigure}
+  \end{wide}
+  \caption{Displacement traces of the floating magnet and the base
+      disturbance ($x$ and $y$ in \figref{base-excitation},
+      respectively) for the two active springs, with the lowest
+      controller gains.}
+  \figlabel{active-disp}
+\end{figure}
+
+\begin{figure}
+\begin{wide}
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-sim5-force}
+    \caption{Vertically repelling spring (control 
+     force $U_1$ in \eqref{controller2}).\figlabel{active-sim5-force}}  
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}
+    \grf{Simulations/Active2006/eps/active-sim2-force}
+    \caption{Zero stiffness spring (control force 
+     $U_2$ in \eqref{controller1}).\figlabel{active-sim2-force}}    
+  \end{subfigure}
+  \end{wide}
+  \caption{Force traces for the two active springs with the lowest
+    controller gains; both the total force on the spring and the
+    control actuator force are shown.  Note that the force axes in (a)
+    and (b) are not scaled equally due to the large discrepancy
+    between them.}
+  \figlabel{active-force}
+\end{figure}
+
+Although the \emph{ideal} closed loop dynamics should be equal (if
+the controller cancellations were perfect) and the displacements of
+the suspended magnet should tend towards zero, the mismatch between
+the estimated dynamics, \eqref{cubic,quadratic}, and actual
+dynamics, from \eqref{akoun}, shows discrepancy between the two
+systems.
+
+The lower control effort result can be considered a result of the
+fact that the zero stiffness spring simply needs to be stabilised to
+achieve vibration isolation, whereas the vertically repelling spring
+has dynamics that need to be actively cancelled to achieve the same
+result. The is very apparent for the high gain cases, where the
+control effect changes little for the zero stiffness spring from the
+lower gain case, but the isolation performance increases
+significantly. In comparison, the control effort of the vertically
+repelling spring increases fourfold.
+
+\begin{figure}
+  \begin{wide}
+    \begin{subfigure}
+      \grf{Simulations/Active2006/eps/active-base-powerspec-x7}
+      \caption{Vertically repelling spring.}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}
+      \grf{Simulations/Active2006/eps/active-base-powerspec-x4}
+      \caption{Zero stiffness spring.}
+    \end{subfigure}
+  \end{wide}
+  \caption{Transmissibilities of the actively controlled springs for various gains.}
+  \figlabel{active-Txd}
+\end{figure}
+
+\subsubsection{Rejection of direct force disturbances}
+
+The second notable feature of the controller used is the behaviour
+of the closed loop dynamics, shown in \eqref{cl-dynamics}. It has
+already been shown that greater control effort will correspond to
+greater vibration isolation from the ground. In addition, the
+natural frequency of the closed loop system, $\natfreq =
+\sqrt{\cc\d+1}$, will also increase. This will have the effect of
+increasing the attenuation of direct disturbance forces applied to
+the floating spring (for example, due to vibrations of machinery
+being supported or external excitation from turbulent airflow).
+
+\subsection{Inherent assumptions}
+
+Many assumptions have been made to simplify the analyses in this
+paper. These assumptions will be lifted in the practical development
+of the vibration isolator. The zero stiffness property only holds
+when the magnet distances are tuned to support the mass of the
+isolator in the region of local force minima. Variations of the load
+would require a variable magnet separation distance, which could be
+effected with an actively controlled screw drive for (slow) online
+tuning.
+
+The horizontal dynamics may be analysed and stabilised through
+similar analysis to that shown in this paper for the vertical
+direction. Alternatively, the spring may be constrained in the
+vertical direction.
+
+It has been assumed here that the states of the system are fully
+observable. In practice, only the relative displacement
+$\group{x-y}$, relative velocity $\group{\dot x-\dot y}$, and the
+absolute accelerations $\ddot x$ and $\ddot y$ are directly
+measureable, but these parameters may be combined in an observer to
+obtain the required states used for feedback in this paper.
+
+The effects of the actuator dynamics have not been modelled, nor
+have problems relating to achieving moment-free forces been
+addressed. With careful placement of zero stiffness voice-coil
+actuators, these problems should not be significant in practice.
+
+\subsection{Summary}
+
+The unique force characteristic of a magnetic configuration
+combining vertically attracting and vertically repelling springs
+allows non-contact load bearing with zero stiffness properties. This
+is different from a classical spring that has a lower bound on its
+stiffness and hence a lower limit on its vibration isolation
+capabilities.
+
+The nonlinear force-displacement relationship of this combination
+spring required a nonlinear controller, which was developed using a
+backstepping technique. Simulation results based on this controller
+displayed the zero stiffness tendency anticipated; smaller than
+unity transmissibility was achieved over the entire frequency
+spectrum.
+
+
+
+
+
+\section{More advanced controller synthesis}
+
+The performance of a vibration isolation table in attentuating
+disturbances from the ground is governed in the first order by the
+stiffness of the primary supports. Higher stiffnesses are more
+convenient to support large loads, but lower stiffnesses give better
+passive vibration suppression into lower frequency ranges. In high
+precision contexts, a resonance frequency of less than \SI{1}{Hz} is
+often required, for which very soft pneumatic springs are typically
+used~\cite{kawashima2007}.
+
+However, as the stiffness of a spring decreases its bulk increases,
+and there are practical limits on how large the springs can
+grow. The use of more complex support structures is a promising method of
+reducing the effects of low frequency disturbance noise when simply
+reducing the stiffness of the basic spring supports becomes
+infeasible.
+
+One approach is to use a mechanical linkage~\cite{winterflood2001}. In
+the limiting sense, the ideal support would have zero stiffness, in
+which displacement of the ground produces zero disturbance force on
+the load. Zero stiffness can be achieved with mechanical supports, but
+only for local regions of displacement. Since the zero stiffness
+property is not global, these devices are more accurately said to have
+`quasi-zero stiffness' (although the `quasi' term is often omitted).
+
+All zero stiffness systems are a combination of positive and negative
+stiffness nonlinear springs. Others have shown clever arrangements of
+mechanical springs that achieve this
+\cite{alabuzhev1989,carrella2007,lee2007}, while permanent magnets
+have also been used \cite{robertson2006,nijsse2001} and will be used
+here.
+
+Generally, the zero stiffness property only occurs at a point of
+marginal stability, and some form of active control is required to
+keep the system stable at such an operating position.  The focus of
+this paper is to investigate nonlinear control techniques for this
+purpose.
+
+\subsection{System modelling}
+
+For the preliminary investigation, a single degree of freedom system
+is created with two pairs of magnets to generate the superposition of
+positive and negative spring stiffnesses. A schematic of the model is
+shown in \figref{schematic}, in which vertical displacement, $x$, of
+the beam-tip constitutes vibration that is to be suppressed. In order
+to restrict the motion to a single degree of freedom, the magnet pairs
+are attached to a beam that is pinned at one end. The use of a large
+lever arm results in motion that is almost completely constrained to
+the vertical; horizontal and rotational displacements are
+negligible. A push-pull electromagnet pair acting on a central magnet
+is used to apply control force to the system via coil current $I$.
+
+\begin{figure}
+  \centering
+  \grf{Figures/Rig/schematic}
+  \caption{Schematic of the nonlinear magnetic system. Hollow blocks
+    denote magnets with polarisation indicated by arrows. The centre
+    magnet is encompassed within an electromagnet coil pair (blocks
+    with crosses), wound in opposite directions, to apply control
+    forces to the magnetic spring to stabilise the system. The frame
+    around the system is rigid and attached to the ground.}
+  \figlabel{schematic}
+\end{figure}
+
+\subsubsection{Zero stiffness spring}
+
+The most simple form of the zero stiffness magnetic spring is the
+combination of a magnet pair in repulsion (lower pair in
+\figref{schematic}) and a magnet pair in attraction (upper pair in
+\figref{schematic}). The force versus displacement curve for this
+system can be described approximately by the quadratic~\cite{robertson2006}
+\begin{equation}
+  F_m = K_m(x-x_0)^2+{F_m}_0 ,
+\end{equation}
+where $K_m$ is the spring constant, ${F_m}_0$ the load bearing
+capacity of the spring at zero stiffness, and $x_0$ the zero
+stiffness position due to
+\begin{equation}
+  \left.\frac{\partial F_m}{\partial x}\right|_{x=x_0}=0 .
+\end{equation}
+
+The spring constant $K_m$ and the load bearing capacity ${F_m}_0$ are
+functions of the strength of the magnets and the gaps between them. For
+application purposes, the spring must be capable of bearing a variety
+of loads at zero stiffness ($F_g=-Mg$ for a range of $M$), which
+requires that the fixed magnet positions be adjustable. The mass being
+supported is assumed here to be constant.
+
+Air resistance on the moving body and eddy currents induced by the
+permanent magnets will induce damping effects that dissipate energy
+from the vibrating system. The overall damping force, $F_d$, can be
+assumed to be viscous (and relatively small):
+\begin{equation}
+  F_d = -C_d\dot x ,
+\end{equation}
+where $C_d$ is the damping coefficient.
+
+\subsubsection{Actuator dynamics}
+
+The actuator is modelled as a simple dual-coil winding
+surrounding a permanent magnet. To be specific, the force this coil
+will produce, $F_c$, will be a function of both position and current, but a
+reasonable approximation for small displacements is
+\begin{equation}
+  F_c = K_cI.
+\end{equation}
+\fixme{crossref to COIL}
+
+When driving the coil with a voltage amplifier, there will be
+electrical dynamics as well. In terms of coil impedance $L$, coil
+resistance $R$, voltage gain $G$, and input voltage $u$, the coil
+dynamics are given by
+\begin{equation}
+  L\dot I + IR + K_e\dot x = Gu,
+\end{equation}
+which also incorporates the back-emf term $K_e\dot x$ from the moving magnet
+inside the coil.
+
+\subsubsection{Dynamic model}
+
+From the preceeding subsections, the complete model of the system is given by
+\begin{align}
+\begin{split}
+M\ddot x & = F_g+F_m+F_c+F_d,\\
+         & = -Mg + K_m(x-x_0)^2 + {F_m}_0 + K_cI - C_d\dot x,\\
+L\dot I  & = Gu - IR - K_c\dot x.
+\end{split}\eqlabel{sys}
+\end{align}
+This system must be expressed in the following form in order to implement a
+standard backstepping controller~\cite{krstic1995}:
+\begin{align}
+\begin{split}
+\eqlabel{tuning}
+  \dot x_1 &= x_2 + \p1\T\theta,\\
+  \dot x_2 &= b_2x_3 + \p2\T\theta,\\
+  \dot x_3 &= b_3u + \p3\T\theta,
+\end{split}
+\end{align}
+which is achieved by reformulating \Eqref{sys} with $[x_1, x_2, x_3] =
+[x, \dot x, I]$ as
+\begin{align}
+\begin{split}
+  \dot x_1 &= x_2 ,\\
+  \dot x_2 &= \t1 + \t2 x_1 + \t3x_1^2 + \t4x_2 + b_2x_3 ,\\
+  \dot x_3 &= \t5x_2 + \t6x_3 + b_3u ,
+\end{split}
+\end{align}
+where
+\begingroup
+\def\frac#1#2{#1/#2}
+\begin{equation}
+\begin{aligned}
+\theta_1&=\frac{K_m x_0^2}{M}-g+\frac{F_{m_0}}{M},&
+\theta_3&=\frac{K_m}{M},&
+\theta_5&=-\frac{K_c}{L},&
+b_2&=\frac{K_c}{M},\\
+\theta_2&=-\frac{2 x_0 K_m}{M},&
+\theta_4&=-\frac{C_d}{M},&
+\theta_6&=-\frac{R}{L},&
+b_3&=\frac{G}{L},
+\end{aligned}
+\end{equation}
+\endgroup
+and for constant parameters $\theta$ and nonlinear functions $\varphi_i$
+defined as
+\begin{align}
+\theta & = [\t1, \t2, \t3, \t4, \t5, \t6]\T , \\
+\begin{split}
+\p1\T & = [0,0,0,0,0,0] , \\
+\p2\T & = [1,x_1,x_1^2,x_2,0,0] , \\
+\p3\T & = [0,0,0,0,x_2,x_3] .
+\end{split}
+\end{align}
+
+\subsection{Nonlinear control}
+
+The authors have previously demonstrated a simple backstepping
+controller that is able to stabilise a system similar to that derived
+above, albeit without coil dynamics, for the purpose of vibration
+isolation \cite{robertson2006}. That controller showed in simulation
+the advantages of using backstepping control with a zero stiffness
+system, but it required an explicit and exact model of the system to
+calculate the control law. In turn, a very precise system
+identification would be required for control to be possible; a
+more robust technique is therefore necessary for a practical implementation.
+
+An approach without these limitations is the backstepping method using
+tuning functions \cite[\S4.5.1]{krstic1995}, which is a general method
+to generate tracking control systems for systems (for any number of
+states) of the form shown in \Eqref{tuning}. The controllers thus
+created are adaptive and do not require knowledge of the coefficients
+$b_2$, $b_3$ or $\theta$. The Lyapunov-based design ensures that the
+system states converge to their desired values and the unknown
+parameters converge to a bounded set.  This latter property means that
+using this technique is not appropriate for system identification,
+since some parameter uncertainty is probable even after convergence.
+
+When applying the tuning functions backstepping technique to
+\Eqref{tuning}, the system of `error variables' $z_1$, $z_2$, $z_3$ is
+defined with respect to the setpoint $y$ and `stabilising functions'
+$\alpha_1$ and $\alpha_2$ (with $\alpha_3$ to appear):
+\begin{align}
+z_1&=x_1-y ,&
+z_2&=x_2-\alpha _1 ,&
+z_3&=x_3-\alpha _2 .
+\end{align}
+The voltage controller can now be shown to be defined as the following:
+\begingroup
+\def\{{[}
+\def\}{]}
+\def\left#1{#1}
+\def\right#1{#1}
+\def\overset#1#2{\dddot #2}
+\def\delta\left(#1,#2\right){%
+  \partial_{#2}\lbrace#1\rbrace}
+\begin{equation}
+u=\varrho _3 \alpha _3 ,\eqlabel{control}
+\end{equation}
+with stabilising functions\footnote{The notation
+  $\partial_x\{y\}\equiv\frac{\partial y}{\partial x}$ is used for
+  clarity.}
+\begin{multline}
+\alpha _3=-\kappa _3 z_3 x_2^2-\vartheta _5 x_2+\delta \left(\alpha _2,x_1\right) x_2
+-\left(x_1^4+x_1^2+x_2^2+x_3^2+1\right) \kappa _3 z_3 \delta \left(\alpha _2,x_2\right){}^2\nl+\delta \left(\alpha _3,\vartheta \right)\dot{\vartheta }-x_3 \vartheta _6-\beta _2 z_2-\kappa _3 z_2^2 z_3-c_3 z_3-x_3^2 \kappa _3 z_3\nl
++\left(\vartheta _1+x_1 \left(\vartheta _2+x_1 \vartheta _3\right)+x_2 \vartheta _4+x_3 \left(\beta _2+2 \kappa _3 z_2 z_3\right)\right) \delta \left(\alpha _2,x_2\right)+\dot{\varrho }_2 \delta \left(\alpha _2,\varrho _2\right),
+\end{multline}
+\vspace{-2\baselineskip}
+\begin{multline}
+\alpha _2=\varrho _2 \left(-\vartheta _3 x_1^2-\vartheta _2 
+x_1-x_1+y-\vartheta _1-x_2 \vartheta _4-c_2z_2\nl
+-\left(x_1^4+x_1^2+x_2^2+1\right) \kappa _2 z_2+x_2 \delta 
+\left(\alpha _1,x_1\right)\right),
+\end{multline}
+\vspace{-2\baselineskip}
+\begin{equation}
+\alpha _1=-c_1 z_1 . \eqlabel{control-end}
+\end{equation}
+In the controller above, $c_1$, $c_2$, and $c_3$ are the controller
+gains, and $\kappa_2$, $\kappa_3$ are the nonlinear damping
+gains. These gains can be adjusted to obtain a desirable controller
+response.
+
+Parameter update laws for the estimates are shown in
+\Eqrangeref{param}{param-end}, where $\vartheta$ are the estimates of
+parameters $\theta$, $\beta_2$ and $\beta_3$ are the estimates of $b_2$
+and $b_3$, and $\varrho_2$ and $\varrho_3$ are the estimates of
+$p_2=1/b_2$ and $p_3=1/b_3$. $\varrho$ terms are used to avoid
+$1/\beta$ terms in the controller/update laws, which become
+problematic if $\beta\to0$. $\Gamma$ is the parameter update gain
+matrix for $\vartheta$, and $\gamma_2$, $\gamma_3$ are update gains for $\varrho_2$ and $\varrho_3$.
+\begin{multline}\eqlabel{param}
+\dot{\vartheta }=\Gamma\left\{z_2-z_3 \delta \left(\alpha _2,x_2\right),x_1 \left(z_2-z_3 \delta \left(\alpha _2,x_2\right)\right),\nl
+x_1^2 \left(z_2-z_3 \delta \left(\alpha _2,x_2\right)\right),x_2 \left(z_2-z_3 \delta \left(\alpha _2,x_2\right)\right),x_2 z_3,x_3 z_3\right\}\T ,
+\end{multline}
+and
+\begingroup
+\def\frac#1#2{#1/#2}
+\begin{align}
+  \dot{\beta _2} &=-\gamma _2 z_3 \left(-x_2+\alpha _1+x_3 \delta \left(\alpha _2,x_2\right)\right) ,
+  \\
+  \dot{\varrho _2}&=-\frac{\gamma _2 z_2 \alpha _2}{\varrho _2} ,
+  \\
+  \dot{\varrho _3}&=-\gamma _3 z_3 \alpha _3 , \eqlabel{param-end}
+\end{align}
+\endgroup
+\endgroup
+A characteristic of the tuning functions design is the tight coupling
+between the controller and the parameter update laws. Note that
+$\alpha_3$ contains terms involving both $\dot {\vartheta}$ and
+$\dot {\varrho} _2$. No derivatives of the setpoint $y$ appear, as it
+is assumed to be constant, but this restriction is not necessary in
+the general form of the controller.
+
+\subsection{Results}
+
+To demonstrate the performance of the controller described above, a
+selection of simulation results are shown. When the system is
+initialised, the position of the fixed magnets needs to be set in
+order for the magnet force curve to provide a nominal supporting force
+to place the spring as close to the zero stiffness location as
+possible. For this to occur, $F_{m_0}=Mg$, where $F_{m_0}$ is a
+function of the gaps between the fixed and floating magnets.
+
+However, this calibration cannot be performed in open loop, because
+the desired location of the spring is in a position of marginal
+stability; therefore, the controller must be active while the fixed
+magnet positions are adjusted. 
+
+The first simulation results demonstrate the stability and convergence
+properties of the controller. The system parameters used in this
+simulation are shown in \tabref{params}, with initial parameter
+estimates 10\% below their actual value.  Adaptation gains $\gamma_2$,
+$\gamma_3$, and $\Gamma$ were chosen as the inverse of the orders of
+magnitude of the parameters they affect.
+
+\Figref{converge-states} shows the states converging with setpoint
+following ($x=x_0$). During parameter convergence, the system
+approaches its desired position as the parameters converge to their
+steady state values. \Figref{converge-params} demonstrates that the
+parameters do not converge to their exact values, but to some nearby
+constant values instead.
+
+\begin{table}
+\centering
+\caption{System parameters for simulation results.}
+\tablabel{params}
+\vspace{-\baselineskip}% why??
+\null\hfill
+\begin{tabular}{@{}|cc|@{}}
+\hline
+\multicolumn{2}{|c|}{Mechanical} \\
+\hline
+Parameter & Value \\
+\hline
+$M$ & \SI{0.01}{kg} \\
+$K_m$ & \SI{100}{N/m^2} \\
+$F_{m_0}$ & $0.8 Mg$ \\
+$C_d$ & \SI{0.01}{kg/s} \\
+$x_0$ & \SI{0.02}{m} \\
+\hline
+\end{tabular}\hfill
+\begin{tabular}{@{}|cc|@{}}
+\hline
+\multicolumn{2}{|c|}{Electrical} \\
+\hline
+Parameter & Value \\
+\hline
+$K_c$ & \SI{1}{N/V} \\
+$K_e$ & \SI{0.1}{V/(m/s)} \\
+$R$ & \SI{8}{Ohm} \\
+$L$ & \SI{0.001}{H} \\
+$G$ & 1 \\
+\hline
+\end{tabular}\hfill
+\begin{tabular}{@{}|cc|@{}}
+\hline
+\multicolumn{2}{|c|}{Controller} \\
+\hline
+Parameter & Value \\
+\hline
+$c_1$, $c_2$, $c_3$ & $10$ \\
+$\kappa_2$, $\kappa_3$ & $1$ \\
+$\gamma_2$ & $0.01$ \\
+$\gamma_3$ & $0.001$ \\
+$\Gamma$ & See below \\
+\hline
+\end{tabular}
+\hfill\null
+\bigskip
+
+\fbox{%
+\begin{minipage}{0.65\textwidth}
+\centering
+$\Gamma = \operatorname{diag}(1,0.001,0.0001,1,0.01,0.0001)$
+\end{minipage}}
+\end{table}
+
+\begin{figure}
+  \centering
+  \begin{subfigure}
+    \grf{Simulations/ICSV14/eps/icsv-ideal}
+    \caption{States of the system\figlabel{converge-states}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}
+    \grf{Simulations/ICSV14/eps/icsv-ideal-params.eps}
+    \caption{Parameter estimates, normalised with their exact values 
+    (that is, $\vartheta_i/\theta_i$, $\beta_2/b_2$, $\rho_i/p_i$ are plotted).\figlabel{converge-params}} 
+  \end{subfigure}
+  \caption{Example control with system parameters as shown in
+    \tabref{params}.}
+  \figlabel{control1}
+\end{figure}
+
+Once the parameters have converged and the magnet positions have been
+adjusted to achieve the desired nominal supporting force, the system
+is simulated again with perturbation on $M\ddot x$ introduced to
+demonstrate the behaviour under direct disturbance situations. For
+this simulation, the nominal force $F_{m_0}=0.99Mg$; the 1\%
+difference imposes a small initial displacement offset. The
+perturbation force on the isolated mass is Gaussian-distributed white
+noise with a variance of \SI{0.001}{N}.
+
+The simulation results are shown in \figref{control2}, for two cases:
+with and without parameter adaptation. \Figref{adapt-noise} can be
+seen to have a greater succeptibility to the noise disturbance
+compared to \Figref{ssnoise}. These results show that once the system has
+converged, it is desirable to disable the adaptation
+($\gamma_2,\gamma_3=0$, $\Gamma=\bm{0}$) to avoid perturbation in the
+system affecting the control performance.
+
+\begin{figure}
+  \centering
+  \begin{subfigure}
+    \grf{Simulations/ICSV14/eps/icsv-adapt-noise-t}
+    \caption{With parameter adaptation.\figlabel{adapt-noise}}
+  \end{subfigure}
+  \hfill
+  \begin{subfigure}
+    \grf{Simulations/ICSV14/eps/icsv-ssnoise-t}
+    \caption{Without parameter adaptation.\figlabel{ssnoise}}
+  \end{subfigure}
+  \caption{Control at steady state position with direct disturbance,
+    with and without parameter adaptation. It is clear that noise
+    upsets the performance of the parameter adaptation after convergence.
+    See \figref{converge-states} for legend.}
+  \figlabel{control2}
+\end{figure}
+
+\subsection{Summary and future work}
+
+This article has investigated the feasibility nonlinear
+control for a magnetic spring system. We have shown that standard
+backstepping methods can be used to stabilise the system in the
+presence of parameter uncertainties. However, we have not yet extended
+this work to look at vibration isolation, which is the \emph{raison
+  d'etre} for looking at this quasi-zero stiffness system.
+
+To investigate vibration isolation, additional states need to be added
+to the system to represent the vibration of the ground. The tuning
+functions backstepping method accommodates this additional complexity
+without trouble.
+
+The current design uses full state feedback, which is not infeasible
+in practice with the use of laser displacement and velocity
+sensors. Such sensors are expensive, however, and a useful
+modification to the controller will be to add state observers (either
+velocity or displacement) in order to reduce the number of sensors
+required.
+
+
+
+\section{Unfinished}
+
+\section{Backstepping}
+
+\subsection{Trajectory initialisation}
+
+Trajectory initialisation is used to improve the estimate
+convergence. With the controller as designed above, it can be shown
+that
+\begin{dmath}
+  (\theta-\vartheta(t))\T\Gamma^{-1}(\theta-\vartheta(t))\leq 
+  z(0)\T z(0)+(\theta-\vartheta(0))\T\Gamma^{-1}(\theta-\vartheta(0)).
+\end{dmath}
+This shows that while the estimates may never converge to their exact
+values, there are two things we can do to reduce their
+uncertainty. Firstly, we want to have good estimates of the system
+parameters from the beginning in order to minimise
+$(\theta-\vartheta(0))\T\Gamma^{-1}(\theta-\vartheta(0)$. This can be
+achieved through analytical calculation and \textit{a priori}
+measurement; another viable option is to iterate the controller while
+updating the estimates' initial conditions to their converged values
+from the previous run.
+
+Secondly, we want to minimise $z(0)\T z(0)$, recognising that $z(t)$
+are error states incorporating the difference between the actual and
+desired states of the system \cite{krstic1995}. This can be achieved
+by choosing a trajectory that contains an term to bring the
+tracking function to the actual states' measurement at $t=0$.
+
+That is, rather than choosing a following function $y_f(t)$ that may
+have $y_f(0)\neq x(0)$, we desire
+\begin{dmath}
+  y_r(t)=y_f(t)+\delta(t),\\
+  \delta(0)=y_r(0)-y_f(0),\\
+  \delta(t)\to0\text{ as }t\to\infty.
+\end{dmath}
+
+The tracking controller also requires the derivatives of the
+trajectory to follow, which can be calculated from the plant estimate:
+\begin{dgroup}
+\begin{dmath}
+  y_r(0) = x_1(0)  
+\end{dmath}.,
+\begin{dmath}
+  \dot y_r(0) = x_2(0)  
+\end{dmath},
+\begin{dmath}
+  \ddot y_r(0) = x_3(0)+\varphi_2\cdot\vartheta(0)  
+\end{dmath}.
+\end{dgroup}
+
+Now, the function $\delta(t)$ can be any sufficiently differentiable
+(up to the number of states of the nonlinear system) function that
+converges to zero. A simple stable linear system satisfies these
+requirements is
+\begin{dmath}
+  \begin{bmatrix}
+    \dot{\delta}(t)\\\ddot{\delta}(t)\\\dddot{\delta}(t)
+  \end{bmatrix}
+  =
+  \begin{bmatrix}
+    0 & 1 & 0 \\ 0 & 0 & 1 \\ -m_0 & -m_1 & -m_2
+  \end{bmatrix}
+  \begin{bmatrix}
+    \delta(t)\\\dot{\delta}(t)\\\ddot{\delta}(t)
+  \end{bmatrix}
+\end{dmath}
+with $m_i>0$ and initial conditions $\dot{\delta}(0)=\dot y_r(0)$ and
+$\ddot{\delta}(0)=\ddot y_r(0)$.
+
+
+
+
+

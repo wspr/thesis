@@ -1,0 +1,1468 @@
+%!TEX root = thesis.tex
+\chapter{Magnetic and electromagnetic forces}
+\chaplabel{magnet-theory}
+
+\epigraph{With an eye to the practical importance of levitation we
+feel justified here in disregarding those aspects of it
+associated with magic, spiritualism, and psychic
+phenomena\dots}{\textcite{boerdijk1956b}}
+
+\chapterprecis{
+  This is the most analytical of the theory/literature sections, since it is here that
+  I present and abstract a body of work that deals with `forces between magnets',
+  also including some quick mentions of magnetic field theory and some associated
+  concepts (such as eddy current damping).
+}
+
+
+\section{Levitation techniques}
+
+This section looks directly at those methods of levitation which
+are in some way electromagnetic in origin; air springs, \eg, are
+not covered, for these systems required a constant supply of
+compressed air, and furthermore are unable to be used in clean
+room environments.
+
+\subsection{Magnetic levitation is impossible!}
+\seclabel{earnshaw}
+
+The act of passively levitating a magnet by another is well
+known as impossible, although popular unlearned opinion is not
+aware of the fact.  \textcite{earnshaw1842} proved that
+objects in the influence of fields that apply forces with an
+inverse-square relation to displacement cannot form
+configurations of stable levitation. Approximately one hundred
+years later, \textcite{tonks1940} wrote a paper reminding his
+contemporaries of the work of \citeauthor{earnshaw1842} by
+applying the proof specifically to the field of magnetics:
+\begin{quote}
+\dots no flexible assemblage of magnetic poles, in which
+readjustments in position of the poles in the group can
+occur, can be stable in either a fixed field or in the field
+from another such assemblage\dots
+\end{quote}
+The proof is conceptually quite simple. We start with the
+equation for the magnetic field; when there are no external
+current terms, it can be shown to be expressed as Laplace's
+equation:
+\begin{dmath}[compact]
+\grad\magB = 0 \implies \divgrad\magB = 0
+\end{dmath}.  
+The potential energy of a magnet is proportional
+to the magnetic field it is subjected to, $U =
+-\magM\bdot\magB$, so when the magnetisation is time-invariant 
+(as in the case of a permanent magnet), we have:
+\begin{dmath}[compact,label=earnshaw]
+\divgrad U = \divgradxyz{U} = 0 
+\end{dmath}.  
+The double differentiations of the energy are
+the stiffnesses in each direction.  But for stable
+equilibrium, these three terms must be greater than zero. This
+cannot satisfy \eqref{earnshaw} and thus levitation cannot
+occur.
+
+\begin{figure}
+  \grf[width=0.4\textwidth]{Figures/Theory/saddle}
+  \caption{A ball in unstable equilibrium on a saddle-shaped curve.}
+  \figlabel{saddle}
+\end{figure}
+
+This is easy to visualise by analogy. \figref{saddle} shows a
+ball balancing on a saddle-shaped curve, which we can take to
+be potential energy of a \twoD\ system. Clearly it is
+stable in one direction, unstable in the other. Perturbations
+`left' or `right' will result in reaction forces keeping it
+centred, whereas small displacements `into' or `out from' the
+page will result in increased perturbation.
+
+Those still in doubt given this argument may be swayed by this
+explanation instead:
+\begin{quotation}\em
+Consider a ring magnet fixed to the ground, with a disc
+magnet held above in repulsion. If the disc has a smaller
+diameter than the inner dimension of the ring, then it will
+be attracted to the ring with a smaller force in the centre
+of the ring as compared to directly above the ring's
+magnetic material. One notices that the disc tends to flip
+over in order to become attracted to the disc; it is
+angularly unstable in the axial directions.
+
+One may conjecture that if the angular motions were
+constrained by coupling three discs to float above three
+rings then some sort of stable levitation could be achieved;
+there is horizontal stability, and angular stability, and in
+the vertical direction there seems to be some sort of
+minimum.
+
+However, as it turns out, for there to be horizontal
+stability, the spring stiffness in the vertical direction
+has to become negative; that is, as the disc comes closer to
+the ring, the force holding it up \emph{decreases}. So at
+equilibrium, if the disc is perturbed towards the ring, the
+force holding it up against gravity becomes smaller and the
+disc is sucked into the centre of the ring (where it is now
+stable radially but unstable axially).
+
+This is all a consequence of the way magnetic fields
+behave. For a conservative, or magnetostatic, field, the
+potential energy is governed by Laplace's
+equation. Solutions to Laplace's equation can never yield
+local minima. Thus, for any location, there is an adjacent
+point with smaller potential energy to which the object will
+be inclined to move to. Once in the new position, again
+there is another adjacent point with less potential energy,
+until the two magnet arrangements are physically touching.
+\end{quotation}
+
+
+
+\subsection{Exceptions to Earnshaw}
+
+Earnshaw's proof does not rule out all forms of `levitation'
+unconditionally, however.  \textcite{boerdijk1956a} reviewed
+the known methods for levitation, covering levitation by
+gravitation forces, pressure reaction forces, radiation field
+forces, and finally in detail, various magnetic and
+electromagnetic forces.
+
+Because Earnshaw's theorem looks only at the case for static
+equilibrium, cases when the magnetic field is dynamic are not
+covered. This can occur broadly under two circumstances: when
+the magnetic field is generated with \AC\ currents; and when
+an unstable permanent magnet arrangement is stabilised with an
+active control system.
+
+Levitation using a magnetic field produced by \AC\ currents
+was covered in detail by \textcite{laithwaite1965}.  The basic
+mechanism of this type of levitation is that \AC\ currents
+create dynamic magnetic fields that induce eddy currents in a
+levitating object, and it is the interaction of the magnetic
+fields of these induced currents that causes the
+levitation. The technique uses a large amount of power, and is
+not especially suitable for the purposes of this research for
+this reason.
+
+For an actively stabilised levitation system, the levitation
+forces are created by permanent magnets (which have time-constant
+magnetic fields) and the necessary stabilisation applied with
+variable current electromagnets with a feedback control
+system.  For this reason the magnetic fields are known as
+quasi-static. This system was first implemented by Holmes who
+levitated a magnetic needle, as cited by
+\textcite{boerdijk1956a}. Some more practical examples of
+these types of system are covered in the next section.
+
+This summary is fairly brief; \textcite{bleuler1992} wrote a more detailed
+overview. His paper introduces the `self-sensing active magnetic bearing'
+\cite{vischer1993} which uses back--electromotive force from the controlling
+electromagnet to sense the position of the floating element. This eliminates
+the need for a more classical position sensor (\eg, optical or capacitive),
+but the control system is necessarily more complex and the behaviour not as
+precise.
+
+Some Italian guy showed that you can levitate a ring magnet
+above another by using vibrations to find small zone of
+stability in the nonlinear dynamics \cite{bassani2007}.
+
+
+\section{Non-contact magnetic support}
+
+\textcite{puppin2002} published a paper that most plainly
+demonstrates that magnetic springs can be used for vibration
+isolation, in which the authors make no attempt to achieve
+contactless suspension—the magnets are horizontally
+constrained in guides. Furthermore, the springs are only used
+as passive isolators for vibrations in the vertical direction;
+no active control is used. Nonetheless, their passive spring
+was still capable of significant vertical vibration
+attenuation.
+
+\textcite{nagaya1993} constructed a non-contact vibration
+isolation table; they report a high-stiffness spring with
+transmissibility approaching zero \fixme{?}. Their table used small
+magnets in a simple design, which could not support large
+loads. The authors showed later a better control system for
+their `perfect noncontact active vibration isolation
+table' \cite{nagaya1995a}—which refers strictly to the
+efficiency of their control system and not the load-bearing
+abilities of the table.
+
+\textcite{watanabe1996} wrote a paper detailing a functional
+vibration isolator using electromagnetic springs, which could
+support weights of up to \SI{200}{kg}. The control system
+used was quite advanced, utilising a combination of two
+independent control systems for stable levitation and robust
+vibration isolation. The magnetic actuator design is not
+described, however. It is believed that high-powered
+electromagnets were required for this design; with the current
+availability of cheap rare-earth magnets, a more efficient
+design is now possible.
+
+\textcite{chang2001} applied nonlinear control to the problem
+of magnetic levitation, using coupled hybrid magnets (\ie,
+electromagnets biased with permanent magnet cores) that create
+a magnetic circuit with the levitated table of
+\SI{20}{kg}. The paper looks at nonlinear analysis and
+neither passive nor active vibration isolation results are
+shown.
+
+\textcite{choi2003} designed a levitation
+table capable of supporting \SI{15}{kg} that is unstable in
+only one horizontal degree of freedom. However, the magnetic
+arrangement used for the spring, despite their claims, appears
+quite unstable and is not suited for scaling up to bear
+greater loads. Their experiments prove that only a single axis
+requires control for stability, but the position resolution
+they achieve is fairly coarse.
+
+A novel design for achieving a theoretically infinite
+stiffness spring is shown by
+\textcite{mizuno2003a,mizuno2003b}. By using physical springs
+in series with electromagnetic suspension springs, three
+degrees of freedom of an isolation platform are actively
+controlled, with the total weight supported around
+\SI{30}{kg}. The unstable degree of freedom is in the
+vertical direction, however, which may prove problematic when
+increasing the load on the table.
+
+Even now, basic \PID\ control is still used for control
+purposes. \textcite{li2007} report their success in suspending
+a magnetic table using a coupled electromechanical model of
+the system.
+
+\textcite{banerjee2008} used a simple cascaded \PI\ and
+lead controllers to stabilise an electromagnetic
+suspension. An optimisation technique was used to obtain the
+control gains necessary to achieve adequate performance over a
+range of displacement gaps; such control is usually only
+suitable for fixed-gap systems.
+
+\textcite{gosiewski2008} applied \Hinf\ control to a magnetic suspension. Eh.
+
+
+\section{Forces}
+
+In this chapter I discuss forces generated by electromagnetic
+systems. Originally, I used \FEA\ techniques, but these proved time
+consuming and crude. Integration is a better idea.
+
+[\textcite{won2005}] Uses a \twoD\ \FEM\ to calculate the torque and
+vibration of a motor in a mobile phone.
+
+For fast magnetic field computation, the `fast multipole method' can
+be used \cite{adedoyin2007}. But I haven't used it.
+
+Magnetic fields can induce forces through a variety of
+methods. Electromagnetic actuators often use Lorentz forces
+\cite{hollis1993}.
+
+\section{Magnetic fields}
+
+It's instructive but misleading to think about magnetic fields
+`squashing' as they come in proximity to each other. Just ask
+\textcite{sodano2006} who received comments nitpicking comments about
+their terminology \cite{marneffe2007}.
+
+\section{Sources of the magnetic field}\label{sec:bhm}
+
+Magnetic fields are created by moving electrons. A long straight wire
+will create cylindrical magnet fields, and a small loop will create a
+magnetic dipole. Thus, an electron orbiting a proton is the smallest
+magnetic element.  This is a hydrogen atom. In nature, however,
+hydrogen exists as H$_2$, two protons orbited by two electrons---and
+it happens that the two electrons orbit in opposite directions and the
+magnetic fields of each cancel each other out.  Most material is like
+this: basically, not magnetic.
+
+The following is a very short introduction to the physics behind
+magnets. A good reference book which inspired this section is
+\textcite{campbell1994}.
+
+The \define{magnetic dipole} is designated as the microscopic quantity
+$\mdip = i\vect{A}$, for a current $i$ and a vector area $\vect{A}$
+(direction normal to plane). For a collection of magnetic dipoles (as
+in a permanent magnet), their net effect may be quantified with the
+macroscopic \emph{magnetisation} of the material, $\magM$:
+\begin{dmath}
+  \magM =  \lim_{\Delta V \rightarrow 0} \frac{\sum \mdip}{\Delta V}.  \eqlabel{M}
+\end{dmath}
+
+The magnetisation of a permanent magnet creates the magnetic fields
+that are of such great interest. \emph{Inside} the magnet (with no
+other external fields present), the magnetic field, $\magB$, is given by
+the simple relation
+\begin{dmath}[label=BM]
+  \magB = \permVac \magM
+\end{dmath},
+where $\permVac$ is the `permeability of the vacuum', an essentially
+meaningless name given to the necessary constant of proportionality.
+
+So, macroscopic magnetic fields have been derived from microscopic
+currents. It is possible to take this full circle and now create
+macroscopic current terms from the magnetic field. The equivalent
+current density, $\vect{J}_m$ around a permanent magnet, created by
+aligned microscopic orbiting electrons is given by:
+\begin{dmath}
+  \vect{J}_m = \curl\magM.
+\end{dmath}
+This is a good beginning for describing the effects of an \emph{external} 
+current density ($\vect{J}$) acting on the magnet. To separate the effects of 
+induced magnetisation and that caused spontaneously by magnetic material, a 
+new term is created: the magnetic field strength, $H$:
+\begin{dmath}
+  \vect{J} = \curl\magH.
+\end{dmath}
+Now the earlier \eqref{BM} can be adjusted to allow for both
+internal and external forms of magnetisation (\ie, magnetic field
+caused by permanent magnets or by current carrying conductors). This
+is the fundamental equation relating the three important terms in
+magnetics,
+\begin{dmath}
+  \magB = \permVac (\magM + \magH)  \eqlabel{BHM}
+\end{dmath},
+allowing the terms to be unambiguously defined. Henceforth, $\magB$ is
+called the \define{magnetic flux density}, which a measure of the
+total flux per area; and $\magH$ is the \define{magnetic field strength},
+the effect of external current sources that creates the magnetic
+field.
+\note{The names of these terms are not always consistent in the
+  literature. $\magM$ is also known as polarisation, and $\magB$ and $\magH$
+  are both sometimes known as the magnetic field.}
+
+Finally, the \define{permeability} $\perm$ of a material (generally
+only used when the material is not a permanent magnet) is a varying
+term describing the ratio between the magnitudes of the $\magB$ and $\magH$
+fields. The \define{relative permeability} $\permrel$ is the ratio of
+the permeability to $\permVac$.
+\begin{dgroup}
+  \begin{dmath}
+    \perm = \frac{B}{H}  
+  \end{dmath},
+  \begin{dmath}
+    \permrel = \frac{\perm}{\permVac}
+  \end{dmath}.
+\end{dgroup}
+\Eqref{BHM}, may now be used to describe the situation at all
+points in space. Use \figref{BHM} to note that while inside the
+magnet, the magnetic field is the vector sum of two components,
+whereas outside the magnet, the magnetisation is zero and the magnetic
+field is related to the magnetic field strength by a constant. This
+results in $\magB$ being continuous everywhere, and both $\magM$~and $\magH$
+being discontinuous.
+
+\begin{figure}[htbp]
+   \centering
+   \grf{Figures/Theory/BHM}
+   \caption{The magnetic field, $\magB$, both inside and outside a magnet.}
+   \figlabel{BHM}
+\end{figure}
+ 
+This equivalence in air is essentially the reason that there is often
+confusion between $\magB$ and $\magH$. It can be seen that within a magnet,
+however, their relationship is more complex and important. The
+performance of a magnet is shown by its \bhcurve, which is shown for
+an ideal magnet in \figref{BHcurve}. This curve demonstrates the
+nonlinear and hysteresic effects of the magnetic flux density of a
+magnetic material as external magnetic field is applied to it.
+
+Two important features are shown in the \bhcurve. First, the
+\define{remanence} of the magnet, $B_r$. This value is equal to
+$\permVac\Msat$ and occurs when there is no external
+magnetic field. The other is the \define{coercive force}, $H_c$, which
+is the amount of magnetic field strength required to reduce the flux
+density of the magnet to zero.
+
+\begin{figure}[htbp]
+   \centering
+   \grf{Figures/Theory/BHcurve}
+   \caption{The characteristic $B$ vs. $H$ curves for an ideal rare-earth magnet.}
+   \figlabel{BHcurve}
+\end{figure}
+
+When the magnet is applying energy, it is operating in the second
+quadrant of its \bhcurve, \ie, the section of the curve between the
+point of remanence and the coercive force, known as the
+\define{demagnetisation curve}. This is because the energy used for
+the demagnetisation is being taken by the causes of the
+demagnetisation. At some point in this second quadrant, $-\magB\times\magH$
+will have a maximum. Since this is proportional to the energy
+potential, this is known as the \define{maximum energy product}
+$\BHmax$, and can be shown to be equal in an ideal magnet to:
+\begin{dmath}
+  -\BHmax = \frac{\Msat}{2}
+\end{dmath}
+The potential energy of the magnet is thus directly related to its
+magnetisation.
+
+And what do you know. Just a little while ago, while reading
+\cite{furlani2001}, I wondered what was the constitutive relation
+with rare earth magnets (the book wasn't entirely clear, unless I
+missed that part). So here we are: due to \textcite{nagaraj1988}, for
+high coercivity permanent magnets,
+\begin{dmath*}
+  \magB = \permVac\magH + \magM ,
+\end{dmath*}
+assuming that the air approximates a vacuum (magnetically) and the
+relative permeability of the magnet is unity. The rest of the paper
+goes on to derive, in familiar ways, integrals for the forces between
+magnets of cuboïd and cylindrical shapes. (This latter will be a
+useful reference later on.)
+
+
+\section{Properties of magnetic flux}\label{sec:flux}
+
+The previous section introduced $\magB$, the magnetic flux density. An
+analysis of how to derive the paths of magnetic flux is a little
+beyond the scope of this document, but it is important to discuss the
+flux lines themselves.
+
+`Magnetic flux' derives its name from archaic models of magnetism,
+whose proponents believed in the literal flow of a magnetic fluid
+called the `luminiferous ether'. Nowadays, scientists tend toward more
+modern interpretations using electromagnetic fields involving quantum
+theory. Nonetheless, the name sticks. Magnetic flux, $\flux$, is
+therefore defined as the amount of `fluid' passing through an area:
+\begin{dmath}
+  \flux = \magB \cdot A
+\end{dmath}
+This flux is almost analogous to electric current; the only difference
+being that electric current is constrained by the conductor it is
+flowing through, whereas while magnetic flux is known to \emph{prefer}
+areas of greater permeability, it occasionally can deviate from these
+simple paths
+
+It is more instructive for a basic understanding of how magnets behave
+to look at the ways their flux lines interact. The following `magnet
+design axioms' are adapted from \textcite{moskowitz1995}, whose book
+covers permanent magnet design for a wide range of uses.
+
+\begin{enumerate}
+\item Flux lines follow the path of least resistance. This means that they will
+travel through the shortest path possible, 
+through the material with the
+\emph{greatest} permeability---so they will travel more readily through
+magnetic or ferrous material than air, and more readily through air 
+(although only slightly) than diamagnetic material.
+
+\item Flux lines travelling in the same direction repel each other. This means
+flux lines will never cross.
+
+\item Flux lines enter ferrous material at right angles.
+
+\item Permeability of ferrous material is `used up' by flowing flux; when the
+material reaches saturation, flux lines travel as easy though air as through
+the saturated material.
+
+\item Flux lines travel from North to South poles in closed loops.
+
+\item Magnets are made up of a very large number of unit poles.
+\end{enumerate}
+
+From these axioms, one can generate incorrect, yet applicable,
+theories how and why magnets attract and repel each other. For
+example, two magnets in repulsion have flux lines opposing each
+other. It can be imagined that the reason forces occur between them is
+due to a `squashing' of the flux lines which the magnets try to
+oppose---but theories like this only help visualising magnetic
+behaviour, \emph{not} for explaining the reasons behind it.
+
+\section{Magnetic materials}
+
+There are several materials from which permanent magnets can be
+made. Short attention will be placed on the cheaper, legacy magnetic
+materials such as the ferrite magnets and alnico magnets due to their
+poor performance. Rare-earth neodymium magnets are now quite
+commonplace and rather cheap, and have much more desirable properties
+than these old fashioned magnets.
+
+\Tabref{magnets} shows some approximate ranges comparing the
+properties of the various magnet types available. Clearly, rare earth
+magnets are capable of much greater energy output, and their high
+coercivity precludes them from losing their magnetisation through
+physical impact or proximity with other magnets---unlike the older
+ferrite and alnico magnets. Their only disadvantage is their low
+operating temperatures that perhaps will be inconvenient using them
+for biased, or hybrid, electromagnets, in which a current carrying
+coil is wrapped around a permanent magnet to increase the output of
+magnetic field.
+
+\begin{table}
+  \centering
+  \begin{tabular}{@{} l r@{\,--\,}l r@{\,--\,}l r@{\,--\,}l @{}}
+    \toprule
+    & \multicolumn{6}{c}{Magnet type}\\
+    \cmidrule{2-6}
+    Property            & \multicolumn{2}{c}{Ferrite}   
+                        & \multicolumn{2}{c}{Alnico}   
+                        & \multicolumn{2}{c}{Neodymium}  \\
+    \midrule
+    Max.\ temperature (°C)    & 400 & 500 & 800 & 900 &     80 & 200  \\
+    Remanence (T)             & 0.2 & 0.4 & 0.5 & 1.3 &      1 & 1.3  \\
+    Coercivity (kA$/$m)       & 100 & 200 & 50  & 160 & ~~~800 & 900  \\
+    Max.\ energy product 
+                 (kJ$/$m$^3$) & 6   & 33  & 10  & 80  &    200 & 300  \\
+    \bottomrule
+  \end{tabular}
+  \caption[Typical values for various permanent magnets.]
+  {Typical values for various permanent magnets. 
+   Adapted from information from \url{http://www.magtech.com.hk/}.}
+  \tablabel{magnets}
+\end{table}
+
+
+\section{Magnetic bearings}
+
+The oldest dynamic mechanical application of magnetics was for rotary
+bearings.  The classic magnetic bearing supports a shaft by applying
+radially centring forces on the spinning rotor. An example schematic
+is shown in \figref{radialbearing}, which is unstable in the axial
+direction due to Earnshaw's theorem. In the most simple of these
+bearings, this instability is constrained with a physical stop.
+Control has been used for many years now to stabilise such systems
+(\eg, by \textcite{shimizu1968}, creating completely non-contact devices.
+
+\begin{figure}
+  \grf[width=0.75\textwidth]{Figures/Bearings/radialbearing}
+  \caption[Radial bearing cross section.]{The cross-section of two radially
+magnetised ring magnets in a radial bearing.}
+  \figlabel{radialbearing}
+\end{figure}
+
+\textcite{backers1961} developed an early active magnetic bearing
+similar to that shown in \figref{backers-bearing} which used a control
+system with variable current electromagnets to stabilise the rotor in the unstable
+axial direction for complete non-contact support. The multipole nature of this 
+bearing will be more closely examined in \secref{multipole}.
+
+\begin{figure}
+  \grf{Figures/Bearings/backers-bearing}
+  \caption[Multipole bearing cross section.]{The cross-section of a
+    multipole radial bearing.}
+  \figlabel{backers-bearing}
+\end{figure}
+
+\textcite{yonnet1978} proved that the forces between radial bearings are
+equal regardless of whether they are axially magnetised or radially.\footnote{To
+be precise, the forces exerted by two magnets upon each other remain equal so
+long as the sum of their angles of magnetisation remain constant.} So, for
+example, the two bearings shown in \figref{equalbearings}, despite having
+different magnetisation directions, have the same stiffness (due to the forces
+being equal). 
+
+\begin{figure}[hbtp]
+  \grf[scale = 0.7]{Figures/Bearings/equalbearings}
+  \caption[Two equivalent radial bearings]{Two equivalent radial bearings
+(with equal forces of repulsion), despite their different directions of
+magnetisation.}
+  \figlabel{equalbearings}
+\end{figure}
+
+His later paper \cite{yonnet1981} continues this work, describing
+how magnetic bearings may re-arranged to suit different applications,
+showing every possible simple equivalent axial and radial bearing.
+
+[\textcite{asami2005}] This paper is essentially describing an axial
+bearing with actively control for radial stability. It uses a \FEA\ simulation
+to draw curves similar to those graphs I've made for single magnet springs;
+positive stiffness decreasing with displacement.
+
+Makes a couple of throw-away comments about minimising radial instability
+forces by minimising the axial thickness of the passive bearings, and to have
+less radial direction flux in the `iron part'.
+
+\subsection{Magnetic couplings}
+
+Rotary magnetic bearings have an opposite: the magnetic couple. Rather
+than isolate components from applied loads, the magnetic couple serves
+to transmit the forces and couple the two components together. They
+can be used, for example, to transmit torque between two separate
+rotating shafts. These are treated by \textcite{yonnet1981}, who says
+periodic recurring magnetisation (see \secref{multipole}) is required in
+order to transmit torque satisfactorily.
+
+\cite{bucher2006}
+
+\section{Forces between magnets}
+
+
+\textcite{bassani2006}
+
+The technique in general for finding the forces between two magnets is
+simple to describe. The first magnet creates a magnetic field in the
+region of the second magnet; the force is calculated due to the
+interaction of the first magnet's field and the internal field of the
+second magnet. Or vice versa; reciprocity holds here.
+
+The magnetic field due to a magnet can be calculated by modelling the
+magnet either as a body containing a current density or containing
+some magnetic charge. Rare-earth magnets have the convenient property
+of high coercivity that prevents demagnetisation; hence, assumptions
+of a fixed and volume-constant magnetisation hold very well.
+
+In the first step, the integration takes place over the region of the
+first magnet:
+\begin{dmath}
+\magB_1\fn{\pos_2} = 
+  \magconst\Int{ 
+    \gp{-\Div\magM_1}
+    \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}}{v_1,V_1}
++ \magconst\oint\limits_{S_1}
+    \gp{\magM_1\dotprod\normn}
+    \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
+    \dee s_1
+\end{dmath}.
+
+In the second step, the integration of the function of the magnetic
+field of the first magnet takes place over the region of the second
+magnet:
+\begin{dmath}
+\force = 
+  \int\limits_{V_2} 
+  \gp{-\Div\magM_2} 
+  \magB_1\fn{\pos_2} \dee v_2
++ \oint\limits_{S_2}
+  \gp{\magM_2\dotprod\normn}
+  \magB_1\fn{\pos_2} \dee s_2
+\end{dmath}.
+
+Torque is similar.
+\begin{dmath}
+\torque =
+  \int\limits_{V_2} 
+  \gp{-\Div\magM_2} 
+  \gp{  \lever\crossprod\magB_1\fn{\pos_2} } \dee v_2
++ \oint\limits_{S_2}
+  \gp{  \magM_2\dotprod\normn       }
+  \gp{  \lever\crossprod\magB_1\fn{\pos_2} } \dee s_2
+\end{dmath}.
+
+The volume integrals contain $\Div\magM$ terms, which will equal zero
+in the regions of constant magnetisation within the regions of the
+magnetic volumes. This is a reasonable assumption for modern rare
+earth magnetic material. The equations above can therefore be
+simplified.
+
+\begin{dmath}
+\magB_1\fn{\pos_2} = 
+  \magconst\oint\limits_{S_1}
+    \gp{  \magM_1\dotprod\normn  }
+    \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
+    \dee s_1
+\end{dmath},
+\begin{dmath}
+\force =  
+  \oint\limits_{S_2}
+  \gp{  \magM_2\dotprod\normn  }
+  \magB_1\fn{\pos_2} \dee s_2
+= \magconst
+  \oint\limits_{S_2}
+  \oint\limits_{S_1}
+    \gp{  \magM_1\dotprod\normn_{s_1}  }
+    \gp{  \magM_2\dotprod\normn_{s_2}  }
+    \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
+    \dee s_1
+  \dee s_2
+\end{dmath},
+\begin{dmath}
+\torque =
+  \oint\limits_{S_2}
+    \gp{  \magM_2\dotprod\normn       }
+    \gp{  \lever\crossprod\magB_1\fn{\pos_2} } 
+  \dee s_2  
+ =
+  \magconst
+  \oint\limits_{S_2}
+    \gp{  \magM_2 \dotprod \normn_{s_2} }
+    \gp{  
+      \lever\crossprod
+      \gp{
+        \oint\limits_{S_1}
+          \gp{  \magM_1\dotprod\normn_{s_1}  }
+          \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
+        \dee s_1
+      }
+    } 
+  \dee s_2  
+\end{dmath}.
+
+\subsection{Analytical force expressions}
+
+Expressions for the forces between magnets follow directly from
+Maxwell's equations, and may be derived in a number of ways. For
+cuboid-shaped magnets with magnetisations in the $z$-direction that
+experience translation in three degrees of freedom but no rotation,
+a relatively concise analytical solution for the forces in each
+direction, $\vect F = \vect{F}{x,y,z}$, has been known for over
+twenty years \cite{akoun1984}.
+
+A variety of analytical solutions have been developed to calculate the
+force between cuboid-shaped magnets with parallel/anti-parallel
+magnetisations \cite{akoun1984,nagaraj1988,bonisoli2006}. More complex
+geometries can be realised through superposition of the solutions
+\cite{bancel1999}. \citeauthor{akoun1984}'s expression is
+\begin{dmath}[label=akoun]
+\vect F = \frac{JJ'}{4\pi\permVac} 
+  \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} 
+  \vect f\fn{u_{ij},v_{kl},w_{pq},r}
+\end{dmath},
+\begin{dgroup}
+\begin{dmath}
+f_x = \half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\frac{uv}{rw}}+\half ru 
+\end{dmath},
+\begin{dmath}
+f_y = \half\gp{u^2-w^2}\Log{r-v}+uv\Log{r-u}+uw\ArcTan{\frac{uv}{rw}}+\half rv 
+\end{dmath},
+\begin{dmath}
+f_z = -uw\Log{r-u}-vw\Log{r-v}+uv\ArcTan{\tfrac{uv}{rw}}-rw
+\end{dmath},
+\end{dgroup}
+where
+\begin{dgroup}
+\begin{dmath}
+u_{ij} = \alpha + \gp{-1}^j A - \gp{-1}^i a
+\end{dmath},
+\begin{dmath}
+v_{kl} = \beta + \gp{-1}^l B - \gp{-1}^k b
+\end{dmath},
+\begin{dmath}
+w_{pq} = \alpha + \gp{-1}^q C - \gp{-1}^p c
+\end{dmath},
+\begin{dmath}
+r = \sqrt{u_{ij}^2+v_{kl}^2+w_{pq}^2}
+\end{dmath},
+\end{dgroup}
+where $\cuboida{1,2,3}$ and $\cuboidb{1,2,3}$ are the half dimensions of
+the fixed and floating magnets, respectively, and
+$\cuboidoffset{1,2,3}$ is the distance between their centres;
+$J$ and $J'$ are the magnetisations, and $\permVac$ is the permeability
+of free space.
+
+And here are the stiffnesses:
+\begin{dgroup}
+\begin{dmath}
+k_x = -\frac{v u^2}{u^2+w^2}-r-v \Log{r-v}
+\end{dmath},
+\begin{dmath}
+k_y = -\frac{u v^2}{v^2+w^2}-r-u \Log{r-u}
+\end{dmath},
+\begin{dmath}
+k_z = \frac{v w^2}{u^2+w^2}
+  + \frac{u w^2}{v^2+w^2}
+  + 2r+u\Log{r-u}+v \Log{r-v}
+\end{dmath}.
+\end{dgroup}
+These are substituted similarly to the force equations:
+\begin{dmath}[label=akounk]
+\vect K = \frac{JJ'}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k\fn{u_{ij},v_{kl},w_{pq},r} .
+\end{dmath}
+
+Note that the result $K_x+K_y+K_z=0$ follows from Earnshaw's theorem
+\cite{earnshaw1842} following from the solution to Laplace's equation.
+
+\section{Simplified force and stiffness expression for cube magnets}
+
+The function $\nforce$ is the simplication of \eqref{akoun}
+formula after the assumptions given in \secref{mag}, where $J_1$ and
+$J_2$ are the magnetisations of the two magnets and
+$\permVac=4\pi\times10^{-7}$ is the `permeability of the vacuum':
+\begin{dmath}[label=nforce]
+  \nforce = \frac{J_1J_2}{\pi\permVac} \baraccent{\nforce}
+\end{dmath}
+where
+\begin{dmath}
+  \baraccent{\nforce} = \gp{-2+\ndisp}\cdot\Abs{-2+\ndisp}-2 \ndisp \Abs{\ndisp}+\gp{2+\ndisp}\cdot
+  \Abs{2+\ndisp}+4 \ndisp \sqrt{4+\ndisp^2}
+  -2 \ndisp \sqrt{8+\ndisp^2}+\gp{4-2 \ndisp} \sqrt{8-4
+    \ndisp+\ndisp^2}+\gp{-2+\ndisp} \sqrt{12-4 \ndisp+\ndisp^2}
+  +\gp{-4-2 \ndisp} \sqrt{8+4 \ndisp+\ndisp^2}+\gp{2+\ndisp}
+  \sqrt{12+4 \ndisp+\ndisp^2}
+  +2 \left[ 4 \mathatan\left[\frac{4}{\ndisp \sqrt{8+\ndisp^2}}\right]+2
+    \mathatan\left[\frac{4}{\gp{2-\ndisp}
+        \sqrt{12-4 \ndisp+\ndisp^2}}\right]\right.
+  -2 \mathatan\left[\frac{4}{\gp{2+\ndisp} \sqrt{12+4 \ndisp+\ndisp^2}}\right]+2 \ndisp
+  \mathlog\left[-2+\sqrt{4+\ndisp^2}\right]
+  -2 \ndisp \mathlog\left[2+\sqrt{4+\ndisp^2}\right]-2 \ndisp
+  \mathlog\left[-2+\sqrt{8+\ndisp^2}\right]
+  +2 \ndisp \mathlog\left[2+\sqrt{8+\ndisp^2}\right]+2
+  \mathlog\left[-2+\sqrt{8-4
+      \ndisp+\ndisp^2}\right]
+  -\ndisp \mathlog\left[-2+\sqrt{8-4 \ndisp+\ndisp^2}\right]-2
+  \mathlog\left[2+\sqrt{8-4 \ndisp+\ndisp^2}\right]
+  +\ndisp \mathlog\left[2+\sqrt{8-4 \ndisp+\ndisp^2}\right]-2
+  \mathlog\left[-2+\sqrt{12-4 \ndisp+\ndisp^2}\right]
+  +\ndisp \mathlog\left[-2+\sqrt{12-4 \ndisp+\ndisp^2}\right]+2
+  \mathlog\left[2+\sqrt{12-4 \ndisp+\ndisp^2}\right]
+  -\ndisp \mathlog\left[2+\sqrt{12-4 \ndisp+\ndisp^2}\right]-2
+  \mathlog\left[-2+\sqrt{8+4 \ndisp+\ndisp^2}\right]
+  -\ndisp \mathlog\left[-2+\sqrt{8+4 \ndisp+\ndisp^2}\right]+2
+  \mathlog\left[2+\sqrt{8+4 \ndisp+\ndisp^2}\right]
+  +\ndisp \mathlog\left[2+\sqrt{8+4 \ndisp+\ndisp^2}\right]+2
+  \mathlog\left[-2+\sqrt{12+4 \ndisp+\ndisp^2}\right]
+  +\ndisp \mathlog\left[-2+\sqrt{12+4 \ndisp+\ndisp^2}\right]-2
+  \mathlog\left[2+\sqrt{12+4 \ndisp+\ndisp^2}\right]
+  \left.  -\ndisp \mathlog\left[2+\sqrt{12+4 \ndisp+\ndisp^2}\right]\right]
+\end{dmath}
+
+The normalised stiffness $\nstiffness$ is calculated by differentiating the force equations given by \textcite{akoun1984} before simplifying as with the force terms above:
+\begin{dmath}[label=nstiffness]
+  \nstiffness = -\frac{2J_1J_2}{\pi\permVac} \baraccent{\nstiffness}
+\end{dmath}
+where
+\begin{dmath}
+  \baraccent{\nstiffness} = \Abs{-2+\ndisp}-2 \Abs{\ndisp}+\Abs{2+\ndisp}+4
+  \sqrt{4+\ndisp^2}-2\sqrt{8+\ndisp^2}
+  -2 \sqrt{8-4 \ndisp+\ndisp^2}+\sqrt{12-4 \ndisp+\ndisp^2}-2 \sqrt{8+4\ndisp+\ndisp^2}
+  +\sqrt{12+4 \ndisp+\ndisp^2}+2 \mathlog\left[-2+\sqrt{4+\ndisp^2}\right]
+  -2\mathlog\left[2+\sqrt{4+\ndisp^2}\right]
+  -2\mathlog\left[-2+\sqrt{8+\ndisp^2}\right]
+  +2\mathlog\left[2+\sqrt{8+\ndisp^2}\right]
+  -\mathlog\left[-2+\sqrt{8-4 \ndisp+\ndisp^2}\right]
+  +\mathlog\left[2+\sqrt{8-4\ndisp+\ndisp^2}\right]
+  +\mathlog\left[-2+\sqrt{12-4\ndisp+\ndisp^2}\right]
+  -\mathlog\left[2+\sqrt{12-4\ndisp+\ndisp^2}\right]
+  -\mathlog\left[-2+\sqrt{8+4 \ndisp+\ndisp^2}\right]
+  +\mathlog\left[2+\sqrt{8+4\ndisp+\ndisp^2}\right]
+  +\mathlog\left[-2+\sqrt{12+4\ndisp+\ndisp^2}\right]
+  -\mathlog\left[2+\sqrt{12+4 \ndisp+\ndisp^2}\right]
+\end{dmath}
+
+\subsection{Other approaches}
+
+\fixme{file}
+\noindent Say $f$ integrates to $F$:
+\begin{dmath*}
+\iiint f(x,y,z)\dee{x}\dee{y}\dee{z} = F(x,y,z),
+\end{dmath*}
+Is it possible to express the definite integral as something along the lines of the following?
+\begin{dmath*}
+\iiint f(x,y,z) \dee{x}\dee{y}\dee{z} =
+  \mathop{\sum\sum\sum}\limits_{i,j,k\in\{1,2\}} F(x_i,y_j,z_k)\cdot(-1)^{i+j+k}
+\end{dmath*}
+To my feeble brain, it seems likely.
+If so, why haven't I seen anything like this before?
+
+To account for magnets that do not have parallel/anti-parallel
+magnetisation, \textcite{chen2002,chen2003} derived an expression in two
+dimensions for the force induced between two L-shaped current
+sheets, then applies this model with the length
+of various legs of the `L' in different configurations set to zero. This
+takes the assumption, like \textcite{yonnet1981}, of infinitely long
+planar cross sections.
+This was suitable for application to a magnetic bearing where
+the curvature of the magnet has a small or negligible effect on the
+force between the magnets. However, for true three dimensional cases
+(such as the forces between two cube magnets) this technique would not
+be suitable.
+
+Rotation of a magnet around an axis is treated by Eliès, Charpentier and
+Lemarquand in numerous papers
+\cite{elies1998,charpentier1999,charpentier1999a,elies1999a}, giving equations
+for the forces in the directions other than around which the magnet is
+rotated. Since the equations they present are not self-consistent (some typing
+mistakes have occurred in the publications of the papers), the correct form is
+printed in \secref{french-equations} in an easier to read, abbreviated form.
+
+\textcite{nagaraj1988} derived integrals using the current method
+\fixme{crossref} to calculate the forces between cuboid magnets and
+between cylindrical magnets, and compared the differences in
+behaviour.
+
+More complex behaviours, however, cannot be solved analytically as the
+integrals become untractable; for anything approaching the forces
+between two magnets with arbitrary rotations, \emph{numerical}
+integration must be used \cite{elies1999a}. This technique is capable
+of obtaining results in a much more straightforward manner than finite
+element analysis, and must be used for the more complex situations.
+
+\subsection{Abbreviated equations}
+\seclabel{french-equations}
+
+In 1999, a slew of papers were published by researchers at \emph{Laboratoire
+d'Electrotechnique et de Magnétisme de Brest} investigating the forces between
+non-contact magnetic rotational force couplers. These are of interest to this
+work because they use an analytical expression for the forces between two
+cuboidal magnets under arbitrary translation, with one inclined at any angle
+around the \x-axis.
+
+This article talks about the forces between two cuboid magnets at arbitrary
+angles to each other, and shows the integral used to solve the problem.
+Numerical techniques are used, however, so I'm only interested in their pretty
+picture and the integral itself.
+
+Incidentally, there's nothing special about this particular integral; it's the
+same one used by Bancel in his Magnetic Nodes paper. You kind of need a
+picture, and I don't like the notation, but:
+\begin{dmath}
+  \magB_1 =
+    \iint_{S_{1+}}
+      \frac{J}{4\pi}
+      \frac{\vect{P}_{S_{1+}}\vect{P}}
+           {\overline{P_{S_{1+}}P}^3}
+    \dee{S_{1+}}
+    -
+    \iint_{S_{1-}}
+      \frac{J}{4\pi}
+      \frac{\vect{P}_{S_{1-}}\vect{P}}
+           {\overline{P_{S_{1-}}P}^3}
+    \dee{S_{1-}},
+  \\
+  \vect{F} =
+    \iint_{S_{2+}}
+      \frac{J}{\permVac}\magB_1
+    \dee{S_{2+}}
+    -
+    \iint_{S_{2-}}
+      \frac{J}{\permVac}\magB_1
+    \dee{S_{2-}}.
+\end{dmath}
+This is different to the work of \textcite{akoun1984}, who derive an
+expression for the interaction energy between the two magnets and then
+differentiate to get the forces.
+
+These expressions follow the work of \textcite{bancel1999}, who defined his
+equations as a set of nested functions, unlike the equations of
+\textcite{akoun1984} that were six-nested summations. Back to these new
+papers, three were published \cite{elies1998,charpentier1999,charpentier1999a}
+that all contain the expression I am interested in (why didn't they just cite
+the original?), with a fourth \cite{elies1998} containing just the force
+expression in a single direction. There's a little bit extra in the paper by
+\cite{elies1999a} that looks at the forces of two magnets inclined around the
+vertical axis, calculated with a numerical integration. The final paper
+\cite{elies1999} involves couplings exclusively, making it less applicable to
+this work. Its inclusion here is for completeness.
+
+So, what is this equation that is so useful for me? Given two magnets located
+in \threeD\ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$,
+with the plane of the second rotated by $\theta$ around the \x-axis and their
+origins offset by $\inlinevect{x_0,y_0,z_0}$, the forces in the \y- and
+\z-directions ($F_y$ and $F_z$) between the two magnets can be calculated. 
+
+Forces in both the $y$ and $z$ direction use the $f_3$ function in
+their calculations.
+\begin{dgroup*}
+\begin{dmath}
+F_y = \frac{J^2}{4\pi\permVac}
+  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}} 
+  f_{y_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
+\end{dmath},
+\begin{dmath}
+F_z\bigg|_{\theta\neq k\pi} = 
+       \frac{-J^2}{4\pi\permVac}\cdot\smash{\sum_{i_{a,b,c,A,B,C}\in\{0,1\}}}
+        f_{z_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
+\end{dmath},
+\begin{dmath}
+f_{y_2} = f_3\fn{u_0 , y_0 , z_0 , \theta , c i_c , C i_C}
+\end{dmath},
+\begin{dmath}
+f_{z_2} =  f_3\fn{u_1,v_1,w_1,-\theta,0,0}/{\sin\theta}
+         + f_3\fn{u_2,v_2,w_2,\theta,0,0}/{\tan\theta}
+\end{dmath},
+\begin{dmath}
+u_0 = x_0 - ai_a + Ai_A
+\end{dmath},
+\begin{dmath}
+u_1 = u_0-2x_0
+\end{dmath},
+\begin{dmath}
+v_1 = -v_2\cos\theta - w_2\sin\theta
+\end{dmath},
+\begin{dmath}
+w_1 = v_2\sin\theta - w_2\cos\theta
+\end{dmath},
+\begin{dmath}
+v_2 = y_0-Ci_C\sin\theta      
+\end{dmath},
+\begin{dmath}
+w_2 = z_0-ci_c+Ci_C\cos\theta       
+\end{dmath}.
+\end{dgroup*}
+This is the auxiliary function used in the above. All dashed variables are
+local to this function.
+\begin{dgroup*}
+\begin{dmath}
+f_3\fn{u',v',w',\theta',c',C'} = 
+  u' f_5\gp{\Log{f_4-u'}-1}
+  +\half\gp{f_6^2-{u'}^2}\Log{f_4+f_5}
+  +\half u' \pi \Sign{f_5}\Abs{f_6}
+  +u' f_6 \ArcTan{\frac{u' f_4 - u^2 -f_6^2}{f_5 f_6}} 
+  +\half f_4 f_5
+\end{dmath},
+\begin{dmath}
+f_4 = \sqrt{{u'}^2+f_5^2+f_6^2}
+\end{dmath},
+\begin{dmath}
+f_5 = \gp{v'-b i_b}\cos\theta'+\gp{w'-c'}\sin\theta'+B i_B
+\end{dmath},
+\begin{dmath}
+f_6 = -\gp{v'-b i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C'  
+\end{dmath}.
+\end{dgroup*}
+
+The force in the $z$ direction is calculated separately if the second
+magnet is not rotated around its axis ($f_{z_2}$ has a singularity
+at $\theta=k\pi$).
+\begin{dgroup}
+\begin{dmath}
+F_z\bigg|_{\theta=k\pi} = 
+  \cos\theta\cdot\frac{-J^2}{4\pi\permVac}
+  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}}f_{z_1}
+  \cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
+\end{dmath},
+\begin{dmath}  
+f_{z_1} = 
+  \half uw\Log{\frac{r+u}{r-u}}+\half vw\Log{\frac{r+v}{r-v}}+
+  uv\ArcTan{\frac{uv}{wr}-wr}
+\end{dmath},
+\begin{dmath}
+u = x_0-ai_i+Ai_A
+\end{dmath},
+\begin{dmath}
+v = y_0-bi_b+Bi_B+\half B\gp{\cos\theta-1}
+\end{dmath},
+\begin{dmath}
+w = z_0-ci_c+Ci_C+\half C\gp{\cos\theta-1}
+\end{dmath},
+\begin{dmath}
+r = \sqrt{u^2+v^2+w^2}
+\end{dmath}.
+\end{dgroup}
+
+This equation is very similar, but not identical, to Akoun~\& Yonnet's
+equation for the same thing. I suspect theirs is more simple because they
+integrate over symmetric limits of integration (\eg, $\int^{+a}_{-a}$). Terms
+that are odd functions integrate to zero in this case.
+
+In order to allow this equation to be used for rotations greater than
+\SI{\sipi}{radians}, additional terms have been added to accommodate for the
+translational offset induced by rotating the magnet around its lower-left
+edge. The preceding $\cos\theta$ provides the sign change of the
+magnetisation, and the $\half\gp{\cos\theta-1}$ terms are used to return the
+origin of the magnet after 180\textdegree\ rotation to the lower-left corner,
+where it is expected.
+
+\subsection{Quick results}
+
+I can confirm that Charpentier's equations, and my simplifications thereof,
+are consistent and give reasonable results. \Figref{charp-rotate} shows the
+forces produced between two \SI{10}{mm} cube magnets as a function of rotation
+angle $\theta$ of the second magnet, with a \SI{20}{mm} offset between their
+centres. Two cases are shown: in the first , the magnets are displaced
+vertically; in the second, the magnets are displaced horizontally. 
+
+\begin{figure}
+  \begin{wide}
+  \begin{subfigure}
+    \psfragfig{\phdpath Simulations/Theory/latex/charp-rotation-forces}
+    \caption{Vertical displacement.}
+  \end{subfigure}
+  \hfil
+  \begin{subfigure}
+    \psfragfig{\phdpath Simulations/Theory/latex/charp-horiz-rotation-forces}
+    \caption{Horizontal displacement.}
+  \end{subfigure}
+  \hfil
+  \null
+  \end{wide}
+  \caption{Vertical and horizontal forces on a rotating magnet 
+    as a function of rotation angle for fixed horizontal and vertical displacements.}
+  \figlabel{charp-rotate}
+\end{figure}
+
+\Figref{charp-rotate} shows that the maximum force between two magnets is
+exhibited when the direction of displacement is in the same direction as their
+magnetisations. For displacements perpendicular to the direction of
+magnetisation of the fixed magnet, forces of equal magnitude are obtained for
+rotation of the second magnet $\theta=k\pi/2$ for $k\in\{0,1,2,\dots\}$.
+
+\fixme{cross ref yonnet (?) old result for bearings having same force}
+
+In the following simulations, the second
+magnet is held at a constant height (one magnet height's separation distance)
+and moved from left to right over a range of twice the magnet width
+symmetrically above the first magnet (with respect to the magnets' centres of
+gravity). Four such displacements are made with four different rotations for
+the second magnet: $0$, $\half\pi$, $\pi$ and $-\half\pi$.
+\Figref{charp-0to2pi-Fy} shows the forces in the horizontal \y-direction;
+\Figref{charp-0to2pi-Fz} the forces in the vertical \z-direction. It can be
+seen that the opposite rotations result in symmetric forces curves, as is
+expected.
+
+Now these expressions can be used to calculate analytically the forces between
+multipole arrays with arbitrary numbers of magnet per wavelength.
+
+\begin{figure}
+  \centering
+  \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fy}
+  \caption{Horizontal forces on a rotating magnet situated directly above another.}
+  \figlabel{charp-0to2pi-Fy}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fz}
+  \caption{Vertical forces on a rotating magnet situated directly above another.}
+  \figlabel{charp-0to2pi-Fz}
+\end{figure}
+
+
+
+\section{Multipole}
+
+
+Applications: 
+artificial hearts \parencite{finocchiaro2008,samiappan2008}
+wave power generation \parencite{kimoulakis2008}
+wind power generation \parencite{liu2008a}
+
+\textcite{backers1961} developed a theory for magnetic bearings
+by assuming the effect of curvature of the ring magnets to be
+negligible and looking at the forces between two large flat
+plates. He showed that a periodically recurring magnetisation
+yields stronger forces than a simple homogeneous one. He
+implements this coarsely in an active magnetic bearing with
+cross-section shown previously in \figref{backers-bearing}.
+
+It was not until the wide-spread availability of the high energy
+density rare-earth magnets in the late 1970s that magnetic
+geometries more complicated than
+\citeauthor{backers1961}' % no extra 's'
+became feasible. \textcite{halbach1980} pioneered the research
+on these `multi-pole' magnet arrangements, showing how the ideal
+case of sinusoidal magnetisation may be approximated with a
+structure made up from discrete magnets as shown in
+\figref{halbach}. This figure shows magnets with \ang{45}
+increments of magnetisation, but \ang{90} are much more
+common. In this document, the term `Halbach array' will refer to
+the latter form.
+
+In his subsequent paper, \cite{halbach1981} shows some uses for
+his multipole magnets; namely, for creating flux patterns for
+electron beam undulators or wigglers.  While his purposes were
+radically different from those for rotary bearings or this
+research, he founded the principle that by arranging magnets
+with rotating magnetisation directions (generally referred to as
+`Halbach arrays') the magnetic field is concentrated on one side
+of the array, and reduced on the other. \figref{halbach} shows
+this effect with magnetic flux almost exclusively above the
+array, so the magnetic field strength is much stronger above it
+than below. Compare this figure to the flux lines of a single
+magnet as shown in \figref{magflux}—notice how in the latter,
+the flux is symmetrical both above and below the magnet.
+
+\textcite{choi2008}
+
+Forces between magnets are governed by their field strengths, so
+it is a natural conclusion that two facing Halbach arrays will
+have greater forces between them than single magnets of the same
+size. \textcite{yonnet1991} examined this effect relating to the
+stiffness of rotary bearings. They show that with bearings with
+\ang{90} rotations between successive magnets (as opposed to
+\citeauthor{backers1961}' % no extra 's'
+bearing which used \ang{180}
+increments), the stiffness can be approximately doubled while
+keeping the magnet volume constant.
+
+\begin{figure}
+\grf{Figures/Magnets/magflux}
+\caption{The magnetic flux lines of a single magnet.}
+\figlabel{magflux}
+\end{figure}
+
+\textcite{bancel1998} look at the field produced by Halbach
+arrays used for a linear position sensor. Their paper derives
+equations for the magnetic flux density of an arbitrary magnet,
+the geometry and magnetisation of which they optimise for their
+purposes. They then use this equation to compute the effects of
+a Halbach array (which they plot), but their analytical
+solutions are not shown. This effort is based around the flux
+density, so naturally no attempt is made to find the force
+equations between two arrays.
+
+There have been some very recent papers dealing with the
+magnetic effects of Halbach arrays used in \maglev\
+transportation \cite{hoburg2004}, predominantly to ensure
+that the magnetic field is not strong enough to affect
+passengers.
+
+\begin{figure}
+\grf{Figures/Multipole/halbach}
+\caption[Magnetic flux lines of a Halbach array.]{%
+  The magnetic flux lines of a Halbach array made from magnets with \ang{45} 
+  magnetisation increments (indicated by the arrowheads). The magnetic field 
+  can be seen to be much stronger above the array than below it.}
+\figlabel{halbach}
+\end{figure}
+
+For some time it seemed that multipole or Halbach arrays were a
+promising avenue of investigation for building a large-load magnetic
+spring. Multipole arrays are structures composed of a multitude of
+smaller magnets with (consistently) varying directions of
+magnetisation. The advantages of these arrays over homogeneous magnets
+are their single-sided flux patterns and their larger induced forces
+(albeit over smaller distances).
+
+\textcite{moser2006} showed an optimum configuration for a bearing
+with alternating magnetisations in the axial direction (it is rather
+difficult to radially magnetise a ring or disc magnet).
+
+\textcite{chen2002} used stacked magnets of various sizes (with the
+largest magnet rings midway between the inner and outer radii of the
+bearing) in order to maximise the stiffness per cross sectional area of the
+array.
+
+
+\begin{description}
+\item[\textcite{jang2005a,jang2005b}] These are two papers that are probably
+of little interest to me, but they were flagged because they talk about
+multipole or Halbach arrays. They talk about linear actuators, but it's tricky
+for me to see what's exactly new in them.
+\item[\textcite{filho1999,filho2003}] Yet more literature on planar actuators
+that aren't \emph{directly} related to what I'm doing. Their analyses are
+interesting, however, so I've kept them around in case they come in handy
+later.
+\end{description}
+
+
+The next requirement of the design of the magnetic spring is high load
+capacity. Since radial magnetic bearings work directly with trying to achieve
+large forces from arrangements of magnets, it is possible to look to this
+literature to find prior art. Recall from the literature (see
+\secref{multipole}) that \citeauthor{yonnet1991} were able to increase the
+stiffness of their radial bearing by applying Halbach arrays. This application
+uses opposing Halbach arrays, but other configurations are possible.
+
+An examination of the flux lines of various facing Halbach arrays, as shown in
+\figref{halbach-flux-repl,halbach-flux-attr}, shows how flux interacts between
+the two separate linear arrays. It can be seen that simply by varying the
+direction of magnetisation of the first magnet in the second array, a full
+sinusoid of forces can be achieved between the arrays—at the limits, total
+attraction or repulsion in the vertical direction, as for
+\figref{halbach-flux-repl,halbach-flux-attr} respectively.
+
+\begin{figure}
+  \begin{subfigure}
+  \grf[scale=0.67]{Figures/Multipole/2-halb-repl}
+  \caption{In repulsion.}
+  \figlabel{halbach-flux-repl}
+\end{subfigure}
+\begin{subfigure}
+  \grf[scale=0.67]{Figures/Multipole/2-halb-attr}
+  \caption{In attraction.}
+  \figlabel{halbach-flux-attr}
+\end{subfigure}
+\caption{Magnetic field lines of linear multipole arrays.}
+\end{figure}
+
+In this configuration, then, this restricts the relative lateral motion to
+each other that the springs can experience. A slip by two magnet lengths, and
+the spring will no longer be supporting load---it will be firmly attracted to
+its former opposer! In practise, this is not a concern. The operation of the
+spring is design such that free motion is opposed in the lateral directions,
+and will be implemented with a physical stop (only at the extremes of
+displacement so as to remain non-contact, of course) to prevent calamity of
+this sort.
+
+\section{Planar arrays}
+
+The previous work covered deals with magnet arrays of homogeneously-magnetised
+cross-section. \textcite{kim1997} cites a patent, in which he is involved,
+that superimposes two orthogonal linear Halbach arrays to create a
+\emph{planar} structure. \figref{pa-trumper} shows the structure, but in his
+own planar levitator, \citeauthor{kim1997} actually uses a linear Halbach
+array (later shown in \figref{pa-x2d}).
+
+Planar arrays are used quite extensively in the field of planar permanent
+magnet motors, and there have been some other array configurations developed.
+Analysis of the magnetic flux produced by various planar arrays, including
+Kim's, has been done by \textcite{cho2001}, culminating with the
+design shown in \figref{pa-cho}. However, their uses have so far
+been confined to applications that use the magnetic flux for providing motive
+force; no analysis has been made on the \emph{forces} between arrays.
+
+The author is unaware of any attempt to use Halbach arrays to increase the load
+bearing efficiency of linear magnetic springs.
+
+The `patchwork' array shown in \figref{pa-ns} is the most simple. See Hinds
+cited by \textcite{kim1997}, or Chitayat cited by \textcite{cho2001} for its
+use in other circumstances. The array used by \citeauthor{kim1997} is shown in
+\figref{pa-x2d}, despite the fact that he demonstrated the Halbach
+superposition. \fixme{crossref}
+
+\begin{figure}
+  \subfloat[Patchwork.]
+    {\grf{Figures/Multipole/pa-ns}\figlabel{pa-ns}}
+  \hfil
+  \subfloat[Extended Halbach array.]
+    {\grf{Figures/Multipole/pa-x2d}\figlabel{pa-x2d}}
+  \caption{Two simple planar magnetic arrays.}
+  \figlabel{pa-simple}
+\end{figure}
+
+\begin{figure}
+   \grf{Figures/Multipole/pa-cho}
+   \caption[Novel planar array shown in the literature.]{%
+     The planar array by \textcite{cho2001}. Flux travels out of the page 
+     from the north- to south-faced magnets, and back through the \emph{array} 
+     in the triangular magnets.}
+   \figlabel{pa-cho}
+\end{figure}
+
+
+
+\section{Damping}
+\seclabel{damping}
+
+\cite{tentor2001}
+
+Henry Sodano completed his \PhD\ in 2005 \cite{sodano2005thesis} on
+eddy current damping for flexible structure and has published several
+papers based on that work.\footnote{I recommend the thesis for the
+  additional context and literature review.} His work investigates the
+use of non-contact magnetic (permanent \cite{sodano2005,sodano2006,sodano2008} or
+electric \cite{sodano2007}) elements to passively \cite{sodano2005} or
+actively \cite{sodano2006,sodano2007,sodano2008} add forces to a structure via
+induced eddy currents. His work investigates the potential for use
+with flexible structures primarily for use in space
+applications.\footnote{Note that not all permanent magnets are created
+  equal for suitability in space: the cheapest and most common class
+  of rare earth magnetic alloy, neodymium-iron-boron, will become
+  demagnetised in the influence of radiation due to localised heating
+  effects. Samarium-cobalt magnets are less susceptible to this
+  problem due to their higher Curie temperature and have been
+  previously used in space applications \cite{chen2005}.}
+
+The damping effects of magnetic forces has also been examined by
+\textcite{bonisoli2006}. The use of electromagnetic damping can be
+advantageous in applications where the absorbed energy is converted to
+electrical energy for re-use and storage, increasing the overall
+efficiency of the device; a good example is in the automotive industry
+\cite{graves2000thesis}. \fixme{is mentioning regenerative damping
+appropriate in this spot?}
+
+Another recent investigation of an eddy current damper using an aluminium
+plate is shown by \textcite{ebrahimi2008}. Damping of levitated permanent
+magnets with a similar technique was shown by \textcite{elbuken2006}. Their
+emphasis lay on the problem of micro-levitation, where small stiffnesses (and
+damping) results in large amplitudes of disturbance. One of the noted
+advantages in this case is the fact that the eddy current damping does not add
+\emph{other} dynamics to the system it is applied to; equilibrium positions
+and controller designs are unaffected with this technique.
+
+Eddy currents may generate force on a conductor through two
+mechanisms: change in magnetic field and/or change in velocity. Change
+in velocity leads to a (possibly nonlinear) viscous damping force that
+is dissipative: it can only decrease the enery of the system. However,
+change in magnetic field generates forces that can be used to apply
+work. This is the same mechanism used by \AC\ current levitating
+devices. \fixme{crossref} It is unclear whether significant advantages
+exist over using conductive material rather than ferrous material to
+generate vibration suppression forces. For the conductive case, a
+permanent magnet may be used to increase the field strength of the
+electromagnet at the expense of added viscous damping (which may not
+be undesirable). Also, constant and low frequency forces will not be
+able to be generated without significant control design \dash\ this is
+only possible with \AC\ current resonating with the back-\EMF\
+of the induced eddy currents in the conductor. \fixme{check that}
+
+The generation of eddy currents is an involved calculation, and has
+not been investigated in detail for this thesis. The eddy current
+density $\magJeddy$ induced in a conductive sheet moving through a
+magnetic field at velocity $\velocity$ is given by
+\begin{dmath}
+\magJeddy = \conductivity\gp{\velocity \cross \magflux}.
+\end{dmath}
+where $\conductivity$ is the conductivity of the sheet. The force
+$\forceEddy$ due to these eddy currents is
+\begin{dmath}
+\forceEddy = \Int{\magJeddy \cross \magflux}{V,V} .
+\end{dmath}
+Now,
+\begin{dmath}
+  \magJeddy \cross \magflux 
+  \propto 
+  \gp{\velocity \cross \magflux}\cross \magflux ,
+\end{dmath}
+which is anti-parallel to $\velocity$ \fixme{small figure}. Due to the
+cross terms, the maximum force is obtained for magnetic fields
+perpendicular to the motion of the conductor. Associatively, it is
+only the component of magnetic field in the perpendicular direction
+that influences the eddy force. This has implications on the
+arrangement of eddy current dampers for vibrating structures. 
+
+Two configurations of eddy current dampers are shown in
+\figref{eddy}. The two systems behave somewhat differently. A
+comparison (\fixme{DOES IT?!?} of the flux through the conductive
+sheets perpendicular to the motion of the mass shows that the vertical
+configuration results in greater damping force. However, this system
+will also exhibit a nonlinear damping force as the gap between the
+magnet and conductor vary with displacement of the mass. In practice
+this should not be a significant problem as the gap will usually be
+somewhat larger than the motion of the mass.
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Damping/eddy-h}
+    \caption{Horizontal configuration; eddy
+      currents induced via axial magnetic
+      flux.\figlabel{eddy-h}}
+  \end{subfigure}
+  \begin{subfigure}
+    \asyfig{Damping/eddy-v}
+    \caption{Vertical configuration: eddy
+       currents induced via radial magnetic
+       flux.\figlabel{eddy-v}}
+  \end{subfigure}
+  \caption{Orthogonal configurations of eddy current dampers for a vibrating
+    (non-magnetic) mass. The shaded section indicates conductive material.}
+  \figlabel{eddy}
+\end{figure}
+
+Experimental results of a magnetically levitated mass
+(\fixme{crossref}) later show that the damping in this case is very
+low, making a passive non-contact eddy current damper of high
+importance for vibration suppression in systems that will not be
+receiving significant control effort.
+
+\section{Diamagnetic forces}
+
+Levitations involving diamagnetic material are also exempt from
+Earnshaw's theorem. This was the motivation for the papers of
+\textcite{boerdijk1956b,boerdijk1956a} in which he cites Braunbek, who
+derived that magnetic material is governed by Earnshaw's theorem only
+because it has a relative magnetic permeability ($\permMag$) greater than
+one—\ie, a permeability greater than that of the surrounding medium.
+Material with $\permMag<1$ is \emph{not} covered by the theorem since the
+behaviour of the magnetic flux differs, and so static levitation
+involving magnets and such diamagnetic material is very possible.  To
+demonstrate this, \citeauthor{boerdijk1956b} levitated a small
+cylindrical magnet of dimensions \diameter$\,\SI{1}{mm} \times
+\SI{0.3}{mm}$.
+
+More contemporary studies on diamagnetic levitation look at the
+levitation of larger objects including strawberries and frogs
+\cite{berry1997, simon2000, simon2001}, using very high-powered
+electromagnets (on the order of \SI{2}{T} \fixme{check}).
+
+Unfortunately, these techniques are not suitable for large load
+bearing.  Even the most diamagnetic substance known, pure bismuth, has
+$\permMag \approx 0.9998$ — hardly different than that of air. The forces
+exchanged via magnetic flux between magnetic and diamagnetic
+materials, therefore, are incredibly small and not suited at all to
+the purposes of this research.
+
+Superconducting material, on the other hand, behaves ideally diamagnetic with
+$\permMag =0$, so the forces produced between a superconductor and a magnet are
+equal to the forces between two (equal) permanent magnets themselves. This
+allows many exciting possibilities for stable levitation. However, such
+materials must be cooled to very low temperatures (\emph{at least} below
+\SI{-150}{\celsius}) in order to remain superconductive. Such a requirement
+renders this method financially and functionally impractical for this
+research. A review of work in this area has been published by
+\textcite{ma2003}.
+
+If a material is ever developed that behaves in a super-conductive
+manner at room temperature, then parts of this research will almost
+certainly become immediately obsolete. Luckily, there are no
+indications that this is going to happen in any capacity in the near
+future.
+

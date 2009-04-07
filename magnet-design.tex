@@ -1,0 +1,1717 @@
+%!TEX root = thesis.tex
+\chapter{Magnetic springs}
+
+\chapterprecis{
+  This chapter uses the theory presented earlier to discuss simple
+  permanent magnetic systems and how they can be used in spring-like fashions.
+  First cover various arrangements that produce forces in one direction or
+  another, keeping track of where the stabilities and instabilities are in the 
+  translational degrees of freedom. This is followed by a discussion on
+  rotational stability; this is more of a design problem as geometric placement
+  of the magnets has more influence.
+  In the second half of the chapter I digress on forces between a magnet and a coil;
+  this has relevance to the later experimental rig design and demonstrates an
+  application of the theory outlined in \chapref{magnet-theory}.
+}
+
+\begin{figure}
+  \grf{Figures/Magnets/vspring}
+  \caption{Magnets in repulsion create a vertical spring.}
+  \figlabel{vspring}
+\end{figure}
+
+The design of the magnetic spring has two broad requirements: firstly,
+only one degree of freedom instability, because every unstable axis
+requires actuators for stability control. Therefore it is desired to
+minimise the number of unstable degrees of freedom in order to
+minimise the control effort. Furthermore, the unstable direction must
+be in the horizontal direction for efficient passive vertical load
+bearing.
+
+Secondly, the magnetic spring design must be scalable to support large
+loads; the design goal is for the final table to support weight in the
+order of \SI{100}{kg}. It is desired for the entire weight of the
+table plus equipment to be supported by the permanent magnets, since
+weight supported by electromagnets consumes large amounts of power,
+which is undesirable for numerous reasons, including cost and heat.
+
+
+\section{Simple magnet arrangement}
+
+It is the purpose of this section to ignore the reasons for the
+magnetic field%
+\footnote{That is, the underlying quantum mechanical theory that
+  explains electromagnetics.}  or any complex equations relating to
+magnetics, but rather develop an informal understanding of the dynamic
+behaviour of magnets.
+
+The most simple example of a magnetic spring can be seen in
+\figref{vspring}, with one fixed and one floating magnet arranged
+vertically.  With like poles facing, the two magnets repel each other
+and produce an air gap between them. Displacement towards each other
+is restored by the repulsive magnetic force, and displacement away is
+restored by gravity. The floating magnet must be constrained in both
+horizontal directions by the shaft. If the contraint is removed, it
+will be naturally unstable horizontally due to Earnshaw's theorem (see
+\secref{earnshaw}).
+
+A more stable configuration is desired, because the instabilities of
+this spring occur in two orthogonal horizontal directions. Inspired by
+the rearrangements of radial and thrust bearings shown by
+\textcite{yonnet1981}, an improved design is shown in
+\figref{hspring}. Now the spring forces are caused by horizontal
+magnets in \emph{attraction}, in contrast to the earlier arrangement
+shown in \figref{vspring} which uses repulsive force.) Two fixed
+outer magnets both attract a centred floating magnet, so the unstable
+degree of freedom is in that horizontal direction. Perturbations in
+the other horizontal direction are restored by the aforementioned
+attraction, which is similarly the cause of the positive vertical
+spring stiffness. Note that the diagram works as both a top \emph{and}
+side view, demonstrating how it is unstable in only one direction.
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Magnets/hspringa}
+    \caption{At rest, neglecting the magnet weight.}
+    \figlabel{hspringa}
+  \end{subfigure}
+  \begin{subfigure}
+    \grf{Figures/Magnets/hspringb}
+    \caption{After displacement.}
+    \figlabel{hspringb}
+  \end{subfigure}
+  \caption[`Horizontal' spring.]{A `horizontal' spring with \emph{attracting}
+magnets to create vertical stiffness, as shown by the reaction forces after
+displacement.}
+  \figlabel{hspring}
+\end{figure}
+
+The removal of an unstable degree of freedom has its consequences,
+however.  The forces between magnetic dipoles are inverse-square
+functions of the distance between them, and this holds true
+approximately for magnets as well. In the vertical spring, the effect
+of increased load on the spring is displacement toward the fixed
+magnet. This increases the stiffness of the spring.
+
+With the horizontal spring, however, the behaviour is a little more
+complex. For the case shown in \figref{hspringa}, the only forces
+on the floating magnet are horizontal. The vertical spring force
+occurs when the magnet has been displaced as in \figref{hspringb},
+which will increase with distance only for a small range. Beyond this,
+the force will start \emph{decreasing} as the floating magnet becomes
+further enough away from the fixed magnets — at which point the spring
+stiffness turns negative and the floating magnet will be unstable.
+
+This parabola effect is shown in \figref{h+v-forces-v}, which also
+includes the force curve of the vertical spring. The graph was
+produced from a finite element analysis performed by \ANSYS, using
+half-inch neodymium rare-earth cube magnets.
+\note{Remanence $B_r=\SI{1.2}{T}$ and coercivity
+  $H_c\approx\SI{900}{kA\cdot m^{-1}}$} 
+The effect of varying the gap between the fixed and floating magnets for the 
+horizontal spring is also demonstrated; the further away the fixed magnets 
+are, the weaker the forces are.
+
+\begin{figure}
+  \begin{wide}
+    \raggedout
+    \grf{Figures/Magnets/h+v-forces-v}
+    \hfill
+    \grf{Figures/Magnets/h+v-springs}
+    \hfill
+    \null
+  \end{wide}
+  \caption[Spring forces of the vertical \& horizontal springs.]{Forces from
+\FEA\ comparing the simple vertical and horizontal magnetic springs.
+The initial gap between the magnets in the vertical spring has been arbitrarily
+set to 3 magnet widths.}
+  \figlabel{h+v-forces-v}
+\end{figure}
+
+\Figref{hvspring} shows how the two springs discussed so far,
+horizontal and vertical, may be combined to reap the benefits of
+both. There are now three fixed magnets: one below, which provides the
+majority of the stiffness of the spring, and two aside, for
+stabilising one degree of freedom in the `into the page'
+direction. This simple design gives a basic framework from which to
+build up more complex arrangements.
+
+\begin{figure}
+   \grf{Figures/Magnets/hvspring}
+   \caption[Combination vertical/horizontal spring.]{Combination
+spring, with the
+strength of the vertical spring and the stability of the horizontal spring.}
+   \figlabel{hvspring}
+\end{figure}
+
+\section{Incomplete taxonomy of magnetic springs}
+
+In this section we introduce a variety of \emph{simple} magnetic
+springs, with the mind to analyse their behaviour. It is implicit in
+Earnshaw's theorem \cite{earnshaw1842} (elucidated by Tonks
+\cite{tonks1940}) that all permanent magnet suspensions cannot be
+stable, so the one of the factors involved in analysing the efficacy
+of a magnetic spring is its degree of stability.
+
+Earnshaw established the relation for purely magnetic systems
+\begin{dmath*} k_x+k_y+k_z=0; \end{dmath*}
+that is, the translatory stiffesses in each direction sum to
+zero. (Define the vertical in the $z$ direction.) Introducing soft
+iron into the system changes the relation to summing to \emph{less
+  than} zero, reducing the stability of the system.
+
+Various systems can be created with different arrangements of magnets
+and combinations thereof. Seven spring configurations are examined here:
+\begin{itemize}
+\item Unstable vertical ($k_z<0,k_x=k_y=-\half k_z>0$)
+\item Stable vertical ($k_z>0,k_x=k_y=-\half k_z<0$)
+\item Vertical double stable ($k_z>0,k_x>0,k_y<0$)
+\item Zero stiffness ($k_x=k_y=k_z=0$)
+\item Horizontal ($k_x<0,k_y=k_z=-\half k_x>0$)
+\item Vertical zero stiffness ($k_z=0,k_y=-k_x>0$)
+\end{itemize}
+These springs are detailed as follows.
+
+The most common magnetic suspension for demonstrating nonlinear
+control design is the unstable vertical arrangement, in which a fixed
+upper magnets applies a gravity-cancelling force on a lower magnet in
+attraction. This design is unstable and thus has a negative
+stiffness. Although it is unstable in only a single degree of freedom,
+it is inconvenient to bear loads with a negative stiffness spring.
+
+The opposite of the unstable vertical spring is the stable vertical
+spring, consisting of a fixed lower magnet supporting a floating upper
+magnet in repulsion. Here, there is a positive spring stiffness in the
+vertical, load bearing direction. However, it experiences multiple
+degrees of instability in the horizontal directions, which complicates
+its stabilisation.
+
+Using two fixed lower magnets, slightly offset, instead of one in the
+vertical stable configuration produces a `double stable' spring with a
+limited range of stability also in the direction of separation between
+the fixed magnets. Much smaller forces are possible with this setup.
+
+A very interesting system is produced when the two vertical springs
+are combined; this is termed the zero stiffness spring. With a
+positive vertical stiffness in series with a negative stiffness, the
+local minimum in the force/displacement curve creates a marginally
+stable point of zero stiffness. With greater displacements, the upper
+attractive magnet can be used to simply \emph{reduce} the natural
+frequency of the system without driving it to zero; this improves
+vibration isolation characteristics without altering the stability of
+the system (given bounded displacements). This is the configuration
+used by \textcite{challa2008} in their tunable vibration energy
+harvesting device.
+
+Stability in the vertical direction with only a single degree of
+instability can be achieved with a horizontal arrangement of magnets
+in attraction. Here, the load bearing force is mirrored in one
+horizontal direction, although the forces involved are smaller than
+with the vertical arrangements.
+
+This horizontal spring can be augmented with the stable vertical
+spring in order to increase its load bearing capacity. This does not
+compromise the stability achieved in the out of plane horizontal
+direction.
+
+Finally, the horizontal and zero stiffness springs can produce a
+spring approaching zero stiffness in the vertical direction, a small positive
+stiffness in one horizontal direction, and an equal negative stiffness
+in the other.
+
+\subsection{Other magnet arrangements}
+
+This covers only a small selection of possible permanent magnet
+configurations, but it does highlight the important variations in
+behaviour possible. To enumerate the different cases, we have:
+\begin{enumerate}
+\item positive stiffness in two horizontal directions;
+\item negative stiffness in two horizontal directions;
+\item zero stiffness in all directions;
+\item negative stiffness in one horizontal direction; and,
+\item zero stiffness in one direction;
+\end{enumerate}
+
+\section{Analyses of magnetic springs}
+
+Magnetic node tests of a simple zero stiffness
+spring~\cite{nijsse2001}, depicted in
+\figref{zero-stiffness-spring}, with three half-inch cube magnets
+gives expected results for vertical load bearing, shown in
+\figref{zspring-vary-gap}. The displacement is shown over the full
+range of vertical gap. The spring is marginally stable in both
+horizontal directions, however, which is less convenient.
+\begin{figure}
+  \centering
+  \grf{Figures/Systems/zero-stiffness-spring}
+  \caption{`Zero stiffness' spring schematic.}
+  \figlabel{zero-stiffness-spring}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \grf{Simulations/Single_magnets/z_spring/eps/zspring-vary-gap}
+  \caption{`Zero stiffness' spring forces vs. vertical displacement}
+  \figlabel{zspring-vary-gap}
+\end{figure}
+
+\begin{figure}
+  \centering
+  \grf{Simulations/Single_magnets/z_spring/eps/zspring-2d-yforces}
+  \grf{Simulations/Single_magnets/z_spring/eps/zspring-2d-zforces}
+  \caption{`Zero stiffness' spring forces vs. displacement in two orthogonal directions}
+  \figlabel{zspring-vary-gap}
+\end{figure}
+
+
+
+Well, the logical next step after analysing the zero stiffness spring
+is to combine it with my previous spring, the combined
+horizontal/vertical spring with a single degree of translational
+instability. This is shown in \figref{zhv-spring}.
+
+\begin{figure}
+   \centering
+   \grf{Figures/Systems/zhv-spring}
+   \caption{Co-ordinate system of the `ZHV' spring. The \y\ direction is into the page.}
+   \figlabel{zhv-spring}
+\end{figure}
+
+These tests are more sophisticated that the zero-stiffness tests,
+because the effect of load on the spring was neglected in the previous
+case. For these following tests, there are five Newtons of force
+applied by gravity, which has the effect of removing the symmetry for
+some of the graphs. There is a single magnet dimension gap between the
+spring magnet and all fixed magnets.
+
+The first three tests are shown in
+\figref{zhvspring-move-x,zhvspring-move-y,zhvspring-move-z} for motion
+around the centred position in the three orthogonal directions. As
+expected, this spring combines the properties of both simpler springs
+used to create it. Zero stiffness can be achieved at a point of
+marginal stability. This hasn't changed, although the graph is more
+realistic since it assumes a non-zero load on the spring.
+
+It can also be seen that horizontal motions in both directions reduce
+the vertical force on the spring. This means that for disturbances in
+these horizontal directions, there will be coupling with the vertical
+direction.
+
+\begin{figure}
+   \centering
+   \grf{Simulations/Single_magnets/5_magnet_spring/eps/zhvspring-move-x}
+   \caption{Forces on the ZHV spring for displacement in the \x\ direction.}
+   \figlabel{zhvspring-move-x}
+\end{figure}
+
+\begin{figure}
+   \centering
+   \grf{Simulations/Single_magnets/5_magnet_spring/eps/zhvspring-move-y}
+   \caption{Forces on the ZHV spring for displacement in the \y\ direction.}
+   \figlabel{zhvspring-move-y}
+\end{figure}
+
+\begin{figure}
+   \centering
+   \grf{Simulations/Single_magnets/5_magnet_spring/eps/zhvspring-move-z}
+   \caption{Individual and combined vertical forces on the ZHV spring for 
+   displacement in the \z\ direction. For this case of $\x=\y=0$, all 
+   horizontal forces are zero.}
+   \figlabel{zhvspring-move-z}
+\end{figure}
+
+Moving the spring in two directions simultaneously gives a better
+picture of the stability of the spring. For example, motion in the
+\x-direction showns zero force in the \y, and vice versa. But motion
+in both? The behaviour is more complex than shown here. These diagrams
+will be shown at a later date.
+
+I'm still unsure of the whole zero stiffness idea. It's interesting,
+but it means working with the spring at a point of marginal stability
+in the vertical direction. Given that there will be vertical actuators
+for vibration isolation, I think that this is not at all a big
+disadvantage.
+
+However, marginal stability in the vertical direction is the same
+behaviour as a spring magnet levitating below a fixed attractive
+magnet, which I rejected because I like vertical stability. So there
+needs to not be a contradiction in my choices here. I expect that I
+will use a vertically attracting magnet to simply \emph{reduce} the
+effective mass of the spring, rather than bring it all the way down to
+the zero stiffness state. This can be experimented with.
+
+\section{Isosurfaces of stability}
+\label{sec:all-springs-forces}
+
+I have managed to plot the three dimensional forces and stiffness of
+the zero-stiffness \x-unstable spring in three dimensional space. This
+will be useful in comparing the stability characteristics between
+different spring configurations. While relatively simple now, these
+plots will look a more complex when multipole arrays are used to
+generate the magnetic forces. See \figref{zhvspring-move-z-iso}.
+
+\begin{figure}
+   \centering
+   \grf{Simulations/Single_magnets/5_magnet_spring/eps/zhv-xforces}
+   \caption{\x-direction isoforces on the ZHV spring.}
+   \figlabel{zhvspring-move-z-iso}
+\end{figure}
+
+Using these \threeD\ forces over a range of \threeD\ displacements, I have
+also plotted force and stiffness isosurfaces (\ie, surfaces of constant
+force/stiffness), using transparency to see what is going on.
+
+Having now created a method to plot three dimensional results, I then combined
+all of the code for examining the forces on each of my simple single magnet
+springs. Since the method is simply the superposition of forces for various
+arrangements of magnets, the individual results can be broken out and examined
+separately.
+
+\subsubsection{Vertically attracting spring}
+
+We start out by looking at the simple configuration often used in the
+literature: the spring magnet floating beneath a fixed attractive support
+magnet. This spring is stable in both horizontal directions, but unstable in
+the vertical direction.
+
+First examine the forces on the floating spring as locations beneath the
+support, shown in \figref{vattr-forces}. No legend makes this a bit confusing,
+but the colour scale goes through the spectrum red to blue as the forces
+increase. For symmetrical cases like the \x- and \y-direction forces, this
+makes pale green-blue the colour of zero force, with orange/purple the
+negative and positive extremes, respectively.
+
+So, in the case of the \x-forces, we see that positive motion in the
+x-direction results in a force in the negative direction; \ie, the force
+opposes the displacement. Similarly for the \y-direction. As is expected, in
+the \z-direction, we see that the closer the spring magnet comes to the
+attractive magnet vertically, the greater the forces in that direction. This
+is instability.
+
+\newcommand\isoforces[2]{%
+  \begin{figure}
+    \begin{wide}
+      \centering
+      \grf{Simulations/Single_magnets/all_springs/eps_nice/#1-xforce}
+      \grf{Simulations/Single_magnets/all_springs/eps_nice/#1-yforce}
+      \grf{Simulations/Single_magnets/all_springs/eps_nice/#1-zforce}
+    \end{wide}
+    \caption{#2}
+    \figlabel{#1-forces}
+  \end{figure}
+}
+\newcommand\isostiffnesses[2]{%
+  \begin{figure}
+    \begin{wide}
+      \centering
+      \grf{Simulations/Single_magnets/all_springs/eps_nice/#1-xstiffness}
+      \grf{Simulations/Single_magnets/all_springs/eps_nice/#1-ystiffness}
+      \grf{Simulations/Single_magnets/all_springs/eps_nice/#1-zstiffness}
+    \end{wide}
+    \caption{#2}
+    \figlabel{#1-stiffnesses}
+  \end{figure}
+}
+
+\isoforces{vattr}{Isosurface forces of the attracting vertical spring}
+
+The stability regions are shown more clearly in the stiffness plots. We know
+that instability occurs in regions of positive gradient of the force curve.
+This is negative stiffness: the resulting force does not oppose the
+displacement that causes it. For the stiffness isosurfaces, \emph{only}
+regions of negative stiffness are shown, beginning with red at the region of
+zero stiffness, the region of marginal stability. Let's have a look at
+\figref{vattr-stiffnesses}.
+
+\isostiffnesses{vattr}
+  {Negative isosurface stiffnesses of the attracting vertical spring.}
+
+We see that in both horizontal directions, there is a wide region of stability
+shown by the absence of negative isosurfaces. In the vertical direction, we
+see that the stiffness is negative for all reasonable locations of the spring.
+
+With this simple spring, we have shown the force and stiffness isosurfaces.
+From these curves, we can easily deduce the regions of stability through the
+negative stiffness isosurfaces.
+
+\subsubsection{Vertically repelling spring}
+
+While time is pressing, I'll now simply enumerate through the graphs produced
+with minimal explanation. Look to the future for more description.
+
+The simple positive vertical-stiffness spring is covered next. Here we have
+the opposite of the vertically attracting spring: the spring magnet is
+supported \emph{above} a fixed magnet in repulsion. Here we have vertical
+stability only, with both horizontal directions marginally stable in the
+centred position. See \figref{vrepl-stiffnesses}.
+
+\isostiffnesses{vrepl}
+  {Negative isosurface stiffnesses of the repelling vertical spring.}
+
+\subsubsection{Zero stiffness spring}
+
+The zero stiffness spring was a new development. It is a superposition of the
+previous two springs, so we have a vertically attractive magnet above our
+spring magnet, and a vertically repulsive magnet below. Now, half way in
+between their effects will cancel out, producing equal force up and down on
+the magnet. If the magnet is supporting load, this creates a `zero stiffness'
+configuration below the centre point where, theoretically, the spring forces
+is de-coupled from its displacement. Now, the spring is unstable above this
+point, so it would require a stabilising control system to work in practise,
+but it's an interesting idea.
+
+\isostiffnesses{z}
+  {Negative isosurface stiffnesses of the zero stiffness spring.}
+
+\subsubsection{Horizontal spring}
+
+The horizontal spring is composed of two fixed magnets supporting the spring
+magnet between them in the \x-direction in attraction. The stability is in
+both \y- and \z-direction, instability in \x.
+
+\isostiffnesses{h}
+  {Negative isosurface stiffnesses of the horizontal spring.}
+
+\subsubsection{Horizontal spring with vertical support}
+
+Due to the previous spring's lack of significant loading bearing ability, it
+can be bolstered by adding a vertically repulsive magnet below the spring
+magnet. This is a superposition of the horizontal, and vertically repulsive
+springs. We should see similar stability curves to the horizontal spring
+without support.
+
+\isostiffnesses{hv}
+  {Negative isosurface stiffnesses of the horizontal spring with support.}
+
+\subsubsection{Horizontal spring with zero stiffness}
+
+Okay, if zero stiffness is so good then we may as well use it in combination
+with the horizontal spring to provide greater horizontal stability. This is
+the culmination of each design, and theoretically provides the advantages of
+each design before it: the reduced resonance of the zero stiffness spring, the
+large loading bearing support, and the one direction of instability that makes
+it easier to control. We'll see how it works out in the experiments\dots.
+
+\isostiffnesses{zhv}
+  {Negative isosurface stiffnesses of the zero stiffness horizontal spring.}
+
+
+\subsubsection{Single-instability spring}
+
+\cite{choi2003}. \fixme{missing}
+
+\section{Rotational degrees of freedom}
+
+It becomes more difficult to examine the behaviour of these systems in
+six degrees of freedom. There is no ``Earnshaw's Theorem'' to neatly
+relate the rotational stiffnesses. Equilibria of a system with that
+have rotational instabilities can be stabilised by coupling together
+identical systems. An example is the vertically stable spring, which
+is unstable around the $x$, $y$ directions. A trio of these springs
+connected rigidly is now \emph{stable} in these rotational directions.
+
+Such conveniences make it possible to design a system with a single
+degree of instability. An axial bearing designed in such a manner has
+been presented by some people [citation]. Here, a non-contact magnetic
+spring is designed with similar principles.
+
+The augmented horizontal spring is used as a basis, as the least
+unstable spring presented thus far with a positive vertical
+stiffness. For point load support, this spring is unstable both in the
+$y$-direction and around the $x$-direction. For planar load support,
+with a coupled set of these springs, the instability is now in $y$-direction 
+(as before) and around the $z$-direction (in contrast). The
+method of eliminating one of these rotational instabilities involves
+adding supplementary weak magnets that apply small translational
+forces to the structure with large `lever arms' (orthogonal distance
+to the centre of rotation), such that the added translation stiffness
+is negligible but the added rotational stiffness is significant and
+stabilising.
+
+\section{Rotationally stable spring}
+
+Previously I have shown a variety of magnetic springs with various
+amounts of instability. With rotation degrees of freedom more pliable
+in their stability properties it is interesting to attempt to produce
+a `minimally unstable' magnetic spring. It is possible to produce a
+magnetic arrangement that is stable in all three rotational degrees of
+freedom and unstable in but a single translational degree of freedom.
+
+Unlike `Earnshaw's theorem', which is unequivocal about the
+translational stabilities of a magnetic arrangement, no conclusive
+statements can be made about a magnetic system's \emph{rotational}
+stabilities. This is due to the intrinsic coupling between moment and
+geometry; as shown below, it is possible to exploit geometry to
+stabilise a magnetic system in all rotational degrees of freedom.
+
+The main idea is that a magnetic system can be
+stabilised in all but one translational direction, and 
+supplementary magnets can be added to the design to stabilise the
+rotation directions.
+
+\textcite{delamare1994} performed something similar to remove the
+rotational instability of a radial magnetic bearing by adding a
+weaker, \emph{axial} bearing to the system—\ie, opposite in effect
+to the main aims of the system. The coupling of the axial and radial
+bearings eliminates the rotational instability, but the strength of
+the radial bearing bearing overpowers the axial bearing for normal
+operation.
+
+This is more easily explained with a
+diagram. \Figref{delamare} shows how this idea can be applied to a
+simplified model.
+% This is shown in \figref{one-dof-concept}, where
+% the supplementary magnets added are not strong enough to counteract
+% the main magnets for effecting the major forces, but their lever arm
+% is such that their moment affect on the device overcomes the
+% instability in rotation due to the main magnets.
+Attracting magnets close to the centre of rotation
+provide the forces for the spring (refer to
+\figref{hspring}). Further away, \emph{repelling} magnets are
+placed such that the translational forces they apply are \emph{less}
+than the attractive forces of the inner magnets (see
+\figref{delamare-forces}). However. their strengths and distances
+away have been carefully chosen so that the \emph{rotational} forces
+(moments) they apply are \emph{greater} than the moments applied by
+the inner magnets (see \figref{delamare-moments}). The system my be
+represented by the following equations for each equal and opposite
+magnet pair. For the forces:
+\begin{dgroup}
+\begin{dmath}
+  F_{\text{total}} = F_{\text{inner}} - F_{\text{outer}}
+\end{dmath},
+\begin{dmath}
+  F_{\text{inner}} > F_{\text{outer}}  \condition{because $d  > D$}
+\end{dmath},
+\intertext{therefore,}
+\begin{dmath}
+  F_{\text{total}} > 0
+\end{dmath}.
+\end{dgroup}
+And for the moments:
+\begin{dgroup}
+\begin{dmath}
+  M_{\text{total}} = - M_{\text{inner}} + M_{\text{outer}}
+\end{dmath},
+\begin{dmath}
+  M_{\text{total}} = - r F_{\text{inner}} + R F_{\text{outer}}
+\end{dmath},
+\begin{dmath}
+  R\cdot F_{\text{outer}} >  r\cdot F_{\text{inner}} 
+  \condition{for $M_{\text{total}} > 0$}
+\end{dmath},
+\intertext{therefore,}
+\begin{dmath}
+  \frac Rr > \frac{F_{\text{inner}}}{F_{\text{outer}}}
+\end{dmath}.
+\end{dgroup}
+With appropriate choices of $d$, $D$, $r$, and~$R$, this condition may
+be satisfied. Bear in mind, of course, that $F \propto d^2$, so the
+ratio between $r$~and $R$ will need to be significantly greater than
+that between $d$~and $D$.
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Bearings/delamare-forces}
+    \caption{
+     The added magnets are spaced farther away, 
+     so they do not affect the
+     translational stability.
+     \figlabel{delamare-forces}}
+  \end{subfigure}
+  \begin{subfigure}
+    \grf{Figures/Bearings/delamare-moments}
+    \caption{
+      The added magnets \emph{do} affect the radial stability
+      because their distance from the centre of rotation is much greater.
+      \figlabel{delamare-moments}}
+  \end{subfigure}
+  \caption{Secondary (outer) magnets may be added to add stability
+      in the rotational direction.}
+  \figlabel{delamare}
+\end{figure}
+
+This scheme only stabilises the spring in the $M_z$ direction. Due to
+the lever arm on the forces in the $yz$-plane, instability has been
+added to the $M_y$ direction, as shown in figure \fixme{}. This problem
+can be overcome by using a `double stable' spring \fixme{crossref}
+oriented in the horizontal plane; this magnet configuration does not
+add instability force in the vertical direction at the lever arm and
+therefore does not cause instability in the $M_y$ direction. \fixme{figures}
+
+\fixme{WRONG!!!}
+
+\subsection{Simulations}
+
+An approximate schematic for a rotationally stable spring is shown in
+\figref{example-8-mag-spring}. (Make a better one with labels.)
+
+\begin{figure}
+  \grf[angle=90,scale=0.717]{Simulations/Single_magnets/stable_rotation/eps20051124/example-8-mag-spring}
+  \caption{Crude schematic of a single unstable degree of freedom concept.}
+  \figlabel{example-8-mag-spring}
+\end{figure}
+
+(Add a paragraph talking about parameters and their values.)
+
+Stability results vary, of course, with the size of the stabilising
+magnets, their distance away in the stable horizontal (\y) direction,
+and, somewhat surprisingly, the distance in the \emph{un}stable
+horizontal direction (\z). This is due to not insignificant moments
+caused by forces in the \y-direction, which are affected as much by
+the rotation as the \z-forces. (A cursory analysis yields this obvious
+result, but a quick sketch of the main ideas of the design do not make
+it intuitive.)
+
+\begin{figure}
+  \grf{Simulations/Single_magnets/stable_rotation/eps20051124/simple-stable-rotation-Rx}
+  \caption{Example of stable rotation effected by outlying
+     stabilising magnets in the horizontal spring configuration.}
+  \figlabel{simple-stable-rotation-Rx}
+\end{figure}
+
+\begin{figure}
+  \grf{Simulations/Single_magnets/stable_rotation/eps20051124/simple-stable-rotation-Rx-diagram}
+  \caption{Gratuitous diagram showing the final rotation in the calculations
+     for the graph shown in \figref{simple-stable-rotation-Rx}.
+     There is no translation in any direction.}
+  \figlabel{simple-stable-rotation-Rx-diagram}
+\end{figure}
+
+
+To verify a realistic case, I've performed simulations with some
+vertical offset to simulate load bearing, with other parameters
+shown in \figref{8-mag-spring-example-values}. In the vertical
+direction (into the page in the aforementioned diagram), the magnets
+are positioned with their centres in the same plane; the floating
+vertical offset is \SI{6.4}{mm}. Note that all dimensions are
+integer fractions and multiples of inches.
+
+\begin{figure}
+  \grf{Figures/Old/8-mag-spring-example-values}
+  \caption{Parameters for an example simulation of the rotationally stable horizontal spring, shown from above with dimensions in mm.}
+  \figlabel{8-mag-spring-example-values}
+\end{figure}
+
+From the centred position, the spring was displaced independently by
+\SI{12.7}{mm} in each horizontal direction and rotated 5° around
+the vertical (\x) axis. The forces produced by the translations and
+the moments produced by the rotations are shown respectively in
+\figref{simple-stable-rotation-verify-forces,simple-stable-rotation-verify-moments}.
+Negative gradient in two of three curves demonstrates that this
+spring is unstable in a single degree of freedom only. (The force in
+the \x-direction is known to be stable from previous analyses and
+the moments around the \y- and \z-axis are stable by inspection.
+Their stability will be shown after the derivation of the
+appropriate equations.)
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Simulations/Single_magnets/%
+      stable_rotation/eps20051128/%
+        simple-stable-rotation-verify-forces}
+    \caption{Forces in each direction produced by accompanying in-axis displacements.}
+    \figlabel{simple-stable-rotation-verify-forces}
+  \end{subfigure}
+  \begin{subfigure}
+    \grf{Simulations/Single_magnets/%
+      stable_rotation/eps20051128/%
+        simple-stable-rotation-verify-moments}
+    \caption{Moments around the \x-axis produced by rotation only.}
+    \figlabel{simple-stable-rotation-verify-moments}
+  \end{subfigure} 
+  \caption{Forces and moments \fixme{what?}}
+\end{figure}
+
+As mentioned previously, there is a non-obvious effect of increased
+rotational stiffness with deeper (greater \z-direction width)
+floating elements. This effect is shown in
+\figref{stable-rotation-depth-test-initial}, which could be much
+more succinctly plotted by taking a linear approximation of the
+value of the stiffness around the centred position, resulting in a
+single curve.
+
+\begin{figure}
+  \grf{Simulations/Single_magnets/stable_rotation/%
+    eps20051128/stable-rotation-depth-test}
+  \caption{Effect of increased depth on rotational stiffness (gap of one half inch).}
+  \figlabel{stable-rotation-depth-test-initial}
+\end{figure}
+
+While the previous depth test showed quite promising results, using
+the same configuration with varying spring widths (varying the outer
+magnet lever arm, that is; the inner magnets remain fixed) gave
+unusual results.  As shown in \figref{stable-rotation-width-test}, the
+moments from increasing the width remained fairly constant.
+
+In these tests, the gap between the fixed and floating magnets was
+reduced to a quarter inch, the same width as the outer magnets, in
+order to try and improve the results, hence the slightly different
+forces produced by varying the depth of the spring, shown in
+\figref{stable-rotation-depth-test}.
+
+I also need to mention that the integer labels on the graphs
+correspond to unit lengths of half an inch, and that these lengths
+are spring half-lengths in whichever direction.
+
+I believe this was due to instability affect of the \y-direction
+force cancelling the increased moment from the \z-direction force,
+although I haven't done the analyses to prove it.
+
+\begin{figure}
+  \begin{subfigure} \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-depth-test}
+  \caption{Quarter inch gap, otherwise same as \figref{stable-rotation-depth-test}.}
+  \figlabel{stable-rotation-depth-test}
+\end{subfigure}
+ \begin{subfigure} \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-width-test}
+  \caption{Accompanying spring width force curves for a depth of three inches (equivalent label of 3 in \figlabel{stable-rotation-depth-test-2}).}
+  \figlabel{stable-rotation-width-test}
+\end{subfigure}
+\caption{Design variations \fixme{what?}}
+\end{figure}
+
+Following from the weird results with the rotationally stable spring
+whose rotational stiffness didn't increase with greater lever arm in
+the horizontally stable direction, I went back to my gut idea of using
+equal sized magnets with varying gaps.
+
+\Ie, in the original concept in my head, the stabilising magnets were
+of the same size as the supporting magnets, but their effect was
+diminished by a greater nominal gap. As it turns out, this
+configuration gives results that I expect: the moments increase with
+both increased depth \emph{and} increased width. These results are
+shown in \figref{stable-rotation-depth-improved,
+stable-rotation-width-improved}.
+
+The nominal gap for these tests was a quarter inch; the outer magnet
+gap was double this.
+
+\begin{figure}
+  \begin{subfigure} \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-depth-improved}
+  \caption{Moment/rotation curves for increased spring depths.}
+  \figlabel{stable-rotation-depth-improved}
+\end{subfigure}
+\begin{subfigure}
+  \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-width-improved}
+  \caption{Moment/rotation curves for increased spring widths.}
+  \figlabel{stable-rotation-width-improved}
+\end{subfigure}
+\caption{Design variation \fixme{what?}}
+\end{figure}
+
+
+\section{Force coupling between degrees of freedom}
+
+A magnetic suspension has inherent dynamic coupling between its degree of
+freedom because the magnetic force is a function of displacement in both
+horizontal and vertical displacements.
+
+This is essential to consider for the purpose of vibration isolation because
+disturbances from the ground can be transmitted via all six degrees of
+freedom. Lateral vibrations will cause vertical vibrations; due to symmetry of
+the forces in the horizontal directions, vertical disturbances do not couple
+to horizontal forces.
+
+An example of this coupling is shown in \figref{coupling-oscillations} for a
+suspended magnet that is stabilised in the horizontal direction with the
+addition of active positive stiffness. \fixme{describe more.}
+
+\begin{figure}
+  \psfragfig{\phdpath Simulations/Coupling/fig/coupling-oscillations}
+  \caption{Oscillations over time of the displacement of a suspended magnet that is excited through horizontal vibrations of the base magnet. The horizontal vibration couples to the vertical forces.}
+  \figlabel{coupling-oscillations}
+\end{figure}
+
+In the equilibrium position, the vertical forces are strongest and the
+horizontal forces are weakest. The vertical force varies little with
+horizontal displacement, as shown in \figref{mag-coupling-equil}, implying
+that the coupling between horizontal displacement and vertical force will be
+small.
+
+\begin{figure}
+  \psfragfig{\phdpath Simulations/Coupling/fig/mag-coupling-equil}
+  \caption{Equilibrium position of a suspended magnet bearing a range of 
+  masses varying with horizontal displacement. 
+  The displacement is one quarter of the magnet width.}
+  \figlabel{mag-coupling-equil}
+\end{figure}
+
+The coupling can be quantified by looking at the ratio between horizontal
+disturbance displacement range and vertical reaction displacement range. The
+larger the horizontal displacement range, the larger the coupling ratio as
+shown in \figref{mag-couplingratio-equil}.
+
+\begin{figure}
+  \psfragfig{\phdpath Simulations/Coupling/fig/mag-couplingratio-equil}
+  \caption{Ratio of vertical to horizontal displacement (`coupling ratio') of 
+  a suspended magnet bearing a range of masses varying with horizontal 
+  displacement. The displacement is one quarter of the magnet width.}
+  \figlabel{mag-couplingratio-equil}
+\end{figure}
+
+\section{Forces due to an electromagnetic field}
+\seclabel{emforces}
+
+This section describes a theoretical, parametric study that was undertaken to
+describe the forces between a cylindrical magnet and cylindrical
+current-carrying coil. While approximate formulations are known in the general
+literature (\fixme{reference}), the approach taken here was a complete
+analytical study using the exact geometry of both coil and magnet. The
+forces were numerically evaluated from a series of symbolic integrals in
+Mathematica.
+
+The purpose of these calculations was to design a coil to drive a non-contact
+vibrating platform; a non-contact coil, rather than a classical shaker, say,
+was chosen for its zero stiffness properties; without driving current, the
+coil does not add stiffness to the structure (although it does add damping via
+velocity-induced eddy currents). Additionally, the actuator does not add mass
+to the vibratory system. \fixme{discuss `zero impendance' instead of 
+zero stiffness; added `mass' via induced eddy currents, etc.}
+
+The study also investigates the possibility of building large, low-cost
+inertial shakers by using an arrangement of smaller magnets instead of one
+large, expensive permanent magnet. (\fixme{reference Chris Fuller's work with
+George.}) However, this study does \emph{not} investigate the dynamics
+associated with driving the coil with an alternating current; only the static
+force due to a constant current is investigated.
+
+\fixme{Figure for dual coil system}
+
+Finally, a symmetric arrangement of two coils in series driving a central
+magnet is examined. Since a coil/magnet pair must be located asymmetrically to
+generate maximum force, generally electromagnets of this type are built with
+`push-pull' coils, where a second coil is added to restore symmetry to the
+force vs.\ displacement response of the actuator.
+
+The study is split into three parts, as described above:
+\begin{enumerate}
+\item Force on a magnet due to a single coil;
+\item Force from a single coil on a multitude of smaller magnets; and,
+\item Force on a magnet due to symmetric dual-coils.
+\end{enumerate}
+
+\subsection{Derivation of the force equations}
+
+In this section, the equations of the force between a single cylindrical coil and a 
+cylindrical magnet
+are established; this forms the mathematical basis for the three parts of the
+study. The theory in this section is based on the theory given by
+\textcite{furlani2001}. Conceptually, deriving the force between a coil and
+magnet can be summarised in two steps:
+\begin{itemize}
+\item Integrate a function of the current over the volume of the coil
+  to find the magnetic field produced at a specific point in space.
+\item Integrate a function of the magnetic field over the volume of a
+  magnet to find the force produced by the interaction of the magnetic
+  field of the coil and the magnet itself.
+\end{itemize}
+
+A schematic of the general system is shown in two dimensions in
+\figref{int-geometry}, in which the \compound{co}{ordinate} systems Cartesian
+$(\coordca{1},\coordca{2},\coordca{3})$ and cylindrical
+$(\coordra{1},\coordra{2},\coordra{3})$ are defined for the geometry of the
+coil; and the \compound{co}{ordinate} systems Cartesian
+$(\coordcb{1},\coordcb{2},\coordcb{3})$ and cylindrical
+$(\coordrb{1},\coordrb{2},\coordrb{3})$ are defined for the geometry of the
+magnet. Axial \compound{co}{ordinates} $\coordca{3}$ and $\coordcb{3}$ are oriented in
+the `out-of-page' direction.
+
+\begin{figure}
+\small
+\asyfig{Coil/integral}
+\caption{
+  Cross section schematic of the system with coil cross section 
+  $\surfCoil$ and magnet cross section $\surfMag$.
+}
+\figlabel{int-geometry}
+\end{figure}
+
+Start by looking at the magnetic field produced by the electromagnet. Define
+in cylindrical \compound{co}{ordinates} $\distra=\distra{1,2,3}$ as the displacement
+vector for the point in space at which the magnetic field is being calculated
+(inside the volume of the magnet), and $\distrb=\distrb{1,2,3}$ as the
+displacement vector to a differential volume of the coil. The magnetic
+field $\magB$ from a current source $\magJ$ is given by: 
+\cite[][\S3.3]{furlani2001}
+\begin{dmath}
+\magB\fn{\distra} = \magconst\Int{\frac{\magJ\fn{\distrb}\cross\gp{\distra -
+\distrb}}{\Abs{\distra-\distrb}^3}}{\diffvolCoil,\volCoil} 
+\end{dmath},
+where $\permVac$ is the permeability of free space and $\cross$ is the vector
+cross product.
+
+In \figref{int-geometry} the volumes $\dee\diffvolCoil$ and $\volCoil$ are
+shown as cross-sectional surfaces $\dee\diffsurfCoil$ and $\surfCoil$. In
+cylindrical \compound{co}{ordinates},
+$\dee\diffvolCoil=\distrb{1}\dee{\distrb{1}}\dee{\distrb{2}}\dee{\distrb{3}}$,
+and
+\begin{dmath}
+\Abs{\distra-\distrb} = \sqrt{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-\distrb{2}}+\gp{\distra{3}-\distrb{3}}^2},
+\end{dmath}
+which results in the intermediate expression
+\begin{dmath}
+\magB(\distra{1},\distra{2},\distra{3}) =
+\magconst
+  \Int{%
+    \gp{\magJ(\distrb{1},\distrb{2},\distrb{3})\cross
+          \gp{\distra-\distrb}}
+         \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}
+          -\distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}\distrb{1}}
+  {\distrb{1},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
+  {\distrb{2},0,2\pi}
+  {\distrb{3},\iradiusCoil,\oradiusCoil}
+\end{dmath}
+for inner and outer radii of the coil $\iradiusCoil$ and $\oradiusCoil$
+respectively, axial coil length $\lengthCoil$, and axial distance between the
+magnet and coil centres $\offsetCoilMag$.
+
+The current density of the coil is
+$\magJ(\distrb{1},\distrb{2},\distrb{3})=NI/A\coordra{2}$, where $N$ is the
+number of turns of wire, $I$ is the current flowing in the coil, and
+$A=\lengthCoil\gp{\iradiusCoil-\oradiusCoil}$ is the cross sectional
+area of the electromagnet. Therefore,
+\begin{dmath}
+\magJ\fn{\distrb{1},\distrb{2},\distrb{3}}\cross\gp{\distra-\distrb} = 
+  NI/A\cdot\inlinevect{\distra{3}-\distrb{3},0,\distra{1}-\distrb{1}}
+\end{dmath},
+resulting in the final magnetic field equation
+\begin{dmath}[label=coil-B]
+\magB(\distra{1},\distra{2},\distra{3}) =
+\magconst\cdot\frac{NI}{A}
+  \Int{
+    \distrb{1}
+    \inlinevect{\distra{3}-\distrb{3},0,\distra{1}-\distrb{1}}
+    \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-
+        \distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}
+  }
+  {\distrb{1},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
+  {\distrb{2},0,2\pi}
+  {\distrb{3},\iradiusCoil,\oradiusCoil}
+\end{dmath}
+or more applicably here (since it is the axial force that is of interest),
+\begin{dmath} 
+\magB{z}(\distra{1},\distra{2},\distra{3}) =
+\magconst\cdot\frac{NI}{A}
+\Int{
+  \distrb{1}\gp{\distra{1}-\distrb{1}}
+  \cdot
+  \gp{\distra{1}^2+\distrb{1}^2
+      -2\distra{1}\distrb{1}\Cos{\distra{2}-\distrb{2}}
+      +\gp{\distra{3}-\distrb{3}}^2
+     }^{-3/2}
+  }
+  {\distrb{1},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
+  {\distrb{2},0,2\pi}
+  {\distrb{3},\iradiusCoil,\oradiusCoil}
+\eqlabel{coil-Bz}
+\end{dmath}
+
+To obtain force, the magnetic field from the electromagnet is
+integrated over the region of the permanent magnet. This is the
+summation of a volume and surface integral:
+\begin{dmath}
+\force = \Int{\gp{\Div{\magM}}\magB}{\diffvolMag,\volMag}+\oint_{\surfMag}
+\gp{\magM\dotprod\normn}\magB\,\dee{\diffsurfMag}
+\end{dmath}
+The magnet is magnetised along its axis, and the magnetisation is
+assumed to be constant (a reasonable assumption for rare earth
+magnets \fixme{cite}). The magnetisation is $\magM=M\hat{\vect{z}}$, which implies
+$\Div{\magM}=0$. Therefore,
+\begin{dmath}
+\force = \oint_S \gp{\magM\dotprod\normn}\cdot\magB(\distra{1},\distra{2},\distra{3})\,\dee{s} ,
+\end{dmath}
+where $\normn$ is the normal vector of the magnet surface $\surfMag$. For a
+cylindrical magnet,
+\begin{dmath}
+\normn = \left\{
+  \begin{array}{@{}c@{\quad}l}
+    \pm\hat{\vect{z}} & 
+        \distra{3} = \pm \half\lengthMag,
+        \quad \distra{1}\leq \oradiusMag \\ 
+    \hat{\vect{r}} & 
+        -\half\lengthMag < \distra{3} < \half\lengthMag,
+        \quad \distra{1}=\oradiusMag
+  \end{array}\right.
+\end{dmath}
+for axial magnet length $\lengthMag$. Since $\magM$ is orthogonal to
+$\hat{\vect{r}}$ their dot product is zero, and
+\begin{dseries}
+\begin{math}
+  \magM\dotprod\normn = \pm M
+\end{math}, 
+\begin{math}
+  \distra{3}=\pm \half\lengthMag
+\end{math}
+\end{dseries}
+which leads to the final expression
+\begin{dmath}
+\eqlabel{Fds}
+\force =
+  \left.\Int {M\magB(\distra{1},\distra{2},\distra{3})}{\diffsurfMag,\surfMag}\right|_{\distra{3}=\lengthMag/2}
+ +\left.\Int{-M\magB(\distra{1},\distra{2},\distra{3})}{\diffsurfMag,\surfMag}\right|_{\distra{3}=-\lengthMag/2}  
+= 
+  \Int{M\magB(\distra{1},\distra{2},\lengthMag/2) \distra{1}}
+      {\distra{1},\iradiusMag,\oradiusMag}
+      {\distra{2},0,2\pi}
+ -\Int{M\magB(\distra{1},\distra{2},-\lengthMag/2) \distra{1}}
+      {\distra{1},\iradiusMag,\oradiusMag}
+      {\distra{2},0,2\pi} 
+\end{dmath},
+and more applicably,
+\begin{dmath}[label=coilFz]
+F_z = 
+  \Int{M\magB{z}(\distra{1},\distra{2},\lengthMag/2) \distra{1}}
+      {\distra{1},\iradiusMag,\oradiusMag}
+      {\distra{2},0,2\pi}
+ -\Int{M\magB{z}(\distra{1},\distra{2},-\lengthMag/2) \distra{1}}
+      {\distra{1},\iradiusMag,\oradiusMag}
+      {\distra{2},0,2\pi} ,
+\end{dmath}
+
+Substitution of \eqref{coil-B} into \eqref{coilFz} yields quintuple integral
+terms, which can be numerically integrated\footnotemark\ to obtain the force
+on the magnet due to the current carrying coil. Varying $\offsetCoilMag$ in
+the limits of the integral over the axial length of the cylinder
+($\dee{\distrb{3}}$) produces force versus displacement results.
+\footnotetext{For more involved applications using this equation, it would be
+a good idea to analytically simplify the integral to improve the accuracy and
+computational time, which can be done for at least the integral in
+$\distrb{3}$. \fixme{reword because I sound dumb}}
+
+Varying the other parameters in the integration limits, $\iradiusMag$
+($=0$ for cylindrical magnets), $\oradiusMag$, $\iradiusCoil$,
+$\oradiusCoil$, $\lengthCoil$, $\lengthMag$ allows comparisons to be
+made between differently sized magnets and coils.
+
+\paragraph{Integration accuracy}
+
+The precision of the numerical integration needs to be selected for an
+appropriate compromise between accuracy and computation time. Varying
+Mathematica's \verb|PrecisionGoal| from 1--4 (which is equivalent to the
+number of `correct' significant figures), a typical force curve vs.\
+displacement calculation ranges in processing time as shown in
+\tabref{numerical-integration-times}. Eleven integrations were performed over
+a range of displacements from zero to \SI{20}{mm} in steps of \SI{2}{mm}. The
+physical parameters used are shown in \tabref{prec-param}.
+
+\begin{table}
+\caption{Processing time of numerical integration for increasing
+precision (in significant figures accurate) of the results.}
+\tablabel{numerical-integration-times}
+\begin{tabular}{lcccc}
+\toprule
+Precision & 1    & 2   & 3  & 4   \\
+Time (s)  & 0.25 & 1.6 & 18 & 187 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\begin{table}
+\caption{Parameters used in the model for evaluating the numerical precision of integration.}
+\tablabel{prec-param}
+\begin{tabular}{@{}llcc@{}}
+\toprule
+\multicolumn{2}{@{}l}
+  {Parameter}       & Symbol       & Value         \\
+\midrule
+Magnet & Remanence  & $\remanence  $ & \SI{1.2}{T}   \\
+       & Radius     & $\oradiusMag $ & \SI{6.35}{mm} \\
+       & Length     & $\lengthMag  $ & \SI{6.35}{mm} \\
+\midrule              
+Coil & turns        & $\turnsWire  $ & \num{400}     \\
+     & Current      & $\current    $ & \SI{1}{A}     \\
+     & Inner radius & $\iradiusCoil$ & \SI{7}{mm}    \\
+     & Outer radius & $\oradiusCoil$ & \SI{15}{mm}   \\
+     & Length       & $\lengthCoil $ & \SI{7.5}{mm}  \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The forces calculated with precisions of one, two, and three significant
+figures are shown in
+\figref{voice-coil-integration-precision} accompanied by the error of the
+curves with respect to the values calculated with a precision of four significant
+figures. The
+error was calculated with 
+\begin{dmath*} 
+    100 \times \Abs{\frac{F_4 - F_i}{F_4}} 
+\end{dmath*} 
+where $F_i$ is the force calculated with a precision of $i$. Reasonable results are
+obtained with a precision of two significant figures (error less than 5\%), and very accurate
+results (less than 0.1\% error) are obtained with a precision of three.
+
+\begin{figure}
+\begin{wide}
+\begin{subfigure}
+  \psfragfig{\coilpath voice-coil-integration-precision}
+  \caption{Forces with labelled precisions of 1--3.}
+\end{subfigure}
+\begin{subfigure}
+  \psfragfig{\coilpath voice-coil-integration-precision-error}
+  \caption{Percentage error with respect to the forces calculated with a precision of four.}
+\end{subfigure}
+\end{wide}
+\caption{Precision of numerical integration for calculating the force vs.\ distance
+values on a magnet from an electromagnet.}
+\figlabel{voice-coil-integration-precision}
+\end{figure}
+
+\subsubsection{Including axial offset}
+
+It is also desirable to calculate forces for asymmetric magnet positions, for
+reasons of either evaluating the effects of unbalanced load, or for building
+more complex geometries. It is the latter application that will be
+investigated here, with an analysis of the forces produced with a ring of a
+number of smaller magnets compared to that of using a solid ring magnet. 
+
+The integrals used in \eqref{Fds} to calculate the forces have variables of
+integration $\dee\diffsurfMag=\distra{1}\dee{\distra{1}}\dee{\distra{2}}$ and
+integrands containing the the magnetic field $\magB$ in terms of those
+variables $\distra{1}$ and $\distra{2}$. However, when the magnet is no longer
+centred inside the coil, the integration must take place in the shifted
+coördinate system shown in \figref{int-offset}.
+
+\begin{figure}
+\asyfig{Coil/circle-offset}
+\caption{Region of integration for axially displaced magnet
+  surfaces. The magnet is shifted by $(\xi,\eta)$ from the original
+  coördinate system.}
+\figlabel{int-offset}
+\end{figure}
+
+In order to perform this integration, terms in $\magB$ of $\distra{1}$
+and $\distra{2}$ must be expressed instead in terms of $\distrb{1}$
+and $\distrb{2}$. That is, to use a slightly general example, we wish
+to analyse the integral of generic function $A$:
+\begin{dmath}
+\Int{A(\distra{1},\distra{2})}{a} =
+\Int{A(\distra{1},\distra{2})\,\distrb{1}}%
+    {\distrb{1},\iradiusMag=0,\oradiusMag}%
+    {\distrb{2},0,2\pi} .
+\end{dmath}
+The following transformation can be used to perform this:
+\begin{dseries}
+\begin{math}
+\distra{1} = \sqrt{\distca{1}^2+\distca{2}^2}
+\end{math},
+\begin{math}
+\distca{1} = \distcb{1} - \xi
+\end{math},
+\begin{math}
+\distcb{1} = \distrb{1}\Cos{\distrb{2}}
+\end{math},
+\begin{math}
+\distra{2} = \ArcTan{\distca{2},\distca{1}}
+\end{math},
+\begin{math}
+\distca{2} = \distcb{2} - \eta
+\end{math},
+\begin{math}
+\distcb{2} = \distrb{1}\Sin{\distrb{2}}
+\end{math}.
+\end{dseries}
+
+\subsection{Parameters}
+
+Now that a mathematical model is available to perform the calculations,
+thought must be given to the variables used in the forthcoming parametric
+study. The parameters must be varied in such a way that comparisons between
+cases are meaningful. Changing the coil's physical parameters (length, radii,
+wire thickness) affect the current flowing through it for a fixed input
+voltage; these parameters are interrelated and cannot be varied independently
+while making direct comparisons between the change in the forces due to these
+variations. Careful consideration on which parameters to vary directly, and
+how, is required.
+
+\paragraph{Electromagnet parameters}
+
+The magnetic field (which is directly responsible for inducing force
+on a magnet) produced by a coil varies with a number of parameters:
+axial length, inner radius, outer radius, current, number of turns, wire
+diameter, and so on. However, these are not all independent.
+
+The starting point for the design of a coil is to choose its
+resistance, which is performed by matching the impedance of the
+amplifier used to drive the coil. In this case, resistance was taken
+as $R=\SI{8}{\ohm}$. This requirement ensures that comparisons can be
+made between differently sized coils that consume the same amount of
+power.
+
+The resistance of the coil directly infers the length of the wire
+winding, $\lengthWire$, through the relation
+\begin{dmath}
+\lengthWire = \resistanceCoil \areaWire / \resistivity,
+\end{dmath}
+for wire of cross sectional area $\areaWire$, and resistivity $\resistivity$.
+Copper wire with a diameter $\diamWire=\SI{0.2}{mm}$ was selected with an
+approximate resistivity $\resistivity=\SI{1.7e-8}{\ohm.m}$.
+
+The fixed parameters of the coil are driving voltage, resistance, wire
+thickness and material, which in turn fix the total length of wire. The
+results of the parametric study are specific to the values chosen above. Based
+on these values, a relationship between the macroscopic parameters of the coil
+can be derived.
+
+\begin{figure}
+  \asyfig{Coil/turns-cross-section}
+  \caption{Schematic representation of a crude wire-wound coil with
+    labelled dimensions.}
+\figlabel{coil-turns}
+\end{figure}
+
+The dimensions of a cylindrical coil are depicted in \figref{coil-turns},
+showing three turns of wire in each direction in an
+$\coordca{1}$--$\coordca{3}$ cross-section. Given a total length of wire to
+use (determined by the total resistance allowed for the coil), it is possible
+to derive a relation between the coil length, $\lengthCoil$, and the coil
+radii, $\iradiusCoil$ and $\oradiusCoil$ ($\iradiusCoil<\oradiusCoil$).
+Assuming that each turn of wire sits directly above or adjacent to its
+neighbours, an approximate expression for the total wire length is given by
+\begin{dmath}[label=coil-lengthwire]
+\lengthWire = \turnsZWire\Sum{2\pi\gp{\iradiusCoil+n\diamWire}}{n,0,N-1}
+  = 2\pi \turnsRWire \turnsZWire \gp{\iradiusCoil+\diamWire/2},
+\end{dmath}
+where $\turnsZWire=\gp{\oradiusCoil-\iradiusCoil}/\diamWire$ and
+$\turnsRWire=\lengthCoil/\diamWire$ are the number of turns in the axial and
+radial directions. While this does not accurately model the packing effect of
+how tightly-packed coils will sit (since ideally \eqref{coil-lengthwire} will
+under-represent the number of turns possible in a given cross-sectional area),
+this equation is simple and allows some conservatism in the quality of the
+construction of the electromagnet.
+
+Therefore, an expression for the outer radius of the coil that is defined for
+a coil of fixed inner radius and fixed total wire length is:
+\begin{dmath}
+  \oradiusCoil = \iradiusCoil +
+    \dfrac{\lengthWire\diamWire^2}
+          {\pi\lengthCoil\gp{2\iradiusCoil+\diamWire}}.
+\end{dmath}
+
+\paragraph{Overall parameters varied}
+
+In the parametric study to follow, a number of independent parameters have
+been found to vary (assuming fixed impedance and wire diameter): axial distance
+between the magnet and coil centres, $\offsetCoilMag$; axial lengths of the
+magnet and coil, $\lengthMag$ and $\lengthCoil$; inner and outer radius of the
+magnet, $\iradiusMag$ and $\oradiusMag$; and, inner radius, $\iradiusCoil$, of
+the coil.
+
+The remanence of the permanent magnet, $\remanence$, is taken to be \SI{1.2}{T}
+for this section; this approximates using a low-strength rare earth permanent
+magnet. The magnetisation, $\magM$, then, is given by $\remanence/\permVac$.
+
+Later, when dual coils are used to drive the magnet, the effect of the
+adjusting the gap between the two coils on the induced force on the
+magnet is examined.
+
+\fixme{Tabulate coil simulation parameters/}
+
+\paragraph{On comparisons} 
+
+The various graphs presented later are generated with different geometries of
+the coil(s) and magnet(s). This makes comparisons between separate results
+difficult or inconclusive. This has been done with a mind to try and show
+trends in the behaviours of varying various parameters separately; no single
+set of results can illustrate the behaviour of the system under such a large
+number of parameter variations.
+
+Take the results as shown, then, as indicative of methods that \emph{can} be
+used for optimising a certain electromagnetic design. Without a cost function
+to optimise, however, such `optimisation' here would be premature. \fixme{reword}
+
+\subsection{Single coil/single magnet simulations}
+
+In this section, several results are shown demonstrating the effect on the
+force/displacement curves of varying different parameters in a single
+magnet--single coil system. Diagrams, which are drawn to relative scale,
+accompany each force vs.\ displacement curve to illuminate the systems under
+analysis. For axial (side-on) diagrams, the magnet is located at the position
+of maximum force.
+
+\paragraph{Equal length magnet and coil}
+
+For coils and magnets of equal lengths,
+shown in \figref{voicecoil3-vary-length-2d}, the peak force is
+obtained for magnets with an approximately equal diameter and
+length. Despite the greater volume of magnetic material, the peak force actually
+decreases with increasing magnet lengths.
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Coil/single-coil-2d_1_0}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath voicecoil3-vary-length-2d}
+  \end{subfigure}
+  \lofcaption{Forces between various coil and magnet pairs of equal but
+    varying length.}{ The magnet radius is $\oradiusMag=\SI{6.4}{mm}$ and the 
+    inner coil radius is $\iradiusCoil=\SI{7}{mm}$. Note the change in 
+    outer coil radius as the coil length varies in order to retain a constant
+    resistance.}
+  \figlabel{voicecoil3-vary-length-2d}
+\end{figure}
+
+While this effect is also governed by the length of the coil (which will be
+examined subsequently), \figref{vary-radii} shows that increasing the magnet
+\emph{radius} (and the coil radius in tandem) does increase the
+total force from the electromagnet.
+
+In both cases, the total magnet volume is varied while the coil power is kept
+constant. While it may be intuitive that increasing the size of the magnet
+increases the force due to the coil, this is only true in the second case.
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Coil/single-coil-2d_2_0}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath voicecoil3-vary-radii-2d}
+  \end{subfigure}
+  \lofcaption{Forces between various coil and magnet pairs of fixed length
+    but varying diameters.}{ The coil and magnet lengths are 
+    $\lengthCoil=\SI{7}{mm}$ and $\lengthMag=\SI{12.7}{mm}$, 
+    and the inner radius of the coil is $\iradiusCoil=\oradiusMag+\SI{1}{mm}$.
+    The `glitch' at \SI{0.25}{mm} for the $\oradiusMag=\SI{20}{mm}$ case
+    is due to numerical imprecision in the computation of the integral.}
+  \figlabel{vary-radii}
+\end{figure}
+
+\paragraph{Length/radius ratio between the coil and magnet}
+
+The ratio between the lengths of the coil and magnet has several
+effects on the force between them. \Figref{vary-mag-length} shows the
+effect of increasing the magnet length with a fixed-size coil, for
+which the maximum force produced asymptotes to a maximum as the
+length of the magnet increases.
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Coil/single-coil-2d_3_0}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \small\psfragfig{\coilpath voicecoil3-vary-lengthratio-2d}
+  \end{subfigure}
+  \lofcaption{
+Forces between varius coil and magnet pairs with fixed coil length.}{
+The coil length is $\lengthCoil=\SI{20}{mm}$, 
+the magnet radius is $\oradiusMag=\SI{6.4}{mm}$, and
+the coil inner radius is $\iradiusCoil=\SI{7}{mm}$.}
+  \figlabel{vary-mag-length}
+\end{figure}
+
+Conversely, \figref{vary-coil-length} shows that \emph{decreasing} the
+length of the coil increases the force created on a fixed-size
+magnet. Recall that as the coil geometry is chosen to ensure a constant
+resistance and hence power consumption. This is shown in the schematics of 
+\figref{vary-coil-length}: as the coil length increases, its height decreases.
+
+It is interesting to compare the positions of maximum force
+between the cases shown in \figref{vary-mag-length,vary-coil-length}; 
+which is depicted in the schematics above each graph.
+It can be seen that the maximum force is obtained, approximately, when
+the shorter of the magnet or coil is axially centred at an edge of the longer.
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Coil/single-coil-2d_4_0}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath voicecoil3-vary-lengthratio2-2d}
+  \end{subfigure}
+  \lofcaption{
+Forces between varius coil and magnet pairs with fixed magnet length.}{
+The magnet width is $\lengthMag=\SI{20}{mm}$, 
+the magnet radius is $\oradiusMag=\SI{6.4}{mm}$, and
+the coil inner radius is $\iradiusCoil=\SI{7}{mm}$.}
+  \figlabel{vary-coil-length}
+\end{figure}
+
+Finally, it is worth noting the width of the peaks in the
+force/displacement curves for these various systems. The shorter coil
+gives greater forces, but at the expense of a smaller `width' of force
+close to the maximum. When used as shakers, these coils are assumed to
+have a proportional relationship between current and force, which is only valid
+around the region of maximum force for a certain displacement range. 
+Practically, this limits the lower frequency (which has larger displacements) 
+at which such a device could impart vibrations into a structure.
+
+\paragraph{Air gap}
+
+A study of the effect of the size of the air gap between the coil and the
+magnet, with results in \figref{vary-airgap}, shows that the smaller the air
+gap, the significantly greater the forces generated. The slight movement of
+the position of maximum force is interesting but negligible.
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Coil/single-coil-2d_5_0}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath voicecoil-vary-coilradius-2d}
+  \end{subfigure}
+  \lofcaption{
+    Forces between varius coil and magnet pairs with varying
+    coil inner radius.}{ The peak force is indicated by the labelled points.
+    The magnet radius is $\oradiusMag=\SI{5}{mm}$, and
+    the magnet and coil lengths are $\lengthMag=\lengthCoil=\SI{7.5}{mm}$.
+  }
+  \figlabel{vary-airgap}
+\end{figure}
+
+\paragraph{Eccentricity}
+
+In \secref{manymag}, the superposition of eccentric magnets will be used to
+analyse some multi-magnet cases. The effects of eccentricity of the inner
+magnet are shown in \figref{vary-eccentric}, where it can be seen that
+displacements close to the centre have only a small effect on the force.
+Closer to the inner radius of the coil, however, large increases in force
+occur as the magnet draws near, which follows from results seen previously in
+\figref{vary-airgap}.
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Coil/eccentric}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath coils-offsetTest}
+  \end{subfigure}
+  \lofcaption{
+    Forces between a coil and a magnet with varying radial eccentricity,
+    $\offsetCoilMag$\periodifnocomma}{, shown in \SI{}{mm}. 
+    The inner radius of the coil is $\iradiusCoil=\SI{21}{mm}$, and
+    the radius of the magnet is $\oradiusMag=\SI{10}{mm}$
+    Note that while the offset
+    is in the radial direction, the force shown is still in the axial
+    direction.}
+  \figlabel{vary-eccentric}
+\end{figure}
+
+\subsection{Approximation of a large magnet by the superposition of others smaller}
+\seclabel{manymag}
+
+As has been shown in \figref{vary-radii}, increasing the radii of the
+magnet/coil system increases the forces generated between them, but it
+can be difficult or expensive to procure such large magnets. A
+collection of smaller magnets can be used instead, with improved cost
+and handling convenience, albeit with some reduction in the maximum
+force achievable.
+
+Referring to \figref{circles}, the radius of a smaller circle, $r$,
+that fits \COILnmag\ times around inside the circumference of a larger circle
+of radius $R$, with a gap between adjacent circles of $d$ is given by
+\begin{dmath}
+\eqlabel{circles}
+r = \frac{R\Sin{\pi/\COILnmag}-d/2}{\Sin{\pi/\COILnmag}+1}.
+\end{dmath}
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Coil/circles}
+  \end{subfigure}
+  \lofcaption{Geometry of smaller circles tangential to a larger
+    circle.}{ $\theta=2\pi/\COILnmag$ for \COILnmag\ smaller circles in total.}
+  \figlabel{circles}
+\end{figure}
+
+This expression can be used to calculate the radius of \COILnmag\ smaller
+magnets that can be used to fill up the volume of a larger one. In the
+first case, the larger magnet is approximated with a concentric
+arrangement of disc magnets, approximating ring magnetisation. 
+Such a configuration can be modelled with the same expressions derived
+for the simple cases in the previous section. Superposition can be
+used to extrapolate the force from a single small eccentric magnet to
+a ring of them.
+
+The results for such arrangements are shown in \figref{coils-manyMag},
+where it can be seen that increasing numbers of magnets initially
+increases the force, until the inner radius caused by the shrinking
+small magnets causes the force to reduce.
+
+\fixme{Wouldn't comparison with equal magnetic volume be more relevant in some ways?}
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Coil/multimagnet}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath coils-manyMag}
+  \end{subfigure}
+  \lofcaption{Forces due to a coil on circular arrangements of
+    magnets.}{ The outer radius of the magnets is \SI{20}{mm}, and the
+    depths of the magnets and coil are \SI{10}{mm} and \SI{10}{mm}
+    respectively.}
+  \figlabel{coils-manyMag}
+\end{figure}
+
+These results are compared to their equivalent ring magnet geometries,
+for equivalent inner and outer magnet radius with solid composition. In
+\figref{coils-manyMagVerify}, the effect of increasing the inner
+radius of a ring magnet is seen to decrease the total force.
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Coil/ringmagnet}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath coils-manyMagVerify}
+  \end{subfigure}
+  \lofcaption{Forces due to a coil on various ring magnets.}{ The outer
+    radius of the magnets is \SI{20}{mm}, and the depths of the
+    magnets and coil are both \SI{10}{mm} respectively.}
+  \figlabel{coils-manyMagVerify}
+\end{figure}
+
+Greater forces can be achieved by filling in the gaps with smaller
+magnets. While great effort could be expended solving an optimal fill
+problem, \note{\Eg, ``Kissing Circles: A French romance in MetaPost''
+  by Denis
+  Roegel:\\\qquad\url{http://www.tug.org/TUGboat/Articles/tb26-1/}} it
+is possible to predict the results of asymptotically filling in the
+empty space with smaller and smaller magnets: the force would converge
+to that achieved with the filled magnet. The impracticalities of
+manufactoring such a magnet would also probably increase the expense
+prohibitively.
+
+Crudely looking at the problem, application of \eqref{circles} shows
+that with six equally spaced magnets in a circle and some small gap
+between them, there is just enough space to fit another equally-sized
+magnet in the centre. That is, the smallest $n$ for which $3r<R$ is six.
+
+For the double-layer arrangement, the outer magnets need to be small
+enough to fit another ring of six equally-sized magnets within them,
+which can in turn fit a centre magnet of the same size. For this
+problem, with some small gap between the magnets, the smallest $n$ is
+twelve.\footnote{\emph{Without} a gap between the magnets, this just
+  bumps up to thirteen, but twelve fill the space a little better in
+  the centre.} Twelve outer magnets, six inner magnets, and one centre
+magnet make nineteen in total.
+
+These filled large-magnet approximations are shown with their force
+curves in \figref{coils-gaps}. In the case of six outer magnets, it
+can be seen that the inner magnet has little influence on the total
+force produced. This echoes the results shown in the eccentricity
+forces of \figref{vary-eccentric}, where the forces increased dramatically
+when the magnet approached close to the coil. The same would be true
+for the nineteen magnet case.
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Coil/manymagnet}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath coils-gaps}
+  \end{subfigure}
+  \lofcaption{Forces due to a coil on `filled in' circular arrangements of
+    magnets.}{ The outer radius of the magnets is \SI{20}{mm}, and the
+    depths of the magnets and coil are both \SI{10}{mm}.}
+  \figlabel{coils-gaps}
+\end{figure}
+
+\paragraph{Cost considerations} 
+
+While greater forces can be obtained from using a single large magnet,
+the costs of magnetic material is not proportional to volume. As
+example, consider arrangements similar to that shown in
+\figref{coils-gaps} for the seven and nineteen magnet constructions,
+but omit the centre magnet from each (as it has been shown that the
+force due to that one is small compared to the rest).
+
+Appropriate magnets to build these systems have been chosen from K\&J
+Magnetics and their approximate prices (without volume discount)
+tabulated in \tabref{prices}, based around a nominal large magnet of
+diameter \SI{50.8}{mm} and thickness \SI{6.4}{mm}. While exact radii
+to fill up the gaps could not be chosen, they are close enough to make
+a valid comparison. Significant cost savings on magnetic material can
+be made by using these multi-magnet configurations instead of a single
+magnet, albeit with a decrease in maximum force and an increase in
+construction complexity.
+
+\begin{table}
+\caption[Approximate magnet prices.]
+{Approximate prices for magnets of thickness \SI{6.4}{mm} that could be used 
+to construct magnet systems
+as shown in \figref{coils-gaps}. Data obtained from
+\url{http://www.kjmagnetics.com}, 2007/\textsc{may}/08.}
+\tablabel{prices}
+\begin{tabular}{@{}cccc@{}}
+\toprule
+Diameter & Price & Number & Total Price \\
+\midrule
+\SI{50.8}{mm} & \$17 & 1 & \$17 \\
+\SI{15.9}{mm} & \$1.75 & 6 & \$10.5 \\
+\SI{9.5}{mm} & \$0.70 & 18 & \$12.6 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsection{Dual coil simulations}\seclabel{dualcoil}
+
+The $NI/A$ term in the force equation between a magnet and coil has
+some interesting effects. The force created by a single layer coil
+(that is, $N=1$) cannot be improved upon by adding more layers,
+because the total length of wire (and hence the resistance, and the
+inverse of current) will grow faster than the linear gains achieved in
+the force.
+
+But extra turns of wire are required to achieve a large enough
+resistance to be able to drive the coil without overheating it due to
+excessive current. It has been shown in the previous section that
+increasing the length of a coil is also detrimental to the maximum force
+created on a magnet.
+
+A different method of increasing the number of turns is shown here
+that does not have the side-effects of effectively reducing the force
+that is being generated. By wiring two coils in series and in opposite
+winding directions, with the permanent magnet in the gap between them,
+greater forces can be achieved than with a single coil of the same
+resistance. This design is also better at dissipating heat, as the effective 
+surface area is greater (or, conversely, it is harder to cool thicker coils).
+
+\begin{figure}
+  \asyfig{Coil/dual-coil-single}
+  \caption{Dual coil system.}
+  \figlabel{dual-coil-schematic}
+\end{figure}
+
+For two coils radially aligned with a distance $G$ between their axial
+centres, superposition can be used to calculate the forces $F_1$ and
+$F_2$ generated between each and a permanent magnet. A schematic of this
+system is shown in \figref{dual-coil-schematic}. The axial
+distance between the permanent magnet and the two coils is denoted by
+$d_1$ and $d_2$. The total force on the magnet is given by
+\begin{dmath}
+F_{\mathrm{T}}(d_1,d_2)
+  =F_1(d_1)+F_2(d_2)
+  =F_1(d_1)+F_2(G-d_1)
+  =F_1(d_1)-F_1(G-d_1)
+\end{dmath}.
+The coils are here assumed to be of equal dimension in all
+respects. For a fixed dual-coil geometry, this equation allows an
+investigation of the force/\-displacement curves while varying the
+distance between the coils and the position of the permanent magnet.
+
+Less comprehensive parameter variations are performed to analyse the dual coil 
+arrangement, as many of the results carry over from the single coil
+cases. \Figref{dual-coil} shows a dual-coil design with increasing coil
+gaps. The results are evident: if the coils are too far apart, they
+act separately and their benefit is not realised; conversely, if they
+are too close their effects cancel.
+
+\fixme{SHOW THAT THE DUAL COIL IS BETTER!!}
+
+These results follow directly from the single coil simulations. For
+optimal coil spacing in the dual coil case, the maximum force position
+of a single coil should be used (as in \figref{vary-airgap}) for each
+side. \fixme{expand}
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Coil/dual-coil-2d_1_0}
+  \end{subfigure}\par
+  \begin{subfigure}
+    \psfragfig{\coilpath 2coils-trial}
+  \end{subfigure}
+  \caption{Forces between dual-coil/magnet pairs with varying
+    inter-coil gap distances. \fixme{parameters for the dual coil}}
+  \figlabel{dual-coil}
+\end{figure}

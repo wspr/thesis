@@ -1,0 +1,494 @@
+%!TEX root = thesis.tex
+\ProvidesPackage{thesis-maths}
+
+%%%%%%%%%%%%%%%%%
+% TeXnicalities %
+\AtBeginDocument{%
+  \let\oldleft\left
+  \def\left{\mathopen{}\oldleft}%
+}
+%%%%%%%%%%%%%%%%%
+%% For COOL
+\let\orig@Integrate\Integrate
+\renewcommand\Integrate[2]{%
+  \@ifnextchar\bgroup
+    {\Integrate{\orig@Integrate{#1}{#2}}}
+    {\orig@Integrate{#1}{#2}}}
+\let\Int\Integrate
+%\renewcommand\D[3][]{%
+%  \text{\textsc{d}}_{#3^{#1}}\,#2} 
+%%%%%%%%%%%%%%%%%
+\Style{LogParen=p}
+\Style{ArcTrig=arc}
+%%%%%%%%%%%%%%%%%
+
+\newcommand\inlinefrac[2]{#1/#2}
+
+\newcommand\group[1]{%
+  \left[
+    \ifcase\mathstyle\vphantom{y}\fi
+    #1
+  \right]
+}
+\newcommand\function[1]{\left(#1\right)}
+\let\gp\group
+\let\fn\function
+
+\newcommand\funcparen[2]{#1\mathopen{}\left(#2\right)}
+
+\renewmlist\func[
+  headcmd=\mlisthead,
+  elemcmd=\mlistelem,
+  wrapcmd=\funcparen,
+  wraponecmd]
+
+\newcommand\inlinevect[2][]{%
+  \def\insertvectsep{\def\insertvectsep{\,,~}}
+  \left[
+    \@for\@ii:=#2\do{\insertvectsep\@ii}
+  \right]
+}
+
+\newcommand\inlinematr[1]{%
+  \matr{}{#1}%
+}
+
+\mlistsetup{headcmd=\bm}
+\def\baraccent#1{{\mlistsetup{headhook=\expandafter\bar}#1}}
+
+\newcommand\boldsubs[2]{\bm{#2}_{#1}}
+\newcommand\elemboldhat[2]{\hat{\bm{#2}}}
+\newcommand\elemboldhatprime[2]{\hat{\bm{#2}}'}
+\newcommand\headcal[2]{\mathcal{#1}}
+\newcommand\onlyhead[2]{#1}
+\newcommand\onlyelem[2]{#2}
+
+\newcommand\newvariable[1]{%
+  \@ifnextchar[
+    {\newvariable@opt{#1}}
+    {\newvariable@noopt{#1}}%
+}
+\def\newvariable@opt#1[#2]#3{\@newvariable{#1}{}{#3}}
+\def\newvariable@noopt  #1#2{\@newvariable{#1}{}{#2}}
+\newcommand\@newvariable[3]{%
+  \newcommand#1{#3}%
+}
+
+\newcommand\newsignal[3]{%
+  \newvariable#1{#3}%
+  \uppercase{\newvariable#2{#3}}}
+
+%%%%%%%%%%%%%%%%%%%%%%%
+%% MAGNETS
+
+\newvect\cuboida{V_a}[
+  elemcmd=\mlistelem,
+  elem={a,b,c}
+]
+\newvect\cuboidb{V_b}[
+  elemcmd=\mlistelem,
+  elem={A,B,C}
+]
+\newvect\cuboidoffset{\Delta}[
+  elemcmd=\mlistelem,
+  elem={\alpha,\beta,\gamma}
+]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% Vibrations
+
+\newvariable\stiffnessLinear[nom=Coefficient of linear stiffness]{k}
+\newvariable\stiffnessQuad[nom=Coefficient of quadratic stiffness]{k_2}
+\newvariable\stiffnessDuffing[nom=Coefficient of cubic (Duffing) stiffness]{k_3}
+
+\newvariable\ii{i}
+\newvariable\freq{\omega}
+
+\newvariable\massBase{M}
+\newvariable\massMass{m} 
+\newsignal\dispBase\respBase{x_1}
+\newsignal\dispMass\respMass{x_2}
+
+\newvariable\massAbsorb{m_a}
+\newsignal\dispAbsorb\respAbsorb{x_a}
+\newvariable\dampingAbsorb{c_a}
+\newvariable\stiffnessAbsorb{k_a}
+\newvariable\forceAbsorb{f_a}
+
+\newvariable\dampingRel{c}
+\newvariable\dampingAbs{c_{\textrm{sky}}}
+\newvariable\stiffnessRel{k}
+\newvariable\forceIn{f}
+
+\newvariable\transmissibility{T}
+
+\newvariable\gainArbitrary{G_\cdot}
+\newvariable\gainDisp{G_d}
+\newvariable\gainVel{G_v}
+\newvariable\gainAcc{G_a}
+\newvariable\gainSky{G_s}
+
+\newvariable\dampingratio[nom=Damping ratio]{\zeta}
+
+\newvariable\powerSpectMagnet
+  [nom=Power spectrum accelerometer measurements of the moving magnet]
+  {P_{mm}}
+\newvariable\powerSpectBase
+  [nom=Power spectrum accelerometer measurements of the base disturbance]
+  {P_{bb}}
+\newvariable\crossSpectMagnetBase
+  [nom=Cross spectrum accelerometer measurements between the moving magnet and base disturbance]
+  {P_{mb}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%% COIL
+
+\newvect\distra{d}[
+  headcmd=\boldsubs{1},
+  elemcmd=\mlistelem,
+  elem={r_1,\phi_1,z_1}]
+\newvect\distrb{d}[
+  headcmd=\boldsubs{2},
+  elemcmd=\mlistelem,
+  elem={r_2,\phi_2,z_2}]
+
+\newvect\distca{d}[
+  headcmd=\boldsubs{1},
+  elemcmd=\mlistelem,
+  elem={x_1,y_1,z_1}]
+\newvect\distcb{d}[
+  headcmd=\boldsubs{2},
+  elemcmd=\mlistelem,
+  elem={x_2,y_2,z_2}]
+
+\newvariable\SuffixCoil{c}
+\newvariable\surfCoil{S_\SuffixCoil}
+\newvariable\volCoil{V_\SuffixCoil}
+\newvariable\diffsurfCoil{s_\SuffixCoil}
+\newvariable\diffvolCoil{v_\SuffixCoil}
+
+\newvariable\SuffixMagnet{m}
+\newvariable\surfMag{S_\SuffixMagnet}
+\newvariable\volMag{V_\SuffixMagnet}
+\newvariable\diffsurfMag{s_\SuffixMagnet}
+\newvariable\diffvolMag{v_\SuffixMagnet}
+
+\newvect\coordra{A}[
+  headcmd=\headcal,
+  elemcmd=\elemboldhat,
+  elem={r,\phi,z}]
+\newvect\coordrb{B}[
+  headcmd=\headcal,
+  elemcmd=\elemboldhatprime,
+  elem={r,\phi,z}]
+\newvect\coordca{A}[
+  headcmd=\headcal,
+  elemcmd=\elemboldhat,
+  elem={x,y,z}]
+\newvect\coordcb{B}[
+  headcmd=\headcal,
+  elemcmd=\elemboldhatprime,
+  elem={x,y,z}]
+
+\newvariable\iradiusCoil[nom=Coil inner radius]{r_c}
+\newvariable\oradiusCoil[nom=Coil outer radius]{R_c}
+\newvariable\iradiusMag[nom=Magnet inner radius]{r_m}
+\newvariable\oradiusMag[nom=Magnet outer radius]{R_m}
+
+\newvariable\lengthCoil[nom=Coil length]{L_c}
+\newvariable\lengthMag[nom=Magnet length]{L_m}
+\newvariable\offsetCoilMag[nom=Distance between the axial centres of the coil and magnet]{k}
+
+\newvariable\lengthWire{l_w}
+\newvariable\resistanceCoil[nom=Coil resistance]{R}
+\newvariable\areaWire{a_w}
+\newvariable\resistivity[nom=Resistivity]{\rho}
+
+\newvariable\turnsWire[nom=Number of turns in the coil]{N}
+\newvariable\turnsRWire[nom=Number of turns in the radial direction]{N_r}
+\newvariable\turnsZWire[nom=Number of turns in the axial direction]{N_z}
+
+\newvariable\radiusWire[nom=Radius of the wire]{r_w}
+\newvariable\diamWire[nom=Diameter of the wire]{d_w}
+
+\newvariable\current[nom=Current]{I}
+
+\newvariable\COILnmag[nom=Number of smaller permanent magnets]{n}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%   QZS   %%%%%%%%%%%%%%%%%%%%%%%%%
+
+\def\polyc#1{c_#1[\ngap]}
+\def\polyq#1{q_#1[\ngap]}
+
+% parameters
+\def\mdim{a}% magnet dimension
+\def\ngap{d}% normalised gap between magnets
+\def\ndisp{l}% normalised nominal magnet displacement
+\def\ndispZ{h}% normalised nominal magnet displacement
+\def\dmax{\delta}
+\def\mass{M}
+\def\freqdesign{\omega_d}
+\def\damping{b}
+
+\def\ccA{A}
+\def\ccB{B}
+\def\ccC{C}
+\def\ccD{D}
+\def\nn{n}
+
+\def\nk{\eta_k}
+
+% "functions": variables that depend on parameters
+
+%% single magnets:
+\newfunc\magforce{F_m}[elem={\mdim,\ndisp},index={1,2}]
+\newfunc\nforce{f_m}[elem={\ndisp},index=1]
+\newfunc\magstiffness{K_m}[elem={\mdim,\ndisp},index={1,2}]
+\newfunc\nstiffness{k_m}[elem={\ndisp},index=1]
+
+%% QZS system:
+\newfunc\frepl{F_{\text{repl}}}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
+\newfunc\fattr{F_{\text{attr}}}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
+
+\newfunc\magforceZ{F_z}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
+\newfunc\nforceZ{f_z}[elem={\ngap,\ndispZ},index={1,2}]
+\newfunc\magstiffnessZ{K_z}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
+\newfunc\nstiffnessZ{k_z}[elem={\ngap,\ndispZ},index={1,2}]
+
+\newfunc\heq{h_q}[elem={\mdim,\ngap,\mass},index={1,2,3}]
+\newfunc\keq{K_q}[elem={\mdim,\ngap,\mass},index={1,2,3}]
+\newfunc\feq{f_q}[elem={\mdim,\ngap,\mass},index={1,2,3}]
+
+\def\mathlog\left[#1\right]{\log\fn{#1}}
+\def\mathatan\left[#1\right]{\arctan\fn{#1}}
+
+\newcommand\eqdef{\stackrel{\text{\tiny def}}{=}}
+
+%%%%%% ZKS %%%%%%%%%
+
+\providecommand\labelsize{\scriptsize}
+
+\newcommand\ZKSQZS[1]{#1_{\textsc{qzs}}}
+
+\newvariable\ZKSdisp[nom=Vertical displacement of the inclined spring]{x}
+\newvariable\ZKSdispMin[nom=Maximum deflection of the vertical spring]{x_{\text{min}}}
+\newvariable\ZKSshift[nom=Horizontal displacement of the inclined spring]{y}
+
+\newvariable\ZKSwidth[nom=Inclined spring horizontal dimension]{w}
+\newvariable\ZKSheight[nom=Inclined spring vertical dimension]{h}
+\newvariable\ZKSlength[nom=Undeflected inclined spring length]{L_0}
+\newfunc\ZKSlengthcomp{L}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Length of inclined spring under load]
+
+\newvariable\ZKSvlength[nom=Undeflected vertical spring length]{H_0}
+\newfunc\ZKSvlengthcomp{H}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Length of vertical spring under load]
+
+\newvariable\ZKScompress{C}
+\newvariable\ZKScompressI[
+  nom=Compression of the inclined springs at \qzs]{\ZKScompress_\ZKSincl}
+\newvariable\ZKScompressV[
+  nom=Compression of the vertical spring at \qzs]{\ZKScompress_\ZKSvert}
+
+\newvariable\ZKSlengthratio[
+    nom=Ratio between inclined and vertical 
+        spring lengths, $\ZKSlength$ and $\ZKSlength$]
+  {\eta}
+\newvariable\ZKSratio[
+    nom=Ratio between the inclined spring 
+        width and height]
+  {\gamma}
+\newvariable\ZKSkratio[
+    nom=Ratio between the inclined and 
+        vertical spring stiffnesses]
+  {\alpha}
+
+\newvariable\ZKSnorm[nom=Normalised displacement in the load bearing direction]{\xi}
+\newvariable\ZKSnormMin[nom=Maximum normalised displacement below the equilibrium before the spring reaches zero deflection]{\ZKSnorm_{\text{min}}}
+
+
+\newvariable\ZKSoff[nom=Percentage difference between $\ZKSratio$ and $\ZKSratioQZS$]{\epsilon}
+
+\newvariable\ZKSlengthratioQZS[
+    nom=Value of $\ZKSlengthratio$ corresponding 
+        to \qzs\ in both directions]
+  {\ZKSQZS{\eta}}
+\newvariable\ZKSkratioQZS[
+    nom=Value of $\ZKSkratio$ corresponding to 
+        \qzs\ in both directions]
+  {\ZKSQZS{\alpha}}
+\newvariable\ZKSratioQZS[
+    nom=Value of $\ZKSratio$ for which \qzs\ in 
+        the vertical direction is achieved]
+  {\ZKSQZS{\ZKSratio}}
+
+\newvariable\ZKSincl{i}
+\newvariable\ZKSvert{v}
+
+\def\ZKSstiff{k}
+\newvariable\ZKSstiffincl[nom=Inclined spring stiffness]{\ZKSstiff_\ZKSincl}
+\newvariable\ZKSstiffvert[nom=Vertical spring stiffness]{\ZKSstiff_\ZKSvert}
+
+\newvariable\ZKSstiffnessV[nom=Stiffness characteristic in the vertical direction]{K_v}
+\newvariable\ZKSstiffnessH[nom=Stiffness characteristic in the horizontal direction]{K_h}
+
+\newvariable\ZKSforce{F}
+
+\newfunc\ZKSforceincl{\ZKSforce_\ZKSincl}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Force characteristic of the inclined spring]
+\newfunc\ZKSforcevert{\ZKSforce_\ZKSvert}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Force characteristic of the vertical spring]
+\newfunc\ZKSforcetotal{\ZKSforce_t}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Force characteristic of the \qzs\ spring system]
+
+\newfunc\ZKSforceinclV{\ZKSforce_{\ZKSincl_v}}[elem=\ZKSdisp,index=1]
+% [nom=Vertical component of $\ZKSforceincl$]
+\newfunc\ZKSforcevertV{\ZKSforce_{\ZKSvert_v}}[elem=\ZKSdisp,index=1]
+% [nom=Vertical component of $\ZKSforcevert$]
+\newfunc\ZKSforcetotalV{\ZKSforce_{t_v}}[elem=\ZKSdisp,index=1]
+% [nom=Vertical component of $\ZKSforcetotal$]
+
+\newfunc\ZKSforceinclH{\ZKSforce_{\ZKSincl_h}}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Horizontal component of $\ZKSforceincl$]
+\newfunc\ZKSforcevertH{\ZKSforce_{\ZKSvert_h}}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Horizontal component of $\ZKSforcevert$]
+\newfunc\ZKSforcetotalH{\ZKSforce_{t_h}}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+% [nom=Horizontal component of $\ZKSforcetotal$]
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% RIG
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\VariableBeam[1]{#1_b}
+\newcommand\VariableRigMagnets[1]{#1_m}
+
+\newvariable\InertiaMoment{I}
+\newvariable\InertiaMomentBeam{\VariableBeam\InertiaMoment}
+\newvariable\InertiaMomentMagnets{\VariableRigMagnets\InertiaMoment}
+\newvariable\InertiaMomentTotal{\InertiaMoment_t}
+
+\newvariable\BlockInertiaLength{a}
+\newvariable\BlockInertiaHeight{b}
+\newvariable\BlockInertiaOffset{d}
+\newvariable\BlockInertiaMass{m}
+
+\newvariable\MassBeam{\VariableBeam m}
+\newvariable\MassBeamTop{m_1}
+\newvariable\MassBeamSide{m_2}
+\newvariable\LengthBeam{\VariableBeam L}
+\newvariable\HeightBeam{\VariableBeam h}
+\newvariable\WidthBeam{\VariableBeam w}
+\newvariable\ThicknessBeam{\VariableBeam t} 
+
+\newvariable\MassRigMagnets{\VariableRigMagnets m}
+\newvariable\LengthRigMagnets{\VariableRigMagnets L}
+\newvariable\HeightRigMagnets{\VariableRigMagnets h}
+
+\newvariable\DiamMag{d}
+\newvariable\HeightMag{h}
+
+\newvariable\DispMag{x}
+\newvariable\AngleMag{\theta}
+\newvariable\MomentMag{M_\AngleMag}
+\newvariable\ForceRigMagnets{F_\DispMag}
+\newvariable\EquivMassRig{m_e}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%       EXPERIMENT       %%%%%%%%%%%%%%
+
+\newvariable\rigNormGap{g}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Fix these!
+\def\x{x}
+\def\y{y}
+\def\z{z}
+\def\vv{v}
+
+\def\xv{\group{\x-\vv}}
+\def\yy{\xi}
+\def\cc{c_1}
+\def\d{c_2}
+\def\q#1{K_#1}
+\def\Q{K}
+
+\let\oldforall\forall
+\def\forall{\,\oldforall\,}
+
+\newvariable\lyapunov[nom=Lyapunov function]{V}
+\def\lyaGainA{c_1}
+\def\lyaGainB{c_2}
+
+\let\olddot\dot
+\let\oldddot\ddot
+\def\dot{\expandafter\olddot}
+\def\ddot{\expandafter\oldddot}
+
+\newcommand\e{e}
+
+\newcommand\normn{\hat{\vect{n}}}
+\newvect\force{F}
+\newvect\torque{T}
+\newvect\lever{r}
+
+\newcommand\stiffness{k}
+\newvariable\gravity{g}
+\newvariable\disp{x}
+\newvect\displacement{x}
+\newvect\velocity{v}
+\newcommand\natfreq{\omega_n}
+\newcommand\approaches{\rightarrow}
+
+\newvect\magH{H}
+\newvect\magB{B}
+\newvariable\remanence[nom=Remanence]{B_r}
+\newvect\magflux{B}
+\newvect\magM{M}
+\newvect\magJ{J}
+\newcommand\magJm{\vect{J}_m}
+\newcommand\magjm{\vect{j}_m}
+\newcommand\pos{\vect{x}}
+\newcommand\permVac{\mu_0}
+\newcommand\permMag{\mu_r}
+\newcommand\magconst{\frac{\permVac}{4\pi}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+\newcommand{\mdip}{\vect{m}}
+\newcommand{\flux}{\Phi}
+\newcommand{\perm}{\mu}
+\newcommand{\permrel}{\mu_r}
+\newcommand{\BHmax}{\gp{\magB\magH}_{\text{max}}}
+\newcommand\Msat{M_{\text{sat}}}
+
+%%%%%%%%%%%%%%%%
+%% Eddy currents
+
+\newvect\magJeddy{J_{\text{eddy}}}
+\newvect\forceEddy{F_{\text{eddy}}}
+\newvariable\conductivity[nom=Conductivity]{\sigma}
+
+\newcommand\half{\textstyle\frac12}
+\newcommand\quarter{\textstyle\frac14}
+
+\newcommand{\dee}[1]{\mathrm{d}#1}
+\newcommand{\intd}[3][]{\int#1#2\,\dee{#3}}
+\newcommand{\od}[2]{\frac{\dee{#1}}{\dee{#2}}}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+
+\let\crossprod\times
+\let\cross\times
+\let\dotprod\cdot
+
+\let\grad\Grad
+\let\curl\Curl
+\newcommand{\divgrad}{\nabla^2}
+\newcommand{\divgradxyz}[1]{\od{^2#1}{x^2} +\od{^2#1}{y^2} +\od{^2#1}{z^2}}
+
+\def\T{^{\text{T}}}
+
+\newcommand\bdot{\bm{\cdot}}
+
+
+
