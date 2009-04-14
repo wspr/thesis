@@ -1130,7 +1130,8 @@ be used for speculative design work and optimisation.
   \figlabel{cons-all}
 \end{figure}
 
-\section{Measure of stiffness reduction}\seclabel{kratio}
+\section{Measure of stiffness reduction}
+\seclabel{kratio}
 
 In the previous section, ranges for magnet size and magnet gap were
 shown to achieve certain design criteria. It is not impossible, however,
@@ -1171,7 +1172,8 @@ approaches the \qzs\ position (compare with \figref{heq-map}).
 \figlabel{kratio}
 \end{figure}
 
-\subsection{Nonlinear behaviour}\seclabel{nonlin}
+\subsection{Nonlinear behaviour}
+\seclabel{nonlin}
 
 In \secref{cons}, constraints were imposed on the design of the
 magnetic system such that a certain resonance frequency was achieved
@@ -1197,9 +1199,9 @@ where
 \end{align}
 For the quadratic approximation of $\nforceZ$, $\nk$ is a ratio
 between the maximum displacement and the equilibrium position:
-\begin{align}\eqlabel{nk-approx}
-\nk & \approx \frac{\dmax}{\mdim\heq{}} ,
-\end{align}
+\begin{dmath}[label=nk-approx]
+\nk \approx \frac{\dmax}{\mdim\heq{}} ,
+\end{dmath}
 and since $\dmax/\mdim<\Abs{\heq{}}$ for stability (recall
 \eqref{stable}), it follows that the degree of
 nonlinearity is directly related to the amplitude of disturbance
@@ -1316,11 +1318,11 @@ One metric to evaluate the response of a nonlinear system in the frequency
 domain is known as the `variance gain' $V$ \cite{savaresi2007}, which
 is calculated as a ratio of the root-mean-square
 output to input signals:
-\begin{equation}\eqlabel{nl-trans}
+\begin{dmath}[label=nl-trans]
 V = \sqrt{\left.\tfrac1T\Int_0^T \bar x\fn t^2{t}
     \middle/
     \tfrac1T\Int_0^T \bar y\fn t^2{t}\right.} ,
-\end{equation}
+\end{dmath}
 where $T$ is the time interval over which the variance gain is calculated,
 and $\bar x$ and $\bar y$ are the mean-zero output and input displacements
 of the vibration isolator, respectively. For linear systems, this expression
@@ -1328,9 +1330,9 @@ simplifies to the standard formulation for transmissibility. For nonlinear
 systems, \eqref{nl-trans} describes the ratio of output to input energy for
 a given excitation. For the tonal input disturbance of \eqref{y}, the variance
 gain at the frequency of excitation is
-\begin{equation}\eqlabel{nl-trans2}
+\begin{dmath}[label=nl-trans2]
 V = \frac{1}{A_e}\sqrt{\frac{2}{T} \Int_0^T \bar x\fn t^2 {t}} .
-\end{equation}
+\end{dmath}
 The variance gain allows the nonlinearity of the system to be visualised
 on a familiar transmissibility--like plot
 for a range of resonant frequencies and equilibrium positions.
@@ -1423,7 +1425,8 @@ moves closer to the point of \qzs.}
 \tablabel{variance-gaps}
 \end{table}
 
-\subsection{Summary}\seclabel{end}
+\subsection{Summary}
+\seclabel{end}
 
 This paper has analysed a magnetic spring for the purposes of
 load bearing with low stiffness. Exact and approximate expressions
