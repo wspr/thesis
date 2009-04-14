@@ -17,7 +17,7 @@ clean:
 	rm *.pdf
 
 $(main).pdf: $(main).tex $(addsuffix .tex,$(chapters))
-	pdflatex --interaction=nonstopmode --shell-escape $(main); \
+	pdflatex --shell-escape $(main); \
 	bibtex $(main)
 
 $(chapters): %: ch-%.pdf
