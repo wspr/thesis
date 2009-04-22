@@ -106,8 +106,12 @@
 
 \newvariable\massBase{M}
 \newvariable\massMass{m} 
-\newsignal\dispBase\respBase{x_1}
-\newsignal\dispMass\respMass{x_2}
+\newsignal\dispBase\laplaceBase{x_1}
+\newsignal\dispMass\laplaceMass{x_2}
+\newvariable\velMass{\expandafter\dot\dispMass}
+\newvariable\velBase{\expandafter\dot\dispBase}
+\newvariable\accelMass{\expandafter\ddot\dispMass}
+\newvariable\accelBase{\expandafter\ddot\dispBase}
 
 \newvariable\massAbsorb{m_a}
 \newsignal\dispAbsorb\respAbsorb{x_a}
@@ -115,18 +119,25 @@
 \newvariable\stiffnessAbsorb{k_a}
 \newvariable\forceAbsorb{f_a}
 
+\newcommand\Block[1][999]{%
+  \ifcase #1 G_0\or G_1\or G_2\or G_3\or G_4\else G\fi
+}
+\newvariable\BlockController{K}
+\newvariable\freqHPfilter{\freq_c}
+
 \newvariable\dampingRel{c}
 \newvariable\dampingAbs{c_{\textrm{sky}}}
 \newvariable\stiffnessRel{k}
-\newvariable\forceIn{f}
+\newsignal\forceIn\laplaceForce{f}
 
 \newvariable\transmissibility{T}
 
-\newvariable\gainArbitrary{G_{(\cdot)}}
-\newvariable\gainDisp{G_d}
-\newvariable\gainVel{G_v}
-\newvariable\gainAcc{G_a}
-\newvariable\gainSky{G_s}
+\newvariable\gain[nom=Feedback gain]{g}
+\newvariable\gainArbitrary{\gain_{(\cdot)}}
+\newvariable\gainDisp{\gain_d}
+\newvariable\gainVel{\gain_v}
+\newvariable\gainAcc{\gain_a}
+\newvariable\gainSky{\gain_s}
 
 \newvariable\dampingratio[nom=Damping ratio]{\zeta}
 

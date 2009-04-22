@@ -94,7 +94,7 @@ First assume that there is no input force; taking the Laplace
 tranform and rearranging produced the transmissibility
 $\transmissibility$ of the system in the frequency domain:
 \begin{dmath}[compact,label=simple-isolation-freq]
-  \transmissibility\fn\freq = \frac{\respMass}{\respBase} = 
+  \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
   \frac{\ii\freq\dampingRel + \stiffnessRel}
   {-\massMass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
@@ -132,8 +132,8 @@ increasing the stiffness of the system. The one standout here is the `skyhook'
 damping term, whose influence can be better seen in the equation for
 transmissibility of the closed loop system. For this example, let displacement
 and acceleration gains equal zero, $\gainDisp=\gainAcc=0$, resulting in
-\begin{dmath}[compact]
-  \transmissibility\fn\freq = \frac{\respMass}{\respBase} = 
+\begin{dmath}[compact,label=skyhook]
+  \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
   \frac{\ii\freq\gp{\dampingRel+\gainVel} + \stiffnessRel}
     {-\massMass\freq^2 + \ii\freq\gp{\dampingRel+\gainVel+\gainSky} + \stiffnessRel}.
 \end{dmath}
@@ -197,7 +197,6 @@ micro-gravity environment and show that `PID' feedback is unsuitable due to
 instability at high (\ie, useful) control gains from quantisation and
 anti-aliasing side-effects. Rather, integral and double-integral feedback from
 an accelerometer give better results for them.
-
 
 \subsection{Sensing}
 

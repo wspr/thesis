@@ -30,7 +30,7 @@ as shown in the graph of magnet volume versus price in
 \figref{mag-price}.
 
 \begin{figure}
-  \psfragfig{\phdpath Rig/latex/mag-price}
+  \psfragfig{\phdpath Magnets/latex/mag-price}
   \caption{Magnet price versus magnet volume for rare earth magnets.
     Data obtained for cube magnets of magnetisation grade \acro{N42}.}
   \figlabel{mag-price}
@@ -545,8 +545,14 @@ The gain of the feedback control was increased until the system became close
 to instability. Frequency response measurements over this range of feedback
 gains are shown in \figref{cl-results}.
 
+\begin{figure}
+  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/cl-results}
+  \caption{Closed loop measurements.}
+  \figlabel{cl-results}
+\end{figure}
+
 To measure the velocity of the moving beam, the accelerometer measurement is
-integrated by the charge amplifier with a cut-on frequency was \SI{0.5}{Hz}. Because the
+integrated by the charge amplifier with a cut-on frequency of \SI{1}{Hz}. Because the
 accelerometers were now being used to measure velocity, the transmissibility
 curves shown below were calculated from the ratio of the velocity measurements
 instead.
@@ -554,22 +560,10 @@ instead.
 Due to the presence of higher-order dynamics in the structure, a low pass filter
 was used to reject signals above \SI{50}{Hz} \fixme{check!}.
 
-The appearance of a low frequency peak in \figref{cl-results} as the feedback
-gain is increased is explained by the presence of the high-pass filter incorporated
-in the accelerometer charge amplifier. This exact behaviour is shown
-by \textcite{brennan2007} for single degree of freedom structures with velocity
-feedback.
-
-\begin{figure}
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/cl-results}
-  \caption{Closed loop measurements.}
-  \figlabel{cl-results}
-\end{figure}
-
 The overall improvement to the vibration isolation can be shown by calculating
 the root-mean-square of the transmissibility over a certain frequency range.
 \begin{dmath}
-  \transmissibility_{\text{RMS}} = 
+  \transmissibility_{\textsc{rms}} = 
   \sqrt{\Sum{\transmissibility\fn{\freq}^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}
 The results become very noisy in \figref{cl-results} below
@@ -596,4 +590,101 @@ incorporates the effects of the amplifiers for both sensors and actuators;
 therefore, the absolute magnitude of this number is unimportant and is used
 purely to demonstrate the range of behaviours seen as the gain is increased
 until instability appears.
+
+\subsubsection{Analysis on the gain-induced resonance}
+
+The appearance of a low frequency peak in \figref{cl-results} as the feedback
+gain is increased is explained by the presence of the high-pass filter incorporated
+in the accelerometer charge amplifier. This behaviour is shown
+by \textcite{ananthaganeshan2001,brennan2007} for single degree of freedom structures 
+with velocity feedback. Here, the same type of analysis will be used to investigate
+the response of a linear two degree of freedom isolator system 
+(shown in \figref{vibration-base-feedback}) with integrated accelerometer
+measurements used for velocity feedback control.
+
+\begin{figure}
+  \asyfig{Systems/vibration-base-feedback}
+  \caption{Vibration isolation schematic with active feedback.}
+  \figlabel{vibration-base-feedback}
+\end{figure}
+
+In the time domain, the response of this linear system is given by
+\begin{dmath}
+\massMass \accelMass = 
+  \forceIn - \damping\gp{\velMass-\velBase} - \stiffness\gp{\dispMass-\dispBase}
+\end{dmath},
+which can be re-written in the Laplace domain as
+\begin{dmath}[label=simple-isolator-laplace]
+s^2 \laplaceMass \underbrace{\gp{\massMass+\damping/s+\stiffness/s^2}}_{\gp{\Block[2]}^{-1}} = 
+  \laplaceForce + s^2 \laplaceBase \underbrace{\gp{\damping/s+\stiffness/s^2}}_{\Block[1]}
+\end{dmath}.
+This is shown as a block diagram in \figref{simple-isolator-block}. If the
+control force is written as a function of the acceleration of the mass,
+$\laplaceForce=s^2\laplaceMass\BlockController$, the transmissibility of the system is
+\begin{dmath}[label=cl-generic]
+  \frac\laplaceMass\laplaceBase = \frac{\Block[1]\Block[2]}{1+\BlockController\Block[2]}
+\end{dmath}.
+
+\begin{figure}
+  \asyfig{Control/simple-isolator-block}
+  \caption{Block diagram of \eqref{simple-isolator-laplace} representing
+  the system shown in \figref{vibration-base-feedback}.}
+  \figlabel{simple-isolator-block}
+\end{figure}
+
+When the controller is some gain $\gain$ in series with an ideal integration of the accelerometer signal, 
+$\BlockController = \gain/s$, \eqref{cl-generic} simplifies to the skyhook damping expression
+shown in \secref{skyhook}. This result is plotted in \figref{cl-ideal} for equivalent values
+of stiffness and damping as the experimental setup.
+
+A more complex model for the controller block is required to account for the
+signal processing involved with amplifying and filtering the accelerometer
+signal to measure the velocity in reality. Assuming that the entire process
+between acceleration measurement and velocity output from the charge amplifier
+can be approximated as an ideal integrator in series with two high pass
+filters\footnote{One filter for the integration of the acceleration signal,
+another for the something something.} \parencite{brennan2007}, the controller
+block is defined as
+\begin{dmath}[label=cl-filter-controller]
+  \BlockController = \frac \gain s \gp{\frac{s}{s+\freqHPfilter}}^2
+\end{dmath},
+where $\gain$ is the feedback gain and $\freqHPfilter$ is the corner frequency of 
+the high pass filter in the charge amplifier.
+
+Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
+the final transfer function between the mass and base states,
+\begin{dmath}[label=cl-filter]
+  \frac\laplaceMass\laplaceBase = 
+    \frac{ \gp{\damping s+\stiffness} \gp{s+\freqHPfilter}^2 }
+         { 
+           \gp{ s+\freqHPfilter }^2
+           \gp{ \massMass s^2 + \damping s + \stiffness }
+           + \gain s^3
+         }
+\end{dmath}.
+This is plotted versus frequency in \figref{cl-filter}, where the resonance 
+induced by the high pass filter becomes apparent as the feedback gain is increased
+to 99\% of the maximum gain (which is the gain when the system becomes unstable).
+In order to calculate the maximum gain, $\BlockController\Block[2]$ was split into
+real and imaginary parts and evaluated to equal $-1$, where the system response
+becomes unbounded. In more detail, first the critical frequency was found as the
+frequency at which $\Imag{\BlockController\Block[2]}=0$; this frequency was then
+substituted into $\Real{\BlockController\Block[2]}=1$, which was solved for the 
+maximum gain.
+
+\begin{figure}
+  \begin{wide}
+  \begin{subfigure}
+    \psfragfig{\phdpath Simulations/Springs/fig/cl-ideal}
+    \caption{Ideal velocity signal.\figlabel{cl-ideal}}
+  \end{subfigure}
+  \begin{subfigure}
+    \psfragfig{\phdpath Simulations/Springs/fig/cl-filter}
+    \caption{Integrated accelerometer feedback with a double high pass filter.\figlabel{cl-filter}}
+  \end{subfigure}
+  \end{wide}
+  \caption{Closed loop simulation with gains $\{0, 5, 10, 20, 50, 99\}$ percent
+           of the maximum gain before instability in \figref{cl-filter}.}
+\end{figure}
+
 
