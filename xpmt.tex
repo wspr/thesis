@@ -13,14 +13,17 @@
   improvements gained from applying standard velocity feedback control.
 }
 
-This chapter covers the implementation details and results of the
-experimental apparatus.
+This chapter covers the implementation details, experiments performed,
+and results obtained from the experimental apparatus built for this
+project.
 
-\section{Magnets}
+\section{Design of the experimental apparatus}
 
-K\,\&\,J~Magnetics\note{\url{http://www.kjmagnetics.com/}}
-is an American supplier of surplus rare earth magnets in
-various geometrical shapes.
+\subsection{Magnets}
+
+\KJMagnetics \note{\url{http://www.kjmagnetics.com/}}
+is an American supplier of rare earth magnets, which are
+available in a wide variety of geometrical shapes.
 They offer a large range of sizes, \eg, from
 one-sixteenth inch cubes (100 for \textsc{us\$}6.00) to one inch
 cubes, (\textsc{us\$}14.85 each), and even larger.
@@ -32,7 +35,7 @@ as shown in the graph of magnet volume versus price in
 \begin{figure}
   \psfragfig{\phdpath Magnets/latex/mag-price}
   \caption{Magnet price versus magnet volume for rare earth magnets.
-    Data obtained for cube magnets of magnetisation grade \acro{N42}.}
+    Data obtained from \KJMagnetics\ for cube magnets of magnetisation grade \acro{N42}.}
   \figlabel{mag-price}
 \end{figure}
 
@@ -53,10 +56,34 @@ and material properties as shown in \tabref{magnet-prop}.
   \end{tabular}
 \end{table}
 
-\section{Actuators}
+Cylindrical magnets were chosen for their ease of integration
+into the construction of the rig; \eg, it is much easier to fix
+a cylindrical magnet into an object by boring a round hole as
+opposed to milling a square one. A cylindrical magnet with slightly
+greater diameter than height was chosen in order to match the
+force vs. distance characteristic with that of a cuboid magnet;
+it can be shown that the force between two inline magnets is the
+same for both cube shapes of a certain height and for cylinders
+with that same height and equal face area, such as shown in \figref{equal-area}.
+
+\begin{figure}
+  \asyfig{Magnets/equal-area}
+  \caption{A circle and square of equal area.}
+  \figlabel{equal-area}
+\end{figure}
+
+\subsection{Actuators}
 \seclabel{actuators}
 
-While electromagnetic actuators are usually designed in push-pull configurations,
+Actuators for the device were desired that could apply their forces in a
+noncontact manner; even better would be actuators that do not add stiffness or
+mass to the isolation platform, in order to highlight the dynamics of the
+magnetic support as much as possible.
+
+The obvious choice to satisfy this requirement was electromagnetics.
+\fixme{fill out some more}
+
+Electromagnetic actuators are usually designed in push-pull configurations,
 \textcite{nandi2009} demonstrate a single-sided design in which a bias current
 is used to keep the structure in permanently `sprung' position; relaxing the
 current is the equivalent of a repulsive force, while increasing the current
@@ -67,15 +94,20 @@ expenditure to remain in equilibrium.
 An alternative single-sided design that could be investigated is described
 here. Rather than a coil and iron setup, the floating element could be a
 permanent magnet; changing the direction of the current flowing in the coil
-would then produce an alternating force on the magnet.
+would then produce an alternating force on the magnet. \fixme{crossref and cite}
 
 The dual-coil electromagnetic arrangement described in \secref{dualcoil} was
 custom-built for the actuator for the experimental apparatus. I could add
 a schematic and some dimensions here but I don't know necessary that would be.
 
-\section{Sensors}
+\subsection{Sensors}
 
-There are four main choices for non-contact distance sensing.
+The requirements for the sensing equipment is similar to that
+of the actuators; noncontact spatial measurement is desired
+to remove any possibility of adding further dynamics to the system.
+
+There are four main choices for non-contact distance sensing,
+enumerated below. See \textcite{boehm1993} for a more detailed overview.
 \begin{description}
 \item[Ultra-sonic] 
     These sensors work by sending out modulated
@@ -103,13 +135,11 @@ There are four main choices for non-contact distance sensing.
     speed; also, they do not suffer from electrical noise.
 \end{description}
 
-See \textcite{boehm1993} for a more detailed overview.
-
-The sensor purchased for the experimental apparatus is the Wenglor~05\,MGV\,80
+The sensor purchased for the experimental apparatus was a Wenglor~05\,MGV\,80
 opto-electronic sensor, which uses a laser to measure distance over a
-range of \SI{10}{mm}. This sensor was purchased from a local supplier at a reduced
-price. It was selected for its convenient availability, flexibility of application,
-and good performance characteristics. Relevant operating properties are listed in \tabref{wenglor}.
+range of \SI{10}{mm}. It was selected for its convenient availability,
+flexibility of application, and good performance characteristics.
+Relevant operating properties are listed in \tabref{wenglor}.
 
 \begin{table}
   \caption{Some properties of the Wenglor~05\,MGV\,80 laser distance sensor.}
@@ -128,7 +158,7 @@ and good performance characteristics. Relevant operating properties are listed i
   \end{tabular}
 \end{table}
 
-\section{Design of the experimental apparatus}
+\subsection{Overview of the experimental rig}
 
 A schematic of the experimental apparatus that was designed and built as part of
 this project is shown in \figref{rig}. Physical parameters of the design
@@ -154,9 +184,9 @@ are shown in \tabref{rigprop}.
              Beam thickness &    $\ThicknessBeam$ &     \SI{2}{mm} \\
 \midrule
       Magnet support height & $\HeightRigMagnets$ &    \SI{78.5}{mm} \\
-   Magnet support lever arm & $\LengthRigMagnets$ &   \SI{310}{mm} \\
-        Magnet support mass &   $\MassRigMagnets$ &    \SI{87}{g} \\
-             Magnets height &        $\HeightMag$ &    \SI{10}{mm} \\
+   Magnet support lever arm & $\LengthRigMagnets$ &   \SI{310}{mm}   \\
+        Magnet support mass &   $\MassRigMagnets$ &    \SI{87}{g}    \\
+             Magnets height &        $\HeightMag$ &    \SI{10}{mm}   \\
            Magnets diameter &          $\DiamMag$ &    \SI{12.7}{mm} \\
 \bottomrule
 \end{tabular}
@@ -187,7 +217,7 @@ constrained in the vertical translational direction alone. The equation of motio
 is re-written in terms of vertical displacement, $\DispMag$, arising from the
 small angle approximation of $\AngleMag$. 
 That is, 
-\begin{dmath}
+\begin{dmath}[compact]
 \AngleMag\approx\Sin{\AngleMag}=\DispMag/\LengthRigMagnets
 \end{dmath}.
 The moment on the beam due to the magnet force is 
@@ -215,7 +245,7 @@ midpoint in the $y$ direction is
     \BlockInertiaMass 
     \gp{ 4\BlockInertiaLength^2 + \BlockInertiaHeight^2 } 
     + \BlockInertiaMass \BlockInertiaOffset^2
-\end{dmath}.
+\end{dmath}. \fixme{cite}
 
 \begin{figure}
   \begin{subfigure}
@@ -268,7 +298,7 @@ the experimental rig is given by
   \InertiaMomentTotal = \InertiaMomentBeam + \InertiaMomentMagnets
 \end{dmath}.
 The moment of inertia of the magnets and their supports,
-$\InertiaMomentMagnets$, is assumed to contribute to total moment of inertia
+$\InertiaMomentMagnets$, is assumed to contribute to the total moment of inertia
 as a point mass, since they act at a large distance from the axis of
 revolution over a small and little-changing range of displacements from the
 axis.
@@ -277,7 +307,7 @@ axis.
 \end{dmath}
 
 From the numbers tabulated in \tabref{rigprop}, the total moment of inertia
-of the motional beam is calculated to be
+of the beam is calculated to be
 \begin{dmath}[label=InertiaMomentTotal]
   \InertiaMomentTotal = \SI{0.0156}{kg.m^2}
 \end{dmath}.
@@ -294,7 +324,7 @@ this equivalent mass is
 This equivalent mass figure will be used later \fixme{crossref} to estimate
 the equivalent stiffness of the system in different configurations.
 
-\subsection{Coil design}
+\subsection{Coil geometry}
 \seclabel{coil-design}
 
 The geometry of the coil was designed from theory developed in \secref{emforces}.
@@ -350,7 +380,9 @@ the minimum horizontal tolerance for a vertical displacement $z=\SI{1}{mm}$ is
 \SI{0.26}{mm} and for $z=\SI{2}{mm}$ is \SI{0.53}{mm}. 
 (The relationship between $x$ and $z$ being fairly linear for most values
 of $l$ and $h$ with small ranges of $z$.)
-This tolerance was judged to be small enough to wrap a coil around.
+This tolerance was judged to be small enough to allow a surrounding coil
+without having a significantly diminished force characteristic from the air
+gap required to avoid contact.
 
 \section{Experimental results}
 
@@ -418,9 +450,10 @@ the closed circuit configuration, the coil adds damping via induced eddy
 currents from the moving magnet. As an open circuit, the coil has no effect on
 the dynamics of the system.
 
-Open loop measurements without the coil connected are shown in \figref{ol-undamped-frflin}.
-and measurements taken with the coil (\ie, with added damping) shown in \figref{ol-damped-frflin}.
-For both of these results, the transmissibility, \transmissibility, shown is the transfer function
+Open loop measurements without the coil connected are shown in
+\figref{ol-undamped-frflin}. and measurements taken with the coil (\ie, with
+added damping) shown in \figref{ol-damped-frflin}. For both of these results,
+the transmissibility, \transmissibility, shown is the transfer function
 between the accelerometer measurements of the base and magnet-supported beam:
 \note{Calculated with \Matlab's \texttt{tfestimate} command.}
 \begin{dmath}[label=Tbm]
@@ -449,8 +482,9 @@ From the measurements shown in the previous section, curve fitting was
 used to extract information from the raw data.
 
 The model used to fit the data to is the simple system of vibration isolation,
-\eqref{simple-isolation-freq}
-in terms of the resonant frequency, $\natfreq=\sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio=\damping/(2\sqrt{\stiffness\mass})$. The resulting expression is
+\eqref{simple-isolation-freq} in terms of the resonant frequency, $\natfreq =
+\sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio = \damping /
+(2\sqrt{\stiffness\mass})$. The resulting expression is
 \begin{dmath}[label=fit-model]
   \transmissibility\fn{\freq} = \frac
     {2\ii\dampingratio\freq\natfreq + \natfreq^2}
@@ -458,15 +492,14 @@ in terms of the resonant frequency, $\natfreq=\sqrt{\stiffness/\mass}$, and damp
 \end{dmath}
 where $\freq$ is the frequency at which to calculate the transmissibility
 $\transmissibility$. The data is fit \note{Using \Matlab's
-\texttt{fminsearch}.} to \eqref{fit-model} between
-$\half\natfreq\le\freq\le2\natfreq$, returning good estimates of the resonance
-frequency and damping ratio of the system corresponding to each measurement
-taken.
-Plots of the curve fit models shown against the measured data are shown in
-\figref{ol-undamped-frflin-fit,ol-damped-frflin-fit}. Due to the influence
-of higher-order dynamics in the system, the model starts to deviate from the
-data at higher frequencies. The resonance frequencies and damping ratios
-are shown in \figref{ol-results}.
+\code{fminsearch}.} to \eqref{fit-model} between $\half\natfreq \le \freq
+\le 2\natfreq$, returning good estimates of the resonance frequency and
+damping ratio of the system corresponding to each measurement taken. Plots of
+the curve fit models shown against the measured data are shown in
+\figref{ol-undamped-frflin-fit,ol-damped-frflin-fit}. Due to the influence of
+higher-order dynamics in the system, the model starts to deviate from the data
+at higher frequencies. The resonance frequencies and damping ratios are shown
+in \figref{ol-results}.
 
 \begin{figure}[p]
   \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frflin-fit}
@@ -509,20 +542,22 @@ case; this is due to the greater displacements experienced by the beam moving
 the magnets through greater ranges of stiffness variation. When the
 transmissibility is calculated as the transfer function between the input and
 output signals, the system is assumed to be linear and nonlinearities are
-rejected by the ratio of the cross-spectrum and power-spectrum terms in \eqref{Tbm}. 
-A different result can be shown by calculating the transmissibility instead with a ratio of the
-individual power spectra of the base and magnet:
+rejected by the ratio of the cross-spectrum and power-spectrum terms in
+\eqref{Tbm}. A different result can be shown by calculating the
+transmissibility instead with a ratio of the individual power spectra of the
+base and magnet:
 \begin{dmath}[label=frfnl]
   \transmissibility\fn{\freq} = \sqrt{\powerSpectMagnet/\powerSpectBase},
 \end{dmath}
-where $\powerSpectMagnet$ is the power spectra of the accelerometer measurements at the
-moving magnet and $\powerSpectMagnet$ is the power spectra of the accelerometer measurements
-of the base. In this case, any nonlinearities in the signals are retained in the final result.
+where $\powerSpectMagnet$ is the power spectra of the accelerometer
+measurements at the moving magnet and $\powerSpectMagnet$ is the power spectra
+of the accelerometer measurements of the base. In this case, any
+nonlinearities in the signals are retained in the final result.
 
 The transmissibility calculated with this method is shown in
 \figref{ol-undamped-frfnl}. In this case, the nonlinearities present in the
-system are more prominent, and a clear peak is shown at close to twice the `natural'
-resonance frequency.
+system are more prominent, and a clear peak is shown at close to twice the
+`natural' resonance frequency.
 
 \begin{figure}
   \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frfnl}
@@ -552,13 +587,13 @@ gains are shown in \figref{cl-results}.
 \end{figure}
 
 To measure the velocity of the moving beam, the accelerometer measurement is
-integrated by the charge amplifier with a cut-on frequency of \SI{1}{Hz}. Because the
-accelerometers were now being used to measure velocity, the transmissibility
-curves shown below were calculated from the ratio of the velocity measurements
-instead.
+integrated by the charge amplifier with a cut-on frequency of \SI{1}{Hz}.
+Because the accelerometers were now being used to measure velocity, the
+transmissibility curves shown below were calculated from the ratio of the
+velocity measurements instead.
 
-Due to the presence of higher-order dynamics in the structure, a low pass filter
-was used to reject signals above \SI{50}{Hz} \fixme{check!}.
+Due to the presence of higher-order dynamics in the structure, a low pass
+filter was used to reject signals above \SI{50}{Hz} \fixme{check!}.
 
 The overall improvement to the vibration isolation can be shown by calculating
 the root-mean-square of the transmissibility over a certain frequency range.
@@ -594,13 +629,13 @@ until instability appears.
 \subsubsection{Analysis on the gain-induced resonance}
 
 The appearance of a low frequency peak in \figref{cl-results} as the feedback
-gain is increased is explained by the presence of the high-pass filter incorporated
-in the accelerometer charge amplifier. This behaviour is shown
-by \textcite{ananthaganeshan2001,brennan2007} for single degree of freedom structures 
-with velocity feedback. Here, the same type of analysis will be used to investigate
-the response of a linear two degree of freedom isolator system 
-(shown in \figref{vibration-base-feedback}) with integrated accelerometer
-measurements used for velocity feedback control.
+gain is increased is explained by the presence of the high-pass filter
+incorporated in the accelerometer charge amplifier. This behaviour is shown by
+\textcite{ananthaganeshan2001,brennan2007} for single degree of freedom
+structures with velocity feedback. Here, the same type of analysis will be
+used to investigate the response of a linear two degree of freedom isolator
+system (shown in \figref{vibration-base-feedback}) with integrated
+accelerometer measurements used for velocity feedback control.
 
 \begin{figure}
   \asyfig{Systems/vibration-base-feedback}
@@ -632,10 +667,11 @@ $\laplaceForce=s^2\laplaceMass\BlockController$, the transmissibility of the sys
   \figlabel{simple-isolator-block}
 \end{figure}
 
-When the controller is some gain $\gain$ in series with an ideal integration of the accelerometer signal, 
-$\BlockController = \gain/s$, \eqref{cl-generic} simplifies to the skyhook damping expression
-shown in \secref{skyhook}. This result is plotted in \figref{cl-ideal} for equivalent values
-of stiffness and damping as the experimental setup.
+When the controller is some gain $\gain$ in series with an ideal integration
+of the accelerometer signal, $\BlockController = \gain/s$, \eqref{cl-generic}
+simplifies to the skyhook damping expression shown in \secref{skyhook}. This
+result is plotted in \figref{cl-ideal} for equivalent values of stiffness and
+damping as the experimental setup.
 
 A more complex model for the controller block is required to account for the
 signal processing involved with amplifying and filtering the accelerometer
@@ -662,15 +698,15 @@ the final transfer function between the mass and base states,
            + \gain s^3
          }
 \end{dmath}.
-This is plotted versus frequency in \figref{cl-filter}, where the resonance 
-induced by the high pass filter becomes apparent as the feedback gain is increased
-to 99\% of the maximum gain (which is the gain when the system becomes unstable).
-In order to calculate the maximum gain, $\BlockController\Block[2]$ was split into
-real and imaginary parts and evaluated to equal $-1$, where the system response
-becomes unbounded. In more detail, first the critical frequency was found as the
-frequency at which $\Imag{\BlockController\Block[2]}=0$; this frequency was then
-substituted into $\Real{\BlockController\Block[2]}=1$, which was solved for the 
-maximum gain.
+This is plotted versus frequency in \figref{cl-filter}, where the resonance
+induced by the high pass filter becomes apparent as the feedback gain is
+increased to 99\% of the maximum gain (which is the gain when the system
+becomes unstable). In order to calculate the maximum gain,
+$\BlockController\Block[2]$ was split into real and imaginary parts and
+evaluated to equal $-1$, where the system response becomes unbounded. In more
+detail, first the critical frequency was found as the frequency at which
+$\Imag{\BlockController\Block[2]}=0$; this frequency was then substituted into
+$\Real{\BlockController\Block[2]}=1$, which was solved for the maximum gain.
 
 \begin{figure}
   \begin{wide}
