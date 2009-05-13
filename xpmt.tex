@@ -113,6 +113,10 @@ The dual-coil electromagnetic arrangement described in \secref{dualcoil} was
 custom-built for the actuator for the experimental apparatus. I could add
 a schematic and some dimensions here but I don't know necessary that would be.
 
+A secondary requirement for the electromagnetic actuator was to keep it inline
+with the load-bearing magnets. This better suits a future application of this
+arrangement for an apparatus built to support multiple degrees of freedom.
+
 \subsection{Sensors}
 
 The requirements for the sensing equipment is similar to that
@@ -179,7 +183,9 @@ are shown in \tabref{rigprop}.
 
 \begin{figure}
   \asyfig{Rig/rig-schematic}
-  \caption{Schematic of the experimental rig.}
+  \caption{Schematic of the experimental rig. Position shown is the marginally
+  stable configuration with equal gap between the lower and upper pairs
+  of magnets.}
   \figlabel{rig}
 \end{figure}
 
@@ -190,17 +196,24 @@ are shown in \tabref{rigprop}.
 \toprule
                    Property &              Symbol &         Value \\
 \midrule
-                  Beam mass &         $\MassBeam$ &     \SI{0}{kg} \\
-                Beam length &       $\LengthBeam$ &   \SI{320}{mm} \\
-                Beam height &       $\HeightBeam$ &    \SI{25}{mm} \\
-                 Beam width &        $\WidthBeam$ &    \SI{40}{mm} \\
-             Beam thickness &    $\ThicknessBeam$ &     \SI{2}{mm} \\
+                  Beam mass &         $\MassBeam$ & \SI{  0}{kg} \\
+                Beam length &       $\LengthBeam$ & \SI{320}{mm} \\
+                Beam height &       $\HeightBeam$ & \SI{ 25}{mm} \\
+                 Beam width &        $\WidthBeam$ & \SI{ 40}{mm} \\
+             Beam thickness &    $\ThicknessBeam$ & \SI{  2}{mm} \\
+       Beam vertical offset &       $\OriginBeam$ & \SI{ 82}{mm} \\
+\midrule                                            
+      Magnet support height & $\HeightRigMagnets$ & \SI{ 105   }{mm} \\
+   Magnet support lever arm & $\LengthRigMagnets$ & \SI{ 300   }{mm} \\
+        Magnet support mass &   $\MassRigMagnets$ & \SI{  87   }{g}  \\
+             Magnets height &        $\HeightMag$ & \SI{   9.5 }{mm} \\
+           Magnets diameter &          $\DiamMag$ & \SI{  12.7 }{mm} \\
+  Lower fixed magnet origin &     $\OriginMagLow$ & \SI{  44   }{mm} \\
+  Upper fixed magnet origin &    $\OriginMagHigh$ & \SI{  30   }{mm} plus offset \\
 \midrule
-      Magnet support height & $\HeightRigMagnets$ &    \SI{78.5}{mm} \\
-   Magnet support lever arm & $\LengthRigMagnets$ &   \SI{310}{mm}   \\
-        Magnet support mass &   $\MassRigMagnets$ &    \SI{87}{g}    \\
-             Magnets height &        $\HeightMag$ &    \SI{10}{mm}   \\
-           Magnets diameter &          $\DiamMag$ &    \SI{12.7}{mm} \\
+  Sensor height & $\HeightSensor$ & \SI{85}{mm} \\
+  Sensor horizontal offset & $\LengthSensor$ & \SI{252}{mm} \\
+  Sensor displacement measurement & $\DisplSensor$ & \SI{43}{mm}--\SI{53}{mm} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -213,6 +226,11 @@ of moving magnets to motion in a single degree of freedom. After taking a small
 approximation, this motion can be assumed to be largely linear in the vertical
 direction. This assumption is verified in \secref{coil-design}.
 
+The beam itself was chosen as a rectangular section in order to minimise
+weight and maximum stiffness; the beam is assumed to be a rigid body for the
+purposes of these experiments (especially at the low vibrational frequencies 
+under investigation).
+
 Having established that the rotational system imposes a linear constraint on
 the system under small enough displacements, it is better to examine the
 response of the system as if it were a linear system. This involves writing
@@ -223,7 +241,11 @@ The rotational equation of motion for the beam--magnet system, neglecting
 damping, is given by
 \begin{dmath}[label=rig-moment-dynamics]
   \InertiaMomentTotal \ddot\AngleMag - \MomentMag = 0
-\end{dmath}.
+\end{dmath},
+where $\InertiaMomentTotal$ is the total moment of inertia of the motional
+system, $\ddot\AngleMag$ is the angular acceleration, and $\MomentMag$ is the
+moment applied due to the magnetic forces.
+
 But the system has been designed such that the rotation of the system is
 small and the motion at the magnets-end of the beam can be considered to be 
 constrained in the vertical translational direction alone. The equation of motion
@@ -277,7 +299,9 @@ midpoint in the $y$ direction is
 
 The moment of inertia for a square-section beam, $\InertiaMomentBeam$, can be
 calculated by applying \eqref{InertiaMoment} to the four sides of the beam and
-summing the results.
+summing the results.\footnote{Or by applying \eqref{InertiaMoment} to the
+outer volume of the beam and subtracting the moment of inertia of the empty
+space within it. Less steps but harder to describe succinctly.}
 \begin{dgroup*}
 \begin{dmath}
   \InertiaMomentBeam = \InertiaMoment_{\text{top}} 
@@ -327,12 +351,13 @@ of the beam is calculated to be
 
 \subsubsection{Equivalent mass calculation}
 
-This produces the `equivalent mass' of the system
-  $\EquivMassRig\equiv\inlinefrac{\InertiaMomentTotal}{\LengthRigMagnets^2}$ 
-as if the arrangement of magnets was self-contained. From \eqref{InertiaMomentTotal},
-this equivalent mass is 
-\begin{dmath}[label=EquivMassRig]
-  \EquivMassRig = \SI{0.173}{kg}
+From the moment of inertia of the beam, the `equivalent mass' $\EquivMassRig$
+of the system can be calculated, which is that of the system as if the
+arrangement of magnets had its mass concentrated at a single point:
+\begin{dmath}[label=EquivMassRig,compact]
+  \EquivMassRig
+    \equiv \inlinefrac{\InertiaMomentTotal}{\LengthRigMagnets^2}
+    = \SI{0.173}{kg}
 \end{dmath}.
 This equivalent mass figure will be used later \fixme{crossref} to estimate
 the equivalent stiffness of the system in different configurations.
@@ -402,9 +427,9 @@ gap required to avoid contact.
 A number of measurements were performed using the experimental apparatus;
 in the sections following, data recorded is presented for 
 \begin{enumerate}
-	\item Magnet gap versus beam displacement;
-	\item Open loop frequency responses for a range of magnet gaps; and,
-	\item Velocity feedback in a single configuration.
+\item Magnet gap versus beam displacement;
+\item Open loop frequency responses for a range of magnet gaps; and,
+\item Velocity feedback in a single configuration.
 \end{enumerate}
 
 \subsection{Displacement calibration}
@@ -412,17 +437,27 @@ in the sections following, data recorded is presented for
 The upper magnet's position was varied until the limit of stability was
 reached. The lower fixed magnet was kept fixed, which means that the position
 of \qzs\ was changing; with counter-threaded mounts for the upper and lower magnets,
-they could be adjusted in parallel to achieve a fixed \qzs\ location.
+they could be adjusted in parallel to achieve a fixed \qzs\ location. 
 
 As the upper magnet placement was lowered, the rest position of the beam moved
 closer to the \qzs\ position (as more force was supported by the upper magnet).
-This relationship is shown in \figref{turns-qzs}. From the geometry of the rig,
+This relationship is shown in \figref{turns-qzs}.
+The normalised magnet gap is used in the following sections to
+represent the varied configuration of the spring in the experiments.
+From the geometry of the rig,
 the position of the upper magnet was used to calculate the normalised magnet
-gap between the magnets at \qzs; this parameter is used here and below to
-represent the varied configuration of the spring.
+gap between the magnets at \qzs:
+\begin{dmath}
+  \OriginMagGap =
+    \half\gp{\RigHeight-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}
+    +\HeightMag+\HeightBuffer
+\end{dmath},
+where geometrical properties are described in \tabref{rigprop} and 
+$\HeightBuffer=\SI{2.5}{mm}$ is a little extra height to account for extra
+space taken up by the beam shell thickness and the shell of the magnet mount.
 
 \begin{figure}
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/turns-qzs}
+  \psfragfig{\phdpath XPMT/latex/turns-qzs}
   \caption{Rest position of the system as the magnet position varies.}
   \figlabel{turns-qzs}
 \end{figure}
@@ -432,15 +467,15 @@ represent the varied configuration of the spring.
 As the position of the upper magnet is varied, the amount of negative
 stiffness added to the system changes. This predominantly affects the rest
 position and the resonance frequency, along with with small changes in damping.
-
 Frequency response measurements were taken at a number of discrete locations
-to observe the changes in dynamics as the rest position of the system approached
-the \qzs\ position.
+of the upper fixed magnet to observe the changes in dynamics as the rest 
+position of the system approached the \qzs\ position.
 
 Due to the low damping and low resonance frequency of the system, very long
 sample times were required to achieve results with enough frequency resolution
-and sufficient coherence to characterise the response. The spectrum analysis
-parameters are shown in \tabref{rig-ol-spect}.
+and sufficient coherence to characterise the response. The parameters used to
+perform the spectral analysis for each measurement are shown in
+\tabref{rig-ol-spect}.
 
 \begin{table}
   \begin{tabular}{lc}
@@ -470,18 +505,18 @@ the transmissibility, \transmissibility, shown is the transfer function
 between the accelerometer measurements of the base and magnet-supported beam:
 \note{Calculated with \Matlab's \texttt{tfestimate} command.}
 \begin{dmath}[label=Tbm]
-	\transmissibility = \frac{\crossSpectMagnetBase}{\powerSpectBase}
+  \transmissibility = \frac{\crossSpectMagnetBase}{\powerSpectBase}
 \end{dmath}.
 
 \begin{figure}[p]
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frflin}
+  \psfragfig{\phdpath XPMT/latex/ol-undamped-frflin}
   \caption{Open loop measurements with the electromagnetic coil connected in
            an open circuit; no additional damping is added to the system.}
   \figlabel{ol-undamped-frflin}
 \end{figure}
 
 \begin{figure}[p]
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-damped-frflin}
+  \psfragfig{\phdpath XPMT/latex/ol-damped-frflin}
   \caption{Open loop measurements, with the electromagnetic coil connected
            in a closed circuit. The coil adds damping to the system, which can
            be seen by the reduction in height of the resonant peaks in comparison 
@@ -491,10 +526,11 @@ between the accelerometer measurements of the base and magnet-supported beam:
 
 \subsection{Analysis of the open loop data}
 
-From the measurements shown in the previous section, curve fitting was
-used to extract information from the raw data.
+From the measurements shown in the previous section, data fitting of the
+frequency response functions was used to extract a linear model of the system
+in each configuration.
 
-The model used to fit the data to is the simple system of vibration isolation,
+The model used to fit the data is the simple system of vibration isolation,
 \eqref{simple-isolation-freq} in terms of the resonant frequency, $\natfreq =
 \sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio = \damping /
 (2\sqrt{\stiffness\mass})$. The resulting expression is
@@ -515,13 +551,13 @@ at higher frequencies. The resonance frequencies and damping ratios are shown
 in \figref{ol-results}.
 
 \begin{figure}[p]
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frflin-fit}
+  \psfragfig{\phdpath XPMT/latex/ol-undamped-frflin-fit}
   \caption{Curve fit model of \figref{ol-undamped-frflin}. Grey lines show the original data.}
   \figlabel{ol-undamped-frflin-fit}
 \end{figure}
 
 \begin{figure}[p]
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-damped-frflin-fit}
+  \psfragfig{\phdpath XPMT/latex/ol-damped-frflin-fit}
   \caption{Curve fit model of \figref{ol-damped-frflin}.  Grey lines show the original data.}
   \figlabel{ol-damped-frflin-fit}
 \end{figure}
@@ -529,11 +565,11 @@ in \figref{ol-results}.
 \begin{figure}
   \begin{wide}
   \begin{subfigure}
-    \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-reson}
+    \psfragfig{\phdpath XPMT/latex/ol-reson}
     \caption{Model-derived resonant frequencies\figlabel{ol-reson}}
   \end{subfigure}
   \begin{subfigure}
-    \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-dampi}
+    \psfragfig{\phdpath XPMT/latex/ol-dampi}
     \caption{Model-derived damping ratio\figlabel{ol-dampi}}
   \end{subfigure}
   \end{wide}
@@ -573,7 +609,7 @@ system are more prominent, and a clear peak is shown at close to twice the
 `natural' resonance frequency.
 
 \begin{figure}
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/ol-undamped-frfnl}
+  \psfragfig{\phdpath XPMT/latex/ol-undamped-frfnl}
   \caption{Open loop measurements without the coil connected; the transmissibility
   is calculated with \eqref{frfnl}. Black markers show resonant frequencies and
   the points at twice each resonant frequency, indicating the higher-order dynamics.}
@@ -594,7 +630,7 @@ to instability. Frequency response measurements over this range of feedback
 gains are shown in \figref{cl-results}.
 
 \begin{figure}
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/cl-results}
+  \psfragfig{\phdpath XPMT/latex/cl-results}
   \caption{Closed loop measurements.}
   \figlabel{cl-results}
 \end{figure}
@@ -626,7 +662,7 @@ resonance appearing in the lower frequencies of \figref{cl-results} causes the
 overall transmissibility reduction to have a local minimum.
 
 \begin{figure}
-  \psfragfig{\phdpath Experiments/Zero_Stiffness/latex/cl-reduction}
+  \psfragfig{\phdpath XPMT/latex/cl-reduction}
   \caption{Reduction in overall transmissiblity between \SI{1}{Hz} and \SI{11}{Hz}.}
   \figlabel{cl-reduction}
 \end{figure}
@@ -692,8 +728,9 @@ signal to measure the velocity in reality. Assuming that the entire process
 between acceleration measurement and velocity output from the charge amplifier
 can be approximated as an ideal integrator in series with two high pass
 filters\footnote{One filter for the integration of the acceleration signal,
-another for the something something.} \parencite{brennan2007}, the controller
-block is defined as
+another for the conditioning electronics in the amplifier; assume for
+simplicity that they have the same cut-on frequency.} \parencite{brennan2007},
+the controller block is defined as
 \begin{dmath}[label=cl-filter-controller]
   \BlockController = \frac \gain s \gp{\frac{s}{s+\freqHPfilter}}^2
 \end{dmath},
@@ -706,9 +743,9 @@ the final transfer function between the mass and base states,
   \frac\laplaceMass\laplaceBase = 
     \frac{ \gp{\damping s+\stiffness} \gp{s+\freqHPfilter}^2 }
          { 
-           \gp{ s+\freqHPfilter }^2
+           \gain s^3 +
            \gp{ \massMass s^2 + \damping s + \stiffness }
-           + \gain s^3
+           \gp{ s+\freqHPfilter }^2
          }
 \end{dmath}.
 This is plotted versus frequency in \figref{cl-filter}, where the resonance
@@ -736,4 +773,12 @@ $\Real{\BlockController\Block[2]}=1$, which was solved for the maximum gain.
            of the maximum gain before instability in \figref{cl-filter}.}
 \end{figure}
 
+Comparing \figref{cl-filter} with \figref{cl-results} shows a clear similarity.
+The corner frequency of the high pass filter at \SI{1}{Hz} in the charge
+amplifier to measure velocity is an impediment to the vibration isolation
+properties of the feedback-controlled system. This potential drawback could
+be mitigated with a different way to estimate the velocity of the isolated
+beam; simply a higher-precision charge amplifier would probably be acceptable.
+
+\fixme{Would doing the integration in the computer help?}
 

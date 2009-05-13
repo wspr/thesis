@@ -23,9 +23,10 @@
 
 \newcommand\inlinefrac[2]{#1/#2}
 
+\def \groupstrut {\vphantom{y^2}}
 \newcommand\group[1]{%
   \left[
-    \ifcase\mathstyle\vphantom{y}\fi
+    \ifcase\mathstyle\groupstrut\or\groupstrut\fi
     #1
   \right]
 }
@@ -374,7 +375,8 @@
 % RIG
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand\VariableBeam[1]{#1_b}
+\newcommand\VariableBeam      [1]{#1_b}
+\newcommand\VariableSensor    [1]{#1_s}
 \newcommand\VariableRigMagnets[1]{#1_m}
 
 \newvariable\InertiaMoment{I}
@@ -395,9 +397,19 @@
 \newvariable\WidthBeam{\VariableBeam w}
 \newvariable\ThicknessBeam{\VariableBeam t} 
 
+\newvariable\OriginBeam{\VariableBeam o}
+\newvariable\OriginMagLow{ o_m }
+\newvariable\OriginMagHigh{ o_n }
+\newvariable\OriginMagGap{ x_g }
+
 \newvariable\MassRigMagnets{\VariableRigMagnets m}
 \newvariable\LengthRigMagnets{\VariableRigMagnets L}
 \newvariable\HeightRigMagnets{\VariableRigMagnets h}
+\newvariable\HeightBuffer{\mu}
+
+\newvariable\LengthSensor{\VariableSensor L}
+\newvariable\HeightSensor{\VariableSensor h}
+\newvariable\DisplSensor {\VariableSensor x}
 
 \newvariable\DiamMag{d}
 \newvariable\HeightMag{h}
