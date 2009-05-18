@@ -19,18 +19,84 @@ project.
 
 \section{Design of the experimental apparatus}
 
+\subsection{Overview of the experimental rig}
+
+A schematic of the experimental apparatus that was designed and built as part
+of this project is shown in \figref{rig}. Physical parameters of the design
+are shown in \tabref{rigprop}. The experimental rig was built to serve as a
+platform for investigating the dynamics of a simple system supported by
+magnets with varying stiffnesses; specifically, for instantiating the ideas
+behind the \qzs\ arrangement analysed in detail in \secref{qzs}.
+
+\begin{figure}
+  \asyfig{Rig/rig-schematic}
+  \caption{Schematic of the experimental rig. Position shown is the marginally
+  stable configuration with equal gap between the lower and upper pairs
+  of magnets.}
+  \figlabel{rig}
+\end{figure}
+
+
+\begin{table}
+\caption{Physical properties of the experimental rig.}
+\tablabel{rigprop}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+                   Property &              Symbol &         Value \\
+\midrule
+                  Beam mass &         $\MassBeam$ & \SI{  0}{kg} \\
+                Beam length &       $\LengthBeam$ & \SI{320}{mm} \\
+                Beam height &       $\HeightBeam$ & \SI{ 25}{mm} \\
+                 Beam width &        $\WidthBeam$ & \SI{ 40}{mm} \\
+             Beam thickness &    $\ThicknessBeam$ & \SI{  2}{mm} \\
+       Beam vertical offset &       $\OriginBeam$ & \SI{ 82}{mm} \\
+\midrule                                            
+      Magnet support height & $\HeightRigMagnets$ & \SI{ 105   }{mm} \\
+   Magnet support lever arm & $\LengthRigMagnets$ & \SI{ 300   }{mm} \\
+        Magnet support mass &   $\MassRigMagnets$ & \SI{  87   }{g}  \\
+             Magnets height &        $\HeightMag$ & \SI{   9.5 }{mm} \\
+           Magnets diameter &          $\DiamMag$ & \SI{  12.7 }{mm} \\
+  Lower fixed magnet origin &     $\OriginMagLow$ & \SI{  44   }{mm} \\
+  Upper fixed magnet origin &    $\OriginMagHigh$ & \SI{  30   }{mm} plus offset \\
+\midrule
+  Sensor height & $\HeightSensor$ & \SI{85}{mm} \\
+  Sensor horizontal offset & $\LengthSensor$ & \SI{252}{mm} \\
+  Sensor displacement measurement & $\DisplSensor$ & \SI{43}{mm}--\SI{53}{mm} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The rig therefore consists of an arrangement of magnets, of which two are
+fixed to the frame; the floating magnets are supported by these of which one
+is situated below to apply a repulsive force (positive stiffness) and the
+other is situated above to apply an attractive force (negative stiffness).
+The physical location of the fixed magnets may be moved in order to vary the
+respective amounts of positive and negative stiffness.
+
+The magnet system is designed to look at dynamics in the vertical displacement
+direction; having stability in this direction implies instability in the
+horizontal direction (as discussed in \secref{earnshaw}). In order to remain
+stable, the magnets require a physical constraint, which role is performed by
+placing the floating magnets at the end of a long pinned rigid beam. Small
+rotations of this beam can be assumed to correspond to largely vertical
+displacements of the end magnets.
+
+Having a physical constraint on the motion of the floating magnets compromises
+the non-contact idea of using magnets for vibration isolation. This
+experimental rig is only design to analyse the behaviour of the system in
+terms of vertical translational disturbances. For a completely non-contact
+system, a control system with electromagnets may be used to apply the
+horizontal constraint (also see \secref{coupling}).
+
 \subsection{Magnets}
 
-\KJMagnetics \note{\url{http://www.kjmagnetics.com/}}
-is an American supplier of rare earth magnets, which are
-available in a wide variety of geometrical shapes.
-They offer a large range of sizes, \eg, from
-one-sixteenth inch cubes (100 for \textsc{us\$}6.00) to one inch
-cubes, (\textsc{us\$}14.85 each), and even larger.
-\note{Prices correct as of April 2009.} Price has an
-approximately linear relationship with magnet volume,
-as shown in the graph of magnet volume versus price in
-\figref{mag-price}.
+\KJMagnetics \note{\url{http://www.kjmagnetics.com/}} is an American supplier
+of rare earth magnets, which are available in a wide variety of geometrical
+shapes. They offer a large range of sizes, \eg, from one-sixteenth inch cubes
+(100 for \textsc{us\$}6.00) to one inch cubes, (\textsc{us\$}14.85 each), and
+even larger. \note{Prices correct as of April 2009.} Price has an
+approximately linear relationship with magnet volume, as shown in the graph of
+magnet volume versus price in \figref{mag-price}.
 
 \begin{figure}
   \psfragfig{\phdpath Magnets/latex/mag-price}
@@ -39,10 +105,10 @@ as shown in the graph of magnet volume versus price in
   \figlabel{mag-price}
 \end{figure}
 
-The magnets used for the experimental apparatus were chosen
-based on ease of availability and construction. Cylindrical
-magnets were used of dimensions $\mbox{\diameter}\,\SI{12.7}{mm}\times\SI{9.5}{mm}$
-and material properties as shown in \tabref{magnet-prop}.
+The magnets used for the experimental apparatus were chosen based on ease of
+availability and construction. Cylindrical magnets were used of dimensions
+$\mbox{\diameter}\,\SI{12.7}{mm}\times\SI{9.5}{mm}$ and material properties as
+shown in \tabref{magnet-prop}.
 
 \begin{table}
   \caption{Material properties for the magnets in the experimental apparatus.
@@ -173,49 +239,6 @@ Relevant operating properties are listed in \tabref{wenglor}.
     Response time & \SI{0.5}{ms} \\
     \bottomrule
   \end{tabular}
-\end{table}
-
-\subsection{Overview of the experimental rig}
-
-A schematic of the experimental apparatus that was designed and built as part of
-this project is shown in \figref{rig}. Physical parameters of the design
-are shown in \tabref{rigprop}.
-
-\begin{figure}
-  \asyfig{Rig/rig-schematic}
-  \caption{Schematic of the experimental rig. Position shown is the marginally
-  stable configuration with equal gap between the lower and upper pairs
-  of magnets.}
-  \figlabel{rig}
-\end{figure}
-
-\begin{table}
-\caption{Physical properties of the experimental rig.}
-\tablabel{rigprop}
-\begin{tabular}{@{}lcc@{}}
-\toprule
-                   Property &              Symbol &         Value \\
-\midrule
-                  Beam mass &         $\MassBeam$ & \SI{  0}{kg} \\
-                Beam length &       $\LengthBeam$ & \SI{320}{mm} \\
-                Beam height &       $\HeightBeam$ & \SI{ 25}{mm} \\
-                 Beam width &        $\WidthBeam$ & \SI{ 40}{mm} \\
-             Beam thickness &    $\ThicknessBeam$ & \SI{  2}{mm} \\
-       Beam vertical offset &       $\OriginBeam$ & \SI{ 82}{mm} \\
-\midrule                                            
-      Magnet support height & $\HeightRigMagnets$ & \SI{ 105   }{mm} \\
-   Magnet support lever arm & $\LengthRigMagnets$ & \SI{ 300   }{mm} \\
-        Magnet support mass &   $\MassRigMagnets$ & \SI{  87   }{g}  \\
-             Magnets height &        $\HeightMag$ & \SI{   9.5 }{mm} \\
-           Magnets diameter &          $\DiamMag$ & \SI{  12.7 }{mm} \\
-  Lower fixed magnet origin &     $\OriginMagLow$ & \SI{  44   }{mm} \\
-  Upper fixed magnet origin &    $\OriginMagHigh$ & \SI{  30   }{mm} plus offset \\
-\midrule
-  Sensor height & $\HeightSensor$ & \SI{85}{mm} \\
-  Sensor horizontal offset & $\LengthSensor$ & \SI{252}{mm} \\
-  Sensor displacement measurement & $\DisplSensor$ & \SI{43}{mm}--\SI{53}{mm} \\
-\bottomrule
-\end{tabular}
 \end{table}
 
 \subsection{Physical/geometric design}
