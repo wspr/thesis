@@ -3,17 +3,17 @@
 
 %%% PACKAGES
 
-\RequirePackage[T1]{fontenc}
+\RequirePackage[T1]{fontenc} % sane font encoding
 \RequirePackage{textcomp} % provide lots of new symbols
-\RequirePackage{lmodern}
+\RequirePackage{lmodern} % for sensible sans and tt font
 \RequirePackage[sc,osf]{mathpazo}
 \RequirePackage[protrusion=true,expansion=false]{microtype}
 \RequirePackage{pifont}
 \newcommand\diameter{\Pisymbol{psy}{'306}}
-\linespread{1.1}        % Palatino needs more leading
+\linespread{1.1} % Palatino needs more leading
 \normalfont
 
-\RequirePackage[utf8]{inputenc}
+\RequirePackage[utf8]{inputenc}% sane input encoding
 \DeclareUnicodeCharacter{2014}{\dash}
 \DeclareUnicodeCharacter{2022}{\item}
 
@@ -40,7 +40,7 @@
 }
 \RequirePackage[draft,inline,nomargin]{fixme}
 \let\oldfixme\fixme
-\DeclareRobustCommand\fixme{\oldfixme}
+\protected\def \fixme {\oldfixme}
 
 \RequirePackage[
   crop=pdfcrop,
@@ -64,7 +64,12 @@
 \definecolor{darkred}{rgb}{0.4,0,0}
 \definecolor{darkgreen}{rgb}{0,0.4,0}
 \definecolor{darkblue}{rgb}{0,0,0.4}
-\hypersetup{linkcolor=darkred,citecolor=darkblue,filecolor=black,urlcolor=black}
+\hypersetup{
+  linkcolor=darkred,
+  citecolor=darkblue,
+  filecolor=black,
+  urlcolor=black
+}
 \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
 
 
@@ -86,17 +91,17 @@
 
 %% biblatex
 \RequirePackage[
-  hyperref,backref,
-  defernums,sortcites,
-  date=short,
-  bibencoding=inputenc,
-  maxnames=3,
-  minnames=2,
-  firstinits=true,
-  sorting=nyt,
-  bibstyle=numeric,
-  citestyle=numeric-comp,
-    ]{biblatex}
+    hyperref,backref,
+    defernums,sortcites,
+    date=short,
+    bibencoding=inputenc,
+    maxnames=3,
+    minnames=2,
+    firstinits=true,
+    sorting=nyt,
+    bibstyle=numeric,
+    citestyle=numeric-comp,
+  ]{biblatex}
 \def\bibfont{\small}
 \bibliography{journals,phd}
 \renewcommand\bibname{References}
