@@ -30,8 +30,7 @@ behind the \qzs\ arrangement analysed in detail in \secref{qzs}.
 
 \begin{figure}
   \asyfig{Rig/rig-schematic}
-  \caption{Schematic of the experimental rig (not to scale). Position shown is the marginally
-  stable configuration with equal gap between the lower and upper pairs
+  \caption{Schematic of the experimental rig (not to scale). Position shown is the marginally stable configuration with equal gap between the lower and upper pairs
   of magnets.}
   \figlabel{rig}
 \end{figure}
@@ -114,7 +113,7 @@ shown in \tabref{magnet-prop}.
   \caption{Material properties for the magnets in the experimental apparatus.
     Magnet properties taken as minimum grade values from \KJMagnetics.}
   \tablabel{magnet-prop}
-  \begin{tabular}{lc}
+  \begin{tabular}{@{}lc@{}}
     \toprule
     Diameter & \SI{12.7}{mm} \\
     Height   & \SI{9.5}{mm}  \\
@@ -192,7 +191,7 @@ certain wire diameter and resistance.
 \begin{table}
   \caption{Dual-coil electromagnet parameters.}
   \tablabel{coil-prop}
-  \begin{tabular}{lcc}
+  \begin{tabular}{@{}lcc@{}}
     \toprule
     Magnet radius & $\RadiusMag$ & \SI{6.4}{mm} \\
     Magnet height & $\HeightMag$ & \SI{9.5}{mm}  \\
@@ -357,34 +356,36 @@ midpoint in the $y$ direction is
 \end{figure}
 
 The moment of inertia for a square-section beam, $\InertiaMomentBeam$, can be
-calculated by applying \eqref{InertiaMoment} to the four sides of the beam and
-summing the results.\footnote{Or by applying \eqref{InertiaMoment} to the
-outer volume of the beam and subtracting the moment of inertia of the empty
-space within it. Less steps but harder to describe succinctly.}
+calculated by applying \eqref{InertiaMoment} to the outer volume of the beam and subtracting the moment of inertia of the empty
+space within it.
 \begin{dgroup*}
 \begin{dmath}
-  \InertiaMomentBeam = \InertiaMoment_{\text{top}} 
-    + 2\InertiaMoment_{\text{side}} + \InertiaMoment_{\text{bottom}}
+  \InertiaMomentBeam = 
+    \InertiaMoment_{\text{outer}} - \InertiaMoment_{\text{inner}}
 \end{dmath},
 \intertext{where}
 \begin{dmath}
-  \InertiaMoment_{\text{top}} = 
-    \InertiaMoment\fn{\MassBeamTop,\LengthBeam,\ThicknessBeam,\half\ThicknessBeam}
+  \InertiaMoment_{\text{outer}} = 
+    \InertiaMoment\fn{\MassBeamOuter,
+                      \LengthBeam,
+                      \HeightBeam,
+                      \half\HeightBeam-\ThicknessBeam}
 \end{dmath},
 \begin{dmath}
-  \InertiaMoment_{\text{side}} = 
-    \InertiaMoment\fn{\MassBeamSide,\LengthBeam,\HeightBeam-2\ThicknessBeam,\half\HeightBeam}
-\end{dmath},
-\begin{dmath}
-  \InertiaMoment_{\text{bottom}} = 
-    \InertiaMoment\fn{\MassBeamTop,\LengthBeam,\ThicknessBeam,\HeightBeam+\half\ThicknessBeam}
+  \InertiaMoment_{\text{inner}} = 
+    \InertiaMoment\fn{\MassBeamInner,
+                      \LengthBeam,
+                      \HeightBeam-2\ThicknessBeam,
+                      \half\HeightBeam-\ThicknessBeam}
 \end{dmath},
 \intertext{and}
 \begin{dmath}
-  \MassBeamTop = \half \MassBeam \frac{\WidthBeam}{\WidthBeam+\HeightBeam}
+  \MassBeamOuter = \DensityAluminium \LengthBeam \HeightBeam \WidthBeam
 \end{dmath},
 \begin{dmath}
-  \MassBeamSide = \half \MassBeam \frac{\HeightBeam}{\WidthBeam+\HeightBeam}
+  \MassBeamInner =
+    \DensityAluminium \LengthBeam
+      \gp{\HeightBeam-2\ThicknessBeam} \gp{\WidthBeam-2\ThicknessBeam}
 \end{dmath}.
 \end{dgroup*}
 
@@ -536,7 +537,7 @@ perform the spectral analysis for each measurement are shown in
 \tabref{rig-ol-spect}.
 
 \begin{table}
-  \begin{tabular}{lc}
+  \begin{tabular}{@{}lc@{}}
     \toprule
       Sample rate        & \SI{1000}{Hz}           \\
       \FFT\ points       & $2^{16}$                \\
