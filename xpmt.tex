@@ -315,6 +315,27 @@ Relevant operating properties are listed in \tabref{wenglor}.
   \end{tabular}
 \end{table}
 
+The measured output of the sensor was used infer a magnet displacement, \DispMag, (referenced from the \qzs\ position) with the following transformation:
+\begin{dmath}
+  \DispMag\fn{\DisplSensor,\OriginMagHigh} = 
+    \OriginMagDisp\fn{\DisplSensor} - \OriginQZS\fn{\OriginMagHigh}
+\end{dmath},
+where $\OriginQZS$ is the height of the \qzs\ location, given by
+\begin{dmath}
+  \OriginQZS\fn{\OriginMagHigh} = \half\gp{\HeightRig-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}
+\end{dmath},
+and the displacement of the magnets $\OriginMagDisp$ is
+\begin{dmath}
+  \OriginMagDisp\fn{\DisplSensor} = \OriginBeam + \DisplSensorBeam\fn{\DisplSensor} {\cdot} \LengthRigMagnets/\LengthSensor - \HeightBeam + \ThicknessBeam + \half \HeightRigMagnets
+\end{dmath},
+where $\DisplSensorBeam$ is the vertical displacement measured at the position
+of the sensor, given by
+\begin{dmath}
+  \DisplSensorBeam\fn{\DisplSensor} = \gp{\HeightRig - \OriginBeam} - \HeightSensor - \DisplSensor
+\end{dmath}
+
+
+
 \subsection{Translational effects of the rotating beam}
 \seclabel{rotating-beam}
 
@@ -580,7 +601,7 @@ gains are shown in \figref{cl-results}.
 
 \begin{figure}
   \psfragfig{\phdpath XPMT/latex/cl-results}
-  \caption{Closed loop measurements.}
+  \caption{Closed loop frequency response measurements for a range of velocity feedback gains.}
   \figlabel{cl-results}
 \end{figure}
 
@@ -685,8 +706,8 @@ the controller block is defined as
 \begin{dmath}[label=cl-filter-controller]
   \BlockController = \frac \gain s \gp{\frac{s}{s+\freqHPfilter}}^2
 \end{dmath},
-where $\gain$ is the feedback gain and $\freqHPfilter$ is the corner frequency of 
-the high pass filter in the charge amplifier.
+where $\gain$ is the feedback gain and $\freqHPfilter$ is the corner frequency
+of the high pass filter in the charge amplifier.
 
 Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
 the final transfer function between the mass and base states,
@@ -702,13 +723,16 @@ the final transfer function between the mass and base states,
 This is plotted versus frequency in \figref{cl-filter}, where the resonance
 induced by the high pass filter becomes apparent as the feedback gain is
 increased to 99\% of the maximum gain (which is the gain when the system
-becomes unstable). In order to calculate the maximum gain,
-$\BlockController\Block[2]$ was
-evaluated equal to $-1$, where the system response of \eqref{cl-generic}
-becomes unbounded. To do this, first the critical frequency was found as
-the frequency at which $\Imag{\BlockController\Block[2]}=0$; this frequency
-was then substituted into $\Real{\BlockController\Block[2]}=-1$, which was
-solved for $\gain$ to find the maximum gain.
+becomes unstable). The simulation uses linear parameters $\freq=\SI{3.5}{Hz}$
+and $\dampingratio=\num{0.023}$ in order to show results at similar behaviour to \figref{cl-results}.
+
+In order to calculate the maximum gain of \eqref{cl-filter},
+$\BlockController\Block[2]$ was evaluated equal to $-1$, where the system
+response of \eqref{cl-generic} becomes unbounded. To do this, first the
+critical frequency was found as the frequency at which
+$\Imag{\BlockController\Block[2]}=0$; this frequency was then substituted into
+$\Real{\BlockController\Block[2]}=-1$, which was solved for $\gain$ to find
+the maximum gain.
 
 \begin{figure}
   \begin{wide}
