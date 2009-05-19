@@ -29,40 +29,50 @@ magnets with varying stiffnesses; specifically, for instantiating the ideas
 behind the \qzs\ arrangement analysed in detail in \secref{qzs}.
 
 \begin{figure}
-  \asyfig{Rig/rig-schematic}
-  \caption{Schematic of the experimental rig (not to scale). Position shown is the marginally stable configuration with equal gap between the lower and upper pairs
-  of magnets.}
+  \begin{wide}
+    \asyfig{Rig/rig-schematic}
+  \end{wide}
+  \caption{Schematic of the experimental rig (not to scale). Position shown is the marginally stable configuration with equal gap between the lower and upper pairs of magnets.}
   \figlabel{rig}
+\end{figure}
+
+\begin{figure}
+  \includegraphics[width=0.8\textwidth]{\phdpath Rig/photo.jpg}
+  \caption{Photo of the experimental apparatus. Base shaker is not shown.}
+  \figlabel{rig-photo}
 \end{figure}
 
 
 \begin{table}
 \caption{Physical properties of the experimental rig.}
 \tablabel{rigprop}
-\begin{tabular}{@{}lcc@{}}
+\begin{minipage}{\textwidth}
+\def\footnoterule{}
+\begin{tabularx}{\textwidth}{@{}Xll@{}}
 \toprule
-                   Property &              Symbol &         Value \\
-\midrule
-                  Beam mass &         $\MassBeam$ & \SI{  0}{kg} \\
+                  Beam mass &         $\MassBeam$ & \SI{266}{g}\thinspace
+\footnote{Mass of the accelerometer is accounted for in this value.}  \\
                 Beam length &       $\LengthBeam$ & \SI{320}{mm} \\
                 Beam height &       $\HeightBeam$ & \SI{ 25}{mm} \\
                  Beam width &        $\WidthBeam$ & \SI{ 40}{mm} \\
              Beam thickness &    $\ThicknessBeam$ & \SI{  2}{mm} \\
        Beam vertical offset &       $\OriginBeam$ & \SI{ 82}{mm} \\
 \midrule                                            
-      Magnet support height & $\HeightRigMagnets$ & \SI{ 105   }{mm} \\
-   Magnet support lever arm & $\LengthRigMagnets$ & \SI{ 300   }{mm} \\
-        Magnet support mass &   $\MassRigMagnets$ & \SI{  87   }{g}  \\
-             Magnets height &        $\HeightMag$ & \SI{   9.5 }{mm} \\
-           Magnets diameter &          $\DiamMag$ & \SI{  12.7 }{mm} \\
-  Lower fixed magnet origin &     $\OriginMagLow$ & \SI{  44   }{mm} \\
-  Upper fixed magnet origin &    $\OriginMagHigh$ & \SI{  30   }{mm} plus offset \\
+      Magnet support height & $\HeightRigMagnets$ & \SI{105  }{mm} \\
+   Magnet support lever arm & $\LengthRigMagnets$ & \SI{300  }{mm} \\
+        Magnet support mass &   $\MassRigMagnets$ & \SI{ 87  }{g}  \\
+             Magnets height &        $\HeightMag$ & \SI{  9.5}{mm} \\
+           Magnets diameter &          $\DiamMag$ & \SI{ 12.7}{mm} \\
+  Lower fixed magnet origin &     $\OriginMagLow$ & \SI{ 44  }{mm} \\
+  Upper fixed magnet origin &    $\OriginMagHigh$ & \SI{ 30  }{mm} plus offset\thinspace
+  \footnote{Offset varied to adjust the amount of added negative stiffness.} \\
 \midrule
   Sensor height & $\HeightSensor$ & \SI{85}{mm} \\
   Sensor horizontal offset & $\LengthSensor$ & \SI{252}{mm} \\
   Sensor displacement measurement & $\DisplSensor$ & \SI{43}{mm}--\SI{53}{mm} \\
 \bottomrule
-\end{tabular}
+\end{tabularx}
+\end{minipage}
 \end{table}
 
 The rig therefore consists of an arrangement of magnets, of which two are
@@ -113,7 +123,7 @@ shown in \tabref{magnet-prop}.
   \caption{Material properties for the magnets in the experimental apparatus.
     Magnet properties taken as minimum grade values from \KJMagnetics.}
   \tablabel{magnet-prop}
-  \begin{tabular}{@{}lc@{}}
+  \begin{tabular}{@{}ll@{}}
     \toprule
     Diameter & \SI{12.7}{mm} \\
     Height   & \SI{9.5}{mm}  \\
@@ -191,7 +201,7 @@ certain wire diameter and resistance.
 \begin{table}
   \caption{Dual-coil electromagnet parameters.}
   \tablabel{coil-prop}
-  \begin{tabular}{@{}lcc@{}}
+  \begin{tabular}{@{}lll@{}}
     \toprule
     Magnet radius & $\RadiusMag$ & \SI{6.4}{mm} \\
     Magnet height & $\HeightMag$ & \SI{9.5}{mm}  \\
@@ -262,7 +272,7 @@ Relevant operating properties are listed in \tabref{wenglor}.
 \begin{table}
   \caption{Some properties of the Wenglor~05\,MGV\,80 laser distance sensor.}
   \tablabel{wenglor}
-  \begin{tabular}{@{}lc@{}}
+  \begin{tabular}{@{}ll@{}}
     \toprule
     Measurement offset & \SI{43}{mm} \\
     Measurement range & \SI{10}{mm} \\
@@ -537,7 +547,7 @@ perform the spectral analysis for each measurement are shown in
 \tabref{rig-ol-spect}.
 
 \begin{table}
-  \begin{tabular}{@{}lc@{}}
+  \begin{tabular}{@{}ll@{}}
     \toprule
       Sample rate        & \SI{1000}{Hz}           \\
       \FFT\ points       & $2^{16}$                \\
