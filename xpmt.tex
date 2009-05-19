@@ -51,6 +51,7 @@ varying stiffnesses; specifically, for instantiating the ideas behind the
 \def\footnoterule{}
 \begin{tabularx}{\textwidth}{@{}Xll@{}}
 \toprule
+                Rig height  & $\HeightRig$ & \SI{209}{mm} \\
                   Beam mass &         $\MassBeam$ & \SI{266}{g}\thinspace
 \footnote{Mass of the accelerometer is accounted for in this value.}  \\
                 Beam length &       $\LengthBeam$ & \SI{320}{mm} \\
@@ -89,7 +90,13 @@ horizontal direction (as discussed in \secref{earnshaw}). In order to remain
 stable, the magnets require a physical constraint, achieved by placing the
 floating magnets at the end of a long pinned rigid beam. Small rotations of
 this beam can be assumed to correspond to largely vertical displacements of
-the end magnets. This is ensured in the design later in \secref{rotating-beam}.
+the end magnets. This is ensured in the design later in
+\secref{rotating-beam}.
+
+The beam itself was chosen as a hollow rectangular section in order to
+minimise weight and maximise stiffness; it is assumed to be a rigid body
+for the purposes of these experiments (especially at the low vibrational
+frequencies under investigation).
 
 Having a physical constraint on the motion of the floating magnets compromises
 the non-contact idea of using magnets for vibration isolation. This
@@ -207,13 +214,23 @@ The dual-coil electromagnetic arrangement described in \secref{dualcoil} was
 custom-built for the actuator for the experimental apparatus. A schematic of
 the dual coil is shown in \figref{rig-dual-coil} with parameters in
 \tabref{coil-prop}. The coil was designed to have an impedance of
-\SI{8}{\ohm}, from which outer radius of the coil was calculated given a
+\SI{8}{\ohm}, from which the outer radius of the coil was calculated given a
 certain wire diameter and resistance.
 
 \begin{figure}
+  \begin{wide}
+  \begin{sidefigure}
   \asyfig{Rig/rig-coil}
-  \caption{Schematic of the dual coil electromagnet built for the experimental apparatus. (Not to scale.)}
-  \figlabel{rig-dual-coil}
+  \caption{Schematic of the dual coil electromagnet built for the experimental apparatus. (Not to scale.)
+  \figlabel{rig-dual-coil}}
+  \end{sidefigure}\hfill
+  \begin{sidefigure}
+  \psfragfig{\phdpath Coil/fig/2coils-normdesign}
+  \caption{Normalised force vs.\ displacement curve for the dual coil electromagnet. Zero displacement is as shown in \figref{rig-dual-coil}, and
+  negative displacements show symmetric behaviour to that shown here.
+  \figlabel{2coils-normdesign}}
+\end{sidefigure}  
+  \end{wide}
 \end{figure}
 
 \begin{table}
@@ -239,12 +256,6 @@ curve of this particuar coil is shown in \figref{2coils-normdesign}; from this
 graph, it can be seen that around the centred position (displacement of zero
 in the curve), the force imparted by the coil remains within 10\% of maximum
 around a displacement range of around \SI{\pm2}{mm}.
-
-\begin{figure}
-  \psfragfig{\phdpath Coil/fig/2coils-normdesign}
-  \caption{Normalised force vs.\ displacement curve for the dual coil electromagnet.}
-  \figlabel{2coils-normdesign}
-\end{figure}
 
 \subsection{Sensors}
 
@@ -281,7 +292,7 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
     speed; also, they do not suffer from electrical noise.
 \end{description}
 
-The sensor purchased for the experimental apparatus was a Wenglor~05\,MGV\,80
+The sensor purchased for the experimental apparatus was a Wenglor 05\,MGV\,80
 opto-electronic sensor, which uses a laser to measure distance over a
 range of \SI{10}{mm}. It was selected for its convenient availability,
 flexibility of application, and good performance characteristics.
@@ -304,20 +315,7 @@ Relevant operating properties are listed in \tabref{wenglor}.
   \end{tabular}
 \end{table}
 
-\subsection{Physical/geometric design}
-
-The main mass of the vibrationary component of the rig is composed of a rigid
-square cross-section beam. This beam is used to constrain the system of moving
-magnets to motion in a single degree of freedom. After taking a small
-approximation, this motion can be assumed to be largely linear in the vertical
-direction. This assumption is verified in \secref{coil-design}.
-
-The beam itself was chosen as a rectangular section in order to minimise
-weight and maximum stiffness; the beam is assumed to be a rigid body for the
-purposes of these experiments (especially at the low vibrational frequencies 
-under investigation).
-
-\subsubsection{Translational effects of the rotating beam}
+\subsection{Translational effects of the rotating beam}
 \seclabel{rotating-beam}
 
 Three moving magnets were required in the system: one at the main end of the
@@ -395,7 +393,7 @@ This relationship is shown in \figref{turns-qzs}.
 The normalised magnet gap is used in the following sections to
 represent the varied configuration of the spring in the experiments.
 From the geometry of the rig,
-the position of the upper magnet was used to calculate the normalised magnet
+the position of the upper magnet was used to calculate the
 gap between the magnets at \qzs:
 \begin{dmath}
   \OriginMagGap =
@@ -405,6 +403,8 @@ gap between the magnets at \qzs:
 where geometrical properties are described in \tabref{rigprop} and 
 $\HeightBuffer=\SI{2.5}{mm}$ is a little extra height to account for extra
 space taken up by the beam shell thickness and the shell of the magnet mount.
+The normalised magnet gap is $\ngap=\OriginMagGap/\HeightMag$, where 
+$\HeightMag$ is the height of the magnets.
 
 \begin{figure}
   \psfragfig{\phdpath XPMT/latex/turns-qzs}
@@ -416,10 +416,10 @@ space taken up by the beam shell thickness and the shell of the magnet mount.
 
 As the position of the upper magnet is varied, the amount of negative
 stiffness added to the system changes. This predominantly affects the rest
-position and the resonance frequency, along with with small changes in damping.
-Frequency response measurements were taken at a number of discrete locations
-of the upper fixed magnet to observe the changes in dynamics as the rest 
-position of the system approached the \qzs\ position.
+position and the resonance frequency, along with with small changes in
+damping. Frequency response measurements were taken at a number of discrete
+locations of the upper fixed magnet to observe the changes in dynamics as the
+rest position of the system approached the \qzs\ position.
 
 Due to the low damping and low resonance frequency of the system, very long
 sample times were required to achieve results with enough frequency resolution
@@ -441,6 +441,8 @@ perform the spectral analysis for each measurement are shown in
    experimental measurements.}
   \tablabel{rig-ol-spect}
 \end{table}
+
+\fixme{Do I need to add the part types of the accelerometers and charge amplifiers and filters?}
 
 Open loop measurements were taken both with and without the electromagnetic
 actuator connected (wired up as both a short circuit and an open circuit). In
@@ -469,8 +471,8 @@ between the accelerometer measurements of the base and magnet-supported beam:
   \psfragfig{\phdpath XPMT/latex/ol-damped-frflin}
   \caption{Open loop measurements, with the electromagnetic coil connected
            in a closed circuit. The coil adds damping to the system, which can
-           be seen by the reduction in height of the resonant peaks in comparison 
-           to \figref{ol-undamped-frflin}.}
+           be seen by the reduction in height of the resonant peaks in 
+           comparison to \figref{ol-undamped-frflin}.}
   \figlabel{ol-damped-frflin}
 \end{figure}
 
@@ -589,12 +591,14 @@ transmissibility curves shown below were calculated from the ratio of the
 velocity measurements instead.
 
 Due to the presence of higher-order dynamics in the structure, a low pass
-filter was used to reject signals above \SI{50}{Hz} \fixme{check!}.
+filter was used to reject signals above \SI{50}{Hz}. This also ensured that
+aliasing was avoided when taking the frequency response measurements and when
+feeding back the velocity signal for the controller.
 
 The overall improvement to the vibration isolation can be shown by calculating
 the root-mean-square of the transmissibility over a certain frequency range.
 \begin{dmath}
-  \transmissibility_{\textsc{rms}} = 
+  \RMSof\transmissibility = 
   \sqrt{\Sum{\transmissibility\fn{\freq}^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}
 The results become very noisy in \figref{cl-results} below
@@ -603,10 +607,10 @@ limit. The upper frequency limit $\freq_2=\SI{11}{Hz}$ is chosen
 as the higher-order dynamics (not shown in \figref{cl-results}) have little
 impact yet.
 
-\Figref{cl-reduction} shows the reduction in `overall transmissibility'
-$\transmissibility_{\text{RMS}}$ as the negative feedback gain increases. The
-resonance appearing in the lower frequencies of \figref{cl-results} causes the
-overall transmissibility reduction to have a local minimum.
+\Figref{cl-reduction} shows the reduction in root-mean-square transmissibility
+$\RMSof\transmissibility$ the negative feedback gain increases.
+The resonance appearing in the lower frequencies of \figref{cl-results} causes
+the overall transmissibility reduction to have a local minimum.
 
 \begin{figure}
   \psfragfig{\phdpath XPMT/latex/cl-reduction}
@@ -614,9 +618,9 @@ overall transmissibility reduction to have a local minimum.
   \figlabel{cl-reduction}
 \end{figure}
 
-\paragraph{The feedback gain magnitude} \Figref{cl-results,cl-reduction} plot
-results in terms of a `feedback gain' given in dimensionless units. This gain
-is the multiplier from the controller on the velocity signal that also
+\paragraph{On the feedback gain magnitude} \Figref{cl-results,cl-reduction}
+plot results in terms of a `feedback gain' given in dimensionless units. This
+gain is the multiplier from the controller on the velocity signal that also
 incorporates the effects of the amplifiers for both sensors and actuators;
 therefore, the absolute magnitude of this number is unimportant and is used
 purely to demonstrate the range of behaviours seen as the gain is increased
@@ -699,11 +703,12 @@ This is plotted versus frequency in \figref{cl-filter}, where the resonance
 induced by the high pass filter becomes apparent as the feedback gain is
 increased to 99\% of the maximum gain (which is the gain when the system
 becomes unstable). In order to calculate the maximum gain,
-$\BlockController\Block[2]$ was split into real and imaginary parts and
-evaluated to equal $-1$, where the system response becomes unbounded. In more
-detail, first the critical frequency was found as the frequency at which
-$\Imag{\BlockController\Block[2]}=0$; this frequency was then substituted into
-$\Real{\BlockController\Block[2]}=1$, which was solved for the maximum gain.
+$\BlockController\Block[2]$ was
+evaluated equal to $-1$, where the system response of \eqref{cl-generic}
+becomes unbounded. To do this, first the critical frequency was found as
+the frequency at which $\Imag{\BlockController\Block[2]}=0$; this frequency
+was then substituted into $\Real{\BlockController\Block[2]}=-1$, which was
+solved for $\gain$ to find the maximum gain.
 
 \begin{figure}
   \begin{wide}
@@ -726,6 +731,4 @@ isolation properties of the feedback-controlled system. This potential
 drawback could be mitigated with a different way to estimate the velocity of
 the isolated beam; simply a higher-precision charge amplifier would probably
 be acceptable.
-
-\fixme{Would doing the integration in the computer help?}
 

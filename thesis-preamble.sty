@@ -144,10 +144,15 @@
 % Subfigures
 \newsubfloat{figure}
 \newenvironment{subfigure}{%
-  \ifnum\c@subfigure>0\hfill\fi
   \begin{minipage}[t]{0.45\linewidth}
     \centering
     \let\caption\subcaption
+}{%
+  \end{minipage}%
+}
+\newenvironment{sidefigure}{%
+  \begin{minipage}[t]{0.45\linewidth}
+    \centering
 }{%
   \end{minipage}%
 }
@@ -305,17 +310,17 @@
 
 %%%%%%%%%%%%
 % These are the varioref definitions:
-\newcommand{\varioprefix}{See~}
-\newcommand{\myvariohook}[1]{\marginpar{\small\centering \varioprefix #1}}
-\def\reftextcurrent{}
-\def\reftextfaceafter{}
-\def\reftextfacebefore{}
-\def\reftextafter{~on the \reftextvario{following}{next} page}
-\def\reftextbefore{~on the \reftextvario{previous page}{preceding page}}
-\def\reftextafter{}
-\def\reftextbefore{}
-\def\reftextfaraway#1{\myvariohook{p.\,\pageref{#1}}}
-\def\reftextpagerange#1#2{\myvariohook{pp.\,\pageref{#1}--\pageref{#2}}}
+% \newcommand{\varioprefix}{See~}
+% \newcommand{\myvariohook}[1]{\marginpar{\small\centering \varioprefix #1}}
+% \def\reftextcurrent{}
+% \def\reftextfaceafter{}
+% \def\reftextfacebefore{}
+% \def\reftextafter{~on the \reftextvario{following}{next} page}
+% \def\reftextbefore{~on the \reftextvario{previous page}{preceding page}}
+% \def\reftextafter{}
+% \def\reftextbefore{}
+% \def\reftextfaraway#1{\myvariohook{p.\,\pageref{#1}}}
+% \def\reftextpagerange#1#2{\myvariohook{pp.\,\pageref{#1}--\pageref{#2}}}
 
 %%%%%%%%%%%%%%%%%%%%%
 %! MEMOIR CUSTOMISE
