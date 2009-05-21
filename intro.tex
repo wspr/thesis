@@ -27,6 +27,56 @@ isolating design. An experimental prototype tying together the major concepts
 of work is shown last, demonstrating results of an permanent magnet, active,
 low-frequency, vibration-isolating apparatus.
 
+\section{Introduction to the central themes of the thesis}
+
+\subsection{The problem of vibrations}
+
+The disturbing effects of vibrations are a well0known and continuing problem.
+The transmission of vibrations from a source can only ever be reduced, not eliminated — that is, not without removing the source entirely from the local region affected. And in many cases there is no single source; the very ground itself may be a medium through which undesirable vibrations are transmitted.
+Earthquakes are an extreme example of this, but on a smaller scale there are continuous time-varying displacements of the `fixed' ground beneath us.
+\note{Not to be too earth-centric, but many of the ideas here a different relevance in off-planet circumstances.}
+The earth should in fact be considered as a distributed vibrating structure, of very great mass in total, that has a range of displacement profiles dependent on the local surrounding impedance conditions. 
+
+Mitigating the effects of a disturbance through the base on which a structure is supported is known as `vibration isolation' and is the over-arching problem in which the work of this thesis should be put in context.
+
+A contrasting vibration problem occurs when some manner of machine causes its own vibration; a well-known example is a washing machine tha exerts an oscillating disturbance force on itself through a mass imbalance. This type of vibration problem requires a rather different set of design solutions and often its solution acts in opposition to the vibration isolation problem discussed above. Reducing the effects of self-induced vibration disturbance will be termed `vibration suppression'
+\note{The descriptor `Vibration isolation' is commonly used to refer to both problems, but it would be confusing here to avoid the clarification.}
+for the purposes of this thesis and will be revisited on occassion herein.
+
+There are a variety of `classic' solutions for both vibration isolation and
+vibration suppression. A particularly simple solution for \emph{both} problems is to mount the equipment on a many-ton slab of concrete. This is not always practical. Another common approach for vibration isolation is to support the equipment with pneumatic springs. When in operation, these springs provide a low supporting stiffness and low static deflection; they can typically be used to support hundreds of kilograms with resonance frequency of less than five hertz.
+
+Other support methods besides pneumatics are able to achieve low stiffness; this is an area that will be further investigated in the literature review. But one method in particular is interesting in this context: permanent magnets can provide low stiffness support without energy expenditure. Their nonlinear forces in both attraction and repulsion allows the possibility of interesting supporting designs, and their non-contact nature allows their use in vacuum and `clean-room' environments.
+
+\subsection{Permanent magnets used for mechanical design}
+
+The last twenty years has seen the maturation of the rare earth permanent magnet industry. These magnets are now widely available in large sizes and strong magnetisation at relatively low prices. They are now used in a variety of mechanical design, including bearings, couplings, \maglev\ trains, and so on, which take advantage of non-contact attractive and/or repulsive forces.
+Magnets can be used to make other magnets move or to keep them in place — there is little limi to the ingenuity of their application. However, in part to this complex behaviour between them, there are few design guidelines that can be used to aid their use [quote Moskowitz].
+
+We can speak broadly about their integrated use in force design: magnets can be used in conjunction with current-carrying coils to effect time-varying forces (as in shakers and speakers); soft iron can be used to guide the magnetic fields into desired regions or away from unwanted areas (\eg, latches and motors); or magnets can be used alone for unique force--displacement characteristics or simply for applying non-contact forces (\eg, bearings).
+
+These ideas in mechanics and dynamics have application back to the field of vibrations. A `synergy' between the two fields is seen in areas such as energy harvesting from ambient vibration, the study of vibration in high-speed magnetic bearings, and one of the main themes of this thesis — nonlinear and/or noncontact forces for support equipment for vibration isolation.
+
+Support mass with a noncontact force can also be called `levitation', an area which deserves its own mention. \textcite{earnshaw1839} proved that levitation with the force of permanent magnets alone was impossible, although this did not become common knowledge
+\note{If it can even be said to be `commonly known' today. Anecdotal evidence suggests otherwise.}
+until much later — given by the range of patents issued that assume the opposite. Exceptions to `Earshaw's Theorem' include the use of diamagnetic materials and actively-controlled system, amongst some others. It is the possibility of overcoming instability with active means that is of interest in this thesis.
+
+\subsection{\QZS\ systems}
+
+The transition between stable and unstable forces becomes interesting in the context of vibration isolation. Between positive and negative stiffness in a force--displacement characteristic, there is a inflexion point of zero stiffness. This point is termed a `\qzs' position to emphasise that the dynamic behaviour of the system in this condition can be rather complex and usually unstable. `True' zero stiffness would imply \emph{no} connection between between the mass and the base, as if they were floating in free space — the motion of one would have no effect on the motion of the other.
+
+As systems approach \qzs, their vibration isolation inproves as the resonant frequency decreases. Operation at the \qzs\ position is not possible as the system is, at best, only marginally stable, and the system must be tuned (based on the applied loading) to achieve best results.
+
+Certain magnetic systems are not the only ones to exhibit \qzs. The phenomenon was first proposed using inclined springs to achieve a `buckling' effect. Magnets are more convenient in many ways than inclined or buckling springs in that the negative stiffness can be applied directly without having to exploit the byproduct of a mechanical spring or linkage arrangement, which can be more bulky.
+
+Active control systems can be used with \qzs\ systems to improve their performance in one of three ways:
+\begin{enumerate}
+  \item Standard active vibration control with velocity feedback;
+  \item Remove the instability at the \qzs\ location with a nonlinear controller;
+  \item Online tuning of the system for load-independent operation.
+\end{enumerate}
+The first two of these strategies are investigated in this thesis.
+
 \section{Project exposition}
 
 The purpose of this project is to design and build a vibration
