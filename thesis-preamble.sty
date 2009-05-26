@@ -327,7 +327,6 @@
 
 \maxsecnumdepth{subsection} % number  subsections
 \maxtocdepth{subsection}    % include subsections in ToC
-\g@addto@macro\mainmatter{\setsecnumdepth{subsubsection}}
 
 \renewcommand{\cftchapterpagefont}{}
 \renewcommand{\cftchapterfont}{}     % no bold!
@@ -362,8 +361,8 @@
   \noindent
   \let\@tempa\relax
   \savebox\@tempboxa{#2}%
-  \null\marginpar{#1\@tempa}%
-  #1#2}
+  %\null\marginpar{#1\@tempa}%
+  #1\@tempa\quad#2}
 
 \def\secstyle{\centering\scshape}
 \def\subsecstyle{\centering\itshape}
@@ -374,7 +373,7 @@
 \setsubsubsecheadstyle{\marginnum\subsubsecstyle}
 
 \setsecnumformat{\unexpanded{%
-  \protected@xdef\@tempa{\upshape\S\csname the#1\endcsname}}}
+  \protected@xdef\@tempa{{\upshape\S\csname the#1\endcsname}}}}
 
 %%%%%
 
