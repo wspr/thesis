@@ -7,39 +7,37 @@ something in order to make others understand is to use the simplest language.
 Also I learned from teaching that the more rigid the language the less
 effective it is.}{\textcite{mahathera1990}}
 
-\section{One paragraph summary of the thesis}
-
-Vibration disturbance is a consistent complaint that will always exist to
-negatively influence equipment and processes. The theme of this thesis
-investigates using permanent magnets in the design of a vibration isolation
-mount. Permanent magnets can be used to either support load or to reduce the
-fundamental resonance frequency of a system. In the first half of the thesis,
-simple permanent magnet arrangements are examined for load bearing, with
-multiple designs suitable for a variety of objectives. In this vein,
-electromagnetic coil forces and multipole (or Halbach) arrays of magnets are
-also investigated. In the second half of the thesis, more attention is paid on
-realising these systems for vibration isolation, namely, by reducing the
-resonant frequency with stiffness-reducing elements. Usually these
-stiffness-reducing elements are permanent magnets in attraction, but
-mechanical springs are analysed briefly as well. Some different active control
-techniques are investigated for further improvements to the low-frequency
-isolating design. An experimental prototype tying together the major concepts
-of work is shown last, demonstrating results of an permanent magnet, active,
-low-frequency, vibration-isolating apparatus.
-
 \section{Introduction to the central themes of the thesis}
 
-\subsection{The problem of vibrations}
+Before launching into detail into the various topics under investigation, this
+section briefly touches on the issues addressed over the entire thesis:
+vibrations and their isolation and suppression in
+\secref{vibrations-summary-intro}; permanent magnets and their role in the
+design of supporting structures and other devices in
+\secref{magnets-summary-intro}; and `\qzs' systems, which unify in this thesis
+the fields of vibrations and magnets, in \secref{qzs-summary-intro}. These
+three broad areas are then investigated in more detail in \secref{literature-explore}.
 
-The disturbing effects of vibrations are a well0known and continuing problem.
+\subsection{The problem of vibrations}
+\seclabel{vibrations-summary-intro}
+
+The disturbing effects of vibrations are a well-known and continuing problem.
 The transmission of vibrations from a source can only ever be reduced, not eliminated — that is, not without removing the source entirely from the local region affected. And in many cases there is no single source; the very ground itself may be a medium through which undesirable vibrations are transmitted.
 Earthquakes are an extreme example of this, but on a smaller scale there are continuous time-varying displacements of the `fixed' ground beneath us.
-\note{Not to be too earth-centric, but many of the ideas here a different relevance in off-planet circumstances.}
+\note{Not to be too earth-centric, but many of the ideas here have a different relevance in off-planet circumstances.}
 The earth should in fact be considered as a distributed vibrating structure, of very great mass in total, that has a range of displacement profiles dependent on the local surrounding impedance conditions. 
 
-Mitigating the effects of a disturbance through the base on which a structure is supported is known as `vibration isolation' and is the over-arching problem in which the work of this thesis should be put in context.
+Whether the source of the disturbance is near or far, or how it propagates
+through the ground to arrive at the region of interest, these disturbances can
+cause a variety in problems on equipment that is required to, ideally, remain
+absolutely still. A good example is during the electro-lithography performed
+to construct our microchips, in which nanometre-sized disturbances can affect
+the overall yield of the silicon wafer produced. Mitigating the effects of a
+disturbance through the base on which a structure is supported is known as
+`vibration isolation' and is the over-arching problem in which the work of
+this thesis should be put in context.
 
-A contrasting vibration problem occurs when some manner of machine causes its own vibration; a well-known example is a washing machine tha exerts an oscillating disturbance force on itself through a mass imbalance. This type of vibration problem requires a rather different set of design solutions and often its solution acts in opposition to the vibration isolation problem discussed above. Reducing the effects of self-induced vibration disturbance will be termed `vibration suppression'
+A contrasting vibration problem occurs when some manner of machine causes its own vibration; a well-known example is a washing machine that exerts an oscillating disturbance force on itself through a mass imbalance. This type of vibration problem requires a rather different set of design solutions and often its solution acts in opposition to the vibration isolation problem discussed above. Reducing the effects of self-induced vibration disturbance will be termed `vibration suppression'
 \note{The descriptor `Vibration isolation' is commonly used to refer to both problems, but it would be confusing here to avoid the clarification.}
 for the purposes of this thesis and will be revisited on occassion herein.
 
@@ -49,19 +47,21 @@ vibration suppression. A particularly simple solution for \emph{both} problems i
 Other support methods besides pneumatics are able to achieve low stiffness; this is an area that will be further investigated in the literature review. But one method in particular is interesting in this context: permanent magnets can provide low stiffness support without energy expenditure. Their nonlinear forces in both attraction and repulsion allows the possibility of interesting supporting designs, and their non-contact nature allows their use in vacuum and `clean-room' environments.
 
 \subsection{Permanent magnets used for mechanical design}
+\seclabel{magnets-summary-intro}
 
 The last twenty years has seen the maturation of the rare earth permanent magnet industry. These magnets are now widely available in large sizes and strong magnetisation at relatively low prices. They are now used in a variety of mechanical design, including bearings, couplings, \maglev\ trains, and so on, which take advantage of non-contact attractive and/or repulsive forces.
-Magnets can be used to make other magnets move or to keep them in place — there is little limi to the ingenuity of their application. However, in part to this complex behaviour between them, there are few design guidelines that can be used to aid their use [quote Moskowitz].
+Magnets can be used to make other magnets move or to keep them in place — there is little limit to the ingenuity of their application. However, in part to this complex behaviour between them, there are few design guidelines that can be used to aid their use [quote Moskowitz].
 
 We can speak broadly about their integrated use in force design: magnets can be used in conjunction with current-carrying coils to effect time-varying forces (as in shakers and speakers); soft iron can be used to guide the magnetic fields into desired regions or away from unwanted areas (\eg, latches and motors); or magnets can be used alone for unique force--displacement characteristics or simply for applying non-contact forces (\eg, bearings).
 
 These ideas in mechanics and dynamics have application back to the field of vibrations. A `synergy' between the two fields is seen in areas such as energy harvesting from ambient vibration, the study of vibration in high-speed magnetic bearings, and one of the main themes of this thesis — nonlinear and/or noncontact forces for support equipment for vibration isolation.
 
-Support mass with a noncontact force can also be called `levitation', an area which deserves its own mention. \textcite{earnshaw1839} proved that levitation with the force of permanent magnets alone was impossible, although this did not become common knowledge
+Support mass with a noncontact force can also be called `levitation', an area which deserves its own mention. \textcite{earnshaw1842} proved that levitation with the force of permanent magnets alone was impossible, although this did not become common knowledge
 \note{If it can even be said to be `commonly known' today. Anecdotal evidence suggests otherwise.}
 until much later — given by the range of patents issued that assume the opposite. Exceptions to `Earshaw's Theorem' include the use of diamagnetic materials and actively-controlled system, amongst some others. It is the possibility of overcoming instability with active means that is of interest in this thesis.
 
 \subsection{\QZS\ systems}
+\seclabel{qzs-summary-intro}
 
 The transition between stable and unstable forces becomes interesting in the context of vibration isolation. Between positive and negative stiffness in a force--displacement characteristic, there is a inflexion point of zero stiffness. This point is termed a `\qzs' position to emphasise that the dynamic behaviour of the system in this condition can be rather complex and usually unstable. `True' zero stiffness would imply \emph{no} connection between between the mass and the base, as if they were floating in free space — the motion of one would have no effect on the motion of the other.
 
@@ -77,29 +77,18 @@ Active control systems can be used with \qzs\ systems to improve their performan
 \end{enumerate}
 The first two of these strategies are investigated in this thesis.
 
-\section{Project exposition}
+\subsection{Project context}
 
-The purpose of this project is to design and build a vibration
+The original goal of this project was to design and build a vibration
 isolation table using non-contact magnetic springs. This goal can be
 split into two: the design of a non-contact magnetic spring (suitable
 for a vibration isolation table); and the design of the vibration
 isolation table itself.
 
 Vibration isolation tables are generally designed to attenuate natural
-disturbances from the ground to the tabletop. These are used for
-example in optics systems as well as in situations that involve
-vibration-sensitive equipment. Current commercial models use pneumatic
-springs to perform this task, and this project arose out of curiosity:
-could magnetic springs be used instead?
-
-Since the invention of the rare-earth magnet, there have been great
-strides in creating wonderful inventions such as the maglev train and
-the planar levitator. To date, comparatively little work has been
-undertaken on vibration isolation of large loads using predominantly
-passive elements. While levitating trains are heavy, they require
-little positioning accuracy; meanwhile, planar levitators are
-astonishingly accurate, but may only bear small loads. A vibration
-isolation table must do both.
+disturbances from the ground to the tabletop. Current commercial models use
+pneumatic springs to perform this task, and this project arose out of
+curiosity: could magnetic springs be used instead?
 
 Using magnets for load bearing brings its own set of challenges. For
 completely non-contact support, active control must be used to
@@ -109,13 +98,20 @@ demonstrated.\footnote{Although I took much pleasure in explaining
   over the years that my \PhD\ project was to `build a table that
   floats on magnets'.}
 
+However, the field of active control has been well-established and the feat of building a stabilising controller for a system with relatively simple dynamics is not worthy of the research for a \PhD. The work presented in this thesis is the investigations around the idea of building a `table that floats on magnets' while pulling out enough interesting nuggets to prove worthy of the title of `research'.
 
-\section{Topical applications of magnetic forces}
+\section{Exploring the literature in the context of the ideas discussed}
+\seclabel{literature-explore}
+
+\subsection{V}
+
+\subsection{Applications of magnetic forces}
 
 \textcite{coey2002} discusses a broad range of magnetic applications,
 summarised in \tabref{magnet-applications}.
 
 \begin{table}
+\begin{wide}
 \begin{tabular}{@{}lll@{}}
 \toprule
 Field & Magnetic effect & Examples \\
@@ -126,7 +122,8 @@ Uniform & Zeeman splitting & Magnetic resonance imaging \\
 & Force on conductor & Dynamic Motors, actuators, loudspeakers \\
 & Induced emf & Generators, microphones \\
 Nonuniform & Force on charged particles & Beam control, 
-radiation sources (microwave, uv; X-ray) \\
+radiation sources %(microwave, ultra-violet; X-ray) 
+\\
 & Force on magnet & Bearings, couplings, Maglev \\
 & Force on paramagnet & Mineral separation \\
 Time varying & Varying field & Dynamic Magnetometers \\
@@ -134,67 +131,57 @@ Time varying & Varying field & Dynamic Magnetometers \\
 & Eddy currents & Metal separation, brakes \\
 \bottomrule
 \end{tabular}
+\end{wide}
 \caption{Applications of permanent magnet materials, 
 adapted from \textcite{coey2002}.}
 \tablabel{magnet-applications}
 \end{table}
 
+That magnets can apply forces to one another over a distance is quite a novel
+concept in a mechanical world accustomed to friction. It has been a short
+while, relatively speaking, that it has been possible to even \emph{produce}
+magnets with enough coercive force to apply useful mechanical forces.
+Non-contact magnetics in mechanical systems is advantageous due to high
+precision and wear-free operation due to lack of friction. This section looks
+broadly at some of the main applications of the field.
 
-That magnets can apply forces to one another over a distance is
-quite a novel concept in a mechanical world accustomed to
-friction. It has been a short while, relatively speaking, that
-it has been possible to even \emph{produce} magnets with enough
-coercive force to apply useful mechanical forces. Non-contact
-magnetics in mechanical systems is advantageous due to high
-precision and wear-free operation due to lack of friction. This
-section looks broadly at some of the main applications of the
-field.
+\subsubsection{Maglev transportation}
 
-\subsection{Maglev transportation}
+The largest body of research into magnetic levitation is on so-called `maglev'
+transportation. Its well-known goal is to use a levitated train or car to
+provide extremely fast and efficient transportation. This field, which is
+rather diverse in terms of the techniques under investigation, is finally now
+achieving commercial application in the real world after some 20 or 30 years
+of research. While it has some concepts in common with this research (large
+loads, magnets), the techniques used tend to be rather distanced from those
+that will be applied for this project because they focus on transportation
+rather than \emph{elimination} of movement.
 
-The largest body of research into magnetic levitation is on
-so-called `maglev' transportation. Its well-known goal is to
-use a levitated train or car to provide extremely fast and
-efficient transportation. This field, which is rather diverse
-in terms of the techniques under investigation, is finally now
-achieving commercial application in the real world after some
-20 or 30 years of research.  While it has some concepts in
-common with this research (large loads, magnets), the
-techniques used tend to be rather distanced from those that
-will be applied for this project because they focus on
-transportation rather than \emph{elimination} of movement.
+\subsubsection{Magnetic actuators}
 
-
-\subsection{Magnetic actuators}
-
-In more recent years, another application for magnetic
-levitation has been investigated, which is the precision
-control of a levitated platform.  Commonly cited for use in
-the semiconductor industry for photolithography, these
+In more recent years, another application for magnetic levitation has been
+investigated, which is the precision control of a levitated platform. Commonly
+cited for use in the semiconductor industry for photolithography, these
 levitators were first researched around 20 years ago.
 
 The first designs allowed travel in a single direction, \eg,
-\textcite{trumper1992}, while more recent developments allow
-more directions of control.  Such devices are capable of
-supporting small loads, and applying horizontal translation
-forces to effect displacements of up to around \SI{200}{mm}
-with nanometre precision. Two planar devices are invented in
-the independent theses of \textcite{kim1997} and
-\textcite{molenaar2000}. Most recently, a six degree of
-freedom non-contact actuator was demonstrated by
-\textcite{verma2004}. See also the device built by
-\textcite{kim2007} to support around \SI{2}{kg} over a travel
-of $\SI{5}{mm}\times\SI{5}{mm}$ with nanometre precision. The
-high performance and mechanical simplicity of their design is
-note-worthy.
+\textcite{trumper1992}, while more recent developments allow more directions
+of control. Such devices are capable of supporting small loads, and applying
+horizontal translation forces to effect displacements of up to around
+\SI{200}{mm} with nanometre precision. Two planar devices are invented in the
+independent theses of \textcite{kim1997} and \textcite{molenaar2000}. Most
+recently, a six degree of freedom non-contact actuator was demonstrated by
+\textcite{verma2004}. See also the device built by \textcite{kim2007} to
+support around \SI{2}{kg} over a travel of $\SI{5}{mm}\times\SI{5}{mm}$ with
+nanometre precision. The high performance and mechanical simplicity of their
+design is note-worthy.
 
 Here're some more to look at: \textcite{boeij2008,zhang2008a}
 
-The reason these devices are unsuitable for this research is
-due to their travelling capability. Rather than using the
-primarly magnetic flux for load support, these designs use it
-in order to provide positioning control in the horizontal
-directions.
+The reason these devices are unsuitable for this research is due to their
+travelling capability. Rather than using the primarly magnetic flux for load
+support, these designs use it in order to provide positioning control in the
+horizontal directions.
 
 Here's something new: \textcite{shameli2008}.
 
@@ -209,7 +196,7 @@ is for a planar actuator, and the motivation is to be able to determine the
 amount of out-of-plane force generated by a particular design. Could very well
 be useful for some of my ideas.
 
-\subsection{Interesting devices}
+\subsubsection{Interesting devices}
 
 I like magnetic levitation of objects in a wind tunnel
 \cite{higuchi2008}.
@@ -236,12 +223,66 @@ known due to Mizuno.
 storage mechanism using magnetic bearings while applying active vibration
 isolation.
 
-[\textcite{tomie2005}] This paper's a bit of fun; uses a magnet attached
+\textcite{tomie2005} This paper's a bit of fun; uses a magnet attached
 to a cantilever, excited by an external field in a water tank, to propel a
 robotic fish. Only left-right oscillations were produced, so the fish was
 constrained to move in a plane; two turning methods are investigated.
 
 
+\subsection{Overlap in vibrations and magnets}
+
+\subsection{Exploring \qzs\ systems}
+\seclabel{vibrations-qzs}
+
+Addition of negative stiffness elements in a design reduces the resonance
+frequency, which improves vibration isolation. Early examples of such designs
+using inclined springs were shown by \textcite{molyneux1957}. Such systems may
+tuned to achieve a local region of zero stiffness, which is often termed
+`\qzs'. \textcite{alabuzhev1989} looked at the nonlinear behaviour of such
+systems, and also more recently by
+\textcite{carrella2006,carrella2007,carrella2008} and improved by
+\textcite{kovacic2008}. More recently, the dynamic response of these systems
+has been analysed \parencite{carrella2009,carrella2008thesis} and shown to
+have prominent nonlinearities that distort the frequency response but that do
+not decrease the vibration isolation efficacy in general.
+
+The use of buckling beams as a negative stiffness element to achieve \qzs\ has
+also been implemented in practice~\cite{platus1999,tarnai2003,lee2007}.
+
+A brief discussion of zero stiffness elements in hand-held vibrating
+machinery yields perhaps little insight into our problem
+\cite{sokolov2007}, but mentions that friction is the biggest problem
+once zero stiffness has actually been achieved; this problem is
+obviated when non-contact supports are used.
+
+An interesting collection of literature for very low frequency vibration
+isolation resulted from various gravity wave interferometers built around the
+world. Some of these used the negative stiffness of the buckling beam, in
+various forms, to reduce the resonance frequency of an isolator
+\cite{cella2005}.
+
+\QZS\ can also be achieved with magnetic systems. Magnetic configurations with
+negative stiffness can be used to augment a positive stiffness support (which
+can be simply a conventional spring) to lower the resonance frequency. For
+example, \textcite{beccaria1997} used this technique (under the term `magnetic
+antisprings') to improve the isolation for gravity wave detectors.
+\textcite{carrella2007a,carrella2008} has also used a attractive magnets in
+parallel with conventional springs to reduce the resonance frequency of the
+system. Purely non-contact magnetic systems can also be used to similar effect
+\cite{robertson2006,robertson2007}. Generally, systems that use the negative
+stiffness between attracting magnets cannot be brought to a stable \qzs\
+region due to their `softening spring' characteristic.
+
+\textcite{hol2006} discuss a `gravity compensator' that uses the idea of an
+axial bearing with \ang{90} rotated magnetisations to bear load in the
+vertical direction. (Also see \textcite{yonnet1981} for related bearings that
+I hadn't thought about in enough detail yet.) This creates something like a
+negative quadratic force relationship, which has zero stiffness in the centred
+vertical position.
+
+Analysis of the nonlinear dynamics of such systems such as performed by
+\textcite{lee2004b,kovacic2008} can be quite involved and is outside the scope
+of this research.
 
 
 \section{Digression}
@@ -273,6 +314,7 @@ Here's a nice big glossary section that will take me fucking ages to get
 right. Maybe I should just scrap it.
 
 \section{Typesetting}
+
 The typesetting of this thesis has been carefully designed with the following main objectives:
 \begin{enumerate}
 \item Ease of reading content, and
@@ -286,8 +328,8 @@ edge of the paper to aid `flicking through' the thesis. It also moves them
 away from the main text where their encroachment of the material in the main
 text is less useful.
 
-In the \PDF\ version of this document, clickable hyperlinks have been inserted in
-all relevant cross-referencing situations to aid navigation.
+In the \PDF\ version of this document, clickable hyperlinks have been inserted
+in all relevant cross-referencing situations to aid navigation.
 
 \section{Paraphrasing David Foster Wallace}
 
