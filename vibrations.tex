@@ -7,8 +7,8 @@
   Right now this chapter is a mess of ideas, covering single degree of
   freedom isolators, skyhook damping, tuned vibration absorbers, 
   energy harvesting/scavenging devices, active control, \qzs\ devices, and
-  more. It is intended to set the scene for many of the vibration-related aspects
-  of the project.
+  more. It is intended to set the scene for many of the vibration-related 
+  aspects of the project.
 }
 
 The field of active vibration isolation is a broad topic to cover in review;
@@ -17,51 +17,6 @@ overview of what people are doing to place this work in context. The
 literature review that follows is strongly biased towards papers that have
 been recently published. Tracking their citations backwards will yield a
 tangled web of prior art in the field of vibration control.
-
-\section{Passive systems}
-
-\textcite{wu2006} discusses the effects of including the inertial effects of a
-non-mass-less spring into the vibration characteristics of a
-mass-spring-damper system.
-
-\textcite{virgin2008} proposes an interesting alternative to the
-classical helical spring for vibration isolation support: a `pinched
-loop' created by a slender beam with both ends clamped has a wide
-range of tuning possibilities and offers isolation in two degrees of
-freedom.
-
-\subsection{Internal resonances}
-
-Idealised models assume system properties that are independent: a
-spring has no mass, a damper has no stiffness, \etc. In practise,
-however, such simplifications can be far from actual, and internal
-resonances of actuators and passive absorbers can decrease the
-performance of their intended vibration isolation
-mechanisms. 
-
-\textcite{du2003thesis} examined the effect of additional dynamics
-from tuned vibration absorbers and the consequence that had on the
-transmissibility and noise radiation of the structure under
-control. While these additional high frequency dynamics would not be a
-problem for certain problems (and the effects were worse in
-viscoelastic-type springs; \ie, rubber springs over mechanical springs),
-their effect must be considered for high-sensitivity vibration control
-and cases where it is important to minimise radiated sound. In his
-thesis he proposes methods to work around the internal resonance
-problem using both passive and active means.
-
-\textcite{wu2006} analysed the vibration response of a spring-mass-damper in
-which the spring element had some inertial effect on the structure due to its
-mass. The results presented show only a small magnification of the vibration
-amplitude transmitted to the primary mass, particularly for small spring
-relative masses; however, for highly sensitive equipment this phenomenom
-should not be neglected.
-
-Such internal resonance effects discussed above can be completely avoided by
-using noncontact magnetic springs instead. On the other hand, the nonlinear
-force/displacement relationship of magnetic springs will have some nonlinear
-behaviour that could affect the vibration properties of such springs in other
-ways. An example of this behaviour is demonstrated in \secref{qzs-not-zerk}.
 
 
 \section{Feedback control}
@@ -470,6 +425,49 @@ by using empirical algorithms for a specific application rather than
 applying a more general technique. \fixme{Don't be too harsh.}
 
 
+\section{Passive systems}
+
+\textcite{virgin2008} proposes an interesting alternative to the
+classical helical spring for vibration isolation support: a `pinched
+loop' created by a slender beam with both ends clamped has a wide
+range of tuning possibilities and offers isolation in two degrees of
+freedom.
+
+\subsection{Internal resonances}
+
+Idealised models assume system properties that are independent: a
+spring has no mass, a damper has no stiffness, \etc. In practise,
+however, such simplifications can be far from actual, and internal
+resonances of actuators and passive absorbers can decrease the
+performance of their intended vibration isolation
+mechanisms. 
+
+\textcite{du2003thesis} examined the effect of additional dynamics
+from tuned vibration absorbers and the consequence that had on the
+transmissibility and noise radiation of the structure under
+control. While these additional high frequency dynamics would not be a
+problem for certain problems (and the effects were worse in
+viscoelastic-type springs; \ie, rubber springs over mechanical springs),
+their effect must be considered for high-sensitivity vibration control
+and cases where it is important to minimise radiated sound. In his
+thesis he proposes methods to work around the internal resonance
+problem using both passive and active means.
+
+\textcite{wu2006} analysed the vibration response of a spring-mass-damper in
+which the spring element had some inertial effect on the structure due to its
+mass. The results presented show only a small magnification of the vibration
+amplitude transmitted to the primary mass, particularly for small spring
+relative masses; however, for highly sensitive equipment this phenomenom
+should not be neglected.
+
+Such internal resonance effects discussed above can be completely avoided by
+using noncontact magnetic springs instead. On the other hand, the nonlinear
+force/displacement relationship of magnetic springs will have some nonlinear
+behaviour that could affect the vibration properties of such springs in other
+ways. An example of this behaviour is demonstrated in \secref{qzs-not-zerk}.
+
+
+
 \section{Multi-degrees of freedom}
 
 This thesis primarily considers single degree of freedom systems, as
@@ -724,94 +722,6 @@ tradeoff between base vibration isolation and direct force
 disturbance in a regular system is not present here.
 
 
-\subsection{\QZS\ is not zero stiffness}
-\seclabel{qzs-not-zerk}
-
-It has been established that the goal of a `zero stiffness' device is to
-reduce the resonance frequency of the system to as low a value as possible. In
-the limiting case, if the system is stable and the nominal force of the spring
-indeed matches the weight of the mass, then the gradient of the force at the
-operating point will equal zero.
-
-However, it is necessary to use a nonlinear spring to achieve this zero
-stiffness condition. And the behaviour of a nonlinear oscillator varies
-considerably from that of the classic linear spring. Most obviously, the shape
-of the frequency response is not independent of the amplitude of the forcing
-disturbance.
-
-Consider the stable single degree of freedom system
-\begin{dmath}
-m \ddot x + b \dot x + \stiffnessDuffing (x+s)^3 = 0, 
-\end{dmath}
-where $s$ is an induced displacement disturbance. At the operating
-position $x=0$, the nonlinear spring stiffness is
-$3kx^2|_{x=0}=0$. For a disturbance $s$, the spring is perturbed and
-generates a reaction force of $ks^3$ on the mass. The stiffness here
-is $3ks^2$; \ie, dependent on the amplitude of disturbance. The
-ramifications of this nonlinear force on the vibratory response of the
-system are not exactly straightforward.
-
-\textcite{tentor2001} analysed a spring generated by repulsion magnets
-which behaved as a Duffing oscillator for large amplitude
-vibrations. \fixme{(The Duffing oscillator is well-known in the literature of
-nonlinear vibrations. Please reference it more.)} The difference for
-his system was a significant linear component in the force equation:
-\begin{dmath}
-F_{\text{Duffing}} = \stiffnessLinear x + \stiffnessDuffing x^3.
-\end{dmath}
-The nonlinear dynamics only affected the response of the system when
-the nonlinear term dominated over the linear term. For a zero
-stiffness spring, $\stiffnessLinear=0$ and the nonlinear dynamics are
-more significant.
-
-Rather than perform a nonlinear analysis on the system above (which is
-known in the literature as a Duffing oscillator — anything else I
-need to add?), it is instructive to examine the power spectra generated
-with a range of spring stiffnesses and Gaussian inputs.
-
-\Figref{cubic-resonance-disturb,cubic-resonance-stiffness} show the
-square root of the ratio of the power spectrum of $s$ and $x$, where
-$s$ is a white noise signal of variance $S$. (The transfer function is
-not examined because it removes nonlinear components of the original
-signals.) The results are compared with the system
-\begin{dmath}
-m \ddot x + b \dot x + k_{\text{lin}}(x+s) = 0, 
-\end{dmath}
-which has a linear stiffness $k_{\text{lin}}=3kS^2$ equivalent to the
-stiffness of the nonlinear spring at the variance displacement.
-
-In both nonlinear systems simultions, significant nonlinearities in the
-response can be seen. Maximum frequency and amplitude of the response increase
-with both greater input disturbance amplitude and greater nonlinear spring
-stiffness.
-
-\begin{figure}
-  \grf{Simulations/Zero_stiffness/eps/cubic-resonance-disturb}
-  \caption{Cubic stiffness response with various amplitudes of
-    disturbance in comparison to some approximately similar linear
-    systems.}
-  \figlabel{cubic-resonance-disturb}
-\end{figure}
-
-\begin{figure}
-  \grf{Simulations/Zero_stiffness/eps/cubic-resonance-stiffness}
-  \caption{Cubic stiffness response with varying values of the
-    stiffness coefficient (with $S=1$ to compare with
-    \figref{cubic-resonance-disturb}) in comparison to some
-    approximately similar linear systems.}
-  \figlabel{cubic-resonance-stiffness}
-\end{figure}
-
-When compared to the linear response of stiffness equivalent to the maximum
-stiffness reached by the white noise input, the linear system response is
-\emph{smaller} than the \qzs\ response. This restricts the applications of
-using nonlinear springs to achieve low resonance frequencies: only when it
-becomes infeasible to decrease the stiffness of a conventional linear system
-any further should a nonlinear system be chosen instead.
-
-
-
-
 \section{Nonlinear systems}
 
 Interesting results have been shown using nonlinear springs to attach the
@@ -855,32 +765,24 @@ cubic stiffness and quadratic damping. Critical values were illustrated to
 avoid the ill effects of the nonlinearities; additional damping had the
 general effect of decreasing the adverse nonlinear response.
 
-For the purpose of vibration control, augmenting a linear spring
-system with nonlinear magnetic springs alters the behaviour of the
-natural frequency of the system to be weakly coupled to the mass of
-the system. \textcite{dangola2006} analysed the nonlinear dynamics of
-the nonlinear system approximated by (in non-dimensional form)
-\begin{dmath}
-  \eqlabel{dangelo}
-  \D[2]{u}{\tau} + c_s\D{u}{\tau} 
-  + \underbrace{(1+\alpha_1)u  + \alpha_2 u^2 
-    + \alpha_3 u^3}_{\text{nonlinear spring}}
-  = \delta\Cos{\rho\tau} .
-\end{dmath}
-For this system, a variation of both stiffness and mass by up to 50\%
-yields an increase of stiffness of 6\%. For an equivalent linear
-system, the natural frequency variation is ten times greater. This is
-a very interesting result for loading elements for which the mass to
-be supported is largely variable, in that the frequency response will
-vary significantly less than for conventional linear springs. 
+For the purpose of vibration control, augmenting a linear spring system with
+nonlinear magnetic springs alters the behaviour of the natural frequency of
+the system to be weakly coupled to the mass of the system.
+\textcite{dangola2006} analysed the nonlinear dynamics of a nonlinear system
+in which a variation of both stiffness and mass by up to 50\% yields an
+increase of stiffness of 6\%. For an equivalent linear system, the natural
+frequency variation is ten times greater. This is a very interesting result
+for loading elements for which the mass to be supported is largely variable,
+in that the frequency response will vary significantly less than for
+conventional linear springs.
 
 However, for weakly nonlinear magnetic springs, variation in the mass will
-lead to changes in the resonance frequency. \textcite{todaka2001} created a
-mechanical linkage to support two magnets in repulsion such that as their air
-gap increased (due to less mass being supported), a horizontal offset between
-them was created to lower the linearised operating stiffness. This allowed a
-much smaller variation between the $k/m$ ratio than for flush magnets in
-repulsion.
+still lead to changes in the resonance frequency. \textcite{todaka2001}
+created a mechanical linkage to support two magnets in repulsion such that as
+their air gap increased (due to less mass being supported), a horizontal
+offset between them was created to lower the linearised operating stiffness.
+This allowed a much smaller variation between the $k/m$ ratio than for flush
+magnets in repulsion.
 
 \textcite{bonisoli2007} used an experimental rig to analyse the nonlinear
 behaviour of a magnetic and linear spring in parallel, with more theoretical

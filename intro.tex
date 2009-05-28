@@ -105,6 +105,141 @@ However, the field of active control has been well-established and the feat of b
 
 \subsection{V}
 
+\subsection{Levitation}
+
+Before looking at the general class of magnet force devices, levitation is a good place to start.
+
+\subsubsection{Magnetic levitation is impossible!}
+\seclabel{earnshaw}
+
+The act of passively levitating a magnet by another is well
+known as impossible, although popular unlearned opinion is not
+aware of the fact.  \textcite{earnshaw1842} proved that
+objects in the influence of fields that apply forces with an
+inverse-square relation to displacement cannot form
+configurations of stable levitation. Approximately one hundred
+years later, \textcite{tonks1940} wrote a paper reminding his
+contemporaries of the work of \citeauthor{earnshaw1842} by
+applying the proof specifically to the field of magnetics:
+\begin{quote}
+\dots no flexible assemblage of magnetic poles, in which
+readjustments in position of the poles in the group can
+occur, can be stable in either a fixed field or in the field
+from another such assemblage\dots
+\end{quote}
+The proof is conceptually quite simple. We start with the
+equation for the magnetic field; when there are no external
+current terms, it can be shown to be expressed as Laplace's
+equation:
+\begin{dmath}[compact]
+\grad\magB = 0 \implies \divgrad\magB = 0
+\end{dmath}.  
+The potential energy of a magnet is proportional
+to the magnetic field it is subjected to, $U =
+-\magM\bdot\magB$, so when the magnetisation is time-invariant 
+(as in the case of a permanent magnet), we have:
+\begin{dmath}[compact,label=earnshaw]
+\divgrad U = \divgradxyz{U} = 0 
+\end{dmath}.  
+The double differentiations of the energy are
+the stiffnesses in each direction.  But for stable
+equilibrium, these three terms must be greater than zero. This
+cannot satisfy \eqref{earnshaw} and thus levitation cannot
+occur.
+
+\begin{figure}
+  \grf[width=0.4\textwidth]{Figures/Theory/saddle}
+  \caption{A ball in unstable equilibrium on a saddle-shaped curve.}
+  \figlabel{saddle}
+\end{figure}
+
+This is easy to visualise by analogy. \figref{saddle} shows a ball balancing
+on a saddle-shaped curve, which we can take to be potential energy of a \twoD\
+system. Clearly it is stable in one direction, unstable in the other.
+Perturbations `left' or `right' will result in reaction forces keeping it
+centred and stable, whereas small displacements `into' or `out from' the page
+will result in increased perturbation to instability.
+
+\subsubsection{Exceptions to Earnshaw}
+
+Earnshaw's proof does not rule out all forms of `levitation' unconditionally,
+however. \textcite{boerdijk1956a} reviewed the known methods for levitation,
+covering levitation by gravitation forces, pressure reaction forces, radiation
+field forces, and finally in detail, various magnetic and electromagnetic
+forces.
+
+Because Earnshaw's theorem looks only at the case for static equilibrium,
+cases when the magnetic field is dynamic are not covered. This can occur
+broadly under two circumstances: when the magnetic field is generated with
+\AC\ currents; and when an unstable permanent magnet arrangement is stabilised
+with an active control system.
+
+Levitation using a magnetic field produced by \AC\ currents was covered in
+detail by \textcite{laithwaite1965}. The basic mechanism of this type of
+levitation is that \AC\ currents create dynamic magnetic fields that induce
+eddy currents in a levitating object, and it is the interaction of the
+magnetic fields of these induced currents that causes the levitation. The
+technique uses a large amount of power, and is not especially suitable for the
+purposes of this research for this reason.
+
+For an actively stabilised levitation system, the levitation forces are
+created by permanent magnets (which have time-constant magnetic fields) and
+the necessary stabilisation applied with variable current electromagnets with
+a feedback control system. For this reason the magnetic fields are known as
+quasi-static. This system was first implemented by Holmes who levitated a
+magnetic needle, as cited by \textcite{boerdijk1956a}. Some more practical
+examples of these types of system are covered in the next section.
+
+This summary is fairly brief; \textcite{bleuler1992} wrote a more detailed
+overview. His paper introduces the `self-sensing active magnetic bearing'
+\cite{vischer1993} which uses back--electromotive force from the controlling
+electromagnet to sense the position of the floating element. This eliminates
+the need for a more classical position sensor (\eg, optical or capacitive),
+but the control system is necessarily more complex and the behaviour not as
+precise.
+
+Some Italian guy showed that you can levitate a ring magnet above another by
+using vibrations to find small zone of stability in the nonlinear dynamics
+\cite{bassani2007}.
+
+\subsubsection{Diamagnetic forces}
+
+Levitations involving diamagnetic material are also exempt from Earnshaw's
+theorem. This was the motivation for the papers of
+\textcite{boerdijk1956b,boerdijk1956a} in which he cites Braunbek, who derived
+that magnetic material is governed by Earnshaw's theorem only because it has a
+relative magnetic permeability ($\permMag$) greater than one—\ie, a
+permeability greater than that of the surrounding medium. Material with
+$\permMag<1$ is \emph{not} covered by the theorem since the magnetic flux from
+the diamagnetic material becomes dependent on the displacement of the
+permanent magnet; this violates the condition of Earnshaw's theorem that fixed
+magnetic fields be used, and so static levitation involving magnets and such
+diamagnetic material is very possible. To demonstrate this,
+\citeauthor{boerdijk1956b} levitated a small cylindrical magnet of dimensions
+\diameter$\,\SI{1}{mm} \times \SI{0.3}{mm}$.
+
+More contemporary studies on diamagnetic levitation look at the
+levitation of larger objects including strawberries and frogs
+\cite{berry1997, simon2000, simon2001}, using very high-powered
+electromagnets (on the order of \SI{2}{T} \fixme{check}).
+
+Unfortunately, these techniques are not suitable for large load
+bearing.  Even the most diamagnetic substance known, pure bismuth, has
+$\permMag \approx 0.9998$ — hardly different than that of air. The forces
+exchanged via magnetic flux between magnetic and diamagnetic
+materials, therefore, are incredibly small and not suited at all to
+the purposes of this research.
+
+Superconducting material, on the other hand, behaves ideally diamagnetic with
+$\permMag =0$, so the forces produced between a superconductor and a magnet
+are equal to the forces between two (equal) permanent magnets themselves. This
+allows many exciting possibilities for stable levitation. However, such
+materials must be cooled to very low temperatures (\emph{at least} below
+\SI{-150}{\celsius}) in order to remain superconductive. Such a requirement
+renders this method financially and functionally impractical for this
+research. A review of work in this area has been published by
+\textcite{ma2003}.
+
 \subsection{Applications of magnetic forces}
 
 \textcite{coey2002} discusses a broad range of magnetic applications,
@@ -228,8 +363,6 @@ to a cantilever, excited by an external field in a water tank, to propel a
 robotic fish. Only left-right oscillations were produced, so the fish was
 constrained to move in a plane; two turning methods are investigated.
 
-
-\subsection{Overlap in vibrations and magnets}
 
 \subsection{Exploring \qzs\ systems}
 \seclabel{vibrations-qzs}
