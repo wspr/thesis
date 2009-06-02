@@ -603,6 +603,29 @@ identical closed loop dynamics (\eqref{cl-dynamics}). Referring to
 \end{dmath}.
 \end{dgroup}
 
+\subsection{added bit?}
+
+Recall,
+\begin{dgroup}
+\begin{dmath}
+m\ddot x = K(x-y)^2 + u
+\end{dmath},
+\begin{dmath} 
+u = \{K(x-y)^2\}_{\text{est}} + k_c x + c_c \dot x 
+\end{dmath},
+\begin{dmath}
+m\ddot x = e[x,y] + k_c x + c_c \dot x 
+\end{dmath}.
+\end{dgroup}
+So the final vibration of the support, $x$, is independent of $y$
+(the base vibration) except for a small amount coming through the
+error term, $e$.
+
+On the other hand, the dynamics of the support are defined by the
+controller gains $k_c$ and $c_c$, which seems to imply that the
+tradeoff between base vibration isolation and direct force
+disturbance in a regular system is not present here.
+
 \subsection{Simulation results}
 
 Results are obtained by investigating the dynamics in numerical

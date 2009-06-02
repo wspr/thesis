@@ -16,7 +16,7 @@ vibrations and their isolation and suppression in
 design of supporting structures and other devices in
 \secref{magnets-summary-intro}; and `\qzs' systems, which unify in this thesis
 the fields of vibrations and magnets, in \secref{qzs-summary-intro}. These
-three broad areas are then investigated in more detail in \secref{literature-explore}.
+three broad areas are then investigated in more detail in \secrangeref{vibrations-explore}{qzs-explore}.
 
 \subsection{The problem of vibrations}
 \seclabel{vibrations-summary-intro}
@@ -100,16 +100,427 @@ demonstrated.\footnote{Although I took much pleasure in explaining
 
 However, the field of active control has been well-established and the feat of building a stabilising controller for a system with relatively simple dynamics is not worthy of the research for a \PhD. The work presented in this thesis is the investigations around the idea of building a `table that floats on magnets' while pulling out enough interesting nuggets to prove worthy of the title of `research'.
 
-\section{Exploring the literature in the context of the ideas discussed}
-\seclabel{literature-explore}
+\section{Vibrations}
+\seclabel{vibrations-explore}
 
-\subsection{V}
+The field of active vibration isolation is a broad topic to cover in review;
+not everything will be able to be covered here, but it is important to have an
+overview of what people are doing to place this work in context. The
+literature review that follows is strongly biased towards papers that have
+been recently published. Tracking their citations backwards will yield a
+tangled web of prior art in the field of vibration control.
 
-\subsection{Levitation}
+\subsection{Linear systems}
+
+\Figref{simple-isolation} shows the simplest form of vibration
+isolation in which a mass $\massMass$ is mounted with stiffness
+$\stiffnessRel$ with disturbance input $\dispBase$. Passive
+isolation is achieved for zero input force, $\forceIn=0$. Feedback
+control allows the properties of the system to be adjusted
+according the desired vibration response.
+
+\begin{figure}
+  \asyfig{Systems/vibration-base}
+  \caption{Single degree of freedom vibration isolation mount;
+    mass $\massMass$ is being isolated from disturbance
+    $\dispBase$. Input force $\forceIn$ can be generated using
+    feedforward or feedback control.}
+  \figlabel{simple-isolation}
+\end{figure}
+
+The dynamic response of the isolated mass is
+\begin{dmath}[label=simple-isolation]
+  \massMass\ddot\dispMass +
+  \dampingRel\gp{\dot\dispMass-\dot\dispBase} +
+  \stiffnessRel\gp{\dispMass-\dispBase} + \forceIn = 0 .
+\end{dmath}
+First assume that there is no input force; taking the Laplace
+tranform and rearranging produced the transmissibility
+$\transmissibility$ of the system in the frequency domain:
+\begin{dmath}[compact,label=simple-isolation-freq]
+  \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
+  \frac{\ii\freq\dampingRel + \stiffnessRel}
+  {-\massMass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
+\end{dmath}
+
+For ideal linear state feedback control, the input force can be
+represented as a linear combination of measured relative
+displacement $\gp{\dispMass-\dispBase}$, relative velocity
+$\gp{\dot\dispMass-\dot\dispBase}$, and acceleration
+$\ddot\dispMass$ of the mass. Let's also assume for now that
+integrating the acceleration signal yields an exact absolute
+velocity $\dot\dispMass$ of the mass as well. The generalised
+feedback force can then be represented by
+\begin{dmath}
+ \forceIn = 
+   \gainDisp\gp{\dispMass-\dispBase} + 
+   \gainVel \gp{\dot\dispMass-\dot\dispBase} +
+   \gainAcc \ddot\dispMass + 
+   \gainSky \dot\dispMass
+\end{dmath},
+where $\gainArbitrary$ are feedback gains chosen appropriately for a given application.
+The term involving $\gainSky$ is known as skyhook damping. Substituting this force equation
+into \eqref{simple-isolation} yields
+\begin{dmath}
+  \gp{\massMass+\gainAcc}\ddot\dispMass +
+  \gp{\dampingRel+\gainVel}\gp{\dot\dispMass-\dot\dispBase} +
+  \gp{\stiffnessRel+\gainDisp}\gp{\dispMass-\dispBase} +
+  \gainSky\dot\dispMass 
+  = 0
+\end{dmath}.
+
+It can be clearly seen that there is an exact equivalence between the feedback
+gains of the different signals and a corresponding physical parameter of the
+system. For example, adding gain on the displacement feedback is analogous to
+increasing the stiffness of the system. The one standout here is the `skyhook'
+damping term, whose influence can be better seen in the equation for
+transmissibility of the closed loop system. For this example, let displacement
+and acceleration gains equal zero, $\gainDisp=\gainAcc=0$, resulting in
+\begin{dmath}[compact,label=skyhook]
+  \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
+  \frac{\ii\freq\gp{\dampingRel+\gainVel} + \stiffnessRel}
+    {-\massMass\freq^2 + \ii\freq\gp{\dampingRel+\gainVel+\gainSky} + \stiffnessRel}.
+\end{dmath}
+The transmissibilities due to the influence of relative velocity gain and
+absolute velocity gain are shown in \figref{vel-vs-sky} with parameters
+$\massMass=\SI{1}{kg}$, $\dampingRel=\SI{1}{kg/s}$,
+$\stiffnessRel=\SI{10}{N/m}$, and the respective gains $\gainVel$ and
+$\gainSky$ ranging from $0$ to $5$ corresponding from light to dark plot
+lines.
+
+\begin{figure}
+   \begin{wide}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-vel}\hfil
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-sky}
+   \end{wide}
+   \caption{Relative and absolute (`skyhook') velocity feedback control on the 
+   system shown in \figref{simple-isolation}. Feedback gain increases as the 
+   plot line ranges from light to dark.}
+   \figlabel{vel-vs-sky}
+\end{figure}
+
+In comparing the \RMS\ transmissibilities over the frequency range of interest
+($\sqrt{\Int{\transmissibility\fn\freq}{\freq,\freq_1,\freq_2}}$) as a function of
+increasing feedback gain for the two cases, it is clear in the ideal case that
+skyhook damping is more efficacious at reducing the total vibration of a
+system. This is shown in \figref{rms-transmissibility}, where the relative
+feedback \RMS\ transmissiblity has a local minimum whereas the skyhook case
+continuously decreases. (The maximum frequency in this case was chosen to be
+much greater than the resonance frequency;
+$[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
+
+\begin{figure}
+   \psfragfig{\phdpath Simulations/Springs/fig/rms-transmissibility}
+   \caption{\RMS\ transmissibility versus feedback gain of relative and 
+   absolute (`skyhook') velocity feedback control on the system shown in 
+   \figref{simple-isolation}.}
+   \figlabel{rms-transmissibility}
+\end{figure}
+
+Velocity feedback control by using integrated accelerometer measurements at
+the location of actuation has been used for some time as an effective
+vibration isolation mechanism, shown for example by \textcite{kim1999} at the
+ISVR at the University of Southampton, an institution that has been very
+active in this field.
+
+The limits of control in real-world devices was investigated by
+\textcite{ananthaganeshan2001}, where time delays and phase lags introduced by
+digital filters and integrators can have quite significant effects over the
+ideal case of pure displacement or velocity or acceleration feedback (as
+posited in the previous section). Real integrators (as opposed to ideal
+integrators) and high pass filters cause instabilities at low frequencies.
+Acceleration feedback has much smaller stability limit than displacement and
+velocity. And the effect of displacement feedback is strongly reduced even
+with small time delays. Therefore velocity feedback control from integrated
+accelerometer measurements should be consided the better choice. Also, the
+presence of a low pass filter does not significantly effect the efficacy of
+velocity feedback.
+
+\textcite{zhu2006} look at using such feedback in a highly sensitive
+micro-gravity environment and show that `PID' feedback is unsuitable due to
+instability at high (\ie, useful) control gains from quantisation and
+anti-aliasing side-effects. Rather, integral and double-integral feedback from
+an accelerometer give better results for them.
+
+\subsection{Sensing}
+
+The sensors used for active vibration control systems can make a
+significant impact on the performance that the control can
+achieve. \textcite{brennan2007} discuss the impacts of using
+displacement, velocity, and acceleration feedback for a single degree
+of freedom system in the context of signal conditioning filters and
+digital time delays in the loop. Integrating an accelerometer signal
+may be a convenient method to approximate the velocity, but it limits
+the control performance that can be achieved compared to measuring the
+velocity directly with a laser sensor (say).
+
+It is always desired to minimise the number of sensors due to cost and
+implementation complexity, and various methods may be used to estimate
+states of a system that are not directly measured. If displacement and
+acceleration are measured, a reasonable estimate of the velocity may
+be computed by differentiating and integrating, respectively, the
+measured signals and combining the results.
+
+This method has been practised by \textcite{bennett2007}, and it works
+acceptably well because the low frequency components can be obtained
+from the derivative of the displacement and the high frequency
+components can be obtained by integration of the acceleration. The
+only question is where to draw the line in the frequency domain
+between the two signals.
+
+I've lost my paper that does this much more cleverly. Actually I haven't looked.
+
+
+\subsection{Skyhook damping}
+\seclabel{skyhook}
+
+An attractive method of reducing the effects of resonance peaks is to add
+damping to the structure. If this is performed by an actuator attached to the
+`sky' instead of the ground, the advantage of knocking out the resonance peak
+is not counteracted by an increase in higher frequency vibration (less
+roll-off), which is the case for damping control with ground-fixed actuators.
+This scheme is known as `skyhook' damping.
+
+In the context of isolating vibration of a train, \textcite{li1999} discuss
+the disadvantages in tracking when applying skyhook damping for systems that
+experience very low frequency (\ie, steady state) changes in the base
+position, but for the purposes of vibration isolation this is not a problem if
+the ground is assumed to experience disturbance with zero mean. (They also use
+Kalman filters for estimating velocity, an idea I'm keen on.)
+
+A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control,
+which can be effected with `semi-active' variable stiffness feedback control
+\cite{leavitt2007}.
+
+In the original and crude method of implementing skyhook control, the
+switching mode that is necessary to emulate the `skyhook' in the controlled
+damping introduces higher order (odd-multiple) harmonics in the frequency
+response, as shown by \textcite{ahmadian2001}, who later proposed two
+`jerk-free' skyhook algorithms \cite{ahmadian2004}.
+
+Further work in the area was established by \textcite{liu2002}, who
+demonstrated a number of skyhook-like semi-active damping methods, including
+smoothing functions to eliminate the problem of jerk
+\cite{liu2005}.\footnote{These references by Liu contain essentially the same
+material, with greater detail in the first. The 2005 paper is easier to read
+than the 2002 Technical Memorandum simply due to the formatting of the
+documents.}
+
+\textcite{song2007} used the nonlinearities of semi-active skyhook damping as
+justification for the design of an adaptive controller for vibration
+isolation; they did not compare their results with recent work in the skyhook
+area, however.
+
+Skyhook damping can also be implemented with fully active control systems, an
+idea explored by, \eg, \textcite{elliott2001,elliott2004,yan2006,kim2008a}
+\fixme{describe these more}. These methods are conceptually simpler, as the
+inertial velocity can easily be obtained from integrated acceleration
+measurements. Instability can occur in cases when the applied control force
+affects the dynamics of the base, but in practice this tends not to be a
+problem for comparatively massive support structures.
+
+\textcite{serrand2000} discuss active skyhook damping applied to a two degree
+of freedom structure with emphasis on the effects, for their system, due to
+possible base flexibility. One of their results shows that using integrated
+accelerometer measurements as a velocity feedback term has a low frequency
+phase shift that can induce stability for high enough control gains.
+Therefore, very high precision accelerometers or laser velocity vibrometers
+are required for very low frequency vibration control (below \SI{1}{Hz}).
+
+
+
+
+\subsection{Inertial actuators}
+
+Sometimes it is not possible to integrate the control mechanism into the
+support of a structure, in which case external actuators need to be added to
+the device to provide the control forces. These tend to be inertial
+electromagnetic actuators, also known as `proof-mass' actuators, where the
+mass of the moving element provides an external force via coupling to the
+structure. This is shown schematically in \figref{vibration-absorb}
+
+\begin{figure}
+   \asyfig{Systems/vibration-inertial} 
+   \caption{An inertial force $\forceAbsorb$ designed to reduce the vibration 
+   response $\dispMass$ due to disturbance $\dispBase$. The inertial actuator 
+   has dynamics of its own ($\stiffnessAbsorb$, $\dampingAbsorb$) that 
+   influence the overall vibration of the structure.}
+   \figlabel{vibration-absorb}
+\end{figure}
+
+In this case, velocity feedback on its own can have problems with stability
+margins at low frequencies. \textcite{benassi2002a} (using inertial actuators)
+showed in experiment that this can be improved by the addition of a phase lag
+controller with force feedback in conjuection with velocity feedback. The
+theory for such `combined-state' feedback cases was subsequently developed
+\cite{benassi2002b}.
+
+A wide combination of feedback combinations was analysed by
+\textcite{diaz2005} focussing on various forms of velocity feedback for
+single-, double-, and multi-degree of freedom vibration isolation systems. In
+the two degree of freedom system, an inertial actuator is used to provide
+control force; as well as additional stability contraints due to this
+arrangement, the resonance at low frequencies of the actuator itself
+compromised the control performance.
+
+(A possible solution to this problem might be to select an actuator with a
+much \emph{greater} resonance frequency than the plant, but this arrangement
+has been shown to be ineffective at controlling the system
+\cite[][Appendix~A]{benassi2002}.)
+
+A comparison of some of these methods, including skyhook damping and
+semi-active vibration absorber methods, was done by \textcite{huyanan2007},
+contrasting the performance and implementation differences between them.
+
+\textcite{paulitsch2003} uses an electromechanical actuator that serves as a
+self-sensing device for vibration control. The idea of self-sensing for
+magnetic levitation purposes (in both cases using a electromagnet) has been
+shown by \textcite{bleuler1992,vischer1993}. These self-sensing devices
+(perhaps obviously, since the back--electromotive force is such a noisy
+signal) do not perform nearly as well as when using a dedicated sensor, but
+the technique is particularly interesting for low-cost, low-precision devices.
+
+
+
+
+
+\subsection{Tuned vibration absorber}
+
+One method of reducing vibration on a supported mass is to attach a
+supplementary mass that resonanates in concert with the disturbance; this has
+the effect of adding an anti-resonance to the original system at the frequency
+of interest. These are known under various names as `tuned mass dampers',
+`tuned vibration neutralisers', or `dynamic vibration absorbers' (presumably
+other variations exist).
+
+The concept of tuned mass dampers is not entirely the focus of this research,
+but falls into the category of literature that crops up in association with
+it. In the passive application, a tuned vibration absorber consists of
+attaching a supplementary mass with a spring to the structure for which
+vibration is to be removed. Excellent results can be achieved in knocking out
+a resonance peak by matching the natural frequencies of the structure and the
+additional mass. This is shown in \figref{tuned-mass-vs-fig} where a response
+is shown for a range of stiffness values. There is a compromise between broad-
+and narrow-band vibration attentuation. \Figref{inertial-trans-delta}
+illustrates the vibration attenuation at resonance for a system with a
+vibration absorber. It can be seen that for narrowband reduction, low absorber
+damping produces greater vibration attenuation. Conversely, if the \RMS\
+transmissiblity of the entire frequency band is calculated, as shown in
+\figref{rms-inertial}, it can be seen that lower absorber damping
+\emph{decreases} the overall vibration reduction.
+
+\begin{figure}
+   \psfragfig{\phdpath Simulations/Springs/fig/tuned-mass-vs-freq}
+   \caption{Vibration absorber with a range of absorber frequencies. 
+   When the absorber matches the resonance of the structure the vibration 
+   amplitude around that frequency is greatly reduced.}
+   \figlabel{tuned-mass-vs-fig}
+\end{figure}
+
+\begin{figure}
+\begin{wide}
+  \begin{subfigure}
+    \psfragfig{\phdpath Simulations/Springs/fig/inertial-trans-delta}
+    \caption{Transmissibility reduction at resonance due to a vibration 
+    absorber system, versus absorber stiffness, for a range of absorber 
+    damping values. Greater reductions result from \emph{lower} damping.}
+    \figlabel{inertial-trans-delta}
+  \end{subfigure}
+  \begin{subfigure}
+    \psfragfig{\phdpath Simulations/Springs/fig/rms-inertial}
+    \caption{\RMS\ transmissibility of the vibration absorber system versus 
+    absorber stiffness for a range of absorber damping values. Greater 
+    broadband reductions result from \emph{higher} damping.}
+    \figlabel{rms-inertial}
+  \end{subfigure}
+\end{wide}
+\caption{A comparison of the effects of changing the damping ratio of the 
+absorber on single-frequency and broadband transmissibility of a tuned mass 
+damper.}
+\end{figure}
+
+\textcite{brennan2006} discusses a wide variety of actuators that may
+be used to construct such a device:
+\begin{quote}
+  There is not a single ``best'' way of making an [adaptive tuned
+  vibration absorber]. It depends upon the required frequency range,
+  the agility (speed of reaction) and cost.
+\end{quote}
+
+The efficacy of the vibration absorber is related to the damping between it
+and the structure; better results are achieved with lower damping, as shown in
+\figref{rms-inertial}. The damping of the absorber can be reduced with an
+active control system as shown by \textcite{kidner1998}. This can be
+understood with the realisation that energy is not dissipated by the vibration
+`absorber'; rather, motional energy from the vibration structure is
+\emph{transferred} to the supplementary mass, and this process is degraded by
+the presence of damping. This theme of the desirability of low damping
+re-occurs at a later point in this thesis (crossref).
+
+\textcite{felix2008} also recently demonstrated the use of coupling between a
+cantilever under direct disturbance and a electromechanical damper with
+nonlinear resistive and capacitive elements.
+
+A paper I haven't read yet uses magnetorheological elastomer as a variable
+stiffness element \cite{holdhusen2007}.
+
+\textcite{casciati2007} uses a semi-active tuned mass damper to
+control vibrations of a suspended cable; some care is required for
+modal structures as their higher frequency (often nonlinear) behaviour
+can pose an influence even as the targeted (low frequency) mode is
+damped as desired.
+
+Tuned vibration absorbers can also be effected artificially with a control
+system \cite{kim2008a}.
+
+Another application: \cite{moradi2008}
+
+An extremely interesting novel device is demonstrated in the literature that
+is a mechanically self-tuning vibration absorber \cite{ivers2008}. While not
+as efficacious as a `true' vibration absorber, the ability to adapt to the
+excitation frequency is very useful.
+
+Tuned vibration absorbers are occasionally used to mitigate seismic vibrations
+in large buildings, but their mass dependence makes their application rather
+tricky and often impractical. \textcite{matta2008} propose a nonlinear
+rolling structure via which a vibration absorber can be mounted to good effect
+despite uncertain masses of either or both of the building and absorber. Their
+work focuses on the novel idea of using a roof-top garden as a tuned mass
+damper \parencite{matta2008a}.
+
+
+\subsection{Fully active tuned vibration absorbers}
+
+Some researchers have looked at using electromagnetic actuators to
+provide an active force with which to cancel system resonances. The
+advantage for such a system is the same as the semi-active case: with
+a suitable controller, changes in the plant can be taken into account
+in the vibration neutraliser. However, using a fully active system for
+this task is not very energy efficient.
+
+One example is the work by \textcite{chen2005a}, who use a linear
+`voice coil motor' (crossref) as the actuator for a controller based
+around a simple notch filter to remove the system resonance. Suffice
+it to say that basic velocity feedback would have done a better job,
+as the notch filter \emph{amplifies} vibration response in the
+side-lobes of the filter.
+
+While his work classically uses linear (\PID) control, a recent paper
+by \textcite{wu2007} approaches this idea using an linear actuator
+with a controller to simulate the dynamics of such a tuned absorber,
+with additional dynamics to tune the resonances in the case of plant
+changes. This is a good example of a poor choice of control strategy
+by using empirical algorithms for a specific application rather than
+applying a more general technique. \fixme{Don't be too harsh.}
+
+
+
+\section{Levitation}
+\seclabel{levitation-explore}
 
 Before looking at the general class of magnet force devices, levitation is a good place to start.
 
-\subsubsection{Magnetic levitation is impossible!}
+\subsection{Magnetic levitation is impossible!}
 \seclabel{earnshaw}
 
 The act of passively levitating a magnet by another is well
@@ -160,7 +571,7 @@ Perturbations `left' or `right' will result in reaction forces keeping it
 centred and stable, whereas small displacements `into' or `out from' the page
 will result in increased perturbation to instability.
 
-\subsubsection{Exceptions to Earnshaw}
+\subsection{Exceptions to Earnshaw}
 
 Earnshaw's proof does not rule out all forms of `levitation' unconditionally,
 however. \textcite{boerdijk1956a} reviewed the known methods for levitation,
@@ -202,7 +613,7 @@ Some Italian guy showed that you can levitate a ring magnet above another by
 using vibrations to find small zone of stability in the nonlinear dynamics
 \cite{bassani2007}.
 
-\subsubsection{Diamagnetic forces}
+\subsection{Diamagnetic forces}
 
 Levitations involving diamagnetic material are also exempt from Earnshaw's
 theorem. This was the motivation for the papers of
@@ -239,6 +650,14 @@ materials must be cooled to very low temperatures (\emph{at least} below
 renders this method financially and functionally impractical for this
 research. A review of work in this area has been published by
 \textcite{ma2003}.
+
+\subsection{Basic magnetic suspension}
+
+\textcite{agamennoni2004} were able to identify the nonlinear dynamics
+of a coil-iron suspension.
+
+\section{Magnetics}
+\seclabel{magnets-explore}
 
 \subsection{Applications of magnetic forces}
 
@@ -280,7 +699,7 @@ Non-contact magnetics in mechanical systems is advantageous due to high
 precision and wear-free operation due to lack of friction. This section looks
 broadly at some of the main applications of the field.
 
-\subsubsection{Maglev transportation}
+\subsection{Maglev transportation}
 
 The largest body of research into magnetic levitation is on so-called `maglev'
 transportation. Its well-known goal is to use a levitated train or car to
@@ -292,7 +711,7 @@ loads, magnets), the techniques used tend to be rather distanced from those
 that will be applied for this project because they focus on transportation
 rather than \emph{elimination} of movement.
 
-\subsubsection{Magnetic actuators}
+\subsection{Magnetic actuators}
 
 In more recent years, another application for magnetic levitation has been
 investigated, which is the precision control of a levitated platform. Commonly
@@ -331,7 +750,7 @@ is for a planar actuator, and the motivation is to be able to determine the
 amount of out-of-plane force generated by a particular design. Could very well
 be useful for some of my ideas.
 
-\subsubsection{Interesting devices}
+\subsection{Interesting devices}
 
 I like magnetic levitation of objects in a wind tunnel
 \cite{higuchi2008}.
@@ -364,8 +783,8 @@ robotic fish. Only left-right oscillations were produced, so the fish was
 constrained to move in a plane; two turning methods are investigated.
 
 
-\subsection{Exploring \qzs\ systems}
-\seclabel{vibrations-qzs}
+\section{Exploring \qzs\ systems}
+\seclabel{qzs-explore}
 
 Addition of negative stiffness elements in a design reduces the resonance
 frequency, which improves vibration isolation. Early examples of such designs
@@ -418,7 +837,9 @@ Analysis of the nonlinear dynamics of such systems such as performed by
 of this research.
 
 
-\section{Digression}
+
+
+\section{Digression on the nature of the literature}
 
 The method for literature review taken in this thesis may be considered rather
 eccentric. During the course of my research, I couldn't help but notice the
@@ -434,6 +855,10 @@ I believe, to attempt a unification and consolidation of the amount of
 information that is currently available and, also, and more importantly, the
 way that new work is published.
 
+
+
+
+
 \section{Notation}
 
 The mathematics in this thesis is typeset consistently but somewhat
@@ -445,6 +870,10 @@ f\fn{x} = \half\gp{x+\Sin{x}}.
 
 Here's a nice big glossary section that will take me fucking ages to get
 right. Maybe I should just scrap it.
+
+
+
+
 
 \section{Typesetting}
 
@@ -463,6 +892,9 @@ text is less useful.
 
 In the \PDF\ version of this document, clickable hyperlinks have been inserted
 in all relevant cross-referencing situations to aid navigation.
+
+
+
 
 \section{Paraphrasing David Foster Wallace}
 
