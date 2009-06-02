@@ -140,35 +140,6 @@ fixed sensor. I find it interested than observer techniques haven't
 been investigated for this purpose. Perhaps I've just missed that
 particular research cul-de-sac.
 
-Incredibly enough, this paper mentions the article
-\cite{guardabassi2001} as a reference for the fact that frequency
-response of nonlinear systems is somewhat undefined (but I can't see
-how it is a particularly relevant citation!). Here's how they compute
-their nonlinear `frequency response', for which they calculate a
-\emph{variance gain}:
-\begin{dmath}
-\hat F_{\text{acc}}(j\omega_i) = \sqrt{\left.
-  {\color{gray}\tfrac{1}{T}}\Integrate{\ddot z_i(t)^2}{t,0,T}
-  \middle/
-  {\color{gray}\tfrac{1}{T}}\Integrate{z_{r_i}(t)^2}{t,0,T}
-  \right.} 
-  \condition*{i=1,2,\dots,N}
-\end{dmath},
-for input signals
-\begin{dmath}
-z_{r_i}(t) = A \Sin{\omega_i t} 
-\condition*{t\in[0,T]}
-\end{dmath},
-and measured output signals $\ddot z_i(t)$. Note that the $1/T$ terms (above,
-greyed out) haven't been cancelled as the numerator and denominator are both
-expressions for the \RMS\ value of each signal over the sampled time period.
-
-This technique is useful for quantifying the behaviour of nonlinear
-systems. For measuring the frequency response function of a
-predominantly linear system that is contaminated by nonlinear signals
-whose effects should be discarded, other techniques are available
-\cite[for example]{schoukens2001}.
-
 \textcite{kerber2007} modelled a plate-plate coupling through four
 contact points in six degrees of freedom system and applied active
 vibration isolation in the vertical direction using a range of control
