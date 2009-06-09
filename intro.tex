@@ -98,7 +98,12 @@ demonstrated.\footnote{Although I took much pleasure in explaining
   over the years that my \PhD\ project was to `build a table that
   floats on magnets'.}
 
-However, the field of active control has been well-established and the feat of building a stabilising controller for a system with relatively simple dynamics is not worthy of the research for a \PhD. The work presented in this thesis is the investigations around the idea of building a `table that floats on magnets' while pulling out enough interesting nuggets to prove worthy of the title of `research'.
+However, the field of active control has been well-established and the feat of
+building a stabilising controller for a system with relatively simple dynamics
+is not worthy of the research for a \PhD. The work presented in this thesis is
+the investigations around the idea of building a `table that floats on
+magnets' while pulling out enough interesting nuggets to prove worthy of the
+title of `research'.
 
 \section{Vibrations}
 \seclabel{vibrations-explore}
@@ -109,6 +114,54 @@ overview of what people are doing to place this work in context. The
 literature review that follows is strongly biased towards papers that have
 been recently published. Tracking their citations backwards will yield a
 tangled web of prior art in the field of vibration control.
+
+\subsection{From QZS paper; to be fleshed out for the real intro}
+
+Absolute velocity feedback control creates `skyhook' damping, in which
+the resonance peak is reduced without affecting the vibration
+transmission at higher frequencies~\cite{yan2006}. For an ideal single
+degree of freedom system, this technique is limited by instability
+caused by time delays in the
+controller~\cite{elliott2004,brennan2007}.
+
+Semi-active methods have also been developed to approximate this
+technique when fully active control is
+undesirable~\cite{liu2002,liu2005,ahmadian2004}. Semi-active control
+has the advantages of robustness and low power requirements,
+especially when large forces would be required for active control.
+
+Reducing the stiffness of the support decreases the resonance
+frequency of the system, which increases the bandwidth of vibration
+isolation. This will improve the vibration isolation of the system
+over the application of sky-hook damping, especially at low
+frequencies.  For a given mass, this can be achieved by reducing the
+stiffness of the support, or by adding a negative stiffness element in
+parallel with the system~\cite{lee2007,xing2005}. Again, this can be
+implemented by passive, active or semi-active methods. Negative
+displacement or positive acceleration feedback can be used in a fully
+active system. In the semi-active case, many methods exist to
+dynamically adjust the stiffness depending on the support being used;
+an example has been demonstrated by \textcite{kidner2002}.
+
+In a conventional mass--spring system, the static deflection increases
+as the stiffness of the support is reduced, and a lower limit on the
+stiffness is imposed by constraints on the allowable
+displacement. Less typical supports can exhibit stiffness that varies
+nonlinearly with displacement; even local regions of zero stiffness
+are possible. An example of a system with such behaviour is a parallel
+connection of vertical and inclined
+springs~\cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007},
+which has an approximately cubic force vs.\ displacement
+characteristic; localised zero stiffness occurs at zero deflection,
+which is termed `\qzs'. The use of buckling beams as a negative
+stiffness element to achieve \qzs\ has also been implemented in
+practice~\cite{platus1999,tarnai2003}. An example pertinent to this
+research is the recent analysis by Carrella \emph{et al.} of a \qzs\
+system using (positive stiffness) linear springs in parallel with negative
+stiffness magnetic springs~\cite{carrella2008}. Further detail into the
+field  of nonlinear passive vibration isolators is given in the recent
+review by \textcite{ibrahim2008}.
+
 
 \subsection{Linear systems}
 
@@ -489,7 +542,7 @@ work focuses on the novel idea of using a roof-top garden as a tuned mass
 damper \parencite{matta2008a}.
 
 
-\subsection{Fully active tuned vibration absorbers}
+\subsubsection{Fully active tuned vibration absorbers}
 
 Some researchers have looked at using electromagnetic actuators to
 provide an active force with which to cancel system resonances. The
@@ -512,6 +565,43 @@ with additional dynamics to tune the resonances in the case of plant
 changes. This is a good example of a poor choice of control strategy
 by using empirical algorithms for a specific application rather than
 applying a more general technique. \fixme{Don't be too harsh.}
+
+
+\subsection{Internal resonances}
+
+Idealised models assume system properties that are independent: a
+spring has no mass, a damper has no stiffness, \etc. In practise,
+however, such simplifications can be far from actual, and internal
+resonances of actuators and passive absorbers can decrease the
+performance of their intended vibration isolation
+mechanisms. 
+
+\textcite{du2003thesis} examined the effect of additional dynamics
+from tuned vibration absorbers and the consequence that had on the
+transmissibility and noise radiation of the structure under
+control. While these additional high frequency dynamics would not be a
+problem for certain problems (and the effects were worse in
+viscoelastic-type springs; \ie, rubber springs over mechanical springs),
+their effect must be considered for high-sensitivity vibration control
+and cases where it is important to minimise radiated sound. In his
+thesis he proposes methods to work around the internal resonance
+problem using both passive and active means.
+
+\textcite{wu2006} analysed the vibration response of a spring-mass-damper in
+which the spring element had some inertial effect on the structure due to its
+mass. The results presented show only a small magnification of the vibration
+amplitude transmitted to the primary mass, particularly for small spring
+relative masses; however, for highly sensitive equipment this phenomenom
+should not be neglected.
+
+Such internal resonance effects discussed above can be completely avoided by
+using noncontact magnetic springs instead. On the other hand, the nonlinear
+force/displacement relationship of magnetic springs will have some nonlinear
+behaviour that could affect the vibration properties of such springs in other
+ways. An example of this behaviour is demonstrated in
+\secref[vref]{qzs-not-zerk}.
+
+
 
 
 
