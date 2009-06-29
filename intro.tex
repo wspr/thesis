@@ -389,6 +389,17 @@ may be a convenient method to approximate the velocity, but it limits
 the control performance that can be achieved compared to measuring the
 velocity directly with a laser sensor (say).
 
+Accelerometer signals may be integrated in a number of ways. Standard methods
+involve high-pass filtering the measured signal to avoid drift as integration
+errors accumulate. This technique is used in, \eg, B\&K charge amplifiers
+which can output a velocity signal from an accelerometer. For certain types of
+measurements, the high-pass filter used here can be detrimental to the signal
+that is being estimated. An alternative is the use of `drift-free' integrators
+\cite{gavin1998}, in which the drift is compensated for using alternative
+signal processing methods, but this approach is only advantageous for
+measuring low-frequency periodic signal; for transient or wide-band signals,
+the typical approach is better suited.
+
 It is always desired to minimise the number of sensors due to cost and
 implementation complexity, and various methods may be used to estimate
 states of a system that are not directly measured. If displacement and
@@ -403,7 +414,7 @@ components can be obtained by integration of the acceleration. The
 only question is where to draw the line in the frequency domain
 between the two signals.
 
-I've lost my paper that does this much more cleverly. Actually I haven't looked.
+
 
 
 \subsection{Skyhook damping}
@@ -456,9 +467,7 @@ damping is to attach a damper to the `sky' itself; that is, the added
 damping is proportional to the absolute velocity of the damped
 mass. In practice, however, a velocity sensor can only measure a
 \emph{relative} velocity between the mass and the position of the
-fixed sensor. I find it interested than observer techniques haven't
-been investigated for this purpose. Perhaps I've just missed that
-particular research cul-de-sac.
+fixed sensor.
 
 \textcite{song2007} used the nonlinearities of semi-active skyhook damping as
 justification for the design of an adaptive controller for vibration
@@ -819,11 +828,64 @@ control gains for the system, and very good results were achieved.
 
 
 
+\section{The related field of energy harvesting}
+\seclabel{energy-harvesting}
+
+When electrical circuits are used to absorb resonant vibrations, the energy
+absorbed can be redirected to produce a power output \cite{stephen2006}. Such
+devices are gaining popularity for ambient vibration--powered applications
+such as remote sensing \cite{arnold2007}. Another field of interest for
+regenerative damping is in vehicle suspensions, in which useable power can be
+extracted with the same mechanism as providing greater ride comfort
+\cite{graves2000thesis}.
+
+A perfect energy harvesting device can absorb all of the kinetic energy of the
+ambient vibration to generate its power. This is a form of vibration
+isolation, with the beneficial side-effect of (some) useful output power. In
+some cases, the literature for these devices holds direct interest with
+respect to the themes of this thesis.
+
+\textcite{challa2008} investigated a semi-active device for tunable energy
+harvesting that used variable-displacement attractive and repulsive magnets to
+adjust the resonance frequency of a piezoelectric cantilever. This is the same
+mechanism that is examined in this thesis for `\qzs' suspensions (see
+\secref{qzs-explore} and \secref{qzs}).
+
+Energy generation can also be accomplished through electromagnetic damping
+through induced eddy currents in a coil experiencing relative displacement to
+a magnetic field, such as investigated by \textcite{graves2000}.
+\Secref{damping} discusses the damping possibilities of electromagnetic
+systems for the purposes of vibration isolation devices.
+
+\textcite{stephen2006} talks about energy harvesting with micro-actuators, and
+the analysis is pretty thorough. There is a moderate amount of single degree
+of freedom mass-spring-damper maths for future reference, which is coupled
+with a simple electrical circuit. Not surprisingly they want energy dissipated
+primarily by the electric components, not the mechanical damping, since in the
+former the energy is retrievable whereas in the latter it's simply dissipated
+as heat. Low mechanical damping arises as a theme, again.
+
+\textcite{mann2008} performed a preliminary investigation into the use of a
+nonlinear vibration mount for energy harvesting, using a magnetic suspension
+of repulsive magnets to create a Duffing-like oscillator. Large damping
+ensured that the nonlinear regimes were only realised at large excitation
+amplitudes, but the idea is that highly nonlinear resonances have a much
+broader resonance peak through the higher branch around the jump phenomenon.
+\fixme{reference this elsewhere}
+
+A similar idea is explored by \textcite{shahruz2008} for an energy scavenging
+cantilever beam that uses an arrangement of attracting magnets to shape the
+force characteristic of the response. The aim is to achieve a power spectrum
+of the response to a random excitation that is greater than the predominantly
+linear response that is obtained without the magnets present. No analysis of 
+damping or energy harvesting potential was explored in this paper.
+
 
 \section{Levitation}
 \seclabel{levitation-explore}
 
-Before looking at the general class of magnet force devices, levitation is a good place to start.
+Before looking at the general class of magnet force devices, levitation is a
+good place to start.
 
 \subsection{Magnetic levitation is impossible!}
 \seclabel{earnshaw}
@@ -1231,102 +1293,35 @@ of this research.
 
 
 
-\section{Infinite stiffness}
+\subsection{(Quasi)--infinite stiffness systems}
 \seclabel{infstiff}
 
 Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
 publications) talk about using a combination of a positive and
 negative stiffness springs to achieve affects like
-\begin{dmath*} 
+\begin{dmath*}[compact]
   k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty 
   \condition{when $ k_2 = -k_1 $.}
 \end{dmath*}
 
-\textcite{xing2005} formalises this idea in their paper, or at least claim to.
+\textcite{xing2005} formalises this idea in their paper. A swath of papers
+have been published by Mizuno over the years
+\cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}. The work was
+extended by \textcite{hoque2006} for three--degree of freedom vibration
+control using the same ideas. The term `infinite stiffness' is perhaps
+unfortunate, as it's not true in any useful sense of the term. That is, their
+static behaviour converges to something that looks like infinite stiffness,
+but \emph{dynamically} they're the same as any other structure. This is
+because the negative spring in combination must be stabilised somehow, and
+this stabilisation removes the nice property of summing to zero with the other
+stiffness in the system.
 
-A swath of papers have been published by Mizuno over the years 
-\cite{mizuno2001,mizuno2003a,mizuno2003b,mizuno2007,mizuno2002}. 
-The term `infinite stiffness' is perhaps unfortunate, as it's not true in
-any useful sense of the term.
-
-The work was extended by \textcite{hoque2006} for three--degree of freedom
-vibration control.
-
-\textcite{mizuno2003c} also present a modified version of the idea, whereby
+\textcite{mizuno2003c} present a modified version of the idea, whereby
 rather than using magnetic springs in attraction, as in their other work, this
 paper looks at using a voice coil actuator with designed negative stiffness. A
-controller must be used to obtain this negative stiffness, but it is not clear
-to me, at this stage, if their system will have the same sort of problem as
-I've shown in my Active 2006 paper with the cancelling dynamics of a positive
-stiffness mechanism.
-
-The papers dealing with infinite stiffness are not doing what they
-claim. That is, their static behaviour converges to something that
-looks like infinite stiffness, but \emph{dynamically} they're the same
-as any other structure.
-
-This is because the negative spring in combination must be
-stabilised somehow, and this stabilisation removes the nice property
-of summing to zero with the other stiffness in the system.
+controller must be used to obtain this negative stiffness.
 
 
-
-
-\section{Energy harvesting}
-\seclabel{energy-harvesting}
-
-When electrical circuits are used to absorb resonant vibrations, the energy
-absorbed can be redirected to produce a power output \cite{stephen2006}. Such
-devices are gaining popularity for ambient vibration--powered applications
-such as remote sensing \cite{arnold2007}. Another field of interest for
-regenerative damping is in vehicle suspensions, in which useable power can be
-extracted with the same mechanism as providing greater ride comfort
-\cite{graves2000thesis}.
-
-A perfect energy harvesting devices would manage to absorb all of the kinetic
-energy of the disturbances to generate its power. While this is impossible in
-practise, the vibration absorption properties of such a device warrant its
-inclusion in this literature review.
-
-\textcite{challa2008} recently investigated a
-semi-active device for tunable energy harvesting that used
-variable-displacement attractive and repulsive magnets to adjust the
-resonance frequency of a piezoelectric cantilever. This is the same
-mechanism that is examined in this thesis for `\qzs' suspensions
-(crossref).
-
-Energy generation can also be accomplished through electromagnetic damping
-through induced eddy currents in a coil experiencing relative displacement to
-a magnetic field, such as investigated by \textcite{graves2000}.
-\Secref{damping} discusses the damping possibilities of electromagnetic
-systems for the purposes of vibration isolation devices.
-
-\textcite{stephen2006}
-talks about energy harvesting with micro-actuators, and the analysis
-is pretty thorough. Furthermore, it all makes sense, which is quite
-nice. There is a moderate amount of single degree of freedom
-mass-spring-damper maths for future reference, which is coupled with a
-simple electrical circuit. Not surprisingly (it's easy to say this
-when simply reporting their results) they want energy dissipated
-primarily by the electric components, not the mechanical damping, since
-in the former the energy is retrievable whereas in the latter it's simply
-dissipated as heat.
-
-
-\textcite{mann2008} performed a preliminary investigation into the use of a
-nonlinear vibration mount for energy harvesting, using a magnetic suspension
-of repulsive magnets to create a Duffing-like oscillator. Large damping
-ensured that the nonlinear regimes were only realised at large excitation
-amplitudes, but the idea is that highly nonlinear resonances have a much
-broader resonance peak through the higher branch around the jump phenomenon.
-\fixme{reference this elsewhere}
-
-A similar idea is explored by \textcite{shahruz2008} for an energy scavenging
-cantilever beam that uses an arrangement of attracting magnets to shape the
-force characteristic of the response. The aim is to achieve a power spectrum
-of the response to a random excitation that is greater than the predominantly
-linear response that is obtained without the magnets present. No analysis of 
-damping or energy harvesting potential was explored in this paper.
 
 \section{Digression on the nature of the literature}
 
@@ -1357,7 +1352,7 @@ f\fn{x} = \half\gp{x+\Sin{x}}.
 \end{dmath*}
 
 
-Here's a nice big glossary section that will take me fucking ages to get
+Here's a nice big glossary section that will take me ages to get
 right. Maybe I should just scrap it.
 
 
@@ -1398,9 +1393,9 @@ to love it, now, means hoping that others somehow won't see [it] as you see it
 \dash as a grotesque, malformed betrayal of the very possibilities that
 spawned it. You want to sort of fool people: you want them to see as perfect
 what you in your heart know is a betrayal of all perfection. Or else you don't
-want to fool these people; [...] You want to be terribly wrong: you want [its]
+want to fool these people; [\dots] You want to be terribly wrong: you want [its]
 hideousness to turn out to have been nothing but your own weird delusion or
-hallucination. But that'd mean you were crazy ... But worse: it'd also mean
+hallucination. But that'd mean you were crazy\dots But worse: it'd also mean
 you see and despise hideousness in a thing you made (and love), in your spawn,
 in certain ways you. But that's still what you most want: to be completely,
 insanely, suicidally wrong.
