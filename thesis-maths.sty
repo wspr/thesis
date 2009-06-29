@@ -23,10 +23,10 @@
 
 \newcommand\inlinefrac[2]{#1/#2}
 
-\def \groupstrut {\vphantom{y^2}}
+\def \groupstrut {\vphantom{k_g}}
 \newcommand\group[1]{%
   \left[
-%    \ifcase\mathstyle\or\groupstrut\fi
+    \groupstrut % manually enlarge the smallest delimiter style
     #1
   \right]
 }
