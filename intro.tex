@@ -179,67 +179,6 @@ literature review that follows is strongly biased towards papers that have
 been recently published. Tracking their citations backwards will yield a
 tangled web of prior art in the field of vibration control.
 
-\subsection{From QZS paper; to be fleshed out for the real intro}
-
-Absolute velocity feedback control creates `skyhook' damping, in which
-the resonance peak is reduced without affecting the vibration
-transmission at higher frequencies~\cite{yan2006}. For an ideal single
-degree of freedom system, this technique is limited by instability
-caused by time delays in the
-controller~\cite{elliott2004,brennan2007}.
-
-Semi-active methods have also been developed to approximate this
-technique when fully active control is
-undesirable~\cite{liu2002,liu2005,ahmadian2004}. Semi-active control
-has the advantages of robustness and low power requirements,
-especially when large forces would be required for active control.
-
-Reducing the stiffness of the support decreases the resonance
-frequency of the system, which increases the bandwidth of vibration
-isolation. This will improve the vibration isolation of the system
-over the application of sky-hook damping, especially at low
-frequencies.  For a given mass, this can be achieved by reducing the
-stiffness of the support, or by adding a negative stiffness element in
-parallel with the system~\cite{lee2007,xing2005}. Again, this can be
-implemented by passive, active or semi-active methods. Negative
-displacement or positive acceleration feedback can be used in a fully
-active system. In the semi-active case, many methods exist to
-dynamically adjust the stiffness depending on the support being used;
-an example has been demonstrated by \textcite{kidner2002}.
-
-A similar idea with a different approach is taken by
-\textcite{liu2006a}, who used a permanent magnet and an electromagnet
-to provide a variable stiffness in the absorber.
-
-In a conventional mass--spring system, the static deflection increases
-as the stiffness of the support is reduced, and a lower limit on the
-stiffness is imposed by constraints on the allowable
-displacement. Less typical supports can exhibit stiffness that varies
-nonlinearly with displacement; even local regions of zero stiffness
-are possible.
-
-An example of a system with such behaviour is a parallel
-connection of vertical and inclined
-springs~\cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007},
-which has an approximately cubic force vs.\ displacement
-characteristic; localised zero stiffness occurs at zero deflection,
-which is termed `\qzs'. The use of buckling beams as a negative
-stiffness element to achieve \qzs\ has also been implemented in
-practice~\cite{platus1999,tarnai2003}.
-
-\textcite{virgin2008} proposes an interesting alternative to the
-classical helical spring for vibration isolation support: a `pinched
-loop' created by a slender beam with both ends clamped has a wide
-range of tuning possibilities and offers isolation in two degrees of
-freedom.
-
-An example pertinent to this
-research is the recent analysis by Carrella \emph{et al.} of a \qzs\
-system using (positive stiffness) linear springs in parallel with negative
-stiffness magnetic springs~\cite{carrella2008}. Further detail into the
-field  of nonlinear passive vibration isolators is given in the recent
-review by \textcite{ibrahim2008}.
-
 \subsection{Linear systems}
 
 \Figref{simple-isolation} shows the simplest form of vibration
@@ -347,6 +286,9 @@ $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
    \figlabel{rms-transmissibility}
 \end{figure}
 
+\subsection{Implementing linear feedback}
+\secref{vibes-feedback}
+
 Velocity feedback control by using integrated accelerometer measurements at
 the location of actuation has been used for some time as an effective
 vibration isolation mechanism, shown for example by \textcite{kim1999} at the
@@ -376,6 +318,68 @@ an accelerometer give better results for them.
 freedom nonlinear system with a time-delayed positional feedback. This results
 of this paper emphasises the importance of accounting for time delays in
 feedback control systems.
+
+\subsection{From QZS paper; to be fleshed out for the real intro}
+
+Absolute velocity feedback control creates `skyhook' damping, in which
+the resonance peak is reduced without affecting the vibration
+transmission at higher frequencies~\cite{yan2006}. 
+
+For an ideal single degree of freedom system, this technique is limited by
+instability caused by time delays in the
+controller~\cite{ananthaganeshan2001,elliott2004,brennan2007}.
+
+Semi-active methods have also been developed to approximate this
+technique when fully active control is
+undesirable~\cite{liu2002,liu2005,ahmadian2004}. Semi-active control
+has the advantages of robustness and low power requirements,
+especially when large forces would be required for active control.
+
+Reducing the stiffness of the support decreases the resonance
+frequency of the system, which increases the bandwidth of vibration
+isolation. This will improve the vibration isolation of the system
+over the application of sky-hook damping, especially at low
+frequencies.  For a given mass, this can be achieved by reducing the
+stiffness of the support, or by adding a negative stiffness element in
+parallel with the system~\cite{lee2007,xing2005}. Again, this can be
+implemented by passive, active or semi-active methods. Negative
+displacement or positive acceleration feedback can be used in a fully
+active system. In the semi-active case, many methods exist to
+dynamically adjust the stiffness depending on the support being used;
+an example has been demonstrated by \textcite{kidner2002}.
+
+A similar idea with a different approach is taken by
+\textcite{liu2006a}, who used a permanent magnet and an electromagnet
+to provide a variable stiffness in the absorber.
+
+In a conventional mass--spring system, the static deflection increases
+as the stiffness of the support is reduced, and a lower limit on the
+stiffness is imposed by constraints on the allowable
+displacement. Less typical supports can exhibit stiffness that varies
+nonlinearly with displacement; even local regions of zero stiffness
+are possible.
+
+An example of a system with such behaviour is a parallel
+connection of vertical and inclined
+springs~\cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007},
+which has an approximately cubic force vs.\ displacement
+characteristic; localised zero stiffness occurs at zero deflection,
+which is termed `\qzs'. The use of buckling beams as a negative
+stiffness element to achieve \qzs\ has also been implemented in
+practice~\cite{platus1999,tarnai2003}.
+
+\textcite{virgin2008} proposes an interesting alternative to the
+classical helical spring for vibration isolation support: a `pinched
+loop' created by a slender beam with both ends clamped has a wide
+range of tuning possibilities and offers isolation in two degrees of
+freedom.
+
+An example pertinent to this
+research is the recent analysis by Carrella \emph{et al.} of a \qzs\
+system using (positive stiffness) linear springs in parallel with negative
+stiffness magnetic springs~\cite{carrella2008}. Further detail into the
+field  of nonlinear passive vibration isolators is given in the recent
+review by \textcite{ibrahim2008}.
 
 \subsection{Sensing}
 

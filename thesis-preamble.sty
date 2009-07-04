@@ -49,7 +49,7 @@
   cleanup={.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
            .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
   ]{pstool}
-\RequirePackage{asyfig}
+\RequirePackage[process=auto]{asyfig}
 
 \RequirePackage{caption}
 \captionsetup[table]{position=top}
@@ -104,7 +104,7 @@
     citestyle=numeric-comp,
   ]{biblatex}
 \def\bibfont{\small}
-\bibliography{journals,phd}
+\bibliography{journals,phd,ARK}
 \renewcommand\bibname{References}
 
 
@@ -524,11 +524,16 @@
 \newcommand{\ANSYS}{ANSYS}
 \newcommand\Matlab{Matlab}
 \newcommand{\maglev}{maglev}
+\newcommand\BnK{Br\"uel~\& Kj\ae r}
 \newcommand{\bhcurve}{$B$--$H$ curve}
 \newcommand\Hinf{\ensuremath{H^\infty}}
 \newcommand\magnetorh{magnetorheological}
 
-\newcommand\KJMagnetics{\href{http://www.kjmagnetics.com/}{K\,\&\,J~Magnetics}}
+\newcommand\KJMagnetics{%
+  \href{http://www.kjmagnetics.com/}
+       {K\,\&\,J~Magnetics}%
+  \cite{kjmagnetics}%
+}
 
 \newcommand\threeD{\textsc{3d}}
 \newcommand\twoD{\textsc{2d}}
