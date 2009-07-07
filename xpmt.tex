@@ -8,7 +8,7 @@
   describe the rig and other implementation details, including various tangents
   on appropriate sensor types and future designs that could be implemented
   in the future. Experimental results from the rig that was commissioned are
-  presented, demonstrating the `\qzs' design where the resonant frequency
+  presented, demonstrating the `\qzs/' design where the resonant frequency
   of a passive system is reduced with attractive magnets, and further
   improvements gained from applying standard velocity feedback control.
 }
@@ -27,13 +27,16 @@ is shown as a schematic in \figref{rig} and as a photograph in
 \tabref{rigprop}. The experimental rig was built to serve as a platform for
 investigating the dynamics of a simple system supported by magnets with
 varying stiffnesses; specifically, for demonstrating a specific case of
-the ideas behind the \qzs\ arrangement analysed in detail in \secref{qzs}.
+the ideas behind the \qzs/ arrangement analysed in detail in \secref{qzs}.
 
 \begin{figure}
   \begin{wide}
     \asyfig{Rig/rig-schematic}
   \end{wide}
-  \caption{Schematic of the experimental rig (not to scale). Position shown is the marginally stable configuration with equal gap between the lower and upper pairs of magnets.}
+  \caption{%
+    Schematic of the experimental rig (not to scale). Position shown is
+    the marginally stable configuration with equal gap between the lower
+    and upper pairs of magnets.}
   \figlabel{rig}
 \end{figure}
 
@@ -107,7 +110,7 @@ horizontal constraint (also see \secref{coupling}).
 
 \subsection{Magnets}
 
-\KJMagnetics \note{\url{http://www.kjmagnetics.com/}} is an American supplier
+\KJMagnetics/ \note{\url{http://www.kjmagnetics.com/}} is an American supplier
 of rare earth magnets, which are available in a wide variety of geometrical
 shapes. They offer a large range of sizes, \eg, from one-sixteenth inch cubes
 (100 for \price[\usdollar]{6.00}) to one inch cubes, (\price[\usdollar]{14.85}
@@ -118,7 +121,7 @@ magnet volume versus price in \figref{mag-price}.
 \begin{figure}
   \psfragfig{\phdpath Magnets/latex/mag-price}
   \caption{Magnet price versus magnet volume for rare earth magnets.
-    Data obtained from \KJMagnetics\ for cube magnets of magnetisation grade \acro{N42}.}
+    Data obtained from \KJMagnetics/ for cube magnets of magnetisation grade \acro{N42}.}
   \figlabel{mag-price}
 \end{figure}
 
@@ -129,7 +132,7 @@ shown in \tabref{magnet-prop}.
 
 \begin{table}
   \caption{Material properties for the magnets in the experimental apparatus.
-    Magnet properties taken as minimum grade values from \KJMagnetics.}
+    Magnet properties taken as minimum grade values from \KJMagnetics/.}
   \tablabel{magnet-prop}
   \begin{tabular}{@{}ll@{}}
     \toprule
@@ -342,12 +345,12 @@ Relevant operating properties are listed in \tabref{wenglor}.
   \end{tabular}
 \end{table}
 
-The measured output of the sensor was used infer a magnet displacement, \DispMag, (referenced from the \qzs\ position) with the following transformation:
+The measured output of the sensor was used infer a magnet displacement, \DispMag, (referenced from the \qzs/ position) with the following transformation:
 \begin{dmath}
   \DispMag\fn{\DisplSensor,\OriginMagHigh} = 
     \OriginMagDisp\fn{\DisplSensor} - \OriginQZS\fn{\OriginMagHigh}
 \end{dmath},
-where $\OriginQZS$ is the height of the \qzs\ location, given by
+where $\OriginQZS$ is the height of the \qzs/ location, given by
 \begin{dmath}
   \OriginQZS\fn{\OriginMagHigh} = \half\gp{\HeightRig-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}
 \end{dmath},
@@ -433,17 +436,17 @@ in the sections following, data recorded is presented for
 
 The upper magnet's position was varied until the limit of stability was
 reached. The lower fixed magnet was kept fixed, which means that the position
-of \qzs\ was changing; with counter-threaded mounts for the upper and lower
-magnets, they could be adjusted in parallel to achieve a fixed \qzs\ location.
+of \qzs/ was changing; with counter-threaded mounts for the upper and lower
+magnets, they could be adjusted in parallel to achieve a fixed \qzs/ location.
 
 As the upper magnet placement was lowered, the rest position of the beam moved
-closer to the \qzs\ position (as more force was supported by the upper magnet).
+closer to the \qzs/ position (as more force was supported by the upper magnet).
 This relationship is shown in \figref{turns-qzs}.
 The normalised magnet gap is used in the following sections to
 represent the varied configuration of the spring in the experiments.
 From the geometry of the rig,
 the position of the upper magnet was used to calculate the
-gap between the magnets at \qzs:
+gap between the magnets at \qzs/:
 \begin{dmath}
   \OriginMagGap =
     \half\gp{\HeightRig-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}
@@ -468,7 +471,7 @@ stiffness added to the system changes. This predominantly affects the rest
 position and the resonance frequency, along with small changes in
 damping. Frequency response measurements were taken at a number of discrete
 locations of the upper fixed magnet to observe the changes in dynamics as the
-rest position of the system approached the \qzs\ position.
+rest position of the system approached the \qzs/ position.
 
 The parameters used to perform the spectral analysis for each measurement are
 shown in \tabref{rig-ol-spect}. Due to the low damping and low resonance
@@ -496,9 +499,9 @@ control, as discussed in \secref{vibes-feedback}.
 \begin{table}
   \begin{tabular}{@{}ll@{}}
     \toprule
-      Base accelerometer & \BnK~4367 \\
-      Floating accelerometer & \BnK~4332 \\
-      Charge Amplifiers & \BnK~2635 \\
+      Base accelerometer & \BnK/ 4367 \\
+      Floating accelerometer & \BnK/ 4332 \\
+      Charge Amplifiers & \BnK/ 2635 \\
       Low-pass filters & 0000 \\
     \bottomrule
   \end{tabular}
@@ -520,7 +523,7 @@ Open loop measurements without the coil connected are shown in
 added damping) are shown in \figref{ol-damped-frflin}. For both of these results,
 the transmissibility, \transmissibility, shown is the transfer function
 between the accelerometer measurements of the base and magnet-supported beam:
-\note{Calculated with \Matlab's \texttt{tfestimate} command.}
+\note{Calculated with \Matlab/'s \texttt{tfestimate} command.}
 \begin{dmath}[label=Tbm]
   \transmissibility = \frac{\crossSpectMagnetBase}{\powerSpectBase}
 \end{dmath}.
@@ -561,7 +564,7 @@ given by \eqref{simple-isolation-freq} in terms of the natural frequency, $\natf
 \end{dmath}
 where $\freq$ is the frequency at which to calculate the transmissibility
 $\transmissibility$. The data was fit 
-    \note{Using \Matlab's \code{fminsearch}.}% check
+    \note{Using \Matlab/'s \code{fminsearch}.}% check
 to \eqref{fit-model} between $\half\natfreq \le \freq
 \le 2\natfreq$, returning good estimates of the natural frequency and
 damping ratio of the system corresponding to each measurement taken. Plots of

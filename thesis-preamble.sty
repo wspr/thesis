@@ -505,40 +505,14 @@
 
 \newcommand\code[1]{\texttt{#1}}
 \newcommand\note[1]{\unskip\footnote{#1}}
+\newcommand\define[1]{\textit{#1}}
 
 \DeclareRobustCommand\dash{%
   \unskip\nobreak\thinspace\textemdash\allowbreak\thinspace\ignorespaces}
 \pdfdef\dash{ — }
 
-\newcommand\define[1]{\textit{#1}}
-
 \newcommand\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand\newacro[1]{\@namedef{#1}{\acro{#1}}}
-
-\newcommand{\pdftex}{pdf\/\TeX} % note the italic correction!
-\newcommand{\pdflatex}{pdf\/\LaTeX} % note the italic correction!
-
-\newcommand\price[2][\$]{#1#2}
-\newcommand\usdollar{\textsc{u.s.}\$}
-
-\newcommand{\ANSYS}{ANSYS}
-\newcommand\Matlab{Matlab}
-\newcommand{\maglev}{maglev}
-\newcommand\BnK{Br\"uel~\& Kj\ae r}
-\newcommand{\bhcurve}{$B$--$H$ curve}
-\newcommand\Hinf{\ensuremath{H^\infty}}
-\newcommand\magnetorh{magnetorheological}
-\newcommand\vibneut{vibration neutraliser}
-\newcommand\Vibneut{Vibration neutraliser}
-
-\newcommand\KJMagnetics{%
-  \href{http://www.kjmagnetics.com/}
-       {K\,\&\,J~Magnetics}%
-  \cite{kjmagnetics}%
-}
-
-\newcommand\threeD{\textsc{3d}}
-\newcommand\twoD{\textsc{2d}}
 
 \newacro{FEA}
 \newacro{FFT}
@@ -549,11 +523,36 @@
 \newacro{PID}
 \newacro{PI}
 
-\def\AC{time varying}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newcommand\PhD{Ph.\,D\sw@ensuresingleperiod}
-\newcommand\qzs{quasi--zero stiffness}
-\newcommand\QZS{Quasi--zero stiffness}
+\newcommand\newmacro[2]{\def#1/{#2}}
+
+\newcommand\price[2][\$]{#1#2}
+\newcommand\usdollar{\textsc{u.s.}\$}
+
+\newmacro \ANSYS {ANSYS}
+\newmacro \Matlab {Matlab}
+\newmacro \maglev {maglev}
+\newmacro \BnK {Br\"uel~\& Kj\ae r}
+\newmacro \bhcurve {$B$--$H$ curve}
+\newmacro \Hinf {\ensuremath{H^\infty}}
+\newmacro \magnetorh {magnetorheological}
+\newmacro \vibneut {vibration neutraliser}
+\newmacro \Vibneut {Vibration neutraliser}
+
+\newmacro \KJMagnetics {%
+  \href{http://www.kjmagnetics.com/}
+       {K\,\&\,J~Magnetics}%
+  \cite{kjmagnetics}%
+}
+
+\newmacro \threeD {\textsc{3d}}
+\newmacro \twoD {\textsc{2d}}
+
+\newmacro \AC {time varying}
+\newmacro \PhD {Ph.\,D\sw@ensuresingleperiod}
+\newmacro \qzs {quasi--zero stiffness}
+\newmacro \QZS {Quasi--zero stiffness}
 
 % COMPOUND WORDS
 \newcommand \compound [2] {#1\-#2}
