@@ -382,6 +382,7 @@ field  of nonlinear passive vibration isolators is given in the recent
 review by \textcite{ibrahim2008}.
 
 \subsection{Sensing}
+\seclabel{vibration-sensing}
 
 The sensors used for active vibration control systems can make a significant impact on the performance that the control can achieve.
 \textcite{brennan2007} discuss the impacts of using displacement, velocity, and acceleration feedback for a single degree of freedom system in the context of signal conditioning filters and digital time delays in the loop. 
@@ -399,7 +400,6 @@ states of a system that are not directly measured. If displacement and
 acceleration are measured, a reasonable estimate of the velocity may
 be computed by differentiating and integrating, respectively, the
 measured signals and combining the results.
-
 This method has been practised by \textcite{bennett2007}, and it works acceptably well because the low frequency components can be obtained from the derivative of the displacement and the high frequency components can be obtained by integration of the acceleration.
 The only question is where to draw the line in the frequency domain between the two signals.
 Note, however, that laser velocity and differentiated displacement sensors measure \emph{relative} velocity to the reference frame of the sensor, but an integrated accelerometer signal measures the \emph{absolute} velocity of the object.
@@ -422,11 +422,9 @@ the disadvantages in tracking when applying skyhook damping for systems that
 experience very low frequency (\ie, steady state) changes in the base
 position, but for the purposes of vibration isolation this is not a problem if
 the ground is assumed to experience disturbance with zero mean. (They also use
-Kalman filters for estimating velocity, an idea I'm keen on.)
+Kalman filters for estimating velocity — \cf\ \secref{vibration-sensing} — but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
 
-A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control,
-which can be effected with `semi-active' variable stiffness feedback control
-\cite{leavitt2007}.
+A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
 
 In the original and crude method of implementing skyhook control, the
 switching mode that is necessary to emulate the `skyhook' in the controlled
@@ -447,8 +445,7 @@ but focus more on transient response than continuous disturbance. The
 nature of the problem is important to analyse before control
 strategies are applied. \textcite{gavin2007} discuss using negative
 stiffness and skyhook damping in the context of isolating machinery
-in a building. (These guys also wrote the paper ``Drift-free
-integrators'', which I may find useful to look into.)
+in a building.
 
 Skyhook damping is considered an ideal case (I need some references
 — \ie, detail — for this) and is implemented with a switching
@@ -746,7 +743,7 @@ reductions in transmissibility were achieved; this technique highlights the
 appeal of vibration control using an isolator with a damped resonance.
 
 A modern look at output feedback methods is shown by \cite{mottershead2008},
-where the dynamics of complex structures is altered via robust pole-placement
+where the dynamics of complex structures are altered via robust pole-placement
 techniques that do not require models of the system.
 
 And here's a method using delayed acceleration feedback by
@@ -782,7 +779,7 @@ and neutralisers can decrease the performance of their intended vibration
 isolation mechanisms.
 
 \textcite{du2003thesis} examined the effect of additional dynamics
-from \vibneut/{}s and the consequence that had on the
+from \vibneut/s and the consequence that had on the
 transmissibility and noise radiation of the structure under
 control. While these additional high frequency dynamics would not be a
 problem for certain problems (and the effects were worse in
@@ -819,8 +816,7 @@ but can give better results. For the simple two-degree of freedom vibrating
 system examined by \textcite{engels2008}, the centralised control performed
 better although the differences to the decentralised control were small. An
 analogous result was shown by \textcite{hoque2006} for a three-axis vibration
-platform supported by a so-called `infinite stiffness' magnet/spring system (see
-\secref{infstiff}).
+platform supported by a so-called `infinite stiffness' magnet/spring system (see \secref{infstiff}).
 
 \textcite{yoshioka2001} designed and built a prototype vibration isolation
 platform with a load bearing capacity about \SI{1000}{kg}. Their device used a
@@ -828,8 +824,10 @@ combination of pneumatic, voice-coil linear motors, and piezoelectric
 actuators to control the first half dozen vibration modes of the platform.
 Feedback velocity of the table and feedforward velocity and displacement of
 the floor were used as control signals (with integrated accelerometer
-measurements). A genetic algorithm was used to generate a set of control gains
-for the system, and very good results were achieved.
+measurements), and a genetic algorithm was used to generate a set of control gains for the system.
+
+
+\subsection{Summary of the vibrations literature}
 
 
 
@@ -919,9 +917,10 @@ examples of these types of system are covered in the next section.
 
 This summary is fairly brief; \textcite{bleuler1992} wrote a more detailed
 overview. His paper introduces the `self-sensing active magnetic bearing'
-\cite{vischer1993} which uses back--electromotive force from the controlling
+\cite{vischer1993} which uses \backemf/ from the controlling
 electromagnet to sense the position of the floating element. This eliminates
-the need for a more classical position sensor (\eg, optical or capacitive),
+the need for a more classical position sensor,
+ \note{See \secref[vref]{xpmt-sensors} for a more detailed discussion of position sensors for non-contact purposes.}
 but the control system is necessarily more complex and the behaviour not as
 precise.
 
@@ -956,15 +955,11 @@ the most diamagnetic substance known, pure bismuth, has $\permMag \approx
 flux between magnetic and diamagnetic materials, therefore, are incredibly
 small and not suited at all to the purposes of this research.
 
-Superconducting material, on the other hand, behaves ideally diamagnetic with
-$\permMag =0$, so the forces produced between a superconductor and a magnet
-are equal to the forces between two (equal) permanent magnets themselves. This
-allows many exciting possibilities for stable levitation. However, such
-materials must be cooled to very low temperatures (\emph{at least} below
-\SI{-150}{\celsius}) in order to remain superconductive. Such a requirement
-renders this method financially and functionally impractical for this
-research. A review of work in this area has been published by
-\textcite{ma2003}.
+Superconducting material, on the other hand, behaves ideally diamagnetic with $\permMag =0$, so the forces produced between a superconductor and a magnet are equal to the forces between two (equal) permanent magnets themselves. 
+This allows many exciting possibilities for stable levitation.
+However, even the so-called `high temperature' superconducting materials must be cooled to very low temperatures in order to remain superconductive.
+Such a requirement renders this method financially and functionally impractical for this research.
+A review of work in the area of superconducting levitation has been published by \textcite{ma2003}.
 
 \subsection{Basic magnetic suspension}
 
