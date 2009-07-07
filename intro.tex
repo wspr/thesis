@@ -495,6 +495,12 @@ Therefore, very high precision accelerometers or laser velocity vibrometers
 are required for very low frequency vibration control (below \SI{1}{Hz}).
 
 
+Energy generation can also be accomplished through electromagnetic damping
+through induced eddy currents in a coil experiencing relative displacement to
+a magnetic field, such as investigated by \textcite{graves2000}.
+\Secref{damping} discusses the damping possibilities of electromagnetic
+systems for the purposes of vibration isolation devices.
+
 
 
 \subsection{Inertial actuators}
@@ -543,15 +549,13 @@ contrasting the performance and implementation differences between them.
 self-sensing device for vibration control. The idea of self-sensing for
 magnetic levitation purposes (in both cases using a electromagnet) has been
 shown by \textcite{bleuler1992,vischer1993}. These self-sensing devices
-(perhaps obviously, since the back--electromotive force is such a noisy
+(perhaps obviously, since the \backemf/ is such a noisy
 signal) do not perform nearly as well as when using a dedicated sensor, but
 the technique is particularly interesting for low-cost, low-precision devices.
 
 
 
-
-
-\subsection{\Vibneut/}
+\subsection{Vibration neutralisers}
 
 One method of reducing vibration on a supported mass is to attach a
 supplementary mass that resonanates in concert with the disturbance; this has
@@ -624,8 +628,7 @@ active control system as shown by \textcite{kidner1998}. This can be
 understood with the realisation that energy is not dissipated by the vibration
 `absorber'; rather, motional energy from the vibrating structure is being
 \emph{transferred} to the supplementary mass, and this process is degraded by
-the presence of damping. \note{This theme of the desirability of low mechanical
-damping re-occurs at other points in this thesis (crossref).}
+the presence of damping. \note{This theme of the desirability of low mechanical damping re-occurs at other points in this thesis (crossref).}
 
 \Vibneut/\ are tuned for a specific resonance frequency, which means that the
 frequency of the input disturbance must be known and unvarying for a passive
@@ -641,6 +644,38 @@ vibration neutraliser. While not as efficacious as an adaptive \vibneut/\ that
 uses an external power source, the ability to adapt to the excitation
 frequency using only the energy of the disturbance itself is commendable if
 somewhat esoteric.
+
+When electrical circuits are used to absorb resonant vibrations, the energy
+absorbed can be redirected to produce a power output \cite{stephen2006}. Such
+devices are gaining popularity for ambient vibration--powered applications
+such as remote sensing \cite{arnold2007}. Another field of interest for
+regenerative damping is in vehicle suspensions, in which useable power can be
+extracted with the same mechanism as providing greater ride comfort
+\cite{graves2000thesis}.
+
+Exactly analogously to \vibneut/, semi-active methods have been explored to tune energy harvesting devices to the frequency of disturbance. 
+\textcite{challa2008} investigated a semi-active device for tunable energy harvesting that used variable-displacement attractive and repulsive magnets to adjust the resonance frequency of a piezoelectric cantilever.
+This is the same mechanism that is examined in this thesis for `\qzs/' suspensions (see \secref{qzs-explore} and \secref{qzs}).
+
+\textcite{stephen2006} performed a thorough analysis on energy harvesting with micro-actuators. 
+He considered a single degree of freedom mass-spring-damper coupled with a simple electrical circuit. 
+For best performance, energy should be dissipated as much as possible by the electric components, not the mechanical damping, since in the electrical network the energy is retrievable whereas as viscous damping the energy is dissipated as heat.
+This is the same idea as discussed in \secref{vibneut}, in which the effectiveness of the \vibneut/ is reduced with the presence of increased mechanical damping.
+
+\textcite{mann2008} performed a preliminary investigation into the use of a
+nonlinear vibration mount for energy harvesting, using a magnetic suspension
+of repulsive magnets to create a Duffing-like oscillator. Large damping
+ensured that the nonlinear regimes were only realised at large excitation
+amplitudes, but the idea is that highly nonlinear resonances have a much
+broader resonance peak through the higher branch around the jump phenomenon.
+\fixme{reference this elsewhere}
+
+A similar idea is explored by \textcite{shahruz2008} for an energy scavenging
+cantilever beam that uses an arrangement of attracting magnets to shape the
+force characteristic of the response. The aim is to achieve a power spectrum
+of the response to a random excitation that is greater than the predominantly
+linear response that is obtained without the magnets present. No analysis of 
+damping or energy harvesting potential was explored in this paper.
 
 \Vibneut/\ can also be used for modal systems, in which case each
 neutraliser is designed at the specific resonance frequency of each mode. In a
@@ -812,53 +847,6 @@ for the system, and very good results were achieved.
 
 
 
-\section{The related field of energy harvesting}
-\seclabel{energy-harvesting}
-
-When electrical circuits are used to absorb resonant vibrations, the energy
-absorbed can be redirected to produce a power output \cite{stephen2006}. Such
-devices are gaining popularity for ambient vibration--powered applications
-such as remote sensing \cite{arnold2007}. Another field of interest for
-regenerative damping is in vehicle suspensions, in which useable power can be
-extracted with the same mechanism as providing greater ride comfort
-\cite{graves2000thesis}.
-
-A perfect energy harvesting device can absorb all of the kinetic energy of the
-ambient vibration to generate its power. This is a form of vibration
-isolation, with the beneficial side-effect of (some) useful output power. In
-some cases, the literature for these devices holds direct interest with
-respect to the themes of this thesis.
-
-When modelled and implemented as primarily single degree of freedom systems, these devices work best as tuned vibration neutralisers, in which maximum energy retreival is achieved for tonal disturbances.
-Exactly analogously to \vibneut/, semi-active methods have been explored to tune energy harvesting devices to the frequency of disturbance. 
-\textcite{challa2008} investigated a semi-active device for tunable energy harvesting that used variable-displacement attractive and repulsive magnets to adjust the resonance frequency of a piezoelectric cantilever.
-This is the same mechanism that is examined in this thesis for `\qzs/' suspensions (see \secref{qzs-explore} and \secref{qzs}).
-
-Energy generation can also be accomplished through electromagnetic damping
-through induced eddy currents in a coil experiencing relative displacement to
-a magnetic field, such as investigated by \textcite{graves2000}.
-\Secref{damping} discusses the damping possibilities of electromagnetic
-systems for the purposes of vibration isolation devices.
-
-\textcite{stephen2006} performed a thorough analysis on energy harvesting with micro-actuators. 
-He considered a single degree of freedom mass-spring-damper coupled with a simple electrical circuit. 
-For best performance, energy should be dissipated as much as possible by the electric components, not the mechanical damping, since in the electrical network the energy is retrievable whereas as viscous damping the energy is dissipated as heat.
-This is the same idea as discussed in \secref{vibneut}, in which the effectiveness of the \vibneut/ is reduced with the presence of increased mechanical damping.
-
-\textcite{mann2008} performed a preliminary investigation into the use of a
-nonlinear vibration mount for energy harvesting, using a magnetic suspension
-of repulsive magnets to create a Duffing-like oscillator. Large damping
-ensured that the nonlinear regimes were only realised at large excitation
-amplitudes, but the idea is that highly nonlinear resonances have a much
-broader resonance peak through the higher branch around the jump phenomenon.
-\fixme{reference this elsewhere}
-
-A similar idea is explored by \textcite{shahruz2008} for an energy scavenging
-cantilever beam that uses an arrangement of attracting magnets to shape the
-force characteristic of the response. The aim is to achieve a power spectrum
-of the response to a random excitation that is greater than the predominantly
-linear response that is obtained without the magnets present. No analysis of 
-damping or energy harvesting potential was explored in this paper.
 
 
 \section{Levitation}
