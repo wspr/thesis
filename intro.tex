@@ -383,26 +383,15 @@ review by \textcite{ibrahim2008}.
 
 \subsection{Sensing}
 
-The sensors used for active vibration control systems can make a
-significant impact on the performance that the control can
-achieve. \textcite{brennan2007} discuss the impacts of using
-displacement, velocity, and acceleration feedback for a single degree
-of freedom system in the context of signal conditioning filters and
-digital time delays in the loop. Integrating an accelerometer signal
-may be a convenient method to approximate the velocity, but it limits
-the control performance that can be achieved compared to measuring the
-velocity directly with a laser sensor (say).
+The sensors used for active vibration control systems can make a significant impact on the performance that the control can achieve.
+\textcite{brennan2007} discuss the impacts of using displacement, velocity, and acceleration feedback for a single degree of freedom system in the context of signal conditioning filters and digital time delays in the loop. 
+Integrating an accelerometer signal may be a convenient method to approximate the absolute velocity, but it limits the control performance that can be achieved due to a lower frequency limit on the observed signal.
 
-Accelerometer signals may be integrated in a number of ways. Standard methods
-involve high-pass filtering the measured signal to avoid drift as integration
-errors accumulate. This technique is used in, \eg, B\&K charge amplifiers
-which can output a velocity signal from an accelerometer. For certain types of
-measurements, the high-pass filter used here can be detrimental to the signal
-that is being estimated. An alternative is the use of `drift-free' integrators
-\cite{gavin1998}, in which the drift is compensated for using alternative
-signal processing methods, but this approach is only advantageous for
-measuring low-frequency periodic signal; for transient or wide-band signals,
-the typical approach is better suited.
+Accelerometer signals may be integrated in a number of ways.
+Standard methods involve high-pass filtering the measured signal to avoid drift as integration errors accumulate.
+This technique is used in, \eg, B\&K charge amplifiers which can output a velocity signal from an accelerometer.
+For certain types of measurements, the high-pass filter used here can be detrimental to the signal that is being estimated.
+An alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signal; for transient or wide-band signals, the typical approach is better suited.
 
 It is always desired to minimise the number of sensors due to cost and
 implementation complexity, and various methods may be used to estimate
@@ -411,12 +400,9 @@ acceleration are measured, a reasonable estimate of the velocity may
 be computed by differentiating and integrating, respectively, the
 measured signals and combining the results.
 
-This method has been practised by \textcite{bennett2007}, and it works
-acceptably well because the low frequency components can be obtained
-from the derivative of the displacement and the high frequency
-components can be obtained by integration of the acceleration. The
-only question is where to draw the line in the frequency domain
-between the two signals.
+This method has been practised by \textcite{bennett2007}, and it works acceptably well because the low frequency components can be obtained from the derivative of the displacement and the high frequency components can be obtained by integration of the acceleration.
+The only question is where to draw the line in the frequency domain between the two signals.
+Note, however, that laser velocity and differentiated displacement sensors measure \emph{relative} velocity to the reference frame of the sensor, but an integrated accelerometer signal measures the \emph{absolute} velocity of the object.
 
 
 
