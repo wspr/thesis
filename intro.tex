@@ -302,74 +302,30 @@ feedback control systems.
 
 Position/displacement feedback: \cite{mahmoodi2009}
 
-Absolute velocity feedback control creates `skyhook' damping, in which
-the resonance peak is reduced without affecting the vibration
-transmission at higher frequencies~\cite{yan2006}.
+Absolute velocity feedback control creates `skyhook' damping, in which the resonance peak is reduced without affecting the vibration transmission at higher frequencies~\cite{yan2006}.
 
-For an ideal single degree of freedom system, this technique is limited by
-instability caused by time delays in the
-controller~\cite{ananthaganeshan2001,elliott2004,brennan2007}.
+For an ideal single degree of freedom system, this technique is limited by instability caused by time delays in the controller~\cite{ananthaganeshan2001,elliott2004,brennan2007}.
 
-Semi-active methods have also been developed to approximate this
-technique when fully active control is
-undesirable~\cite{liu2002,liu2005,ahmadian2004}.
-Semi-active control
-has the advantages of robustness and low power requirements,
-especially when large forces would be required for active control.
+Semi-active methods have also been developed to approximate this technique when fully active control is undesirable~\cite{liu2002,liu2005,ahmadian2004}.
+Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
 
-Reducing the stiffness of the support decreases the resonance
-frequency of the system, which increases the bandwidth of vibration
-isolation.
-This will improve the vibration isolation of the system
-over the application of sky-hook damping, especially at low
-frequencies.
-For a given mass, this can be achieved by reducing the
-stiffness of the support, or by adding a negative stiffness element in
-parallel with the system~\cite{lee2007,xing2005}.
-Again, this can be
-implemented by passive, active or semi-active methods.
-Negative
-displacement or positive acceleration feedback can be used in a fully
-active system.
-In the semi-active case, many methods exist to
-dynamically adjust the stiffness depending on the support being used;
-an example has been demonstrated by \textcite{kidner2002}.
+Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
+This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
+For a given mass, this can be achieved by reducing the stiffness of the support, or by adding a negative stiffness element in parallel with the system~\cite{lee2007,xing2005}.
+Again, this can be implemented by passive, active or semi-active methods.
+Negative displacement or positive acceleration feedback can be used in a fully active system.
+In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; an example has been demonstrated by \textcite{kidner2002,liu2006a}.
 
-A similar idea with a different approach is taken by
-\textcite{liu2006a}, who used a permanent magnet and an electromagnet
-to provide a variable stiffness in the absorber.
+In a conventional mass--spring system, the static deflection increases as the stiffness of the support is reduced, and a lower limit on the stiffness is imposed by constraints on the allowable displacement.
+Less typical supports can exhibit stiffness that varies nonlinearly with displacement; even local regions of zero stiffness are possible.
 
-In a conventional mass--spring system, the static deflection increases
-as the stiffness of the support is reduced, and a lower limit on the
-stiffness is imposed by constraints on the allowable
-displacement.
-Less typical supports can exhibit stiffness that varies
-nonlinearly with displacement; even local regions of zero stiffness
-are possible.
+An example of a system with such behaviour is a parallel connection of vertical and inclined springs~\cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007}, which has an approximately cubic force vs.\ displacement characteristic; localised zero stiffness occurs at zero deflection, which is termed `\qzs/'.
+The use of buckling beams as a negative stiffness element to achieve \qzs/ has also been implemented in practice~\cite{platus1999,tarnai2003}.
 
-An example of a system with such behaviour is a parallel
-connection of vertical and inclined
-springs~\cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007},
-which has an approximately cubic force vs.\ displacement
-characteristic; localised zero stiffness occurs at zero deflection,
-which is termed `\qzs/'.
-The use of buckling beams as a negative
-stiffness element to achieve \qzs/ has also been implemented in
-practice~\cite{platus1999,tarnai2003}.
+\textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
 
-\textcite{virgin2008} proposes an interesting alternative to the
-classical helical spring for vibration isolation support: a `pinched
-loop' created by a slender beam with both ends clamped has a wide
-range of tuning possibilities and offers isolation in two degrees of
-freedom.
-
-An example pertinent to this
-research is the recent analysis by Carrella \emph{et al.} of a \qzs/
-system using (positive stiffness) linear springs in parallel with negative
-stiffness magnetic springs~\cite{carrella2008}.
-Further detail into the
-field  of nonlinear passive vibration isolators is given in the recent
-review by \textcite{ibrahim2008}.
+An example pertinent to this research is the recent analysis by Carrella \emph{et al.} of a \qzs/ system using (positive stiffness) linear springs in parallel with negative stiffness magnetic springs~\cite{carrella2008,carrella2009}.
+Further detail into the field  of nonlinear passive vibration isolators is given in the recent review by \textcite{ibrahim2008}.
 
 \subsection{Sensing}
 \seclabel{vibration-sensing}
@@ -1094,18 +1050,11 @@ To demonstrate this,
 \citeauthor{boerdijk1956b} levitated a small cylindrical magnet of dimensions
 \diameter$\,\SI{1}{mm} \times \SI{0.3}{mm}$.
 
-More contemporary studies on diamagnetic levitation look at the levitation of
-larger objects including strawberries and frogs \cite{berry1997, simon2000,
-simon2001}, using very high-powered electromagnets (on the order of \SI{2}{T}
-\fixme{check}).
+More contemporary studies on diamagnetic levitation look at the levitation of larger objects including strawberries and frogs \cite{berry1997,geim1998,geim1999,simon2000,simon2001}, using high-power electromagnets (on the order of \SI{10}{T}).
 
 Unfortunately, these techniques are not suitable for large load bearing.
-Even
-the most diamagnetic substance known, pure bismuth, has $\permMag \approx
-0.9998$ — hardly different than that of air.
-The forces exchanged via magnetic
-flux between magnetic and diamagnetic materials, therefore, are incredibly
-small and not suited at all to the purposes of this research.
+Even the most diamagnetic substance known, pure bismuth, has $\permMag \approx 0.9998$ — hardly different than that of air.
+The forces exchanged via magnetic flux between magnetic and diamagnetic materials, therefore, are incredibly small and not suited at all to the purposes of this research.
 
 Superconducting material, on the other hand, behaves ideally diamagnetic with $\permMag =0$, so the forces produced between a superconductor and a magnet are equal to the forces between two (equal) permanent magnets themselves.
 This allows many exciting possibilities for stable levitation.
@@ -1309,13 +1258,15 @@ be useful for some of my ideas.
 I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
 
 Here would be a good place to cite the brain, nerve, stuff, etc
-\parencite{lu2008,demachi2008}
+\parencite{sekino2005,lu2008,demachi2008}
 
 Measurements of memory encoding in the brain \cite{gjini2005}.
 
 Measurements of the health of the heart \cite{lim2009}.
 
 Stimulation of the human nervous system \cite{darabant2009}.
+
+Wireless motion capture device \cite{hashi2005}.
 
 Magnetic fields can be used for a vast array of scientific uses.
 For example,
