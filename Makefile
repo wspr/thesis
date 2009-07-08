@@ -9,7 +9,7 @@ chapters = \
 
 .PHONY: $(chapters) show clean
 
-show: $(main).pdf
+show: $(main).pdf $(main).bbl
 	open $<
 	osascript -e 'tell application "Skim" to revert item 1 of (every window whose name contains "'$<'")'
 
