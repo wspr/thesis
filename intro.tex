@@ -321,6 +321,8 @@ feedback control systems.
 
 \subsection{From QZS paper; to be fleshed out for the real intro}
 
+Position/displacement feedback: \cite{mahmoodi2009}
+
 Absolute velocity feedback control creates `skyhook' damping, in which
 the resonance peak is reduced without affecting the vibration
 transmission at higher frequencies~\cite{yan2006}. 
@@ -666,6 +668,8 @@ recent example, \textcite{casciati2007} used a semi-active neutraliser to
 control vibration of a suspended cable; some care was required for their
 structure as their higher frequency (often nonlinear) behaviour can pose an
 influence even as the targeted (low frequency) mode is damped as desired.
+Optimization techniques can be used, if the mode shapes are known, to place
+multiple \vibneut/s in a modal system \cite{petit2009}.
 
 \Vibneut/\ are occasionally used to mitigate seismic vibrations
 in large buildings, but their mass dependence makes their application rather
@@ -916,7 +920,7 @@ magnetic needle, as cited by \textcite{boerdijk1956a}. Some more practical
 examples of these types of system are covered in the next section.
 
 This summary is fairly brief; \textcite{bleuler1992} wrote a more detailed
-overview. His paper introduces the `self-sensing active magnetic bearing'
+overview. His paper introduced the `self-sensing active magnetic bearing'
 \cite{vischer1993} which uses \backemf/ from the controlling
 electromagnet to sense the position of the floating element. This eliminates
 the need for a more classical position sensor,
@@ -925,8 +929,10 @@ but the control system is necessarily more complex and the behaviour not as
 precise.
 
 Some Italian guy showed that you can levitate a ring magnet above another by
-using vibrations to find small zone of stability in the nonlinear dynamics
+using vibrations to find a small zone of stability in the nonlinear dynamics
 \cite{bassani2007}.
+
+Finally, the Levitron toy demonstrates stability of a magnetic spinning top above a ring magnet \cite{berry1997,berry1996,simon1997}.
 
 \subsection{Diamagnetic forces}
 
@@ -934,9 +940,10 @@ Levitations involving diamagnetic material are also exempt from Earnshaw's
 theorem. This was the motivation for the papers of
 \textcite{boerdijk1956b,boerdijk1956a} in which he cites Braunbek, who derived
 that magnetic material is governed by Earnshaw's theorem only because it has a
-relative magnetic permeability ($\permMag$) greater than one—\ie, a
-permeability greater than that of the surrounding medium. Material with
-$\permMag<1$ is \emph{not} covered by the theorem since the magnetic flux from
+relative magnetic permeability ($\permMag$) greater than one — \ie, a
+permeability greater than that of the surrounding medium.
+A separate analysis of magnetic levitation systems provides a more specific measure for testing the stability of magnetic systems with various boundary conditions \cite{reusch1994}.
+Material with $\permMag<1$ is \emph{not} covered by the theorem since the magnetic flux from
 the diamagnetic material becomes dependent on the displacement of the
 permanent magnet; this violates the condition of Earnshaw's theorem that fixed
 magnetic fields be used, and so static levitation involving magnets and such
@@ -965,6 +972,67 @@ A review of work in the area of superconducting levitation has been published by
 
 \textcite{agamennoni2004} were able to identify the nonlinear dynamics
 of a coil-iron suspension.
+
+\subsection{Non-contact magnetic support}
+
+\textcite{puppin2002} published a paper that most plainly demonstrates that
+magnetic springs can be used for vibration isolation, in which the authors
+make no attempt to achieve contactless suspension—the magnets are horizontally
+constrained in guides. Furthermore, the springs are only used as passive
+isolators for vibrations in the vertical direction; no active control is used.
+Nonetheless, their passive spring was still capable of significant vertical
+vibration attenuation.
+
+\textcite{nagaya1993} constructed a non-contact vibration isolation table;
+they report a high-stiffness spring with transmissibility approaching zero
+\fixme{?}. Their table used small magnets in a simple design, which could not
+support large loads. The authors showed later a better control system for
+their `perfect noncontact active vibration isolation table'
+\cite{nagaya1995a}—which refers strictly to the efficiency of their control
+system and not the load-bearing abilities of the table.
+
+\textcite{watanabe1996} wrote a paper detailing a functional vibration
+isolator using electromagnetic springs, which could support weights of up to
+\SI{200}{kg}. The control system used was quite advanced, utilising a
+combination of two independent control systems for stable levitation and
+robust vibration isolation. The magnetic actuator design is not described,
+however. It is believed that high-powered electromagnets were required for
+this design; with the current availability of cheap rare-earth magnets, a more
+efficient design is now possible.
+
+\textcite{chang2001} applied nonlinear control to the problem of magnetic
+levitation, using coupled hybrid magnets (\ie, electromagnets biased with
+permanent magnet cores) that create a magnetic circuit with the levitated
+table of \SI{20}{kg}. The paper looks at nonlinear analysis and neither
+passive nor active vibration isolation results are shown.
+
+\textcite{choi2003} designed a levitation table capable of supporting
+\SI{15}{kg} that is unstable in only one horizontal degree of freedom.
+However, the magnetic arrangement used for the spring, despite their claims,
+appears quite unstable and is not suited for scaling up to bear greater loads.
+Their experiments prove that only a single axis requires control for
+stability, but the position resolution they achieve is fairly coarse.
+
+A novel design for achieving a theoretically infinite stiffness spring is
+shown by \textcite{mizuno2003a,mizuno2003b}. By using physical springs in
+series with electromagnetic suspension springs, three degrees of freedom of an
+isolation platform are actively controlled, with the total weight supported
+around \SI{30}{kg}. The unstable degree of freedom is in the vertical
+direction, however, which may prove problematic when increasing the load on
+the table.
+
+Even now, basic \PID\ control is still used for control purposes.
+\textcite{li2007} report their success in suspending a magnetic table using a
+coupled electromechanical model of the system.
+
+\textcite{banerjee2008} used a simple cascaded \PI\ and lead controllers to
+stabilise an electromagnetic suspension. An optimisation technique was used to
+obtain the control gains necessary to achieve adequate performance over a
+range of displacement gaps; such control is usually only suitable for
+fixed-gap systems.
+
+\textcite{gosiewski2008} applied \Hinf/ control to a magnetic suspension. Eh.
+
 
 \section{Magnetics}
 \seclabel{magnets-explore}
@@ -1012,7 +1080,7 @@ broadly at some of the main applications of the field.
 \subsection{Maglev transportation}
 
 The largest body of research into magnetic levitation is on so-called `maglev'
-transportation. Its well-known goal is to use a levitated train or car to
+transportation, reviewed in 2006 by \textcite{lee2006}. Its well-known goal is to use a levitated train or car to
 provide extremely fast and efficient transportation. This field, which is
 rather diverse in terms of the techniques under investigation, is finally now
 achieving commercial application in the real world after some 20 or 30 years
@@ -1026,7 +1094,7 @@ rather than \emph{elimination} of movement.
 In more recent years, another application for magnetic levitation has been
 investigated, which is the precision control of a levitated platform. Commonly
 cited for use in the semiconductor industry for photolithography, these
-levitators were first researched around 20 years ago.
+levitators were first researched around 20 years ago, and the field is still an active area of researchcite{fulford2008,fulford2009}.
 
 The first designs allowed travel in a single direction, \eg,
 \textcite{trumper1992}, while more recent developments allow more directions
@@ -1067,6 +1135,12 @@ I like magnetic levitation of objects in a wind tunnel
 
 Here would be a good place to cite the brain, nerve, stuff, etc
 \parencite{lu2008,demachi2008}
+
+Measurements of memory encoding in the brain \cite{gjini2005}.
+
+Measurements of the health of the heart \cite{lim2009}.
+
+Stimulation of the human nervous system \cite{darabant2009}.
 
 Magnetic fields can be used for a vast array of scientific uses. For example,
 noncontact sensing of material properties that involve variable conductivity,
@@ -1236,9 +1310,7 @@ I hadn't thought about in enough detail yet.) This creates something like a
 negative quadratic force relationship, which has zero stiffness in the centred
 vertical position.
 
-Analysis of the nonlinear dynamics of such systems such as performed by
-\textcite{lee2004b,kovacic2008} can be quite involved and is outside the scope
-of this research.
+Analysis of the nonlinear dynamics of such systems such as performed by \textcite{lee2004b,kovacic2008,kovacic2009} can be quite involved and is outside the scope of this research.
 
 
 
@@ -1256,7 +1328,7 @@ negative stiffness springs to achieve affects like
 \textcite{xing2005} formalises this idea in their paper. A swath of papers
 have been published by Mizuno over the years
 \cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}. The work was
-extended by \textcite{hoque2006} for three--degree of freedom vibration
+extended by \textcite{hoque2006} for three degree of freedom vibration
 control using the same ideas. The term `infinite stiffness' is perhaps
 unfortunate, as it's not true in any useful sense of the term. That is, their
 static behaviour converges to something that looks like infinite stiffness,
