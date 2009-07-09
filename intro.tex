@@ -135,19 +135,13 @@ curiosity: could magnetic springs be used instead?
 Using magnets for load bearing brings its own set of challenges.
 For completely non-contact support, active control must be used to
 stabilise \emph{at least} one degree of freedom.
-For the design to be
-worth investigating, some advantage to using magnets should also be
-demonstrated.\footnote{Although I took much pleasure in explaining
-  over the years that my \PhD/ project was to `build a table that
-  floats on magnets'.}
+For the design to be worth investigating, some advantage to using magnets should also be demonstrated.
+  \note{Although I took much pleasure in explaining over the years that my \PhD/ project was to `build a table that floats on magnets'.}
 
 However, the field of active control has been well-established and the feat of
 building a stabilising controller for a system with relatively simple dynamics
 is not worthy of the research for a \PhD/.
-The work presented in this thesis is
-the investigations around the idea of building a `table that floats on
-magnets' while pulling out enough interesting nuggets to prove worthy of the
-title of `research'.
+The work presented in this thesis is the investigations around the idea of building a `table that floats on magnets' while pulling out enough interesting nuggets to prove worthy of the title of `research'.
 
 \section{Vibrations}
 \seclabel{vibrations-explore}
@@ -259,6 +253,15 @@ This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS
    \figlabel{rms-transmissibility}
 \end{figure}
 
+
+Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
+This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
+For a given mass, this can be achieved by reducing the stiffness of the support, or by adding a negative stiffness element in parallel with the system \cite{lee2007,xing2005} (some examples of which are looked at in more detail later in \secref{qzs-explore}).
+Stiffness reduction can be implemented by passive, active or semi-active methods.
+Negative displacement \cite{mahmoodi2009} or positive acceleration feedback can be used in a fully active system.
+In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; examples have been demonstrated by \textcite{kidner2002,liu2006a}. Semi-active stiffness modification is used more commonly in \vibneut/ applications, described in \secref{vibneut}.
+
+
 \subsection{Implementing linear feedback}
 \secref{vibes-feedback}
 
@@ -298,34 +301,6 @@ This results
 of this paper emphasises the importance of accounting for time delays in
 feedback control systems.
 
-\subsection{From QZS paper; to be fleshed out for the real intro}
-
-Position/displacement feedback: \cite{mahmoodi2009}
-
-Absolute velocity feedback control creates `skyhook' damping, in which the resonance peak is reduced without affecting the vibration transmission at higher frequencies~\cite{yan2006}.
-
-For an ideal single degree of freedom system, this technique is limited by instability caused by time delays in the controller~\cite{ananthaganeshan2001,elliott2004,brennan2007}.
-
-Semi-active methods have also been developed to approximate this technique when fully active control is undesirable~\cite{liu2002,liu2005,ahmadian2004}.
-Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
-
-Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
-This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
-For a given mass, this can be achieved by reducing the stiffness of the support, or by adding a negative stiffness element in parallel with the system \cite{lee2007,xing2005}.
-Again, this can be implemented by passive, active or semi-active methods.
-Negative displacement or positive acceleration feedback can be used in a fully active system.
-In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; an example has been demonstrated by \textcite{kidner2002,liu2006a}.
-
-In a conventional mass--spring system, the static deflection increases as the stiffness of the support is reduced, and a lower limit on the stiffness is imposed by constraints on the allowable displacement.
-Less typical supports can exhibit stiffness that varies nonlinearly with displacement; even local regions of zero stiffness are possible.
-
-An example of a system with such behaviour is a parallel connection of vertical and inclined springs \cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007}, which has an approximately cubic force \vs\ displacement characteristic; localised zero stiffness occurs at zero deflection, which is termed `\qzs/'.
-The use of buckling beams as a negative stiffness element to achieve \qzs/ has also been implemented in practice \cite{platus1999,tarnai2003}.
-
-\textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
-
-An example pertinent to this research is the recent analysis by Carrella \emph{et al.} of a \qzs/ system using (positive stiffness) linear springs in parallel with negative stiffness magnetic springs~\cite{carrella2008,carrella2009}.
-Further detail into the field  of nonlinear passive vibration isolators is given in the recent review by \textcite{ibrahim2008}.
 
 \subsection{Sensing}
 \seclabel{vibration-sensing}
@@ -352,8 +327,6 @@ The only question is where to draw the line in the frequency domain between the 
 Note, however, that laser velocity and differentiated displacement sensors measure \emph{relative} velocity to the reference frame of the sensor, but an integrated accelerometer signal measures the \emph{absolute} velocity of the object.
 
 
-
-
 \subsection{Skyhook damping}
 \seclabel{skyhook}
 
@@ -366,88 +339,49 @@ roll-off), which is the case for damping control with ground-fixed actuators.
 This scheme is known as `skyhook' damping.
 An alternative has recently been explored of using nonlinear viscous damping instead, which provides similar benefits as skyhook damping without the implementation complications \cite{lang2009}.
 
+Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable~\cite{liu2002,liu2005,ahmadian2004}.
+Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
+
 In the context of isolating vibration of a train, \textcite{li1999} discuss the disadvantages in tracking when applying skyhook damping for systems that experience very low frequency (\ie, steady state) changes in the base position, but for the purposes of vibration isolation this is not a problem if the ground is assumed to experience disturbance with zero mean.
 (They also use Kalman filters for estimating velocity — \cf\ \secref{vibration-sensing} — but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
 
 A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
 
-In the original and crude method of implementing skyhook control, the
-switching mode that is necessary to emulate the `skyhook' in the controlled
-damping introduces higher order (odd-multiple) harmonics in the frequency
-response, as shown by \textcite{ahmadian2001}, who later proposed two
-`jerk-free' skyhook algorithms \cite{ahmadian2004}.
+In the original and crude method of implementing skyhook control, the switching mode that is necessary to emulate the `skyhook' in the controlled damping introduces higher order (odd-multiple) harmonics in the frequency response, as shown by \textcite{ahmadian2001}, who later proposed two `jerk-free' skyhook algorithms \cite{ahmadian2004}.
 
-Further work in the area was established by \textcite{liu2002}, who
-demonstrated a number of skyhook-like semi-active damping methods, including
-smoothing functions to eliminate the problem of jerk
-\cite{liu2005}.\footnote{These references by Liu contain essentially the same
-material, with greater detail in the first.
-The 2005 paper is easier to read
-than the 2002 Technical Memorandum simply due to the formatting of the
-documents.}
+Further work in the area was established by \textcite{liu2002}, who demonstrated a number of skyhook-like semi-active damping methods, including smoothing functions to eliminate the problem of jerk
+\cite{liu2005}.
+  \note{These references by Liu contain essentially the same material, with greater detail in the first. The 2005 paper is easier to read than the 2002 Technical Memorandum simply due to the formatting of the documents.}
 
-Earthquake protection systems deal with a form of vibration isolation,
-but focus more on transient response than continuous disturbance.
-The
-nature of the problem is important to analyse before control
+Earthquake protection systems deal with a form of vibration isolation, but focus more on transient response than continuous disturbance.
+The nature of the problem is important to analyse before control
 strategies are applied.
-\textcite{gavin2007} discuss using negative
-stiffness and skyhook damping in the context of isolating machinery
-in a building.
+\textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
 
-Skyhook damping is considered an ideal case (I need some references
-— \ie, detail — for this) and is implemented with a switching
-controller in practice.
-This is because the abstraction of skyhook
-damping is to attach a damper to the `sky' itself; that is, the added
-damping is proportional to the absolute velocity of the damped
-mass.
-In practice, however, a velocity sensor can only measure a
-\emph{relative} velocity between the mass and the position of the
-fixed sensor.
+Skyhook damping is considered an ideal case (I need some references — \ie, detail — for this) and is implemented with a switching controller in practice.
+This is because the abstraction of skyhook damping is to attach a damper to the `sky' itself; that is, the added damping is proportional to the absolute velocity of the damped mass.
+In practice, however, a velocity sensor can only measure a \emph{relative} velocity between the mass and the position of the fixed sensor, which for vibration isolation purposes is the same inertial reference as the ground itself through which the disturbances are propagating.
 
 \textcite{song2007} used the nonlinearities of semi-active skyhook damping as
 justification for the design of an adaptive controller for vibration
 isolation; they did not compare their results with recent work in the skyhook
 area, however.
 
-Skyhook damping can also be implemented with fully active control systems, an
-idea explored by, \eg, \textcite{elliott2001,elliott2004,yan2006,kim2008a}
-\fixme{describe these more}.
-These methods are conceptually simpler, as the
-inertial velocity can easily be obtained from integrated acceleration
-measurements.
-Instability can occur in cases when the applied control force
-affects the dynamics of the base, but in practice this tends not to be a
-problem for comparatively massive support structures.
+Skyhook damping can also be implemented with fully active control systems, an idea explored by, \eg, \textcite{elliott2001,elliott2004,yan2006,kim2008a} \fixme{describe these more}.
+These methods are conceptually simpler, as the inertial velocity can easily be obtained from integrated acceleration measurements.
+Instability can occur in cases when the applied control force affects the dynamics of the base, but in practice this tends not to be a problem for comparatively massive support structures.
 
-\textcite{serrand2000} discuss active skyhook damping applied to a two degree
-of freedom structure with emphasis on the effects, for their system, due to
-possible base flexibility.
-One of their results shows that using integrated
-accelerometer measurements as a velocity feedback term has a low frequency
-phase shift that can induce stability for high enough control gains.
-Therefore, very high precision accelerometers or laser velocity vibrometers
-are required for very low frequency vibration control (below \SI{1}{Hz}).
+\textcite{serrand2000} discuss active skyhook damping applied to a two degree of freedom structure with emphasis on the effects, for their system, due to possible base flexibility.
+One of their results shows that using integrated accelerometer measurements as a velocity feedback term has a low frequency phase shift that can induce instability for high enough control gains.
+Therefore, very high precision accelerometers or laser velocity vibrometers are required for very low frequency vibration control (below \SI{1}{Hz}).
 
-
-Energy generation can also be accomplished through electromagnetic damping
-through induced eddy currents in a coil experiencing relative displacement to
-a magnetic field, such as investigated by \textcite{graves2000}.
-\Secref{damping} discusses the damping possibilities of electromagnetic
-systems for the purposes of vibration isolation devices.
-
+Energy generation can also be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
 
 
 \subsection{Inertial actuators}
 
-Sometimes it is not possible to integrate the control mechanism into the
-support of a structure, in which case external actuators need to be added to
-the device to provide the control forces.
-These tend to be inertial
-electromagnetic actuators, also known as `proof-mass' actuators, where the
-mass of the moving element provides an external force via coupling to the
-structure.
+Sometimes it is not possible to integrate the control mechanism into the support of a structure, in which case external actuators need to be added to the device to provide the control forces.
+These tend to be inertial electromagnetic actuators, also known as `proof-mass' actuators, where the mass of the moving element provides an external force via coupling to the structure.
 This is shown schematically in \figref{vibration-absorb}
 
 \begin{figure}
@@ -478,42 +412,22 @@ These self-sensing devices (perhaps obviously, since the \backemf/ is such a noi
 
 
 \subsection{Vibration neutralisers}
+\seclabel{vibneut}
 
-One method of reducing vibration on a supported mass is to attach a
-supplementary mass that resonanates in concert with the disturbance; this has
-the effect of adding an anti-resonance to the original system at the frequency
-of interest.
-These are known under various names as `tuned mass dampers',
-`vibration neutralisers', `dynamic vibration absorbers', and so on.
-\note{No effort has been made to compile an exhaustive list.} 
-The descriptions
-involving such terms as `damper' and `absorber' are not strictly accurate on
-the grounds that these devices do not act as energy dissipators; rather, they
-direct energy into a subsystem for which continuous disturbance is not
-undesirable.
-In this thesis, the term `\vibneut/' is used, following
-\textcite{kidner1998} and others.
+One method of reducing vibration on a supported mass is to attach a supplementary mass that resonanates in concert with the disturbance; this has the effect of adding an anti-resonance to the original system at the frequency of interest.
+These are known under various names as `tuned mass dampers', `vibration neutralisers', `dynamic vibration absorbers', and so on.
+  \note{No effort has been made to compile an exhaustive list.} 
+The descriptions involving such terms as `damper' and `absorber' are not strictly accurate on the grounds that these devices do not act as energy dissipators; rather, they direct energy into a subsystem for which continuous disturbance is not undesirable.
+In this thesis, the term `\vibneut/' is used, following \textcite{kidner1998} and others.
 
-The concept of \vibneut/{}s is not entirely the focus of this research, but
-falls into the category of literature that crops up in association with it.
-In
-the passive application, a \vibneut/\ consists of attaching a supplementary
-mass to the structure for which vibration is to be removed.
-The stiffness of
-the attachment is chosen by matching the natural frequencies of the structure
-with that of the additional mass.
-This is shown in \figref{tuned-mass-vs-fig}
-where a response is shown for a range of stiffness values.
-There is a
-compromise between broad- and narrow-band vibration attentuation.
-\Figref{inertial-trans-delta} illustrates the vibration attenuation at
-resonance for a system with a vibration absorber.
-It can be seen that for
-narrowband reduction, low absorber damping produces greater vibration
-attenuation.
-Conversely, if the \RMS\ transmissiblity of the entire frequency
-band is calculated, as shown in \figref{rms-inertial}, it can be seen that
-lower absorber damping \emph{decreases} the overall vibration reduction.
+The concept of \vibneut/s is not entirely the focus of this research, but falls into the category of literature that crops up in association with it.
+In the passive application, a \vibneut/ consists of attaching a supplementary mass to the structure for which vibration is to be removed.
+The stiffness of the attachment is chosen by matching the natural frequencies of the structure with that of the additional mass.
+This is shown in \figref{tuned-mass-vs-fig} where a response is shown for a range of stiffness values.
+There is a compromise between broad- and narrow-band vibration attentuation.
+\Figref{inertial-trans-delta} illustrates the vibration attenuation at resonance for a system with a vibration absorber.
+It can be seen that for narrowband reduction, low absorber damping produces greater vibration attenuation.
+Conversely, if the \RMS\ transmissiblity of the entire frequency band is calculated, as shown in \figref{rms-inertial}, it can be seen that lower absorber damping \emph{decreases} the overall vibration reduction.
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/tuned-mass-vs-freq}
@@ -549,25 +463,16 @@ absorber on single-frequency and broadband transmissibility of a \vibneut/.}
 \textcite{brennan2006} discusses a wide variety of actuators that may
 be used to construct such a device:
 \begin{quote}
-  There is not a single ``best'' way of making an [adaptive tuned
-  vibration absorber].
-  It depends upon the required frequency range,
-  the agility (speed of reaction) and cost.
+There is not a single ``best'' way of making an [adaptive tuned vibration absorber].
+It depends upon the required frequency range, the agility (speed of reaction) and cost.
 \end{quote}
 
-The efficacy of a \vibneut/\ is related to the damping between
-it and the structure; better results are achieved with lower damping, as shown
-in \figref{rms-inertial}.
-The damping of the absorber can be reduced with an
-active control system as shown by \textcite{kidner1998}.
-This can be
-understood with the realisation that energy is not dissipated by the vibration
-`absorber'; rather, motional energy from the vibrating structure is being
-\emph{transferred} to the supplementary mass, and this process is degraded by
-the presence of damping.
+The efficacy of a \vibneut/\ is related to the damping between it and the structure; better results are achieved with lower damping, as shown in \figref{rms-inertial}.
+The damping of the absorber can be reduced with an active control system as shown by \textcite{kidner1998}.
+This can be understood with the realisation that energy is not dissipated by the vibration `absorber'; rather, motional energy from the vibrating structure is being \emph{transferred} to the supplementary mass, and this process is degraded by the presence of damping.
 \note{This theme of the desirability of low mechanical damping re-occurs at other points in this thesis (crossref).}
 
-\Vibneut/\ are tuned for a specific resonance frequency, which means that the
+\Vibneut/ are tuned for a specific resonance frequency, which means that the
 frequency of the input disturbance must be known and unvarying for a passive
 device to achieve useful results.
 Especially for low-damping neutralisers,
@@ -818,62 +723,43 @@ of the system.
 \subsection{Exploring \qzs/ systems}
 \seclabel{qzs-explore}
 
-Addition of negative stiffness elements in a design reduces the resonance
-frequency, which improves vibration isolation.
-Early examples of such designs
-using inclined springs were shown by \textcite{molyneux1957}.
-Such systems may
-tuned to achieve a local region of zero stiffness, which is often termed
-`\qzs/'.
+In a conventional mass--spring system, the static deflection increases as the stiffness of the support is reduced, and a lower limit on the stiffness is imposed by constraints on the allowable displacement.
+Less typical supports can exhibit stiffness that varies nonlinearly with displacement; even local regions of zero stiffness are possible.
+
+An example of a system with such behaviour is a parallel connection of vertical and inclined springs \cite{molyneux1957,alabuzhev1989}, ; localised zero stiffness occurs at zero deflection, which is termed `\qzs/'.
+The use of buckling beams as a negative stiffness element to achieve \qzs/ has also been implemented in practice \cite{platus1999,tarnai2003}.
+
+\textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
+
+
+Addition of negative stiffness elements in a design reduces the resonance frequency, which improves vibration isolation.
+Early examples of such designs using inclined springs were shown by \textcite{molyneux1957}.
+These have an approximately cubic force \vs\ displacement characteristic, which may be tuned to achieve a local region of zero stiffness, which is often termed `\qzs/'.
 \textcite{alabuzhev1989} looked at the nonlinear behaviour of such
 systems, and also more recently by
-\textcite{carrella2006,carrella2007,carrella2008} and improved by
+\textcite{carrella2006,carrella2007,carrella2008,carrella2009} and improved by
 \textcite{kovacic2008}.
-More recently, the dynamic response of these systems
-has been analysed \parencite{carrella2009,carrella2008thesis} and shown to
-have prominent nonlinearities that distort the frequency response but that do
-not decrease the vibration isolation efficacy in general.
+More recently, the dynamic response of these systems has been analysed \parencite{carrella2009,carrella2008thesis} and shown to have prominent nonlinearities that distort the frequency response but that do not decrease the vibration isolation efficacy in general.
 
-The use of buckling beams as a negative stiffness element to achieve \qzs/ has
-also been implemented in practice~\cite{platus1999,tarnai2003,lee2007}.
+The use of buckling beams as a negative stiffness element to achieve \qzs/ has also been implemented in practice~\cite{platus1999,tarnai2003,lee2007}.
 
-A brief discussion of zero stiffness elements in hand-held vibrating
-machinery yields perhaps little insight into our problem
-\cite{sokolov2007}, but mentions that friction is the biggest problem
-once zero stiffness has actually been achieved; this problem is
-obviated when non-contact supports are used.
+A brief discussion of zero stiffness elements in hand-held vibrating machinery yields perhaps little insight into our problem \cite{sokolov2007}, but mentions that friction is the biggest problem once zero stiffness has actually been achieved; this problem is obviated when non-contact supports are used.
 
-An interesting collection of literature for very low frequency vibration
-isolation resulted from various gravity wave interferometers built around the
-world.
-Some of these used the negative stiffness of the buckling beam, in
-various forms, to reduce the resonance frequency of an isolator
-\cite{cella2005}.
+An interesting collection of literature for very low frequency vibration isolation resulted from various gravity wave interferometers built around the world.
+Some of these used the negative stiffness of the buckling beam, in various forms, to reduce the resonance frequency of an isolator \cite{cella2005}.
+
+Further detail into the field  of nonlinear passive vibration isolators is given in the recent review by \textcite{ibrahim2008}.
 
 \QZS/ can also be achieved with magnetic systems.
-Magnetic configurations with
-negative stiffness can be used to augment a positive stiffness support (which
-can be simply a conventional spring) to lower the resonance frequency.
-For
-example, \textcite{beccaria1997} used this technique (under the term `magnetic
-antisprings') to improve the isolation for gravity wave detectors.
-\textcite{carrella2007a,carrella2008} has also used a attractive magnets in
-parallel with conventional springs to reduce the resonance frequency of the
-system.
-Purely non-contact magnetic systems can also be used to similar effect
-\cite{robertson2006,robertson2007}.
-Generally, systems that use the negative
-stiffness between attracting magnets cannot be brought to a stable \qzs/
-region due to their `softening spring' characteristic.
+Magnetic configurations with negative stiffness can be used to augment a positive stiffness support (which can be simply a conventional spring) to lower the resonance frequency.
+For example, \textcite{beccaria1997} used this technique (under the term `magnetic antisprings') to improve the isolation for gravity wave detectors.
+\textcite{carrella2007a,carrella2008} has also used a attractive magnets in parallel with conventional springs to reduce the resonance frequency of the system.
+Purely non-contact magnetic systems can also be used to similar effect \cite{robertson2006,robertson2007}.
+Generally, systems that use the negative stiffness between attracting magnets cannot be brought to a stable \qzs/ region due to their `softening spring' characteristic.
 
-\textcite{hol2006} discuss a `gravity compensator' that uses the idea of an
-axial bearing with \ang{90} rotated magnetisations to bear load in the
-vertical direction.
-(Also see \textcite{yonnet1981} for related bearings that
-I hadn't thought about in enough detail yet.)
-This creates something like a
-negative quadratic force relationship, which has zero stiffness in the centred
-vertical position.
+\textcite{hol2006} discuss a `gravity compensator' that uses the idea of an axial bearing with \ang{90} rotated magnetisations to bear load in the vertical direction.
+(Also see \textcite{yonnet1981} for related bearings that I hadn't thought about in enough detail yet.)
+This creates something like a negative quadratic force relationship, which has zero stiffness in the centred vertical position.
 
 Analysis of the nonlinear dynamics of such systems such as performed by \textcite{lee2004b,kovacic2008,kovacic2009} can be quite involved and is outside the scope of this research.
 
