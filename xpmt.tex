@@ -263,9 +263,9 @@ around a displacement range of around \SI{\pm2}{mm}.
 \subsection{Sensors}
 \seclabel{xpmt-sensors}
 
-The requirements for the sensing equipment is similar to that
-of the actuators; noncontact spatial measurement is desired
-to remove any possibility of adding further dynamics to the system.
+The requirements for the sensing equipment is similar to that of the actuators; noncontact spatial measurement is desired to remove any possibility of adding further dynamics to the system.
+A displacement sensor is required to calibrate the position of the fixed and moving magnets in the system.
+Accelerometers are used to measure the vibration response on the beam and on the base.
 
 There are five main choices for non-contact distance sensing,
 enumerated below. See \textcite{boehm1993} for a more detailed overview.
@@ -365,6 +365,30 @@ of the sensor, given by
   \DisplSensorBeam\fn{\DisplSensor} = \gp{\HeightRig - \OriginBeam} - \HeightSensor - \DisplSensor
 \end{dmath}
 
+\paragraph{Accelerometers}
+For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system. Technical specifications, including charge amplifier and filters used, are shown in \tabref{rig-apparatus}.
+
+\begin{table}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+      Base accelerometer & \BnK/ 4367 \\
+      Floating accelerometer & \BnK/ 4332 \\
+      Charge Amplifiers & \BnK/ 2635 \\
+      Low-pass filters & 0000 \\
+    \bottomrule
+  \end{tabular}
+  \caption{Experimental apparatus used for signal measurement and filtering.}
+  \tablabel{rig-apparatus}
+\end{table}
+
+For open loop measurements, these sensors were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals and estimate the velocities.
+Standard methods for interpreting the accelerometer involve high-pass filtering the measured signal to avoid drift as integration errors accumulate. 
+The corner frequency for the integration must be reasonably high, as it is not possible to distinguish between drift and low frequency components in the  signal.
+An alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signals; for transient or wide-band signals, the typical approach is better suited.
+
+As an alternative, low frequency velocity signals can be estimated by differentiating a displacement measurement.
+If the displacement sensor is fixed to a fixed inertial reference frame, then this estimate may be combined with an integrated accelerometer measurement to obtain a more accurate estimate of the velocity \cite{bennett2007}.
+However, if relative displacement is measured between two coupled systems (as often the case for vibration isolation) then this technique does not capture the absolute velocity. (\Eg, with reference to \figref{simple-isolation}, the signal $\gp{\velMass-\velBase}$ is being estimated, not $\velMass$.)
 
 
 \subsection{Translational effects of the rotating beam}
@@ -496,22 +520,6 @@ control, as discussed in \secref{vibes-feedback}.
    experimental measurements.}
   \tablabel{rig-ol-spect}
 \end{table}
-
-\begin{table}
-  \begin{tabular}{@{}ll@{}}
-    \toprule
-      Base accelerometer & \BnK/ 4367 \\
-      Floating accelerometer & \BnK/ 4332 \\
-      Charge Amplifiers & \BnK/ 2635 \\
-      Low-pass filters & 0000 \\
-    \bottomrule
-  \end{tabular}
-  \caption{Experimental apparatus used for signal measurement and filtering.}
-  \tablabel{rig-apparatus}
-\end{table}
-
-Accelerometers and apparatus used for the experiments are shown in
-\tabref{rig-apparatus}.
 
 Open loop measurements were taken both with and without the electromagnetic
 actuator connected (wired up as both a short circuit and an open circuit). In
@@ -656,11 +664,11 @@ gains are shown in \figref{cl-results}.
   \figlabel{cl-results}
 \end{figure}
 
-To measure the velocity of the moving beam, the accelerometer measurement is
+To estimate the velocity of the moving beam, the accelerometer measurement is
 integrated by the charge amplifier with a cut-on frequency of \SI{1}{Hz}.
 Because the accelerometers were now being used to measure velocity, the
 transmissibility curves shown in \figref{cl-results} were calculated from the
-ratio of the velocity measurements instead.
+ratio of the velocity measurements.
 
 Due to the presence of higher-order dynamics in the structure, a low pass
 filter was used to reject signals above \SI{50}{Hz}. This also ensured that

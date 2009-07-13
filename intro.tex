@@ -238,26 +238,6 @@ Rather, integral and double-integral feedback from an accelerometer give better 
 This results of this paper emphasises the importance of accounting for time delays in feedback control systems.
 
 
-\subsection{Sensing}
-\seclabel{vibration-sensing}
-
-The sensors used for active vibration control systems can make a significant impact on the performance that the control can achieve.
-\textcite{brennan2007} discuss the impacts of using displacement, velocity, and acceleration feedback for a single degree of freedom system in the context of signal conditioning filters and digital time delays in the loop.
-Integrating an accelerometer signal may be a convenient method to approximate the absolute velocity, but it limits the control performance that can be achieved due to a lower frequency limit on the observed signal.
-
-Accelerometer signals may be integrated in a number of ways.
-Standard methods involve high-pass filtering the measured signal to avoid drift as integration errors accumulate.
-This technique is used in, \eg, B\&K charge amplifiers which can output a velocity signal from an accelerometer.
-For certain types of measurements, the high-pass filter used here can be detrimental to the signal that is being estimated.
-An alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signal; for transient or wide-band signals, the typical approach is better suited.
-
-It is always desired to minimise the number of sensors due to cost and implementation complexity, and various methods may be used to estimate states of a system that are not directly measured.
-If displacement and acceleration are measured, a reasonable estimate of the velocity may be computed by differentiating and integrating, respectively, the measured signals and combining the results.
-This method has been practised by \textcite{bennett2007}, and it works acceptably well because the low frequency components can be obtained from the derivative of the displacement and the high frequency components can be obtained by integration of the acceleration.
-The only question is where to draw the line in the frequency domain between the two signals.
-Note, however, that laser velocity and differentiated displacement sensors measure \emph{relative} velocity to the reference frame of the sensor, but an integrated accelerometer signal measures the \emph{absolute} velocity of the object.
-
-
 \subsection{Skyhook damping}
 \seclabel{skyhook}
 
@@ -270,7 +250,7 @@ Semi-active methods have also been developed to approximate skyhook damping when
 Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
 
 In the context of isolating vibration of a train, \textcite{li1999} discuss the disadvantages in tracking when applying skyhook damping for systems that experience very low frequency (\ie, steady state) changes in the base position, but for the purposes of vibration isolation this is not a problem if the ground is assumed to experience disturbance with zero mean.
-(They also use Kalman filters for estimating velocity — \cf\ \secref{vibration-sensing} — but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
+(They also use Kalman filters for estimating velocity but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
 
 A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
 
@@ -455,7 +435,7 @@ Since an optimal controller is based around a cost function that will be depende
 I haven't finished reading the paper by \textcite{savaresi2007}, but it's about a combination skyhook/acceleration-feedback controller that is really nice.
 It is in the context of vehicle vibration control for ride `smoothness'; the premise is that skyhook damping knocks out resonance peaks (without any other side-effects; \cf\ relative velocity feedback) while acceleration ($\equiv$ `mass') feedback decreases the overall transmissibility at higher frequencies.
 
-
+Sliding mode control is a recent control technique that seems to have good application to vibration isolation \cite{dong2009}.
 
 \textcite{kerber2007} modelled a plate-plate coupling through four contact points in six degrees of freedom system and applied active vibration isolation in the vertical direction using a range of control methods.
 Of those trialed, \Hinf/ control had the best low frequency response, and \PI\ control (with anti-windup) the best high frequency response.
