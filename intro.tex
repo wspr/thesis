@@ -421,10 +421,16 @@ Vibration isolation can be considered exclusively as a control problem.
 \textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techqniques to isolate a multi-degree of freedom structure in a single direction.
 Adaptive control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
 
-\textcite{balandin1998} review the field of optimal control as applied
-to shock and vibration isolation problems.
-  \note{%
-    Their comment that the \enquote{number of papers is so great that there is little incentive to discuss them here} does not bode well for any attempts by me to even summarise their review.} 
+The issue of selecting appropriate control gains for velocity feedback control systems was examined by \textcite{engels2008} for the cases of centralised and decentralised control devices.
+In centralised control, a global model of the system is used when allocating the feedback signals.
+In decentralised control, each sensor/actuator pair operates independently to minimize the energy at the mounting point.
+Generally centralised control is more difficult in practise but can give better results.
+For the simple two-degree of freedom vibrating system examined by \textcite{engels2008}, the centralised control performed better although the differences to the decentralised control were small.
+An analogous result was shown by \textcite{hoque2006} for a three-axis vibration platform supported by a so-called `infinite stiffness' magnet/spring system (see \secref{infstiff}).
+
+
+\textcite{balandin1998} review the field of optimal control as applied to shock and vibration isolation problems.
+\note{Their comment that the \enquote{number of papers is so great that there is little incentive to discuss them here} does not bode well for any attempts by me to even summarise their review.} 
 They differentiate shock and vibration isolation succintly:
 \begin{quote}
 The operating quality of shock isolators is usually described in terms of certain characteristics of the transient motion of the body being isolated, whereas the quality of vibration isolators is determined by the characteristics of steady-state forced oscillations.
@@ -452,8 +458,8 @@ Such techniques are appropriate when system identification is required during op
 However, such `artifical intelligence' algorithms are probably sub-optimal for the observation of such a dynamics problem when the system can be broadly modelled as a set of differential equations in the time domain, for which in even complex systems, nonlinear techniques such as backstepping or sliding mode control are often directly suitable.
 Leave the heuristic approaches to systems that cannot be modelled (or even simulated for a broad range of operating behaviours) through standard means.
 \note{Note that these comments only apply to the use of such methods in the control phase of vibration control; genetic algorithms, \eg, provide a useful technique in the design phase when limited numbers of sensors and actuators must be placed in `optimal' positions on a complex structure \cite{simpson2003,howard2005}.}
-  
-  
+
+
 
 \subsection{Internal resonances}
 
@@ -472,18 +478,6 @@ On the other hand, the nonlinear force/displacement relationship of magnetic spr
 An example of this behaviour is demonstrated in \secref[vref]{qzs-not-zerk}.
 
 
-\subsection{Isolation tables are more than just single degree of freedom}
-
-The issue of selecting appropriate control gains for velocity feedback control systems was examined by \textcite{engels2008} for the cases of centralised and decentralised control devices.
-In centralised control, a global model of the system is used when allocating the feedback signals.
-In decentralised control, each sensor/actuator pair operates independently to minimize the energy at the mounting point.
-Generally centralised control is more difficult in practise but can give better results.
-For the simple two-degree of freedom vibrating system examined by \textcite{engels2008}, the centralised control performed better although the differences to the decentralised control were small.
-An analogous result was shown by \textcite{hoque2006} for a three-axis vibration platform supported by a so-called `infinite stiffness' magnet/spring system (see \secref{infstiff}).
-
-\textcite{yoshioka2001} designed and built a prototype vibration isolation platform with a load bearing capacity about \SI{1000}{kg}.
-Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.
-Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
 
 \subsection{Nonlinear systems}
 
@@ -613,6 +607,14 @@ rather than using magnetic springs in attraction, as in their other work, this
 paper looks at using a voice coil actuator with designed negative stiffness.
 A controller must be used to obtain this negative stiffness.
 
+\subsection{Vibration isolation platforms}
+
+The literature review until now has focussed mainly on specific systems and techniques for achieving vibration isolation and suppression.
+This small section looks at the end result of much of this research: actual applications into constructing vibration isolation platforms.
+
+\textcite{yoshioka2001} designed and built a prototype vibration isolation platform with a load bearing capacity about \SI{1000}{kg}.
+Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.
+Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
 
 \subsection{Summary of the vibrations literature}
 
@@ -660,14 +662,17 @@ This is easy to visualise by analogy.
 \figref{saddle} shows a ball balancing on a saddle-shaped curve, which we can take to be potential energy of a \twoD/ system.
 Clearly it is stable in one direction, unstable in the other.
 Perturbations `left' or `right' will result in reaction forces keeping it centred and stable, whereas small displacements `into' or `out from' the page will result in increased perturbation to instability.
+So it is with any permanent magnet arrangement.
 
 \subsection{Exceptions to Earnshaw}
 
 Earnshaw's proof does not rule out all forms of `levitation' unconditionally, however.
 \textcite{boerdijk1956a} reviewed the known methods for levitation, covering levitation by gravitation forces, pressure reaction forces, radiation field forces, and finally in detail, various magnetic and electromagnetic forces.
+\textcite{bassani2006} revisited Earnshaw's work, in particular to highlight interesting exceptions to the theory against passive levitation.
 
 Because Earnshaw's theorem looks only at the case for static equilibrium, cases when the magnetic field is dynamic are not covered.
-This can occur broadly under two circumstances: when the magnetic field is generated with \AC/ currents; and when an unstable permanent magnet arrangement is stabilised with an active control system.
+This can occur broadly under three circumstances: when the magnetic field is generated with \AC/ currents; and when an unstable permanent magnet arrangement is stabilised with an active control system; and when the system is composed of elements with some dynamics associated with them 
+\note{\Ie, when things are moving}.
 
 Levitation using a magnetic field produced by \AC/ currents was covered in detail by \textcite{laithwaite1965}.
 The basic mechanism of this type of levitation is that \AC/ currents create dynamic magnetic fields that induce eddy currents in a levitating object, and it is the interaction of the magnetic fields of these induced currents that causes the levitation.
@@ -684,9 +689,7 @@ This eliminates the need for a more classical position sensor,
  \note{See \secref[vref]{xpmt-sensors} for a more detailed discussion of position sensors for non-contact purposes.}
 but the control system is necessarily more complex and the behaviour not as precise.
 
-Some Italian guy showed that you can levitate a ring magnet above another by using vibrations to find a small zone of stability in the nonlinear dynamics \cite{bassani2007}.
-
-Finally, the Levitron toy demonstrates stability of a magnetic spinning top above a ring magnet \cite{berry1997,berry1996,simon1997}.
+Finally, levitation can be achieved in dynamic systems. \textcite{bassani2007} levitated a ring magnet above another by using continuous base excitation to find a small zone of stability in the nonlinear dynamics of the system. More well-known, the Levitron toy demonstrates stability of a magnetic spinning top above a ring magnet \cite{berry1997,berry1996,simon1997}.
 
 \subsection{Diamagnetic forces}
 
@@ -702,7 +705,7 @@ Unfortunately, these techniques are not suitable for large load bearing.
 Even the most diamagnetic substance known, pure bismuth, has $\permMag \approx 0.9998$ — hardly different than that of air.
 The forces exchanged via magnetic flux between magnetic and diamagnetic materials, therefore, are incredibly small and not suited at all to the purposes of this research.
 
-Superconducting material, on the other hand, behaves ideally diamagnetic with $\permMag =0$, so the forces produced between a superconductor and a magnet are equal to the forces between two (equal) permanent magnets themselves.
+Superconducting material, on the other hand, behaves ideally diamagnetic with $\permMag=0$, so the forces produced between a superconductor and a magnet are equal to the forces between two (equal) permanent magnets themselves.
 This allows many exciting possibilities for stable levitation.
 However, even the so-called `high temperature' superconducting materials must be cooled to very low temperatures in order to remain superconductive.
 Such a requirement renders this method financially and functionally impractical for this research.
@@ -719,8 +722,7 @@ of a coil-iron suspension.
 Furthermore, the springs are only used as passive isolators for vibrations in the vertical direction; no active control is used.
 Nonetheless, their passive spring was still capable of significant vertical vibration attenuation.
 
-\textcite{nagaya1993} constructed a non-contact vibration isolation table; they report a high-stiffness spring with transmissibility approaching zero
-\fixme{?}.
+\textcite{nagaya1993} constructed a non-contact vibration isolation table; they report a high-stiffness spring with transmissibility that \enquote{can be controlled to be nearly zero}.
 Their table used small magnets in a simple design, which could not support large loads.
 The authors showed later a better control system for their `perfect noncontact active vibration isolation table' \cite{nagaya1995a}—which refers strictly to the efficiency of their control system and not the load-bearing abilities of the table.
 
