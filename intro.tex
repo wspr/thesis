@@ -222,7 +222,7 @@ In the semi-active case, many methods exist to dynamically adjust the stiffness 
 \subsection{Implementing linear feedback}
 \secref{vibes-feedback}
 
-Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999} at the ISVR at the University of Southampton, an institution that has been very active in this field.
+Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999}.
 
 The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001}, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
 Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
@@ -286,7 +286,7 @@ Energy generation can also be accomplished through electromagnetic damping throu
 
 Sometimes it is not possible to integrate the control mechanism into the support of a structure, in which case external actuators need to be added to the device to provide the control forces.
 These tend to be inertial electromagnetic actuators, also known as `proof-mass' actuators, where the mass of the moving element provides an external force via coupling to the structure.
-This is shown schematically in \figref{vibration-absorb}
+This is shown schematically in \figref{vibration-absorb}.
 
 \begin{figure}
    \asyfig{Systems/vibration-inertial} 
@@ -304,10 +304,10 @@ The theory for such `combined-state' feedback cases was subsequently developed \
 
 A wide combination of feedback combinations was analysed by \textcite{diaz2005} focussing on various forms of velocity feedback for single-, double-, and multi-degree of freedom vibration isolation systems.
 In the two degree of freedom system, an inertial actuator is used to provide control force; as well as additional stability contraints due to this arrangement, the resonance at low frequencies of the actuator itself compromised the control performance.
-
 (A possible solution to this problem might be to select an actuator with a much \emph{greater} resonance frequency than the plant, but this arrangement has been shown to be ineffective at controlling the system \cite[][Appendix~A]{benassi2002}.)
 
 A comparison of some of these methods, including skyhook damping and semi-active vibration absorber methods, was done by \textcite{huyanan2007}, contrasting the performance and implementation differences between them.
+Another comparison of such techniques for vehicle suspension control indicated that sliding mode control was a suitable candidate for such applications \cite{dong2009}.
 
 \textcite{paulitsch2003} uses an electromechanical actuator that serves as a self-sensing device for vibration control.
 The idea of self-sensing for magnetic levitation purposes (in both cases using a electromagnet) has been shown by \textcite{bleuler1992,vischer1993}.
@@ -335,7 +335,7 @@ Conversely, if the \RMS\ transmissiblity of the entire frequency band is calcula
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/tuned-mass-vs-freq}
-   \caption{%
+   \caption{
      Vibration absorber with a range of absorber stiffnesses (labelled).
      When the absorber matches the resonance of the structure the vibration amplitude around that frequency is greatly reduced.}
    \figlabel{tuned-mass-vs-fig}
@@ -345,21 +345,22 @@ Conversely, if the \RMS\ transmissiblity of the entire frequency band is calcula
 \begin{wide}
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Springs/fig/inertial-trans-delta}
-    \caption{%
+    \caption{
       Transmissibility reduction at resonance due to a vibration absorber system, versus absorber stiffness, for a range of absorber damping values.
       Greater reductions result from \emph{lower} damping.}
     \figlabel{inertial-trans-delta}
   \end{subfigure}
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Springs/fig/rms-inertial}
-    \caption{%
+    \caption{
       \RMS\ transmissibility of the vibration absorber system versus absorber stiffness for a range of absorber damping values.
     Greater broadband reductions result from \emph{higher} damping.}
     \figlabel{rms-inertial}
   \end{subfigure}
 \end{wide}
-\caption{%
-A comparison of the effects of changing the damping ratio of the absorber on single-frequency and broadband transmissibility of a \vibneut/.}
+\caption{
+  A comparison of the effects of changing the damping ratio of the absorber on single-frequency and broadband transmissibility of a \vibneut/.
+}
 \end{figure}
 
 \textcite{brennan2006} discusses a wide variety of actuators that may be used to construct such a device:
@@ -434,8 +435,6 @@ Since an optimal controller is based around a cost function that will be depende
 
 I haven't finished reading the paper by \textcite{savaresi2007}, but it's about a combination skyhook/acceleration-feedback controller that is really nice.
 It is in the context of vehicle vibration control for ride `smoothness'; the premise is that skyhook damping knocks out resonance peaks (without any other side-effects; \cf\ relative velocity feedback) while acceleration ($\equiv$ `mass') feedback decreases the overall transmissibility at higher frequencies.
-
-Sliding mode control is a recent control technique that seems to have good application to vibration isolation \cite{dong2009}.
 
 \textcite{kerber2007} modelled a plate-plate coupling through four contact points in six degrees of freedom system and applied active vibration isolation in the vertical direction using a range of control methods.
 Of those trialed, \Hinf/ control had the best low frequency response, and \PI\ control (with anti-windup) the best high frequency response.
