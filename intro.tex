@@ -299,12 +299,12 @@ This is shown schematically in \figref{vibration-absorb}.
 \end{figure}
 
 In this case, velocity feedback on its own can have problems with stability margins at low frequencies.
-\textcite{benassi2002a} (using inertial actuators) showed in experiment that this can be improved by the addition of a phase lag controller with force feedback in conjuection with velocity feedback.
-The theory for such `combined-state' feedback cases was subsequently developed \cite{benassi2002b}.
+\textcite{benassi2002-part2} (using inertial actuators) showed in experiment that this can be improved by the addition of a phase lag controller with force feedback in conjuection with velocity feedback.
+The theory for such `combined-state' feedback cases was subsequently developed \cite{benassi2002-double}.
 
 A wide combination of feedback combinations was analysed by \textcite{diaz2005} focussing on various forms of velocity feedback for single-, double-, and multi-degree of freedom vibration isolation systems.
 In the two degree of freedom system, an inertial actuator is used to provide control force; as well as additional stability contraints due to this arrangement, the resonance at low frequencies of the actuator itself compromised the control performance.
-(A possible solution to this problem might be to select an actuator with a much \emph{greater} resonance frequency than the plant, but this arrangement has been shown to be ineffective at controlling the system \cite[][Appendix~A]{benassi2002}.)
+(A possible solution to this problem might be to select an actuator with a much \emph{greater} resonance frequency than the plant, but this arrangement has been shown to be ineffective at controlling the system \cite[][Appendix~A]{benassi2002-part1}.)
 
 A comparison of some of these methods, including skyhook damping and semi-active vibration absorber methods, was done by \textcite{huyanan2007}, contrasting the performance and implementation differences between them.
 Another comparison of such techniques for vehicle suspension control indicated that sliding mode control was a suitable candidate for such applications \cite{dong2009}.
@@ -417,6 +417,8 @@ Nonetheless, good results can be obtained via this method and the potential flex
 
 \subsection{Higher-level control}
 
+\cite{zuo2004}
+
 Vibration isolation can be considered exclusively as a control problem. 
 \textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techqniques to isolate a multi-degree of freedom structure in a single direction.
 Adaptive control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
@@ -479,7 +481,7 @@ An example of this behaviour is demonstrated in \secref[vref]{qzs-not-zerk}.
 
 
 
-\subsection{Nonlinear systems}
+\subsection{Nonlinear systems, especially those related to magnetic forces}
 
 A very recent and comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
 It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy (\fixme{eg}); in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
@@ -508,16 +510,13 @@ However, for weakly nonlinear magnetic springs, variation in the mass will still
 \textcite{todaka2001} created a mechanical linkage to support two magnets in repulsion such that as their air gap increased (due to less mass being supported), a horizontal offset between them was created to lower the linearised operating stiffness.
 This allowed a much smaller variation between the $k/m$ ratio than for flush magnets in repulsion.
 
-\textcite{bonisoli2007} used an experimental rig to analyse the nonlinear behaviour of a magnetic and linear spring in parallel, with more theoretical analysis published later in the year \cite{bonisoli2007b}.
+\textcite{bonisoli2007-mssp} used an experimental rig to analyse the nonlinear behaviour of a magnetic and linear spring in parallel, with more theoretical analysis published later in the year \cite{bonisoli2007-mrc}.
 They showed a configuration of linear and magnetic springs with the notable feature that the resonance frequency exhibits little dependence on mass loading and nonlinear effects can be seen.
 This effect was further demonstrated in parallel research by the same authors.
 
 The field of nonlinear dynamics is very large, and applications to vibration suppression can result in surprising results.
 \textcite{oueini1999} considered the response of a nonlinear (including cubic) plant with an additional cubic nonlinear feedback law and established that vibration attenuation was possible (like a \vibneut/?) and that nonlinear phenomena such as chaos existed.
 Presumably, such phenomena are undesirable for vibration isolation!
-
-
-\cite{zuo2004}
 
 Anyway, it is an interested argument to make that digital control in a vibration isolation situation is inappropriate.
 When absence of all vibrations are required, the side-effects of digital control (\ie, chaotic effects due to quantisation and time delays \cite{csernak2007}) may prove deleterious for extreme applications.
@@ -546,9 +545,9 @@ Early examples of such designs using inclined springs were shown by \textcite{mo
 These have an approximately cubic force \vs\ displacement characteristic, which may be tuned to achieve a local region of zero stiffness, which is often termed `\qzs/'.
 \textcite{alabuzhev1989} looked at the nonlinear behaviour of such
 systems, and also more recently by
-\textcite{carrella2006,carrella2007,carrella2008,carrella2009} and improved by
+\textcite{carrella2006,carrella2007-jsv,carrella2008-jsv,carrella2009} and improved by
 \textcite{kovacic2008}.
-More recently, the dynamic response of these systems has been analysed \parencite{carrella2009,carrella2008thesis} and shown to have prominent nonlinearities that distort the frequency response but that do not decrease the vibration isolation efficacy in general.
+More recently, the dynamic response of these systems has been analysed \parencite{carrella2009,carrella2008-thesis} and shown to have prominent nonlinearities that distort the frequency response but that do not decrease the vibration isolation efficacy in general.
 
 The use of buckling beams as a negative stiffness element to achieve \qzs/ has also been implemented in practice~\cite{platus1999,tarnai2003,lee2007}.
 
@@ -562,7 +561,7 @@ Further detail into the field  of nonlinear passive vibration isolators is given
 \QZS/ can also be achieved with magnetic systems.
 Magnetic configurations with negative stiffness can be used to augment a positive stiffness support (which can be simply a conventional spring) to lower the resonance frequency.
 For example, \textcite{beccaria1997} used this technique (under the term `magnetic antisprings') to improve the isolation for gravity wave detectors.
-\textcite{carrella2007a,carrella2008} has also used a attractive magnets in parallel with conventional springs to reduce the resonance frequency of the system.
+\textcite{carrella2007-euromech,carrella2008-thesis} has also used a attractive magnets in parallel with conventional springs to reduce the resonance frequency of the system.
 Purely non-contact magnetic systems can also be used to similar effect \cite{robertson2006,robertson2007}.
 Generally, systems that use the negative stiffness between attracting magnets cannot be brought to a stable \qzs/ region due to their `softening spring' characteristic.
 
@@ -733,9 +732,6 @@ Only left-right oscillations were produced, so the fish was constrained to move 
 \section{Levitation}
 \seclabel{levitation-explore}
 
-Before looking at the general class of magnet force devices, levitation is a
-good place to start.
-
 \subsection{Magnetic levitation is impossible!}
 \seclabel{earnshaw}
 
@@ -822,7 +818,8 @@ A review of work in the area of superconducting levitation has been published by
 \subsection{Basic magnetic suspension}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
-An advanced approach for this application used backstepping with a nonlinear model to provide robust control without system identification \cite{mahmoud2003}. 
+An advanced approach for this application used backstepping with a nonlinear model to provide robust control without system identification \cite{mahmoud2003}.
+\textcite{gentili2003}.
 \textcite{agamennoni2004} were able to identify the nonlinear dynamics of a coil-iron suspension.
 
 \subsection{Non-contact magnetic support}
