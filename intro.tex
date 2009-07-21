@@ -95,22 +95,15 @@ For completely non-contact support, active control must be used to stabilise \em
 For the design to be worth investigating, some advantage to using magnets should also be demonstrated.
   \note{Although I took much pleasure in explaining over the years that my \PhD/ project was to `build a table that floats on magnets'.}
 
-However, the field of active control has been well-established and the feat of
-building a stabilising controller for a system with relatively simple dynamics
-is not worthy of the research for a \PhD/.
+However, the field of active control has been well-established and the feat of building a stabilising controller for a system with relatively simple dynamics is not worthy of the research for a \PhD/.
 The work presented in this thesis is the investigations around the idea of building a `table that floats on magnets' while pulling out enough interesting nuggets to prove worthy of the title of `research'.
 
 \section{Vibrations}
 \seclabel{vibrations-explore}
 
-The field of active vibration isolation is a broad topic to cover in review;
-not everything will be able to be covered here, but it is important to have an
-overview of what people are doing to place this work in context.
-The
-literature review that follows is strongly biased towards papers that have
-been recently published.
-Tracking their citations backwards will yield a
-tangled web of prior art in the field of vibration control.
+The field of active vibration isolation is a broad topic to cover in review; not everything will be able to be covered here, but it is important to have an overview of what people are doing to place this work in context.
+The literature review that follows is strongly biased towards papers that have been recently published.
+Tracking their citations backwards will yield a tangled web of prior art in the field of vibration control.
 
 \subsection{Linear systems}
 
@@ -615,6 +608,8 @@ This small section looks at the end result of much of this research: actual appl
 Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.
 Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
 
+
+
 \subsection{Summary of the vibrations literature}
 
 
@@ -727,11 +722,6 @@ I don't know if I care, but \textcite{vanwest2007} created a haptic interface fo
 Only left-right oscillations were produced, so the fish was constrained to move in a plane.
 
 
-
-
-\section{Levitation}
-\seclabel{levitation-explore}
-
 \subsection{Magnetic levitation is impossible!}
 \seclabel{earnshaw}
 
@@ -743,7 +733,8 @@ Approximately one hundred years later, \textcite{tonks1940} wrote a paper remind
 position of the poles in the group can occur, can be stable in either a fixed
 field or in the field from another such assemblage\dots
 \end{quote}
-The proof is conceptually quite simple.
+Another interesting Earnshaw retrospective is given by \textcite{bassani2006-meccanica}, and an alternative formulation given by \textcite{reusch1994}.
+A mathematical demonstration of Earnshaw's theorem is conceptually quite simple.
 We start with the equation for the magnetic field; when there are no external current terms, it can be shown to be expressed as Laplace's equation:
 \begin{dmath}[compact]
 \grad\magB = 0 \implies \divgrad\magB = 0
@@ -822,6 +813,9 @@ An advanced approach for this application used backstepping with a nonlinear mod
 \textcite{gentili2003}.
 \textcite{agamennoni2004} were able to identify the nonlinear dynamics of a coil-iron suspension.
 
+
+The negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001}.
+
 \subsection{Non-contact magnetic support}
 
 \textcite{puppin2002} published a paper that most plainly demonstrates that magnetic springs can be used for vibration isolation, in which the authors make no attempt to achieve contactless suspension—the magnets are horizontally constrained in guides.
@@ -859,6 +853,7 @@ An optimisation technique was used to obtain the control gains necessary to achi
 Eh.
 
 
+\subsection{Forces between magnets}
 
-
+See \chapref{magnet-theory}.
 
