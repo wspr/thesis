@@ -265,7 +265,10 @@ around a displacement range of around \SI{\pm2}{mm}.
 
 The requirements for the sensing equipment is similar to that of the actuators; noncontact spatial measurement is desired to remove any possibility of adding further dynamics to the system.
 A displacement sensor is required to calibrate the position of the fixed and moving magnets in the system.
+Velocity sensors are used for feedback control to add damping to the system (see \secref[vref]{skyhook}).
 Accelerometers are used to measure the vibration response on the beam and on the base.
+
+\subsubsection{Displacement sensors}
 
 There are five main choices for non-contact distance sensing,
 enumerated below. See \textcite{boehm1993} for a more detailed overview.
@@ -365,7 +368,16 @@ of the sensor, given by
   \DisplSensorBeam\fn{\DisplSensor} = \gp{\HeightRig - \OriginBeam} - \HeightSensor - \DisplSensor
 \end{dmath}
 
-\paragraph{Accelerometers}
+\subsubsection{Velocity sensors}
+
+As velocity is defined in terms of a change in displacement from some reference point, it is only meaningful to refer to the velocity of an object with respect to an inertial reference frame.
+The velocity of an object may be estimated by using a distance sensor from a known location and differentiating the output; in a vibration isolation setting, this allows to be measured the relative velocity between the ground disturbance and the resulting excitation ($\VelMass-\VelBase$ in terms of \figref{simple-isolation}).
+
+While the angular velocity of an object with reference to the `fixed' earth can be directly infered by measuring the resulting coriolis force induced on a vibrating element \cite{konno1996}, the translational velocity cannot be measured directly.
+Translation velocity can be estimated by integrating a measured acceleration, however; this technique (which is used in the experimental apparatus) is discussed in the next section.
+
+\subsubsection{Acceleration sensors}
+
 For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system. Technical specifications, including charge amplifier and filters used, are shown in \tabref{rig-apparatus}.
 
 \begin{table}
