@@ -105,22 +105,18 @@ The field of active vibration isolation is a broad topic to cover in review; not
 The literature review that follows is strongly biased towards papers that have been recently published.
 Tracking their citations backwards will yield a tangled web of prior art in the field of vibration control.
 
-\subsection{Linear systems}
+\subsection{Fundamentals of vibration isolation}
 
-\Figref{simple-isolation} shows the simplest form of vibration
-isolation in which a mass $\massMass$ is mounted with stiffness
-$\stiffnessRel$ with disturbance input $\dispBase$.
-Passive
-isolation is achieved for zero input force, $\forceIn=0$.
-Feedback
-control allows the properties of the system to be adjusted
-according the desired vibration response.
+\Figref{simple-isolation} shows the simplest form of vibration isolation in which a mass $\massMass$ is mounted with stiffness $\stiffnessRel$ with disturbance input $\dispBase$.
+Passive isolation is achieved for zero input force, $\forceIn=0$.
+Feedback control allows the properties of the system to be adjusted according the desired vibration response.
 
 \begin{figure}
   \asyfig{Systems/vibration-base}
   \caption{
     Single degree of freedom vibration isolation mount; mass $\massMass$ is being isolated from disturbance $\dispBase$.
-    Input force $\forceIn$ can be generated using feedforward or feedback control.}
+    Input force $\forceIn$ can be generated using feedforward or feedback control.
+  }
   \figlabel{simple-isolation}
 \end{figure}
 
@@ -130,25 +126,16 @@ The dynamic response of the isolated mass is
   \dampingRel\gp{\dot\dispMass-\dot\dispBase} +
   \stiffnessRel\gp{\dispMass-\dispBase} + \forceIn = 0 .
 \end{dmath}
-First assume that there is no input force; taking the Laplace
-tranform and rearranging produced the transmissibility
-$\transmissibility$ of the system in the frequency domain:
+First assume that there is no input force; taking the Laplace tranform and rearranging produced the transmissibility $\transmissibility$ of the system in the frequency domain:
 \begin{dmath}[compact,label=simple-isolation-freq]
   \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
   \frac{\ii\freq\dampingRel + \stiffnessRel}
   {-\massMass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
 
-For ideal linear state feedback control, the input force can be
-represented as a linear combination of measured relative
-displacement $\gp{\dispMass-\dispBase}$, relative velocity
-$\gp{\dot\dispMass-\dot\dispBase}$, and acceleration
-$\ddot\dispMass$ of the mass.
-Let's also assume for now that
-integrating the acceleration signal yields an exact absolute
-velocity $\dot\dispMass$ of the mass as well.
-The generalised
-feedback force can then be represented by
+For ideal linear state feedback control, the input force can be represented as a linear combination of measured relative displacement $\gp{\dispMass-\dispBase}$, relative velocity $\gp{\dot\dispMass-\dot\dispBase}$, and acceleration $\ddot\dispMass$ of the mass.
+Let's also assume for now that integrating the acceleration signal yields an exact absolute velocity $\dot\dispMass$ of the mass as well.
+The generalised feedback force can then be represented by
 \begin{dmath}
  \forceIn = 
    \gainDisp\gp{\dispMass-\dispBase} + 
@@ -158,9 +145,8 @@ feedback force can then be represented by
 \end{dmath},
 where $\gainArbitrary$ are feedback gains chosen appropriately for a given application.
 The term involving $\gainSky$ is known as skyhook damping.
-Substituting this force equation
-into \eqref{simple-isolation} yields
-\begin{dmath}
+Substituting this force equation into \eqref{simple-isolation} yields
+\begin{dmath}[label=isolation-feedback]
   \gp{\massMass+\gainAcc}\ddot\dispMass +
   \gp{\dampingRel+\gainVel}\gp{\dot\dispMass-\dot\dispBase} +
   \gp{\stiffnessRel+\gainDisp}\gp{\dispMass-\dispBase} +
@@ -169,15 +155,27 @@ into \eqref{simple-isolation} yields
 \end{dmath}.
 
 It can be clearly seen that there is an exact equivalence between the feedback gains of the different signals and a corresponding physical parameter of the system.
-For example, adding gain on the displacement feedback is analogous to increasing the stiffness of the system.
-The one standout here is the `skyhook' damping term, whose influence can be better seen in the equation for transmissibility of the closed loop system.
-For this example, let displacement and acceleration gains equal zero, $\gainDisp=\gainAcc=0$, resulting in
+For example, adding gain on the relative displacement feedback is analogous to increasing the stiffness of the system, and adding gain on the acceleration feedback is analogous to increasing the mass of the system. \Figref{sdof-disp-vs-acc} shows an example of these two approaches for shifting the resonance frequency of the system.
+
+\begin{figure}
+   \begin{wide}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skymass}
+   \end{wide}
+   \caption{Active feedback control with relative displacement and absolute acceleration, respectively, of a vibration isolation system.}
+   \figlabel{sdof-disp-vs-acc}
+\end{figure}
+
+Acceleration and displacement feedback both primarily affect the resonance frequency of the system.
+Velocity feedback is different.
+For this example, the transmissibility of the closed loop system with velocity feedback will be derived.
+Let displacement and acceleration gains equal zero in \eqref{isolation-feedback}, $\gainDisp=\gainAcc=0$, and transmissiblity is given by 
 \begin{dmath}[compact,label=skyhook]
   \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
   \frac{\ii\freq\gp{\dampingRel+\gainVel} + \stiffnessRel}
-    {-\massMass\freq^2 + \ii\freq\gp{\dampingRel+\gainVel+\gainSky} + \stiffnessRel}.
-\end{dmath}
-The transmissibilities due to the influence of relative velocity gain and absolute velocity gain are shown in \figref{vel-vs-sky} with parameters $\massMass=\SI{1}{kg}$, $\dampingRel=\SI{1}{kg/s}$, $\stiffnessRel=\SI{10}{N/m}$, and the respective gains $\gainVel$ and $\gainSky$ ranging from $0$ to $5$ corresponding from light to dark plot lines.
+    {-\massMass\freq^2 + \ii\freq\gp{\dampingRel+\gainVel+\gainSky} + \stiffnessRel}
+\end{dmath}.
+The transmissibilities due to the influence of relative velocity gain and absolute velocity gain are shown in \figref{vel-vs-sky} with parameters $\massMass=\SI{1}{kg}$, $\dampingRel=\SI{1}{kg/s}$, $\stiffnessRel=\SI{10}{N/m}$, and the respective gains $\gainVel$ and $\gainSky$ ranging from $0$ to $5$ as indicated.
 
 \begin{figure}
    \begin{wide}
@@ -203,13 +201,12 @@ This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS
    \figlabel{rms-transmissibility}
 \end{figure}
 
-
 Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
 This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
 For a given mass, this can be achieved by reducing the stiffness of the support, or by adding a negative stiffness element in parallel with the system \cite{lee2007,xing2005} (some examples of which are looked at in more detail later in \secref{qzs-explore}).
 Stiffness reduction can be implemented by passive, active or semi-active methods.
-Negative displacement \cite{mahmoodi2009} or positive acceleration feedback can be used in a fully active system.
-In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; examples have been demonstrated by \textcite{kidner2002,liu2006a}. Semi-active stiffness modification is used more commonly in \vibneut/ applications, described in \secref{vibneut}.
+Negative displacement \fixme{can it?} or positive acceleration feedback can be used in a fully active system.
+In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; examples have been demonstrated by \textcite{kidner2002,liu2006a}. Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}.
 
 
 \subsection{Implementing linear feedback}
@@ -219,12 +216,11 @@ Velocity feedback control by using integrated accelerometer measurements at the 
 
 The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001}, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
 Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
-Acceleration feedback has much smaller stability limit than displacement and velocity.
-And the effect of displacement feedback is strongly reduced even with small time delays.
-Therefore velocity feedback control from integrated accelerometer measurements should be consided the better choice.
+Acceleration feedback has much smaller stability limit than displacement and velocity, and the effect of displacement feedback is strongly reduced even with small time delays.
+Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
 Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
 
-\textcite{zhu2006} look at using such feedback in a highly sensitive micro-gravity environment and show that `PID' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
+A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
 Rather, integral and double-integral feedback from an accelerometer give better results for them.
 
 \textcite{zhao2007} examined the vibratory behaviour of a two degree of freedom nonlinear system with a time-delayed positional feedback.
@@ -264,7 +260,7 @@ In practice, however, a velocity sensor can only measure a \emph{relative} veloc
 
 \textcite{song2007} used the nonlinearities of semi-active skyhook damping as justification for the design of an adaptive controller for vibration isolation; they did not compare their results with recent work in the skyhook area, however.
 
-Skyhook damping can also be implemented with fully active control systems, an idea explored by, \eg, \textcite{elliott2001,elliott2004,yan2006,kim2008a} \fixme{describe these more}.
+Skyhook damping can also be implemented with fully active control systems, an idea explored by, \eg, \textcite{elliott2001,elliott2004,yan2006,kim2008-iecst} \fixme{describe these more}.
 These methods are conceptually simpler, as the inertial velocity can easily be obtained from integrated acceleration measurements.
 Instability can occur in cases when the applied control force affects the dynamics of the base, but in practice this tends not to be a problem for comparatively massive support structures.
 
@@ -274,6 +270,36 @@ Therefore, very high precision accelerometers or laser velocity vibrometers are 
 
 Energy generation can also be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
 
+\subsection{The skyspring}
+
+Skyhook damping assumes the measurement of an absolute velocity term and uses it for feedback to affect the damping of the closed loop system.
+This idea can be extended to using an absolute displacement measurement for feedback to effect the idea of a `skyspring'.
+Assuming that the absolute displacement is a signal available for feedback, the control input in this case is
+\begin{dmath}[label=skyspring-input]
+ \forceIn = 
+   \gainDisp\gp{\dispMass-\dispBase} + 
+   \gainSkySpring \dispMass
+\end{dmath}.
+Using this input force in \eqref{simple-isolation} and looking at the behaviour of the system in the frequency domain yields the results shown in \figref{skyspring}, for relative and absolute displacement feedback, respectively.
+
+\begin{figure}
+   \begin{wide}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skyspring}
+   \end{wide}
+   \caption{
+Relative and absolute (`skyspring') displacement feedback control on the system shown in \figref{simple-isolation}.}
+   \figlabel{skyspring}
+\end{figure}
+
+In both cases, the resonance frequency is increased with feedback gain.
+This is usually detrimental to vibration isolation performance.
+But in the skyspring case, the response of the structure is reduced at low frequencies, and with further application of damping treatment (skyhook damping, ideally) the resonance peak could be reduced at the same time.
+
+This idea presupposes that the absolute displacement is a state that can be measured.
+Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated by double-integrating an accelerometer signal.
+\textcite{zhu2006} used double-integral control in combination with other control techniques for vibration isolation in micro-gravity.
+I think Chris Fuller talks about this sort of thing, as well.
 
 \subsection{Inertial actuators}
 
