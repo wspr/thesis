@@ -203,7 +203,7 @@ This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS
 
 Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
 This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
-For a given mass, this can be achieved by reducing the stiffness of the support, or by adding a negative stiffness element in parallel with the system \cite{lee2007,xing2005} (some examples of which are looked at in more detail later in \secref{qzs-explore}).
+For a given mass, this can be achieved by reducing the stiffness of the support, or by adding a negative stiffness element in parallel with the system \cite{lee2007-jsv,xing2005} (some examples of which are looked at in more detail later in \secref{qzs-explore}).
 Stiffness reduction can be implemented by passive, active or semi-active methods.
 Negative displacement \fixme{can it?} or positive acceleration feedback can be used in a fully active system.
 In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; examples have been demonstrated by \textcite{kidner2002,liu2006a}. Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}.
@@ -551,10 +551,8 @@ Nonlinear control is better than linear control, as argued cogently by \textcite
 \seclabel{qzs-explore}
 
 In a conventional mass--spring system, the static deflection increases as the stiffness of the support is reduced, and a lower limit on the stiffness is imposed by constraints on the allowable displacement.
-Less typical supports can exhibit stiffness that varies nonlinearly with displacement; even local regions of zero stiffness are possible.
-
-An example of a system with such behaviour is a parallel connection of vertical and inclined springs \cite{molyneux1957,alabuzhev1989}, ; localised zero stiffness occurs at zero deflection, which is termed `\qzs/'.
-The use of buckling beams as a negative stiffness element to achieve \qzs/ has also been implemented in practice \cite{platus1999,tarnai2003}.
+Novel approaches are required to reduce the resonance frequency below that possible with a linear spring.
+One approach is to use a mechanical linkage \cite{winterflood2001}.
 
 \textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
 
@@ -569,7 +567,7 @@ systems, and also more recently by
 More recently, the dynamic response of these systems has been analysed \parencite{carrella2009,carrella2008-thesis} and shown to have prominent nonlinearities that distort the frequency response but that do not decrease the vibration isolation efficacy in general.
 
 A variety of mechanical linkages and arrangements can be designed for \qzs/ \cite{tarnai2003}.
-Mechanical \qzs/ elements, generally using flexible beam supports in a buckling regime, have been used in application for vibration isolation platforms \cite{platus1999}, mounts for seismic noise attenuation \cite{cella2005}, vibration attenuation from hand-held machinery \cite{sokolov2007}, reduction of aircraft cabin noise \cite{baklanov2007-jsv}, and vehicle driver suspension \cite{lee2007}.
+Mechanical \qzs/ elements, generally using flexible beam supports in a buckling regime, have been used in application for vibration isolation platforms \cite{platus1999}, mounts for seismic noise attenuation \cite{cella2005}, vibration attenuation from hand-held machinery \cite{sokolov2007}, reduction of aircraft cabin noise \cite{baklanov2007-jsv}, and vehicle driver suspension \cite{lee2007-jsv}.
 Friction is a limiting factor in these devices \cite{sokolov2007}; this particular problem is obviated when non-contact supports are used.
 Further detail into the field  of nonlinear passive vibration isolators is given in the recent review by \textcite{ibrahim2008}.
 
@@ -584,7 +582,7 @@ Generally, systems that use the negative stiffness between attracting magnets ca
 (Also see \textcite{yonnet1981} for related bearings that I hadn't thought about in enough detail yet.)
 This creates something like a negative quadratic force relationship, which has zero stiffness in the centred vertical position.
 
-Analysis of the nonlinear dynamics of such systems such as performed by \textcite{lee2004b,kovacic2008,kovacic2009} can be quite involved and is outside the scope of this research.
+Analysis of the nonlinear dynamics of such systems such as performed by \textcite{lee2004-jsv,kovacic2008,kovacic2009} can be quite involved and is outside the scope of this research.
 
 
 \subsection{\QZS/ is not zero stiffness}
@@ -677,6 +675,8 @@ A controller must be used to obtain this negative stiffness.
 
 The literature review until now has focussed mainly on specific systems and techniques for achieving vibration isolation and suppression.
 This small section looks at the end result of much of this research: actual applications into constructing vibration isolation platforms.
+
+In high precision contexts, a resonance frequency of less than \SI{1}{Hz} is often required, for which very soft pneumatic springs are typically used \cite{kawashima2007}.
 
 \textcite{yoshioka2001} designed and built a prototype vibration isolation platform with a load bearing capacity about \SI{1000}{kg}.
 Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.

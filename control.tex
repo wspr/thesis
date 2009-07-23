@@ -834,36 +834,7 @@ spectrum.
 
 \section{More advanced controller synthesis}
 
-The performance of a vibration isolation table in attentuating
-disturbances from the ground is governed in the first order by the
-stiffness of the primary supports. Higher stiffnesses are more
-convenient to support large loads, but lower stiffnesses give better
-passive vibration suppression into lower frequency ranges. In high
-precision contexts, a resonance frequency of less than \SI{1}{Hz} is
-often required, for which very soft pneumatic springs are typically
-used~\cite{kawashima2007}.
-
-However, as the stiffness of a spring decreases its bulk increases,
-and there are practical limits on how large the springs can
-grow. The use of more complex support structures is a promising method of
-reducing the effects of low frequency disturbance noise when simply
-reducing the stiffness of the basic spring supports becomes
-infeasible.
-
-One approach is to use a mechanical linkage~\cite{winterflood2001}. In
-the limiting sense, the ideal support would have zero stiffness, in
-which displacement of the ground produces zero disturbance force on
-the load. Zero stiffness can be achieved with mechanical supports, but
-only for local regions of displacement. Since the zero stiffness
-property is not global, these devices are more accurately said to have
-`quasi-zero stiffness' (although the `quasi' term is often omitted).
-
-All zero stiffness systems are a combination of positive and negative
-stiffness nonlinear springs. Others have shown clever arrangements of
-mechanical springs that achieve this
-\cite{alabuzhev1989,carrella2007-jsv,lee2007}, while permanent magnets
-have also been used \cite{robertson2006,nijsse2001,carrella2008-jsv} and will be used
-here.
+\fixme{intro paragraphs}
 
 Generally, the zero stiffness property only occurs at a point of
 marginal stability, and some form of active control is required to
@@ -1263,77 +1234,6 @@ modification to the controller will be to add state observers (either
 velocity or displacement) in order to reduce the number of sensors
 required.
 
-
-
-\section{Unfinished}
-
-\section{Backstepping}
-
-\subsection{Trajectory initialisation}
-
-Trajectory initialisation is used to improve the estimate
-convergence. With the controller as designed above, it can be shown
-that
-\begin{dmath}
-  (\theta-\vartheta(t))\T\Gamma^{-1}(\theta-\vartheta(t))\leq 
-  z(0)\T z(0)+(\theta-\vartheta(0))\T\Gamma^{-1}(\theta-\vartheta(0)).
-\end{dmath}
-This shows that while the estimates may never converge to their exact
-values, there are two things we can do to reduce their
-uncertainty. Firstly, we want to have good estimates of the system
-parameters from the beginning in order to minimise
-$(\theta-\vartheta(0))\T\Gamma^{-1}(\theta-\vartheta(0)$. This can be
-achieved through analytical calculation and \textit{a priori}
-measurement; another viable option is to iterate the controller while
-updating the estimates' initial conditions to their converged values
-from the previous run.
-
-Secondly, we want to minimise $z(0)\T z(0)$, recognising that $z(t)$
-are error states incorporating the difference between the actual and
-desired states of the system \cite{krstic1995}. This can be achieved
-by choosing a trajectory that contains an term to bring the
-tracking function to the actual states' measurement at $t=0$.
-
-That is, rather than choosing a following function $y_f(t)$ that may
-have $y_f(0)\neq x(0)$, we desire
-\begin{dmath}
-  y_r(t)=y_f(t)+\delta(t),\\
-  \delta(0)=y_r(0)-y_f(0),\\
-  \delta(t)\to0\text{ as }t\to\infty.
-\end{dmath}
-
-The tracking controller also requires the derivatives of the
-trajectory to follow, which can be calculated from the plant estimate:
-\begin{dgroup}
-\begin{dmath}
-  y_r(0) = x_1(0)  
-\end{dmath}.,
-\begin{dmath}
-  \dot y_r(0) = x_2(0)  
-\end{dmath},
-\begin{dmath}
-  \ddot y_r(0) = x_3(0)+\varphi_2\cdot\vartheta(0)  
-\end{dmath}.
-\end{dgroup}
-
-Now, the function $\delta(t)$ can be any sufficiently differentiable
-(up to the number of states of the nonlinear system) function that
-converges to zero. A simple stable linear system satisfies these
-requirements is
-\begin{dmath}
-  \begin{bmatrix}
-    \dot{\delta}(t)\\\ddot{\delta}(t)\\\dddot{\delta}(t)
-  \end{bmatrix}
-  =
-  \begin{bmatrix}
-    0 & 1 & 0 \\ 0 & 0 & 1 \\ -m_0 & -m_1 & -m_2
-  \end{bmatrix}
-  \begin{bmatrix}
-    \delta(t)\\\dot{\delta}(t)\\\ddot{\delta}(t)
-  \end{bmatrix}
-\end{dmath}
-with $m_i>0$ and initial conditions $\dot{\delta}(0)=\dot y_r(0)$ and
-$\ddot{\delta}(0)=\ddot y_r(0)$.
 
 
 
