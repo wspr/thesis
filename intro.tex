@@ -184,8 +184,7 @@ The transmissibilities due to the influence of relative velocity gain and absolu
    \end{wide}
    \caption{Relative and absolute (`skyhook') velocity feedback control on the 
    system shown in \figref{simple-isolation}.
-   Feedback gain increases as the 
-   plot line ranges from light to dark.}
+   Feedback gain increases as the plot line ranges from light to dark.}
    \figlabel{vel-vs-sky}
 \end{figure}
 
@@ -203,28 +202,14 @@ This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS
 
 Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
 This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
-For a given mass, this can be achieved by reducing the stiffness of the support, or by adding a negative stiffness element in parallel with the system \cite{lee2007-jsv,xing2005} (some examples of which are looked at in more detail later in \secref{qzs-explore}).
 Stiffness reduction can be implemented by passive, active or semi-active methods.
+For a given mass, passive stiffness reduction can be achieved by adding a negative stiffness element in parallel with the system \cite{lee2007-jsv,xing2005} (some examples of which are looked at in more detail in \secref{qzs-explore}).
 Negative displacement \fixme{can it?} or positive acceleration feedback can be used in a fully active system.
-In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; examples have been demonstrated by \textcite{kidner2002,liu2006a}. Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}.
+In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; examples have been demonstrated by \textcite{kidner2002,liu2006a}.
+Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}.
 
 
-\subsection{Implementing linear feedback}
-\secref{vibes-feedback}
 
-Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999}.
-
-The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001}, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
-Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
-Acceleration feedback has much smaller stability limit than displacement and velocity, and the effect of displacement feedback is strongly reduced even with small time delays.
-Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
-Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
-
-A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
-Rather, integral and double-integral feedback from an accelerometer give better results for them.
-
-\textcite{zhao2007} examined the vibratory behaviour of a two degree of freedom nonlinear system with a time-delayed positional feedback.
-This results of this paper emphasises the importance of accounting for time delays in feedback control systems.
 
 
 \subsection{Skyhook damping}
@@ -482,6 +467,25 @@ Leave the heuristic approaches to systems that cannot be modelled (or even simul
 
 
 
+\subsection{Active vibration control in practice}
+\secref{vibes-feedback}
+
+Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999}.
+
+The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001}, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
+Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
+Acceleration feedback has much smaller stability limit than displacement and velocity, and the effect of displacement feedback is strongly reduced even with small time delays.
+Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
+Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
+
+A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
+Rather, integral and double-integral feedback from an accelerometer give better results for them.
+
+\textcite{zhao2007} examined the vibratory behaviour of a two degree of freedom nonlinear system with a time-delayed positional feedback.
+This results of this paper emphasises the importance of accounting for time delays in feedback control systems.
+
+
+
 \subsection{Internal resonances}
 
 Idealised models assume system properties that are independent: a spring has no mass, a damper has no stiffness, \etc.
@@ -494,9 +498,8 @@ In his thesis he proposes methods to work around the internal resonance problem 
 \textcite{wu2006} analysed the vibration response of a spring-mass-damper in which the spring element had some inertial effect on the structure due to its mass.
 The results presented show only a small magnification of the vibration amplitude transmitted to the primary mass, particularly for small spring relative masses; however, for highly sensitive equipment this phenomenom should not be neglected.
 
-Such internal resonance effects discussed above can be completely avoided by using noncontact magnetic springs instead.
-On the other hand, the nonlinear force/displacement relationship of magnetic springs will have some nonlinear behaviour that could affect the vibration properties of such springs in other ways.
-An example of this behaviour is demonstrated in \secref[vref]{qzs-not-zerk}.
+Note that the problem of internal resonances is not entirely mitigated by using non-contact magnetic springs instead, since the nonlinear dynamics associated with them \fixme{cite someone} can affect the vibration properties of such springs in other ways.
+An example of this behaviour is demonstrated in \secref[vref]{qzs-not-zerk}, in which a cubic spring is shown to display a frequency response that is not as good as for a linear spring.
 
 
 
