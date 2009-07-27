@@ -374,10 +374,14 @@ As velocity is defined in terms of a change in displacement from some reference 
 With a sensor attached to the ground, separate from the object, relative velocity can be measured between the disturbance and the resulting excitation ($\VelMass-\VelBase$ in terms of \figref{simple-isolation}).
 Laser sensors
     \note{Also known as vibrometers, such as sold by Polytec GmbH: \url{http://www.polytec.com/}}
-and capacitive sensors \cite{nijsse2001} may be used to measure relative velocity directly, while relative velocity may be estimated by differentiating the output of a displacement sensor. Such estimation is prone to high frequency noise that must be filtered away.
+and capacitive sensors \cite{nijsse2001} may be used to measure relative velocity directly, while relative velocity may be estimated by differentiating the output of a displacement sensor.
+Such estimation is prone to high frequency noise that must be filtered away.
 
-While the angular velocity of an object with reference to the `fixed' earth can be directly infered by measuring the resulting coriolis force induced on a vibrating element \cite{konno1996}, the absolute translational velocity cannot be measured directly.
-Absolute translation velocity ($\VelMass$) can be estimated by integrating a measured acceleration, however; this technique (which is used in the experimental apparatus) is discussed in the next section.
+Absolute velocity sensors must use more complex physical processes to obtain a measure of an object with respect to the `fixed' earth.
+Absolute angular velocity can be infered by measuring the coriolis force induced on a vibrating element due to the rotational energy of the earth \cite{konno1996}.
+A geophone uses a moving magnet or moving coil arrangement to generate \backemf/ from the motion of an inertial mass \cite{oome2009-saa} from which absolute velocity can be calculated.
+This process is limited in the low frequency by the resonance frequency of the inertial mass and the in the upper frequency by the roll-off of the frequency response.
+Absolute translational velocity can be estimated by integrating a measured acceleration; this technique (which is used in the experimental apparatus) is discussed in the next section.
 
 \subsubsection{Acceleration sensors}
 
