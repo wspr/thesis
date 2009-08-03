@@ -349,7 +349,9 @@ of stable equilibrium indicated in the figure.
 
 \Figref{ZKS-ratioErr} plots the stiffness at equilibrium as $\ZKSoff$ varies;
 in the unstable zone, the system will move to the equilibrium point shown in
-\figref{ZKSoff} away from $\ZKSnorm=0$. It can be seen that the stiffnesses in
+\figref{ZKSoff} away from $\ZKSnorm=0$.
+\footnote{With sufficient excitation the system will `snap though' from one equilibrium position to another with a resulting displacement profile that is comparatively large given the excitation amplitude; this mechanism has been proposed as a useful phenomena for energy harvesting purposes \cite{ramlan2009-nd}.}
+It can be seen that the stiffnesses in
 the stable region for $\ZKSoff>0$ are smaller than the stiffnesses in the
 equilibrium region for $\ZKSoff<0$. This highlights the importance of never
 breaching the $\ZKSoff<0$ instability condition. Therefore, a chosen value for
@@ -397,42 +399,32 @@ is
 recalling that $\ZKSshift$ is the displacement of the mass in the horizontal
 direction. Substituting $\ZKSshift=0$ into \eqref{ZKSforcevertlong} yields the
 previous \eqref{ZKSforcevertV}. The horizontal component of this force is
-
 \begin{dmath}[label=ZKSforcevertH]
 \ZKSforcevertH = \ZKSforcevert\frac{\ZKSshift}{\ZKSvlengthcomp}
 \end{dmath}.
-
 Similarly, the horizontal component of the force from the inclined spring on
 the left (referring to \figref{zks-dia}) is given by
-
 \begin{dmath}[label=ZKSforceinclH]
 \ZKSforceinclH = \ZKSforceincl \frac{\ZKSwidth+\ZKSshift}{\ZKSlengthcomp}
 \end{dmath},
-
 and the horizontal component of the force from the inclined spring on the
 right is
-
 \begin{dmath}
 \ZKSforceinclH\bigg|_{\text{right}} = -\ZKSforceinclH{1,-\ZKSshift}
 \end{dmath}.
-
 The stiffness characteristic in the horizontal direction, $\ZKSstiffnessH$,
 is derived in a similar fashion to the vertical stiffness. The total force in
 the horizontal direction is
-
 \begin{dmath}
 \ZKSforcetotalH=\ZKSforceinclH-\ZKSforceinclH{\ZKSdisp,-\ZKSshift}+\ZKSforcevertH
 \end{dmath},
-
 using \eqref{ZKSforcevertH,ZKSforceinclH}. Differentiating with respect to
 $\ZKSshift$ and evaluating at $\ZKSshift=0$ gives the horizontal stiffness
 characteristic as the vertical displacement varies,
-
 \begin{dmath}[label=ZKSstiffnessH]
 % edited to move elements in front of the sqrts
 \frac{\ZKSstiffnessH}{\ZKSstiffincl} = -2 \ZKSnorm^2 \sqrt{\frac{\ZKSratio^2+1}{\gp{\ZKSratio^2+\ZKSnorm^2}^3}} +\frac{\ZKSkratio \gp{\ZKSnorm-1}}{\ZKSlengthratio\sqrt{\ZKSratio^2+1} +\ZKSnorm-1}+2
 \end{dmath}.
-
 This equation has been shown previously in \figref{ZKSstiffness-horiz}
 together with the vertical stiffness in \eqref{ZKSstiffnessV}. In these
 figures, it can be seen that while the vertical stiffness is zero at
@@ -461,11 +453,9 @@ each.
 
 \begin{figure}
 \psfragfig{\phdpath ZKS/fig/ZKSkratio-effect}
-
 \caption{Horizontal stiffness characteristic at the vertical \qzs/ condition
 for varying stiffness ratio $\ZKSkratio$ and length ratio $\ZKSlengthratio$,
 calculated with \eqref{ZKSstiffnessHnorm}.}
-
 \figlabel{ZKSstiffnessKnorm}
 \end{figure}
 
@@ -601,12 +591,10 @@ than fifty percent) in at least one of the springs is required to achieve
 
 \begin{figure}
 \psfragfig{\phdpath ZKS/fig/ZKScompress}
-
 \caption{Compression relationship of the springs for a range of spring
 stiffness ratios, at \qzs/ both horizontally and vertically. A compression of
 100\% implies a change in displacement of the entire spring length, which is
 difficult to realise in practice.}
-
 \figlabel{ZKScompress}
 \end{figure}
 
