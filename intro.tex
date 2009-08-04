@@ -135,7 +135,7 @@ First assume that there is no input force; taking the Laplace tranform and rearr
 
 For ideal linear state feedback control, the input force can be represented as a linear combination of measured relative displacement $\gp{\dispMass-\dispBase}$, relative velocity $\gp{\dot\dispMass-\dot\dispBase}$, and acceleration $\ddot\dispMass$ of the mass.
 A force sensor can also be used for feedback purposes, but this yields results for lumped-parameter systems equivalent to acceleration feedback; for vibration isolation of flexible systems, there is evidence to suggest force feedback giving greater stability than acceleration feedback \cite{preumont2002-jsv}, especially for lightly damped structures.
-Let's also assume for now that integrating the acceleration signal yields an exact absolute velocity $\dot\dispMass$ of the mass as well.
+Absolute 
 The generalised feedback force can then be represented by
 \begin{dmath}
  \forceIn = 
@@ -161,10 +161,10 @@ For example, adding gain on the relative displacement feedback is analogous to i
 \begin{figure}
    \begin{wide}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skymass}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skyspring}
    \end{wide}
    \caption{Active feedback control with relative displacement and absolute acceleration, respectively, of a vibration isolation system.}
-   \figlabel{sdof-disp-vs-acc}
+   \figlabel{skyspring}
 \end{figure}
 
 Acceleration and displacement feedback both primarily affect the resonance frequency of the system.
@@ -215,16 +215,6 @@ Assuming that the absolute displacement is a signal available for feedback, the 
    \gainSkySpring \dispMass
 \end{dmath}.
 Using this input force in \eqref{simple-isolation} and looking at the behaviour of the system in the frequency domain yields the results shown in \figref{skyspring}, for relative and absolute displacement feedback, respectively.
-
-\begin{figure}
-   \begin{wide}
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skyspring}
-   \end{wide}
-   \caption{
-Relative and absolute (`skyspring') displacement feedback control on the system shown in \figref{simple-isolation}.}
-   \figlabel{skyspring}
-\end{figure}
 
 In both cases, the resonance frequency is increased with feedback gain.
 This is usually detrimental to vibration isolation performance.
@@ -316,16 +306,7 @@ This results of this paper emphasises the importance of accounting for time dela
 
 
 
-\subsection{Vibration isolation platforms}
 
-The literature review until now has focussed mainly on specific systems and techniques for achieving vibration isolation and suppression.
-This small section looks at the end result of much of this research: actual applications into constructing vibration isolation platforms.
-
-In high precision contexts, a resonance frequency of less than \SI{1}{Hz} is often required, for which very soft pneumatic springs are typically used \cite{kawashima2007}.
-
-\textcite{yoshioka2001} designed and built a prototype vibration isolation platform with a load bearing capacity about \SI{1000}{kg}.
-Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.
-Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
 
 
 
@@ -505,21 +486,16 @@ Leave the heuristic approaches to systems that cannot be modelled (or even simul
 
 
 
-\subsection{Internal resonances}
+\subsection{Vibration isolation platforms}
 
-Idealised models assume system properties that are independent: a spring has no mass, a damper has no stiffness, \etc.
-In practise, however, such simplifications can be far from actual, and internal resonances of actuators and neutralisers can decrease the performance of their intended vibration isolation mechanisms.
+The literature review until now has focussed mainly on specific systems and techniques for achieving vibration isolation and suppression.
+This small section looks at the end result of much of this research: actual applications into constructing vibration isolation platforms.
 
-\textcite{du2003thesis} examined the effect of additional dynamics from \vibneut/s and the consequence that had on the transmissibility and noise radiation of the structure under control.
-While these additional high frequency dynamics would not be a problem for certain problems (and the effects were worse in viscoelastic-type springs; \ie, rubber springs over mechanical springs), their effect must be considered for high-sensitivity vibration control and cases where it is important to minimise radiated sound.
-In his thesis he proposes methods to work around the internal resonance problem using both passive and active means.
+In high precision contexts, a resonance frequency of less than \SI{1}{Hz} is often required, for which very soft pneumatic springs are typically used \cite{kawashima2007}.
 
-\textcite{wu2006} analysed the vibration response of a spring-mass-damper in which the spring element had some inertial effect on the structure due to its mass.
-The results presented show only a small magnification of the vibration amplitude transmitted to the primary mass, particularly for small spring relative masses; however, for highly sensitive equipment this phenomenom should not be neglected.
-
-Note that the problem of internal resonances is not entirely mitigated by using non-contact magnetic springs instead, since the nonlinear dynamics associated with them \fixme{cite someone} can affect the vibration properties of such springs in other ways.
-An example of this behaviour is demonstrated in \secref[vref]{qzs-not-zerk}, in which a cubic spring is shown to display a frequency response that is not as good as for a linear spring.
-
+\textcite{yoshioka2001} designed and built a prototype vibration isolation platform with a load bearing capacity about \SI{1000}{kg}.
+Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.
+Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
 
 
 
