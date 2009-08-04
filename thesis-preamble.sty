@@ -377,6 +377,10 @@
 
 %%%%%
 
+\def\printtoctitle#1{\section*{#1}}
+
+%%%%%
+
 %% Page headers
 \setlength{\headheight}{\baselineskip}
 \setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
@@ -443,21 +447,27 @@
   \shorttocfalse
   \let\oldnumberline\numberline
   \renewcommand \cftsubsectionfont     {\small}
-  \renewcommand \cftsubsectionpagefont {\small}
-  \renewcommand \l@subsection [2] {
+  \renewcommand \cftsubsectionpagefont {\upshape\small}
+  \renewcommand \l@subsection [2] {%
     \ifnum\c@tocdepth > 1
-      \def\numberline####1{\textit{####1}~}%
+      \def\numberline####1{\parsesubsection####1\@nil}%
       \leftskip=\cftsubsectionindent
       \rightskip=\@tocrmarg
       \advance\rightskip 0pt plus 2em
       \parfillskip=\fill
-      \ifhmode ,\ \ \else\noindent\fi
+      \ifhmode
+        \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\,,\space
+      \else
+        \noindent
+      \fi
       \ignorespaces 
       {\cftsubsectionfont ##1}~{\cftsubsectionpagefont##2}%
-       \let\numberline\oldnumberline\ignorespaces
+       \let\numberline\oldnumberline\expandafter\ignorespaces
     \fi
   }%
 }
+
+\def\parsesubsection#1.#2.#3\@nil{#3 \itshape}
 
 \AtEndDocument{\addtocontents{toc}{\par}}%%% OK
 

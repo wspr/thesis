@@ -2,7 +2,7 @@
 main = thesis
 support = thesis-preamble.sty thesis-maths.sty
 chapters = \
-  front abstract acknowledgements \
+  front abstract acknowledgements contents \
   intro magnet-theory \
   magnet-design multipole qzs control xpmt \
   conclusion
