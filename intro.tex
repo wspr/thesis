@@ -139,44 +139,85 @@ Absolute velocity $\velMass$ and absolute displacement $\dispMass$ of the mass c
 The generalised feedback force can then be represented by
 \begin{dmath}
  \forceIn = 
-   \gainDisp\gp{\dispMass-\dispBase} + 
-   \gainVel \gp{\dot\dispMass-\dot\dispBase} +
-   \gainAcc \ddot\dispMass + 
-   \gainSky \dot\dispMass
+   \gainDisp\gp{\dispMass-\dispBase} +
+   \gainVel \gp{\velMass -\velBase}  +
+   \gainAcc \gp{\accMass -\accBase}  +
+   \gainSkymass   \dispMass +
+   \gainSkyhook   \velMass  +
+   \gainSkyspring \dispMass
 \end{dmath},
 where $\gainArbitrary$ are feedback gains chosen appropriately for a given application.
-The term involving $\gainSky$ is known as skyhook damping.
+The term involving $\gainSkyhook$ is known as skyhook damping.
 Substituting this force equation into \eqref{simple-isolation} yields
 \begin{dmath}[label=isolation-feedback]
-  \gp{\massMass+\gainAcc}\ddot\dispMass +
-  \gp{\dampingRel+\gainVel}\gp{\dot\dispMass-\dot\dispBase} +
+  \gp{\massMass+\gainSkyspring}\ddot\dispMass +
+  \gp{\dampingRel+\gainVel}\gp{\velMass-\velBase} +
   \gp{\stiffnessRel+\gainDisp}\gp{\dispMass-\dispBase} +
-  \gainSky\dot\dispMass 
+  \gainAcc\accMass +
+  \gainSkyhook\velMass +
+  \gainSkyspring\dispMass
   = 0
 \end{dmath}.
+The transfer function between base and mass displacement for this generalised feedback case is
+\begin{dmath}[label=tf-genfeedback]
+  \frac\laplaceMass\laplaceBase = 
+\frac{\gainDisp+\stiffness+s \gp{\damping+\gainVel+\gainAcc s}}{\gp{\gainAcc+\gainSkymass+\mass} s^2+\gp{\damping+\gainSkyhook+\gainVel} s+\gainDisp+\gainSkyspring+\stiffness}
+\end{dmath}.
+From \eqref{isolation-feedback} it can be seen that there is an exact equivalence between the feedback gains of three of the different signals and a corresponding physical parameter of the system.
+Relative displacement and velocity feedback correspond to a variation in the stiffness and damping, respectively, and absolute acceleration feedback to the mass.
+The system \eqref{tf-genfeedback} is stable for characteristic solutions of the denominator (\ie, the poles of the system) have negative real components. These can be analysed easily with the quadratic equation. Note that the feedback gains for the absolute versus relative signals always appear together in the denominator of the transfer function (\eg, $\gainAcc+\gainSkymass$), and hence affect the stability of the system identically.
 
-It can be clearly seen that there is an exact equivalence between the feedback gains of the different signals and a corresponding physical parameter of the system.
-For example, adding gain on the relative displacement feedback is analogous to increasing the stiffness of the system, and adding gain on the acceleration feedback is analogous to increasing the mass of the system. \Figref{sdof-disp-vs-acc} shows an example of these two approaches for shifting the resonance frequency of the system.
+To illustrate the effect of various control gains, the transfer function \eqref{tf-genfeedback} is drawn with parameters $\mass=\SI{1}{kg}$, $\damping=\SI{0.5}{kg/s}$ and $\stiffness=\SI{10}{N/m}$, and each of the six control gains $\gainArbitrary$ varied independently.
+
+\paragraph{Displacement feedback}
+\Figref{disp-vs-sky} shows the effect of varying the control gains for relative displacement and absolute displacement ($\gainDisp$ and $\gainSkyspring$).
+In both cases, the resonance frequency is increased with increased feedback gain.
+This is usually detrimental to vibration isolation performance.
+Relative displacement feedback corresponds to an increased stiffness and a higher resonance frequency, whereas absolute displacement feedback increases the vibration isolation at low frequencies; this scheme is notable for its less than unity response even as the frequency of excitation tends to zero, while the high frequency attentuation is unaffected.
+As discussed later \fixme{crossref}, this form of feedback is highly susceptable to low frequency instabilities and cannot reliably be implemented in practice.
+
+The system with displacement feedback is stable according the inequality
+\begin{dmath}
+  \damping>\Re\fn{\sqrt{\damping^2-4 \gp{\gainDisp+\gainSkyspring+\stiffness} \mass}}
+\end{dmath},
+which holds for all $\gainDisp+\gainSkyspring>-\stiffness$. Therefore, negative feedback gain may be used to lower the resonance frequency of the structure by decreasing the effective stiffness of the system.
 
 \begin{figure}
    \begin{wide}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-skyspring}
    \end{wide}
-   \caption{Active feedback control with relative displacement and absolute acceleration, respectively, of a vibration isolation system.}
-   \figlabel{skyspring}
+   \caption{Relative and absolute displacement feedback control.}
+   \figlabel{disp-vs-sky}
 \end{figure}
 
-Acceleration and displacement feedback both primarily affect the resonance frequency of the system.
-Velocity feedback is different.
-For this example, the transmissibility of the closed loop system with velocity feedback will be derived.
-Let displacement and acceleration gains equal zero in \eqref{isolation-feedback}, $\gainDisp=\gainAcc=0$, and transmissiblity is given by 
-\begin{dmath}[compact,label=skyhook]
-  \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
-  \frac{\ii\freq\gp{\dampingRel+\gainVel} + \stiffnessRel}
-    {-\massMass\freq^2 + \ii\freq\gp{\dampingRel+\gainVel+\gainSky} + \stiffnessRel}
-\end{dmath}.
-The transmissibilities due to the influence of relative velocity gain and absolute velocity gain are shown in \figref{vel-vs-sky} with parameters $\massMass=\SI{1}{kg}$, $\dampingRel=\SI{0.5}{kg/s}$, $\stiffnessRel=\SI{10}{N/m}$, and the respective gains $\gainVel$ and $\gainSky$ ranging from $0$ to $5$ as indicated.
+\paragraph{Acceration feedback}
+\Figref{disp-vs-sky} shows the effect of varying the control gains for relative acceleration and absolute acceleration ($\gainAcc$ and $\gainSkymass$).
+Absolute acceleration feedback corresponds to an increased system mass, corresponding to a decreased resonance frequency; high frequency vibration isolation is improved.
+Relative acceleration feedback is only included for completeness; it has the effect of reducing the resonance peak but effectively eliminating any vibration isolation at higher frequencies.
+Other vibration schemes for reducing a tonal or narrowband disturbance are discussed briefly in \secref{vibneut}.
+
+The system with acceleration feedback is stable according to the inequality
+\begin{dmath}
+  \Re\fn{\frac{\damping \pm \sqrt{\damping^2-4 \stiffness \gp{\gainAcc+\gainSkymass+\mass}}}{\gainAcc+\gainSkymass+\mass}}>0
+\end{dmath},
+which is true for all $\gainAcc+\gainSkymass>-\mass$.
+It is possible, albeit undesirable, to increase the resonance frequency of the system with negative acceleration gain, which corresponds to an effective decrease of the mass of the system.
+
+\begin{figure}
+   \begin{wide}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-accrel}\hfil
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skymass}
+   \end{wide}
+   \caption{Relative and absolute acceleration feedback control.}
+   \figlabel{acc-vs-sky}
+\end{figure}
+
+\paragraph{Velocity feedback}
+Acceleration and displacement feedback both primarily affect the resonance frequency of the system; velocity feedback is different.
+The transmissibilities due to the influence of relative velocity and absolute velocity feedback ($\gainVel$ and $\gainSkyhook$) are shown in \figref{vel-vs-sky}.
+    \note{In the literature, absolute velocity feedback is often referred to as `skyhook damping'. This terminology is largely refrained from use in this thesis.}
+In both cases the resonance peak is lowered; the relative velocity feedback corresponds to a reduction in attenuation at higher frequencies, while for absolute velocity feedback the high frequency response is unaffected.
 
 \begin{figure}
    \begin{wide}
@@ -188,14 +229,28 @@ The transmissibilities due to the influence of relative velocity gain and absolu
    \figlabel{vel-vs-sky}
 \end{figure}
 
+Velocity feedback is stable for
+\begin{dmath}
+  \damping+\gainSkyhook+\gainVel \pm 
+    \Re\fn{\sqrt{\gp{\damping+\gainSkyhook+\gainVel}^2-4 \stiffness \mass}}>0 \mass}}>0
+\end{dmath},
+which is true for $\gainSkyhook+\gainVel>-\damping$.
+While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
+Active damping reduction has been performed to aid the efficiency of vibration neutralisers \cite{kidner1998}.
+
+The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility\fn\freq}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases. 
+This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS\ transmissiblity has a local minimum whereas the absolute feedback case continuously decreases.
+It is clear in the ideal case that skyhook damping is more efficacious at reducing the total vibration of a system.
+(The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
+
 \begin{figure}
-   \begin{wide}
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-accrel}\hfil
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skymass}
-   \end{wide}
-   \caption{Relative and absolute (`skymass') acceleration feedback control.}
-   \figlabel{acc-vs-sky}
+   \psfragfig{\phdpath Simulations/Springs/fig/rms-transmissibility}
+   \caption{\RMS\ transmissibility versus feedback gain of relative and 
+   absolute velocity feedback control on the system shown in 
+   \figref{simple-isolation}.}
+   \figlabel{rms-transmissibility}
 \end{figure}
+
 
 Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
 This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
@@ -206,40 +261,17 @@ In the semi-active case, many methods exist to dynamically adjust the stiffness 
 Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}.
 
 
-Skyhook damping assumes the measurement of an absolute velocity term and uses it for feedback to affect the damping of the closed loop system.
-This idea can be extended to using an absolute displacement measurement for feedback to effect the idea of a `skyspring'.
-Assuming that the absolute displacement is a signal available for feedback, the control input in this case is
-\begin{dmath}[label=skyspring-input]
- \forceIn = 
-   \gainDisp\gp{\dispMass-\dispBase} + 
-   \gainSkySpring \dispMass
-\end{dmath}.
-Using this input force in \eqref{simple-isolation} and looking at the behaviour of the system in the frequency domain yields the results shown in \figref{skyspring}, for relative and absolute displacement feedback, respectively.
 
-In both cases, the resonance frequency is increased with feedback gain.
-This is usually detrimental to vibration isolation performance.
-But in the skyspring case, the response of the structure is reduced at low frequencies, and with further application of damping treatment (skyhook damping, ideally) the resonance peak could be reduced at the same time.
 
 This idea presupposes that the absolute displacement is a state that can be measured.
 Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated by double-integrating an accelerometer signal.
 \textcite{zhu2006} used double-integral control in combination with other control techniques for vibration isolation in micro-gravity.
-I think Chris Fuller talks about this sort of thing, as well.
+
+
 
 \subsubsection{Skyhook damping}
 \seclabel{skyhook}
 
-
-In comparing the \RMS\ transmissibilities over the frequency range of interest ($\sqrt{\Int{\transmissibility\fn\freq}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases, it is clear in the ideal case that skyhook damping is more efficacious at reducing the total vibration of a system.
-This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS\ transmissiblity has a local minimum whereas the skyhook case continuously decreases.
-(The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
-
-\begin{figure}
-   \psfragfig{\phdpath Simulations/Springs/fig/rms-transmissibility}
-   \caption{\RMS\ transmissibility versus feedback gain of relative and 
-   absolute (`skyhook') velocity feedback control on the system shown in 
-   \figref{simple-isolation}.}
-   \figlabel{rms-transmissibility}
-\end{figure}
 
 
 An attractive method of reducing the effects of resonance peaks is to add damping to the structure.
