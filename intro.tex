@@ -191,6 +191,10 @@ which holds for all $\gainDisp+\gainSkyspring>-\stiffness$. Therefore, negative 
    \figlabel{disp-vs-sky}
 \end{figure}
 
+This idea presupposes that the absolute displacement is a state that can be measured.
+Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated by double-integrating an accelerometer signal.
+\textcite{zhu2006} used double-integral control in combination with other control techniques for vibration isolation in micro-gravity.
+
 \paragraph{Acceration feedback}
 \Figref{disp-vs-sky} shows the effect of varying the control gains for relative acceleration and absolute acceleration ($\gainAcc$ and $\gainSkymass$).
 Absolute acceleration feedback corresponds to an increased system mass, corresponding to a decreased resonance frequency; high frequency vibration isolation is improved.
@@ -232,7 +236,7 @@ In both cases the resonance peak is lowered; the relative velocity feedback corr
 Velocity feedback is stable for
 \begin{dmath}
   \damping+\gainSkyhook+\gainVel \pm 
-    \Re\fn{\sqrt{\gp{\damping+\gainSkyhook+\gainVel}^2-4 \stiffness \mass}}>0 \mass}}>0
+    \Re\fn{\sqrt{\gp{\damping+\gainSkyhook+\gainVel}^2-4 \stiffness \mass}}>0
 \end{dmath},
 which is true for $\gainSkyhook+\gainVel>-\damping$.
 While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
@@ -251,28 +255,46 @@ It is clear in the ideal case that skyhook damping is more efficacious at reduci
    \figlabel{rms-transmissibility}
 \end{figure}
 
+Active skyhook damping has been widely implemented in the vibrations literature \cite[\eg]{elliott2001,elliott2004,yan2006,kim2008-iecst}.
+Instability can occur in cases when the applied control force affects the dynamics of the base, but in practice this tends not to be a problem for comparatively massive support structures.
+
+\subsection{The analogy with passive control}
+
+Energy generation can also be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
 
 Reducing the stiffness of the support decreases the resonance frequency of the system, which increases the bandwidth of vibration isolation.
 This will improve the vibration isolation of the system over the application of sky-hook damping, especially at low frequencies.
 Stiffness reduction can be implemented by passive, active or semi-active methods.
 For a given mass, passive stiffness reduction can be achieved by adding a negative stiffness element in parallel with the system \cite{lee2007-jsv,xing2005} (some examples of which are looked at in more detail in \secref{qzs-explore}).
-Negative displacement \fixme{can it?} or positive acceleration feedback can be used in a fully active system.
-In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used; examples have been demonstrated by \textcite{kidner2002,liu2006a}.
+Negative displacement or positive acceleration feedback can be used in a fully active system.
+In the semi-active case, many methods exist to dynamically adjust the stiffness depending on the support being used \cite[\eg]{kidner2002,liu2006a}.
 Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}.
 
 
 
+\subsection{Active vibration control in practice}
+\secref{vibes-feedback}
 
-This idea presupposes that the absolute displacement is a state that can be measured.
-Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated by double-integrating an accelerometer signal.
-\textcite{zhu2006} used double-integral control in combination with other control techniques for vibration isolation in micro-gravity.
+Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999}.
+
+The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001}, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
+Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
+Acceleration feedback has much smaller stability limit than displacement and velocity, and the effect of displacement feedback is strongly reduced even with small time delays.
+Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
+Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
+
+A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
+Rather, integral and double-integral feedback from an accelerometer give better results for them.
+
+\textcite{zhao2007} examined the vibratory behaviour of a two degree of freedom nonlinear system with a time-delayed positional feedback.
+This results of this paper emphasises the importance of accounting for time delays in feedback control systems.
+
+\textcite{serrand2000} discuss active skyhook damping applied to a two degree of freedom structure with emphasis on the effects, for their system, due to possible base flexibility.
+One of their results shows that using integrated accelerometer measurements as a velocity feedback term has a low frequency phase shift that can induce instability for high enough control gains.
 
 
-
-\subsubsection{Skyhook damping}
+\subsubsection{Semi-active skyhook damping}
 \seclabel{skyhook}
-
-
 
 An attractive method of reducing the effects of resonance peaks is to add damping to the structure.
 
@@ -297,44 +319,11 @@ The nature of the problem is important to analyse before control
 strategies are applied.
 \textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
 
-Skyhook damping is considered an ideal case (I need some references — \ie, detail — for this) and is implemented with a switching controller in practice.
-This is because the abstraction of skyhook damping is to attach a damper to the `sky' itself; that is, the added damping is proportional to the absolute velocity of the damped mass.
-In practice, however, a velocity sensor can only measure a \emph{relative} velocity between the mass and the position of the fixed sensor, which for vibration isolation purposes is the same inertial reference as the ground itself through which the disturbances are propagating.
-
 \textcite{song2007} used the nonlinearities of semi-active skyhook damping as justification for the design of an adaptive controller for vibration isolation; they did not compare their results with recent work in the skyhook area, however.
 
-Skyhook damping can also be implemented with fully active control systems, an idea explored by, \eg, \textcite{elliott2001,elliott2004,yan2006,kim2008-iecst} \fixme{describe these more}.
-These methods are conceptually simpler, as the inertial velocity can easily be obtained from integrated acceleration measurements.
-Instability can occur in cases when the applied control force affects the dynamics of the base, but in practice this tends not to be a problem for comparatively massive support structures.
-
-\textcite{serrand2000} discuss active skyhook damping applied to a two degree of freedom structure with emphasis on the effects, for their system, due to possible base flexibility.
-One of their results shows that using integrated accelerometer measurements as a velocity feedback term has a low frequency phase shift that can induce instability for high enough control gains.
-
-Energy generation can also be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
 
 I haven't finished reading the paper by \textcite{savaresi2007}, but it's about a combination skyhook/acceleration-feedback controller that is really nice.
 It is in the context of vehicle vibration control for ride `smoothness'; the premise is that skyhook damping knocks out resonance peaks (without any other side-effects; \cf\ relative velocity feedback) while acceleration ($\equiv$ `mass') feedback decreases the overall transmissibility at higher frequencies.
-
-
-
-\subsection{Active vibration control in practice}
-\secref{vibes-feedback}
-
-Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999}.
-
-The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001}, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
-Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
-Acceleration feedback has much smaller stability limit than displacement and velocity, and the effect of displacement feedback is strongly reduced even with small time delays.
-Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
-Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
-
-A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
-Rather, integral and double-integral feedback from an accelerometer give better results for them.
-
-\textcite{zhao2007} examined the vibratory behaviour of a two degree of freedom nonlinear system with a time-delayed positional feedback.
-This results of this paper emphasises the importance of accounting for time delays in feedback control systems.
-
-
 
 
 
@@ -357,8 +346,8 @@ This is shown schematically in \figref{vibration-absorb}.
 \end{figure}
 
 In this case, velocity feedback on its own can have problems with stability margins at low frequencies.
-\textcite{benassi2002-part2} (using inertial actuators) showed in experiment that this can be improved by the addition of a phase lag controller with force feedback in conjuection with velocity feedback.
-The theory for such `combined-state' feedback cases was subsequently developed \cite{benassi2002-double}.
+\textcite{benassi2002-part2} showed in experiment that this can be improved by the addition of a phase lag controller with force feedback in conjuection with velocity feedback.
+The theory for such `combined-state' feedback cases was developed at the same time \cite{benassi2002-double}.
 
 A wide combination of feedback combinations was analysed by \textcite{diaz2005} focussing on various forms of velocity feedback for single-, double-, and multi-degree of freedom vibration isolation systems.
 In the two degree of freedom system, an inertial actuator is used to provide control force; as well as additional stability contraints due to this arrangement, the resonance at low frequencies of the actuator itself compromised the control performance.
@@ -370,7 +359,7 @@ A comparison of some of these methods, including skyhook damping and semi-active
 The idea of self-sensing for magnetic levitation purposes (in both cases using a electromagnet) has been shown by \textcite{bleuler1992,vischer1993}.
 These self-sensing devices (perhaps obviously, since the \backemf/ is such a noisy signal) do not perform nearly as well as when using a dedicated sensor, but the technique is particularly interesting for low-cost, low-precision devices.
 
-
+\fixme{tie into thesis}
 
 \subsection{Narrow-band vibration isolation}
 \seclabel{vibneut}
@@ -464,7 +453,7 @@ The advantage for such a system is the same as for semi-active controllers in ge
 However, using a fully active system for this task is not very energy efficient, since all `damping' is achieved artificially with the expenditure of actuator energy.
 Nonetheless, good results can be obtained via this method and the potential flexibility of the control system could be a good reason to design such a system.
 
-
+\fixme{tie into thesis}
 
 \subsection{Higher-level control}
 
@@ -498,8 +487,6 @@ Since an optimal controller is based around a cost function that will be depende
 Of those trialed, \Hinf/ control had the best low frequency response, and \PI\ control (with anti-windup) the best high frequency response.
 Output feedback, state feedback with an observer, and velocity feedback methods all performed worse to various extents.
 
-\textcite{chen2007} used \Hinf/ control to suppress the resonance peak at around \SI{3}{Hz} of a pneumatic vibration isolation mount.
-Very good reductions in transmissibility were achieved; this technique highlights the appeal of vibration control using an isolator with a damped resonance.
 
 A modern look at output feedback methods is shown by \cite{mottershead2008}, where the dynamics of complex structures are altered via robust pole-placement techniques that do not require models of the system.
 
@@ -521,6 +508,9 @@ Leave the heuristic approaches to systems that cannot be modelled (or even simul
 The literature review until now has focussed mainly on specific systems and techniques for achieving vibration isolation and suppression.
 This small section looks at the end result of much of this research: actual applications into constructing vibration isolation platforms.
 
+\textcite{chen2007} used \Hinf/ control to suppress the resonance peak at around \SI{3}{Hz} of a pneumatic vibration isolation mount.
+Very good reductions in transmissibility were achieved; this technique highlights the appeal of vibration control using an isolator with a damped resonance.
+
 In high precision contexts, a resonance frequency of less than \SI{1}{Hz} is often required, for which very soft pneumatic springs are typically used \cite{kawashima2007}.
 
 \textcite{yoshioka2001} designed and built a prototype vibration isolation platform with a load bearing capacity about \SI{1000}{kg}.
@@ -530,6 +520,8 @@ Feedback velocity of the table and feedforward velocity and displacement of the 
 
 
 \subsection{Summary of the vibrations literature}
+
+The cross-section of introductory concepts and literature shown in this section have been chosen to illustrate the broad approaches for vibration control of simple systems.
 
 
 
