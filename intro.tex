@@ -105,7 +105,7 @@ The field of active vibration isolation is a broad topic to cover in review; not
 The literature review that follows is strongly biased towards papers that have been recently published.
 Tracking their citations backwards will yield a tangled web of prior art in the field of vibration control.
 
-\subsection{Fundamentals of vibration isolation}
+\subsection{Fundamentals of active vibration isolation}
 
 \Figref{simple-isolation} shows the simplest form of vibration isolation in which a mass $\massMass$ is mounted with stiffness $\stiffnessRel$ with disturbance input $\dispBase$.
 Passive isolation is achieved for zero input force, $\forceIn=0$.
@@ -133,9 +133,9 @@ First assume that there is no input force; taking the Laplace tranform and rearr
   {-\massMass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
 
-For ideal linear state feedback control, the input force can be represented as a linear combination of measured relative displacement $\gp{\dispMass-\dispBase}$, relative velocity $\gp{\dot\dispMass-\dot\dispBase}$, and acceleration $\ddot\dispMass$ of the mass.
+For ideal linear state feedback control, the input force can be represented as a linear combination of measured relative displacement $\gp{\dispMass-\dispBase}$, relative velocity $\gp{\velMass-\velBase}$, and acceleration $\ddot\dispMass$ of the mass.
 A force sensor can also be used for feedback purposes, but this yields results for lumped-parameter systems equivalent to acceleration feedback; for vibration isolation of flexible systems, there is evidence to suggest force feedback giving greater stability than acceleration feedback \cite{preumont2002-jsv}, especially for lightly damped structures.
-Absolute 
+Absolute velocity $\velMass$ and absolute displacement $\dispMass$ of the mass can be estimated by integrating the acceleration, and for completeness we also consider the relative acceleration between the mass and the base ($\accMass-\accBase$) as a possible signal for feedback control.
 The generalised feedback force can then be represented by
 \begin{dmath}
  \forceIn = 
@@ -243,11 +243,10 @@ This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS
 
 
 An attractive method of reducing the effects of resonance peaks is to add damping to the structure.
-If this is performed by an actuator attached to the `sky' instead of the ground, the advantage of knocking out the resonance peak is not counteracted by an increase in higher frequency vibration (less roll-off), which is the case for damping control with ground-fixed actuators.
-This scheme is known as `skyhook' damping.
+
 An alternative has recently been explored of using nonlinear viscous damping instead, which provides similar benefits as skyhook damping without the implementation complications \cite{lang2009}.
 
-Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable~\cite{liu2002,liu2005,ahmadian2004}.
+Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable \cite{liu2002,liu2005,ahmadian2004}.
 Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
 
 In the context of isolating vibration of a train, \textcite{li1999} discuss the disadvantages in tracking when applying skyhook damping for systems that experience very low frequency (\ie, steady state) changes in the base position, but for the purposes of vibration isolation this is not a problem if the ground is assumed to experience disturbance with zero mean.
@@ -278,7 +277,6 @@ Instability can occur in cases when the applied control force affects the dynami
 
 \textcite{serrand2000} discuss active skyhook damping applied to a two degree of freedom structure with emphasis on the effects, for their system, due to possible base flexibility.
 One of their results shows that using integrated accelerometer measurements as a velocity feedback term has a low frequency phase shift that can induce instability for high enough control gains.
-Therefore, very high precision accelerometers or laser velocity vibrometers are required for very low frequency vibration control (below \SI{1}{Hz}).
 
 Energy generation can also be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
 
