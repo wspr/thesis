@@ -267,7 +267,7 @@ around a displacement range of around \SI{\pm2}{mm}.
 
 The requirements for the sensing equipment is similar to that of the actuators; noncontact spatial measurement is desired to remove any possibility of adding further dynamics to the system.
 A displacement sensor is required to calibrate the position of the fixed and moving magnets in the system.
-Velocity sensors are used for feedback control to add damping to the system (see \secref[vref]{skyhook}).
+Velocity sensors are used for feedback control to add damping to the system (see \secref[vref]{skyhook}) in order to aid the vibration isolation characteristic of the system.
 Accelerometers are used to measure the vibration response on the beam and on the base.
 
 \subsubsection{Displacement sensors}
@@ -767,11 +767,11 @@ $\laplaceForce=s^2\laplaceMass\BlockController$, the transmissibility of the sys
   \figlabel{simple-isolator-block}
 \end{figure}
 
-When the controller is some gain $\gain$ in series with an ideal integration
-of the accelerometer signal, $\BlockController = \gain/s$, \eqref{cl-generic}
-simplifies to the skyhook damping expression shown in \secref{skyhook}. This
-result is plotted in \figref{cl-ideal} for equivalent values of stiffness and
-damping as the experimental setup.
+When the controller is some gain $\gain$ in series with an ideal integration of the accelerometer signal, $\BlockController = \gain/s$, \eqref{cl-generic} simplifies to the idealised absolute velocity feedback expression introduced in \secref[vref]{skyhook}:
+\begin{dmath}
+\frac{\gainDisp+\stiffness+s \gp{\damping+\gainVel+\gainAcc s}}{\gainDisp+\gainSkyspring+\stiffness+s \gp{\damping+\gainSkyhook+\gainVel+\gp{\gainAcc+\gainSkymass+\mass} s}}
+\end{dmath}
+This result is plotted in \figref{cl-ideal} for equivalent values of stiffness and damping as the experimental setup.
 
 A more complex model for the controller block is required to account for the
 signal processing involved with amplifying and filtering the accelerometer
