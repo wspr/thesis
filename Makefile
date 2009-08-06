@@ -14,8 +14,7 @@ show: $(main).pdf $(main).bbl
 	osascript -e 'tell application "Skim" to revert item 1 of (every window whose name contains "'$<'")'
 
 clean:
-	rm -f *.pdf *.bbl *.aux *.log *.out *.toc *.blg *.lof *.lot *-blx.bib
-	
+	rm -f *.pdf
 
 $(main).pdf: $(main).tex $(addsuffix .tex,$(chapters)) $(support)
 	pdflatex --shell-escape $(main); \
