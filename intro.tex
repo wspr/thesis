@@ -123,7 +123,7 @@ Feedback control allows the properties of the system to be adjusted according th
 The dynamic response of the isolated mass is
 \begin{dmath}[label=simple-isolation]
   \massMass\ddot\dispMass +
-  \dampingRel\gp{\dot\dispMass-\dot\dispBase} +
+  \dampingRel\gp{\velMass-\velBase} +
   \stiffnessRel\gp{\dispMass-\dispBase} + \forceIn = 0 .
 \end{dmath}
 First assume that there is no input force; taking the Laplace tranform and rearranging produced the transmissibility $\transmissibility$ of the system in the frequency domain:
