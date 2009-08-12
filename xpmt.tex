@@ -587,7 +587,7 @@ given by \eqref{simple-isolation-freq} in terms of the natural frequency, $\natf
 \sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio = \damping /
 (2\sqrt{\stiffness\mass})$. The resulting expression is
 \begin{dmath}[label=fit-model]
-  \transmissibility\fn{\freq} = \frac
+  \transmissibility = \frac
     {2\ii\dampingratio\freq\natfreq + \natfreq^2}
     {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2},
 \end{dmath}
@@ -648,7 +648,7 @@ rejected by the ratio of the cross-spectrum and power-spectrum terms in
 transmissibility instead with a ratio of the individual power spectra of the
 base and magnet:
 \begin{dmath}[label=frfnl]
-  \transmissibility\fn{\freq} = \sqrt{\powerSpectMagnet/\powerSpectBase},
+  \transmissibility = \sqrt{\powerSpectMagnet/\powerSpectBase},
 \end{dmath}
 where $\powerSpectMagnet$ is the power spectra of the accelerometer
 measurements at the moving magnet and $\powerSpectMagnet$ is the power spectra
@@ -700,7 +700,7 @@ The overall improvement to the vibration isolation can be shown by calculating
 the root-mean-square of the transmissibility over a certain frequency range.
 \begin{dmath}
   \RMSof\transmissibility = 
-  \sqrt{\Sum{\transmissibility\fn{\freq}^2}{\freq,\freq_1,\freq_2}}
+  \sqrt{\Sum{\transmissibility^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}
 The lower frequency limit is defined as $\freq_1=\SI{1}{Hz}$, as the results
 become very noisy below this frequency. The upper frequency limit

@@ -124,11 +124,11 @@ The dynamic response of the isolated mass is
 \begin{dmath}[label=simple-isolation]
   \massMass\ddot\dispMass +
   \dampingRel\gp{\velMass-\velBase} +
-  \stiffnessRel\gp{\dispMass-\dispBase} + \forceIn = 0 .
-\end{dmath}
+  \stiffnessRel\gp{\dispMass-\dispBase} = \forceIn
+\end{dmath}.
 First assume that there is no input force; taking the Laplace tranform and rearranging produced the transmissibility $\transmissibility$ of the system in the frequency domain:
 \begin{dmath}[compact,label=simple-isolation-freq]
-  \transmissibility\fn\freq = \frac{\laplaceMass}{\laplaceBase} = 
+  \transmissibility = \frac{\laplaceMass}{\laplaceBase} = 
   \frac{\ii\freq\dampingRel + \stiffnessRel}
   {-\massMass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
@@ -167,18 +167,18 @@ From \eqref{isolation-feedback} it can be seen that there is an exact equivalenc
 Relative displacement and velocity feedback correspond to a variation in the stiffness and damping, respectively, and absolute acceleration feedback to the mass.
 The system \eqref{tf-genfeedback} is stable for characteristic solutions of the denominator (\ie, the poles of the system) have negative real components. These can be analysed easily with the quadratic equation. Note that the feedback gains for the absolute versus relative signals always appear together in the denominator of the transfer function (\eg, $\gainAcc+\gainSkymass$), and hence affect the stability of the system identically.
 
-To illustrate the effect of various control gains, the transfer function \eqref{tf-genfeedback} is drawn with parameters $\mass=\SI{1}{kg}$, $\damping=\SI{0.5}{kg/s}$ and $\stiffness=\SI{10}{N/m}$, and each of the six control gains $\gainArbitrary$ varied independently.
+To illustrate the effect of various control gains, from transfer function \eqref{tf-genfeedback} the transmissibility $\Abs{\transmissibility}$ drawn with parameters $\mass=\SI{1}{kg}$, $\damping=\SI{0.5}{kg/s}$ and $\stiffness=\SI{10}{N/m}$, and each of the six control gains $\gainArbitrary$ varied independently.
 
-\paragraph{Displacement feedback}
+\subsubsection{Displacement feedback}
 \Figref{disp-vs-sky} shows the effect of varying the control gains for relative displacement and absolute displacement ($\gainDisp$ and $\gainSkyspring$).
 In both cases, the resonance frequency is increased with increased feedback gain.
 This is usually detrimental to vibration isolation performance.
 Relative displacement feedback corresponds to an increased stiffness and a higher resonance frequency, whereas absolute displacement feedback increases the vibration isolation at low frequencies; this scheme is notable for its less than unity response even as the frequency of excitation tends to zero, while the high frequency attentuation is unaffected.
-As discussed later \fixme{crossref}, this form of feedback is highly susceptable to low frequency instabilities and cannot reliably be implemented in practice.
+As discussed in \secref{vibes-feedback}, this form of feedback is highly susceptable to low frequency instabilities and cannot reliably be implemented in practice.
 
 The system with displacement feedback is stable according the inequality
 \begin{dmath}
-  \damping>\Re\fn{\sqrt{\damping^2-4 \gp{\gainDisp+\gainSkyspring+\stiffness} \mass}}
+  \damping>\Real{\sqrt{\damping^2-4 \gp{\gainDisp+\gainSkyspring+\stiffness} \mass}}
 \end{dmath},
 which holds for all $\gainDisp+\gainSkyspring>-\stiffness$. Therefore, negative feedback gain may be used to lower the resonance frequency of the structure by decreasing the effective stiffness of the system.
 
@@ -195,7 +195,7 @@ This idea presupposes that the absolute displacement is a state that can be meas
 Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated by double-integrating an accelerometer signal.
 \textcite{zhu2006} used double-integral control in combination with other control techniques for vibration isolation in micro-gravity.
 
-\paragraph{Acceration feedback}
+\subsubsection{Acceration feedback}
 \Figref{disp-vs-sky} shows the effect of varying the control gains for relative acceleration and absolute acceleration ($\gainAcc$ and $\gainSkymass$).
 Absolute acceleration feedback corresponds to an increased system mass, corresponding to a decreased resonance frequency; high frequency vibration isolation is improved.
 Relative acceleration feedback is only included for completeness; it has the effect of reducing the resonance peak but effectively eliminating any vibration isolation at higher frequencies.
@@ -203,7 +203,7 @@ Other vibration schemes for reducing a tonal or narrowband disturbance are discu
 
 The system with acceleration feedback is stable according to the inequality
 \begin{dmath}
-  \Re\fn{\frac{\damping \pm \sqrt{\damping^2-4 \stiffness \gp{\gainAcc+\gainSkymass+\mass}}}{\gainAcc+\gainSkymass+\mass}}>0
+  \Real{\frac{\damping \pm \sqrt{\damping^2-4 \stiffness \gp{\gainAcc+\gainSkymass+\mass}}}{\gainAcc+\gainSkymass+\mass}}>0
 \end{dmath},
 which is true for all $\gainAcc+\gainSkymass>-\mass$.
 It is possible, albeit undesirable, to increase the resonance frequency of the system with negative acceleration gain, which corresponds to an effective decrease of the mass of the system.
@@ -217,7 +217,7 @@ It is possible, albeit undesirable, to increase the resonance frequency of the s
    \figlabel{acc-vs-sky}
 \end{figure}
 
-\paragraph{Velocity feedback}
+\subsubsection{Velocity feedback}
 Acceleration and displacement feedback both primarily affect the resonance frequency of the system; velocity feedback is different.
 The transmissibilities due to the influence of relative velocity and absolute velocity feedback ($\gainVel$ and $\gainSkyhook$) are shown in \figref{vel-vs-sky}.
     \note{In the literature, absolute velocity feedback is often referred to as `skyhook damping'. This terminology is largely refrained from use in this thesis.}
@@ -236,13 +236,13 @@ In both cases the resonance peak is lowered; the relative velocity feedback corr
 Velocity feedback is stable for
 \begin{dmath}
   \damping+\gainSkyhook+\gainVel \pm 
-    \Re\fn{\sqrt{\gp{\damping+\gainSkyhook+\gainVel}^2-4 \stiffness \mass}}>0
+    \Real{\sqrt{\gp{\damping+\gainSkyhook+\gainVel}^2-4 \stiffness \mass}}>0
 \end{dmath},
 which is true for $\gainSkyhook+\gainVel>-\damping$.
 While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
 Active damping reduction has been performed to aid the efficiency of vibration neutralisers \cite{kidner1998}.
 
-The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility\fn\freq}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases. 
+The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases. 
 This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS\ transmissiblity has a local minimum whereas the absolute feedback case continuously decreases.
 It is clear in the ideal case that skyhook damping is more efficacious at reducing the total vibration of a system.
 (The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
@@ -258,7 +258,7 @@ It is clear in the ideal case that skyhook damping is more efficacious at reduci
 Active skyhook damping has been widely implemented in the vibrations literature \cite[for example]{elliott2001,elliott2004,yan2006,kim2008-iecst}.
 Instability can occur in cases when the applied control force affects the dynamics of the base, but in practice this tends not to be a problem for comparatively massive support structures.
 
-\paragraph{Interaction with passive control}
+\subsubsection{The analogy with passive control}
 As mentioned above, three of the active approaches mentioned above correspond directly to variations for one of the physical parameters of the system: mass, damping, and stiffness.
 Active vibration control is usually only attempted when such passive control is inadequate or impractical.
 \Eg, adding mass reduces the resonance frequency, which improves vibration isolation; however, it is not always practical to do so.
@@ -267,7 +267,6 @@ Adding additional damping through viscous elements will reduce the amplitude of 
 Energy generation can be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
 An alternative has recently been explored of using nonlinear viscous damping instead, which provides similar benefits as active absolute velocity feedback  \cite{lang2009} with the advantages generally associated with passive control: robust, power-free, inexpensive.
 
-
 Reducing the stiffness between the mass and the base from which to be isolated has same effect as increasing the mass; the resonance frequency is reduced and the bandwidth of vibration isolation is increased.
 Passive stiffness reduction can be achieved by adding a negative stiffness element in parallel with the system \cite{lee2007-jsv,xing2005}.
 This becomes a major theme of the thesis, explored later in this introduction in \secref{qzs-explore}.
@@ -275,13 +274,13 @@ Considering variable stiffness elements that can act in a `semi-active' regime, 
 Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}, since for vibration isolation applications in general the lower the stiffness the better.
 
 \subsection{Active vibration control in practice}
-\secref{vibes-feedback}
 
 \subsubsection{Limitations of the above techniques}
+\secref{vibes-feedback}
 
-The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001}, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
+The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001} in a vibration suppression system, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
 Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
-Acceleration feedback has much smaller stability limit than displacement and velocity, and the effect of displacement feedback is strongly reduced even with small time delays.
+Acceleration feedback has a much smaller stability limit than displacement and velocity feedbacks, and the effect of displacement feedback is strongly reduced even with small time delays.
 Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
 Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
 
