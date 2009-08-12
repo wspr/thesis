@@ -106,6 +106,7 @@ The literature review that follows is strongly biased towards papers that have b
 Tracking their citations backwards will yield a tangled web of prior art in the field of vibration control.
 
 \subsection{Fundamentals of active vibration isolation}
+\seclabel{fundavibes}
 
 \Figref{simple-isolation} shows the simplest form of vibration isolation in which a mass $\massMass$ is mounted with stiffness $\stiffnessRel$ with disturbance input $\dispBase$.
 Passive isolation is achieved for zero input force, $\forceIn=0$.
@@ -296,7 +297,18 @@ One of their results shows that using integrated accelerometer measurements as a
 Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999}.
 They also look at the effect of non-infinite base mass, with results that I should have known about, I guess.
 
+\subsubsection{Combination approaches of linear feedback}
+
+The active feedback methods introduced in \seclabel{fundavibes} are orthogonal in the sense that more than one scheme may be applied in parallel.
+For example, acceleration feedback could be used to reduce the resonance frequency, and absolute velocity feedback used to reduce the height of the resonance peak.
+This approach was taken by \textcite{savaresi2007} implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'.
+\textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
+
 \subsubsection{Higher-level control}
+
+A modern look at output feedback methods is shown by \cite{mottershead2008}, where the dynamics of complex structures are altered via robust pole-placement techniques that do not require models of the system.
+
+And here's a method using delayed acceleration feedback by \textcite{chatterjee2008}.
 
 Another comparison of such techniques for vehicle suspension control indicated that sliding mode control was a suitable candidate for such applications \cite{dong2009}.
 
@@ -329,10 +341,6 @@ Of those trialed, \Hinf/ control had the best low frequency response, and \PI\ c
 Output feedback, state feedback with an observer, and velocity feedback methods all performed worse to various extents.
 
 
-A modern look at output feedback methods is shown by \cite{mottershead2008}, where the dynamics of complex structures are altered via robust pole-placement techniques that do not require models of the system.
-
-And here's a method using delayed acceleration feedback by \textcite{chatterjee2008}.
-
 \textcite{madkour2007} compared a slew of nonlinear `artifical intelligence' adaptive algorithms to observe the parameters of a vibrating pinned beam in order to apply feedback cancelation.
 Such techniques are appropriate when system identification is required during operation; \ie, when the plant cannot be measured beforehand or it slowly changes over time.
 However, such `artifical intelligence' algorithms are probably sub-optimal for the observation of such a dynamics problem when the system can be broadly modelled as a set of differential equations in the time domain, for which in even complex systems, nonlinear techniques such as backstepping or sliding mode control are often directly suitable.
@@ -340,11 +348,6 @@ Leave the heuristic approaches to systems that cannot be modelled (or even simul
 \note{Note that these comments only apply to the use of such methods in the control phase of vibration control; genetic algorithms, \eg, provide a useful technique in the design phase when limited numbers of sensors and actuators must be placed in `optimal' positions on a complex structure \cite{simpson2003,howard2005}.}
 
 
-\paragraph{Combination approaches}
-
-\textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
-
-\textcite{savaresi2007} implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'; the premise is that skyhook damping knocks out resonance peaks (without any other side-effects; \cf\ relative velocity feedback) while absolute acceleration feedback decreases the overall transmissibility at higher frequencies.
 
 
 
