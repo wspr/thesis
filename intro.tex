@@ -255,6 +255,8 @@ It is possible, albeit undesirable, to increase the resonance frequency of the s
 \end{figure}
 
 \subsubsection{Velocity feedback}
+\seclabel{skyhook-intro}
+
 Acceleration and displacement feedback both primarily affect the resonance frequency of the system; velocity feedback is different.
 The transmissibilities due to the influence of relative velocity and absolute velocity feedback ($\gainVel$ and $\gainSkyhook$) are shown in \figref{vel-vs-sky}.
     \note{In the literature, absolute velocity feedback is often referred to as `skyhook damping'. This terminology is largely refrained from use in this thesis.}
@@ -336,27 +338,8 @@ Velocity feedback control by using integrated accelerometer measurements at the 
 They also look at the effect of non-infinite base mass, with results that I should have known about, I guess.
 
 
-\subsubsection{Combination approaches of linear feedback}
-
-The active feedback methods introduced in \seclabel{fundavibes} are orthogonal in the sense that more than one scheme may be applied in parallel.
-For example, acceleration feedback could be used to reduce the resonance frequency, and absolute velocity feedback used to reduce the height of the resonance peak.
-This approach was taken by \textcite{savaresi2007} implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'.
-\textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
-
-
-\subsubsection{Higher-level control}
-
-A modern look at output feedback methods is shown by \cite{mottershead2008}, where the dynamics of complex structures are altered via robust pole-placement techniques that do not require models of the system.
-
-And here's a method using delayed acceleration feedback by \textcite{chatterjee2008}.
-
-Another comparison of such techniques for vehicle suspension control indicated that sliding mode control was a suitable candidate for such applications \cite{dong2009}.
-
-\cite{zuo2004}
-
-Vibration isolation can be considered exclusively as a control problem. 
-\textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techniques to isolate a multi-degree of freedom structure in a single direction.
-Adaptive control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
+\subsubsection{Further discussion of velocity feedback (\ie, more skyhooks)}
+\seclabel{skyhook}
 
 The issue of selecting appropriate control gains for velocity feedback control systems was examined by \textcite{engels2008} for the cases of centralised and decentralised control devices.
 In centralised control, a global model of the system is used when allocating the feedback signals.
@@ -365,6 +348,47 @@ Generally centralised control is more difficult in practise but can give better 
 For the simple two-degree of freedom vibrating system examined by \textcite{engels2008}, the centralised control performed better although the differences to the decentralised control were small.
 An analogous result was shown by \textcite{hoque2006} for a three-axis vibration platform supported by a so-called `infinite stiffness' magnet/spring system (see \secref{infstiff}).
 
+
+An attractive method of reducing the detrimental effect of a resonance peak in vibration isolation is to add damping to the structure. As previously discussed, passive damping (or relative velocity feedback control) reduces the effectiveness of the vibration isolation at higher frequencies.
+Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable \cite{liu2002,liu2005,ahmadian2004} or its limitations too severe.
+Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
+
+In the context of isolating vibration of a train, \textcite{li1999} discuss the disadvantages in tracking when applying skyhook damping for systems that experience very low frequency (\ie, steady state) changes in the base position, but for the purposes of vibration isolation this is not a problem if the ground is assumed to experience disturbance with zero mean.
+(They also use Kalman filters for estimating velocity but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
+
+A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
+
+In the original and crude method of implementing skyhook control, the switching mode that is necessary to emulate the `skyhook' in the controlled damping introduces higher order (odd-multiple) harmonics in the frequency response, as shown by \textcite{ahmadian2001}, who later proposed two `jerk-free' skyhook algorithms \cite{ahmadian2004}.
+
+Further work in the area was established by \textcite{liu2002}, who demonstrated a number of skyhook-like semi-active damping methods, including smoothing functions to eliminate the problem of jerk
+\cite{liu2005}.
+  \note{These references by Liu contain essentially the same material, with greater detail in the first. The 2005 paper is easier to read than the 2002 Technical Memorandum simply due to the formatting of the documents.}
+
+\textcite{song2007} used the nonlinearities of semi-active skyhook damping as justification for the design of an adaptive controller for vibration isolation; they did not compare their results with recent work in the skyhook area, however.
+
+
+
+\subsubsection{Alternative control approaches}
+
+This section could grow almost indefinitely. Only works that explicitly target vibration isolation systems are discussed, although there have been many papers published recently that the reader may find interesting albeit off-topic \cite{chatterjee2008,mottershead2008}.
+
+In approximate order of complexity and effectiveness, a variety of vibration isolation control approaches are briefly discussed below.
+
+\paragraph{Combination approaches of linear feedback}
+
+The active feedback methods introduced in \seclabel{fundavibes} are orthogonal in the sense that more than one scheme may be applied in parallel.
+For example, acceleration feedback could be used to reduce the resonance frequency, and absolute velocity feedback used to reduce the height of the resonance peak.
+This approach was taken by \textcite{savaresi2007} implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'.
+\textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
+
+
+\paragraph{Adaptive and state control}
+
+\textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techniques to isolate a multi-degree of freedom structure in a single direction.
+Adaptive control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
+
+
+\paragraph{Optimal control}
 
 \textcite{balandin1998} review the field of optimal control as applied to shock and vibration isolation problems.
 \note{Their comment that the \enquote{number of papers is so great that there is little incentive to discuss them here} does not bode well for any attempts by me to even summarise their review.} 
@@ -376,10 +400,15 @@ That is, optimising for shock will result in minimising, say, the peak displacem
 Since an optimal controller is based around a cost function that will be dependent both on the vibratory system itself and the mode of disturbance (transient, broadband noise, \etc), such control approaches are heavily case-specific and are best used when a plant is pre-determined and a vibration problem needs to be considered after the fact.
 \textcite{bolotnik2001} discusses these methods in more detail.
 
+
+\paragraph{\Hinf/}
+
 \textcite{kerber2007} modelled a plate-plate coupling through four contact points in six degrees of freedom system and applied active vibration isolation in the vertical direction using a range of control methods.
 Of those trialed, \Hinf/ control had the best low frequency response, and \PI\ control (with anti-windup) the best high frequency response.
 Output feedback, state feedback with an observer, and velocity feedback methods all performed worse to various extents.
 
+
+\paragraph{Intelligent control}
 
 \textcite{madkour2007} compared a slew of nonlinear `artifical intelligence' adaptive algorithms to observe the parameters of a vibrating pinned beam in order to apply feedback cancelation.
 Such techniques are appropriate when system identification is required during operation; \ie, when the plant cannot be measured beforehand or it slowly changes over time.
@@ -388,6 +417,20 @@ Leave the heuristic approaches to systems that cannot be modelled (or even simul
 \note{Note that these comments only apply to the use of such methods in the control phase of vibration control; genetic algorithms, \eg, provide a useful technique in the design phase when limited numbers of sensors and actuators must be placed in `optimal' positions on a complex structure \cite{simpson2003,howard2005}.}
 
 
+\paragraph{Sliding mode}
+
+While skyhook damping has been introduced above in \secref{skyhook-intro} as force feedback proportional to the absolute velocity of the base, others have considered the case where the influence of the ground velocity is actively reduced. In both cases, the ratio of the influence of mass velocity to base velocity is being increased. In the ideal sense, the dynamic equation of motion
+\begin{dmath}
+  \massMass\accMass + \dampingRel\gp{\velMass-\velBase} + 
+    \stiffness\gp{\dispMass-\dispBase} = \inputForce
+\end{dmath}
+can be transformed into
+\begin{dmath}
+  \massMass\accMass + \dampingRel\velMass + 
+    \stiffness(\dispMass-\dispBase) = 0  
+\end{dmath}.
+The adaptive sliding mode approach used by \textcite{zuo2004} was targetted towards vehicle suspension, in which ground vibration cannot be measured.
+Sliding mode techniques has been recently shown to be more effective than classical techniques for an example of vehicle suspension control \cite{dong2009}.
 
 
 
@@ -412,25 +455,6 @@ Until this point in the introduction, the only focus on the vibration control li
 The landscape for vibration control is much broader, however.
 Here, some minor digressions are made to place the rest of the literature in context with alternate approaches, and some discussion made on why the techniques herein were deemed unsuitable for the work of this thesis.
 
-\subsubsection{Semi-active skyhook damping}
-\seclabel{skyhook}
-
-An attractive method of reducing the detrimental effect of a resonance peak in vibration isolation is to add damping to the structure. As previously discussed, passive damping (or relative velocity feedback control) reduces the effectiveness of the vibration isolation at higher frequencies.
-Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable \cite{liu2002,liu2005,ahmadian2004} or its limitations too severe.
-Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
-
-In the context of isolating vibration of a train, \textcite{li1999} discuss the disadvantages in tracking when applying skyhook damping for systems that experience very low frequency (\ie, steady state) changes in the base position, but for the purposes of vibration isolation this is not a problem if the ground is assumed to experience disturbance with zero mean.
-(They also use Kalman filters for estimating velocity but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
-
-A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
-
-In the original and crude method of implementing skyhook control, the switching mode that is necessary to emulate the `skyhook' in the controlled damping introduces higher order (odd-multiple) harmonics in the frequency response, as shown by \textcite{ahmadian2001}, who later proposed two `jerk-free' skyhook algorithms \cite{ahmadian2004}.
-
-Further work in the area was established by \textcite{liu2002}, who demonstrated a number of skyhook-like semi-active damping methods, including smoothing functions to eliminate the problem of jerk
-\cite{liu2005}.
-  \note{These references by Liu contain essentially the same material, with greater detail in the first. The 2005 paper is easier to read than the 2002 Technical Memorandum simply due to the formatting of the documents.}
-
-\textcite{song2007} used the nonlinearities of semi-active skyhook damping as justification for the design of an adaptive controller for vibration isolation; they did not compare their results with recent work in the skyhook area, however.
 
 \subsubsection{Inertial actuators}
 
