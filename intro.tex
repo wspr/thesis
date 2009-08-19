@@ -422,7 +422,7 @@ Leave the heuristic approaches to systems that cannot be modelled (or even simul
 While skyhook damping has been introduced above in \secref{skyhook-intro} as force feedback proportional to the absolute velocity of the base, others have considered the case where the influence of the ground velocity is actively reduced. In both cases, the ratio of the influence of mass velocity to base velocity is being increased. In the ideal sense, the dynamic equation of motion
 \begin{dmath}
   \massMass\accMass + \dampingRel\gp{\velMass-\velBase} + 
-    \stiffness\gp{\dispMass-\dispBase} = \inputForce
+    \stiffness\gp{\dispMass-\dispBase} = \forceIn
 \end{dmath}
 can be transformed into
 \begin{dmath}
