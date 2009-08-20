@@ -4,10 +4,13 @@
 
 \epigraph{In my experience I found that the most effective way to express something in order to make others understand is to use the simplest language. Also I learned from teaching that the more rigid the language the less effective it is.}{\textcite{mahathera1990}}
 
+
+
 \section{Introduction to the central themes of the thesis}
 
 Before launching into detail into the various topics under investigation, this section briefly touches on the issues addressed over the entire thesis: vibrations and their isolation and suppression in \secref{vibrations-summary-intro}; permanent magnets and their role in the design of supporting structures and other devices in \secref{magnets-summary-intro}; and `\qzs/' systems, which unify in this thesis the fields of vibrations and magnets, in \secref{qzs-summary-intro}.
 These three broad areas are then investigated in more detail in \secrangeref{vibrations-explore}{qzs-explore}.
+
 
 \subsection{The problem of vibrations}
 \seclabel{vibrations-summary-intro}
@@ -39,6 +42,7 @@ Other support methods besides pneumatics are able to achieve low stiffness; this
 But one method in particular is interesting in this context: permanent magnets can provide low stiffness support without energy expenditure.
 Their nonlinear forces in both attraction and repulsion allows the possibility of interesting supporting designs, and their non-contact nature allows their use in vacuum and `clean-room' environments.
 
+
 \subsection{Permanent magnets used for mechanical design}
 \seclabel{magnets-summary-intro}
 
@@ -58,6 +62,7 @@ Support mass with a noncontact force can also be called `levitation', an area wh
 Anecdotal evidence suggests otherwise.} until much later — given by the range of patents issued that assume the opposite.
 Exceptions to `Earshaw's Theorem' include the use of diamagnetic materials and actively-controlled system, amongst some others.
 It is the possibility of overcoming instability with active means that is of interest in this thesis.
+
 
 \subsection{\QZS/ systems}
 \seclabel{qzs-summary-intro}
@@ -82,6 +87,7 @@ Active control systems can be used with \qzs/ systems to improve their  performa
 \end{enumerate}
 The first two of these strategies are investigated in this thesis.
 
+
 \subsection{Project context}
 
 The original goal of this project was to design and build a vibration isolation table using non-contact magnetic springs.
@@ -97,6 +103,8 @@ For the design to be worth investigating, some advantage to using magnets should
 
 However, the field of active control has been well-established and the feat of building a stabilising controller for a system with relatively simple dynamics is not worthy of the research for a \PhD/.
 The work presented in this thesis is the investigations around the idea of building a `table that floats on magnets' while pulling out enough interesting nuggets to prove worthy of the title of `research'.
+
+
 
 \section{Vibrations}
 \seclabel{vibrations-explore}
@@ -254,6 +262,7 @@ It is possible, albeit undesirable, to increase the resonance frequency of the s
    \figlabel{acc-vs-sky}
 \end{figure}
 
+
 \subsubsection{Velocity feedback}
 \seclabel{skyhook-intro}
 
@@ -348,7 +357,6 @@ Generally centralised control is more difficult in practise but can give better 
 For the simple two-degree of freedom vibrating system examined by \textcite{engels2008}, the centralised control performed better although the differences to the decentralised control were small.
 An analogous result was shown by \textcite{hoque2006} for a three-axis vibration platform supported by a so-called `infinite stiffness' magnet/spring system (see \secref{infstiff}).
 
-
 An attractive method of reducing the detrimental effect of a resonance peak in vibration isolation is to add damping to the structure. As previously discussed, passive damping (or relative velocity feedback control) reduces the effectiveness of the vibration isolation at higher frequencies.
 Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable \cite{liu2002,liu2005,ahmadian2004} or its limitations too severe.
 Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
@@ -365,7 +373,6 @@ Further work in the area was established by \textcite{liu2002}, who demonstrated
   \note{These references by Liu contain essentially the same material, with greater detail in the first. The 2005 paper is easier to read than the 2002 Technical Memorandum simply due to the formatting of the documents.}
 
 \textcite{song2007} used the nonlinearities of semi-active skyhook damping as justification for the design of an adaptive controller for vibration isolation; they did not compare their results with recent work in the skyhook area, however.
-
 
 
 \subsubsection{Alternative control approaches}
@@ -400,13 +407,11 @@ That is, optimising for shock will result in minimising, say, the peak displacem
 Since an optimal controller is based around a cost function that will be dependent both on the vibratory system itself and the mode of disturbance (transient, broadband noise, \etc), such control approaches are heavily case-specific and are best used when a plant is pre-determined and a vibration problem needs to be considered after the fact.
 \textcite{bolotnik2001} discusses these methods in more detail.
 
-
 \paragraph{\Hinf/}
 
 \textcite{kerber2007} modelled a plate-plate coupling through four contact points in six degrees of freedom system and applied active vibration isolation in the vertical direction using a range of control methods.
 Of those trialed, \Hinf/ control had the best low frequency response, and \PI\ control (with anti-windup) the best high frequency response.
 Output feedback, state feedback with an observer, and velocity feedback methods all performed worse to various extents.
-
 
 \paragraph{Intelligent control}
 
@@ -415,7 +420,6 @@ Such techniques are appropriate when system identification is required during op
 However, such `artifical intelligence' algorithms are probably sub-optimal for the observation of such a dynamics problem when the system can be broadly modelled as a set of differential equations in the time domain, for which in even complex systems, nonlinear techniques such as backstepping or sliding mode control are often directly suitable.
 Leave the heuristic approaches to systems that cannot be modelled (or even simulated for a broad range of operating behaviours) through standard means.
 \note{Note that these comments only apply to the use of such methods in the control phase of vibration control; genetic algorithms, \eg, provide a useful technique in the design phase when limited numbers of sensors and actuators must be placed in `optimal' positions on a complex structure \cite{simpson2003,howard2005}.}
-
 
 \paragraph{Sliding mode}
 
@@ -431,7 +435,6 @@ can be transformed into
 \end{dmath}.
 The adaptive sliding mode approach used by \textcite{zuo2004} was targetted towards vehicle suspension, in which ground vibration cannot be measured.
 Sliding mode techniques has been recently shown to be more effective than classical techniques for an example of vehicle suspension control \cite{dong2009}.
-
 
 
 \subsubsection{Examples of actual vibration isolation platforms}
@@ -453,7 +456,7 @@ Feedback velocity of the table and feedforward velocity and displacement of the 
 
 Until this point in the introduction, the only focus on the vibration control literature has rested upon the area directly related to vibration isolation through modification (whether active, semi-active, or passive) of the supporting structure for the mass.
 The landscape for vibration control is much broader, however.
-Here, some minor digressions are made to place the rest of the literature in context with alternate approaches, and some discussion made on why the techniques herein were deemed unsuitable for the work of this thesis.
+Here, two minor digressions are made to place the rest of the literature in context with alternate approaches of vibration reduction, and some discussion made on why the techniques herein were deemed unsuitable for the work of this thesis.
 
 
 \subsubsection{Inertial actuators}
@@ -473,7 +476,7 @@ This is shown schematically in \figref{vibration-absorb}.
 \end{figure}
 
 In this case, velocity feedback on its own can have problems with stability margins at low frequencies.
-\textcite{benassi2002-part2} showed in experiment that this can be improved by the addition of a phase lag controller with force feedback in conjuection with velocity feedback.
+\textcite{benassi2002-part2} showed in experiment that this can be improved by the addition of a phase lag controller with force feedback in conjunction with velocity feedback.
 The theory for such `combined-state' feedback cases was developed at the same time \cite{benassi2002-double}.
 
 A wide combination of feedback combinations was analysed by \textcite{diaz2005} focussing on various forms of velocity feedback for \mbox{single-,} \mbox{double-,} and multi-degree of freedom vibration isolation systems.
@@ -487,6 +490,7 @@ The idea of self-sensing for magnetic levitation purposes (in both cases using a
 These self-sensing devices (perhaps obviously, since the \backemf/ is such a noisy signal) do not perform nearly as well as when using a dedicated sensor, but the technique is particularly interesting for low-cost, low-precision devices.
 
 \fixme{tie into thesis}
+
 
 \subsubsection{Narrow-band vibration isolation}
 \seclabel{vibneut}
@@ -580,10 +584,7 @@ Semi-active methods have also been explored to tune energy harvesting devices to
 \textcite{challa2008} investigated a semi-active device for tunable energy harvesting that used variable-displacement attractive and repulsive magnets to adjust the resonance frequency of a piezoelectric cantilever.
 This is the same mechanism that is examined in this thesis for `\qzs/' suspensions (see \secref{qzs-explore} and \secref{qzs}).
 
-
 \fixme{tie into thesis}
-
-
 
 
 \subsection{Summary of the vibrations literature}
@@ -594,6 +595,7 @@ The cross-section of introductory concepts and literature shown in this section 
 
 \section{Magnetics}
 \seclabel{magnets-explore}
+
 
 \subsection{Applications of magnetic forces}
 
@@ -634,6 +636,7 @@ This section looks broadly at some of the main applications of the field.
 
 Loud-speakers are still being researched, with improved analytical methods to determine forces for optimisation purposes \cite{merit2009}.
 
+
 \subsection{Maglev transportation}
 
 The largest body of research into magnetic levitation is on so-called `\maglev/'
@@ -645,6 +648,7 @@ While it has some concepts in common with this research (large loads, magnets), 
 
 Earnshaw's theorem for stability is not applicable for \maglev/ systems, since the motion of the vehicle adds a time-varying element to the magnetic system.
 Many approaches to the design of \maglev/ systems have been taken, including passively stable designs \cite{musolino2009}.
+
 
 \subsection{Magnetic positioners}
 
@@ -672,6 +676,7 @@ A recent six degree of freedom actuator has been demonstrated by \textcite{janse
 [\textcite{dasilveira2005}] Analytical expression for the normal force between two magnets on a back-iron plate and a perpendicular coil.
 The system is for a planar actuator, and the motivation is to be able to determine the amount of out-of-plane force generated by a particular design.
 Could very well be useful for some of my ideas.
+
 
 \subsection{Interesting devices}
 
@@ -741,6 +746,7 @@ Clearly it is stable in one direction, unstable in the other.
 Perturbations `left' or `right' will result in reaction forces keeping it centred and stable, whereas small displacements `into' or `out from' the page will result in increased perturbation to instability.
 So it is with any permanent magnet arrangement.
 
+
 \subsection{Exceptions to Earnshaw}
 
 Earnshaw's proof does not rule out all forms of `levitation' unconditionally, however.
@@ -768,6 +774,7 @@ but the control system is necessarily more complex and the behaviour not as prec
 
 Finally, levitation can be achieved in dynamic systems. \textcite{bassani2007} levitated a ring magnet above another by using continuous base excitation to find a small zone of stability in the nonlinear dynamics of the system. More well-known, the Levitron toy demonstrates stability of a magnetic spinning top above a ring magnet \cite{berry1997,berry1996,simon1997}.
 
+
 \subsection{Diamagnetic forces}
 
 Levitations involving diamagnetic material are also exempt from Earnshaw's theorem.
@@ -788,6 +795,7 @@ However, even the so-called `high temperature' superconducting materials must be
 Such a requirement renders this method financially and functionally impractical for this research.
 A review of work in the area of superconducting levitation has been published by \textcite{ma2003}.
 
+
 \subsection{Basic magnetic suspension}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
@@ -795,10 +803,8 @@ An advanced approach for this application used backstepping with a nonlinear mod
 \textcite{gentili2003}.
 \textcite{agamennoni2004} were able to identify the nonlinear dynamics of a coil-iron suspension.
 
-
 \textcite{chang2001} applied nonlinear control to the problem of magnetic levitation, using coupled hybrid magnets (\ie, electromagnets biased with permanent magnet cores) that create a magnetic circuit with the levitated table of \SI{20}{kg}.
 The paper looks at nonlinear analysis and neither passive nor active vibration isolation results are shown.
-
 
 Even now, basic \PID\ control is still used for control purposes.
 \textcite{li2007} report their success in suspending a magnetic table using a coupled electromechanical model of the system.
@@ -810,6 +816,7 @@ An optimisation technique was used to obtain the control gains necessary to achi
 Eh.
 
 The negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001}.
+
 
 \subsection{Magnetic vibration isolation}
 
@@ -823,11 +830,9 @@ The control system used was quite advanced, utilising a combination of two indep
 The magnetic actuator design is not described, however.
 It is believed that high-powered electromagnets were required for this design; with the current availability of cheap rare-earth magnets, a more efficient design is now possible.
 
-
 \textcite{puppin2002} published a paper that most plainly demonstrates that magnetic springs can be used for vibration isolation, in which the authors make no attempt to achieve contactless suspension—the magnets are horizontally constrained in guides.
 Furthermore, the springs are only used as passive isolators for vibrations in the vertical direction; no active control is used.
 Nonetheless, their passive spring was still capable of significant vertical vibration attenuation.
-
 
 
 \subsection{Forces between magnets}
@@ -890,7 +895,6 @@ Nonlinear control is better than linear control, as argued cogently by \textcite
 \textcite{queiroz2007} used nonlinear control to stabilise a magnetic bearing with pull--pull electromagnets with parameter uncertainties, while also minimising power consumption of the system.
 
 
-
 \subsection{Exploring \qzs/ systems}
 \seclabel{qzs-explore}
 
@@ -899,7 +903,6 @@ Novel approaches are required to reduce the resonance frequency below that possi
 One approach is to use a mechanical linkage \cite{winterflood2001}.
 
 \textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
-
 
 Addition of negative stiffness elements in a design reduces the resonance frequency, which improves vibration isolation.
 Early examples of such designs using inclined springs were shown by \textcite{molyneux1957}.
@@ -991,6 +994,7 @@ Maximum frequency and amplitude of the response increase with both greater input
 When compared to the linear response of stiffness equivalent to the maximum stiffness reached by the white noise input, the linear system response is \emph{smaller} than the \qzs/ response.
 This restricts the applications for vibration isolation of using nonlinear springs to achieve low resonance frequencies: only when it becomes infeasible to decrease the stiffness of a conventional linear system any further should a nonlinear system be chosen instead.
 Conversely, the broader peak of a hardening spring has been shown to be useful for energy harvesting purposes, especially for wandering narrowband excitation \cite{ramlan2009-nd}.
+
 
 \subsection{(Quasi--)infinite stiffness systems}
 \seclabel{infstiff}
