@@ -124,13 +124,14 @@ The ground to which it is fixed is assumed to have infinite mass and to have zer
 In this system, motion of the mass can be suppressed by increasing the stiffness of the support, since as the mass becomes more greatly coupled with the ground, the input force has a diminishing influence.
 This behaviour is referred to as `vibration suppression' in this thesis.
 A practical example of this sort of vibration problem is a washing machine that causes itself to vibrate through a rotating imbalance; the imbalance causes oscillations in the drum which, when great enough, force the drum off its axis of rotation.
-\note{A common problem in our household. Just have to learn to arrange the washing carefully inside the drum.}
+\note{A common problem in our household. Just have to learn to arrange the washing carefully inside the drum.
+  \note{Our washing machine has since broken. Imbalance matters!}}
 
 \begin{figure}
-  \asyfig{Systems/vibration-base}
+  \asyfig{Systems/vibration-sdof}
   \caption{
-    Single degree of freedom vibration system; mass $\massMass$ is being excited by disturbance $?$.
-    Input force $\forceIn$ can be generated using feedforward or feedback control.
+    Single degree of freedom vibration system; mass $\massMass$ is being excited by disturbance $\forceDisturb$.
+    Input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\massDisp$ of the mass.
   }
   \figlabel{simple-suppression}
 \end{figure}
@@ -148,7 +149,7 @@ A schematic of this type of vibration isolation system is shown in \figref{simpl
   \asyfig{Systems/vibration-base}
   \caption{
     Schematic of vibration isolation; mass $\massMass$ is being isolated from disturbance $\dispBase$.
-    Input force $\forceIn$ can be generated using feedforward or feedback control.
+    Input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\massDisp$ of the mass.
   }
   \figlabel{simple-isolation}
 \end{figure}
@@ -237,13 +238,14 @@ which holds for all $\gainDisp+\gainSkyspring>-\stiffness$. Therefore, negative 
 \end{figure}
 
 This idea presupposes that the absolute displacement is a state that can be measured.
-Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated by double-integrating an accelerometer signal.
+Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated based on other measurements of the system.
+The simplest form of this is by double-integrating an accelerometer signal.
 \textcite{zhu2006} used double-integral control in combination with other control techniques for vibration isolation in micro-gravity.
 
 \subsubsection{Acceration feedback}
 \Figref{disp-vs-sky} shows the effect of varying the control gains for relative acceleration and absolute acceleration ($\gainAcc$ and $\gainSkymass$).
 Absolute acceleration feedback corresponds to an increased system mass, corresponding to a decreased resonance frequency; high frequency vibration isolation is improved.
-Relative acceleration feedback is only included for completeness; it has the effect of reducing the resonance peak but effectively eliminating any vibration isolation at higher frequencies.
+Relative acceleration feedback is only included for completeness; it has the effect of reducing the resonance peak but effectively eliminating any vibration isolation characteristics at higher frequencies.
 Other vibration schemes for reducing a tonal or narrowband disturbance are discussed briefly in \secref{vibneut}.
 
 The system with acceleration feedback is stable according to the inequality
@@ -251,7 +253,7 @@ The system with acceleration feedback is stable according to the inequality
   \Real{\frac{\damping \pm \sqrt{\damping^2-4 \stiffness \gp{\gainAcc+\gainSkymass+\mass}}}{\gainAcc+\gainSkymass+\mass}}>0
 \end{dmath},
 which is true for all $\gainAcc+\gainSkymass>-\mass$.
-It is possible, albeit undesirable, to increase the resonance frequency of the system with negative acceleration gain, which corresponds to an effective decrease of the mass of the system.
+It is possible, albeit generally undesirable, to increase the resonance frequency of the system with negative acceleration gain, which corresponds to an effective decrease of the mass of the system.
 
 \begin{figure}
    \begin{wide}
@@ -304,7 +306,7 @@ It is clear in the ideal case that skyhook damping is more efficacious at reduci
 \end{figure}
 
 Active skyhook damping has been widely implemented in the vibrations literature \cite[for example]{elliott2001,elliott2004,yan2006,kim2008-iecst}.
-Instability can occur in cases when the applied control force affects the dynamics of the base, but in practice this tends not to be a problem for comparatively massive support structures.
+Instability can occur in cases when the applied control force affects the dynamics of the base, but in practice this is not a problem when considering comparatively massive support structures.
 
 
 \subsubsection{The analogy with passive control}
@@ -313,28 +315,32 @@ As mentioned above, three of the active approaches mentioned above correspond di
 Active vibration control is usually only attempted when such passive control is inadequate or impractical.
 \Eg, adding mass reduces the resonance frequency, which improves vibration isolation; however, it is not always practical to do so.
 
-Adding additional damping through viscous elements will reduce the amplitude of the resonance peak, but vibration isolation at higher frequencies will be degraded.
+Adding additional damping through viscous elements, equivalent to relative velocity feedback control, will reduce the amplitude of the resonance peak, but vibration isolation at higher frequencies will be degraded.
 Energy generation can be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
 An alternative has recently been explored of using nonlinear viscous damping instead, which provides similar benefits as active absolute velocity feedback  \cite{lang2009} with the advantages generally associated with passive control: robust, power-free, inexpensive.
 
-Reducing the stiffness between the mass and the base from which to be isolated has same effect as increasing the mass; the resonance frequency is reduced and the bandwidth of vibration isolation is increased.
+Reducing the stiffness between the mass and its supporting base from has the same effect as increasing the mass; the resonance frequency is reduced and the bandwidth of vibration isolation is increased.
 Passive stiffness reduction can be achieved by adding a negative stiffness element in parallel with the system \cite{lee2007-jsv,xing2005}.
-This becomes a major theme of the thesis, explored later in this introduction in \secref{qzs-explore}.
+This idea becomes a major theme of the thesis, explored later in this introduction in \secref{qzs-explore}.
 Considering variable stiffness elements that can act in a `semi-active' regime, many methods exist to dynamically adjust the stiffness depending on the support being used \cite[for example]{kidner2002,liu2006-jsv,liu2008-jsv}.
-Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}, since for vibration isolation applications in general the lower the stiffness the better.
+Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}, since for vibration isolation applications, in general, the lower the stiffness the better; there is no need to adjust the stiffness on-line if it is already as low as possible.
+\note{Although an exception to this will be discussed later, in which the stiffness of a nonlinear system is adjusted upward to compensate for an increase in mass that would otherwise lead to instability.fixme{crossref}}
 
 \subsection{Active vibration control in practice}
 
 \subsubsection{Limitations of the above techniques}
-\secref{vibes-feedback}
+\seclabel{vibes-feedback}
 
-The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001} in a vibration suppression system, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section).
+The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001} in a vibration suppression system, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section). Pithily stated by \textcite{williams2009}:
+\begin{quote}
+In theory integration of accelerometer signals is easily done; however, in practice, inertially referenced velocity proves to be as elusive as it is useful.
+\end{quote}
 Real integrators (as opposed to ideal integrators) and high pass filters cause instabilities at low frequencies.
 Acceleration feedback has a much smaller stability limit than displacement and velocity feedbacks, and the effect of displacement feedback is strongly reduced even with small time delays.
 Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
 Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
 
-A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
+A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. They look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
 Rather, integral and double-integral feedback from an accelerometer give better results for them.
 
 \textcite{zhao2007} examined the vibratory behaviour of a two degree of freedom nonlinear system with a time-delayed positional feedback.
@@ -355,7 +361,7 @@ In centralised control, a global model of the system is used when allocating the
 In decentralised control, each sensor/actuator pair operates independently to minimize the energy at the mounting point.
 Generally centralised control is more difficult in practise but can give better results.
 For the simple two-degree of freedom vibrating system examined by \textcite{engels2008}, the centralised control performed better although the differences to the decentralised control were small.
-An analogous result was shown by \textcite{hoque2006} for a three-axis vibration platform supported by a so-called `infinite stiffness' magnet/spring system (see \secref{infstiff}).
+An analogous result was shown by \textcite{hoque2006} for a three-axis vibration platform supported by a so-called `infinite stiffness' magnet/spring system (also see \secref{infstiff}).
 
 An attractive method of reducing the detrimental effect of a resonance peak in vibration isolation is to add damping to the structure. As previously discussed, passive damping (or relative velocity feedback control) reduces the effectiveness of the vibration isolation at higher frequencies.
 Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable \cite{liu2002,liu2005,ahmadian2004} or its limitations too severe.
@@ -383,16 +389,16 @@ In approximate order of complexity and effectiveness, a variety of vibration iso
 
 \paragraph{Combination approaches of linear feedback}
 
-The active feedback methods introduced in \seclabel{fundavibes} are orthogonal in the sense that more than one scheme may be applied in parallel.
+The active feedback methods introduced in \secref{fundavibes} are orthogonal in the sense that more than one scheme may be applied in parallel.
 For example, acceleration feedback could be used to reduce the resonance frequency, and absolute velocity feedback used to reduce the height of the resonance peak.
-This approach was taken by \textcite{savaresi2007} implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'.
+This approach was used by \textcite{savaresi2007} to implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'.
 \textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
 
 
 \paragraph{Adaptive and state control}
 
 \textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techniques to isolate a multi-degree of freedom structure in a single direction.
-Adaptive control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
+Adaptive vibration control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
 
 
 \paragraph{Optimal control}
@@ -417,7 +423,7 @@ Output feedback, state feedback with an observer, and velocity feedback methods 
 
 \textcite{madkour2007} compared a slew of nonlinear `artifical intelligence' adaptive algorithms to observe the parameters of a vibrating pinned beam in order to apply feedback cancelation.
 Such techniques are appropriate when system identification is required during operation; \ie, when the plant cannot be measured beforehand or it slowly changes over time.
-However, such `artifical intelligence' algorithms are probably sub-optimal for the observation of such a dynamics problem when the system can be broadly modelled as a set of differential equations in the time domain, for which in even complex systems, nonlinear techniques such as backstepping or sliding mode control are often directly suitable.
+However, such `artifical intelligence' algorithms are probably sub-optimal for the observation of such a dynamics problem when the system can be broadly modelled as a set of differential equations in the time domain, for which in even complex systems nonlinear techniques such as backstepping or sliding mode control are often directly suitable.
 Leave the heuristic approaches to systems that cannot be modelled (or even simulated for a broad range of operating behaviours) through standard means.
 \note{Note that these comments only apply to the use of such methods in the control phase of vibration control; genetic algorithms, \eg, provide a useful technique in the design phase when limited numbers of sensors and actuators must be placed in `optimal' positions on a complex structure \cite{simpson2003,howard2005}.}
 
@@ -559,7 +565,7 @@ There is not a single ``best'' way of making an [adaptive tuned vibration absorb
 It depends upon the required frequency range, the agility (speed of reaction) and cost.
 \end{quote}
 
-An interesting device is shown by \cite{ivers2008} that can be described as a mechanically self-tuning \vibneut/.
+An interesting device is shown by \textcite{ivers2008} that can be described as a mechanically self-tuning \vibneut/.
 While not as efficacious as an adaptive \vibneut/ that uses an external power source, the ability to adapt to the excitation frequency using only the energy of the disturbance itself is commendable if somewhat esoteric.
 
 \Vibneut/ have been used to mitigate seismic vibrations in large buildings, but their mass dependence makes their application rather tricky and often impractical. \fixme{cite}
@@ -570,9 +576,10 @@ Some researchers have looked at using electromagnetic actuators to provide a ful
 The advantage for such a system is the same as for semi-active controllers in general: with a suitable algorithm, changes in the plant can be taken into account in the vibration neutraliser.
 However, using a fully active system for this task is not very energy efficient, since all `damping' is achieved artificially with the expenditure of actuator energy.
 Nonetheless, good results can be obtained via this method and the potential flexibility of the control system could be a good reason to design such a system.
+(Perhaps as a test platform for comparing various control techniques via emulation.)
 
 \Vibneut/ can also be used for modal systems, in which case each neutraliser is designed at the specific resonance frequency of each mode.
-In a recent example, \textcite{casciati2007} used a semi-active neutraliser to control vibration of a suspended cable; some care was required for their structure as their higher frequency (often nonlinear) behaviour can pose an influence even as the targeted (low frequency) mode is damped as desired.
+In a recent example, \textcite{casciati2007} used a semi-active neutraliser to control vibration of a suspended cable; some care was required for their structure as the higher frequency (often nonlinear) behaviour posed an influence even as the targeted (low frequency) mode was damped as desired.
 Optimization techniques can be used, if the mode shapes are known, to place multiple \vibneut/s in a modal system \cite{petit2009-jva}.
 
 When electrical circuits are used to absorb resonant vibrations, the energy absorbed can be redirected to produce a power output \cite{stephen2006}.
