@@ -382,7 +382,7 @@ Such estimation is prone to high frequency noise that must be filtered away.
 Absolute velocity sensors must use more complex physical processes to obtain a measure of an object with respect to the `fixed' earth.
 Absolute angular velocity can be infered by measuring the coriolis force induced on a vibrating element due to the rotational energy of the earth \cite{konno1996}.
 A geophone uses a moving magnet or moving coil arrangement to generate \backemf/ from the motion of an inertial mass \cite{oome2009-saa} from which absolute velocity can be calculated.
-This process is limited in the low frequency by the resonance frequency of the inertial mass and the in the upper frequency by the roll-off of the frequency response.
+This process is limited in the low frequency by the resonance frequency of the inertial mass and in the high frequency by the roll-off of the frequency response.
 Absolute translational velocity can be estimated by integrating a measured acceleration; this technique (which is used in the experimental apparatus) is discussed in the next section.
 
 \subsubsection{Acceleration sensors}
@@ -410,6 +410,9 @@ An alternative is the use of `drift-free' integrators \cite{gavin1998}, in which
 As an alternative, low frequency velocity signals can be estimated by differentiating a displacement measurement.
 If the displacement sensor is fixed to a fixed inertial reference frame, then this estimate may be combined with an integrated accelerometer measurement to obtain a more accurate estimate of the velocity \cite{bennett2007}.
 However, if relative displacement is measured between two coupled systems (as often the case for vibration isolation) then this technique does not capture the absolute velocity. (\Eg, with reference to \figref{simple-isolation}, the signal $\gp{\velMass-\velBase}$ is being estimated, not $\velMass$.)
+
+Recently, \textcite{williams2009} showed a filter system designed to estimate absolute velocity from accelerometer measurements in order to implement skyhook damping.
+With the addition of a small higher frequency resonance, their filter was able to add damping to and shift the resonance peak into the lower frequencies; unfortunately, this research was published after experimental measurements for this thesis had completed and their ideas were not able to be tested in the apparatus discussed in this section.
 
 
 \subsection{Translational effects of the rotating beam}
