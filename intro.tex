@@ -902,32 +902,6 @@ It is believed that high-powered electromagnets were required for this design; w
 
 
 
-\subsection{(Quasi--)infinite stiffness systems}
-\seclabel{infstiff}
-
-This small section covers an area of research commonly cited in the field.
-A swath of papers have been published by Mizuno over the years
-\cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}.
-
-Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
-publications) talk about using a combination of a positive and
-negative stiffness springs to achieve affects like
-\begin{dmath*}[compact]
-  k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty
-  \condition{when $ k_2 = -k_1 $.}
-\end{dmath*}
-
-\textcite{xing2005} formalises this idea in their paper.
-The work was extended by \textcite{hoque2006} for three \dof/ vibration control using the same ideas.
-The term `infinite stiffness' is perhaps unfortunate, as it's not true in any useful sense of the term.
-That is, their static behaviour converges to something that looks like infinite stiffness, but \emph{dynamically} they're the same as any other structure.
-This is because the negative spring in combination must be stabilised somehow, and this stabilisation removes the nice property of summing to zero with the other stiffness in the system.
-
-\textcite{mizuno2003c} present a modified version of the idea, whereby rather than using magnetic springs in attraction, as in their other work, this paper looks at using a voice coil actuator with designed negative stiffness.
-A controller must be used to obtain this negative stiffness.
-
-
-
 \subsection{Nonlinear systems, especially those related to magnetic forces}
 
 A very recent and comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
@@ -1083,6 +1057,32 @@ Maximum frequency and amplitude of the response increase with both greater input
 When compared to the linear response of stiffness equivalent to the maximum stiffness reached by the white noise input, the linear system response is \emph{smaller} than the \qzs/ response.
 This restricts the applications for vibration isolation of using nonlinear springs to achieve low resonance frequencies: only when it becomes infeasible to decrease the stiffness of a conventional linear system any further should a nonlinear system be chosen instead.
 Conversely, the broader peak of a hardening spring has been shown to be useful for energy harvesting purposes, especially for wandering narrowband excitation \cite{ramlan2009-nd}.
+
+
+
+\subsection{(Quasi--)infinite stiffness systems}
+\seclabel{infstiff}
+
+This small section covers an area of research commonly cited in the field.
+A swath of papers have been published by Mizuno over the years
+\cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}.
+
+Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
+publications) talk about using a combination of a positive and
+negative stiffness springs to achieve affects like
+\begin{dmath*}[compact]
+  k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty
+  \condition{when $ k_2 = -k_1 $.}
+\end{dmath*}
+
+\textcite{xing2005} formalises this idea in their paper.
+The work was extended by \textcite{hoque2006} for three \dof/ vibration control using the same ideas.
+The term `infinite stiffness' is perhaps unfortunate, as it's not true in any useful sense of the term.
+That is, their static behaviour converges to something that looks like infinite stiffness, but \emph{dynamically} they're the same as any other structure.
+This is because the negative spring in combination must be stabilised somehow, and this stabilisation removes the nice property of summing to zero with the other stiffness in the system.
+
+\textcite{mizuno2003c} present a modified version of the idea, whereby rather than using magnetic springs in attraction, as in their other work, this paper looks at using a voice coil actuator with designed negative stiffness.
+A controller must be used to obtain this negative stiffness.
 
 
 
