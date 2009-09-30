@@ -602,8 +602,13 @@ The cross-section of introductory concepts and literature shown in this section 
 
 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Magnetics}
 \seclabel{magnets-explore}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 This section composes a general overview of the applications of magnetic fields: 
 \begin{description}
@@ -612,10 +617,9 @@ Introducing the underlying mechanisms and showing (non-exhaustive) examples in t
 \item[\Secref{magnetsforces-apps}]
 Looking at some more specific cases, magnetic positioners and movers are discussed (\ie, using magnetic forces to cause things to move): \maglev/ trains, single and multi \dof/ bearings, and other uses that directly use the forces produced from magnetic fields in generally translational \dof/s.
 \item[\Secref{earnshaw}]
-Magnetic levitation (\ie, using forces to prevent things from moving); its impossibility and exceptions to that restriction.
-\item[\Secref{magnetsisolation-apps}]
-The literature of vibration isolation platforms with magnetic forces.
+Magnetic levitation (\ie, using forces to support things that aren't moving); its impossibility and exceptions to that restriction.
 \end{description}
+The chapter then concludes with a section on intersection of magnetic devices and vibrations.
 
 
 \subsection{The world of magnetic applications}
@@ -851,8 +855,11 @@ Eh.
 The negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001}.
 
 
-\subsection{Magnetic vibration isolation}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Magnetic vibration isolation}
 \seclabel{magnetsisolation-apps}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
 
 \textcite{puppin2002} published a paper that most plainly demonstrates that magnetic springs can be used for vibration isolation, in which the authors make no attempt to achieve contactless suspension—the magnets are horizontally constrained in guides.
 Furthermore, the springs are only used as passive isolators for vibrations in the vertical direction; no active control is used.
@@ -868,12 +875,34 @@ The control system used was quite advanced, utilising a combination of two indep
 The magnetic actuator design is not described, however.
 It is believed that high-powered electromagnets were required for this design; with the current availability of cheap rare-earth magnets, a more efficient design is now possible.
 
+\subsection{(Quasi--)infinite stiffness systems}
+\seclabel{infstiff}
+
+This small section covers an area of research commonly cited in the field.
+A swath of papers have been published by Mizuno over the years
+\cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}.
+
+Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
+publications) talk about using a combination of a positive and
+negative stiffness springs to achieve affects like
+\begin{dmath*}[compact]
+  k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty 
+  \condition{when $ k_2 = -k_1 $.}
+\end{dmath*}
+
+\textcite{xing2005} formalises this idea in their paper.
+The work was extended by \textcite{hoque2006} for three \dof/ vibration control using the same ideas.
+The term `infinite stiffness' is perhaps unfortunate, as it's not true in any useful sense of the term.
+That is, their static behaviour converges to something that looks like infinite stiffness, but \emph{dynamically} they're the same as any other structure.
+This is because the negative spring in combination must be stabilised somehow, and this stabilisation removes the nice property of summing to zero with the other stiffness in the system.
+
+\textcite{mizuno2003c} present a modified version of the idea, whereby rather than using magnetic springs in attraction, as in their other work, this paper looks at using a voice coil actuator with designed negative stiffness.
+A controller must be used to obtain this negative stiffness.
 
 
-\subsection{Summary of magnetics}
 
 
-\section{Nonlinear systems, especially those related to magnetic forces}
+\subsection{Nonlinear systems, especially those related to magnetic forces}
 
 A very recent and comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
 It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy (\fixme{eg}); in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
@@ -964,7 +993,7 @@ This creates something like a negative quadratic force relationship, which has z
 Analysis of the nonlinear dynamics of such systems such as performed by \textcite{lee2004-jsv,kovacic2008,kovacic2009} can be quite involved and is outside the scope of this research.
 
 
-\subsection{\QZS/ is not zero stiffness}
+\subsubsection{\QZS/ is not zero stiffness}
 \seclabel{qzs-not-zerk}
 
 It has been established that the goal of a `zero stiffness' device is to reduce the resonance frequency of the system to as low a value as possible.
@@ -1028,27 +1057,8 @@ This restricts the applications for vibration isolation of using nonlinear sprin
 Conversely, the broader peak of a hardening spring has been shown to be useful for energy harvesting purposes, especially for wandering narrowband excitation \cite{ramlan2009-nd}.
 
 
-\subsection{(Quasi--)infinite stiffness systems}
-\seclabel{infstiff}
 
-This small section covers an area of research commonly cited in the field.
-A swath of papers have been published by Mizuno over the years
-\cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}.
+\subsection{Summary of magnetics}
 
-Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
-publications) talk about using a combination of a positive and
-negative stiffness springs to achieve affects like
-\begin{dmath*}[compact]
-  k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty 
-  \condition{when $ k_2 = -k_1 $.}
-\end{dmath*}
 
-\textcite{xing2005} formalises this idea in their paper.
-The work was extended by \textcite{hoque2006} for three \dof/ vibration control using the same ideas.
-The term `infinite stiffness' is perhaps unfortunate, as it's not true in any useful sense of the term.
-That is, their static behaviour converges to something that looks like infinite stiffness, but \emph{dynamically} they're the same as any other structure.
-This is because the negative spring in combination must be stabilised somehow, and this stabilisation removes the nice property of summing to zero with the other stiffness in the system.
-
-\textcite{mizuno2003c} present a modified version of the idea, whereby rather than using magnetic springs in attraction, as in their other work, this paper looks at using a voice coil actuator with designed negative stiffness.
-A controller must be used to obtain this negative stiffness.
 
