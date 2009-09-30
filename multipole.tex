@@ -10,7 +10,7 @@
   a little funny, and inconclusive. I use the theory introduced in \chapref{magnet-theory}
   to investigate the forces between multiple arrays which are composed of
   magnets with rotating polarisations; this approximates a magnet with sinusoidal
-  polarisation. The amount of discretisation and the spatial wavelength of 
+  polarisation. The amount of discretisation and the spatial wavelength of
   magnetisation of the arrays both influence the resulting forces.
 }
 
@@ -86,7 +86,7 @@ the magnetisation in the facing direction: ${\hat M}_{z_2} = -\hat M_z$.
 \subsection{Simple arrays}
 
 To begin, the simple arrays are examined and the vertical forces between two
-facing arrays solved statically for a range of displacements. 
+facing arrays solved statically for a range of displacements.
 
 For opposing homogeneous arrays, equivalent to a single magnet, the
 magnetisations do not vary:
@@ -234,7 +234,7 @@ over a smaller range.
    \centering
    \grf{Simulations/Magnet_arrays/Halbach_pitch/eps/vary-magnets-3}
    \grf{Simulations/Magnet_arrays/Halbach_pitch/eps/vary-wavelength-3}
-   \caption{Old ANSYS plots. First has wavelength as twice the height. 
+   \caption{Old ANSYS plots. First has wavelength as twice the height.
    Second has four magnets per wavelength.}
    \figlabel{ansys}
 \end{figure}
@@ -251,11 +251,11 @@ Taking another look at Paden's paper, I realised I had the Fourier expansion
 of the magnetisation all wrong in my MATLAB simulations for such square wave
 magnetisation in multipole arrays (the results of which were funny and which
 hadn't been used for anything). Fixing this up (see page~112 of my workbook),
-the graphs now match up with FEA pretty well. 
+the graphs now match up with FEA pretty well.
 \begin{dmath*} P_y =
 \frac{4B_r}{\pi^2\permVac}\sum^\infty_{n=1,3,5,\dots} \frac{1}{n^2}\exp(-k_n
-g)\gp{1-\exp(-k_n d)}^2 
-\end{dmath*} 
+g)\gp{1-\exp(-k_n d)}^2
+\end{dmath*}
 The results are shown in
 \figref{square-magnetisation-comparison}, but are not compared to a magnetic
 nodes solution because at this stage I'm happy enough with this graph.
@@ -263,8 +263,8 @@ nodes solution because at this stage I'm happy enough with this graph.
 \begin{figure}
    \centering
    \grf{Simulations/Magnet_arrays/Halbach_pitch/eps/square-magnetisation-comparison}
-   \caption{Comparison between analytical and FEA solutions to two repulsive 
-   eight magnet multipole arrays with half-inch cube magnets alternating 
+   \caption{Comparison between analytical and FEA solutions to two repulsive
+   eight magnet multipole arrays with half-inch cube magnets alternating
    in magnetisation.}
    \figlabel{square-magnetisation-comparison}
 \end{figure}
@@ -301,10 +301,10 @@ sinusoidally magnetised plates.  Main features of the work:
   that is, varying sinusoidally with \z, magnetised in the same
   direction as the gap;
 \item magnetisation of the second plate is phase shifted, possibly,
-  with an offset: 
-  \begin{dmath} 
-    \magM_2 = (0, 0, \overline M\Cos{k(y-y_0)}).  
-  \end{dmath} 
+  with an offset:
+  \begin{dmath}
+    \magM_2 = (0, 0, \overline M\Cos{k(y-y_0)}).
+  \end{dmath}
 \end{enumerate}
 
 To get the forces between them, we start off by looking at the
@@ -450,7 +450,7 @@ thick, that is two magnet widths wider than the array itself.
     Nominal energy product & \SI{382}{kJ/m^3} \\
     Intrinsic coercivity   & \SI{875}{kA/m}   \\
     Array height           & \SI{12.7}{mm}    \\
-    Array width            & \SI{114.3}{mm} 
+    Array width            & \SI{114.3}{mm}
                              ($9\times\SI{12.7}{mm}$) \\
     Array depth            & \SI{21.3}{mm}    \\
     Former depth           & \SI{1.6}{mm}     \\

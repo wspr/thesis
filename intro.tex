@@ -180,7 +180,7 @@ The dynamic response of the isolated mass is
 \end{dmath}.
 First assume that there is no input force; taking the Laplace tranform and rearranging produced the transmissibility $\transmissibility$ of the system in the frequency domain:
 \begin{dmath}[compact,label=simple-isolation-freq]
-  \transmissibility = \frac{\laplaceMass}{\laplaceBase} = 
+  \transmissibility = \frac{\laplaceMass}{\laplaceBase} =
   \frac{\ii\freq\dampingRel + \stiffnessRel}
   {-\massMass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
@@ -190,7 +190,7 @@ A force sensor can also be used for feedback purposes, but this yields results f
 Absolute velocity $\velMass$ and absolute displacement $\dispMass$ of the mass can be estimated by integrating the acceleration, and for completeness we also consider the relative acceleration between the mass and the base ($\accMass-\accBase$) as a possible signal for feedback control.
 The generalised feedback force can then be represented by
 \begin{dmath}
- \forceIn = 
+ \forceIn =
    \gainDisp\gp{\dispMass-\dispBase} +
    \gainVel \gp{\velMass -\velBase}  +
    \gainAcc \gp{\accMass -\accBase}  +
@@ -212,7 +212,7 @@ Substituting this force equation into \eqref{simple-isolation} yields
 \end{dmath}.
 The transfer function between base and mass displacement for this generalised feedback case is
 \begin{dmath}[label=tf-genfeedback]
-  \frac\laplaceMass\laplaceBase = 
+  \frac\laplaceMass\laplaceBase =
 \frac{\gainDisp+\stiffness+s \gp{\damping+\gainVel+\gainAcc s}}{\gp{\gainAcc+\gainSkymass+\mass} s^2+\gp{\damping+\gainSkyhook+\gainVel} s+\gainDisp+\gainSkyspring+\stiffness}
 \end{dmath}.
 From \eqref{isolation-feedback} it can be seen that there is an exact equivalence between the feedback gains of three of the different signals and a corresponding physical parameter of the system.
@@ -284,29 +284,29 @@ In both cases the resonance peak is lowered; the relative velocity feedback corr
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-vel}\hfil
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-sky}
    \end{wide}
-   \caption{Relative and absolute velocity feedback control on the 
+   \caption{Relative and absolute velocity feedback control on the
    system shown in \figref{simple-isolation}.}
    \figlabel{vel-vs-sky}
 \end{figure}
 
 Velocity feedback is stable for
 \begin{dmath}
-  \damping+\gainSkyhook+\gainVel \pm 
+  \damping+\gainSkyhook+\gainVel \pm
     \Real{\sqrt{\gp{\damping+\gainSkyhook+\gainVel}^2-4 \stiffness \mass}}>0
 \end{dmath},
 which is true for $\gainSkyhook+\gainVel>-\damping$.
 While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
 Active damping reduction has been performed to aid the efficiency of vibration neutralisers \cite{kidner1998}.
 
-The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases. 
+The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases.
 This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS\ transmissiblity has a local minimum whereas the absolute feedback case continuously decreases.
 It is clear in the ideal case that skyhook damping is more efficacious at reducing the total vibration of a system.
 (The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/rms-transmissibility}
-   \caption{\RMS\ transmissibility versus feedback gain of relative and 
-   absolute velocity feedback control on the system shown in 
+   \caption{\RMS\ transmissibility versus feedback gain of relative and
+   absolute velocity feedback control on the system shown in
    \figref{simple-isolation}.}
    \figlabel{rms-transmissibility}
 \end{figure}
@@ -408,7 +408,7 @@ Adaptive vibration control in six degrees of freedom for broadband noise has als
 \paragraph{Optimal control}
 
 \textcite{balandin1998} review the field of optimal control as applied to shock and vibration isolation problems.
-\note{Their comment that the \enquote{number of papers is so great that there is little incentive to discuss them here} does not bode well for any attempts by me to even summarise their review.} 
+\note{Their comment that the \enquote{number of papers is so great that there is little incentive to discuss them here} does not bode well for any attempts by me to even summarise their review.}
 They differentiate shock and vibration isolation succintly:
 \begin{quote}
 The operating quality of shock isolators is usually described in terms of certain characteristics of the transient motion of the body being isolated, whereas the quality of vibration isolators is determined by the characteristics of steady-state forced oscillations.
@@ -435,13 +435,13 @@ Leave the heuristic approaches to systems that cannot be modelled (or even simul
 
 While skyhook damping has been introduced above in \secref{skyhook-intro} as force feedback proportional to the absolute velocity of the base, others have considered the case where the influence of the ground velocity is actively reduced. In both cases, the ratio of the influence of mass velocity to base velocity is being increased. In the ideal sense, the dynamic equation of motion
 \begin{dmath}
-  \massMass\accMass + \dampingRel\gp{\velMass-\velBase} + 
+  \massMass\accMass + \dampingRel\gp{\velMass-\velBase} +
     \stiffness\gp{\dispMass-\dispBase} = \forceIn
 \end{dmath}
 can be transformed into
 \begin{dmath}
-  \massMass\accMass + \dampingRel\velMass + 
-    \stiffness(\dispMass-\dispBase) = 0  
+  \massMass\accMass + \dampingRel\velMass +
+    \stiffness(\dispMass-\dispBase) = 0
 \end{dmath}.
 The adaptive sliding mode approach used by \textcite{zuo2004} was targetted towards vehicle suspension, in which ground vibration cannot be measured.
 Sliding mode techniques has been recently shown to be more effective than classical techniques for an example of vehicle suspension control \cite{dong2009}.
@@ -477,11 +477,11 @@ These tend to be inertial electromagnetic actuators, also known as `proof-mass' 
 This is shown schematically in \figref{vibration-absorb}.
 
 \begin{figure}
-   \asyfig{Systems/vibration-inertial} 
-   \caption{An inertial force $\forceAbsorb$ designed to reduce the vibration 
+   \asyfig{Systems/vibration-inertial}
+   \caption{An inertial force $\forceAbsorb$ designed to reduce the vibration
    response $\dispMass$ due to disturbance $\dispBase$.
-   The inertial actuator 
-   has dynamics of its own ($\stiffnessAbsorb$, $\dampingAbsorb$) that 
+   The inertial actuator
+   has dynamics of its own ($\stiffnessAbsorb$, $\dampingAbsorb$) that
    influence the overall vibration of the structure.}
    \figlabel{vibration-absorb}
 \end{figure}
@@ -506,7 +506,7 @@ These self-sensing devices (perhaps obviously, since the \backemf/ is such a noi
 
 One method of reducing vibration on a supported mass is to attach a supplementary mass that resonanates in concert with the disturbance; this has the effect of adding an anti-resonance to the original system at the frequency of interest.
 These are known under various names as `tuned mass dampers', `vibration neutralisers', `dynamic vibration absorbers', and so on.
-  \note{No effort has been made to compile an exhaustive list.} 
+  \note{No effort has been made to compile an exhaustive list.}
 The descriptions involving such terms as `damper' and `absorber' are not strictly accurate on the grounds that these devices do not act as energy dissipators; rather, they direct energy into a subsystem for which continuous disturbance is not undesirable.
 In this thesis, the term `\vibneut/' is used, following \textcite{kidner1998} and others.
 
@@ -612,7 +612,7 @@ The cross-section of introductory concepts and literature shown in this section 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 
-This section composes a general overview of the applications of magnetic fields: 
+This section composes a general overview of the applications of magnetic fields:
 \begin{description}
 \item[\Secref{magnetic-apps}]
 Introducing the underlying mechanisms and showing (non-exhaustive) examples in the literature of interesting or novel uses of magnets and magnetic fields.
@@ -645,8 +645,8 @@ Uniform & Zeeman splitting & Magnetic resonance imaging \\
 & Hall effect, magnetoresistance & Sensors, read-heads \\
 & Force on conductor & Dynamic Motors, actuators, loudspeakers \\
 & Induced emf & Generators, microphones \\
-Nonuniform & Force on charged particles & Beam control, 
-radiation sources %(microwave, ultra-violet; X-ray) 
+Nonuniform & Force on charged particles & Beam control,
+radiation sources %(microwave, ultra-violet; X-ray)
 \\
 & Force on magnet & Bearings, couplings, Maglev \\
 & Force on paramagnet & Mineral separation \\
@@ -656,7 +656,7 @@ Time varying & Varying field & Dynamic Magnetometers \\
 \bottomrule
 \end{tabular}
 \end{wide}
-\caption{Applications of permanent magnet materials, 
+\caption{Applications of permanent magnet materials,
 adapted from \textcite{coey2002}.}
 \tablabel{magnet-applications}
 \end{table}
@@ -669,7 +669,7 @@ For example, noncontact sensing of material properties that involve variable con
 
 Medical uses:
 \begin{itemize}
-\item 
+\item
 Brain imaging \cite{sekino2005,gjini2005,lu2008-ietm,demachi2008}
 \item
 Measurements of the health of the heart \cite{lim2009-ietm}.
@@ -683,7 +683,7 @@ Six \dof/ remote localisation within the human body \cite{yang2009-ietm}.
 
 Robotics:
 \begin{itemize}
-\item 
+\item
 I don't know if I care, but \textcite{vanwest2007} created a haptic interface for manuipulating small objects with magnetic levitation.
 \item
 Wireless motion capture device \cite{hashi2005}.
@@ -908,7 +908,7 @@ Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
 publications) talk about using a combination of a positive and
 negative stiffness springs to achieve affects like
 \begin{dmath*}[compact]
-  k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty 
+  k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty
   \condition{when $ k_2 = -k_1 $.}
 \end{dmath*}
 
@@ -932,7 +932,7 @@ Interesting results have been shown using nonlinear springs to attach the vibrat
 \fixme{Why would you do this?!}
 
 \textcite{mann2008} performed a preliminary investigation into the use of a nonlinear vibration mount for energy harvesting, using a magnetic suspension of repulsive magnets to create a Duffing-like oscillator.
-Large damping ensured that the nonlinear regimes were only realised at large excitation amplitudes, but the idea is that highly nonlinear resonances have a much broader resonance peak through the higher branch around the jump phenomenon. 
+Large damping ensured that the nonlinear regimes were only realised at large excitation amplitudes, but the idea is that highly nonlinear resonances have a much broader resonance peak through the higher branch around the jump phenomenon.
 \fixme{reference this elsewhere}
 
 A similar idea is explored by \textcite{shahruz2008} for an energy scavenging cantilever beam that uses an arrangement of attracting magnets to shape the force characteristic of the response.
@@ -1028,12 +1028,12 @@ Most obviously, the shape of the frequency response is not independent of the am
 
 Consider the stable single \dof/ system
 \begin{dmath}
-m \ddot x + b \dot x + \stiffnessDuffing (x+s)^3 = 0, 
+m \ddot x + b \dot x + \stiffnessDuffing (x+s)^3 = 0,
 \end{dmath}
 where $s$ is an induced displacement disturbance.
 At the operating position $x=0$, the nonlinear spring stiffness is $3kx^2|_{x=0}=0$.
 For a disturbance $s$, the spring is perturbed and generates a reaction force of $ks^3$ on the mass.
-The stiffness here is $3ks^2$; \ie, dependent on the amplitude of disturbance. 
+The stiffness here is $3ks^2$; \ie, dependent on the amplitude of disturbance.
 The ramifications of this nonlinear force on the vibratory response of the system are not exactly straightforward.
 
 \textcite{tentor2001} analysed a spring generated by repulsion magnets which behaved as a Duffing oscillator for large amplitude vibrations.
@@ -1051,7 +1051,7 @@ Rather than perform a nonlinear analysis on the system above (which is known in 
 (The transfer function is not examined because it removes nonlinear components of the original signals.)
 The results are compared with the system
 \begin{dmath}
-m \ddot x + b \dot x + k_{\text{lin}}(x+s) = 0, 
+m \ddot x + b \dot x + k_{\text{lin}}(x+s) = 0,
 \end{dmath}
 which has a linear stiffness $k_{\text{lin}}=3kS^2$ equivalent to the stiffness of the nonlinear spring at the variance displacement.
 

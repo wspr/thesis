@@ -181,85 +181,85 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 % See <http://groups.google.com/group/comp.text.tex/msg/4111d98fc7627748?dmode=source>
 %%%%%%%%%%%%%%%%%%%%%%%%
-%%% page check for even/odd 
-% Stolen from komascript. 
-\def\mh@newevenodd@label@nn#1#2{% 
-   \expandafter\gdef\csname mh@evenodd@#1\endcsname{#2}% 
-} 
+%%% page check for even/odd
+% Stolen from komascript.
+\def\mh@newevenodd@label@nn#1#2{%
+   \expandafter\gdef\csname mh@evenodd@#1\endcsname{#2}%
+}
 
-\def\mh@getevenodd@n #1{% 
-   \@ifundefined{mh@evenodd@#1}{\value{page}}% 
-   {\@nameuse{mh@evenodd@#1}}} 
-\def\mh@evenodd{0} 
-\DeclareRobustCommand\IfOddPageTF{% 
-   \begingroup 
-   \@tempcnta=\mh@evenodd\relax 
-   \advance\@tempcnta by\@ne 
-   \xdef\mh@evenodd{\the\@tempcnta}% 
-   \@bsphack 
-   \protected@write\@auxout{}{% 
-     \string\mh@newevenodd@label@nn{\mh@evenodd}{\noexpand\the\value{page}}}% 
-   \@esphack 
-   \count@\mh@getevenodd@n{\mh@evenodd}\relax 
-   \expandafter\endgroup 
-   \ifodd\count@ 
-     \expandafter\@firstoftwo 
-   \else 
-     \expandafter\@secondoftwo 
-   \fi 
-} 
+\def\mh@getevenodd@n #1{%
+   \@ifundefined{mh@evenodd@#1}{\value{page}}%
+   {\@nameuse{mh@evenodd@#1}}}
+\def\mh@evenodd{0}
+\DeclareRobustCommand\IfOddPageTF{%
+   \begingroup
+   \@tempcnta=\mh@evenodd\relax
+   \advance\@tempcnta by\@ne
+   \xdef\mh@evenodd{\the\@tempcnta}%
+   \@bsphack
+   \protected@write\@auxout{}{%
+     \string\mh@newevenodd@label@nn{\mh@evenodd}{\noexpand\the\value{page}}}%
+   \@esphack
+   \count@\mh@getevenodd@n{\mh@evenodd}\relax
+   \expandafter\endgroup
+   \ifodd\count@
+     \expandafter\@firstoftwo
+   \else
+     \expandafter\@secondoftwo
+   \fi
+}
 
-%%% 
-% recall the boxes can't be 0pt, otherwise TeX might put it on a 
-% separate line so we make them almost 0pt. 
-\def\mh@print@in@outer@margin#1{% 
-   \if@twoside 
-     \IfOddPageTF 
+%%%
+% recall the boxes can't be 0pt, otherwise TeX might put it on a
+% separate line so we make them almost 0pt.
+\def\mh@print@in@outer@margin#1{%
+   \if@twoside
+     \IfOddPageTF
        {\makebox[1sp][l]{%
         \hspace{\tagmarginsep}%
-        \makebox[\marginparwidth][c]{#1}}}% 
+        \makebox[\marginparwidth][c]{#1}}}%
        {\makebox[1sp][r]{%
         \makebox[\marginparwidth][c]{#1}%
         \hspace{\textwidth}%
-        \hspace{\tagmarginsep}}}% 
-   \else 
+        \hspace{\tagmarginsep}}}%
+   \else
      {\makebox[1sp][l]{%
         \hspace{\tagmarginsep}%
-        \makebox[\marginparwidth][c]{#1}}}% 
-   \fi 
-} 
+        \makebox[\marginparwidth][c]{#1}}}%
+   \fi
+}
 % 1sp = 5.363 nanometres, so I think we'll be okay
 
-\newlength\tagmarginsep 
-\setlength\tagmarginsep{\marginparsep} 
-\def\print@eqnum{\mh@print@in@outer@margin{\tagform@\theequation}} 
-\def\make@df@tag@@#1{% 
-   \gdef\df@tag{\mh@print@in@outer@margin 
-     {\maketag@@@{#1}\def\@currentlabel{#1}}}} 
+\newlength\tagmarginsep
+\setlength\tagmarginsep{\marginparsep}
+\def\print@eqnum{\mh@print@in@outer@margin{\tagform@\theequation}}
+\def\make@df@tag@@#1{%
+   \gdef\df@tag{\mh@print@in@outer@margin
+     {\maketag@@@{#1}\def\@currentlabel{#1}}}}
 
-\def\make@df@tag@@@#1{% 
-   \gdef\df@tag{% 
-     \mh@print@in@outer@margin{\tagform@{#1}}% 
-     \toks@\@xp{\p@equation{#1}}% 
-     \edef\@currentlabel{\the\toks@}% 
-   }% 
-} 
+\def\make@df@tag@@@#1{%
+   \gdef\df@tag{%
+     \mh@print@in@outer@margin{\tagform@{#1}}%
+     \toks@\@xp{\p@equation{#1}}%
+     \edef\@currentlabel{\the\toks@}%
+   }%
+}
 
-\def\endmathdisplay@a{% 
-   \if@eqnsw 
-     \gdef\df@tag{% 
-       \mh@print@in@outer@margin{\tagform@\theequation}% 
-     }% 
-   \fi 
-   \if@fleqn \@xp\endmathdisplay@fleqn 
-   \else \ifx\df@tag\@empty \else \veqno \alt@tag \df@tag \fi 
-     \ifx\df@label\@empty \else \@xp\ltx@label\@xp{\df@label}\fi 
-   \fi 
-   \ifnum\dspbrk@lvl>\m@ne 
-     \postdisplaypenalty -\@getpen\dspbrk@lvl 
-     \global\dspbrk@lvl\m@ne 
-   \fi 
-} 
+\def\endmathdisplay@a{%
+   \if@eqnsw
+     \gdef\df@tag{%
+       \mh@print@in@outer@margin{\tagform@\theequation}%
+     }%
+   \fi
+   \if@fleqn \@xp\endmathdisplay@fleqn
+   \else \ifx\df@tag\@empty \else \veqno \alt@tag \df@tag \fi
+     \ifx\df@label\@empty \else \@xp\ltx@label\@xp{\df@label}\fi
+   \fi
+   \ifnum\dspbrk@lvl>\m@ne
+     \postdisplaypenalty -\@getpen\dspbrk@lvl
+     \global\dspbrk@lvl\m@ne
+   \fi
+}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -278,7 +278,7 @@
 \DeclareMathSymbol{9}{0}{letters}{'071}
 
 %%%%%%%%%%%%%
-%! FLOATS 
+%! FLOATS
 \renewcommand{\topfraction}{.8}
 \renewcommand{\bottomfraction}{.3}
 \renewcommand{\textfraction}{.15}
@@ -302,7 +302,7 @@
 
 %% Floats & captions
 \captionnamefont{\scshape}
-%\setlength\captionwidth{0.9\linewidth} 
+%\setlength\captionwidth{0.9\linewidth}
 %\changecaptionwidth
 
 \newcommand\lofcaption[2]{\caption[#1]{#1#2}}
@@ -385,24 +385,24 @@
 \setlength{\headheight}{\baselineskip}
 \setlength{\headwidth}{\textwidth+\marginparsep+0.5\marginparwidth}
 \makepagestyle{wspr}
-\makepsmarks{wspr}{% 
+\makepsmarks{wspr}{%
   \let\@mkboth\markboth%
   \def\chaptermark##1{%
     \markboth{%
-      \if@mainmatter 
+      \if@mainmatter
         \textsc{Chapter \thechapter:} %
       \fi
-      ##1}{##1}}% 
+      ##1}{##1}}%
   \def\sectionmark##1{%
     \markright{%
-      \if@mainmatter 
-        \textsc{\S\thesection:} % 
+      \if@mainmatter
+        \textsc{\S\thesection:} %
       \fi
       ##1}}}
 \makerunningwidth{wspr}{\headwidth}
-\makeheadposition{wspr}{flushright}{flushleft}{}{} 
-\makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark} 
-\makeoddhead{wspr} {\small\rightmark}              {} {\thesispage} 
+\makeheadposition{wspr}{flushright}{flushleft}{}{}
+\makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
+\makeoddhead{wspr} {\small\rightmark}              {} {\thesispage}
 \pagestyle{wspr}
 
 
@@ -424,9 +424,9 @@
   \renewcommand{\precistoctext}[1]{%
     \nobreak
     \begin{quote}
-      \leftskip    = 0cm plus  0.5fil 
-      \rightskip   = 0cm plus -0.5fil 
-      \parfillskip = 0cm plus    1fil 
+      \leftskip    = 0cm plus  0.5fil
+      \rightskip   = 0cm plus -0.5fil
+      \parfillskip = 0cm plus    1fil
       \footnotesize ##1
     \end{quote}
   }
@@ -460,7 +460,7 @@
       \else
         \noindent
       \fi
-      \ignorespaces 
+      \ignorespaces
       {\cftsubsectionfont ##1}~{\cftsubsectionpagefont##2}%
        \let\numberline\oldnumberline\expandafter\ignorespaces
     \fi

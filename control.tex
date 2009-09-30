@@ -48,14 +48,14 @@ with displacement $x_1$, velocity $x_2$, stiffness $\stiffnessLinear$, damping $
 and mass $\mass$. This system can be shown to be stable by defining
 the Lyapunov function
 \begin{dmath}
-  \lyapunov = \half \lyaGainA x_1^2 + \half \lyaGainB x_2^2 
+  \lyapunov = \half \lyaGainA x_1^2 + \half \lyaGainB x_2^2
 \end{dmath},
 and showing that its time derivative is negative semi-definite:
 \begin{dmath}
   \dot\lyapunov
-   = \lyaGainA x_1 \dot x_1 + \lyaGainB x_2 \dot x_2 
-   = -\lyaGainB(\damping/\mass) x_2^2 + 
-      (\lyaGainA-\lyaGainB\stiffnessLinear/\mass) x_1 x_2 
+   = \lyaGainA x_1 \dot x_1 + \lyaGainB x_2 \dot x_2
+   = -\lyaGainB(\damping/\mass) x_2^2 +
+      (\lyaGainA-\lyaGainB\stiffnessLinear/\mass) x_1 x_2
 \end{dmath}.
 The first term here is always negative semi-definite, but the second term is a
 little more ambiguous. One of the arts in Lyapunov functions is to recognise
@@ -70,21 +70,21 @@ A linear spring has equivalent state equation $\dot x = -\stiffnessLinear x$.
 To show stability, the Lyapunov function $L=\half x^2$ with derivative $\dot L
 = x \dot x$ is used here and below:
 \begin{dmath}
-  \dot L = x \dot x = -\stiffnessLinear x^2 \le 0 \forall x .  
+  \dot L = x \dot x = -\stiffnessLinear x^2 \le 0 \forall x .
 \end{dmath}
 
 A quadratic spring (for example, as created in a zero stiffness
 magnetic system) is only stable for $x<0$:
 \begin{dmath}
   \dot x = \stiffnessQuad x^2 , \\
-  \dot L = x \dot x = \stiffnessQuad x^3 \le 0 \text{~for~} x\le 0 .  
+  \dot L = x \dot x = \stiffnessQuad x^3 \le 0 \text{~for~} x\le 0 .
 \end{dmath}
 
 On the other hand, a cubic spring (a zero stiffness mechanical spring)
 is stable:
 \begin{dmath}
   \dot x = -\stiffnessDuffing x^3 , \\
-  \dot L = x \dot x = -\stiffnessDuffing x^4 \le 0 \forall x .  
+  \dot L = x \dot x = -\stiffnessDuffing x^4 \le 0 \forall x .
 \end{dmath}
 
 \fixme{draw accompanying graphs}
@@ -96,15 +96,15 @@ quasi-zero stiffness in all degrees of freedom. Could a virtual cubic
 stiffness be applied with a controller to stabilise this system while
 ensuring quasi-zero stiffness? The state equation is
 \begin{dmath}
-  \dot x = \stiffnessQuad x^2 -\stiffnessDuffing x^3 
+  \dot x = \stiffnessQuad x^2 -\stiffnessDuffing x^3
 \end{dmath}
 with $\stiffnessQuad > 0$ and $\stiffnessDuffing$ freely able to be
 chosen in the control law. The derivative of the Lyapunov function is
 \begin{dmath}
-  \dot L  = \stiffnessQuad x^3 -\stiffnessDuffing x^4 
+  \dot L  = \stiffnessQuad x^3 -\stiffnessDuffing x^4
           = x^2 \gp{\stiffnessQuad x -\stiffnessDuffing x^2} .
 \end{dmath}.
-Since $x^2\ge0$, for stability 
+Since $x^2\ge0$, for stability
 \begin{dmath}[compact]
   \stiffnessQuad x -\stiffnessDuffing x^2 \le 0
   \implies x\gp{\gamma-x} \le 0
@@ -117,7 +117,7 @@ the controller can have the effect of moving this global maxima below zero.
 The state equation now contains the augmenting linear term
 $\stiffnessLinear$ that can also be freely chosen in the control law:
 \begin{dmath}
-  \dot x = -\stiffnessLinear x + \stiffnessQuad x^2 - \stiffnessDuffing x^3. 
+  \dot x = -\stiffnessLinear x + \stiffnessQuad x^2 - \stiffnessDuffing x^3.
 \end{dmath}
 Similarly to before (\fixme{crossref??}), for stability
 \begin{dmath}
@@ -304,7 +304,7 @@ load-bearing, direction is stable.
 \begin{figure}[p]
   \begin{subfigure}
     \grf{Active2006/work/eps/active-vrepl-kz}
-    \caption{Vertical stiffness (stable).\figlabel{K-V-repl-Z}}  
+    \caption{Vertical stiffness (stable).\figlabel{K-V-repl-Z}}
   \end{subfigure}
   \hfill
   \begin{subfigure}
@@ -333,13 +333,13 @@ large design space is possible with appropriately chosen parameters.
 \begin{figure}[p]
   \begin{subfigure}
     \grf{Active2006/work/eps/active-vzerok-kz}
-    \caption{Stiffness in the vertical direction 
+    \caption{Stiffness in the vertical direction
      (stable for negative displacements).\figlabel{K-V-zerok-Z}}
    \end{subfigure}
   \hfill
   \begin{subfigure}
     \grf{Active2006/work/eps/active-vzerok-ky}
-    \caption{Stiffnesses in the horizontal directions 
+    \caption{Stiffnesses in the horizontal directions
      (stable for positive displacements).\figlabel{K-V-zerok-Y}}
   \end{subfigure}
   \caption{Stiffnesses of the zero stiffness spring (\figref{spring-vcomb}).}
@@ -352,7 +352,7 @@ large design space is possible with appropriately chosen parameters.
     \caption{Force/displacement curves for the magnetic arrangement shown
         in \figref{spring-vcomb}. 20\,mm cube magnets
         are used with various gaps.
-        \figlabel{active-zerok-fxrange}}  
+        \figlabel{active-zerok-fxrange}}
   \end{subfigure}
   \par
   \begin{subfigure}
@@ -360,7 +360,7 @@ large design space is possible with appropriately chosen parameters.
     \caption{Supporting force/gap curves for various magnet sizes
      at zero displacement. In each case, the gap range is 1--2 magnet dimensions.
      Increasing force results from increasing magnet size.
-     \figlabel{active-zerok-fgap}}   
+     \figlabel{active-zerok-fgap}}
   \end{subfigure}
      \caption{Dependence of the supporting force on geometry of the
        zero stiffness spring.}
@@ -422,13 +422,13 @@ design for a linear controller might proceed from here by (Jacobian)
 linearisation around the operating point; linear stiffness $k =
 \partial F/\partial x |_{x=0}$. This linearised system in state space form is
 \begin{dmath}[label=linearised-dynamics]
-\inlinematr{ \ddot x ; 
-              \dot x } = \inlinematr{ 0 , 0 ; 
-                                      1 , 0 } 
-                         \inlinematr{ \dot x ; 
+\inlinematr{ \ddot x ;
+              \dot x } = \inlinematr{ 0 , 0 ;
+                                      1 , 0 }
+                         \inlinematr{ \dot x ;
                                       x      }
-                       + \inlinematr{ 1/m ; 
-                                      0   } u 
+                       + \inlinematr{ 1/m ;
+                                      0   } u
 \end{dmath}.
 A standard linear controller designed around this model fails to
 stabilise the actual system robustly, due to the large gains that
@@ -494,7 +494,7 @@ The approximate nonlinear system dynamics for the zero stiffness
 spring may be written in the following form:
 \begin{dgroup}
 \begin{dmath}[label=xdot]
-\dot \x = \y  
+\dot \x = \y
 \end{dmath},
 \begin{dmath}
 \dot \y = k\xv^2 + u
@@ -531,22 +531,22 @@ is negative definite:
 The virtual state error term, $\z=\y-\yy$, is now
 \begin{dgroup}
   \begin{dmath*}
-    \z = \y+\cc\x 
+    \z = \y+\cc\x
   \end{dmath*} ,
   \begin{dmath*}
-    \dot\z = k\xv^2+u+\cc\y 
+    \dot\z = k\xv^2+u+\cc\y
   \end{dmath*} .
 \end{dgroup}
 Backstepping one integrator to incorporate $\dot\z$, and hence the
 input $u$, a second control Lyapunov function is defined:
 \begin{dgroup}
   \begin{dmath}
-    V_2  \eqdef V_1 + \half\z^2 
+    V_2  \eqdef V_1 + \half\z^2
   \end{dmath},
   \begin{dmath}
-    \dot V_2 = \dot V_1 + \z\dot\z 
-             = \group{\x\z + \x\yy} + \z\group{ u+k\xv^2+\cc\y } 
-             = -\cc\x^2 + \z\group{ u+\x+k\xv^2+\cc\y } 
+    \dot V_2 = \dot V_1 + \z\dot\z
+             = \group{\x\z + \x\yy} + \z\group{ u+k\xv^2+\cc\y }
+             = -\cc\x^2 + \z\group{ u+\x+k\xv^2+\cc\y }
   \end{dmath}.
 \end{dgroup}
 The simplest route to stability is taken when the nonlinearities
@@ -593,13 +593,13 @@ identical closed loop dynamics (\eqref{cl-dynamics}). Referring to
   U_2 = -mx\group{\cc\d+1} - m\dot x\group{\cc+\d}-\Q\xv^2
 \end{dmath},
 \begin{dmath}[label=controller2]
-  U_1 = \underbrace{ 
+  U_1 = \underbrace{
           -mx\group{\cc\d+1} - m\dot x\group{\cc+\d}
         }_{\text{Controller dynamics}}
-        - 
+        -
         \underbrace{
           \q3\xv^3-\q2\xv^2 - \q1\xv
-        }_{\text{Cancelation of open loop dynamics}} 
+        }_{\text{Cancelation of open loop dynamics}}
 \end{dmath}.
 \end{dgroup}
 
@@ -610,11 +610,11 @@ Recall,
 \begin{dmath}
 m\ddot x = K(x-y)^2 + u
 \end{dmath},
-\begin{dmath} 
-u = \{K(x-y)^2\}_{\text{est}} + k_c x + c_c \dot x 
+\begin{dmath}
+u = \{K(x-y)^2\}_{\text{est}} + k_c x + c_c \dot x
 \end{dmath},
 \begin{dmath}
-m\ddot x = e[x,y] + k_c x + c_c \dot x 
+m\ddot x = e[x,y] + k_c x + c_c \dot x
 \end{dmath}.
 \end{dgroup}
 So the final vibration of the support, $x$, is independent of $y$
@@ -701,13 +701,13 @@ response.
 \begin{figure}
 \begin{wide}
   \begin{subfigure}
-    \grf{Active2006/work/eps/active-sim5-disp}    
+    \grf{Active2006/work/eps/active-sim5-disp}
     \caption{Vertically repelling spring.\figlabel{active-sim5-disp}}
   \end{subfigure}
   \hfill
   \begin{subfigure}
     \grf{Active2006/work/eps/active-sim2-disp}
-    \caption{Zero stiffness spring.\figlabel{active-sim2-disp}}  
+    \caption{Zero stiffness spring.\figlabel{active-sim2-disp}}
      \end{subfigure}
   \end{wide}
   \caption{Displacement traces of the floating magnet and the base
@@ -721,14 +721,14 @@ response.
 \begin{wide}
   \begin{subfigure}
     \grf{Active2006/work/eps/active-sim5-force}
-    \caption{Vertically repelling spring (control 
-     force $U_1$ in \eqref{controller2}).\figlabel{active-sim5-force}}  
+    \caption{Vertically repelling spring (control
+     force $U_1$ in \eqref{controller2}).\figlabel{active-sim5-force}}
   \end{subfigure}
   \hfill
   \begin{subfigure}
     \grf{Active2006/work/eps/active-sim2-force}
-    \caption{Zero stiffness spring (control force 
-     $U_2$ in \eqref{controller1}).\figlabel{active-sim2-force}}    
+    \caption{Zero stiffness spring (control force
+     $U_2$ in \eqref{controller1}).\figlabel{active-sim2-force}}
   \end{subfigure}
   \end{wide}
   \caption{Force traces for the two active springs with the lowest
@@ -1032,9 +1032,9 @@ with stabilising functions\footnote{The notation
 \end{multline}
 \vspace{-2\baselineskip}
 \begin{multline}
-\alpha _2=\varrho _2 \left(-\vartheta _3 x_1^2-\vartheta _2 
+\alpha _2=\varrho _2 \left(-\vartheta _3 x_1^2-\vartheta _2
 x_1-x_1+y-\vartheta _1-x_2 \vartheta _4-c_2z_2\nl
--\left(x_1^4+x_1^2+x_2^2+1\right) \kappa _2 z_2+x_2 \delta 
+-\left(x_1^4+x_1^2+x_2^2+1\right) \kappa _2 z_2+x_2 \delta
 \left(\alpha _1,x_1\right)\right),
 \end{multline}
 \vspace{-2\baselineskip}
@@ -1090,7 +1090,7 @@ function of the gaps between the fixed and floating magnets.
 However, this calibration cannot be performed in open loop, because
 the desired location of the spring is in a position of marginal
 stability; therefore, the controller must be active while the fixed
-magnet positions are adjusted. 
+magnet positions are adjusted.
 
 The first simulation results demonstrate the stability and convergence
 properties of the controller. The system parameters used in this
@@ -1170,8 +1170,8 @@ $\Gamma = \operatorname{diag}(1,0.001,0.0001,1,0.01,0.0001)$
   \hfill
   \begin{subfigure}
     \grf{ICSV14/work/eps/icsv-ideal-params}
-    \caption{Parameter estimates, normalised with their exact values 
-    (that is, $\vartheta_i/\theta_i$, $\beta_2/b_2$, $\rho_i/p_i$ are plotted).\figlabel{converge-params}} 
+    \caption{Parameter estimates, normalised with their exact values
+    (that is, $\vartheta_i/\theta_i$, $\beta_2/b_2$, $\rho_i/p_i$ are plotted).\figlabel{converge-params}}
   \end{subfigure}
   \caption{Example control with system parameters as shown in
     \tabref{params}.}

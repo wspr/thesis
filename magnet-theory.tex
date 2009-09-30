@@ -81,9 +81,9 @@ aligned microscopic orbiting electrons is given by:
 \begin{dmath}
   \vect{J}_m = \curl\magM.
 \end{dmath}
-This is a good beginning for describing the effects of an \emph{external} 
-current density ($\vect{J}$) acting on the magnet. To separate the effects of 
-induced magnetisation and that caused spontaneously by magnetic material, a 
+This is a good beginning for describing the effects of an \emph{external}
+current density ($\vect{J}$) acting on the magnet. To separate the effects of
+induced magnetisation and that caused spontaneously by magnetic material, a
 new term is created: the magnetic field strength, $H$:
 \begin{dmath}
   \vect{J} = \curl\magH.
@@ -112,7 +112,7 @@ fields. The \define{relative permeability} $\permrel$ is the ratio of
 the permeability to $\permVac$.
 \begin{dgroup}
   \begin{dmath}
-    \perm = \frac{B}{H}  
+    \perm = \frac{B}{H}
   \end{dmath},
   \begin{dmath}
     \permrel = \frac{\perm}{\permVac}
@@ -132,7 +132,7 @@ being discontinuous.
    \caption{The magnetic field, $\magB$, both inside and outside a magnet.}
    \figlabel{BHM}
 \end{figure}
- 
+
 This equivalence in air is essentially the reason that there is often
 confusion between $\magB$ and $\magH$. It can be seen that within a magnet,
 however, their relationship is more complex and important. The
@@ -215,10 +215,10 @@ covers permanent magnet design for a wide range of uses.
 
 \begin{enumerate}
 \item Flux lines follow the path of least resistance. This means that they will
-travel through the shortest path possible, 
+travel through the shortest path possible,
 through the material with the
 \emph{greatest} permeability---so they will travel more readily through
-magnetic or ferrous material than air, and more readily through air 
+magnetic or ferrous material than air, and more readily through air
 (although only slightly) than diamagnetic material.
 
 \item Flux lines travelling in the same direction repel each other. This means
@@ -269,19 +269,19 @@ magnetic field.
     \toprule
     & \multicolumn{6}{c}{Magnet type}\\
     \cmidrule{2-6}
-    Property            & \multicolumn{2}{c}{Ferrite}   
-                        & \multicolumn{2}{c}{Alnico}   
+    Property            & \multicolumn{2}{c}{Ferrite}
+                        & \multicolumn{2}{c}{Alnico}
                         & \multicolumn{2}{c}{Neodymium}  \\
     \midrule
     Max.\ temperature (°C)    & \num{400} & \num{500} & \num{800} & \num{900} &    \num{ 80} & \num{200}  \\
     Remanence (T)             & \num{0.2} & \num{0.4} & \num{0.5} & \num{1.3} &    \num{  1} & \num{1.3}  \\
     Coercivity (\si{kA/m})    & \num{100} & \num{200} & \num{50 } & \num{160} & ~~~\num{800} & \num{900}  \\
-    Max.\ energy product 
+    Max.\ energy product
                (\si{kJ/m^3})  & \num{6}   & \num{33}  & \num{10}  & \num{80}  &    \num{200} & \num{300}  \\
     \bottomrule
   \end{tabular}
   \caption[Typical values for various permanent magnets.]
-  {Typical values for various permanent magnets. 
+  {Typical values for various permanent magnets.
    Adapted from information from \url{http://www.magtech.com.hk/}.}
   \tablabel{magnets}
 \end{table}
@@ -321,7 +321,7 @@ be precise, the forces exerted by two magnets upon each other remain equal so
 long as the sum of their angles of magnetisation remain constant.} So, for
 example, the two bearings shown in \figref{equalbearings}, despite having
 different magnetisation directions, have the same stiffness (due to the forces
-being equal). 
+being equal).
 
 \begin{figure}[hbtp]
   \grf[scale = 0.7]{Figures/Bearings/equalbearings}
@@ -378,8 +378,8 @@ of a fixed and volume-constant magnetisation hold very well.
 In the first step, the integration takes place over the region of the
 first magnet:
 \begin{dmath}
-\magB_1\fn{\pos_2} = 
-  \magconst\Int{ 
+\magB_1\fn{\pos_2} =
+  \magconst\Int{
     \gp{-\Div\magM_1}
     \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}}{v_1,V_1}
 + \magconst\oint\limits_{S_1}
@@ -392,9 +392,9 @@ In the second step, the integration of the function of the magnetic
 field of the first magnet takes place over the region of the second
 magnet:
 \begin{dmath}
-\force = 
-  \int\limits_{V_2} 
-  \gp{-\Div\magM_2} 
+\force =
+  \int\limits_{V_2}
+  \gp{-\Div\magM_2}
   \magB_1\fn{\pos_2} \dee v_2
 + \oint\limits_{S_2}
   \gp{\magM_2\dotprod\normn}
@@ -404,8 +404,8 @@ magnet:
 Torque is similar.
 \begin{dmath}
 \torque =
-  \int\limits_{V_2} 
-  \gp{-\Div\magM_2} 
+  \int\limits_{V_2}
+  \gp{-\Div\magM_2}
   \gp{  \lever\crossprod\magB_1\fn{\pos_2} } \dee v_2
 + \oint\limits_{S_2}
   \gp{  \magM_2\dotprod\normn       }
@@ -419,14 +419,14 @@ earth magnetic material. The equations above can therefore be
 simplified.
 
 \begin{dmath}
-\magB_1\fn{\pos_2} = 
+\magB_1\fn{\pos_2} =
   \magconst\oint\limits_{S_1}
     \gp{  \magM_1\dotprod\normn  }
     \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
     \dee s_1
 \end{dmath},
 \begin{dmath}
-\force =  
+\force =
   \oint\limits_{S_2}
   \gp{  \magM_2\dotprod\normn  }
   \magB_1\fn{\pos_2} \dee s_2
@@ -443,13 +443,13 @@ simplified.
 \torque =
   \oint\limits_{S_2}
     \gp{  \magM_2\dotprod\normn       }
-    \gp{  \lever\crossprod\magB_1\fn{\pos_2} } 
-  \dee s_2  
+    \gp{  \lever\crossprod\magB_1\fn{\pos_2} }
+  \dee s_2
  =
   \magconst
   \oint\limits_{S_2}
     \gp{  \magM_2 \dotprod \normn_{s_2} }
-    \gp{  
+    \gp{
       \lever\crossprod
       \gp{
         \oint\limits_{S_1}
@@ -457,8 +457,8 @@ simplified.
           \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
         \dee s_1
       }
-    } 
-  \dee s_2  
+    }
+  \dee s_2
 \end{dmath}.
 
 \subsection{Analytical force expressions}
@@ -479,16 +479,16 @@ magnetisations \cite{akoun1984,nagaraj1988,bonisoli2006}. More complex
 geometries can be realised through superposition of the solutions
 \cite{bancel1999}. \citeauthor{akoun1984}'s expression is
 \begin{dmath}[label=akoun]
-\vect F = \frac{JJ'}{4\pi\permVac} 
-  \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} 
+\vect F = \frac{JJ'}{4\pi\permVac}
+  \sum_{(i,j,k,l,p,q)\in\{0,1\}^6}
   \vect f\fn{u_{ij},v_{kl},w_{pq},r}
 \end{dmath},
 \begin{dgroup}
 \begin{dmath}
-f_x = \half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\frac{uv}{rw}}+\half ru 
+f_x = \half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\frac{uv}{rw}}+\half ru
 \end{dmath},
 \begin{dmath}
-f_y = \half\gp{u^2-w^2}\Log{r-v}+uv\Log{r-u}+uw\ArcTan{\frac{uv}{rw}}+\half rv 
+f_y = \half\gp{u^2-w^2}\Log{r-v}+uv\Log{r-u}+uw\ArcTan{\frac{uv}{rw}}+\half rv
 \end{dmath},
 \begin{dmath}
 f_z = -uw\Log{r-u}-vw\Log{r-v}+uv\ArcTan{\tfrac{uv}{rw}}-rw
@@ -719,18 +719,18 @@ So, what is this equation that is so useful for me? Given two magnets located
 in \threeD/ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$,
 with the plane of the second rotated by $\theta$ around the \x-axis and their
 origins offset by $\inlinevect{x_0,y_0,z_0}$, the forces in the \y- and
-\z-directions ($F_y$ and $F_z$) between the two magnets can be calculated. 
+\z-directions ($F_y$ and $F_z$) between the two magnets can be calculated.
 
 Forces in both the $y$ and $z$ direction use the $f_3$ function in
 their calculations.
 \begin{dgroup*}
 \begin{dmath}
 F_y = \frac{J^2}{4\pi\permVac}
-  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}} 
+  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}}
   f_{y_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
 \end{dmath},
 \begin{dmath}
-F_z\bigg|_{\theta\neq k\pi} = 
+F_z\bigg|_{\theta\neq k\pi} =
        \frac{-J^2}{4\pi\permVac}\cdot\smash{\sum_{i_{a,b,c,A,B,C}\in\{0,1\}}}
         f_{z_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
 \end{dmath},
@@ -754,21 +754,21 @@ v_1 = -v_2\cos\theta - w_2\sin\theta
 w_1 = v_2\sin\theta - w_2\cos\theta
 \end{dmath},
 \begin{dmath}
-v_2 = y_0-Ci_C\sin\theta      
+v_2 = y_0-Ci_C\sin\theta
 \end{dmath},
 \begin{dmath}
-w_2 = z_0-ci_c+Ci_C\cos\theta       
+w_2 = z_0-ci_c+Ci_C\cos\theta
 \end{dmath}.
 \end{dgroup*}
 This is the auxiliary function used in the above. All dashed variables are
 local to this function.
 \begin{dgroup*}
 \begin{dmath}
-f_3\fn{u',v',w',\theta',c',C'} = 
+f_3\fn{u',v',w',\theta',c',C'} =
   u' f_5\gp{\Log{f_4-u'}-1}
   +\half\gp{f_6^2-{u'}^2}\Log{f_4+f_5}
   +\half u' \pi \Sign{f_5}\Abs{f_6}
-  +u' f_6 \ArcTan{\frac{u' f_4 - u^2 -f_6^2}{f_5 f_6}} 
+  +u' f_6 \ArcTan{\frac{u' f_4 - u^2 -f_6^2}{f_5 f_6}}
   +\half f_4 f_5
 \end{dmath},
 \begin{dmath}
@@ -778,7 +778,7 @@ f_4 = \sqrt{{u'}^2+f_5^2+f_6^2}
 f_5 = \gp{v'-b i_b}\cos\theta'+\gp{w'-c'}\sin\theta'+B i_B
 \end{dmath},
 \begin{dmath}
-f_6 = -\gp{v'-b i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C'  
+f_6 = -\gp{v'-b i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C'
 \end{dmath}.
 \end{dgroup*}
 
@@ -787,13 +787,13 @@ magnet is not rotated around its axis ($f_{z_2}$ has a singularity
 at $\theta=k\pi$).
 \begin{dgroup}
 \begin{dmath}
-F_z\bigg|_{\theta=k\pi} = 
+F_z\bigg|_{\theta=k\pi} =
   \cos\theta\cdot\frac{-J^2}{4\pi\permVac}
   \sum_{i_{a,b,c,A,B,C}\in\{0,1\}}f_{z_1}
   \cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
 \end{dmath},
-\begin{dmath}  
-f_{z_1} = 
+\begin{dmath}
+f_{z_1} =
   \half uw\Log{\frac{r+u}{r-u}}+\half vw\Log{\frac{r+v}{r-v}}+
   uv\ArcTan{\frac{uv}{wr}-wr}
 \end{dmath},
@@ -831,7 +831,7 @@ are consistent and give reasonable results. \Figref{charp-rotate} shows the
 forces produced between two \SI{10}{mm} cube magnets as a function of rotation
 angle $\theta$ of the second magnet, with a \SI{20}{mm} offset between their
 centres. Two cases are shown: in the first , the magnets are displaced
-vertically; in the second, the magnets are displaced horizontally. 
+vertically; in the second, the magnets are displaced horizontally.
 
 \begin{figure}
   \begin{wide}
@@ -847,7 +847,7 @@ vertically; in the second, the magnets are displaced horizontally.
   \hfil
   \null
   \end{wide}
-  \caption{Vertical and horizontal forces on a rotating magnet 
+  \caption{Vertical and horizontal forces on a rotating magnet
     as a function of rotation angle for fixed horizontal and vertical displacements.}
   \figlabel{charp-rotate}
 \end{figure}
@@ -892,7 +892,7 @@ multipole arrays with arbitrary numbers of magnet per wavelength.
 
 \section{Multipole}
 
-Applications: 
+Applications:
 artificial hearts \parencite{finocchiaro2008,samiappan2008}
 wave power generation \parencite{kimoulakis2008}
 wind power generation \parencite{liu2008-ietm}
@@ -972,8 +972,8 @@ passengers.
 \begin{figure}
 \grf{Figures/Multipole/halbach}
 \caption[Magnetic flux lines of a Halbach array.]{%
-  The magnetic flux lines of a Halbach array made from magnets with \ang{45} 
-  magnetisation increments (indicated by the arrowheads). The magnetic field 
+  The magnetic flux lines of a Halbach array made from magnets with \ang{45}
+  magnetisation increments (indicated by the arrowheads). The magnetic field
   can be seen to be much stronger above the array than below it.}
 \figlabel{halbach}
 \end{figure}
@@ -1086,8 +1086,8 @@ superposition. \fixme{crossref}
 \begin{figure}
    \grf{Figures/Multipole/pa-cho}
    \caption[Novel planar array shown in the literature.]{%
-     The planar array by \textcite{cho2001}. Flux travels out of the page 
-     from the north- to south-faced magnets, and back through the \emph{array} 
+     The planar array by \textcite{cho2001}. Flux travels out of the page
+     from the north- to south-faced magnets, and back through the \emph{array}
      in the triangular magnets.}
    \figlabel{pa-cho}
 \end{figure}
@@ -1163,8 +1163,8 @@ $\forceEddy$ due to these eddy currents is
 \end{dmath}
 Now,
 \begin{dmath}
-  \magJeddy \cross \magflux 
-  \propto 
+  \magJeddy \cross \magflux
+  \propto
   \gp{\velocity \cross \magflux}\cross \magflux ,
 \end{dmath}
 which is anti-parallel to $\velocity$ \fixme{small figure}. Due to the
@@ -1172,7 +1172,7 @@ cross terms, the maximum force is obtained for magnetic fields
 perpendicular to the motion of the conductor. Associatively, it is
 only the component of magnetic field in the perpendicular direction
 that influences the eddy force. This has implications on the
-arrangement of eddy current dampers for vibrating structures. 
+arrangement of eddy current dampers for vibrating structures.
 
 Two configurations of eddy current dampers are shown in
 \figref{eddy}. The two systems behave somewhat differently. A

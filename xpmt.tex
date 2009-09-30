@@ -62,7 +62,7 @@ the ideas behind the \qzs/ arrangement analysed in detail in \secref{qzs}.
                  Beam width &        $\WidthBeam$ & \SI{ 40}{mm} \\
              Beam thickness &    $\ThicknessBeam$ & \SI{  2}{mm} \\
        Beam vertical offset &       $\OriginBeam$ & \SI{ 82}{mm} \\
-\midrule                                            
+\midrule
       Magnet support height & $\HeightRigMagnets$ & \SI{105  }{mm} \\
    Magnet support lever arm & $\LengthRigMagnets$ & \SI{300  }{mm} \\
         Magnet support mass &   $\MassRigMagnets$ & \SI{ 87  }{g}  \\
@@ -234,7 +234,7 @@ certain wire diameter and resistance.
   \caption{Normalised force \vs\  displacement curve for the dual coil electromagnet. Zero displacement is as shown in \figref{rig-dual-coil}, and
   negative displacements show symmetric behaviour to that shown here.
   \figlabel{2coils-normdesign}}
-\end{sidefigure}  
+\end{sidefigure}
   \end{wide}
 \end{figure}
 
@@ -288,7 +288,7 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
 
     An inductive, or Hall effect, sensor works by exciting a coil with a high
     frequency sinusoidal current which induces eddy currents in the target.
-    \note{An example of a commercial inductive sensor is 
+    \note{An example of a commercial inductive sensor is
           \url{http://www.microstrain.com/ncdvrt.aspx}}
     These eddy currents may be measured very accurately, but the whole effect
     is very dependent on a lack of magnetic noise. This makes these type of
@@ -307,7 +307,7 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
 
     `\acro{lvdt}' sensors use a moving probe attached to an electrical
     circuit that exhibits a measureable effect which varies with displacement
-    of the probe. 
+    of the probe.
     \note{An example of a commercial \acro{lvdt} sensor is
           \url{http://www.microstrain.com/dvrt.aspx}.}
     Differential Variable Reluctance Transducers
@@ -353,7 +353,7 @@ Relevant operating properties are listed in \tabref{wenglor}.
 
 The measured output of the sensor was used infer a magnet displacement, \DispMag, (referenced from the \qzs/ position) with the following transformation:
 \begin{dmath}
-  \DispMag\fn{\DisplSensor,\OriginMagHigh} = 
+  \DispMag\fn{\DisplSensor,\OriginMagHigh} =
     \OriginMagDisp\fn{\DisplSensor} - \OriginQZS\fn{\OriginMagHigh}
 \end{dmath},
 where $\OriginQZS$ is the height of the \qzs/ location, given by
@@ -403,7 +403,7 @@ For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal
 \end{table}
 
 For open loop measurements, these sensors were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals and estimate the velocities.
-Standard methods for interpreting the accelerometer involve high-pass filtering the measured signal to avoid drift as integration errors accumulate. 
+Standard methods for interpreting the accelerometer involve high-pass filtering the measured signal to avoid drift as integration errors accumulate.
 The corner frequency for the integration must be reasonably high, as it is not possible to distinguish between drift and low frequency components in the  signal.
 An alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signals; for transient or wide-band signals, the typical approach is better suited.
 
@@ -433,7 +433,7 @@ radius of the coil, the greater the forces imparted by the coil on the magnet
 
 A simplified geometry of the moving magnet arrangement is used to calculate
 the minimum tolerance required to avoid contact with the coil as a function
-of the vertical motion of the magnets. This geometry is shown in 
+of the vertical motion of the magnets. This geometry is shown in
 \figref{horiz-tolerance}, where the L-shaped magnet support is shown
 in the `rest' position $\overline{OAB}$ and in a rotated position $\overline{OA'B'}$.
 
@@ -474,7 +474,7 @@ avoid contact.
 \section{Experimental results}
 
 A number of measurements were performed using the experimental apparatus;
-in the sections following, data recorded is presented for 
+in the sections following, data recorded is presented for
 \begin{enumerate}
 \item Magnet gap versus beam displacement;
 \item Open loop frequency responses for a range of magnet gaps; and,
@@ -501,10 +501,10 @@ gap between the magnets at \qzs/:
     \half\gp{\HeightRig-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}
     +\HeightMag+\HeightBuffer
 \end{dmath},
-where geometrical properties are described in \tabref{rigprop} and 
+where geometrical properties are described in \tabref{rigprop} and
 $\HeightBuffer=\SI{2.5}{mm}$ is a little extra height to account for extra
 space taken up by the beam shell thickness and the shell of the magnet mount.
-The normalised magnet gap is $\ngap=\OriginMagGap/\HeightMag$, where 
+The normalised magnet gap is $\ngap=\OriginMagGap/\HeightMag$, where
 $\HeightMag$ is the height of the magnets.
 
 \begin{figure}
@@ -537,7 +537,7 @@ control, as discussed in \secref{vibes-feedback}.
       \FFT\ points       & $2^{16}$                \\
       Sample time        & $\approx$\SI{17.5}{min} \\
       Average overlap    & $0.75$                  \\
-      Number of non-overlapping averages & $16$    \\ 
+      Number of non-overlapping averages & $16$    \\
     \bottomrule
   \end{tabular}
   \caption{Parameters used in the signal and spectrum analysis for the
@@ -564,7 +564,7 @@ between the accelerometer measurements of the base and magnet-supported beam:
 \begin{figure}[p]
   \psfragfig{\phdpath XPMT/latex/ol-undamped-frflin}
   \caption{Open loop measurements with the electromagnetic coil connected in
-           an open circuit as a function of normalised gap~$\ngap$; 
+           an open circuit as a function of normalised gap~$\ngap$;
            no additional damping is added to the system.}
   \figlabel{ol-undamped-frflin}
 \end{figure}
@@ -572,9 +572,9 @@ between the accelerometer measurements of the base and magnet-supported beam:
 \begin{figure}[p]
   \psfragfig{\phdpath XPMT/latex/ol-damped-frflin}
   \caption{Open loop measurements with the electromagnetic coil connected
-           in a closed circuit as a function of normalised gap~$\ngap$. 
+           in a closed circuit as a function of normalised gap~$\ngap$.
            The coil adds damping to the system, which can
-           be seen by the reduction in height of the resonant peaks in 
+           be seen by the reduction in height of the resonant peaks in
            comparison to \figref{ol-undamped-frflin}.}
   \figlabel{ol-damped-frflin}
 \end{figure}
@@ -585,7 +585,7 @@ From the measurements shown in the previous section, data fitting of the frequen
 While more sophisticated techniques are possible \cite{chen2009}, fitting the data to a known exact frequency response function yielded acceptable results in this case since the peaks are quite simple.
 
 % doublecheck how I want to say this
-The model used to fit the data was a simple vibration isolation system 
+The model used to fit the data was a simple vibration isolation system
 given by \eqref{simple-isolation-freq} in terms of the natural frequency, $\natfreq =
 \sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio = \damping /
 (2\sqrt{\stiffness\mass})$. The resulting expression is
@@ -595,7 +595,7 @@ given by \eqref{simple-isolation-freq} in terms of the natural frequency, $\natf
     {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2},
 \end{dmath}
 where $\freq$ is the frequency at which to calculate the transmissibility
-$\transmissibility$. The data was fit 
+$\transmissibility$. The data was fit
     \note{Using \Matlab/'s \code{fminsearch}.}% check
 to \eqref{fit-model} between $\half\natfreq \le \freq
 \le 2\natfreq$, returning good estimates of the natural frequency and
@@ -702,7 +702,7 @@ feeding back the velocity signal for the controller.
 The overall improvement to the vibration isolation can be shown by calculating
 the root-mean-square of the transmissibility over a certain frequency range.
 \begin{dmath}
-  \RMSof\transmissibility = 
+  \RMSof\transmissibility =
   \sqrt{\Sum{\transmissibility^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}
 The lower frequency limit is defined as $\freq_1=\SI{1}{Hz}$, as the results
@@ -748,12 +748,12 @@ accelerometer measurements used for velocity feedback control.
 
 In the time domain, the response of this linear system is given by
 \begin{dmath}
-\massMass \accMass = 
+\massMass \accMass =
   \forceIn - \damping\gp{\velMass-\velBase} - \stiffness\gp{\dispMass-\dispBase}
 \end{dmath},
 which can be re-written in the Laplace domain as
 \begin{dmath}[label=simple-isolator-laplace]
-s^2 \laplaceMass \underbrace{\gp{\massMass+\damping/s+\stiffness/s^2}}_{\gp{\Block[2]}^{-1}} = 
+s^2 \laplaceMass \underbrace{\gp{\massMass+\damping/s+\stiffness/s^2}}_{\gp{\Block[2]}^{-1}} =
   \laplaceForce + s^2 \laplaceBase \underbrace{\gp{\damping/s+\stiffness/s^2}}_{\Block[1]}
 \end{dmath}.
 This is shown as a block diagram in \figref{simple-isolator-block}. If the
@@ -794,9 +794,9 @@ of the high pass filter in the charge amplifier.
 Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
 the final transfer function between the mass and base states,
 \begin{dmath}[label=cl-filter]
-  \frac\laplaceMass\laplaceBase = 
+  \frac\laplaceMass\laplaceBase =
     \frac{ \gp{\damping s+\stiffness} \gp{s+\freqHPfilter}^2 }
-         { 
+         {
            \gain s^3 +
            \gp{ \massMass s^2 + \damping s + \stiffness }
            \gp{ s+\freqHPfilter }^2

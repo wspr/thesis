@@ -42,7 +42,7 @@ resonance at \SI{5}{Hz} requires a static displacement of approximately
 relationship that can exhibit a low \emph{dynamic} stiffness without the need
 for an associated large static deflection.
 
-An example of a system with such behaviour is that of a cubic force \vs\ 
+An example of a system with such behaviour is that of a cubic force \vs\
 displacement characteristic; for a dynamic force characteristic of, say,
 $\func{f}{x}=f_0+x^3$, localised zero stiffness occurs at zero deflection
 (\ie, $\func{f'}{0}=0$), which is termed `\qzs/'. The `quasi' qualifier is
@@ -95,12 +95,12 @@ position.
 \begin{wide}
 \begin{subfigure}
   \asyfig{ZKS/schematic}
-  \caption{Inclined springs in their unloaded, uncompressed state, corresponding 
+  \caption{Inclined springs in their unloaded, uncompressed state, corresponding
 to a vertical displacement of $\ZKSdisp=\ZKSheight$.\figlabel{zks-dia}}
 \end{subfigure}
 \begin{subfigure}
   \asyfig{ZKS/schematic-qzs}
-  \caption{Inclined springs at a position of maximum negative stiffness, 
+  \caption{Inclined springs at a position of maximum negative stiffness,
 corresponding to a vertical displacement of $\ZKSdisp=0$.\figlabel{zks-qzs}}
 \end{subfigure}
 \end{wide}
@@ -116,7 +116,7 @@ $\ZKSstiffvert=\ZKSkratio\ZKSstiffincl$. The stiffness and deflection
 properties of the springs are summarised in \tabref{spring-properties}.
 
 \begin{table}
-  \caption{Properties of the springs in the \qzs/ inclined spring system 
+  \caption{Properties of the springs in the \qzs/ inclined spring system
 defining stiffness ratio $\ZKSkratio$ and length ratio $\ZKSlengthratio$.}
   \tablabel{spring-properties}
   \begin{tabular}{@{}lcc@{}}
@@ -124,7 +124,7 @@ defining stiffness ratio $\ZKSkratio$ and length ratio $\ZKSlengthratio$.}
       Spring & Stiffness & Undeflected length \\
     \cmidrule(r){1-1}\cmidrule(l){2-3}
       Inclined & $\ZKSstiffincl$ & $\ZKSlength = \sqrt{\ZKSheight^2+\ZKSwidth^2}$ \\
-      Vertical & $\ZKSstiffvert = \ZKSkratio\ZKSstiffincl$ 
+      Vertical & $\ZKSstiffvert = \ZKSkratio\ZKSstiffincl$
         & $\ZKSvlength = \ZKSlengthratio\ZKSlength$ \\
     \bottomrule
   \end{tabular}
@@ -170,15 +170,15 @@ forces due to each spring individually. The force due to the inclined spring
 \end{dmath}.
 
 Assuming only vertical displacement ($\ZKSshift=0$),
-the vertical component of this inclined spring force is 
+the vertical component of this inclined spring force is
 \begin{dmath}[label=ZKSforceinclV,compact]
 \ZKSforceinclV = \ZKSforceincl{\ZKSdisp,0} \frac{x}{\ZKSlengthcomp{1,0}}
 % from LaTeXPrint[Fv, x, 0]; bring stiffincl to the front:
-=  \ZKSdisp \ZKSstiffincl 
+=  \ZKSdisp \ZKSstiffincl
   \gp{
     \frac {\sqrt{\ZKSheight^2+\ZKSwidth^2}}
           {\sqrt{\ZKSwidth^2+\ZKSdisp^2}  } -1
-  } 
+  }
 \end{dmath}.
 
 It is convenient to normalise this result by representing the lengths and
@@ -188,7 +188,7 @@ $\ZKSratio=\ZKSwidth/\ZKSheight$, the inclined spring force in the vertical
 direction can be written in non-dimensional form as
 
 \begin{dmath}[label=ZKSforceinclVnorm]
-  \frac{\ZKSforceinclV{\ZKSnorm}}{\ZKSheight \ZKSstiffincl} = 
+  \frac{\ZKSforceinclV{\ZKSnorm}}{\ZKSheight \ZKSstiffincl} =
     \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
 \end{dmath}.
 
@@ -222,8 +222,8 @@ with \eqref{ZKSforcetotalVnorm}. Minimum displacements are calculated from
 spring being compressed to zero length.\figlabel{ZKSforcetotalVnorm}}
 \end{subfigure}
 \end{wide}
-\caption{Vertical forces due to the inclined springs. $\ZKSratioQZS$ is the 
-value of $\ZKSratio$ for which \qzs/ is achieved at $\ZKSnorm$, calculated 
+\caption{Vertical forces due to the inclined springs. $\ZKSratioQZS$ is the
+value of $\ZKSratio$ for which \qzs/ is achieved at $\ZKSnorm$, calculated
 from \eqref{ZKSratioQZS}.}
 \figlabel{ZKSforce-both}
 \end{figure}
@@ -233,14 +233,14 @@ calculated from combining \eqref{ZKSforceinclV} for each inclined spring with
 the force due to the vertical spring:
 
 \begin{dmath}[label=ZKSforcetotalV]
-\ZKSforcetotalV 
+\ZKSforcetotalV
   = 2\ZKSforceinclV + \ZKSforcevertV
 \end{dmath}.
 
 For vertical displacements, the force due to the vertical spring is given by
 
 \begin{dmath}[label=ZKSforcevertV]
-\ZKSforcevertV 
+\ZKSforcevertV
   = \gp{\ZKSheight-x} \ZKSstiffvert
 \end{dmath},
 
@@ -248,7 +248,7 @@ and the total force in the vertical direction can be nondimensionally
 represented by
 
 \begin{dmath}[label=ZKSforcetotalVnorm]
-\frac{\ZKSforcetotalV}{\ZKSheight \ZKSstiffincl} = -\ZKSnorm \ZKSkratio+\ZKSkratio+2 
+\frac{\ZKSforcetotalV}{\ZKSheight \ZKSstiffincl} = -\ZKSnorm \ZKSkratio+\ZKSkratio+2
 \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
 \end{dmath},
 
@@ -326,7 +326,7 @@ the relation
 
 \begin{dmath}[label=ZKSratioQZS]
   \ZKSratioQZS =
-    \frac{2}{\sqrt{\ZKSkratio^2+4 \ZKSkratio}}  
+    \frac{2}{\sqrt{\ZKSkratio^2+4 \ZKSkratio}}
 \end{dmath}
 
 which is used as the reference value of $\ZKSratio$ in
@@ -363,17 +363,17 @@ order to retain stability.
 \begin{subfigure}
   \psfragfig{\phdpath ZKS/fig/ZKSoffqzs}
   \caption{\figlabel{ZKSoff}
-The stable and unstable equilibrium points for $\ZKSoff\in\{-0.1, 0, 0.1\}$. 
+The stable and unstable equilibrium points for $\ZKSoff\in\{-0.1, 0, 0.1\}$.
 The rest position will move from the unstable point to the stable point of equilibrium.}
 \end{subfigure}
 \begin{subfigure}
   \psfragfig{\phdpath ZKS/fig/ZKSratioErr}
   \caption{\figlabel{ZKS-ratioErr}
-The stiffness at equilibrium as $\ZKSoff$ varies; as the stiffness becomes 
+The stiffness at equilibrium as $\ZKSoff$ varies; as the stiffness becomes
 negative, the stiffness shown corresponds to the stable point of equilibrium shown in the figure adjacent.}
 \end{subfigure}
 \end{wide}
-\caption{Force and stiffness of the inclined spring system near \qzs/, showing 
+\caption{Force and stiffness of the inclined spring system near \qzs/, showing
 the effect of unstable equilibrium.}
 \end{figure}
 
@@ -482,7 +482,7 @@ stiffness in order to remain at \qzs/.
 
 \begin{figure}
   \psfragfig{\phdpath ZKS/fig/ZKS-hk-ratio}
-  \caption{Relationship between $\ZKSkratio$ and $\ZKSlengthratio$ at \qzs/ 
+  \caption{Relationship between $\ZKSkratio$ and $\ZKSlengthratio$ at \qzs/
 both horizontally and vertically.}
   \figlabel{ZKS-hk-ratio}
 \end{figure}
@@ -520,12 +520,12 @@ decreases with $\ZKSlengthratio$).
 \begin{wide}
 \begin{subfigure}
   \psfragfig{\phdpath ZKS/fig/ZKSstiffnessV-QZS}
-  \caption{\figlabel{ZKSstiffnessV-QZS} 
+  \caption{\figlabel{ZKSstiffnessV-QZS}
 Normalised vertical stiffness of the system.}
 \end{subfigure}
 \begin{subfigure}
   \psfragfig{\phdpath ZKS/fig/ZKSstiffnessH-QZS}
-  \caption{\figlabel{ZKSstiffnessH-QZS} 
+  \caption{\figlabel{ZKSstiffnessH-QZS}
 Normalised horizontal stiffness of the system.}
 \end{subfigure}
 \end{wide}
@@ -712,10 +712,10 @@ length:
 \begin{dmath}
   \ndisp = \gamma/\mdim .
 \end{dmath}
-After some manipulation of the original equation given these simplifying 
+After some manipulation of the original equation given these simplifying
 assumptions, the force $\force$ on the second magnet in
 attraction (\ie, for magnets with polarisation in the same direction)
-can be shown to be directly proportional to the facing area of the magnets, 
+can be shown to be directly proportional to the facing area of the magnets,
 $\mdim^2$, for a fixed normalised displacement, $\ndisp$, between the magnets:
 \begin{dmath}[label=force]
   \magforce = \mdim^2 \nforce .
@@ -725,7 +725,7 @@ expression for the normalised force $\nforce$ is given in
 \eqref{nforce} in the appendix. The $\mdim^2$ relationship shown in \eqref{force}
 is interesting because it is not evident from Akoun~and Yonnet's original
 equations that such a simplification (for various subsets of magnet geometries
-such as the one considered here) is possible. 
+such as the one considered here) is possible.
 
 \fixme(That stuff is not in an appendix in the thesis? Crossref to MTHEORY.)
 
@@ -751,7 +751,7 @@ as normalised magnet gap and normalised magnet displacement, respectively.
 The force due to the lower magnet in repulsion is
 \begin{align}
 \frepl &= -\magforce{\mdim,\mdim\ngap+\mdim\ndispZ} \\
-       &= -\mdim^2\nforce{\ngap+\ndispZ}, 
+       &= -\mdim^2\nforce{\ngap+\ndispZ},
 \end{align}
 and the force due to the upper magnet in attraction is
 \begin{align}
@@ -762,7 +762,7 @@ The total force on the floating magnet, $\magforceZ$, is a superposition
 of $\frepl$ and $\fattr$, yielding
 \begin{align}
   \magforceZ &= \frepl+\fattr \\
-          &= \mdim^2\gp{-\nforce{ \ngap+\ndispZ} 
+          &= \mdim^2\gp{-\nforce{ \ngap+\ndispZ}
                      +\nforce{-\ngap+\ndispZ}} \\
           &\eqdef \mdim^2 \nforceZ . \eqlabel{nforceZ}
 \end{align}
@@ -770,7 +770,7 @@ The stiffness of the system can be similarly expressed as
 \begin{align}
   \magstiffnessZ &= \mdim\nstiffnessZ , \\
 \intertext{where}
-  \nstiffnessZ &= -\nstiffness{ \ngap+\ndispZ} 
+  \nstiffnessZ &= -\nstiffness{ \ngap+\ndispZ}
                   +\nstiffness{-\ngap+\ndispZ} . \eqlabel{nstiffnessZ}
 \end{align}
 The force $\nforceZ$ and stiffness $\nstiffnessZ$ of the magnetic spring are
@@ -805,13 +805,13 @@ the normalised force $\nforce$ can be found by numerically fitting the
 constant coefficients $\ccA$, $\ccB$, and possibly $\nn$ in the empirical
 approximation for the forces between two magnets
 \begin{dmath}[label=nnfit]
-  \nforce \approx \frac{\ccA}{\gp{\ccB+\ndisp}^\nn}. 
+  \nforce \approx \frac{\ccA}{\gp{\ccB+\ndisp}^\nn}.
 \end{dmath}
 \textcite{xu1993} used the more complicated approximation
 \begin{dmath}
   \nforce \approx \ccD\gp{\frac{\ccA}{\ccB+\ndisp}}^\nn+\ccC
 \end{dmath}
-although in this case the additional complexity does not justify 
+although in this case the additional complexity does not justify
 the slight increase in accuracy this expression may offer.
 
 \textcite{bonisoli2007-mssp,bonisoli2007-mrc} used $\nn=3$ in their work, and
@@ -858,11 +858,11 @@ those shown in \figref{nnfit} and have been omitted for clarity.
     \bottomrule
   \end{tabular}
   \caption{
-    Best fit parameters for \eqref{nnfit}. 
-    Fixed integer values of $\nn$ were chosen 
-    for the first two cases, and the latter 
-    value best fits the model by varying all 
-    three parameters. Note that these are 
+    Best fit parameters for \eqref{nnfit}.
+    Fixed integer values of $\nn$ were chosen
+    for the first two cases, and the latter
+    value best fits the model by varying all
+    three parameters. Note that these are
     are unitless parameters.}
   \tablabel{nnfit}
 \end{table}
@@ -880,7 +880,7 @@ positive for magnets in repulsion and negative for magnets in attraction.
 the magnetic system using \eqref{nnfit} to calculate the force due to the
 repelling and attracting magnets separately:
 \begin{dmath}[label=nnfitz]
-  \nforceZ \approx \ccA\gp{\ccB+\ngap+\ndispZ}^{-\nn} 
+  \nforceZ \approx \ccA\gp{\ccB+\ngap+\ndispZ}^{-\nn}
                   +\ccA\gp{\ccB+\ngap-\ndispZ}^{-\nn} ,
 \end{dmath}
 where $\ccA$, $\ccB$, and $\nn$ are the best-fit parameters previously
@@ -892,11 +892,11 @@ be discussed in the following sections. The normalised stiffness can be
 approximated by differentiating \eqref{nnfitz} with respect to $\ndispZ$: (as
 shown previously in \eqref{stiffness})
 \begin{dmath}[label=nnfitzk]
-  \nstiffnessZ \approx {n\ccA}{\gp{\ccB+\ngap+\ndispZ}^{-\nn-1}} 
+  \nstiffnessZ \approx {n\ccA}{\gp{\ccB+\ngap+\ndispZ}^{-\nn-1}}
                  + {n\ccA}{\gp{\ccB+\ngap-\ndispZ}^{-\nn-1}}.
 \end{dmath}
 
-\begin{figure}  
+\begin{figure}
   {%
     \let\labelsize\footnotesize
     \def\LBL#1{\colorbox{white}{#1}}%
@@ -991,7 +991,7 @@ required to support larger loads.
   \caption{
     Regions of $\mdim$ and $\ngap$ satisfying
     the static deflection criterion
-    of \eqref{strong} for a range of masses. 
+    of \eqref{strong} for a range of masses.
     Darker sections denote overlap of the
     regions in the overlay plot.}
   \figlabel{cons-strong}
@@ -1052,7 +1052,7 @@ $\dmax$, limits the lower size of the magnet.
     {\psfragfig{\phdpath QZS/fig/cons-saturateN2}}
     {\psfragfig{\phdpath QZS/fig/cons-saturateN3}}
     {\psfragfig{\phdpath QZS/fig/cons-saturateNall}}
-  \caption{Regions of $\mdim$ and $\ndispZ$ satisfying the 
+  \caption{Regions of $\mdim$ and $\ndispZ$ satisfying the
     maximum displacement criterion
     of \eqref{saturate} for a range of disturbance
     displacements $\dmax$ and a mass $\mass=\SI{0.5}{kg}$. Darker
@@ -1324,12 +1324,12 @@ their nonlinear `frequency response', for which they calculate a
   {\color{gray}\tfrac{1}{T}}\Integrate{\ddot z_i(t)^2}{t,0,T}
   \middle/
   {\color{gray}\tfrac{1}{T}}\Integrate{z_{r_i}(t)^2}{t,0,T}
-  \right.} 
+  \right.}
   \condition*{i=1,2,\dots,N}
 \end{dmath},
 for input signals
 \begin{dmath}
-z_{r_i}(t) = A \Sin{\omega_i t} 
+z_{r_i}(t) = A \Sin{\omega_i t}
 \condition*{t\in[0,T]}
 \end{dmath},
 and measured output signals $\ddot z_i(t)$. Note that the $1/T$ terms (above,
