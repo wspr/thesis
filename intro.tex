@@ -427,10 +427,6 @@ However, such `artifical intelligence' algorithms are probably sub-optimal for t
 Leave the heuristic approaches to systems that cannot be modelled (or even simulated for a broad range of operating behaviours) through standard means.
 \note{Note that these comments only apply to the use of such methods in the control phase of vibration control; genetic algorithms, \eg, provide a useful technique in the design phase when limited numbers of sensors and actuators must be placed in `optimal' positions on a complex structure \cite{simpson2003,howard2005}.}
 
-\paragraph{Backstepping control}
-
-\fixme{Cite ji pan?}
-
 \paragraph{Sliding mode control}
 
 While skyhook damping has been introduced above in \secref{skyhook-intro} as force feedback proportional to the absolute velocity of the base, others have considered the case where the influence of the ground velocity is actively reduced. In both cases, the ratio of the influence of mass velocity to base velocity is being increased. In the ideal sense, the dynamic equation of motion
@@ -842,9 +838,13 @@ The negative stiffness of electromagnetic actuators has been used with a low-sti
 
 \subsection{Magnetic vibration isolation}
 
-\textcite{nagaya1993} constructed a non-contact vibration isolation table; they report a high-stiffness spring with transmissibility that \enquote{can be controlled to be nearly zero}.
+\textcite{puppin2002} published a paper that most plainly demonstrates that magnetic springs can be used for vibration isolation, in which the authors make no attempt to achieve contactless suspension—the magnets are horizontally constrained in guides.
+Furthermore, the springs are only used as passive isolators for vibrations in the vertical direction; no active control is used.
+
+
+\textcite{nagaya1993} constructed a non-contact vibration isolation table; they report a high-stiffness spring with transmissibility that \enquote{can be controlled to be nearly zero} \sic/.
 Their table used small magnets in a simple design, which could not support large loads.
-The authors showed later a better control system for their `perfect noncontact active vibration isolation table' \cite{nagaya1995a}.
+The authors showed later a better control system for their \enquote{perfect noncontact active vibration isolation table} \cite{nagaya1995a}.
 
 \textcite{watanabe1996} wrote a paper detailing a functional vibration isolator using electromagnetic springs, which could support weights of up to
 \SI{200}{kg}.
@@ -852,9 +852,6 @@ The control system used was quite advanced, utilising a combination of two indep
 The magnetic actuator design is not described, however.
 It is believed that high-powered electromagnets were required for this design; with the current availability of cheap rare-earth magnets, a more efficient design is now possible.
 
-\textcite{puppin2002} published a paper that most plainly demonstrates that magnetic springs can be used for vibration isolation, in which the authors make no attempt to achieve contactless suspension—the magnets are horizontally constrained in guides.
-Furthermore, the springs are only used as passive isolators for vibrations in the vertical direction; no active control is used.
-Nonetheless, their passive spring was still capable of significant vertical vibration attenuation.
 
 
 \subsection{Summary of magnetics}
