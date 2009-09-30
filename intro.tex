@@ -59,9 +59,9 @@ A `synergy' between the two fields is seen in areas such as energy harvesting fr
 
 Support mass with a noncontact force can also be called `levitation', an area which deserves its own mention.
 \textcite{earnshaw1842} proved that levitation with the force of permanent magnets alone was impossible, although this did not become common knowledge \note{If it can even be said to be `commonly known' today.
-Anecdotal evidence suggests otherwise.} until much later — given by the range of patents issued that assume the opposite.
+Anecdotal evidence suggests otherwise.} until much later.
 Exceptions to `Earshaw's Theorem' include the use of diamagnetic materials and actively-controlled system, amongst some others.
-It is the possibility of overcoming instability with active means that is of interest in this thesis.
+It is the possibility of overcoming the instability of levitated magnets by active means that is of interest in this thesis.
 
 
 \subsection{\QZS/ systems}
@@ -609,8 +609,9 @@ The cross-section of introductory concepts and literature shown in this section 
 \section{Magnetics}
 \seclabel{magnets-explore}
 
+\subsection{The world of magnetic applications}
 
-\subsection{Applications of magnetic forces}
+\subsubsection{Boring}
 
 \textcite{coey2002} discusses a broad range of magnetic applications,
 summarised in \tabref{magnet-applications}.
@@ -642,56 +643,7 @@ adapted from \textcite{coey2002}.}
 \tablabel{magnet-applications}
 \end{table}
 
-That magnets can apply forces to one another over a distance is quite a novel concept in a mechanical world accustomed to friction.
-It has been a short while, relatively speaking, that it has been possible to even produce magnets with enough coercive force to apply useful mechanical forces.
-Non-contact magnetics in mechanical systems is advantageous due to high precision and wear-free operation due to lack of friction.
-This section looks broadly at some of the main applications of the field.
-
-Loud-speakers are still being researched, with improved analytical methods to determine forces for optimisation purposes \cite{merit2009}.
-
-
-\subsection{Maglev transportation}
-
-The largest body of research into magnetic levitation is on so-called `\maglev/'
-transportation, reviewed in 2006 by \textcite{lee2006}.
-Its well-known goal is to use a levitated train or car to provide extremely fast and efficient transportation.
-This field, which is rather diverse in terms of the techniques under investigation, is finally now achieving commercial application in the real world after some 20 or 30 years
-of research.
-While it has some concepts in common with this research (large loads, magnets), the techniques used tend to be rather distanced from those that will be applied for this project because they focus on transportation rather than \emph{elimination} of movement.
-
-Earnshaw's theorem for stability is not applicable for \maglev/ systems, since the motion of the vehicle adds a time-varying element to the magnetic system.
-Many approaches to the design of \maglev/ systems have been taken, including passively stable designs \cite{musolino2009}.
-
-
-\subsection{Magnetic positioners}
-
-In more recent years, another application for magnetic levitation has been investigated, which is the precision control of a levitated platform.
-Commonly cited for use in the semiconductor industry for photolithography, these levitators were first researched around 20 years ago, and the field is still an active area of research \cite{fulford2008,fulford2009}.
-
-Recent one degree of freedom linear magnetic bearing: \cite{ro2009-preeng}.
-
-The first designs allowed travel in a single direction, \eg, \textcite{trumper1992}, while more recent developments allow more directions of control.
-Such devices are capable of supporting small loads, and applying horizontal translation forces to effect displacements of up to around \SI{200}{mm} with nanometre precision.
-Two planar devices are invented in the independent theses of \textcite{kim1997} and \textcite{molenaar2000}.
-Most recently, a six degree of freedom non-contact actuator was demonstrated by \textcite{verma2004}.
-See also the device built by \textcite{kim2007} to support around \SI{2}{kg} over a travel of $\SI{5}{mm}\times\SI{5}{mm}$ with nanometre precision.
-The high performance and mechanical simplicity of their design is note-worthy.
-
-Here're some more to look at: \textcite{boeij2008,zhang2008a}
-
-The reason these devices are unsuitable for this research is due to their travelling capability.
-Rather than using the primarly magnetic flux for load support, these designs use it in order to provide positioning control in the horizontal directions.
-
-Here's something new: \textcite{shameli2008}.
-
-A recent six degree of freedom actuator has been demonstrated by \textcite{jansen2008}, which supports loads in the order of \SI{10}{kg} with a relatively large air gap (\SI{1}{mm}--\SI{2}{mm}) and large stroke ($\SI{230}{mm}\times\SI{230}{mm}$).
-
-[\textcite{dasilveira2005}] Analytical expression for the normal force between two magnets on a back-iron plate and a perpendicular coil.
-The system is for a planar actuator, and the motivation is to be able to determine the amount of out-of-plane force generated by a particular design.
-Could very well be useful for some of my ideas.
-
-
-\subsection{Interesting devices}
+\subsubsection{Fun}
 
 
 I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
@@ -720,6 +672,56 @@ I don't know if I care, but \textcite{vanwest2007} created a haptic interface fo
 
 \textcite{tomie2005} This paper's a bit of fun; uses a magnet attached to a cantilever, excited by an external field in a water tank, to propel a robotic fish.
 Only left-right oscillations were produced, so the fish was constrained to move in a plane.
+
+\subsection{Magnets and quasi-statics}
+
+That magnets can apply forces to one another over a distance is quite a novel concept in a mechanical world accustomed to friction.
+It has been a short while, relatively speaking, that it has been possible to even produce magnets with enough coercive force to apply useful mechanical forces.
+Non-contact magnetics in mechanical systems is advantageous due to high precision and wear-free operation due to lack of friction.
+This section looks broadly at some of the main applications of the field.
+
+Loud-speakers are still being researched, with improved analytical methods to determine forces for optimisation purposes \cite{merit2009}.
+
+
+\subsubsection{Maglev transportation}
+
+The largest body of research into magnetic levitation is on so-called `\maglev/'
+transportation, reviewed in 2006 by \textcite{lee2006}.
+Its well-known goal is to use a levitated train or car to provide extremely fast and efficient transportation.
+This field, which is rather diverse in terms of the techniques under investigation, is finally now achieving commercial application in the real world after some 20 or 30 years
+of research.
+While it has some concepts in common with this research (large loads, magnets), the techniques used tend to be rather distanced from those that will be applied for this project because they focus on transportation rather than \emph{elimination} of movement.
+
+Earnshaw's theorem for stability is not applicable for \maglev/ systems, since the motion of the vehicle adds a time-varying element to the magnetic system.
+Many approaches to the design of \maglev/ systems have been taken, including passively stable designs \cite{musolino2009}.
+
+
+\subsubsection{Magnetic positioners}
+
+In more recent years, another application for magnetic levitation has been investigated, which is the precision control of a levitated platform.
+Commonly cited for use in the semiconductor industry for photolithography, these levitators were first researched around 20 years ago, and the field is still an active area of research \cite{fulford2008,fulford2009}.
+
+Recent one degree of freedom linear magnetic bearing: \cite{ro2009-preeng}.
+
+The first designs allowed travel in a single direction, \eg, \textcite{trumper1992}, while more recent developments allow more directions of control.
+Such devices are capable of supporting small loads, and applying horizontal translation forces to effect displacements of up to around \SI{200}{mm} with nanometre precision.
+Two planar devices are invented in the independent theses of \textcite{kim1997} and \textcite{molenaar2000}.
+Most recently, a six degree of freedom non-contact actuator was demonstrated by \textcite{verma2004}.
+See also the device built by \textcite{kim2007} to support around \SI{2}{kg} over a travel of $\SI{5}{mm}\times\SI{5}{mm}$ with nanometre precision.
+The high performance and mechanical simplicity of their design is note-worthy.
+
+Here're some more to look at: \textcite{boeij2008,zhang2008a}
+
+The reason these devices are unsuitable for this research is due to their travelling capability.
+Rather than using the primarly magnetic flux for load support, these designs use it in order to provide positioning control in the horizontal directions.
+
+Here's something new: \textcite{shameli2008}.
+
+A recent six degree of freedom actuator has been demonstrated by \textcite{jansen2008}, which supports loads in the order of \SI{10}{kg} with a relatively large air gap (\SI{1}{mm}--\SI{2}{mm}) and large stroke ($\SI{230}{mm}\times\SI{230}{mm}$).
+
+[\textcite{dasilveira2005}] Analytical expression for the normal force between two magnets on a back-iron plate and a perpendicular coil.
+The system is for a planar actuator, and the motivation is to be able to determine the amount of out-of-plane force generated by a particular design.
+Could very well be useful for some of my ideas.
 
 
 \subsection{Magnetic levitation is impossible!}
@@ -760,7 +762,7 @@ Perturbations `left' or `right' will result in reaction forces keeping it centre
 So it is with any permanent magnet arrangement.
 
 
-\subsection{Exceptions to Earnshaw}
+\subsubsection{Exceptions to Earnshaw}
 
 Earnshaw's proof does not rule out all forms of `levitation' unconditionally, however.
 \textcite{boerdijk1956a} reviewed the known methods for levitation, covering levitation by gravitation forces, pressure reaction forces, radiation field forces, and finally in detail, various magnetic and electromagnetic forces.
@@ -788,7 +790,7 @@ but the control system is necessarily more complex and the behaviour not as prec
 Finally, levitation can be achieved in dynamic systems. \textcite{bassani2007} levitated a ring magnet above another by using continuous base excitation to find a small zone of stability in the nonlinear dynamics of the system. More well-known, the Levitron toy demonstrates stability of a magnetic spinning top above a ring magnet \cite{berry1997,berry1996,simon1997}.
 
 
-\subsection{Diamagnetic forces}
+\subsubsection{Diamagnetic forces}
 
 Levitations involving diamagnetic material are also exempt from Earnshaw's theorem.
 This was the motivation for the papers of \textcite{boerdijk1956b,boerdijk1956a} in which he cites Braunbek, who derived that magnetic material is governed by Earnshaw's theorem only because it has a relative magnetic permeability ($\permMag$) greater than one — \ie, a permeability greater than that of the surrounding medium.
@@ -809,7 +811,7 @@ Such a requirement renders this method financially and functionally impractical 
 A review of work in the area of superconducting levitation has been published by \textcite{ma2003}.
 
 
-\subsection{Basic magnetic suspension}
+\subsubsection{Basic magnetic suspension}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
 An advanced approach for this application used backstepping with a nonlinear model to provide robust control without system identification \cite{mahmoud2003}.
@@ -848,10 +850,7 @@ Furthermore, the springs are only used as passive isolators for vibrations in th
 Nonetheless, their passive spring was still capable of significant vertical vibration attenuation.
 
 
-\subsection{Forces between magnets}
-
-See \chapref{magnet-theory}.
-
+\subsection{Summary of magnetics}
 
 
 \section{Nonlinear systems, especially those related to magnetic forces}
@@ -1012,6 +1011,10 @@ Conversely, the broader peak of a hardening spring has been shown to be useful f
 \subsection{(Quasi--)infinite stiffness systems}
 \seclabel{infstiff}
 
+This small section covers an area of research commonly cited in the field.
+A swath of papers have been published by Mizuno over the years
+\cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}.
+
 Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
 publications) talk about using a combination of a positive and
 negative stiffness springs to achieve affects like
@@ -1021,8 +1024,6 @@ negative stiffness springs to achieve affects like
 \end{dmath*}
 
 \textcite{xing2005} formalises this idea in their paper.
-A swath of papers have been published by Mizuno over the years
-\cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}.
 The work was extended by \textcite{hoque2006} for three degree of freedom vibration control using the same ideas.
 The term `infinite stiffness' is perhaps unfortunate, as it's not true in any useful sense of the term.
 That is, their static behaviour converges to something that looks like infinite stiffness, but \emph{dynamically} they're the same as any other structure.
