@@ -97,7 +97,7 @@ Vibration isolation tables are generally designed to attenuate natural disturban
 Current commercial models use pneumatic springs to perform this task, and this project arose out of curiosity: could magnetic springs be used instead?
 
 Using magnets for load bearing brings its own set of challenges.
-For completely non-contact support, active control must be used to stabilise \emph{at least} one degree of freedom.
+For completely non-contact support, active control must be used to stabilise \emph{at least} one \dof/.
 For the design to be worth investigating, some advantage to using magnets should also be demonstrated.
   \note{Although I took much pleasure in explaining over the years that my \PhD/ project was to `build a table that floats on magnets'.}
 
@@ -130,7 +130,7 @@ A practical example of this sort of vibration problem is a washing machine that 
 \begin{figure}
   \asyfig{Systems/vibration-sdof}
   \caption{
-    Single degree of freedom vibration system; mass $\massMass$ is being excited by disturbance $\forceDisturb$.
+    Single \dof/ vibration system; mass $\massMass$ is being excited by disturbance $\forceDisturb$.
     Input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\dispMass$ of the mass.
   }
   \figlabel{simple-suppression}
@@ -343,10 +343,10 @@ Also, the presence of a low pass filter does not significantly effect the effica
 A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. They look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
 Rather, integral and double-integral feedback from an accelerometer give better results for them.
 
-\textcite{zhao2007} examined the vibratory behaviour of a two degree of freedom nonlinear system with a time-delayed positional feedback.
+\textcite{zhao2007} examined the vibratory behaviour of a two \dof/ nonlinear system with a time-delayed positional feedback.
 This results of this paper emphasises the importance of accounting for time delays in feedback control systems.
 
-\textcite{serrand2000} discuss active skyhook damping applied to a two degree of freedom structure with emphasis on the effects, for their system, due to possible base flexibility.
+\textcite{serrand2000} discuss active skyhook damping applied to a two \dof/ structure with emphasis on the effects, for their system, due to possible base flexibility.
 One of their results shows that using integrated accelerometer measurements as a velocity feedback term has a low frequency phase shift that can induce instability for high enough control gains.
 
 Velocity feedback control by using integrated accelerometer measurements at the location of actuation has been used for some time as an effective vibration isolation mechanism, shown for example by \textcite{kim1999}.
@@ -360,7 +360,7 @@ The issue of selecting appropriate control gains for velocity feedback control s
 In centralised control, a global model of the system is used when allocating the feedback signals.
 In decentralised control, each sensor/actuator pair operates independently to minimize the energy at the mounting point.
 Generally centralised control is more difficult in practise but can give better results.
-For the simple two-degree of freedom vibrating system examined by \textcite{engels2008}, the centralised control performed better although the differences to the decentralised control were small.
+For the simple two-\dof/ vibrating system examined by \textcite{engels2008}, the centralised control performed better although the differences to the decentralised control were small.
 An analogous result was shown by \textcite{hoque2006} for a three-axis vibration platform supported by a so-called `infinite stiffness' magnet/spring system (also see \secref{infstiff}).
 
 An attractive method of reducing the detrimental effect of a resonance peak in vibration isolation is to add damping to the structure. As previously discussed, passive damping (or relative velocity feedback control) reduces the effectiveness of the vibration isolation at higher frequencies.
@@ -397,7 +397,7 @@ This approach was used by \textcite{savaresi2007} to implement a combination sky
 
 \paragraph{Adaptive and state control}
 
-\textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techniques to isolate a multi-degree of freedom structure in a single direction.
+\textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techniques to isolate a multi-\dof/ structure in a single direction.
 Adaptive vibration control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
 
 
@@ -485,8 +485,8 @@ In this case, velocity feedback on its own can have problems with stability marg
 \textcite{benassi2002-part2} showed in experiment that this can be improved by the addition of a phase lag controller with force feedback in conjunction with velocity feedback.
 The theory for such `combined-state' feedback cases was developed at the same time \cite{benassi2002-double}.
 
-A wide combination of feedback combinations was analysed by \textcite{diaz2005} focussing on various forms of velocity feedback for \mbox{single-,} \mbox{double-,} and multi-degree of freedom vibration isolation systems.
-In the two degree of freedom system, an inertial actuator is used to provide control force; as well as additional stability contraints due to this arrangement, the resonance at low frequencies of the actuator itself compromised the control performance.
+A wide combination of feedback combinations was analysed by \textcite{diaz2005} focussing on various forms of velocity feedback for \mbox{single-,} \mbox{double-,} and multi-\dof/ vibration isolation systems.
+In the two \dof/ system, an inertial actuator is used to provide control force; as well as additional stability contraints due to this arrangement, the resonance at low frequencies of the actuator itself compromised the control performance.
 (A possible solution to this problem might be to select an actuator with a much \emph{greater} resonance frequency than the plant, but this arrangement has been shown to be ineffective at controlling the system \cite[][Appendix~A]{benassi2002-part1}.)
 
 A comparison of some of these methods, including skyhook damping and semi-active vibration absorber methods, was done by \textcite{huyanan2007}, contrasting the performance and implementation differences between them.
@@ -585,7 +585,7 @@ Another field of interest for regenerative damping is in vehicle suspensions, in
 Recent work has self-powered \magnetorh/ dampers as \vibneut/ \cite{choi2009-jva}.
 
 \textcite{stephen2006} performed a thorough analysis on energy harvesting with micro-actuators.
-He considered a single degree of freedom mass-spring-damper coupled with a simple electrical circuit.
+He considered a single \dof/ mass-spring-damper coupled with a simple electrical circuit.
 For best performance, energy should be dissipated as much as possible by the electric components, not the mechanical damping, since in the electrical network the energy is retrievable whereas as viscous damping the energy is dissipated as heat.
 This idea has similarities with the concept discussed previously in this section that the effectiveness of the \vibneut/ is reduced with the presence of increased mechanical damping.
 
@@ -655,7 +655,7 @@ Stimulation of the human nervous system \cite{darabant2009}.
 
 Wireless motion capture device \cite{hashi2005}.
 
-Six degree of freedom remote localisation within the human body \cite{yang2009-ietm}.
+Six \dof/ remote localisation within the human body \cite{yang2009-ietm}.
 
 Magnetic fields can be used for a vast array of scientific uses.
 For example, noncontact sensing of material properties that involve variable conductivity, including fatigue cracks, defects in printed circuit boards, and even plastic landmine detection \cite{mukhopadhyay2005}.
@@ -697,12 +697,12 @@ Many approaches to the design of \maglev/ systems have been taken, including pas
 In more recent years, another application for magnetic levitation has been investigated, which is the precision control of a levitated platform.
 Commonly cited for use in the semiconductor industry for photolithography, these levitators were first researched around 20 years ago, and the field is still an active area of research \cite{fulford2008,fulford2009}.
 
-Recent one degree of freedom linear magnetic bearing: \cite{ro2009-preeng}.
+Recent one \dof/ linear magnetic bearing: \cite{ro2009-preeng}.
 
 The first designs allowed travel in a single direction, \eg, \textcite{trumper1992}, while more recent developments allow more directions of control.
 Such devices are capable of supporting small loads, and applying horizontal translation forces to effect displacements of up to around \SI{200}{mm} with nanometre precision.
 Two planar devices are invented in the independent theses of \textcite{kim1997} and \textcite{molenaar2000}.
-Most recently, a six degree of freedom non-contact actuator was demonstrated by \textcite{verma2004}.
+Most recently, a six \dof/ non-contact actuator was demonstrated by \textcite{verma2004}.
 See also the device built by \textcite{kim2007} to support around \SI{2}{kg} over a travel of $\SI{5}{mm}\times\SI{5}{mm}$ with nanometre precision.
 The high performance and mechanical simplicity of their design is note-worthy.
 
@@ -713,7 +713,7 @@ Rather than using the primarly magnetic flux for load support, these designs use
 
 Here's something new: \textcite{shameli2008}.
 
-A recent six degree of freedom actuator has been demonstrated by \textcite{jansen2008}, which supports loads in the order of \SI{10}{kg} with a relatively large air gap (\SI{1}{mm}--\SI{2}{mm}) and large stroke ($\SI{230}{mm}\times\SI{230}{mm}$).
+A recent six \dof/ actuator has been demonstrated by \textcite{jansen2008}, which supports loads in the order of \SI{10}{kg} with a relatively large air gap (\SI{1}{mm}--\SI{2}{mm}) and large stroke ($\SI{230}{mm}\times\SI{230}{mm}$).
 
 [\textcite{dasilveira2005}] Analytical expression for the normal force between two magnets on a back-iron plate and a perpendicular coil.
 The system is for a planar actuator, and the motivation is to be able to determine the amount of out-of-plane force generated by a particular design.
@@ -958,7 +958,7 @@ However, it is necessary to use a nonlinear spring to achieve this zero stiffnes
 And the behaviour of a nonlinear oscillator varies considerably from that of the classic linear spring.
 Most obviously, the shape of the frequency response is not independent of the amplitude of the forcing disturbance.
 
-Consider the stable single degree of freedom system
+Consider the stable single \dof/ system
 \begin{dmath}
 m \ddot x + b \dot x + \stiffnessDuffing (x+s)^3 = 0, 
 \end{dmath}
@@ -1028,7 +1028,7 @@ negative stiffness springs to achieve affects like
 \end{dmath*}
 
 \textcite{xing2005} formalises this idea in their paper.
-The work was extended by \textcite{hoque2006} for three degree of freedom vibration control using the same ideas.
+The work was extended by \textcite{hoque2006} for three \dof/ vibration control using the same ideas.
 The term `infinite stiffness' is perhaps unfortunate, as it's not true in any useful sense of the term.
 That is, their static behaviour converges to something that looks like infinite stiffness, but \emph{dynamically} they're the same as any other structure.
 This is because the negative spring in combination must be stabilised somehow, and this stabilisation removes the nice property of summing to zero with the other stiffness in the system.
