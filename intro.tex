@@ -6,7 +6,9 @@
 
 
 
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Introduction to the central themes of the thesis}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Before launching into detail into the various topics under investigation, this section briefly touches on the issues addressed over the entire thesis: vibrations and their isolation and suppression in \secref{vibrations-summary-intro}; permanent magnets and their role in the design of supporting structures and other devices in \secref{magnets-summary-intro}; and `\qzs/' systems, which unify in this thesis the fields of vibrations and magnets, in \secref{qzs-summary-intro}.
 These three broad areas are then investigated in more detail in \secrangeref{vibrations-explore}{qzs-explore}.
@@ -106,8 +108,12 @@ The work presented in this thesis is the investigations around the idea of build
 
 
 
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 \section{Vibrations}
 \seclabel{vibrations-explore}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 The field of active vibration isolation is a broad topic to cover in review; not everything will be able to be covered here, but it is important to have an overview of what people are doing to place this work in context.
 The literature review that follows is strongly biased towards papers that have been recently published.
@@ -394,12 +400,10 @@ For example, acceleration feedback could be used to reduce the resonance frequen
 This approach was used by \textcite{savaresi2007} to implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'.
 \textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
 
-
 \paragraph{Adaptive and state control}
 
 \textcite{guo2005}, for example, used system identification and a variety of feedforward/feedback control techniques to isolate a multi-\dof/ structure in a single direction.
 Adaptive vibration control in six degrees of freedom for broadband noise has also been shown by \textcite{duindam2005}.
-
 
 \paragraph{Optimal control}
 
@@ -458,6 +462,7 @@ Their device used a combination of pneumatic, voice-coil linear motors, and piez
 Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
 
 
+
 \subsection{Vibrations literature introduced and then ignored}
 
 Until this point in the introduction, the only focus on the vibration control literature has rested upon the area directly related to vibration isolation through modification (whether active, semi-active, or passive) of the supporting structure for the mass.
@@ -494,8 +499,6 @@ A comparison of some of these methods, including skyhook damping and semi-active
 \textcite{paulitsch2003} uses an electromechanical actuator that serves as a self-sensing device for vibration control.
 The idea of self-sensing for magnetic levitation purposes (in both cases using a electromagnet) has been shown by \textcite{bleuler1992,vischer1993}.
 These self-sensing devices (perhaps obviously, since the \backemf/ is such a noisy signal) do not perform nearly as well as when using a dedicated sensor, but the technique is particularly interesting for low-cost, low-precision devices.
-
-\fixme{tie into thesis}
 
 
 \subsubsection{Narrow-band vibration isolation}
@@ -593,7 +596,6 @@ Semi-active methods have also been explored to tune energy harvesting devices to
 \textcite{challa2008} investigated a semi-active device for tunable energy harvesting that used variable-displacement attractive and repulsive magnets to adjust the resonance frequency of a piezoelectric cantilever.
 This is the same mechanism that is examined in this thesis for `\qzs/' suspensions (see \secref{qzs-explore} and \secref{qzs}).
 
-\fixme{tie into thesis}
 
 
 \subsection{Summary of the vibrations literature}
@@ -622,8 +624,10 @@ Magnetic levitation (\ie, using forces to support things that aren't moving); it
 The chapter then concludes with a section on intersection of magnetic devices and vibrations.
 
 
+
 \subsection{The world of magnetic applications}
 \seclabel{magnetic-apps}
+
 
 \subsubsection{Boring}
 
@@ -657,35 +661,42 @@ adapted from \textcite{coey2002}.}
 \tablabel{magnet-applications}
 \end{table}
 
+
 \subsubsection{Fun}
-
-
-I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
-
-Here would be a good place to cite the brain, nerve, stuff, etc
-\parencite{sekino2005,lu2008,demachi2008}
-
-Measurements of memory encoding in the brain \cite{gjini2005}.
-
-Measurements of the health of the heart \cite{lim2009}.
-
-Stimulation of the human nervous system \cite{darabant2009}.
-
-Wireless motion capture device \cite{hashi2005}.
-
-Six \dof/ remote localisation within the human body \cite{yang2009-ietm}.
 
 Magnetic fields can be used for a vast array of scientific uses.
 For example, noncontact sensing of material properties that involve variable conductivity, including fatigue cracks, defects in printed circuit boards, and even plastic landmine detection \cite{mukhopadhyay2005}.
 
-Here's a fun application of magnetics where a computer input device is built with magnetic sensors placed on the wrist in order to sense single finger-tip motion from the opposite hand \parencite{han2008}.
+Medical uses:
+\begin{itemize}
+\item 
+Brain imaging \cite{sekino2005,gjini2005,lu2008-ietm,demachi2008}
+\item
+Measurements of the health of the heart \cite{lim2009-ietm}.
+\item
+Stimulation of the human nervous system \cite{darabant2009}.
+\item
+Effects on tumour growth and immune function \cite{yamaguchi2005-ietm}.
+\item
+Six \dof/ remote localisation within the human body \cite{yang2009-ietm}.
+\end{itemize}
 
+Robotics:
+\begin{itemize}
+\item 
 I don't know if I care, but \textcite{vanwest2007} created a haptic interface for manuipulating small objects with magnetic levitation.
+\item
+Wireless motion capture device \cite{hashi2005}.
+\item
+Here's a fun application of magnetics where a computer input device is built with magnetic sensors placed on the wrist in order to sense single finger-tip motion from the opposite hand \parencite{han2008}.
+\item
+\textcite{tomie2005} This paper's a bit of fun; uses a magnet attached to a cantilever, excited by an external field in a water tank, to propel a robotic fish.
+Only left-right oscillations were produced, so the fish was constrained to move in a plane.
+\end{itemize}
 
 \textcite{park2008} demonstrates a MIMO controller for a flywheel energy storage mechanism using magnetic bearings while applying active vibration isolation.
 
-\textcite{tomie2005} This paper's a bit of fun; uses a magnet attached to a cantilever, excited by an external field in a water tank, to propel a robotic fish.
-Only left-right oscillations were produced, so the fish was constrained to move in a plane.
+
 
 \subsection{Magnets and translational forces}
 \seclabel{magnetsforces-apps}
@@ -833,7 +844,7 @@ Such a requirement renders this method financially and functionally impractical 
 A review of work in the area of superconducting levitation has been published by \textcite{ma2003}.
 
 
-\subsubsection{Basic magnetic suspension}
+\subsubsection{Magnetic suspension}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
 An advanced approach for this application used backstepping with a nonlinear model to provide robust control without system identification \cite{mahmoud2003}.
@@ -854,16 +865,23 @@ Eh.
 
 The negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001}.
 
+I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
 
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Magnetic vibration isolation}
+
+\subsection{Summary of magnets and vibrations}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\section{Magnets and vibrations}
 \seclabel{magnetsisolation-apps}
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
+\subsection{Vibration isolation platforms}
 
 \textcite{puppin2002} published a paper that most plainly demonstrates that magnetic springs can be used for vibration isolation, in which the authors make no attempt to achieve contactless suspension—the magnets are horizontally constrained in guides.
 Furthermore, the springs are only used as passive isolators for vibrations in the vertical direction; no active control is used.
-
 
 \textcite{nagaya1993} constructed a non-contact vibration isolation table; they report a high-stiffness spring with transmissibility that \enquote{can be controlled to be nearly zero} \sic/.
 Their table used small magnets in a simple design, which could not support large loads.
@@ -874,6 +892,8 @@ The authors showed later a better control system for their \enquote{perfect nonc
 The control system used was quite advanced, utilising a combination of two independent control systems for stable levitation and robust vibration isolation.
 The magnetic actuator design is not described, however.
 It is believed that high-powered electromagnets were required for this design; with the current availability of cheap rare-earth magnets, a more efficient design is now possible.
+
+
 
 \subsection{(Quasi--)infinite stiffness systems}
 \seclabel{infstiff}
@@ -898,7 +918,6 @@ This is because the negative spring in combination must be stabilised somehow, a
 
 \textcite{mizuno2003c} present a modified version of the idea, whereby rather than using magnetic springs in attraction, as in their other work, this paper looks at using a voice coil actuator with designed negative stiffness.
 A controller must be used to obtain this negative stiffness.
-
 
 
 
@@ -956,6 +975,7 @@ Nonlinear control is better than linear control, as argued cogently by \textcite
 \textcite{queiroz2007} used nonlinear control to stabilise a magnetic bearing with pull--pull electromagnets with parameter uncertainties, while also minimising power consumption of the system.
 
 
+
 \subsection{Exploring \qzs/ systems}
 \seclabel{qzs-explore}
 
@@ -991,6 +1011,7 @@ Generally, systems that use the negative stiffness between attracting magnets ca
 This creates something like a negative quadratic force relationship, which has zero stiffness in the centred vertical position.
 
 Analysis of the nonlinear dynamics of such systems such as performed by \textcite{lee2004-jsv,kovacic2008,kovacic2009} can be quite involved and is outside the scope of this research.
+
 
 
 \subsubsection{\QZS/ is not zero stiffness}
@@ -1058,7 +1079,7 @@ Conversely, the broader peak of a hardening spring has been shown to be useful f
 
 
 
-\subsection{Summary of magnetics}
+\subsection{Summary of magnets and vibrations}
 
 
 
