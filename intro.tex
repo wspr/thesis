@@ -337,7 +337,11 @@ Semi-active stiffness modification is used more commonly in \vibneut/ applicatio
 \subsubsection{Limitations of the above techniques}
 \seclabel{vibes-feedback}
 
-The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001} in a vibration suppression system, where time delays and phase lags introduced by digital filters and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section). Pithily stated by \textcite{williams2009}:
+The limits of control in real-world devices was investigated by \textcite{ananthaganeshan2001} in a vibration suppression system, where time delays and phase lags introduced by digital filters
+\note{When absence of all vibrations are required, the side-effects of digital control (\ie, chaotic effects due to quantisation and time delays \cite{csernak2007}) may prove deleterious for extreme applications.
+On the other hand, any sufficiently expensive system should be able to reduce these effects to be arbitrarily negligible.
+For the purposes of this thesis, such small effects are of no concern.}
+and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback (as posited in the previous section). Pithily stated by \textcite{williams2009}:
 \begin{quote}
 In theory integration of accelerometer signals is easily done; however, in practice, inertially referenced velocity proves to be as elusive as it is useful.
 \end{quote}
@@ -847,6 +851,13 @@ The negative stiffness of electromagnetic actuators has been used with a low-sti
 I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
 
 
+
+\subsubsection{Control of unstable magnetic systems}
+
+\textcite{queiroz2007} used nonlinear control to stabilise a magnetic bearing with pull--pull electromagnets with parameter uncertainties, while also minimising power consumption of the system.
+
+
+
 \subsection{Summary of magnetics}
 
 From brain imagining to \maglev/ trains, magnetic fields can be used for a very wide range of applications. Of particular interest are those areas in which magnetic fields are used to generate translational forces.
@@ -879,30 +890,30 @@ It is believed that high-powered electromagnets were required for this design; w
 
 
 
-\subsection{Nonlinear systems, especially those related to magnetic forces}
+\subsection{Nonlinear systems, especially those related to vibrations and/or magnetic forces}
+
+One characteristic property of nonlinear springs is their exhibition of so-called `jump phenomena' whereby the frequency response curve can take multiple values at a single frequency, depending on the initial conditions.
+
+The field of nonlinear dynamics is very large, and applications to vibration suppression can result in surprising results.
+\textcite{oueini1999} considered the response of a nonlinear plant with an additional cubic nonlinear feedback law and established that vibration attenuation was possible (like a \vibneut/?) and that nonlinear phenomena such as chaos existed.
+Presumably, such phenomena are undesirable for vibration isolation!
 
 A very recent and comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
 It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy (\fixme{eg}); in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
 
+\textcite{starosvetsky2008}, with a good review of the literature, talk about the `nonlinear energy sink' idea in which a nonlinear system provides better and broader vibration absorbing.
+
 Interesting results have been shown using nonlinear springs to attach the vibration absorber to the structure, such as \textcite{jo2008} who use repulsive magnetic springs to produce a tuned absorber with a resonance at double the frequency of the main resonance of the structure.
-\fixme{Why would you do this?!}
 
 \textcite{mann2008} performed a preliminary investigation into the use of a nonlinear vibration mount for energy harvesting, using a magnetic suspension of repulsive magnets to create a Duffing-like oscillator.
 Large damping ensured that the nonlinear regimes were only realised at large excitation amplitudes, but the idea is that highly nonlinear resonances have a much broader resonance peak through the higher branch around the jump phenomenon.
-\fixme{reference this elsewhere}
 
 A similar idea is explored by \textcite{shahruz2008} for an energy scavenging cantilever beam that uses an arrangement of attracting magnets to shape the force characteristic of the response.
 The aim is to achieve a power spectrum of the response to a random excitation that is greater than the predominantly linear response that is obtained without the magnets present.
-No analysis of damping or energy harvesting potential was explored in this paper.
 
-\textcite{zhang2008} use a nonlinear damper (specifically of the form viscous plus cubic with velocity; \ie, $a_1\dot x\fn{t}+a_3\ddot x^3\fn{t}$) to excite the structure at harmonic frequencies of the resonance.
+\textcite{zhang2008} use a nonlinear damper to excite the structure at harmonic frequencies of the resonance.
 This results in less energy at the frequency of vibration, although the resonance peak does remain.
 While it does not seem likely that this method can compete with the reductions seen with the approach of a \vibneut/, this nonlinear damping method does have the advantage that it does not require tuning for a particular frequency and its effectiveness will not change with a time-varying resonance frequency.
-
-\textcite{starosvetsky2008}, with a good review of the literature, talk about the `nonlinear energy sink' idea in which a nonlinear system provides better and broader vibration absorbing.
-
-Various combinations of magnetic springs create different classes of approximate nonlinear oscillators, for which standard methods exist to analyse their behaviour \fixme{can I cite a book here I haven't read?}.
-The characteristic property of nonlinear springs is their exhibition of so-called `jump phenomena' whereby the frequency response curve can take multiple values at a single frequency, depending on the initial conditions.
 
 \textcite{jazar2006} analysed the behaviour of a nonlinear vibration isolation mount in detail, developing analytical models for the jump phenomena of a system with cubic stiffness and quadratic damping.
 Critical values were illustrated to avoid the ill effects of the nonlinearities; additional damping had the general effect of decreasing the adverse nonlinear response.
@@ -918,19 +929,7 @@ This allowed a much smaller variation between the $k/m$ ratio than for flush mag
 
 \textcite{bonisoli2007-mssp} used an experimental rig to analyse the nonlinear behaviour of a magnetic and linear spring in parallel, with more theoretical analysis published later in the year \cite{bonisoli2007-mrc}.
 They showed a configuration of linear and magnetic springs with the notable feature that the resonance frequency exhibits little dependence on mass loading and nonlinear effects can be seen.
-This effect was further demonstrated in parallel research by the same authors.
 
-The field of nonlinear dynamics is very large, and applications to vibration suppression can result in surprising results.
-\textcite{oueini1999} considered the response of a nonlinear (including cubic) plant with an additional cubic nonlinear feedback law and established that vibration attenuation was possible (like a \vibneut/?) and that nonlinear phenomena such as chaos existed.
-Presumably, such phenomena are undesirable for vibration isolation!
-
-Anyway, it is an interested argument to make that digital control in a vibration isolation situation is inappropriate.
-When absence of all vibrations are required, the side-effects of digital control (\ie, chaotic effects due to quantisation and time delays \cite{csernak2007}) may prove deleterious for extreme applications.
-On the other hand, any sufficiently expensive system should be able to reduce these effects to be arbitrarily negligible.
-For the purposes of this thesis, such small effects are of no concern.
-
-Nonlinear control is better than linear control, as argued cogently by \textcite{kokotovic1992}.
-\textcite{queiroz2007} used nonlinear control to stabilise a magnetic bearing with pull--pull electromagnets with parameter uncertainties, while also minimising power consumption of the system.
 
 
 
