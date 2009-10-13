@@ -615,7 +615,7 @@ Looking at some more specific cases, magnetic positioners and movers are discuss
 \item[\Secref{earnshaw}]
 Magnetic levitation (\ie, using forces to support things that aren't moving); its impossibility and exceptions to that restriction.
 \end{description}
-The chapter then concludes with a section on intersection of magnetic devices and vibrations.
+The chapter then concludes with a section on the intersection of magnetic devices and vibrations.
 
 
 
@@ -669,7 +669,7 @@ Using a magnet attached to a cantilever excited by an external field in a water 
 In the following sections, I will discuss in more detail the literature closer in scope to the research of this thesis.
 
 
-\subsection{Magnets and translational forces}
+\subsection{Magnets helping motion}
 \seclabel{magnetsforces-apps}
 
 That magnets can apply forces to one another over a distance is quite a novel concept in a mechanical world accustomed to friction.
@@ -685,15 +685,14 @@ Loud-speakers are still being researched, with improved analytical methods to de
 The largest body of research into magnetic levitation is on so-called `\maglev/'
 transportation, reviewed in 2006 by \textcite{lee2006}.
 Its well-known goal is to use a levitated train or car to provide extremely fast and efficient transportation.
-This field, which is rather diverse in terms of the techniques under investigation, is finally now achieving commercial application in the real world after some 20 or 30 years
-of research.
+This field, which is rather diverse in terms of the techniques under investigation, is finally now achieving commercial application in the real world after some thirty years of research.
 While it has some concepts in common with this research (large loads, magnets), the techniques used tend to be rather distanced from those that will be applied for this project because they focus on transportation rather than \emph{elimination} of movement.
 
 Earnshaw's theorem for stability is not applicable for \maglev/ systems, since the motion of the vehicle adds a time-varying element to the magnetic system.
 Many approaches to the design of \maglev/ systems have been taken, including passively stable designs \cite{musolino2009}.
 
 
-\subsubsection{Magnetic bearings and positioners}
+\subsubsection{Magnetic translational bearings and positioners}
 
 In more recent years, another application for magnetic levitation has been investigated, which is the precision control of a levitated platform.
 Commonly cited for use in the semiconductor industry for photolithography, these levitators were first researched around twenty years ago, and the field is still an active area of research \cite{fulford2008,fulford2009}.
@@ -796,7 +795,9 @@ Research into the force equations for magnetic bearings and couplings is still a
 
 
 
-\subsection{Magnetic levitation (impossible!)}
+\subsection{Magnets opposing motion}
+
+\subsubsection{Passive magnetic levitation (impossible!)}
 \seclabel{earnshaw}
 
 From the field of bearings and positioning to magnetic suspension, in which the supported object is supposed not to move.
@@ -843,7 +844,7 @@ Earnshaw's proof does not rule out all forms of `levitation' unconditionally, ho
 \textcite{bassani2006} revisited Earnshaw's work, in particular to highlight interesting exceptions to the theory against passive levitation.
 
 Because Earnshaw's theorem looks only at the case for static equilibrium, cases when the magnetic field is dynamic are not covered.
-This can occur broadly under three circumstances: when the magnetic field is generated with \AC/ currents; and when an unstable permanent magnet arrangement is stabilised with an active control system; and when the system is composed of elements with some dynamics associated with them
+This can occur broadly under four circumstances: when the magnetic field is time-varying; and when an unstable permanent magnet arrangement is stabilised with an active control system; and when the system is composed of elements with some dynamics associated with them
 \note{\Ie, when things are moving}.
 
 Levitation using a magnetic field produced by \AC/ currents was covered in detail by \textcite{laithwaite1965}.
@@ -864,15 +865,15 @@ but the control system is necessarily more complex and the behaviour not as prec
 Finally, levitation can be achieved in dynamic systems. \textcite{bassani2007} levitated a ring magnet above another by using continuous base excitation to find a small zone of stability in the nonlinear dynamics of the system. More well-known, the Levitron toy demonstrates stability of a magnetic spinning top above a ring magnet \cite{berry1997,berry1996,simon1997}.
 
 
-\subsubsection{Diamagnetic forces}
+\subsubsection{Diamagnetic levitation}
 
 Levitations involving diamagnetic material are also exempt from Earnshaw's theorem.
 This was the motivation for the papers of \textcite{boerdijk1956b,boerdijk1956a} in which he cites Braunbek, who derived that magnetic material is governed by Earnshaw's theorem only because it has a relative magnetic permeability ($\permMag$) greater than one — \ie, a permeability greater than that of the surrounding medium.
 A separate analysis of magnetic levitation systems provides a more specific measure for testing the stability of magnetic systems with various boundary conditions \cite{reusch1994}.
 
-Material with $\permMag<1$ is \emph{not} covered by the theorem since the magnetic flux from the diamagnetic material becomes dependent on the displacement of the permanent magnet; this violates the condition of Earnshaw's theorem that fixed magnetic fields be used, and so static levitation involving magnets and such diamagnetic material is very possible.
+Material with $\permMag<1$ is \emph{not} covered by the theorem since the magnetic flux from the diamagnetic material becomes dependent on the displacement of the permanent magnet; this violates the condition of Earnshaw's theorem that fixed magnetic fields be used, and so static levitation involving magnets and such diamagnetic material becomes possible.
 To demonstrate this, \citeauthor{boerdijk1956b} levitated a small cylindrical magnet of dimensions \diameter$\,\SI{1}{mm} \times \SI{0.3}{mm}$.
-\textcite{simon2000} provide a good background and modern approaches to levitate a permanent magnet with a variety of magnet/diamagnet geometries.
+\textcite{simon2000} provide a good background to the area and uses modern approaches to levitate a permanent magnet with a variety of magnet/diamagnet geometries.
 
 Other studies on diamagnetic levitation look at the levitation of larger objects including strawberries and frogs \cite{berry1997,geim1998,geim1999,simon2001} and (recently and widely reported in the media) mice \cite{liu2009-spaceresearch} with superconducting electromagnets (on the order of \SI{10}{T}).
 
@@ -892,11 +893,15 @@ Such a requirement renders this method financially and functionally impractical 
 A review of work in the area of superconducting levitation has been published by \textcite{ma2003}.
 
 
-\subsubsection{Magnetic suspension}
+\subsubsection{Single \dof/ unstable magnetic suspension}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
+The most common form this takes is via an unstable attractive vertical force to directly compensate for gravity; later, \fixme{crossref} vertically-passive schemes are seen that require active control in the horizontal directions to maintain stability.
+
 An advanced approach for this application used backstepping with a nonlinear model to provide robust control without system identification \cite{mahmoud2003}.
+
 \textcite{gentili2003}.
+
 \textcite{agamennoni2004} were able to identify the nonlinear dynamics of a coil-iron suspension.
 
 \textcite{chang2001} applied nonlinear control to the problem of magnetic levitation, using coupled hybrid magnets (\ie, electromagnets biased with permanent magnet cores) that create a magnetic circuit with the levitated table of \SI{20}{kg}.
@@ -915,6 +920,7 @@ The negative stiffness of electromagnetic actuators has been used with a low-sti
 
 I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
 
+Vibration isolation achieved using magnetic suspensions is addressed later in \secref{magnet-platform-isolation}.
 
 
 \subsubsection{Control of unstable magnetic systems}
@@ -928,6 +934,7 @@ I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
 From brain imagining to \maglev/ trains, magnetic fields can be used for a very wide range of applications. Of particular interest are those areas in which magnetic fields are used to generate translational forces.
 
 The inherent instability of magnetic suspensions has been introduced and methods shown for overcoming the problems associated with this.
+Basic magnetic suspension, as the basis for many `levitation platforms' was addressed.
 
 In the next section, the marriage is made between magnetic forces and vibration platforms.
 
@@ -939,13 +946,17 @@ In the next section, the marriage is made between magnetic forces and vibration 
 
 
 \subsection{Vibration isolation platforms}
+\seclabel{magnet-platform-isolation}
 
 \textcite{puppin2002} published a paper that most plainly demonstrates that magnetic springs can be used for vibration isolation, in which the authors make no attempt to achieve contactless suspension—the magnets are horizontally constrained in guides.
 Furthermore, the springs are only used as passive isolators for vibrations in the vertical direction; no active control is used.
 
 \textcite{nagaya1993} constructed a non-contact vibration isolation table; they report a high-stiffness spring with transmissibility that \enquote{can be controlled to be nearly zero} \sic/.
+\note{Transmissibility is a ratio expressed, usually, in decibels across a frequency spectrum — there's no meaning to the qualitative term `nearly zero' without quantifying it somehow.}
 Their table used small magnets in a simple design, which could not support large loads.
-The authors showed later a better control system for their \enquote{perfect noncontact active vibration isolation table} \cite{nagaya1995a}.
+The authors showed later a better control system for their \enquote{perfect \sic/
+\note{What does `perfect' mean?}
+noncontact active vibration isolation table} \cite{nagaya1995a}.
 
 \textcite{watanabe1996} wrote a paper detailing a functional vibration isolator using electromagnetic springs, which could support weights of up to
 \SI{200}{kg}.
@@ -955,7 +966,7 @@ It is believed that high-powered electromagnets were required for this design; w
 
 
 
-\subsection{Nonlinear systems, especially those related to vibrations and/or magnetic forces}
+\subsection{Nonlinear vibration and/or magnetic systems}
 
 One characteristic property of nonlinear springs is their exhibition of so-called `jump phenomena' whereby the frequency response curve can take multiple values at a single frequency, depending on the initial conditions.
 
