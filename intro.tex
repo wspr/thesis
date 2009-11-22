@@ -130,8 +130,8 @@ The ground to which it is fixed is assumed to have infinite mass and to have zer
 In this system, motion of the mass can be suppressed by increasing the stiffness of the support, since as the mass becomes more greatly coupled with the ground, the input force has a diminishing influence.
 This behaviour is referred to as `vibration suppression' in this thesis.
 A practical example of this sort of vibration problem is a washing machine that causes itself to vibrate through a rotating imbalance; the imbalance causes oscillations in the drum which, when great enough, force the drum off its axis of rotation.
-\note{A common problem in our household. Just have to learn to arrange the washing carefully inside the drum.
-  \note{Our washing machine has since broken. Imbalance matters!}}
+\note{A common problem in our household. Just have to learn to arrange the washing carefully inside the drum.\footnotemark}
+\footnotetext{Our washing machine has since broken. Imbalance matters!}
 
 \begin{figure}
   \asyfig{Systems/vibration-sdof}
@@ -749,25 +749,25 @@ The multipole nature of this bearing will be more closely examined in \secref{mu
   \figlabel{backers-bearing}
 \end{figure}
 
-\textcite{yonnet1978} proved that the forces between radial bearings are
-equal regardless of whether they are axially magnetised or radially.\footnote{To
+\textcite{yonnet1978} showed that the forces between radial bearings are
+equal, assuming a far-field \twoD/ magnetic field solution, regardless of whether they are axially magnetised or radially.\footnote{To
 be precise, the forces exerted by two magnets upon each other remain equal so
 long as the sum of their angles of magnetisation remain constant.} So, for
 example, the two bearings shown in \figref{equalbearings}, despite having
 different magnetisation directions, have the same stiffness (due to the forces
 being equal).
+His later paper \cite{yonnet1981} continued this work, describing
+how magnetic bearings may re-arranged to suit different applications,
+showing every possible simple equivalent axial and radial bearing.
+
 
 \begin{figure}[hbtp]
-  \grf[scale = 0.7]{Figures/Bearings/equalbearings}
+  \grf[scale = 0.5]{Figures/Bearings/equalbearings}
   \caption[Two equivalent radial bearings]{Two equivalent radial bearings
 (with equal forces of repulsion), despite their different directions of
 magnetisation.}
   \figlabel{equalbearings}
 \end{figure}
-
-His later paper \cite{yonnet1981} continues this work, describing
-how magnetic bearings may re-arranged to suit different applications,
-showing every possible simple equivalent axial and radial bearing.
 
 [\textcite{asami2005}] This paper is essentially describing an axial
 bearing with actively control for radial stability. It uses a \FEA\ simulation
@@ -797,7 +797,7 @@ Research into the force equations for magnetic bearings and couplings is still a
 
 \subsection{Magnets opposing motion}
 
-\subsubsection{Passive magnetic levitation (impossible!)}
+\subsubsection{The impossible passive magnetic levitation}
 \seclabel{earnshaw}
 
 From the field of bearings and positioning to magnetic suspension, in which the supported object is supposed not to move.
@@ -943,7 +943,6 @@ In the next section, the marriage is made between magnetic forces and vibration 
 \section{Magnets and vibrations}
 \seclabel{magnetsisolation-apps}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
 
 \subsection{Vibration isolation platforms}
 \seclabel{magnet-platform-isolation}
