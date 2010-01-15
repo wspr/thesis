@@ -547,7 +547,7 @@ The expressions for calculating the forces themselves will not be shown again he
 
 \begin{figure}[t]
 \centering
-\scalebox{0.9}{\asyfig{../Figures/Magnets/akoun}}
+\asyfig{Magnets/akoun}
 \caption{Depiction of the geometry for the two-magnet system.}
 \label{diagram}
 \end{figure}
@@ -560,11 +560,11 @@ The force between a vertically-magnetised magnet and one with magnetisation in t
 \end{multline}
 where
 \begin{align}
-\bm s_{z,x} &= \abs\fn{\mathbf R_z\fn{\tfrac\pi2}\bm s}, \\
-\bm S_{z,x} &= \abs\fn{\mathbf R_z\fn{\tfrac\pi2}\bm S}, \\
+\bm s_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\bm s}, \\
+\bm S_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\bm S}, \\
 \bm d_{z,x} &= \mathbf R_z\fn{\tfrac\pi2}\bm d,
 \end{align}
-for which $\abs\fn{\cdot}$ is the \emph{element-wise} absolute value function and $\mathbf R_z\fn{\theta}$ is the rotation matrix around the $z$-axis:
+for which $\Abs{\cdot}$ is the \emph{element-wise} absolute value function and $\mathbf R_z\fn{\theta}$ is the rotation matrix around the $z$-axis:
 \begin{equation}
 \mathbf R_z\fn\theta = \begin{bmatrix}
 \cos\theta & -\sin\theta & 0 \\
@@ -583,8 +583,8 @@ For horizontal $x$-direction magnetisation,
 \end{multline}
 where
 \begin{align}
-\bm s_x &= \abs\fn{\mathbf R_y\fn{-\tfrac\pi2}\bm s}, \\
-\bm S_x &= \abs\fn{\mathbf R_y\fn{-\tfrac\pi2}\bm S}, \\
+\bm s_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\bm s}, \\
+\bm S_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\bm S}, \\
 \bm d_x &= \mathbf R_y\fn{-\tfrac\pi2}\bm d,
 \end{align}
 and $\mathbf R_y\fn{\theta}$ is the rotation matrix around the $y$-axis:
@@ -603,8 +603,8 @@ Similarly, for horizontal $y$-direction magnetisation,
 \end{multline}
 where
 \begin{align}
-\bm s_y &= \abs\fn{\mathbf R_x\fn{\tfrac\pi2}\bm s}, \\
-\bm S_y &= \abs\fn{\mathbf R_x\fn{\tfrac\pi2}\bm S}, \\
+\bm s_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\bm s}, \\
+\bm S_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\bm S}, \\
 \bm d_y &= \mathbf R_x\fn{\tfrac\pi2}\bm d,
 \end{align}
 and $\mathbf R_x\fn{\theta}$ is the rotation matrix around the $x$-axis:
@@ -641,7 +641,7 @@ The verification curve of the results of \textcite{akoun1984}, calculated using 
 
 \begin{figure}
 \centering
-\psfragfig{examples/fig/akoun-repro}
+\psfragfig{magcode/examples/fig/akoun-repro}
 \caption{Reproduction of the results shown by \textcite{akoun1984}.}
 \label{akoun}
 \end{figure}
@@ -660,7 +660,7 @@ The verification curve of the results shown by \textcite{janssen2009-sensorlette
 
 \begin{figure}
 \centering
-\psfragfig{examples/fig/janssen-repro}
+\psfragfig{magcode/examples/fig/janssen-repro}
 \caption{Reproduction of the results of \textcite{janssen2009-sensorletters}.}
 \label{janssen}
 \end{figure}
