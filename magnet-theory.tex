@@ -539,6 +539,139 @@ Much more recently, \textcite{janssen2009-sensorletters} have shown analytical e
 
 \fixme{include}
 
+\subsection{Arbitary magnetisations}
+
+\section{Forces between magnets}
+
+The expressions for calculating the forces themselves will not be shown again here as they have recently been re-printed \parencite{allag2009-electromotion}. The geometry of the two-magnet system is shown in Figure~\ref{diagram}, in which the magnets have side lengths $\bm s = [2a, 2b, 2c]\T$ and $\bm S = [2A, 2B, 2C]\T$ respectively and the distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
+
+\begin{figure}[t]
+\centering
+\scalebox{0.9}{\asyfig{../Figures/Magnets/akoun}}
+\caption{Depiction of the geometry for the two-magnet system.}
+\label{diagram}
+\end{figure}
+
+\textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations. This force is denoted herein as $\bm F_{z,z}\fn{\bm s, \bm S, \bm d, J_1, J_2}$ as a function of the magnet sizes, the distance between them, and their magnetisation magnitudes $J_1$ and $J_2$. \textcite{allag2009-electromotion} provide the force expressions for the first magnet with vertical magnetisation and the second magnet with magnetisation in the horizontal $y$-direction. This force is denoted herein as $\bm F_{z,y}\fn{\bm s, \bm S, \bm d, J_1, J_2}$.
+
+The force between a vertically-magnetised magnet and one with magnetisation in the horizontal $x$-direction can be calculated by applied a rotational transformation to $\bm F_{z,y}$ around the $z$-axis. That is,
+\begin{multline}\label{fzx}
+\bm F_{z,x}\fn{\bm s, \bm S, \bm d, J_1, J_2} = \\\mathbf R_z\fn{-\tfrac{\pi}2}\bm F_{z,y}\fn{\bm s_{z,x}, \bm S_{z,x},\bm d_{z,x}, J_1, J_2} ,
+\end{multline}
+where
+\begin{align}
+\bm s_{z,x} &= \abs\fn{\mathbf R_z\fn{\tfrac\pi2}\bm s}, \\
+\bm S_{z,x} &= \abs\fn{\mathbf R_z\fn{\tfrac\pi2}\bm S}, \\
+\bm d_{z,x} &= \mathbf R_z\fn{\tfrac\pi2}\bm d,
+\end{align}
+for which $\abs\fn{\cdot}$ is the \emph{element-wise} absolute value function and $\mathbf R_z\fn{\theta}$ is the rotation matrix around the $z$-axis:
+\begin{equation}
+\mathbf R_z\fn\theta = \begin{bmatrix}
+\cos\theta & -\sin\theta & 0 \\
+\sin\theta & \hphantom{-{}}\cos\theta & 0 \\
+0 & 0 & 1
+\end{bmatrix}.
+\end{equation}
+
+Using the force expressions $\bm F_{z,x}$, $\bm F_{z,y}$, and $\bm F_{z,z}$ in superposition allow the force to be calculated between a vertically magnetised magnet and another magnet with arbitrary magnetisation direction. By applying c\"oordinate system transformations to these expressions, arbitrary magnetisation directions can be achieved for the first magnet as well.
+
+For horizontal $x$-direction magnetisation,
+\begin{multline}\label{fxxyz}
+\bm F_{x,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, J_1, J_2} = \\
+  \mathbf R_y\fn{\tfrac\pi2} 
+  \bm F_{z,\{x,y,z\}}\fn{\bm s_x, \bm S_x, \bm d_x, J_1, J_2}
+\end{multline}
+where
+\begin{align}
+\bm s_x &= \abs\fn{\mathbf R_y\fn{-\tfrac\pi2}\bm s}, \\
+\bm S_x &= \abs\fn{\mathbf R_y\fn{-\tfrac\pi2}\bm S}, \\
+\bm d_x &= \mathbf R_y\fn{-\tfrac\pi2}\bm d,
+\end{align}
+and $\mathbf R_y\fn{\theta}$ is the rotation matrix around the $y$-axis:
+\begin{equation}
+\mathbf R_y\fn\theta = \begin{bmatrix}
+\cos\theta & 0 & -\sin\theta \\
+0 & 1 & 0 \\
+\sin\theta & 0 & \hphantom{-{}}\cos\theta \\
+\end{bmatrix}.
+\end{equation}
+Similarly, for horizontal $y$-direction magnetisation,
+\begin{multline}\label{fyxyz}
+\bm F_{y,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, J_1, J_2} = \\
+  \mathbf R_x\fn{-\tfrac\pi2} 
+  \bm F_{z,\{x,y,z\}}\fn{\bm s_y, \bm S_y, \bm d_y, J_1, J_2}
+\end{multline}
+where
+\begin{align}
+\bm s_y &= \abs\fn{\mathbf R_x\fn{\tfrac\pi2}\bm s}, \\
+\bm S_y &= \abs\fn{\mathbf R_x\fn{\tfrac\pi2}\bm S}, \\
+\bm d_y &= \mathbf R_x\fn{\tfrac\pi2}\bm d,
+\end{align}
+and $\mathbf R_x\fn{\theta}$ is the rotation matrix around the $x$-axis:
+\begin{equation}
+\mathbf R_x\fn\theta = \begin{bmatrix}
+1 & 0 & 0 \\
+0 & \cos\theta & -\sin\theta \\
+0 & \sin\theta & \hphantom{-{}}\cos\theta \\
+\end{bmatrix}.
+\end{equation}
+
+Given the results of the afore-referenced papers by Yonnet et al. and Equations \eqref{fzx}, \eqref{fxxyz}, and~\eqref{fyxyz}, the force between two magnets of arbitrary magnetisation can be written as
+\begin{equation}\label{total-force}
+\bm F\fn{\bm s, \bm S, \bm d,\bm J_1,\bm J_2}=\sum_{i,j\in\{x,y,z\}^2} \bm F_{i,j}\fn{\bm s, \bm S, \bm d, J_{1_i}, J_{2_j}}
+\end{equation}
+where
+\begin{align}
+\bm J_1 &= [J_{1_x},J_{1_y},J_{1_z}]\T, &
+\bm J_2 &= [J_{2_x},J_{2_y},J_{2_z}]\T.
+\end{align}
+The theory to evaluate \eqref{total-force} is implemented in the Matlab function `magnetforces'.
+
+\subsection{Examples}
+
+The verification curve of the results of \textcite{akoun1984}, calculated using \eqref{total-force} with the `magnetforces' function, is shown in Figure~\ref{akoun} for the following system:
+\begin{align}
+\begin{split}
+\bm s &=[\SI{20}{mm}, \SI{12}{mm}, \SI{6}{mm}]\T\\
+\bm S &=[\SI{12}{mm}, \SI{20}{mm}, \SI{6}{mm}]\T\\
+\bm d &=[\SI{-4}{mm}+\delta, \SI{-4}{mm}, \SI{8}{mm}]\T\\
+\bm J_1,\bm J_2&=[0,0,\SI{0.38}{T}]\T
+\end{split}
+\end{align}
+
+\begin{figure}
+\centering
+\psfragfig{examples/fig/akoun-repro}
+\caption{Reproduction of the results shown by \textcite{akoun1984}.}
+\label{akoun}
+\end{figure}
+
+
+The verification curve of the results shown by \textcite{janssen2009-sensorletters} is shown in Figure~\ref{janssen} for the following system:
+\begin{align}
+\begin{split}
+\bm s &=[\SI{10}{mm}, \SI{26}{mm}, \SI{14}{mm}]\T\\
+\bm S &=[\SI{14}{mm}, \SI{26}{mm}, \SI{10}{mm}]\T\\
+\bm d &=[\delta, \SI{-8}{mm}, \SI{15}{mm}]\T\\
+\bm J_1 &=[0,0,\SI{1}{T}]\T,\qquad
+\bm J_2=[\SI{1}{T},0,0]\T
+\end{split}
+\end{align}
+
+\begin{figure}
+\centering
+\psfragfig{examples/fig/janssen-repro}
+\caption{Reproduction of the results of \textcite{janssen2009-sensorletters}.}
+\label{janssen}
+\end{figure}
+
+The Matlab code to generate Figures \ref{akoun} and~\ref{janssen} is located in the file `examples/magnetforces\_example.m' (see Section~\ref{code}).
+
+\subsection{Stiffness between magnets}
+
+The stiffnesses in each direction can also be calculated through an analytical differentiation of the force expressions given in this section. See the code documentation for further details.
+
+
 \subsection{Other approaches}
 
 \fixme{file}

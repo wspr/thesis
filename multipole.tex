@@ -48,6 +48,108 @@ Note the presence in Figures \ref{halbach} and~\ref{multipole-variables} and in 
 
 Provided that enough information is specified and it is internally consistent, the Matlab implementation for calculating array forces can accept any combination of the variables listed above when defining the geometry of each array. Rather than explicitly enumerating the location of each magnet and the direction of its magnetisation, the implementation requires just an axis with which to align the array and the facing direction of its `strong' side.
 
+\begin{figure}
+\centering
+\scalebox{0.9}{\asyfig{../Figures/Multipole/multipole-variables}}
+\caption{Geometry of a linear multipole array with 90\textdegree\ magnetisation rotations. This array contains two wavelengths of magnetisation with an end magnet for symmetry.}
+\label{multipole-variables}
+\end{figure}
+
+
+\section{Forces between multipole magnet arrays}
+
+A classical multipole or Halbach array is a linear array of magnets stacked to approximate a single magnet with sinusoidal magnetisation, first analysed in the '70s \parencite{halbach1981,shute2000}. Multipole arrays have been analysed for a variety of force-producing applications; only a small selection are included in the bibliography here \parencite{lee2004-mx,robertson2005,rovers2009-ietm}. One objective behind such a design is to focus the magnetic field on one side of the array, such to increase the forces exerted by which magnetic field on one side of the array and to reduce or eliminate any need for magnetic shielding on the reverse side. The magnetic field produced by one such multipole array is shown in Figure~\ref{halbach} in which the single-sided nature of the magnetic field can clearly be seen.
+
+\begin{figure}
+\centering
+\includegraphics[width=\linewidth]{../Figures/Multipole/halbach.pdf}
+\caption{Magnetic field lines for a multipole array with 45\textdegree\ magnetisation rotations. The single-sided nature of the magnet field is evident.}
+\label{halbach}
+\end{figure}
+
+Having expressed the forces between two magnets with arbitrary magnetisation, it becomes simple to use this expression iteratively over an array of magnets with varying magnetisation strengths or directions. The force between two arrays is simply the superposition of every combination of forces between the individual magnets in each array.
+
+Some abstractions to the manner in which the iteration over each combination of magnets is performed allows us to simplify the code necessary to express a variety of configurations of the multiple arrays. This facilitates easy comparisons between different designs.
+
+\begin{figure}
+\centering
+\scalebox{0.9}{\asyfig{../Figures/Multipole/multipole-variables}}
+\caption{Geometry of a linear multipole array with 90\textdegree\ magnetisation rotations. This array contains two wavelengths of magnetisation with an end magnet for symmetry.}
+\label{multipole-variables}
+\end{figure}
+
+A multipole array can be uniquely defined in terms of several sets of variables.   The simplest such description is:
+\begin{itemize}
+\item Size of each magnet $[\mupmaglength,d,h]\T$,
+\item Number of magnets $T$, and
+\item Magnetisation direction of the first magnet $\vartheta_0$ and rotation between successive magnets $\vartheta_i$.
+\end{itemize}
+Other variables that can also be used to describe the array are: (assuming an array aligned with the $x$-axis)
+\begin{itemize}
+\item Length of the array $\muplength = \mupmaglength T$,
+\item Number of magnets per wavelength $M=2\pi/\vartheta_i$,
+\item Wavelength of magnetisation $\mupwavelength= \mupmaglength M$, and
+\item Number of wavelengths $N=[T-1]/M$.
+\end{itemize}
+Figure~\ref{multipole-variables} illustrates the relationship between magnet length, array length, and wavelength for an example linear array. The wavelength of magnetisation is the length required to achieve, with successive magnets, a full rotation of magnetisation direction.
+
+Note the presence in Figures \ref{halbach} and~\ref{multipole-variables} and in general of an `end magnet' that adds symmetry to the discretisation of the magnetisation. This extra magnet is necessary to balance the forces in the horizontal direction.
+
+Provided that enough information is specified and it is internally consistent, the Matlab implementation for calculating array forces can accept any combination of the variables listed above when defining the geometry of each array. Rather than explicitly enumerating the location of each magnet and the direction of its magnetisation, the implementation requires just an axis with which to align the array and the facing direction of its `strong' side. This implementation is contained within the Matlab function `multipoleforces'.
+
+\subsection{Example}
+
+Allag et al.~\textcite{allag2009-electromotion} calculated the forces between two five-magnet multipole arrays with 90\textdegree\ rotation between successive magnets. Their results are reproduced in Figure~\ref{allag}, using the following parameters:
+\begin{itemize}
+\item Arrays aligned along $y$ and facing vertically $\pm z$.
+\item $[m,d,h]\T = [\SI{0.01}{m},\SI{0.01}{m},\SI{0.01}{m}]\T$.
+\item Total number of magnets $T = 5$ and number of magnets per wavelength of magnetisation $M=4$.
+\item Displacement between arrays $\bm d=[0,\delta,\SI{0.015}{m}]\T$.
+\end{itemize}
+A schematic of this system is shown in Figure~\ref{allag-system}.
+
+\begin{figure}
+\centering
+\scalebox{0.9}{\asyfig{../Figures/Multipole/allag-system}}
+\caption{Multipole system composed of \SI{10}{mm} cube magnets for $\delta=0$. Forces in the $y$- and $z$-directions as $\delta$ varies are shown in Figure~\ref{allag}.}
+\label{allag-system}
+\end{figure}
+
+The Matlab code to generate Figure~\ref{allag} may be found in `examples/multipole\_example.m'. This is a good example of the convenience of using this framework for calculating results of this kind. Of the around 70 lines of code in `multipole\_example.m', only some 20 lines of code are necessary to set up the system parameters and calculate the forces; the rest of the file consists of comments, whitespace, and producing the actual figure itself.
+
+\begin{figure}
+\centering
+\psfragfig{examples/fig/allag-repro}
+\caption{Reproduction of Allag et al.'s results~\textcite{allag2009-electromotion}. The forces in the $x$-direction are zero.}
+\label{allag}
+\end{figure}
+
+\subsection{Planar multipole arrays}
+
+It is also possible to calculate the forces between magnet arrays with magnetisation as a function of position in two directions. For two multipole arrays of the structure shown in Figure~\ref{trumper-system} that have magnetisation directions based on the superposition of orthogonal linear multipole arrays, results are shown in Figure~\ref{trumper} for horizontal displacement with arrays composed of \SI{10}{mm} cube magnets and \SI{15}{mm} vertical displacement between the array centres. Each magnet of each array (except those with zero magnetisation) has a magnetisation of \SI{1}{T}. The Matlab code to generate Figure~\ref{trumper} is located in the file `examples/planar\_multipole\_example.m'.
+
+Note the differences in the shape of the force curves between Figures \ref{allag} and~\ref{trumper}; in the planar multipole arrangement, the vertical force is largely positive even as the arrays shift into their attractive zone, whereas the linear multipole forces are more symmetrical and become significantly negative under a similar displacement. A more detailed comparison between various configurations of multipole arrays is currently under investigation and will be reported at a later date.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.6\linewidth]{../Figures/Multipole/pa-trumper}
+\caption{Planar multipole array, facing up, with magnetisation directions as the superposition of two orthogonal linear Halbach arrays. Non-filled arrowheads denote diagonal magnetisation and empty magnets have zero magnetisation.}
+\label{trumper-system}
+\end{figure}
+
+\begin{figure}
+\centering
+\psfragfig{examples/fig/planar-patchwork}
+\caption{Force vs.\ horizontal displacement results for two planar multipole arrays such as shown in Figure~\ref{trumper-system}. The $x$-forces are all zero.}
+\label{trumper}
+\end{figure}
+
+
+
+
+
+
+
 \section{Forces between arrays}
 
 It has been previously mentioned that the purpose of the arrays is to focus
@@ -490,3 +592,13 @@ $\remanence=\permVac\Msat$:
 \begin{dmath}
 \remanence=\sqrt{4\permVac\BHmax}=\SI{1.39}{T}.
 \end{dmath}
+
+
+\section{Future work}
+
+The code presented here currently only contains algorithms for calculating forces and stiffnesses between cuboid magnets without rotation. \textcite{charpentier1999-ietm-sep} present expressions for two components of the force between cuboid magnets with rotation around one axis (also see their related publications around the same time), but there is no general solution known without using semi-numerical methods \parencite{charpentier2001}.
+
+\textcite{agashe2008-applphys} and \textcite{nagaraj1988} have also calculated forces between cuboid magnets as well as between cylindrical magnets, which latter have more complex solutions due to the presence of elliptic integrals. \textcite{janssen2009-ietm} have derived the analytical forces between pyramidal-frustrum shaped magnets, which have not quite yet been published at time of writing. \textcite{lee2006-mx} and \textcite{cho2001} present different planar arrays using block magnets with trapezoidal and triangular cross-sections, and \textcite{yan2006-iemx} calculate torque for spherical multipole arrays with `dihedral cone'-shaped magnets. And there are a wide variety of cylindrical multipole arrays in use for bearing and brushless motor applications \parencite{zhu2001-ipep}.
+
+The work introduced here is a very humble beginning to incorporating as much of the cited work above (and this is certainly an incomplete list) into a unified framework for calculating the dynamics of permanent magnet--based systems.
+
