@@ -182,10 +182,7 @@ $i$ and $j$ are the magnet numbers in the $x$ and $y$ directions.}
    \figlabel{pa-arb}
 \end{figure}
 
-However, it is as complex again to derive the forces between two such
-facing arrays. Therefore, analysis is performed with finite element
-analysis in \ANSYS/. For this purpose, then, the only relations required
-are equations deriving the magnetisations of each individual magnet.
+
 \figref{pa-arb} shows an arbitrary planar array, created from a number
 of equal-sized cuboid magnets stacked
 perpendicular to the $\z$ direction, for which we define the magnetisation,
@@ -233,13 +230,9 @@ For the case when the linear Halbach array (with
 
 The forces between facing pairs of these three arrays is shown in
 \figref{pa-simple-forces}. For this graph, and subsequent ones,
-$5\times5$ arrays of half-inch rare-earth cube magnets have been used
-. Surprisingly, the patchwork array did not perform better than the
-homogeneous array except in close proximity. The finite element
-analysis in \ANSYS/ was capable of generating solutions for distances
-equal to $0.3$ magnet widths between the arrays; closer than this and
-the number of nodes required for the solution surpassed the capacity
-of the department's license for the software.
+$5\times5$ arrays of half-inch rare-earth cube magnets have been used.
+The patchwork array did not perform better than the
+homogeneous array except in close proximity.
 
 \begin{figure}[htbp]
    \centering
@@ -274,27 +267,7 @@ already shown:
 \pi)}}.
 \end{align}
 
-The first array will be referred to as a `Halbach addition', whereas
-the second will be called a `Halbach
-superposition'. \Figref{pa-kim-forces} demonstrates the significant
-differences between the two, showing the forces with the extended
-Halbach array (refer to \eqref{pa-x2d}) for comparison. The simple
-addition of two orthogonal arrays shows approximately double the
-spring stiffness---consistent with the method of generation. However,
-facing superposition arrays creates approximately \emph{half} the
-force as between the simple extended Halbach arrays. This is
-surprising, and yet promising, since the magnetisations for this
-planar array are awkward to obtain.
-
-\begin{figure}[htbp]
-   \centering
-   \grf{Figures/Multipole/pa-kim-forces}
-   \caption[Forces between two planar Halbach arrays.]
-   {Forces between planar arrays: Halbach addition and Halbach superposition.}.
-   \figlabel{pa-kim-forces}
-\end{figure}
-
-\fixme{revise previous section}
+Only the second case will be considered with equal magnetisations for each magnet.
 
 \subsection{Cho's array}
 
@@ -600,5 +573,4 @@ The code presented here currently only contains algorithms for calculating force
 
 \textcite{agashe2008-applphys} and \textcite{nagaraj1988} have also calculated forces between cuboid magnets as well as between cylindrical magnets, which latter have more complex solutions due to the presence of elliptic integrals. \textcite{janssen2009-ietm} have derived the analytical forces between pyramidal-frustrum shaped magnets, which have not quite yet been published at time of writing. \textcite{lee2006-mx} and \textcite{cho2001} present different planar arrays using block magnets with trapezoidal and triangular cross-sections, and \textcite{yan2006-iemx} calculate torque for spherical multipole arrays with `dihedral cone'-shaped magnets. And there are a wide variety of cylindrical multipole arrays in use for bearing and brushless motor applications \parencite{zhu2001-ipep}.
 
-The work introduced here is a very humble beginning to incorporating as much of the cited work above (and this is certainly an incomplete list) into a unified framework for calculating the dynamics of permanent magnet--based systems.
 
