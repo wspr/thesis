@@ -160,8 +160,8 @@ A schematic of this type of vibration isolation system is shown in \figref{simpl
   \figlabel{simple-isolation}
 \end{figure}
 
-The examples of vibration suppression and vibration isolation have been depicted with active input forces that can be used to tune or adjust  oscillations of the systems.
-In these examples, it is assumed that the input forces have negligible effect on the dynamics of the ground or base.
+The schematics illustrating vibration suppression and vibration isolation have been shown with active input forces $\forceIn$ that can be used to tune or adjust  oscillations of the systems.
+In these examples, it is assumed that the input forces have a negligible effect on the dynamics of the ground or base.
 Further complications arise when this assumption no longer holds, such as when the mass is mounted on a flexible structure with mass that is not much greater than the mass being supported.
 For the sake of this work, this more complex case is not examined in detail.
 
@@ -178,7 +178,7 @@ The dynamic response of the isolated mass is
   \dampingRel\gp{\velMass-\velBase} +
   \stiffnessRel\gp{\dispMass-\dispBase} = \forceIn
 \end{dmath}.
-First assume that there is no input force; taking the Laplace tranform and rearranging produces the transmissibility $\transmissibility$ of the system in the frequency domain:
+First assume that there is no input force; taking the Laplace transform and rearranging produces the transmissibility $\transmissibility$ of the system in the frequency domain:
 \begin{dmath}[compact,label=simple-isolation-freq]
   \transmissibility = \frac{\laplaceMass}{\laplaceBase} =
   \frac{\ii\freq\dampingRel + \stiffnessRel}
@@ -257,7 +257,7 @@ Disregarding slow and inaccurate sensors that can do this directly (such as usin
 The simplest form of this is by double-integrating an accelerometer signal, such as used by \textcite{zhu2006} in combination with other control techniques for vibration isolation in micro-gravity.
 
 \subsubsection{Acceration feedback}
-\Figref{disp-vs-sky} shows the effect of varying the control gains for relative acceleration and absolute acceleration ($\gainAcc$ and $\gainSkymass$).
+\Figref{acc-vs-sky} shows the effect of varying the control gains for relative acceleration and absolute acceleration ($\gainAcc$ and $\gainSkymass$).
 Absolute acceleration feedback corresponds to an increased system mass, corresponding to a decreased resonance frequency; high frequency vibration isolation is improved.
 Relative acceleration feedback is only included for completeness; it has the effect of reducing the resonance peak but effectively eliminating any vibration isolation characteristics at higher frequencies.
 Other vibration schemes for reducing a tonal or narrowband disturbance are discussed briefly in \secref{vibneut}.
@@ -304,11 +304,11 @@ Velocity feedback is stable for
 \end{dmath},
 which is true for $\gainSkyhook+\gainVel>-\damping$.
 While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
-Active damping reduction has been performed to aid the efficiency of vibration neutralisers \cite{kidner1998}, which are discussed briefly in \secref{vibneut}.
+Active damping reduction has been performed to aid the efficacy of vibration neutralisers \cite{kidner1998}, which are discussed briefly in \secref{vibneut}.
 
 The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases.
 This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS\ transmissiblity has a local minimum whereas the absolute feedback case continuously decreases.
-It is clear in the ideal case that skyhook damping is more efficacious at reducing the total vibration of a system.
+It is clear in the ideal case that skyhook damping is more effective at reducing the total vibration of a system.
 (The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
 
 \begin{figure}
@@ -403,7 +403,9 @@ Further work in the area was established by \textcite{liu2002}, who demonstrated
 
 \subsubsection{Alternative control approaches}
 
-This section could grow almost indefinitely. Only works that explicitly target vibration isolation systems are discussed, although there have been many papers published recently that the reader may find interesting albeit off-topic \cite{chatterjee2008,mottershead2008}.
+The introduction given above covers active vibration control with classical acceleration/velocity/displacement feedback methods.
+More advanced methods are briefly discussed here.
+Only works that explicitly target vibration isolation systems are discussed, although there have been many papers published recently that the reader may find interesting albeit off-topic \cite{chatterjee2008,mottershead2008}.
 
 In approximate order of complexity and effectiveness, a variety of vibration isolation control approaches are briefly discussed below.
 
@@ -686,7 +688,7 @@ Using a magnet attached to a cantilever excited by an external field in a water 
 In the following sections, I will discuss in more detail the literature closer in scope to the research of this thesis.
 
 
-\subsection{Magnets helping motion}
+\subsection{Magnets assisting motion}
 \seclabel{magnetsforces-apps}
 
 That magnets can apply forces to one another over a distance is quite a novel concept in a mechanical world accustomed to friction.
@@ -694,7 +696,7 @@ It has been a short while, relatively speaking, that it has been possible to eve
 Non-contact magnetics in mechanical systems is advantageous due to high precision and wear-free operation due to lack of friction.
 This section looks broadly at some of the main applications of the field.
 
-Loud-speakers are still being researched, with improved analytical methods to determine forces for optimisation purposes \cite{merit2009}.
+Improved loudspeaker design is an area still undergoing continued development, with improved analytical methods to determine forces for optimisation purposes \cite{merit2009}. Such work can be used to optimise loudspeakers for loudness, linearity, physical volume, and so on.
 
 
 \subsubsection{Maglev transportation}
@@ -838,7 +840,7 @@ Approximately one hundred years later, \textcite{tonks1940} wrote a paper remind
 position of the poles in the group can occur, can be stable in either a fixed
 field or in the field from another such assemblage\dots
 \end{quote}
-Another interesting Earnshaw retrospective is given by \textcite{bassani2006-meccanica}, and an alternative formulation given by \textcite{reusch1994}.
+An interesting Earnshaw retrospective is given by \textcite{bassani2006-meccanica}, and an alternative formulation given by \textcite{reusch1994}.
 A mathematical demonstration of Earnshaw's theorem is conceptually quite simple.
 We start with the equation for the magnetic field; when there are no external current terms, it can be shown to be expressed as Laplace's equation:
 \begin{dmath}[compact]
@@ -853,7 +855,7 @@ But for stable equilibrium, these three terms must be greater than zero.
 This cannot satisfy \eqref{earnshaw} and thus levitation cannot occur.
 
 \begin{figure}
-  \grf[width=0.4\textwidth]{Figures/Theory/saddle}
+  \grf[width=0.6\textwidth]{Figures/Theory/saddle}
   \caption{A ball in unstable equilibrium on a saddle-shaped curve.}
   \figlabel{saddle}
 \end{figure}
@@ -867,7 +869,7 @@ So it is with any permanent magnet arrangement.
 
 \subsubsection{Exceptions to Earnshaw}
 
-Earnshaw's proof does not rule out all forms of `levitation' unconditionally, however.
+Earnshaw's proof only relates to systems of fixed magnetisation; it does not rule out all forms of `levitation' unconditionally.
 \textcite{boerdijk1956a} reviewed the known methods for levitation, covering levitation by gravitation forces, pressure reaction forces, radiation field forces, and finally in detail, various magnetic and electromagnetic forces.
 \textcite{bassani2006} revisited Earnshaw's work, in particular to highlight interesting exceptions to the theory against passive levitation.
 
@@ -917,7 +919,7 @@ The forces exchanged via magnetic flux between magnetic and diamagnetic material
 Superconducting material, on the other hand, behaves ideally diamagnetic with $\permMag=0$, so the forces produced between a superconductor and a magnet are equal to the forces between two permanent magnets themselves (of equal size to the original magnet and separated by twice the distance between the magnet and the superconductor).
 This allows many exciting possibilities for stable levitation.
 However, even the so-called `high temperature' superconducting materials must be cooled to very low temperatures in order to achieve superconductivity.
-Such a requirement renders this method financially and functionally impractical for this research.
+Such a requirement renders this method functionally impractical for this research.
 A review of work in the area of superconducting levitation has been published by \textcite{ma2003}.
 
 
@@ -955,6 +957,239 @@ Vibration isolation achieved using magnetic suspensions is addressed later in \s
 
 \textcite{queiroz2007} used nonlinear control to stabilise a magnetic bearing with pull--pull electromagnets with parameter uncertainties, while also minimising power consumption of the system.
 
+
+
+\subsection{Multipole}
+
+Applications:
+artificial hearts \parencite{finocchiaro2008,samiappan2008}
+wave power generation \parencite{kimoulakis2008}
+wind power generation \parencite{liu2008-ietm}
+
+\textcite{backers1961} developed a theory for magnetic bearings
+by assuming the effect of curvature of the ring magnets to be
+negligible and looking at the forces between two large flat
+plates. He showed that a periodically recurring magnetisation
+yields stronger forces than a simple homogeneous one. He
+implements this coarsely in an active magnetic bearing with
+cross-section shown previously in \figref{backers-bearing}.
+
+It was not until the wide-spread availability of the high energy
+density rare-earth magnets in the late 1970s that magnetic
+geometries more complicated than
+\citeauthor{backers1961}' % no extra 's'
+became feasible. \textcite{halbach1980} pioneered the research
+on these `multi-pole' magnet arrangements, showing how the ideal
+case of sinusoidal magnetisation may be approximated with a
+structure made up from discrete magnets as shown in
+\figref{halbach}. This figure shows magnets with \ang{45}
+increments of magnetisation, but \ang{90} are much more
+common. In this document, the term `Halbach array' will refer to
+the latter form.
+
+In his subsequent paper, \cite{halbach1981} shows some uses for
+his multipole magnets; namely, for creating flux patterns for
+electron beam undulators or wigglers.  While his purposes were
+radically different from those for rotary bearings or this
+research, he founded the principle that by arranging magnets
+with rotating magnetisation directions (generally referred to as
+`Halbach arrays') the magnetic field is concentrated on one side
+of the array, and reduced on the other. \figref{halbach} shows
+this effect with magnetic flux almost exclusively above the
+array, so the magnetic field strength is much stronger above it
+than below. Compare this figure to the flux lines of a single
+magnet as shown in \figref{magflux}—notice how in the latter,
+the flux is symmetrical both above and below the magnet.
+
+As well as increasing the stength of the magnetic field in the desired area of use, this had the added advantage of `shielding' external equipment from the field where the magnetic forces are not required, although there are other possiblities to effect magnetic shielding \cite{becherini2009}.
+
+\textcite{choi2008}
+
+Forces between magnets are governed by their field strengths, so
+it is a natural conclusion that two facing Halbach arrays will
+have greater forces between them than single magnets of the same
+size. \textcite{yonnet1991} examined this effect relating to the
+stiffness of rotary bearings. They show that with bearings with
+\ang{90} rotations between successive magnets (as opposed to
+\citeauthor{backers1961}' % no extra 's'
+bearing which used \ang{180}
+increments), the stiffness can be approximately doubled while
+keeping the magnet volume constant.
+
+\begin{figure}
+\grf{Figures/Magnets/magflux}
+\caption{The magnetic flux lines of a single magnet.}
+\figlabel{magflux}
+\end{figure}
+
+\textcite{bancel1998} look at the field produced by Halbach
+arrays used for a linear position sensor. Their paper derives
+equations for the magnetic flux density of an arbitrary magnet,
+the geometry and magnetisation of which they optimise for their
+purposes. They then use this equation to compute the effects of
+a Halbach array (which they plot), but their analytical
+solutions are not shown. This effort is based around the flux
+density, so naturally no attempt is made to find the force
+equations between two arrays.
+
+There have been some very recent papers dealing with the
+magnetic effects of Halbach arrays used in \maglev/
+transportation \cite{hoburg2004}, predominantly to ensure
+that the magnetic field is not strong enough to affect
+passengers.
+
+\begin{figure}
+\grf{Figures/Multipole/halbach}
+\caption[Magnetic flux lines of a Halbach array.]{%
+  The magnetic flux lines of a Halbach array made from magnets with \ang{45}
+  magnetisation increments (indicated by the arrowheads). The magnetic field
+  can be seen to be much stronger above the array than below it.}
+\figlabel{halbach}
+\end{figure}
+
+For some time it seemed that multipole or Halbach arrays were a
+promising avenue of investigation for building a large-load magnetic
+spring. Multipole arrays are structures composed of a multitude of
+smaller magnets with (consistently) varying directions of
+magnetisation. The advantages of these arrays over homogeneous magnets
+are their single-sided flux patterns and their larger induced forces
+(albeit over smaller distances).
+
+\textcite{moser2006} showed an optimum configuration for a bearing
+with alternating magnetisations in the axial direction (it is rather
+difficult to radially magnetise a ring or disc magnet).
+
+\textcite{chen2002} used stacked magnets of various sizes (with the
+largest magnet rings midway between the inner and outer radii of the
+bearing) in order to maximise the stiffness per cross sectional area of the
+array.
+
+
+\begin{description}
+\item[\textcite{jang2005a,jang2005b}] These are two papers that are probably
+of little interest to me, but they were flagged because they talk about
+multipole or Halbach arrays. They talk about linear actuators, but it's tricky
+for me to see what's exactly new in them.
+\item[\textcite{filho1999,filho2003}] Yet more literature on planar actuators
+that aren't \emph{directly} related to what I'm doing. Their analyses are
+interesting, however, so I've kept them around in case they come in handy
+later.
+\end{description}
+
+
+\subsection{Damping}
+\seclabel{damping}
+
+\cite{tentor2001}
+
+Henry Sodano completed his \PhD/ in 2005 \cite{sodano2005thesis} on
+eddy current damping for flexible structure and has published several
+papers based on that work.\footnote{I recommend the thesis for the
+  additional context and literature review.} His work investigates the
+use of non-contact magnetic (permanent \cite{sodano2005,sodano2006,sodano2008} or
+electric \cite{sodano2007}) elements to passively \cite{sodano2005} or
+actively \cite{sodano2006,sodano2007,sodano2008} add forces to a structure via
+induced eddy currents. His work investigates the potential for use
+with flexible structures primarily for use in space
+applications.\footnote{Note that not all permanent magnets are created
+  equal for suitability in space: the cheapest and most common class
+  of rare earth magnetic alloy, neodymium-iron-boron, will become
+  demagnetised in the influence of radiation due to localised heating
+  effects. Samarium-cobalt magnets are less susceptible to this
+  problem due to their higher Curie temperature and have been
+  previously used in space applications \cite{chen2005}.}
+
+The damping effects of magnetic forces has also been examined by
+\textcite{bonisoli2006}. The use of electromagnetic damping can be
+advantageous in applications where the absorbed energy is converted to
+electrical energy for re-use and storage, increasing the overall
+efficiency of the device; a good example is in the automotive industry
+\cite{graves2000thesis}. \fixme{is mentioning regenerative damping
+appropriate in this spot?}
+
+Another recent investigation of an eddy current damper using an aluminium
+plate is shown by \textcite{ebrahimi2008}. Damping of levitated permanent
+magnets with a similar technique was shown by \textcite{elbuken2006}. Their
+emphasis lay on the problem of micro-levitation, where small stiffnesses (and
+damping) results in large amplitudes of disturbance. One of the noted
+advantages in this case is the fact that the eddy current damping does not add
+\emph{other} dynamics to the system it is applied to; equilibrium positions
+and controller designs are unaffected with this technique.
+
+Eddy currents may generate force on a conductor through two
+mechanisms: change in magnetic field and/or change in velocity. Change
+in velocity leads to a (possibly nonlinear) viscous damping force that
+is dissipative: it can only decrease the enery of the system. However,
+change in magnetic field generates forces that can be used to apply
+work. This is the same mechanism used by \AC/ current levitating
+devices. \fixme{crossref} It is unclear whether significant advantages
+exist over using conductive material rather than ferrous material to
+generate vibration suppression forces. For the conductive case, a
+permanent magnet may be used to increase the field strength of the
+electromagnet at the expense of added viscous damping (which may not
+be undesirable). Also, constant and low frequency forces will not be
+able to be generated without significant control design \dash\ this is
+only possible with \AC/ current resonating with the \backemf/
+of the induced eddy currents in the conductor. \fixme{check that}
+
+The generation of eddy currents is an involved calculation, and has
+not been investigated in detail for this thesis. The eddy current
+density $\magJeddy$ induced in a conductive sheet moving through a
+magnetic field at velocity $\velocity$ is given by
+\begin{dmath}
+\magJeddy = \conductivity\gp{\velocity \cross \magflux}.
+\end{dmath}
+where $\conductivity$ is the conductivity of the sheet. The force
+$\forceEddy$ due to these eddy currents is
+\begin{dmath}
+\forceEddy = \Int{\magJeddy \cross \magflux}{V,V} .
+\end{dmath}
+Now,
+\begin{dmath}
+  \magJeddy \cross \magflux
+  \propto
+  \gp{\velocity \cross \magflux}\cross \magflux ,
+\end{dmath}
+which is anti-parallel to $\velocity$ \fixme{small figure}. Due to the
+cross terms, the maximum force is obtained for magnetic fields
+perpendicular to the motion of the conductor. Associatively, it is
+only the component of magnetic field in the perpendicular direction
+that influences the eddy force. This has implications on the
+arrangement of eddy current dampers for vibrating structures.
+
+Two configurations of eddy current dampers are shown in
+\figref{eddy}. The two systems behave somewhat differently. A
+comparison (\fixme{DOES IT?!?} of the flux through the conductive
+sheets perpendicular to the motion of the mass shows that the vertical
+configuration results in greater damping force. However, this system
+will also exhibit a nonlinear damping force as the gap between the
+magnet and conductor vary with displacement of the mass. In practice
+this should not be a significant problem as the gap will usually be
+somewhat larger than the motion of the mass.
+
+\begin{figure}
+  \begin{subfigure}
+    \asyfig{Damping/eddy-h}
+    \caption{Horizontal configuration; eddy
+      currents induced via axial magnetic
+      flux.\figlabel{eddy-h}}
+  \end{subfigure}
+  \begin{subfigure}
+    \asyfig{Damping/eddy-v}
+    \caption{Vertical configuration: eddy
+       currents induced via radial magnetic
+       flux.\figlabel{eddy-v}}
+  \end{subfigure}
+  \caption{Orthogonal configurations of eddy current dampers for a vibrating
+    (non-magnetic) mass. The shaded section indicates conductive material.}
+  \figlabel{eddy}
+\end{figure}
+
+Experimental results of a magnetically levitated mass
+(\fixme{crossref}) later show that the damping in this case is very
+low, making a passive non-contact eddy current damper of high
+importance for vibration suppression in systems that will not be
+receiving significant control effort.
 
 
 \subsection{Summary of magnetics}
@@ -1172,4 +1407,7 @@ A variation of this idea was explored later \parencite{mizuno2010-jvc}, with the
 \subsection{Summary of magnets and vibrations}
 
 
+\subsection{unfiled}
+
+\textcite{hong2010-rsi}
 
