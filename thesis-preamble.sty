@@ -114,11 +114,12 @@
 
 %% MATHS
 \RequirePackage{amsmath,amssymb,bm,cool,mathtools}
+\RequirePackage{mlist}
+\RequirePackage{thesis-maths}
 \@ifpackageloaded{mathpazo}{\PassOptionsToPackage{mathpazo}{flexisym}}{}
 \@ifpackageloaded{mathptmx}{\PassOptionsToPackage{mathptmx}{flexisym}}{}
-\RequirePackage{breqn,mlist}
+\RequirePackage{breqn}
 \setkeys{breqn}{labelprefix=eq:}
-\RequirePackage{thesis-maths}
 
 %%%%%%%%%%%%%%%%%
 %%% FIGURES
@@ -573,18 +574,6 @@
 \newcommand \compound [2] {#1\-#2}
 
 
-
-%%% put this somewhere %%%
-
-\renewcommand\t[1]{\theta_#1}
-\def\nl{\text{~\color[gray]{0.7}\small\dots}\\}
-
-\newcounter{wspr}
-\newcommand\p[1]{%
-  \setcounter{wspr}{1}
-  \varphi_#1(x_1\whiledo{\value{wspr}<#1}{%
-    \stepcounter{wspr}%
-    ,x_\thewspr})}
 
 
 
