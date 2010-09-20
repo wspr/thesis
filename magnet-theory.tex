@@ -709,7 +709,7 @@ be suitable.
 
 Rotation of a magnet around an axis is treated by Eliès, Charpentier and
 Lemarquand in numerous papers
-\cite{elies1998,charpentier1999,charpentier1999a,elies1999a}, giving equations
+\cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep,elies1999a}, giving equations
 for the forces in the directions other than around which the magnet is
 rotated. Since the equations they present are not self-consistent (some typing
 mistakes have occurred in the publications of the papers), the correct form is
@@ -775,7 +775,7 @@ differentiate to get the forces.
 These expressions follow the work of \textcite{bancel1999}, who defined his
 equations as a set of nested functions, unlike the equations of
 \textcite{akoun1984} that were six-nested summations. Back to these new
-papers, three were published \cite{elies1998,charpentier1999,charpentier1999a}
+papers, three were published \cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep}
 that all contain the expression I am interested in (why didn't they just cite
 the original?), with a fourth \cite{elies1998} containing just the force
 expression in a single direction. There's a little bit extra in the paper by
@@ -1002,10 +1002,10 @@ this sort.
 \section{Planar arrays}
 
 The previous work covered deals with magnet arrays of homogeneously-magnetised
-cross-section. \textcite{kim1997} cites a patent, in which he is involved,
+cross-section. \textcite{kim1997-thesis} cites a patent, in which he is involved,
 that superimposes two orthogonal linear Halbach arrays to create a
 \emph{planar} structure. \figref{pa-trumper} shows the structure, but in his
-own planar levitator, \citeauthor{kim1997} actually uses a linear Halbach
+own planar levitator, \citeauthor{kim1997-thesis} actually uses a linear Halbach
 array (later shown in \figref{pa-x2d}).
 
 Planar arrays are used quite extensively in the field of planar permanent
@@ -1020,17 +1020,23 @@ The author is unaware of any attempt to use Halbach arrays to increase the
 load bearing efficiency of linear magnetic springs.
 
 The `patchwork' array shown in \figref{pa-ns} is the most simple. See Hinds
-cited by \textcite{kim1997}, or Chitayat cited by \textcite{cho2001} for its
-use in other circumstances. The array used by \citeauthor{kim1997} is shown in
+cited by \textcite{kim1997-thesis}, or Chitayat cited by \textcite{cho2001} for its
+use in other circumstances. The array used by \citeauthor{kim1997-thesis} is shown in
 \figref{pa-x2d}, despite the fact that he demonstrated the Halbach
 superposition. \fixme{crossref}
 
 \begin{figure}
-  \subfloat[Patchwork.]
-    {\grf{Figures/Multipole/pa-ns}\figlabel{pa-ns}}
+  \begin{subfigure}
+    \grf{Figures/Multipole/pa-ns}
+    \caption{Patchwork.}
+    \figlabel{pa-ns}
+  \end{subfigure}
   \hfil
-  \subfloat[Extended Halbach array.]
-    {\grf{Figures/Multipole/pa-x2d}\figlabel{pa-x2d}}
+  \begin{subfigure}
+    \grf{Figures/Multipole/pa-x2d}
+    \caption{Extended Halbach array.}
+    \figlabel{pa-x2d}
+  \end{subfigure}
   \caption{Two simple planar magnetic arrays.}
   \figlabel{pa-simple}
 \end{figure}
@@ -1046,6 +1052,7 @@ superposition. \fixme{crossref}
 
 
 
+\section{Reproducible research}
 
-
+Some of the results presented in this thesis are reproducible \parencite{kovacevic2007-icassp} with code located at \url{http://www.github.com/wspr/magcode}. This is a MATLAB software package written by the authors for calculating the forces between magnets and multipole arrays of magnets, and is freely available to be used by the public.
 
