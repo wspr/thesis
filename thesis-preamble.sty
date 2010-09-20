@@ -6,8 +6,7 @@
 \RequirePackage[T1]{fontenc} % sane font encoding
 \RequirePackage{textcomp} % provide lots of new symbols
 \RequirePackage{lmodern} % for sensible sans and tt font
-\RequirePackage{mathpazo}% for math
-\RequirePackage{tgpagella}% for text
+\RequirePackage[sc,osf]{mathpazo}% for math
 \RequirePackage{microtype}
 \RequirePackage{pifont}
 \newcommand\diameter{\Pisymbol{psy}{'306}}
@@ -180,90 +179,7 @@
   #2\hspace{#1}#3\hspace{#1}#4\\[#1]
   #5\hspace{#1}#6\hspace{#1}#7}
 
-%%%%%%%%%%%%%%%%%%%%%%%%
-% See <http://groups.google.com/group/comp.text.tex/msg/4111d98fc7627748?dmode=source>
-%%%%%%%%%%%%%%%%%%%%%%%%
-%%% page check for even/odd
-% Stolen from komascript.
-\def\mh@newevenodd@label@nn#1#2{%
-   \expandafter\gdef\csname mh@evenodd@#1\endcsname{#2}%
-}
 
-\def\mh@getevenodd@n #1{%
-   \@ifundefined{mh@evenodd@#1}{\value{page}}%
-   {\@nameuse{mh@evenodd@#1}}}
-\def\mh@evenodd{0}
-\DeclareRobustCommand\IfOddPageTF{%
-   \begingroup
-   \@tempcnta=\mh@evenodd\relax
-   \advance\@tempcnta by\@ne
-   \xdef\mh@evenodd{\the\@tempcnta}%
-   \@bsphack
-   \protected@write\@auxout{}{%
-     \string\mh@newevenodd@label@nn{\mh@evenodd}{\noexpand\the\value{page}}}%
-   \@esphack
-   \count@\mh@getevenodd@n{\mh@evenodd}\relax
-   \expandafter\endgroup
-   \ifodd\count@
-     \expandafter\@firstoftwo
-   \else
-     \expandafter\@secondoftwo
-   \fi
-}
-
-%%%
-% recall the boxes can't be 0pt, otherwise TeX might put it on a
-% separate line so we make them almost 0pt.
-\def\mh@print@in@outer@margin#1{%
-   \if@twoside
-     \IfOddPageTF
-       {\makebox[1sp][l]{%
-        \hspace{\tagmarginsep}%
-        \makebox[\marginparwidth][c]{#1}}}%
-       {\makebox[1sp][r]{%
-        \makebox[\marginparwidth][c]{#1}%
-        \hspace{\textwidth}%
-        \hspace{\tagmarginsep}}}%
-   \else
-     {\makebox[1sp][l]{%
-        \hspace{\tagmarginsep}%
-        \makebox[\marginparwidth][c]{#1}}}%
-   \fi
-}
-% 1sp = 5.363 nanometres, so I think we'll be okay
-
-\newlength\tagmarginsep
-\setlength\tagmarginsep{\marginparsep}
-\def\print@eqnum{\mh@print@in@outer@margin{\tagform@\theequation}}
-\def\make@df@tag@@#1{%
-   \gdef\df@tag{\mh@print@in@outer@margin
-     {\maketag@@@{#1}\def\@currentlabel{#1}}}}
-
-\def\make@df@tag@@@#1{%
-   \gdef\df@tag{%
-     \mh@print@in@outer@margin{\tagform@{#1}}%
-     \toks@\@xp{\p@equation{#1}}%
-     \edef\@currentlabel{\the\toks@}%
-   }%
-}
-
-\def\endmathdisplay@a{%
-   \if@eqnsw
-     \gdef\df@tag{%
-       \mh@print@in@outer@margin{\tagform@\theequation}%
-     }%
-   \fi
-   \if@fleqn \@xp\endmathdisplay@fleqn
-   \else \ifx\df@tag\@empty \else \veqno \alt@tag \df@tag \fi
-     \ifx\df@label\@empty \else \@xp\ltx@label\@xp{\df@label}\fi
-   \fi
-   \ifnum\dspbrk@lvl>\m@ne
-     \postdisplaypenalty -\@getpen\dspbrk@lvl
-     \global\dspbrk@lvl\m@ne
-   \fi
-}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \strictpagecheck
 
