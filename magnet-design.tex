@@ -21,36 +21,20 @@ a man look at his life, that it made a pattern. There was as little need
 to do this as there was use. It was merely something he did for his own
 pleasure.}{\textcite{maugham1915}}
 
+\section{Introduction}
+
+The force created between permanent magnets can be used in various ways for supporting load.
+This chapter investigates a number of different configurations, some of which having been used to various degrees in the literature.
+Varieties in design lend themselves for different purposes, such as optimising for load force, number of directions of instability, and low variability in resonance frequency.
+
+
+\section{Simple magnet arrangements}
+
 \begin{figure}
   \grf{Figures/Magnets/vspring}
   \caption{Magnets in repulsion create a vertical spring.}
   \figlabel{vspring}
 \end{figure}
-
-The design of the magnetic spring has two broad requirements: firstly,
-only one \dof/ instability, because every unstable axis
-requires actuators for stability control. Therefore it is desired to
-minimise the number of unstable degrees of freedom in order to
-minimise the control effort. Furthermore, the unstable direction must
-be in the horizontal direction for efficient passive vertical load
-bearing.
-
-Secondly, the magnetic spring design must be scalable to support large
-loads; the design goal is for the final table to support weight in the
-order of \SI{100}{kg}. It is desired for the entire weight of the
-table plus equipment to be supported by the permanent magnets, since
-weight supported by electromagnets consumes large amounts of power,
-which is undesirable for numerous reasons, including cost and heat.
-
-
-\section{Simple magnet arrangement}
-
-It is the purpose of this section to ignore the reasons for the
-magnetic field%
-\footnote{That is, the underlying quantum mechanical theory that
-  explains electromagnetics.}  or any complex equations relating to
-magnetics, but rather develop an informal understanding of the dynamic
-behaviour of magnets.
 
 The most simple example of a magnetic spring can be seen in
 \figref{vspring}, with one fixed and one floating magnet arranged
@@ -151,7 +135,8 @@ strength of the vertical spring and the stability of the horizontal spring.}
    \figlabel{hvspring}
 \end{figure}
 
-\section{Incomplete taxonomy of magnetic springs}
+
+\section{Taxonomy of magnetic springs}
 
 In this section we introduce a variety of \emph{simple} magnetic
 springs, with the mind to analyse their behaviour. It is implicit in
@@ -173,7 +158,7 @@ and combinations thereof. Seven spring configurations are examined here:
 \item Unstable vertical ($k_z<0,k_x=k_y=-\half k_z>0$)
 \item Stable vertical ($k_z>0,k_x=k_y=-\half k_z<0$)
 \item Vertical double stable ($k_z>0,k_x>0,k_y<0$)
-\item Zero stiffness ($k_x=k_y=k_z=0$)
+\item Quasi--zero stiffness ($k_x=k_y=k_z=0$)
 \item Horizontal ($k_x<0,k_y=k_z=-\half k_x>0$)
 \item Vertical zero stiffness ($k_z=0,k_y=-k_x>0$)
 \end{itemize}
@@ -334,14 +319,7 @@ direction.
 Moving the spring in two directions simultaneously gives a better
 picture of the stability of the spring. For example, motion in the
 \x-direction showns zero force in the \y, and vice versa. But motion
-in both? The behaviour is more complex than shown here. These diagrams
-will be shown at a later date.
-
-I'm still unsure of the whole zero stiffness idea. It's interesting,
-but it means working with the spring at a point of marginal stability
-in the vertical direction. Given that there will be vertical actuators
-for vibration isolation, I think that this is not at all a big
-disadvantage.
+in both? The behaviour is more complex than shown here.
 
 However, marginal stability in the vertical direction is the same
 behaviour as a spring magnet levitating below a fixed attractive
@@ -574,11 +552,6 @@ operation.
 This is more easily explained with a
 diagram. \Figref{delamare} shows how this idea can be applied to a
 simplified model.
-% This is shown in \figref{one-dof-concept}, where
-% the supplementary magnets added are not strong enough to counteract
-% the main magnets for effecting the major forces, but their lever arm
-% is such that their moment affect on the device overcomes the
-% instability in rotation due to the main magnets.
 Attracting magnets close to the centre of rotation
 provide the forces for the spring (refer to
 \figref{hspring}). Further away, \emph{repelling} magnets are
@@ -620,7 +593,8 @@ And for the moments:
 \end{dmath}.
 \end{dgroup}
 With appropriate choices of $d$, $D$, $r$, and~$R$, this condition may
-be satisfied. Bear in mind, of course, that $F \propto d^2$, so the
+be satisfied. Bear in mind, of course, that to first order $F \propto d^2$,
+so the
 ratio between $r$~and $R$ will need to be significantly greater than
 that between $d$~and $D$.
 
@@ -645,28 +619,50 @@ that between $d$~and $D$.
   \figlabel{delamare}
 \end{figure}
 
-This scheme only stabilises the spring in the $M_z$ direction. Due to
-the lever arm on the forces in the $yz$-plane, instability has been
-added to the $M_y$ direction, as shown in figure \fixme{}. This problem
-can be overcome by using a `double stable' spring \fixme{crossref}
-oriented in the horizontal plane; this magnet configuration does not
-add instability force in the vertical direction at the lever arm and
-therefore does not cause instability in the $M_y$ direction. \fixme{figures}
 
-\fixme{WRONG!!!}
-
-\subsection{Simulations}
-
-An approximate schematic for a rotationally stable spring is shown in
-\figref{example-8-mag-spring}. (Make a better one with labels.)
+A magnet spring can be designed along such principles such as shown in
+approximation in \figref{example-8-mag-spring}, which shows a top-down view.
 
 \begin{figure}
-  \grf[angle=90,scale=0.717]{Simulations/Single_magnets/stable_rotation/eps20051124/example-8-mag-spring}
+  \grf[angle=90,scale=0.717]
+{Simulations/Single_magnets/stable_rotation/eps20051124/example-8-mag-spring}
   \caption{Crude schematic of a single unstable \dof/ concept.}
   \figlabel{example-8-mag-spring}
 \end{figure}
 
+The translational stability of the system can be assessed using the theory between parallel cuboid magnets (crossref).
+In order to model the rotational stability, a measure must be calculated of the torque on the spring design due to rotations around each axis.
+Forces in three directions can only be calculated for parallel magnets, and while there are expressions in the literature to calculate the torques between cuboid magnets, these expressions only apply for parallel magnets (\ie, magnets that have no relative rotation between them).
+Furthermore, the moments produced by the magnets at their lever arms around the centre of gravity of the spring are likely to dominate over the torque induced between each pair of magnets, since the rotations will be small but the lever arms will be (relatively) large.
+Finally, if small rotations of the spring are assumed, then the effect of this rotation on the forces between the magnets can be neglected; the assumption is that for the purposes of force calculation, the magnets will remain parallel to each other.
+
+The total torque on a system such as shown in \figref{example-8-mag-spring} is therefore calculated by neglecting the torques between the magnets and by neglecting the effects of rotation on the forces between the magnets.
+
+\begin{figure}
+  \begin{wide}
+    \raggedout
+    \psfragfig{\phdpath magrotate/fig/stablerot-x}\hfil
+    \psfragfig{\phdpath magrotate/fig/stablerot-y}\hfil
+    \psfragfig{\phdpath magrotate/fig/stablerot-z}\par\bigskip
+    \psfragfig{\phdpath magrotate/fig/stablerot-rx}\hfil
+    \psfragfig{\phdpath magrotate/fig/stablerot-ry}\hfil
+    \psfragfig{\phdpath magrotate/fig/stablerot-rz}
+  \end{wide}
+  \caption{
+    Demonstration of single-degree-of-freedom instability.
+    The gradients of all forces and torques are negative (infering stability)
+    except for the force along the $y$ direction.
+  }
+  \figlabel{demon-stable-rotation}
+\end{figure}
+
 (Add a paragraph talking about parameters and their values.)
+
+Demonstrative results are shown in \figref{demon-stable-rotation} for some particular spring parameters.
+In this figure, the stabilities for displacement and rotation in each degree of freedom are illustrated with the associated forces and torques due to each perturbation.
+The spring is in equilibrium at some displacement below the fixed outer magnets such that the force from the magnets balances the load force on the spring; forces in the vertical $z$ direction are given in relative difference terms to this equilibrium force.
+In \figref{demon-stable-rotation} negative gradient indicates stability, as the force or torque acts in opposition to the displacement or rotation that caused it.
+The figure shows that only the translatory $y$ direction is unstable, and thus in theory only a single actuator would be required to control this system in a non-contact levitating state.
 
 Stability results vary, of course, with the size of the stabilising
 magnets, their distance away in the stable horizontal (\y) direction,
@@ -676,21 +672,6 @@ caused by forces in the \y-direction, which are affected as much by
 the rotation as the \z-forces. (A cursory analysis yields this obvious
 result, but a quick sketch of the main ideas of the design do not make
 it intuitive.)
-
-\begin{figure}
-  \grf{Simulations/Single_magnets/stable_rotation/eps20051124/simple-stable-rotation-Rx}
-  \caption{Example of stable rotation effected by outlying
-     stabilising magnets in the horizontal spring configuration.}
-  \figlabel{simple-stable-rotation-Rx}
-\end{figure}
-
-\begin{figure}
-  \grf{Simulations/Single_magnets/stable_rotation/eps20051124/simple-stable-rotation-Rx-diagram}
-  \caption{Gratuitous diagram showing the final rotation in the calculations
-     for the graph shown in \figref{simple-stable-rotation-Rx}.
-     There is no translation in any direction.}
-  \figlabel{simple-stable-rotation-Rx-diagram}
-\end{figure}
 
 
 To verify a realistic case, I've performed simulations with some
