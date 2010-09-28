@@ -619,16 +619,8 @@ that between $d$~and $D$.
   \figlabel{delamare}
 \end{figure}
 
-
 A magnet spring can be designed along such principles such as shown in
 approximation in \figref{example-8-mag-spring}, which shows a top-down view.
-
-\begin{figure}
-  \grf[angle=90,scale=0.717]
-{Simulations/Single_magnets/stable_rotation/eps20051124/example-8-mag-spring}
-  \caption{Crude schematic of a single unstable \dof/ concept.}
-  \figlabel{example-8-mag-spring}
-\end{figure}
 
 The translational stability of the system can be assessed using the theory between parallel cuboid magnets (crossref).
 In order to model the rotational stability, a measure must be calculated of the torque on the spring design due to rotations around each axis.
@@ -636,7 +628,57 @@ Forces in three directions can only be calculated for parallel magnets, and whil
 Furthermore, the moments produced by the magnets at their lever arms around the centre of gravity of the spring are likely to dominate over the torque induced between each pair of magnets, since the rotations will be small but the lever arms will be (relatively) large.
 Finally, if small rotations of the spring are assumed, then the effect of this rotation on the forces between the magnets can be neglected; the assumption is that for the purposes of force calculation, the magnets will remain parallel to each other.
 
+\begin{figure}
+  \begin{wide}
+    \begin{subfigure}[0.4]
+      \asyinclude{PhD/Figures/Systems/magrotate2.asy}
+      \caption{After rotation.}
+    \end{subfigure}\hfil
+    \begin{subfigure}[0.4]
+      \asyinclude{PhD/Figures/Systems/magrotate3.asy}
+      \caption{Small-angle approximation for calculating forces and moments.}
+    \end{subfigure}
+  \end{wide}
+  \caption{}
+  \figlabel{magrotate}
+\end{figure}
+
 The total torque on a system such as shown in \figref{example-8-mag-spring} is therefore calculated by neglecting the torques between the magnets and by neglecting the effects of rotation on the forces between the magnets.
+
+\begin{figure}
+  \asyinclude{PhD/Figures/Systems/magrotate2.asy}
+  \caption{Schematic of a single unstable \dof/ concept.}
+  \figlabel{example-8-mag-spring}
+\end{figure}
+
+A static analysis of forces and torques created in this magnetic spring was performed using the geometry shown in \figref{magrotate-schem}. For this analysis, cube magnets are used for simplicity and the magnet gaps in the centred position are defined to be equal between the strong and the stabilising magnets.
+
+\begin{figure}
+  \asyinclude{PhD/Figures/Systems/magrotate-schem.asy}
+  \caption{Geometry used for analysing the magnetic spring with stable rotation.}
+  \figlabel{magrotate-schem}
+\end{figure}
+
+\begin{table}
+  \caption{Geometric parameters for calculating forces and torques for the magnetic spring shown in \figref{magrotate-schem}.}
+  \tablabel{magrotate-param}
+  \begin{tabular}{cr}
+    \toprule
+      $w_1$ &  \SI{100}{mm}  \\
+      $w_2$ &  \SI{300}{mm}  \\
+      $d_1$ &  \SI{100}{mm}  \\
+      $g_1$ &  \SI {10}{mm}  \\
+      $s_1$ &  \SI {10}{mm}  \\
+      $s_2$ &  \SI  {5}{mm}  \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+Spring parameters shown in \tabref{magrotate-param} are chosen to illustrate the concept of having a single degree of instability, and the forces and moments calculated with results shown in \figref{demon-stable-rotation}.
+In this figure, the stabilities for displacement and rotation in each degree of freedom are illustrated with the associated forces and torques due to each perturbation.
+The spring is in equilibrium at some displacement below the fixed outer magnets such that the force from the magnets balances the load force on the spring; forces in the vertical $z$ direction are given in relative difference terms to this equilibrium force.
+In \figref{demon-stable-rotation} negative gradient indicates stability, as the force or torque acts in opposition to the displacement or rotation that caused it.
+The figure shows that only the translatory $y$ direction is unstable, and thus in theory only a single actuator would be required to control this system in a non-contact levitating state.
 
 \begin{figure}
   \psfragfig{\phdpath magrotate/fig/stablerot-xyzall}
@@ -648,14 +690,17 @@ The total torque on a system such as shown in \figref{example-8-mag-spring} is t
   \figlabel{demon-stable-rotation}
 \end{figure}
 
+Stability results vary with the size of the stabilising
+magnets, their distance away in the stable horizontal (\y) direction,
+and, somewhat surprisingly, the distance in the \emph{un}stable
+horizontal direction (\z). This is due to not insignificant moments
+caused by forces in the \y-direction, which are affected as much by
+the rotation as the \z-forces.
 
-(Add a paragraph talking about parameters and their values.)
-
-Demonstrative results are shown in \figref{demon-stable-rotation} for some particular spring parameters.
-In this figure, the stabilities for displacement and rotation in each degree of freedom are illustrated with the associated forces and torques due to each perturbation.
-The spring is in equilibrium at some displacement below the fixed outer magnets such that the force from the magnets balances the load force on the spring; forces in the vertical $z$ direction are given in relative difference terms to this equilibrium force.
-In \figref{demon-stable-rotation} negative gradient indicates stability, as the force or torque acts in opposition to the displacement or rotation that caused it.
-The figure shows that only the translatory $y$ direction is unstable, and thus in theory only a single actuator would be required to control this system in a non-contact levitating state.
+The stability is created by the lever arm of the smaller outer magnets.
+The influence of this lever arm on the rotational stiffness of the spring is shown in \figref{stablerot-length-rz}, where the lever arm varies from twice
+to four times the centre distance of the strong magnets.
+In this range, the rotation stiffness begins negative (as it is without any stabilising magnets) and as the lever arm is increased the stability is increased until it becomes positive between \num{2.5} and~\num{3} times the lever arm of the centre magnets.
 
 \begin{figure}
   \begin{wide}
@@ -676,18 +721,6 @@ The figure shows that only the translatory $y$ direction is unstable, and thus i
   }
   \figlabel{stablerot-length-rz}
 \end{figure}
-
-Stability results vary with the size of the stabilising
-magnets, their distance away in the stable horizontal (\y) direction,
-and, somewhat surprisingly, the distance in the \emph{un}stable
-horizontal direction (\z). This is due to not insignificant moments
-caused by forces in the \y-direction, which are affected as much by
-the rotation as the \z-forces.
-
-The stability is created by the lever arm of the smaller outer magnets.
-The influence of this lever arm on the rotational stiffness of the spring is shown in \figref{stablerot-length-rz}, where the lever arm varies from twice
-to four times the centre distance of the strong magnets.
-In this range, the rotation stiffness begins negative (as it is without any stabilising magnets) and as the lever arm is increased the stability is increased until it becomes positive between \num{2.5} and~\num{3} times the lever arm of the centre magnets.
 
 
 \section{Force coupling between degrees of freedom}

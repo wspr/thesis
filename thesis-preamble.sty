@@ -51,6 +51,8 @@
            .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
   ]{pstool}
 \RequirePackage[process=auto]{asyfig}
+\RequirePackage[inline]{asymptote}
+\renewcommand\asydir{asy/}
 
 \RequirePackage{caption}
 \captionsetup[table]{position=top}
@@ -144,15 +146,15 @@
 
 % Subfigures
 \newsubfloat{figure}
-\newenvironment{subfigure}{%
-  \begin{minipage}[t]{0.4\linewidth}
+\newenvironment{subfigure}[1][0.4]{%
+  \begin{minipage}[t]{#1\linewidth}
     \centering
     \let\caption\subcaption
 }{%
   \end{minipage}%
 }
-\newenvironment{sidefigure}{%
-  \begin{minipage}[t]{0.4\linewidth}
+\newenvironment{sidefigure}[1][0.4]{%
+  \begin{minipage}[t]{#1\linewidth}
     \centering
 }{%
   \end{minipage}%
