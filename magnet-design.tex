@@ -656,6 +656,7 @@ The total torque on a system such as shown in \figref{example-8-mag-spring} is t
   \figlabel{demon-stable-rotation}
 \end{figure}
 
+
 (Add a paragraph talking about parameters and their values.)
 
 Demonstrative results are shown in \figref{demon-stable-rotation} for some particular spring parameters.
@@ -664,135 +665,13 @@ The spring is in equilibrium at some displacement below the fixed outer magnets 
 In \figref{demon-stable-rotation} negative gradient indicates stability, as the force or torque acts in opposition to the displacement or rotation that caused it.
 The figure shows that only the translatory $y$ direction is unstable, and thus in theory only a single actuator would be required to control this system in a non-contact levitating state.
 
-Stability results vary, of course, with the size of the stabilising
+Stability results vary with the size of the stabilising
 magnets, their distance away in the stable horizontal (\y) direction,
 and, somewhat surprisingly, the distance in the \emph{un}stable
 horizontal direction (\z). This is due to not insignificant moments
 caused by forces in the \y-direction, which are affected as much by
-the rotation as the \z-forces. (A cursory analysis yields this obvious
-result, but a quick sketch of the main ideas of the design do not make
-it intuitive.)
+the rotation as the \z-forces.
 
-
-To verify a realistic case, I've performed simulations with some
-vertical offset to simulate load bearing, with other parameters
-shown in \figref{8-mag-spring-example-values}. In the vertical
-direction (into the page in the aforementioned diagram), the magnets
-are positioned with their centres in the same plane; the floating
-vertical offset is \SI{6.4}{mm}. Note that all dimensions are
-integer fractions and multiples of inches.
-
-\begin{figure}
-  \grf{Figures/Old/8-mag-spring-example-values}
-  \caption{Parameters for an example simulation of the rotationally stable horizontal spring, shown from above with dimensions in mm.}
-  \figlabel{8-mag-spring-example-values}
-\end{figure}
-
-From the centred position, the spring was displaced independently by
-\SI{12.7}{mm} in each horizontal direction and rotated 5° around
-the vertical (\x) axis. The forces produced by the translations and
-the moments produced by the rotations are shown respectively in
-\figref{simple-stable-rotation-verify-forces,simple-stable-rotation-verify-moments}.
-Negative gradient in two of three curves demonstrates that this
-spring is unstable in a single \dof/ only. (The force in
-the \x-direction is known to be stable from previous analyses and
-the moments around the \y- and \z-axis are stable by inspection.
-Their stability will be shown after the derivation of the
-appropriate equations.)
-
-\begin{figure}
-  \begin{subfigure}
-    \grf{Simulations/Single_magnets/%
-      stable_rotation/eps20051128/%
-        simple-stable-rotation-verify-forces}
-    \caption{Forces in each direction produced by accompanying in-axis displacements.}
-    \figlabel{simple-stable-rotation-verify-forces}
-  \end{subfigure}
-  \begin{subfigure}
-    \grf{Simulations/Single_magnets/%
-      stable_rotation/eps20051128/%
-        simple-stable-rotation-verify-moments}
-    \caption{Moments around the \x-axis produced by rotation only.}
-    \figlabel{simple-stable-rotation-verify-moments}
-  \end{subfigure}
-  \caption{Forces and moments \fixme{what?}}
-\end{figure}
-
-As mentioned previously, there is a non-obvious effect of increased
-rotational stiffness with deeper (greater \z-direction width)
-floating elements. This effect is shown in
-\figref{stable-rotation-depth-test-initial}, which could be much
-more succinctly plotted by taking a linear approximation of the
-value of the stiffness around the centred position, resulting in a
-single curve.
-
-\begin{figure}
-  \grf{Simulations/Single_magnets/stable_rotation/%
-    eps20051128/stable-rotation-depth-test}
-  \caption{Effect of increased depth on rotational stiffness (gap of one half inch).}
-  \figlabel{stable-rotation-depth-test-initial}
-\end{figure}
-
-While the previous depth test showed quite promising results, using
-the same configuration with varying spring widths (varying the outer
-magnet lever arm, that is; the inner magnets remain fixed) gave
-unusual results.  As shown in \figref{stable-rotation-width-test}, the
-moments from increasing the width remained fairly constant.
-
-In these tests, the gap between the fixed and floating magnets was
-reduced to a quarter inch, the same width as the outer magnets, in
-order to try and improve the results, hence the slightly different
-forces produced by varying the depth of the spring, shown in
-\figref{stable-rotation-depth-test}.
-
-I also need to mention that the integer labels on the graphs
-correspond to unit lengths of half an inch, and that these lengths
-are spring half-lengths in whichever direction.
-
-I believe this was due to instability affect of the \y-direction
-force cancelling the increased moment from the \z-direction force,
-although I haven't done the analyses to prove it.
-
-\begin{figure}
-  \begin{subfigure} \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-depth-test}
-  \caption{Quarter inch gap, otherwise same as \figref{stable-rotation-depth-test}.}
-  \figlabel{stable-rotation-depth-test}
-\end{subfigure}
- \begin{subfigure} \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-width-test}
-  \caption{Accompanying spring width force curves for a depth of three inches (equivalent label of 3 in \figref{stable-rotation-depth-test-2}).}
-  \figlabel{stable-rotation-width-test}
-\end{subfigure}
-\caption{Design variations \fixme{what?}}
-\end{figure}
-
-Following from the weird results with the rotationally stable spring
-whose rotational stiffness didn't increase with greater lever arm in
-the horizontally stable direction, I went back to my gut idea of using
-equal sized magnets with varying gaps.
-
-\Ie, in the original concept in my head, the stabilising magnets were
-of the same size as the supporting magnets, but their effect was
-diminished by a greater nominal gap. As it turns out, this
-configuration gives results that I expect: the moments increase with
-both increased depth \emph{and} increased width. These results are
-shown in \figref{stable-rotation-depth-improved,
-stable-rotation-width-improved}.
-
-The nominal gap for these tests was a quarter inch; the outer magnet
-gap was double this.
-
-\begin{figure}
-  \begin{subfigure} \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-depth-improved}
-  \caption{Moment/rotation curves for increased spring depths.}
-  \figlabel{stable-rotation-depth-improved}
-\end{subfigure}
-\begin{subfigure}
-  \grf{Simulations/Single_magnets/stable_rotation/eps/stable-rotation-width-improved}
-  \caption{Moment/rotation curves for increased spring widths.}
-  \figlabel{stable-rotation-width-improved}
-\end{subfigure}
-\caption{Design variation \fixme{what?}}
-\end{figure}
 
 
 \section{Force coupling between degrees of freedom}
