@@ -145,14 +145,14 @@
 % Subfigures
 \newsubfloat{figure}
 \newenvironment{subfigure}{%
-  \begin{minipage}[t]{0.45\linewidth}
+  \begin{minipage}[t]{0.4\linewidth}
     \centering
     \let\caption\subcaption
 }{%
   \end{minipage}%
 }
 \newenvironment{sidefigure}{%
-  \begin{minipage}[t]{0.45\linewidth}
+  \begin{minipage}[t]{0.4\linewidth}
     \centering
 }{%
   \end{minipage}%
@@ -167,9 +167,11 @@
   \end{adjustwidth*}%
 }
 
-%% MathPSfrag & Matlabfrag
-\def\PFGstyle{\small}
-\def\matlabtextA{\small}
+%% Force font sizes in MathPSfrag & matlabfrag:
+\def\PFGstyle{\footnotesize}
+\def\matlabtextA{\footnotesize}
+\def\matlabtextB{\footnotesize}
+\def\matlabtextC{\footnotesize}
 
 %%
 \newcommand\gridIV[5][1em]{%

@@ -639,15 +639,7 @@ Finally, if small rotations of the spring are assumed, then the effect of this r
 The total torque on a system such as shown in \figref{example-8-mag-spring} is therefore calculated by neglecting the torques between the magnets and by neglecting the effects of rotation on the forces between the magnets.
 
 \begin{figure}
-  \begin{wide}
-    \raggedout
-    \psfragfig{\phdpath magrotate/fig/stablerot-x}\hfil
-    \psfragfig{\phdpath magrotate/fig/stablerot-y}\hfil
-    \psfragfig{\phdpath magrotate/fig/stablerot-z}\par\bigskip
-    \psfragfig{\phdpath magrotate/fig/stablerot-rx}\hfil
-    \psfragfig{\phdpath magrotate/fig/stablerot-ry}\hfil
-    \psfragfig{\phdpath magrotate/fig/stablerot-rz}
-  \end{wide}
+  \psfragfig{\phdpath magrotate/fig/stablerot-xyzall}
   \caption{
     Demonstration of single-degree-of-freedom instability.
     The gradients of all forces and torques are negative (infering stability)
@@ -665,6 +657,26 @@ The spring is in equilibrium at some displacement below the fixed outer magnets 
 In \figref{demon-stable-rotation} negative gradient indicates stability, as the force or torque acts in opposition to the displacement or rotation that caused it.
 The figure shows that only the translatory $y$ direction is unstable, and thus in theory only a single actuator would be required to control this system in a non-contact levitating state.
 
+\begin{figure}
+  \begin{wide}
+    \begin{subfigure}
+      \psfragfig{\phdpath magrotate/fig/stablerot-length-ry}
+      \caption{Around the $y$ axis. Stability decreases with increased lever arm but does not become unstable in the range shown.}
+    \end{subfigure}
+    \hfil
+    \begin{subfigure}
+      \psfragfig{\phdpath magrotate/fig/stablerot-length-rz}
+      \caption{Around the $z$ axis. Stability ranges from unstable to stable as the lever arm increases.}
+    \end{subfigure}
+  \end{wide}
+  \caption{
+    Moment of the magnet spring as it rotates around the $y$ and $z$ axes with a varying lever arm of the stabilising magnets.
+    (The moment around the $x$ axis does not vary with lever arm and remains stable.)
+    Plots are labelled in terms of the ratio between lever arm of the outer stabilising magnets and the inner strong magnets.
+  }
+  \figlabel{stablerot-length-rz}
+\end{figure}
+
 Stability results vary with the size of the stabilising
 magnets, their distance away in the stable horizontal (\y) direction,
 and, somewhat surprisingly, the distance in the \emph{un}stable
@@ -672,6 +684,10 @@ horizontal direction (\z). This is due to not insignificant moments
 caused by forces in the \y-direction, which are affected as much by
 the rotation as the \z-forces.
 
+The stability is created by the lever arm of the smaller outer magnets.
+The influence of this lever arm on the rotational stiffness of the spring is shown in \figref{stablerot-length-rz}, where the lever arm varies from twice
+to four times the centre distance of the strong magnets.
+In this range, the rotation stiffness begins negative (as it is without any stabilising magnets) and as the lever arm is increased the stability is increased until it becomes positive between \num{2.5} and~\num{3} times the lever arm of the centre magnets.
 
 
 \section{Force coupling between degrees of freedom}
