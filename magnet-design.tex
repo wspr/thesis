@@ -622,6 +622,12 @@ that between $d$~and $D$.
 A magnet spring can be designed along such principles such as shown in
 approximation in \figref{example-8-mag-spring}, which shows a top-down view.
 
+\begin{figure}
+  \asyinclude{PhD/Figures/Systems/magrotate.asy}
+  \caption{Schematic of a single unstable \dof/ concept.}
+  \figlabel{example-8-mag-spring}
+\end{figure}
+
 The translational stability of the system can be assessed using the theory between parallel cuboid magnets (crossref).
 In order to model the rotational stability, a measure must be calculated of the torque on the spring design due to rotations around each axis.
 Forces in three directions can only be calculated for parallel magnets, and while there are expressions in the literature to calculate the torques between cuboid magnets, these expressions only apply for parallel magnets (\ie, magnets that have no relative rotation between them).
@@ -645,12 +651,6 @@ Finally, if small rotations of the spring are assumed, then the effect of this r
 
 The total torque on a system such as shown in \figref{example-8-mag-spring} is therefore calculated by neglecting the torques between the magnets and by neglecting the effects of rotation on the forces between the magnets.
 
-\begin{figure}
-  \asyinclude{PhD/Figures/Systems/magrotate2.asy}
-  \caption{Schematic of a single unstable \dof/ concept.}
-  \figlabel{example-8-mag-spring}
-\end{figure}
-
 A static analysis of forces and torques created in this magnetic spring was performed using the geometry shown in \figref{magrotate-schem}. For this analysis, cube magnets are used for simplicity and the magnet gaps in the centred position are defined to be equal between the strong and the stabilising magnets.
 
 \begin{figure}
@@ -670,10 +670,14 @@ A static analysis of forces and torques created in this magnetic spring was perf
       $g_1$ &  \SI {10}{mm}  \\
       $s_1$ &  \SI {10}{mm}  \\
       $s_2$ &  \SI  {5}{mm}  \\
+    \midrule
+      $z_{\text{eq}}$ & \SI{-4}{mm} \\
     \bottomrule
   \end{tabular}
 \end{table}
 
+The spring is chosen to have an equilibrium position at $z_{\text{eq}}$ below
+the height of the fixed magnets due to the weight being supported.
 Spring parameters shown in \tabref{magrotate-param} are chosen to illustrate the concept of having a single degree of instability, and the forces and moments calculated with results shown in \figref{demon-stable-rotation}.
 In this figure, the stabilities for displacement and rotation in each degree of freedom are illustrated with the associated forces and torques due to each perturbation.
 The spring is in equilibrium at some displacement below the fixed outer magnets such that the force from the magnets balances the load force on the spring; forces in the vertical $z$ direction are given in relative difference terms to this equilibrium force.
@@ -690,15 +694,8 @@ The figure shows that only the translatory $y$ direction is unstable, and thus i
   \figlabel{demon-stable-rotation}
 \end{figure}
 
-Stability results vary with the size of the stabilising
-magnets, their distance away in the stable horizontal (\y) direction,
-and, somewhat surprisingly, the distance in the \emph{un}stable
-horizontal direction (\z). This is due to not insignificant moments
-caused by forces in the \y-direction, which are affected as much by
-the rotation as the \z-forces.
-
 The stability is created by the lever arm of the smaller outer magnets.
-The influence of this lever arm on the rotational stiffness of the spring is shown in \figref{stablerot-length-rz}, where the lever arm varies from twice
+The influence of this lever arm on the rotational stiffness of the spring is shown in \figref{stablerot-length}, where the lever arm varies from twice
 to four times the centre distance of the strong magnets.
 In this range, the rotation stiffness begins negative (as it is without any stabilising magnets) and as the lever arm is increased the stability is increased until it becomes positive between \num{2.5} and~\num{3} times the lever arm of the centre magnets.
 
@@ -719,9 +716,47 @@ In this range, the rotation stiffness begins negative (as it is without any stab
     (The moment around the $x$ axis does not vary with lever arm and remains stable.)
     Plots are labelled in terms of the ratio between lever arm of the outer stabilising magnets and the inner strong magnets.
   }
-  \figlabel{stablerot-length-rz}
+  \figlabel{stablerot-length}
 \end{figure}
 
+There is a trade-off between the size of the stabilising magnets and the effectiveness of the main force-providing magnets.
+The large lever arm of the stabilising magnets will also affect the stability of the spring in the rotational direction around the $y$ axis; if the stabilising magnets are too large then an added instability will be created, counteracting the added stability around the $z$ axis.
+This is illustrated in \figref{stablerot-sizes-all} with spring parameters shown in \tabref{magrotate-param} but with a stabilising magnet size varying from \numrange{0.4}{0.8} of the size of the main magnet size.
+
+\begin{figure}
+  \psfragfig{\phdpath magrotate/fig/stablerot-sizes-all}
+  \caption{
+    Varying the size of the stabilising magnets for the conceptual single-degree-of-freedom magnet spring.
+    The lever arm remains constant, in contrast to \figref{demon-stable-rotation}.
+    The larger the stabilising magnets the smaller the forces, and the moments around the $y$ and $z$ directions are decrease and increase respectively.
+  }
+  \figlabel{stablerot-sizes-all}
+\end{figure}
+
+Finally, the depth of the spring also affects the stability of this design.
+Again using the illustrative parameters of \tabref{magrotate-param}, but with spring depth $d_1$ varying from \SIrange{100}{400}{mm}, the forces and moments are calculated and shown in \figref{stablerot-depth}.
+As the spring depth increases, the lever arms in both $y$ and $z$ directions increase, thus increasing the magnitude of the moments produced by a given rotation.
+This result indicates that increasing the spring depth does not affect the stability of the spring.
+
+\begin{figure}
+  \begin{wide}
+    \begin{subfigure}
+      \psfragfig{\phdpath magrotate/fig/stablerot-depth-rx}
+      \caption{Around the $x$ axis.}
+    \end{subfigure}
+    \hfil
+    \begin{subfigure}
+      \psfragfig{\phdpath magrotate/fig/stablerot-depth-rz}
+      \caption{Around the $z$ axis.}
+    \end{subfigure}
+  \end{wide}
+  \caption{
+    Moment of the magnet spring as it rotates around the $x$ and $z$ axes with a varying spring depth $d_1$, labelled in metres.
+    In both cases, the stability increases with greater spring depths.
+    (The moment around the $y$ axis does not vary with spring depth and remains stable.)
+  }
+  \figlabel{stablerot-depth}
+\end{figure}
 
 \section{Force coupling between degrees of freedom}
 \seclabel{coupling}
