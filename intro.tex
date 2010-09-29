@@ -338,7 +338,7 @@ Passive stiffness reduction can be achieved by adding a negative stiffness eleme
 This idea becomes a major theme of the thesis, explored later in this introduction in \secref{qzs-explore}.
 Considering variable stiffness elements that can act in a `semi-active' regime, many methods exist to dynamically adjust the stiffness depending on the support being used \cite[for example]{kidner2002,liu2006-jsv,liu2008-jsv}.
 Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}, since for vibration isolation applications, in general, the lower the stiffness the better; there is no need to adjust the stiffness on-line if it is already as low as possible.
-\note{Although an exception to this will be discussed later, in which the stiffness of a nonlinear system is adjusted upward to compensate for an increase in mass that would otherwise lead to instability.\fixme{crossref}}
+\note{Although an exception to this will be discussed later, in which the stiffness of a nonlinear system is adjusted upward to compensate for an increase in mass that would otherwise lead to instability.\fxfatal{crossref}}
 
 \subsection{Active vibration control in practice}
 
@@ -357,7 +357,7 @@ Acceleration feedback has a much smaller stability limit than displacement and v
 Therefore velocity feedback control from integrated accelerometer measurements should be considered the better choice.
 Also, the presence of a low pass filter does not significantly effect the efficacy of velocity feedback.
 
-\fixme{The following paragraphs are too `bullet-list'-like.}
+\fxfatal{The following paragraphs are too `bullet-list'-like.}
 
 A similar problem is addressed by \textcite{zhu2006} in the design of a micro-gravity vibration isolation system. They look at using such feedback in a highly sensitive micro-gravity environment and show that `PD' feedback is unsuitable due to instability at high (\ie, useful) control gains from quantisation and anti-aliasing side-effects.
 Rather, integral and double-integral feedback from an accelerometer give better results for them.
@@ -374,7 +374,7 @@ They also look at the effect of non-infinite base mass, with results that I shou
 \subsubsection{Further discussion of velocity feedback (\ie, more skyhooks)}
 \seclabel{skyhook}
 
-\fixme{this section is terrible.}
+\fxfatal{this section is terrible.}
 
 An attractive method of reducing the detrimental effect of a resonance peak in vibration isolation is to add damping to the structure. As previously discussed, passive damping (or relative velocity feedback control) reduces the effectiveness of the vibration isolation at higher frequencies.
 Semi-active methods have also been developed to approximate skyhook damping when fully active control is undesirable \cite{liu2002,liu2005,ahmadian2004} or its limitations too severe.
@@ -390,7 +390,7 @@ An analogous result was shown by \textcite{hoque2006} for a three-axis vibration
 In the context of isolating vibration of a train, \textcite{li1999} discuss the disadvantages in tracking when applying skyhook damping for systems that experience very low frequency (\ie, steady state) changes in the base position, but for the purposes of vibration isolation this is not a problem if the ground is assumed to experience disturbance with zero mean.
 (They also use Kalman filters for estimating velocity but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
 
-A similar result \fixme{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
+A similar result \fxfatal{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
 
 In the original and crude method of implementing skyhook control, the switching mode that is necessary to emulate the `skyhook' in the controlled damping introduces higher order (odd-multiple) harmonics in the frequency response, as shown by \textcite{ahmadian2001}, who later proposed two `jerk-free' skyhook algorithms \cite{ahmadian2004}.
 
@@ -506,7 +506,7 @@ A comparison of some of these methods, including skyhook damping and semi-active
 The idea of self-sensing for magnetic levitation purposes (in both cases using a electromagnet) has been shown previously \cite{bleuler1992,vischer1993}.
 These self-sensing devices (perhaps obviously, since the \backemf/ is such a noisy signal) do not perform nearly as well as when using a dedicated sensor, but the technique is particularly interesting for low-cost, low-precision devices.
 
-\fixme{Use the above literature to justify not using these techniques.}
+\fxfatal{Use the above literature to justify not using these techniques.}
 
 \subsubsection{Narrow-band vibration isolation}
 \seclabel{vibneut}
@@ -536,7 +536,7 @@ There is a compromise between broad- and narrow-band vibration attentuation.
 It can be seen that for narrowband reduction, low absorber damping produces greater vibration attenuation.
 Conversely, if the \RMS\ transmissiblity of the entire frequency band is calculated, as shown in \figref{rms-inertial}, it can be seen that lower absorber damping \emph{decreases} the overall vibration reduction.
 It is also interesting to note in \figref{rms-inertial} that the maximum reduction broadband transmissibility occurs when the neutraliser is tuned slightly below the resonance frequency of the support.
-\fixme{cite someone?!?}
+\fxfatal{cite someone?!?}
 This would be the appropriate response if the vibration neutraliser were to be used against narrowband vibration with a time-varying resonance peak.
 For a resonance frequency that is known exactly, however, tuning the neutraliser to that exact frequency will yield better results (as shown in \figref{rms-inertial}).
 
@@ -580,7 +580,7 @@ An interesting addition to this field was shown by
 \textcite{ivers2008} with a mechanically self-tuning \vibneut/.
 While not as efficacious as an adaptive \vibneut/ that uses an external power source, the ability to adapt to the excitation frequency using only the energy of the disturbance itself is commendable if somewhat esoteric.
 
-\Vibneut/s have been used to mitigate seismic vibrations in large buildings, but their mass dependence makes their application rather tricky and often impractical. \fixme{cite}
+\Vibneut/s have been used to mitigate seismic vibrations in large buildings, but their mass dependence makes their application rather tricky and often impractical. \fxfatal{cite}
 \textcite{matta2008} propose a nonlinear rolling structure via which a \vibneut/ can be mounted to good effect despite uncertain masses of either or both of the building and absorber.
 Their work focuses on the interesting idea of using a roof-top garden as a \vibneut/ for a building \cite{matta2008a}.
 
@@ -722,7 +722,7 @@ The first designs allowed travel in a single direction, \eg, \textcite{trumper19
 Such devices are capable of supporting small loads, and applying horizontal translation forces to effect displacements of up to around \SI{200}{mm}--\SI{300}{mm} with up to nanometre precision.
 \note{
   Note that while these six \dof/ actuators have very high static precision, they do not have the frequency response of the so-called `nano-positioners' using piezoelectric stack acuators.
-  \fixme{cite something; ask jayesh}
+  \fxfatal{cite something; ask jayesh}
 }
 Two planar devices are invented in the independent theses of \textcite{kim1997-thesis} and \textcite{molenaar2000}.
 
@@ -785,7 +785,7 @@ His later paper \cite{yonnet1981} continued this work, describing
 how magnetic bearings may re-arranged to suit different applications,
 showing every possible simple equivalent axial and radial bearing.
 However, this equality of forces for both orthogonally- or parallelly-magnetised magnets should not be taken as a general result; we will see later that this is in fact not true for cuboid magnets.
-\fixme{cross-ref}
+\fxfatal{cross-ref}
 
 
 \begin{figure}[hbtp]
@@ -926,7 +926,7 @@ A review of work in the area of superconducting levitation has been published by
 \subsubsection{Single \dof/ unstable magnetic suspension}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
-The most common form this takes is via an unstable attractive vertical force to directly compensate for gravity; later, \fixme{crossref} vertically-passive schemes are seen that require active control in the horizontal directions to maintain stability.
+The most common form this takes is via an unstable attractive vertical force to directly compensate for gravity; later, \fxfatal{crossref} vertically-passive schemes are seen that require active control in the horizontal directions to maintain stability.
 
 An advanced approach for this application used backstepping with a nonlinear model to provide robust control without system identification \cite{mahmoud2003}.
 
@@ -1104,7 +1104,7 @@ The damping effects of magnetic forces has also been examined by
 advantageous in applications where the absorbed energy is converted to
 electrical energy for re-use and storage, increasing the overall
 efficiency of the device; a good example is in the automotive industry
-\cite{graves2000thesis}. \fixme{is mentioning regenerative damping
+\cite{graves2000thesis}. \fxfatal{is mentioning regenerative damping
 appropriate in this spot?}
 
 Another recent investigation of an eddy current damper using an aluminium
@@ -1122,7 +1122,7 @@ in velocity leads to a (possibly nonlinear) viscous damping force that
 is dissipative: it can only decrease the enery of the system. However,
 change in magnetic field generates forces that can be used to apply
 work. This is the same mechanism used by \AC/ current levitating
-devices. \fixme{crossref} It is unclear whether significant advantages
+devices. \fxfatal{crossref} It is unclear whether significant advantages
 exist over using conductive material rather than ferrous material to
 generate vibration suppression forces. For the conductive case, a
 permanent magnet may be used to increase the field strength of the
@@ -1130,7 +1130,7 @@ electromagnet at the expense of added viscous damping (which may not
 be undesirable). Also, constant and low frequency forces will not be
 able to be generated without significant control design \dash\ this is
 only possible with \AC/ current resonating with the \backemf/
-of the induced eddy currents in the conductor. \fixme{check that}
+of the induced eddy currents in the conductor. \fxfatal{check that}
 
 The generation of eddy currents is an involved calculation, and has
 not been investigated in detail for this thesis. The eddy current
@@ -1150,7 +1150,7 @@ Now,
   \propto
   \gp{\velocity \cross \magflux}\cross \magflux ,
 \end{dmath}
-which is anti-parallel to $\velocity$ \fixme{small figure}. Due to the
+which is anti-parallel to $\velocity$ \fxfatal{small figure}. Due to the
 cross terms, the maximum force is obtained for magnetic fields
 perpendicular to the motion of the conductor. Associatively, it is
 only the component of magnetic field in the perpendicular direction
@@ -1159,7 +1159,7 @@ arrangement of eddy current dampers for vibrating structures.
 
 Two configurations of eddy current dampers are shown in
 \figref{eddy}. The two systems behave somewhat differently. A
-comparison (\fixme{DOES IT?!?} of the flux through the conductive
+comparison (\fxfatal{DOES IT?!?} of the flux through the conductive
 sheets perpendicular to the motion of the mass shows that the vertical
 configuration results in greater damping force. However, this system
 will also exhibit a nonlinear damping force as the gap between the
@@ -1186,7 +1186,7 @@ somewhat larger than the motion of the mass.
 \end{figure}
 
 Experimental results of a magnetically levitated mass
-(\fixme{crossref}) later show that the damping in this case is very
+(\fxfatal{crossref}) later show that the damping in this case is very
 low, making a passive non-contact eddy current damper of high
 importance for vibration suppression in systems that will not be
 receiving significant control effort.
@@ -1237,7 +1237,7 @@ The field of nonlinear dynamics is very large, and applications to vibration sup
 Presumably, such phenomena are undesirable for vibration isolation!
 
 A very recent and comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
-It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy (\fixme{eg}); in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
+It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy (\fxfatal{eg}); in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
 
 \textcite{starosvetsky2008}, with a good review of the literature, talk about the `nonlinear energy sink' idea in which a nonlinear system provides better and broader vibration absorbing.
 
@@ -1333,7 +1333,7 @@ The stiffness here is $3ks^2$; \ie, dependent on the amplitude of disturbance.
 The ramifications of this nonlinear force on the vibratory response of the system are not exactly straightforward.
 
 \textcite{tentor2001} analysed a spring generated by repulsion magnets which behaved as a Duffing oscillator for large amplitude vibrations.
-\fixme{(The Duffing oscillator is well-known in the literature of nonlinear vibrations. Please reference it more.)}
+\fxfatal{(The Duffing oscillator is well-known in the literature of nonlinear vibrations. Please reference it more.)}
 The difference for his system was a significant linear component in the force equation:
 \begin{dmath}
 F_{\text{Duffing}} = \stiffnessLinear x + \stiffnessDuffing x^3.

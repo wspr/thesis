@@ -487,7 +487,7 @@ it easier to control. We'll see how it works out in the experiments\dots.
 
 \subsubsection{Single-instability spring}
 
-\cite{choi2003}. \fixme{missing}
+\cite{choi2003}. \fxfatal{missing}
 
 
 
@@ -773,7 +773,7 @@ to horizontal forces.
 
 An example of this coupling is shown in \figref{coupling-oscillations} for a
 suspended magnet that is stabilised in the horizontal direction with the
-addition of active positive stiffness. \fixme{describe more.}
+addition of active positive stiffness. \fxfatal{describe more.}
 
 \begin{figure}
   \psfragfig{\phdpath Simulations/Coupling/fig/coupling-oscillations}
@@ -822,7 +822,7 @@ In related work, we have presented material that uses two magnetic springs, one 
 
 \subsection{Oblique spring geometry and theory}
 
-A schematic of the oblique magnetic spring is shown in \Figref{schematic}. Cuboid magnets are used that extend a distance $b$ into the page such that their facing sides are squre. The magnet angle $\mbqmagangle$ can range from \SIrange{0}{90}{\degree}, where $\mbqmagangle=\SI{0}{\degree}$ has horizontally-oriented magnets and $\mbqmagangle=\SI{90}{\degree}$ has vertically-oriented magnets.
+A schematic of the oblique magnetic spring is shown in \Figref{mbq-schematic}. Cuboid magnets are used that extend a distance $b$ into the page such that their facing sides are squre. The magnet angle $\mbqmagangle$ can range from \SIrange{0}{90}{\degree}, where $\mbqmagangle=\SI{0}{\degree}$ has horizontally-oriented magnets and $\mbqmagangle=\SI{90}{\degree}$ has vertically-oriented magnets.
 The spring is composed of two pairs of oblique springs; this ensures the horizontal forces cancel when the spring is centred and force is produced in the vertical direction only.
 
 Note that opposing magnets have parallel sides and anti-parallel magnetisations; hence, the force calculations by \textcite{akoun1984} may be applied to this system. We assume that there are no magnetic interactions between magnets from one side of the spring to magnets on the other side.
@@ -833,7 +833,7 @@ With displacement $\mbqvdisp=0$, the facing magnets are horizontally aligned, an
 \centering
 \asyinclude[width=0.8\linewidth]{PhD/Figures/Systems/oblique.asy}
 \caption{Schematic of the oblique-magnet spring. When magnet offset $\mbqoffset=0$ and displacement $\mbqvdisp=0$, the magnet faces are aligned and touching.}
-\figlabel{schematic}
+\figlabel{mbq-schematic}
 \end{figure}
 
 The total force of the spring is given by the sum of the forces for each magnet pair: $\mbqforce=\mbqforce_1+\mbqforce_2$. To calculate $\mbqforce_{1,2}$, we define a local coordinate system for each magnet pair aligned in each direction of magnetisation. Then $\mbqforce_1=\mbqrot{-\theta} \mbqmforce_1$ and $\mbqforce_2=\mbqrot{-\phi}\mbqmforce_2$, where $\phi=\pi-\theta$, $\mbqrot$ is the planar rotation matrix, and $\mbqmforce_{1,2}$ are the forces between the magnet pairs in the local coordinate systems of the base magnets.
@@ -917,7 +917,7 @@ The horizontal stiffness is calculated with a numerical gradient between forces 
 \]
 where $\delta$ is a small displacement increment.
 
-An example of spring parameters that achieve positive stability in both the vertical and horizontal directions is shown in \Figref{mbq-kvxy-gaps}. This is possible as the stiffness in the out-of-the-page direction of \Figref{schematic} is always negative.
+An example of spring parameters that achieve positive stability in both the vertical and horizontal directions is shown in \Figref{mbq-kvxy-gaps}. This is possible as the stiffness in the out-of-the-page direction of \Figref{mbq-schematic} is always negative.
 
 \begin{figure}
 \centering
@@ -959,7 +959,7 @@ Having examined the influence of magnet angle and magnet gap on the natural freq
 This section describes a theoretical, parametric study that was undertaken to
 describe the forces between a cylindrical magnet and cylindrical
 current-carrying coil. While approximate formulations are known in the general
-literature (\fixme{reference}), the approach taken here was a complete
+literature (\fxfatal{reference}), the approach taken here was a complete
 analytical study using the exact geometry of both coil and magnet. The
 forces were numerically evaluated from a series of symbolic integrals in
 Mathematica.
@@ -969,17 +969,17 @@ vibrating platform; a non-contact coil, rather than a classical shaker, say,
 was chosen for its zero stiffness properties; without driving current, the
 coil does not add stiffness to the structure (although it does add damping via
 velocity-induced eddy currents). Additionally, the actuator does not add mass
-to the vibratory system. \fixme{discuss `zero impendance' instead of
+to the vibratory system. \fxfatal{discuss `zero impendance' instead of
 zero stiffness; added `mass' via induced eddy currents, etc.}
 
 The study also investigates the possibility of building large, low-cost
 inertial shakers by using an arrangement of smaller magnets instead of one
-large, expensive permanent magnet. (\fixme{reference Chris Fuller's work with
+large, expensive permanent magnet. (\fxfatal{reference Chris Fuller's work with
 George.}) However, this study does \emph{not} investigate the dynamics
 associated with driving the coil with an alternating current; only the static
 force due to a constant current is investigated.
 
-\fixme{Figure for dual coil system}
+\fxfatal{Figure for dual coil system}
 
 Finally, a symmetric arrangement of two coils in series driving a central
 magnet is examined. Since a coil/magnet pair must be located asymmetrically to
@@ -1119,7 +1119,7 @@ summation of a volume and surface integral:
 \end{dmath}
 The magnet is magnetised along its axis, and the magnetisation is
 assumed to be constant (a reasonable assumption for rare earth
-magnets \fixme{cite}). The magnetisation is $\magM=M\hat{\vect{z}}$, which implies
+magnets \fxfatal{cite}). The magnetisation is $\magM=M\hat{\vect{z}}$, which implies
 $\Div{\magM}=0$. Therefore,
 \begin{dmath}
 \force = \oint_S \gp{\magM\dotprod\normn}\cdot\magB(\distra{1},\distra{2},\distra{3})\,\dee{s} ,
@@ -1180,7 +1180,7 @@ the limits of the integral over the axial length of the cylinder
 \footnotetext{For more involved applications using this equation, it would be
 a good idea to analytically simplify the integral to improve the accuracy and
 computational time, which can be done for at least the integral in
-$\distrb{3}$. \fixme{reword because I sound dumb}}
+$\distrb{3}$. \fxfatal{reword because I sound dumb}}
 
 Varying the other parameters in the integration limits, $\iradiusMag$
 ($=0$ for cylindrical magnets), $\oradiusMag$, $\iradiusCoil$,
@@ -1408,7 +1408,7 @@ Later, when dual coils are used to drive the magnet, the effect of the
 adjusting the gap between the two coils on the induced force on the
 magnet is examined.
 
-\fixme{Tabulate coil simulation parameters/}
+\fxfatal{Tabulate coil simulation parameters/}
 
 \paragraph{On comparisons}
 
@@ -1421,7 +1421,7 @@ number of parameter variations.
 
 Take the results as shown, then, as indicative of methods that \emph{can} be
 used for optimising a certain electromagnetic design. Without a cost function
-to optimise, however, such `optimisation' here would be premature. \fixme{reword}
+to optimise, however, such `optimisation' here would be premature. \fxfatal{reword}
 
 \subsection{Single coil/single magnet simulations}
 
@@ -1632,7 +1632,7 @@ where it can be seen that increasing numbers of magnets initially
 increases the force, until the inner radius caused by the shrinking
 small magnets causes the force to reduce.
 
-\fixme{Wouldn't comparison with equal magnetic volume be more relevant in some ways?}
+\fxfatal{Wouldn't comparison with equal magnetic volume be more relevant in some ways?}
 
 \begin{figure}
   \begin{subfigure}
@@ -1803,12 +1803,12 @@ gaps. The results are evident: if the coils are too far apart, they
 act separately and their benefit is not realised; conversely, if they
 are too close their effects cancel.
 
-\fixme{SHOW THAT THE DUAL COIL IS BETTER!!}
+\fxfatal{SHOW THAT THE DUAL COIL IS BETTER!!}
 
 These results follow directly from the single coil simulations. For
 optimal coil spacing in the dual coil case, the maximum force position
 of a single coil should be used (as in \figref{vary-airgap}) for each
-side. \fixme{expand}
+side. \fxfatal{expand}
 
 \begin{figure}
   \begin{subfigure}
@@ -1818,6 +1818,6 @@ side. \fixme{expand}
     \psfragfig{\coilpath 2coils-trial}
   \end{subfigure}
   \caption{Forces between dual-coil/magnet pairs with varying
-    inter-coil gap distances. \fixme{parameters for the dual coil}}
+    inter-coil gap distances. \fxfatal{parameters for the dual coil}}
   \figlabel{dual-coil}
 \end{figure}
