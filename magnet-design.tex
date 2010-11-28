@@ -1178,7 +1178,7 @@ which leads to the final expression
       {\distra{2},0,2\pi}
 \end{dmath},
 and more applicably,
-\begin{dmath}[label=coilFz]
+\begin{dmath}[label=coilFzindirect]
 F_z =
   \Int{M\magB{z}(\distra{1},\distra{2},\lengthMag/2) \distra{1}}
       {\distra{1},\iradiusMag,\oradiusMag}
@@ -1188,19 +1188,55 @@ F_z =
       {\distra{2},0,2\pi} ,
 \end{dmath}
 
-Substitution of \eqref{coil-B} into \eqref{coilFz} yields quintuple integral
-terms, which can be numerically integrated\footnotemark\ to obtain the force
-on the magnet due to the current carrying coil. Varying $\offsetCoilMag$ in
-the limits of the integral over the axial length of the cylinder
-($\dee{\distrb{3}}$) produces force versus displacement results.
-\footnotetext{For more involved applications using this equation, it would be
-a good idea to analytically simplify the integral to improve the accuracy and
-computational time, which can be done for at least the integral in
-$\distrb{3}$. \fxfatal{reword because I sound dumb}}
-
-Varying the other parameters in the integration limits, $\iradiusMag$
+Substitution of \eqref{coil-B} into \eqref{coilFz} yields a quintuple integral,
+which can be evaluated to obtain the force on the magnet due to the current carrying coil.
+A complete analytical solution for this integral is not known to be analytically tractable at this time;
+the usual approach is to symbolically integrate as many terms as possible and then
+numerically integrate the rest. Here, the angles $\distra{2}$ and $\distrb{2}$
+are symbolically integrated in \eqref{coilFzindirect} to produce the final
+equation
+\begin{dmath}[label=coilFz]
+  F_z = B_r \tfrac{N I}{A} \Int{
+      \sum_{e_1,e_2\in\{1,-1\}^2}
+      e_1 e_2 f_z\fn{e_1\lengthMag/2,\offsetCoilMag+e_2\lengthCoil/2}
+    }
+    {\distra{1},\iradiusMag,\oradiusMag}
+    {\distrb{1},\iradiusCoil,\oradiusCoil}
+\end{dmath}
+where the intermediate term $f_z$ is
+\def\l#1{l_{#1}}
+\begin{dmath}
+  f_z\fn{\l1,\l2} =
+   \frac
+    {
+     2 \distra{1} \distrb{1}
+     \gp{ \l1 - \l2 }
+    }
+    {
+     \gp{\distra{1}-\distrb{1}}
+     \sqrt{
+          \gp{\distra{1}-\distrb{1}}^2
+         +\gp{\l1-\l2}^2
+     }
+    }\times\\
+    \Pi\fn{
+      -\frac
+        { 4 \distra{1} \distrb{1} }
+        { \gp{\distra{1}-\distrb{1}}^2 }
+      \middle|
+      -\frac
+        { 4 \distra{1} \distrb{1} }
+        {
+          \gp{\distra{1}-\distrb{1}}^2
+         +\gp{\l1-\l2}^2
+        }
+     }
+\end{dmath}.
+Varying $\offsetCoilMag$ in produces force versus displacement results
+for a given magnet/coil geometry.
+Varying $\lengthCoil$, $\lengthMag$ and the other parameters in the integration limits, $\iradiusMag$
 ($=0$ for cylindrical magnets), $\oradiusMag$, $\iradiusCoil$,
-$\oradiusCoil$, $\lengthCoil$, $\lengthMag$ allows comparisons to be
+$\oradiusCoil$, allows comparisons to be
 made between differently sized magnets and coils.
 
 \paragraph{Integration accuracy}
