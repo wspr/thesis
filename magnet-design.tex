@@ -1283,50 +1283,6 @@ The following transformation can be used to perform this:
 Accordingly, the force integral for the magnet--coil system with radial eccentricity as well as axial displacement is given by
 \begin{dmath}[label=coileccfz]
   \frac{NI\remanence}{4A\pi}
-  \Int{f_z\fn{\lengthMag/2}-f_z\fn{-\lengthMag/2}}
-    {\distra{1}',\iradiusMag,\oradiusMag}
-    {\distra{2}',0,2\pi}
-    {\distrb{1},\iradiusCoil,\oradiusCoil}
-    {\distrb{3},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
-\end{dmath},
-where the intermediate function $f_z$ is
-\begin{dmath}
-  f_z\fn{l} =
-  f_2\fn{l}
-  \frac{
-    2 \distra{1}' \distrb{1} \gp{ \distrb{1} - \distra{1} }
-    \sqrt{
-      1-\frac{2 \distra{1} \distrb{1} \gp{\cos\fn{\phi_1}-1}}
-             {\gp{l-\distrb{3}}^2+\gp{\distrb{1}-\distra{1}}^2}
-    }
-  }
-  {
-   \gp{ \gp{l-\distrb{3}}^2 + \gp{\distra{1}+\distrb{1}}^2 }
-   \sqrt{
-         \distrb{1}^2
-         - 2 \cos\fn{\phi_1} \distra{1} \distrb{1}
-         + \gp{l-\distrb{3}}^2+\distra{1}^2
-        }
-  }
-\end{dmath},
-and the second intermediate function $f_2$ is given by
-\begin{dmath}
-  f_2\fn{l} =
-     E\fn{
-       \frac{\phi_1}{2} \middle|
-       \frac{ - 4 \distra{1} \distrb{1}}
-             {\gp{l-\distrb{3}}^2+\gp{\distrb{1}-\distra{1}}^2}
-     }-
-     E\fn{
-      \frac{\phi_1}{2}-\pi \middle|
-      \frac{ - 4 \distra{1} \distrb{1}}
-            {\gp{l-\distrb{3}}^2+\gp{\distrb{1}-\distra{1}}^2}
-     }
-\end{dmath}.
-For \eqref{coileccfz}, only a single symbolic integration has been performed
-(in the variable $\distrb{2}$). A second integration yields
-\begin{dmath}[label=coileccfz]
-  \frac{NI\remanence}{4A\pi}
   \Int{
     \sum_{e_1,e_2\in\{1,-1\}^2}
       e_1 e_2 f_z\fn{e_1\lengthMag/2,\offsetCoilMag+e_2\lengthCoil/2}
@@ -1378,10 +1334,11 @@ and the second intermediate function $f_2$ is given by
              {\gp{l-z}^2+\gp{\distrb{1}-\distra{1}}^2}
      }
 \end{dmath}.
+In \eqref{coileccfz}, two symbolic integrations have been performed (first over $\distrb{2}$ and subsequently over $\distrb{2}$) and the remaining three
+integration variables must be evaluated numerically.
 
 
-
-\paragraph{Integration accuracy}
+\subsubsection{Integration accuracy}
 
 The precision of the numerical integration needs to be selected for an
 appropriate compromise between accuracy and computation time. Varying
