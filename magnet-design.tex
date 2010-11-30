@@ -1232,12 +1232,154 @@ where the intermediate term $f_z$ is
         }
      }
 \end{dmath}.
-Varying $\offsetCoilMag$ in produces force versus displacement results
-for a given magnet/coil geometry.
-Varying $\lengthCoil$, $\lengthMag$ and the other parameters in the integration limits, $\iradiusMag$
-($=0$ for cylindrical magnets), $\oradiusMag$, $\iradiusCoil$,
-$\oradiusCoil$, allows comparisons to be
-made between differently sized magnets and coils.
+The function $\Pi\fn{n|m}$ is the complete elliptic integral of the third kind.
+
+Varying centre displacement $\offsetCoilMag$ produces force versus displacement results for a given magnet/coil geometry.
+Varying $\lengthCoil$, $\lengthMag$ and the other parameters in the integration limits, $\iradiusMag$ ($=0$ for cylindrical magnets), $\oradiusMag$, $\iradiusCoil$, $\oradiusCoil$, allows comparisons to be made between differently sized magnets and coils.
+
+\subsubsection{Including axial offset}
+
+It is also desirable to calculate forces for asymmetric magnet positions, for
+reasons of either evaluating the effects of unbalanced load, or for building
+more complex geometries. It is the latter application that will be
+investigated here, with an analysis of the forces produced with a ring of a
+number of smaller magnets compared to that of using a solid ring magnet.
+
+The integrals used in \eqref{Fds} to calculate the forces have variables of
+integration $\dee\diffsurfMag=\distra{1}\dee{\distra{1}}\dee{\distra{2}}$ and
+integrands containing the the magnetic field $\magB$ in terms of those
+variables $\distra{1}$ and $\distra{2}$. However, when the magnet is no longer
+centred inside the coil, the integration must take place in the shifted
+coördinate system shown in \figref{int-offset}.
+
+\begin{figure}
+\asyfig{Coil/circle-offset}
+\caption{Region of integration for axially displaced magnet
+  surfaces. The magnet is shifted by $(\xi,\eta)$ from the original
+  coördinate system.}
+\figlabel{int-offset}
+\end{figure}
+
+In order to perform this integration, terms in $\magB$ of $\distra{1}$
+and $\distra{2}$ must be expressed instead in terms of $\distra{1}'$
+and $\distra{2}'$. That is, to use a slightly general example, we wish
+to analyse the integral of generic function $A$:
+\begin{dmath}
+\Int{A(\distra{1},\distra{2})}{a} =
+\Int{A(\distra{1},\distra{2})\,\distrb{1}}%
+    {\distrb{1},\iradiusMag=0,\oradiusMag}%
+    {\distrb{2},0,2\pi} .
+\end{dmath}
+The following transformation can be used to perform this:
+\begin{align}
+\distra{1} &= \sqrt{\distca{1}^2+\distca{2}^2} &
+\distca{1} &= \distca{1}' - \xi                 &
+\distca{1}' &= \distra{1}'\Cos{\distra{2}'}
+\\
+\distra{2} &= \ArcTan{\distca{2},\distca{1}}  &
+\distca{2} &= \distca{2}' - \eta               &
+\distca{2}' &= \distra{1}'\Sin{\distra{2}'}
+\end{align}
+Accordingly, the force integral for the magnet--coil system with radial eccentricity as well as axial displacement is given by
+\begin{dmath}[label=coileccfz]
+  \frac{NI\remanence}{4A\pi}
+  \Int{f_z\fn{\lengthMag/2}-f_z\fn{-\lengthMag/2}}
+    {\distra{1}',\iradiusMag,\oradiusMag}
+    {\distra{2}',0,2\pi}
+    {\distrb{1},\iradiusCoil,\oradiusCoil}
+    {\distrb{3},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
+\end{dmath},
+where the intermediate function $f_z$ is
+\begin{dmath}
+  f_z\fn{l} =
+  f_2\fn{l}
+  \frac{
+    2 \distra{1}' \distrb{1} \gp{ \distrb{1} - \distra{1} }
+    \sqrt{
+      1-\frac{2 \distra{1} \distrb{1} \gp{\cos\fn{\phi_1}-1}}
+             {\gp{l-\distrb{3}}^2+\gp{\distrb{1}-\distra{1}}^2}
+    }
+  }
+  {
+   \gp{ \gp{l-\distrb{3}}^2 + \gp{\distra{1}+\distrb{1}}^2 }
+   \sqrt{
+         \distrb{1}^2
+         - 2 \cos\fn{\phi_1} \distra{1} \distrb{1}
+         + \gp{l-\distrb{3}}^2+\distra{1}^2
+        }
+  }
+\end{dmath},
+and the second intermediate function $f_2$ is given by
+\begin{dmath}
+  f_2\fn{l} =
+     E\fn{
+       \frac{\phi_1}{2} \middle|
+       \frac{ - 4 \distra{1} \distrb{1}}
+             {\gp{l-\distrb{3}}^2+\gp{\distrb{1}-\distra{1}}^2}
+     }-
+     E\fn{
+      \frac{\phi_1}{2}-\pi \middle|
+      \frac{ - 4 \distra{1} \distrb{1}}
+            {\gp{l-\distrb{3}}^2+\gp{\distrb{1}-\distra{1}}^2}
+     }
+\end{dmath}.
+For \eqref{coileccfz}, only a single symbolic integration has been performed
+(in the variable $\distrb{2}$). A second integration yields
+\begin{dmath}[label=coileccfz]
+  \frac{NI\remanence}{4A\pi}
+  \Int{
+    \sum_{e_1,e_2\in\{1,-1\}^2}
+      e_1 e_2 f_z\fn{e_1\lengthMag/2,\offsetCoilMag+e_2\lengthCoil/2}
+    }
+    {\distra{1}',\iradiusMag,\oradiusMag}
+    {\distra{2}',0,2\pi}
+    {\distrb{1},\iradiusCoil,\oradiusCoil}
+\end{dmath},
+where the intermediate function $f_z$ is
+\begin{dmath}
+  f_z\fn{l,z} =
+  f_2\fn{l,z}
+  \frac{
+    2 \distra{1}' \distrb{1} \gp{ l-z }
+    \sqrt{
+      1-\frac{2 \distra{1} \distrb{1} \gp{\cos\fn{\phi_1}-1}}
+             {\gp{l-z}^2+\gp{\distrb{1}-\distra{1}}^2}
+    }
+  }
+  {
+   \gp{\distrb{1}-\distra{1}}^2
+   \sqrt{
+         \distra{1}^2+\distrb{1}^2
+         - 2 \cos\fn{\phi_1} \distra{1} \distrb{1}
+         + \gp{l-z}^2
+        }
+  }
+\end{dmath},
+and the second intermediate function $f_2$ is given by
+\begin{dmath}
+  f_2\fn{l,z} =
+     \Pi\fn{
+       \frac{ - 4 \distra{1} \distrb{1}}
+             {\gp{\distrb{1}-\distra{1}}^2}
+       ;
+       \frac{\phi_1}{2}
+       \middle|
+       \frac{ - 4 \distra{1} \distrb{1}}
+             {\gp{l-z}^2+\gp{\distrb{1}-\distra{1}}^2}
+     }
+     -
+     \Pi\fn{
+       \frac{ - 4 \distra{1} \distrb{1}}
+             {\gp{\distrb{1}-\distra{1}}^2}
+       ;
+       \frac{\phi_1}{2}-\pi
+       \middle|
+       \frac{ - 4 \distra{1} \distrb{1}}
+             {\gp{l-z}^2+\gp{\distrb{1}-\distra{1}}^2}
+     }
+\end{dmath}.
+
+
 
 \paragraph{Integration accuracy}
 
@@ -1311,61 +1453,6 @@ results (less than 0.1\% error) are obtained with a precision of three.
 values on a magnet from an electromagnet.}
 \figlabel{voice-coil-integration-precision}
 \end{figure}
-
-\subsubsection{Including axial offset}
-
-It is also desirable to calculate forces for asymmetric magnet positions, for
-reasons of either evaluating the effects of unbalanced load, or for building
-more complex geometries. It is the latter application that will be
-investigated here, with an analysis of the forces produced with a ring of a
-number of smaller magnets compared to that of using a solid ring magnet.
-
-The integrals used in \eqref{Fds} to calculate the forces have variables of
-integration $\dee\diffsurfMag=\distra{1}\dee{\distra{1}}\dee{\distra{2}}$ and
-integrands containing the the magnetic field $\magB$ in terms of those
-variables $\distra{1}$ and $\distra{2}$. However, when the magnet is no longer
-centred inside the coil, the integration must take place in the shifted
-coördinate system shown in \figref{int-offset}.
-
-\begin{figure}
-\asyfig{Coil/circle-offset}
-\caption{Region of integration for axially displaced magnet
-  surfaces. The magnet is shifted by $(\xi,\eta)$ from the original
-  coördinate system.}
-\figlabel{int-offset}
-\end{figure}
-
-In order to perform this integration, terms in $\magB$ of $\distra{1}$
-and $\distra{2}$ must be expressed instead in terms of $\distrb{1}$
-and $\distrb{2}$. That is, to use a slightly general example, we wish
-to analyse the integral of generic function $A$:
-\begin{dmath}
-\Int{A(\distra{1},\distra{2})}{a} =
-\Int{A(\distra{1},\distra{2})\,\distrb{1}}%
-    {\distrb{1},\iradiusMag=0,\oradiusMag}%
-    {\distrb{2},0,2\pi} .
-\end{dmath}
-The following transformation can be used to perform this:
-\begin{dseries}
-\begin{math}
-\distra{1} = \sqrt{\distca{1}^2+\distca{2}^2}
-\end{math},
-\begin{math}
-\distca{1} = \distcb{1} - \xi
-\end{math},
-\begin{math}
-\distcb{1} = \distrb{1}\Cos{\distrb{2}}
-\end{math},
-\begin{math}
-\distra{2} = \ArcTan{\distca{2},\distca{1}}
-\end{math},
-\begin{math}
-\distca{2} = \distcb{2} - \eta
-\end{math},
-\begin{math}
-\distcb{2} = \distrb{1}\Sin{\distrb{2}}
-\end{math}.
-\end{dseries}
 
 \subsection{Parameters}
 
