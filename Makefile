@@ -3,7 +3,7 @@ main = thesis
 support = thesis-preamble.sty thesis-maths.sty
 chapters = \
   front abstract acknowledgements contents \
-  intro magnet-theory \
+  intro magnet-theory coil-design \
   magnet-design multipole qzs control xpmt \
   conclusion
 
