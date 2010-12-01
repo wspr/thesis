@@ -14,6 +14,102 @@
   magnetisation of the arrays both influence the resulting forces.
 }
 
+
+
+\section{Multipole}
+
+The next requirement of the design of the magnetic spring is high load
+capacity. Since radial magnetic bearings work directly with trying to achieve
+large forces from arrangements of magnets, it is possible to look to this
+literature to find prior art. Recall from the literature (see
+\secref{multipole}) that \citeauthor{yonnet1991} were able to increase the
+stiffness of their radial bearing by applying Halbach arrays. This application
+uses opposing Halbach arrays, but other configurations are possible.
+
+An examination of the flux lines of various facing Halbach arrays, as shown in
+\figref{halbach-flux-repl,halbach-flux-attr}, shows how flux interacts between
+the two separate linear arrays. It can be seen that simply by varying the
+direction of magnetisation of the first magnet in the second array, a full
+sinusoid of forces can be achieved between the arrays—at the limits, total
+attraction or repulsion in the vertical direction, as for
+\figref{halbach-flux-repl,halbach-flux-attr} respectively.
+
+\begin{figure}
+  \begin{subfigure}
+  \grf[scale=0.67]{Figures/Multipole/2-halb-repl}
+  \caption{In repulsion.}
+  \figlabel{halbach-flux-repl}
+\end{subfigure}
+\begin{subfigure}
+  \grf[scale=0.67]{Figures/Multipole/2-halb-attr}
+  \caption{In attraction.}
+  \figlabel{halbach-flux-attr}
+\end{subfigure}
+\caption{Magnetic field lines of linear multipole arrays.}
+\end{figure}
+
+In this configuration, then, this restricts the relative lateral motion to
+each other that the springs can experience. A slip by two magnet lengths, and
+the spring will no longer be supporting load---it will be firmly attracted to
+its former opposer! In practise, this is not a concern. The operation of the
+spring is design such that free motion is opposed in the lateral directions,
+and will be implemented with a physical stop (only at the extremes of
+displacement so as to remain non-contact, of course) to prevent calamity of
+this sort.
+
+\section{Planar arrays}
+
+The previous work covered deals with magnet arrays of homogeneously-magnetised
+cross-section. \textcite{kim1997-thesis} cites a patent, in which he is involved,
+that superimposes two orthogonal linear Halbach arrays to create a
+\emph{planar} structure. \figref{pa-trumper} shows the structure, but in his
+own planar levitator, \citeauthor{kim1997-thesis} actually uses a linear Halbach
+array (later shown in \figref{pa-x2d}).
+
+Planar arrays are used quite extensively in the field of planar permanent
+magnet motors, and there have been some other array configurations developed.
+Analysis of the magnetic flux produced by various planar arrays, including
+Kim's, has been done by \textcite{cho2001}, culminating with the
+design shown in \figref{pa-cho}. However, their uses have so far
+been confined to applications that use the magnetic flux for providing motive
+force; no analysis has been made on the \emph{forces} between arrays.
+
+The author is unaware of any attempt to use Halbach arrays to increase the
+load bearing efficiency of linear magnetic springs.
+
+The `patchwork' array shown in \figref{pa-ns} is the most simple. See Hinds
+cited by \textcite{kim1997-thesis}, or Chitayat cited by \textcite{cho2001} for its
+use in other circumstances. The array used by \citeauthor{kim1997-thesis} is shown in
+\figref{pa-x2d}, despite the fact that he demonstrated the Halbach
+superposition. \fxfatal{crossref}
+
+\begin{figure}
+  \begin{subfigure}
+    \grf{Figures/Multipole/pa-ns}
+    \caption{Patchwork.}
+    \figlabel{pa-ns}
+  \end{subfigure}
+  \hfil
+  \begin{subfigure}
+    \grf{Figures/Multipole/pa-x2d}
+    \caption{Extended Halbach array.}
+    \figlabel{pa-x2d}
+  \end{subfigure}
+  \caption{Two simple planar magnetic arrays.}
+  \figlabel{pa-simple}
+\end{figure}
+
+\begin{figure}
+   \grf{Figures/Multipole/pa-cho}
+   \caption[Novel planar array shown in the literature.]{%
+     The planar array by \textcite{cho2001}. Flux travels out of the page
+     from the north- to south-faced magnets, and back through the \emph{array}
+     in the triangular magnets.}
+   \figlabel{pa-cho}
+\end{figure}
+
+
+
 \section{actuators}
 
 \textcite{trumper1996} developed the electromagnetic analogue to the
