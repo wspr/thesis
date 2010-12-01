@@ -1099,10 +1099,11 @@ resulting in the final magnetic field equation
 \magB(\distra{1},\distra{2},\distra{3}) =
 \magconst\cdot\frac{NI}{A}
   \Int{
-    \distrb{1}
-    \inlinevect{\distra{3}-\distrb{3},0,\distra{1}-\distrb{1}}
-    \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-
-        \distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}
+      \distrb{1}
+      \inlinevect{\distra{3}-\distrb{3},0,\distra{1}-\distrb{1}}
+      \cdot\\
+      \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-
+          \distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}
   }
   {\distrb{1},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
   {\distrb{2},0,2\pi}
@@ -1138,7 +1139,7 @@ assumed to be constant (a reasonable assumption for rare earth
 magnets \fxfatal{cite}). The magnetisation is $\magM=M\hat{\vect{z}}$, which implies
 $\Div{\magM}=0$. Therefore,
 \begin{dmath}
-\force = \oint_S \gp{\magM\dotprod\normn}\cdot\magB(\distra{1},\distra{2},\distra{3})\,\dee{s} ,
+\force = \oint_{S_m} \gp{\magM\dotprod\normn}\cdot\magB(\distra{1},\distra{2},\distra{3})\,\dee{s_m} ,
 \end{dmath}
 where $\normn$ is the normal vector of the magnet surface $\surfMag$. For a
 cylindrical magnet,
@@ -1167,23 +1168,34 @@ which leads to the final expression
 \begin{dmath}
 \eqlabel{Fds}
 \force =
-  \left.\Int {M\magB(\distra{1},\distra{2},\distra{3})}{\diffsurfMag,\surfMag}\right|_{\distra{3}=\lengthMag/2}
- +\left.\Int{-M\magB(\distra{1},\distra{2},\distra{3})}{\diffsurfMag,\surfMag}\right|_{\distra{3}=-\lengthMag/2}
+  \left.
+  \Int{
+       M \magB\fn{\distra{1},\distra{2},\distra{3}}
+      }
+      {\diffsurfMag,\surfMag}
+  \right|_{\distra{3}=\lengthMag/2}
+ +\left.
+  \Int{
+   -M \magB\fn{\distra{1},\distra{2},\distra{3}}
+      }
+      {\diffsurfMag,\surfMag}
+  \right|_{\distra{3}=-\lengthMag/2}
 =
-  \Int{M\magB(\distra{1},\distra{2},\lengthMag/2) \distra{1}}
+  \Int{M\magB\fn{\distra{1},\distra{2},\lengthMag/2} \distra{1}}
       {\distra{1},\iradiusMag,\oradiusMag}
       {\distra{2},0,2\pi}
- -\Int{M\magB(\distra{1},\distra{2},-\lengthMag/2) \distra{1}}
+ -\Int{M\magB\fn{\distra{1},\distra{2},-\lengthMag/2} \distra{1}}
       {\distra{1},\iradiusMag,\oradiusMag}
       {\distra{2},0,2\pi}
 \end{dmath},
 and more applicably,
 \begin{dmath}[label=coilFzindirect]
 F_z =
-  \Int{M\magB{z}(\distra{1},\distra{2},\lengthMag/2) \distra{1}}
+  \Int{M\magB{z}\fn{\distra{1},\distra{2},\half\lengthMag} \distra{1}}
       {\distra{1},\iradiusMag,\oradiusMag}
       {\distra{2},0,2\pi}
- -\Int{M\magB{z}(\distra{1},\distra{2},-\lengthMag/2) \distra{1}}
+ -
+  \Int{M\magB{z}\fn{\distra{1},\distra{2},-\half\lengthMag} \distra{1}}
       {\distra{1},\iradiusMag,\oradiusMag}
       {\distra{2},0,2\pi} ,
 \end{dmath}
@@ -1197,7 +1209,7 @@ are symbolically integrated in \eqref{coilFzindirect} to produce the final
 equation
 \begin{dmath}[label=coilFz]
   F_z = B_r \tfrac{N I}{A} \Int{
-      \sum_{e_1,e_2\in\{1,-1\}^2}
+      \sumset{e_1,e_2}{\{1,-1\}^2}
       e_1 e_2 f_z\fn{e_1\lengthMag/2,\offsetCoilMag+e_2\lengthCoil/2}
     }
     {\distra{1},\iradiusMag,\oradiusMag}
@@ -1265,10 +1277,11 @@ and $\distra{2}$ must be expressed instead in terms of $\distra{1}'$
 and $\distra{2}'$. That is, to use a slightly general example, we wish
 to analyse the integral of generic function $A$:
 \begin{dmath}
-\Int{A(\distra{1},\distra{2})}{a} =
-\Int{A(\distra{1},\distra{2})\,\distrb{1}}%
-    {\distrb{1},\iradiusMag=0,\oradiusMag}%
-    {\distrb{2},0,2\pi} .
+\Int{A\fn{\distra{1},\distra{2}}}
+    {a} =
+\Int{A\fn{\distra{1},\distra{2}} \distra{1}'}
+    {\distra{1}'}
+    {\distra{2}'} .
 \end{dmath}
 The following transformation can be used to perform this:
 \begin{align}
@@ -1284,7 +1297,7 @@ Accordingly, the force integral for the magnet--coil system with radial eccentri
 \begin{dmath}[label=coileccfz]
   \frac{NI\remanence}{4A\pi}
   \Int{
-    \sum_{e_1,e_2\in\{1,-1\}^2}
+    \sumset{e_1,e_2}{\{1,-1\}^2}
       e_1 e_2 f_z\fn{e_1\lengthMag/2,\offsetCoilMag+e_2\lengthCoil/2}
     }
     {\distra{1}',\iradiusMag,\oradiusMag}
@@ -1296,7 +1309,7 @@ where the intermediate function $f_z$ is
   f_z\fn{l,L} =
   f_2\fn{l,L}
   \frac{
-    2 \distra{1}' \distrb{1} \gp{ l-L }
+    \distra{1}' \distrb{1} \gp{ l-L }
     \sqrt{
       1-\frac{2 \distra{1} \distrb{1} \gp{\cos\fn{\phi_1}-1}}
              {\gp{l-L}^2+\gp{\distrb{1}-\distra{1}}^2}
@@ -1334,7 +1347,7 @@ and the second intermediate function $f_2$ is given by
              {\gp{l-L}^2+\gp{\distrb{1}-\distra{1}}^2}
      }
 \end{dmath}.
-In \eqref{coileccfz}, two symbolic integrations have been performed (first over $\distrb{2}$ and subsequently over $\distrb{2}$) and the remaining three
+In \eqref{coileccfz}, two symbolic integrations have been performed (first over $\distrb{3}$ and subsequently over $\distrb{2}$) and the remaining three
 integration variables must be evaluated numerically.
 
 
@@ -1373,7 +1386,7 @@ Magnet & Remanence  & $\remanence  $ & \SI{1.2}{T}   \\
        & Radius     & $\oradiusMag $ & \SI{6.35}{mm} \\
        & Length     & $\lengthMag  $ & \SI{6.35}{mm} \\
 \midrule
-Coil & turns        & $\turnsWire  $ & \num{400}     \\
+Coil & Turns        & $\turnsWire  $ & \num{400}     \\
      & Current      & $\current    $ & \SI{1}{A}     \\
      & Inner radius & $\iradiusCoil$ & \SI{7}{mm}    \\
      & Outer radius & $\oradiusCoil$ & \SI{15}{mm}   \\
@@ -1848,9 +1861,10 @@ Diameter & Price & Number & Total Price \\
 \subsection{Dual coil simulations}
 \seclabel{dualcoil}
 
-The $NI/A$ term in the force equation between a magnet and coil has
-some interesting effects. The force created by a single layer coil
-(that is, $N=1$) cannot be improved upon by adding more layers,
+The $NI/A$ term in the force equation between a magnet and coil is the cause
+of some subtle considerations when designing coil--magnet actuators.
+The force created by a single layer coil
+(that is, $N=1$) cannot be improved upon by adding more layers radially,
 because the total length of wire (and hence the resistance, and the
 inverse of current) will grow faster than the linear gains achieved in
 the force.
@@ -1858,7 +1872,7 @@ the force.
 But extra turns of wire are required to achieve a large enough
 resistance to be able to drive the coil without overheating it due to
 excessive current. It has been shown in the previous section that
-increasing the length of a coil is also detrimental to the maximum force
+increasing the axial length of a coil is also detrimental to the maximum force
 created on a magnet.
 
 A different method of increasing the number of turns is shown here
@@ -1867,7 +1881,7 @@ that is being generated. By wiring two coils in series and in opposite
 winding directions, with the permanent magnet in the gap between them,
 greater forces can be achieved than with a single coil of the same
 resistance. This design is also better at dissipating heat, as the effective
-surface area is greater (or, conversely, it is harder to cool thicker coils).
+surface area is greater.
 
 \begin{figure}
   \asyfig{Coil/dual-coil-single}
@@ -1875,7 +1889,7 @@ surface area is greater (or, conversely, it is harder to cool thicker coils).
   \figlabel{dual-coil-schematic}
 \end{figure}
 
-For two coils radially aligned with a distance $G$ between their axial
+For two coaxial coils with a distance $G$ between their
 centres, superposition can be used to calculate the forces $F_1$ and
 $F_2$ generated between each and a permanent magnet. A schematic of this
 system is shown in \figref{dual-coil-schematic}. The axial
@@ -1887,9 +1901,9 @@ F_{\mathrm{T}}(d_1,d_2)
   =F_1(d_1)+F_2(G-d_1)
   =F_1(d_1)-F_1(G-d_1)
 \end{dmath}.
-The coils are here assumed to be of equal dimension in all
-respects. For a fixed dual-coil geometry, this equation allows an
-investigation of the force/\-displacement curves while varying the
+The two coils are assumed to be the same size.
+For a fixed dual-coil geometry, this equation allows an
+investigation of the force \vs\ displacement curves while varying the
 distance between the coils and the position of the permanent magnet.
 
 Less comprehensive parameter variations are performed to analyse the dual coil
@@ -1898,6 +1912,8 @@ cases. \Figref{dual-coil} shows a dual-coil design with increasing coil
 gaps. The results are evident: if the coils are too far apart, they
 act separately and their benefit is not realised; conversely, if they
 are too close their effects cancel.
+
+When the separation distance is larger than that for the maximum force, a long stroke actuator can also be designed with such a setup by sacrificing maximum force to achieve a wider but lower force peak (\eg, separation gap of \SI{12.5}{mm} in \Figref{dual-coil}).
 
 \fxfatal{SHOW THAT THE DUAL COIL IS BETTER!!}
 

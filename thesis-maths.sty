@@ -22,6 +22,8 @@
 \Style{LogParen=p,ArcTrig=arc,ImagParen=p,RealParen=p}
 %%%%%%%%%%%%%%%%%
 
+\NewDocumentCommand\sumset{mm}{\sum_{#1}^{#2}}
+
 \newcommand\inlinefrac[2]{#1/#2}
 
 \def \groupstrut {\vphantom{k_g}}
@@ -31,9 +33,8 @@
     #1
   \right]
 }
-\newcommand\function[1]{\left(#1\right)}
+\newcommand\fn[1]{\mathopen{}\left(#1\right)}
 \let\gp\group
-\let\fn\function
 
 \newcommand\funcparen[2]{#1\mathopen{}\left(#2\right)}
 
