@@ -1,6 +1,8 @@
 %!TEX root = thesis.tex
 \chapter{Magnet--coil actuators}
 
+rectangular coil: \textcite{rovers2010-ietm}
+
 \section{Forces due to an electromagnetic field}
 \seclabel{emforces}
 
@@ -104,11 +106,14 @@ which results in the intermediate expression
 \begin{dmath}
 \magB(\distra{1},\distra{2},\distra{3}) =
 \magconst
-  \Int{%
+  \Int{
     \gp{\magJ(\distrb{1},\distrb{2},\distrb{3})\cross
           \gp{\distra-\distrb}}
-         \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}
-          -\distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}\distrb{1}}
+    \cdot
+    \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}
+          -\distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}
+    \distrb{1}
+  }
   {\distrb{1},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
   {\distrb{2},0,2\pi}
   {\distrb{3},\iradiusCoil,\oradiusCoil}
@@ -124,7 +129,7 @@ $A=\lengthCoil\gp{\iradiusCoil-\oradiusCoil}$ is the cross sectional
 area of the electromagnet. Therefore,
 \begin{dmath}
 \magJ\fn{\distrb{1},\distrb{2},\distrb{3}}\cross\gp{\distra-\distrb} =
-  NI/A\cdot\inlinevect{\distra{3}-\distrb{3},0,\distra{1}-\distrb{1}}
+  NI/A\cdot\inlinevect{\distra{3}-\distrb{3},0,\distrb{1}-\distra{1}}
 \end{dmath},
 resulting in the final magnetic field equation
 \begin{dmath}[label=coil-B]
@@ -132,8 +137,9 @@ resulting in the final magnetic field equation
 \magconst\cdot\frac{NI}{A}
   \Int{
       \distrb{1}
-      \inlinevect{\distra{3}-\distrb{3},0,\distra{1}-\distrb{1}}
-      \cdot\\
+      \inlinevect{\distra{3}-\distrb{3},0,\distrb{1}-\distra{1}}
+      \\
+      \cdot
       \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-
           \distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}
   }
@@ -146,7 +152,7 @@ or more applicably here (since it is the axial force that is of interest),
 \magB{z}(\distra{1},\distra{2},\distra{3}) =
 \magconst\cdot\frac{NI}{A}
 \Int{
-  \distrb{1}\gp{\distra{1}-\distrb{1}}
+  \distrb{1}\gp{\distrb{1}-\distra{1}}
   \cdot
   \gp{\distra{1}^2+\distrb{1}^2
       -2\distra{1}\distrb{1}\Cos{\distra{2}-\distrb{2}}
@@ -163,18 +169,18 @@ To obtain force, the magnetic field from the electromagnet is
 integrated over the region of the permanent magnet. This is the
 summation of a volume and surface integral:
 \begin{dmath}
-\force = \Int{\gp{\Div{\magM}}\magB}{\diffvolMag,\volMag}+\oint_{\surfMag}
+\force = \Int{\gp{-\Div{\magM}}\magB}{\diffvolMag,\volMag}+\oint_{\surfMag}
 \gp{\magM\dotprod\normn}\magB\,\dee{\diffsurfMag}
-\end{dmath}
+\end{dmath
 The magnet is magnetised along its axis, and the magnetisation is
 assumed to be constant (a reasonable assumption for rare earth
 magnets \fxfatal{cite}). The magnetisation is $\magM=M\hat{\vect{z}}$, which implies
 $\Div{\magM}=0$. Therefore,
 \begin{dmath}
-\force = \oint_{S_m} \gp{\magM\dotprod\normn}\cdot\magB(\distra{1},\distra{2},\distra{3})\,\dee{s_m} ,
+\force = \oint_{S_m} \gp{\magM\dotprod\normn}\magB(\distra{1},\distra{2},\distra{3})\,\dee{s_m} ,
 \end{dmath}
 where $\normn$ is the normal vector of the magnet surface $\surfMag$. For a
-cylindrical magnet,
+cylindrical magnet with axial magnet length $\lengthMag$,
 \begin{dmath}
 \normn = \left\{
   \begin{array}{@{}c@{\quad}l}
@@ -185,8 +191,8 @@ cylindrical magnet,
         -\half\lengthMag < \distra{3} < \half\lengthMag,
         \quad \distra{1}=\oradiusMag
   \end{array}\right.
-\end{dmath}
-for axial magnet length $\lengthMag$. Since $\magM$ is orthogonal to
+\end{dmath}.
+Since $\magM$ is orthogonal to
 $\hat{\vect{r}}$ their dot product is zero, and
 \begin{dseries}
 \begin{math}
@@ -298,9 +304,8 @@ coördinate system shown in \figref{int-offset}.
 
 \begin{figure}
 \asyfig{Coil/circle-offset}
-\caption{Region of integration for axially displaced magnet
-  surfaces. The magnet is shifted by $(\xi,\eta)$ from the original
-  coördinate system.}
+\caption{Region of integration for a radially displaced magnet
+       shifted by $(\xi,\eta)$ from the original coördinate system.}
 \figlabel{int-offset}
 \end{figure}
 
@@ -529,8 +534,8 @@ a coil of fixed inner radius and fixed total wire length is:
 \begin{dmath}
   \oradiusCoil = \iradiusCoil +
     \dfrac{\lengthWire\diamWire^2}
-          {\pi\lengthCoil\gp{2\iradiusCoil+\diamWire}}.
-\end{dmath}
+          {\pi\lengthCoil\gp{2\iradiusCoil+\diamWire}}
+\end{dmath}.
 
 \paragraph{Overall parameters varied}
 
