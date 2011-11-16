@@ -824,146 +824,537 @@ shown in \figref{mag-couplingratio-equil}.
   \figlabel{mag-couplingratio-equil}
 \end{figure}
 
+
+
 \section{Oblique magnetic spring design}
 
-In comparison to using springs with a linear force--displacement relationship for vibration isolation, using permanent magnets for load bearing can be advantageous due to the smaller variation in resonance frequency seen with increased load as a result of a corresponding increased stiffness. However, two permanent magnets in direct repulsion will not completely eliminate the variability in resonance frequency due to load, only reduce it.
+In comparison to using springs with a linear force--displacement relationship for vibration isolation, using permanent magnets for load bearing can be advantageous due to the smaller variation in resonance frequency seen with increased load as a result of a corresponding increased stiffness.
+However, two permanent magnets in direct repulsion will not completely eliminate the variability in resonance frequency due to load, only reduce it.
 
-A resonance frequency that varies little with load force is desirable due to predicability of the vibratory behaviour; often, vibration isolation systems are tuned to a narrow-band frequency range and are only effective for a given mass. If a nonlinear spring could be designed such that changing applied load $F=mg$ caused the stiffness $k$ to adjust to keep the resonance frequency $\omega_n=\sqrt{k/m}$ constant, a passive tuned vibration neutraliser could be used to isolate the system from unwanted vibrations even under varying loading conditions.
+Often, vibration isolation systems are tuned to a narrow-band frequency range and are only effective for a given mass being supported.
+A resonance frequency that varies little with load force is desirable due to the resulting predicability of the vibratory behaviour; for example, changes in load force over time will not affect the resonance frequency of the support, which simplifies the system modelling and possible control scenarios.
+To achieve this, we wish to design a nonlinear spring such that varying the applied load $F=mg$ results in a change in stiffness $k$ such that the natural frequency $\omega_n=\sqrt{k/m}$ remains constant.
 
-A similar idea using permanent magnets has been mentioned previously by \textcite{todaka2001-ietm}, who suggested using a mechanical linkage with two vertically-oriented magnets such that the floating magnet moved in an arc around a fixed magnet due to the effects of the linkage. However, the parameters governing this design were not investigated; their paper primarily investigated the relationship between resonance frequency and horizontal/vertical displacement between two permanent magnets.
+A similar idea using permanent magnets has been mentioned previously by \citet{todaka2001-ietm}, who suggested using a mechanical linkage with two vertically-oriented magnets such that the floating magnet moved in an arc around a fixed magnet due to the effects of the linkage.
+However, the parameters governing this design were not investigated at that time; their paper primarily investigated the relationship between resonance frequency and horizontal/vertical displacement between the two permanent magnets.
 
-\citeauthor{bonisoli2007-mrc} used the different approach of coupling a magnetic spring with a linear elastic spring, for which a nonlinear analysis and experimental results were shown \parencite{bonisoli2007-mssp, bonisoli2007-mrc}. Such coupled elastic--magnetic systems have been investigated by several authors to various degrees \parencite{trimboli1994, beccaria1997,carrella2008-jsv,zhou2010-jsv}, especially in the design of load bearing systems with high static stiffness and low dynamic stiffness, also known as `quasi--zero stiffness' devices after their design principle of operating near a point of instability in the force/displacement curve where the dynamic stiffness approaches zero.
+\citeauthor{bonisoli2007-mrc} used the different approach of coupling a magnetic spring with a linear elastic spring, for which a nonlinear analysis and experimental results were shown \citep{bonisoli2007-mssp, bonisoli2007-mrc}.
+Such coupled elastic--magnetic systems have been investigated by several authors to various degrees \citep{trimboli1994, beccaria1997,carrella2008-jsv,zhou2010-jsv}, especially in the design of load-bearing systems with high static stiffness and low dynamic stiffness, also known as `quasi--zero stiffness' devices after their design principle of operating near a point of instability in the force/displacement curve where the dynamic stiffness approaches zero.
 
-In related work, we have presented material that uses two magnetic springs, one in attraction and the other in repulsion, to achieve such quasi--zero stiffness effects \parencite{robertson2009-jsv}. In the present work, we exploit the use of magnetic forces in an alternative way that yields a larger region of low stiffness and, if desired, a more stable system. As with all magnetic springs, positive stiffness in the vertical direction infers negative stiffness or instability in at least one horizontal direction \parencite{bassani2006-meccanica}. This instability may be countered with a linear bearing (or some other physical constraint) or with an active control system.
+In related work, we have previously presented material that uses two magnetic springs, one in attraction and the other in repulsion, to achieve such quasi--zero stiffness effects \citep{robertson2009-jsv}.
+In the present work, we exploit the use of magnetic forces in an alternative way that yields a larger region of low stiffness.
+As with all magnetic springs, positive stiffness in the vertical direction infers negative stiffness or instability in at least one horizontal direction \citep{bassani2006-meccanica}.
+This instability may be countered with a linear bearing (or some other physical constraint) or with an active control system.
+
+This section consists of three main parts: \secref{geom} defines the geometry of the system and presents the theory for analysing its behaviour; \secref{design} uses this theory to demonstrate the advantages of this magnet design, specifically in terms of its natural frequency versus applied load; and \secref{stabl-3dof} extends the model to analyse rotations and torques to investigate the planar stability of the system.
+
+The results presented in this paper are reproducible \citep{kovacevic2007-icassp} with code located at \url{http://www.github.com/wspr/magcode}.
+The directory `examples/oblique' contains the code that has been used to directly generate the figures in this paper.
+
 
 \subsection{Oblique spring geometry and theory}
+\seclabel{geom}
 
-A schematic of the oblique magnetic spring is shown in \Figref{mbq-schematic}. Cuboid magnets are used that extend a distance $b$ into the page such that their facing sides are squre. The magnet angle $\mbqmagangle$ can range from \SIrange{0}{90}{\degree}, where $\mbqmagangle=\SI{0}{\degree}$ has horizontally-oriented magnets and $\mbqmagangle=\SI{90}{\degree}$ has vertically-oriented magnets.
-The spring is composed of two pairs of oblique springs; this ensures the horizontal forces cancel when the spring is centred and force is produced in the vertical direction only.
-
-Note that opposing magnets have parallel sides and anti-parallel magnetisations; hence, the force calculations by \textcite{akoun1984} may be applied to this system. We assume that there are no magnetic interactions between magnets from one side of the spring to magnets on the other side.
-
-With displacement $\mbqvdisp=0$, the facing magnets are horizontally aligned, and with also magnet offset $\mbqoffset=0$, the magnet faces are touching. The force and stiffness characteristics of the spring can be affected by adjusting the magnet angle $\mbqmagangle$ and the magnet offset $\mbqoffset$.
+A schematic of the oblique magnetic spring is shown in \Figref{schematic}.
+Cuboid magnets are used that extend a distance $b$ into the page such that their facing sides are square.
+The magnet angle $\mbqmagangle$ can range from \SIrange{0}{90}{\degree}, where $\mbqmagangle=\SI{0}{\degree}$ has horizontally-oriented magnets and $\mbqmagangle=\SI{90}{\degree}$ has vertically-oriented magnets.
+The spring is composed of two symmetric pairs of oblique magnets; this ensures the horizontal forces cancel when the spring is centred and force is produced in the vertical direction only.
 
 \begin{figure}
 \centering
 \asyinclude[width=0.8\linewidth]{PhD/Figures/Systems/oblique.asy}
-\caption{Schematic of the oblique-magnet spring. When magnet offset $\mbqoffset=0$ and displacement $\mbqvdisp=0$, the magnet faces are aligned and touching.}
+\caption{Schematic of the oblique-magnet spring.
+When magnet offset $\mbqoffset=0$ and displacement $\mbqvdisp=0$, the magnet faces are aligned and touching.
+Displacements $\mbqhdisp$ and $\mbqpdisp$ (not shown) are in the horizontal and out-of-plane directions, respectively.}
 \figlabel{mbq-schematic}
 \end{figure}
 
-The total force of the spring is given by the sum of the forces for each magnet pair: $\mbqforce=\mbqforce_1+\mbqforce_2$. To calculate $\mbqforce_{1,2}$, we define a local coordinate system for each magnet pair aligned in each direction of magnetisation. Then $\mbqforce_1=\mbqrot{-\theta} \mbqmforce_1$ and $\mbqforce_2=\mbqrot{-\phi}\mbqmforce_2$, where $\phi=\pi-\theta$, $\mbqrot$ is the planar rotation matrix, and $\mbqmforce_{1,2}$ are the forces between the magnet pairs in the local coordinate systems of the base magnets.
+Note that opposing magnets have parallel sides and anti-parallel magnetisations; hence, the force calculations by \citet{akoun1984} may be applied to this system.
+Their theory is summarised in \ref{app:akoun}.
 
-These forces $\mbqmforce_{1,2}$ are calculated with $\mbqmforce_{1,2}=F_m(\mbqmdispl_{1,2})$ where $F_m(\cdot)$ is the equation for the force between magnets given by \citeauthor{akoun1984} and $\mbqmdispl_{1,2}$ is the displacement vector between the magnet centres in the local coordinate system of the magnets; $\mbqmdispl_1=\mbqrot{\theta}[d,x]\T+[a,0]\T$ and $\mbqmdispl_2=\mbqrot{\phi}[-d,x]\T+[a,0]\T$. These expressions allow us to calculate $\mbqforce$ in terms of $\mbqvdisp$.
+Two dimensions are used to describe the relative displacement between adjacent magnet pairs.
+The magnet offset $\mbqoffset$, fixed during operation, is the horizontal face gap in the centred position, and the displacement $\mbqvdisp$ can be considered as the vertical face gap in the centred position, designed to vary as the load on the spring changes.
+With displacement $\mbqvdisp=0$, the facing magnets are horizontally aligned, and with magnet offset $\mbqoffset=0$ also, the magnet faces are touching.
+The force and stiffness characteristics of the spring can be affected by adjusting the magnet angle $\mbqmagangle$ and the magnet offset $\mbqoffset$.
+
+We assume that there are no magnetic interactions between magnets from one side of the spring to magnets on the other side.
+This can be ensured in practice with a large enough separation between the pairs on opposite sides.
+Accordingly, the total force of the spring is given by the superposition of forces for each magnet pair:
+\begin{equation}
+\mbqforce=\mbqforce_1+\mbqforce_2.
+\eqlabel{mbq-force}
+\end{equation}
+To calculate $\mbqforce_{1}$ and $\mbqforce_{2}$ a local coordinate system  is defined for each magnet pair aligned in each direction of magnetisation.
+Then $\mbqforce_1=\mbqrot{\theta} \mbqmforce_1$ and $\mbqforce_2=\mbqrot{\phi}\mbqmforce_2$, where $\phi=\pi-\theta$, $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are the forces between the magnet pairs in the local coordinate systems of the base magnets, and $\mbqrot{\cdot}$ is the planar rotation matrix
+\begin{equation}
+\def\t{t}
+\mbqrot{\t} = \bmatrix
+ \cos \t & -\sin \t & 0 \\
+ \sin \t &  \cos \t & 0 \\
+0 & 0 & 1 \\
+\endbmatrix
+.
+\end{equation}
+
+These forces $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are calculated with $\mbqmforce_{i}=\vect F_m(\mbqmdispl_{i})$ where $\vect F_m(\cdot)$ given in \eqref{akoun} is the force between parallel cuboid magnets \citep{akoun1984} and $\mbqmdispl_{1}$ and $\mbqmdispl_{2}$ are the displacement vectors between the magnet centres in the local coordinate system of the magnets given by
+\begin{align}
+  \mbqmdispl_1 &=
+    \mbqrot{-\theta}
+    \begin{bmatrix}d + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
+    \begin{bmatrix}a\\0\\0\end{bmatrix} , &
+  \mbqmdispl_2 &=
+    \mbqrot{-\phi}
+    \begin{bmatrix}-d+ \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
+    \begin{bmatrix}a \\ 0 \\ 0\end{bmatrix} ,
+\end{align}
+where $a$ and $d$ are geometric parameters defined in \Figref{schematic}, and $[\mbqhdisp,\mbqvdisp,\mbqpdisp]\T$ are displacements in the horizontal, vertical, and out-of-plane directions, respectively. In \secref{stabl-3dof} this model will be extended with a small angle approximation to calculate forces and torques due to rotation around the $\mbqpdir$ axis.
+
 
 \subsection{Influence of design parameters}
+\seclabel{design}
+
+The analysis in \secref{geom} allow us to calculate total force $\mbqforce$ in terms of displacement.
+This section will outline the influence of the various design parameters on the force, stiffness, and natural frequency characteristics of the system.
+To begin, vertical force as a function of vertical displacement $\mbqvforce(\mbqvdisp)=\mbqvforce(0,\mbqvdisp,0)$ will be considered (with other displacements $\mbqhdisp=\mbqpdisp=0$).
 
 \subsubsection{Magnet shape}
 
-For the analysis continuing, we use a magnet size ratio of $\mbqmagratio=\mbqmagh/\mbqmagw=0.4$. Depending on the exact displacement range to optimise for, values around this magnet ratio produce the maximum force between two opposing cuboid magnets for a fixed magnet volume \parencite{robertson2010-maglett-fix}. For the analysis to follow directly, the magnet volume is fixed at $\mbqvolume=\mbqmagh\mbqmagw^2=(\SI{10}{mm})^3$. We define a `unit length' $u=\sqrt[3]{V}=\SI{10}{mm}$ and refer in the subsequent analysis to the `magnet gap ratio' defined as $d/u$.
+For this entire analysis, we use a magnet size ratio of $\mbqmagratio=\mbqmagh/\mbqmagw=0.4$.
+Depending on the exact desired displacement range, values around this magnet ratio produce the maximum force between two opposing cuboid magnets for a fixed magnet volume \citep{robertson2010-maglett-fix}.
+For the analysis to follow directly, the magnet volume is fixed at $\mbqvolume=\mbqmagh\mbqmagw^2=(\SI{10}{mm})^3$.
+We define a `unit length' $\mbqunit=\sqrt[3]{V}=\SI{10}{mm}$ and refer in the subsequent analysis to the `magnet gap ratio' defined as $\mbqoffset/\mbqunit$.
+The effects of increasing the magnet volume are addressed in \secref{mbq-vol}.
+
 
 \subsubsection{Magnet angle}
 
-Having chosen the magnet size ratio, there are two parameters that influence the force and stiffness characteristics of the spring; these are the magnet angle $\mbqmagangle$ and the magnet offset $\mbqoffset$. Variations in the magnet angle affect the force characteristics to a greater extent and will be examined first.
+Having chosen the magnet size ratio, there are two parameters that influence the force and stiffness characteristics of the spring; these are the magnet angle~$\mbqmagangle$ and the magnet offset~$\mbqoffset$.
+Variations in the magnet angle affect the force characteristics to a greater extent and will be examined first.
 
-The theory outlined above was used to calculate force versus displacement curves over a range of magnet angles from \SIrange{0}{90}{\degree}. These are shown in \Figref{mbq-fvx-angle} with associated stiffnesses shown in \Figref{mbq-kvx-angle}. These two graphs show a dramatic affect on the force and stiffness characteristics based on the inclination angle of the magnets. Of particular interest are the low-stiffness regions in the force curves that have a local maxima in \Figref{mbq-fvx-angle}; these are potential areas for improved vibration isolation.
+The theory outlined in \secref{geom} was used to calculate force versus displacement curves over a range of magnet angles from \SIrange{0}{90}{\degree}.
+These are shown in \Figref{mbq-fvx-angle}, which shows a dramatic effect on the force and stiffness characteristics due to changes in the inclination angle of the magnets.
+Of particular interest are the low-stiffness regions in the force curves in \Figref{mbq-fvx-angle}; these are potential areas for improved vibration isolation.
 
 \begin{figure}
 \centering
-\psfragfig{magcode/examples/oblique/fig/mbq-fvx-angle}
-\caption{Force versus displacement for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments. The offset distance between the magnets is zero. Light gray lines indicate negative stiffness (instability) and markers show the position of zero stiffness.}
+\pregen{\psfragfig{examples/oblique/fig/mbq-fvx-angle}}
+\caption{Force versus displacement for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.
+The offset distance between the magnets is zero.
+Light gray lines indicate negative stiffness (instability) and markers show the position of quasi--zero stiffness.}
 \figlabel{mbq-fvx-angle}
 \end{figure}
 
-\begin{figure}
-\centering
-\psfragfig{magcode/examples/oblique/fig/mbq-kvx-angle}
-\caption{Stiffness versus displacement for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments. The offset distance between the magnets is zero. Light gray lines indicate negative stiffness (instability) and markers show the position of zero stiffness.}
-\figlabel{mbq-kvx-angle}
-\end{figure}
+\Figref{mbq-fvx-angle} is difficult to use for design purposes because the required load force will affect the dynamic stiffness as the system sits in equilibrium at a given displacement.
+However, this equilibrium displacement is not a parameter of particular interest provided the magnetic spring is still levitating.
+Therefore, for interpreting the operating conditions of the system it is more useful to consider the relationship between load force and natural frequency.
 
-\Figref{mbq-fvx-angle} is difficult to use for design purposes, because the required load force will affect the dynamic stiffness as the system sits in equilibrium at a given displacement. However, the rest displacement is not a parameter of particular interest as long as the magnetic spring is still levitating.
-
-The vertical stiffness $\mbqvstiff$ can be obtained with numerical differentiation of the vertical force $\mbqvforce$:
-\[
-  \mbqvstiff(\mbqvdisp) = - [F_x(x+\delta,0)-F_x(x-\delta,0)]/(2\delta) .
-\]
+The vertical stiffness $\mbqvstiff$ can be obtained by numerical differentiation of the vertical force $\mbqvforce$:
+\begin{equation}
+  \mbqvstiff(\mbqvdisp) = - \tfrac{1}{2}\bigl[\mbqvforce(\mbqvdisp+\delta)-\mbqvforce(\mbqvdisp-\delta)\bigr]/\delta ,
+\end{equation}
+where $\delta$ is a small displacement increment.
 The natural frequency $\omega_n(\mbqvdisp)$ as a function of displacement was calculated in terms of this vertical stiffness $\mbqvstiff$ with
-\[
+\begin{equation}
   \omega_n(\mbqvdisp) = \sqrt{\frac{\mbqvstiff(\mbqvdisp)}{\mbqmasseq}} = \sqrt{\frac{\mbqvstiff(\mbqvdisp)}{\mbqvforce(\mbqvdisp)/g}}
-\]
-where the equivalent mass $\mbqmasseq=\mbqvforce(\mbqvdisp)/g$ is the mass required to load the spring such that its equilibrium position lies at the displacement $\mbqvdisp$. The force corresponding to this equivalent mass is referred to as the `load force'.
+\end{equation}
+where the equivalent mass $\mbqmasseq=\mbqvforce(\mbqvdisp)/g$ is the mass required to load the spring such that its equilibrium position lies at the displacement $\mbqvdisp$.
+The force corresponding to this equivalent mass is referred to as the `load force'.
 
-By plotting natural frequency as a function of load force in \Figref{mbq-wvf-angle}, we can choose a magnet angle based on a certain load to satisfy a desired natural frequency. Specifically, it can be seen from this graph that at a magnet angle of \SI{35}{\degree}, the natural frequency is almost independent of force for a large range of applied load (approximately $\SI{30}{N}\pm\SI{10}{N}$).
+By plotting natural frequency as a function of load force in \Figref{mbq-wvf-angle}, we can choose a magnet angle based on a certain load to satisfy a desired natural frequency.
+Specifically, for the case of zero offset between the magnets (\Figref{mbq-wvf-angle-1}), it can be seen that at a magnet angle of \SI{35}{\degree} the natural frequency is almost independent of force for a large range of applied load (approximately $\SI{30}{N}\pm\SI{10}{N}$).
 
 \begin{figure}
-\centering
-\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle}
-\caption{Natural frequency versus load force for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments and zero offset between the magnets. At \SI{35}{\degree}, the natural frequency is constant for a wide range of load forces.}
+\centerline{%
+\subfloat
+  [Zero offset between the magnets.
+   At \SI{35}{\degree} the natural frequency is near-constant for a wide range of load forces.
+  \figlabel{mbq-wvf-angle-1}]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-wvf-angle}}}
+\qquad
+\subfloat
+  [Gap ratio of \num{0.25}.
+   Near-constant natural frequency occurs at \SI{70}{\degree}.
+   \figlabel{mbq-wvf-angle-2}]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-wvf-angle2}}}%
+}
+\caption{Natural frequency versus load force for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.}
 \figlabel{mbq-wvf-angle}
 \end{figure}
 
+
 \subsubsection{Magnet offset}
 
-\Figref{mbq-wvf-angle} shows the natural frequency versus load curve for a magnet gap ratio of zero. Increasing the magnet gap changes the force and stiffness relationships of the spring; \Figref{mbq-wvf-angle-2} shows the same plot with a magnet gap ratio of \num{0.25}. The difference in the shape of the curves is not great, but this plot shows that a greater magnet gap results in smaller load forces and a smaller range in load force. Also, the angle which corresponds to the almost-flat natural frequency curve has changed to \SI{70}{\degree}.
+Having chosen the magnet size ratio, there are two parameters that influence the force and stiffness characteristics of the spring; these are the magnet angle~$\mbqmagangle$ and the magnet offset~$\mbqoffset$.
+Variations in the magnet angle affect the force characteristics to a greater extent and will be examined first.
+
+The theory outlined in \secref{geom} was used to calculate force versus displacement curves over a range of magnet angles from \SIrange{0}{90}{\degree}.
+These are shown in \Figref{mbq-fvx-angle}, which shows a dramatic effect on the force and stiffness characteristics due to changes in the inclination angle of the magnets.
+Of particular interest are the low-stiffness regions in the force curves in \Figref{mbq-fvx-angle}; these are potential areas for improved vibration isolation.
 
 \begin{figure}
 \centering
-\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle2}
-\caption{Natural frequency versus load force for a gap ratio of \num{0.25} and magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.}
-\figlabel{mbq-wvf-angle-2}
+\pregen{\psfragfig{examples/oblique/fig/mbq-fvx-angle}}
+\caption{Force versus displacement for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.
+The offset distance between the magnets is zero.
+Light gray lines indicate negative stiffness (instability) and markers show the position of quasi--zero stiffness.}
+\figlabel{mbq-fvx-angle}
 \end{figure}
 
-The natural frequency versus load force is redrawn in \Figref{mbq-kvf-gaps} for a fixed magnet angle of \SI{45}{\degree} over a range of magnet gaps from zero to \num{0.5}. At this angle, it can be seen that the region of mostly-flat natural occurs at a gap ratio of \num{0.05}. This indicates that the magnet angle should be chosen only after the tolerances of magnet displacement are decided and a minimum gap ratio established.
+\Figref{mbq-fvx-angle} is difficult to use for design purposes because the required load force will affect the dynamic stiffness as the system sits in equilibrium at a given displacement.
+However, this equilibrium displacement is not a parameter of particular interest provided the magnetic spring is still levitating.
+Therefore, for interpreting the operating conditions of the system it is more useful to consider the relationship between load force and natural frequency.
 
-\begin{figure}
-\centering
-\psfragfig{magcode/examples/oblique/fig/mbq-wvf-gaps}
-\caption{Natural frequency versus load force for gap ratios from zero to \num{0.5} in increments of \num{0.05} and a magnet angle of \SI{45}{\degree}.}
-\figlabel{mbq-kvf-gaps}
-\end{figure}
-
-\subsubsection{Horizontal stability}
-
-In \Figref{mbq-wvf-angle,mbq-kvf-gaps}, design curves were presented under the assumption that the vertical stiffness only was under consideration. Due to the inclination of the magnets, however, the horizontal stiffness will also vary as the magnet spring parameters are changed. If active control is used to constrain the floating magnets, it may be desirable to minimise the horizontal instability of the magnet spring in order to reduce the number of sensors and actuators required to stabilise the system.
-
-The horizontal stiffness is calculated with a numerical gradient between forces when the magnets are centred and when a small horizontal displacement $\mbqhdisp$ is applied. In this case, the displacement vectors between the magnets are $\mbqmdispl_1=\mbqrot{\theta}[\mbqoffset+\mbqhdisp,\mbqvdisp]\T+[\mbqmagh,0]\T$ and $\mbqmdispl_2=\mbqrot{\phi}[-\mbqoffset-\mbqhdisp,\mbqvdisp]\T+[\mbqmagh,0]\T$ and the horizontal stiffness $\mbqhstiff$ as a function of vertical displacement $\mbqvdisp$ is calculated as
-\[
-\mbqhstiff(\mbqvdisp) = -[\mbqhforce(\mbqvdisp,\delta)-\mbqhforce(\mbqvdisp,0)]/\delta,
-\]
+The vertical stiffness $\mbqvstiff$ can be obtained by numerical differentiation of the vertical force $\mbqvforce$:
+\begin{equation}
+  \mbqvstiff(\mbqvdisp) = - \tfrac{1}{2}\bigl[\mbqvforce(\mbqvdisp+\delta)-\mbqvforce(\mbqvdisp-\delta)\bigr]/\delta ,
+\end{equation}
 where $\delta$ is a small displacement increment.
+The natural frequency $\omega_n(\mbqvdisp)$ as a function of displacement was calculated in terms of this vertical stiffness $\mbqvstiff$ with
+\begin{equation}
+  \omega_n(\mbqvdisp) = \sqrt{\frac{\mbqvstiff(\mbqvdisp)}{\mbqmasseq}} = \sqrt{\frac{\mbqvstiff(\mbqvdisp)}{\mbqvforce(\mbqvdisp)/g}}
+\end{equation}
+where the equivalent mass $\mbqmasseq=\mbqvforce(\mbqvdisp)/g$ is the mass required to load the spring such that its equilibrium position lies at the displacement $\mbqvdisp$.
+The force corresponding to this equivalent mass is referred to as the `load force'.
 
-An example of spring parameters that achieve positive stability in both the vertical and horizontal directions is shown in \Figref{mbq-kvxy-gaps}. This is possible as the stiffness in the out-of-the-page direction of \Figref{mbq-schematic} is always negative.
+By plotting natural frequency as a function of load force in \Figref{mbq-wvf-angle}, we can choose a magnet angle based on a certain load to satisfy a desired natural frequency.
+Specifically, for the case of zero offset between the magnets (\Figref{mbq-wvf-angle-1}), it can be seen that at a magnet angle of \SI{35}{\degree} the natural frequency is almost independent of force for a large range of applied load (approximately $\SI{30}{N}\pm\SI{10}{N}$).
 
 \begin{figure}
-\centering
-\psfragfig{magcode/examples/oblique/fig/mbq-kvxy-gaps}
-\caption{Vertical and horizontal stiffness versus displacement for a gap ratio of \num{0.2} and magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments (arrows indicate increasing magnet angle). Regions of positive stiffness for both directions are coloured; regions of gray indicate that either the vertical and/or horizontal stiffness is negative in that position for that magnet angle.}
-\figlabel{mbq-kvxy-gaps}
+\centerline{%
+\subfloat
+  [Zero offset between the magnets.
+   At \SI{35}{\degree} the natural frequency is near-constant for a wide range of load forces.
+  \figlabel{mbq-wvf-angle-1}]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-wvf-angle}}}
+\qquad
+\subfloat
+  [Gap ratio of \num{0.25}.
+   Near-constant natural frequency occurs at \SI{70}{\degree}.
+   \figlabel{mbq-wvf-angle-2}]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-wvf-angle2}}}%
+}
+\caption{Natural frequency versus load force for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.}
+\figlabel{mbq-wvf-angle}
 \end{figure}
 
-The drawback of achieving minimal instability is a reduction in the achievable low-stiffness regions of the spring. \Figref{mbq-wvf-angle-stabl} shows a plot of natural frequency versus load force for a magnet angle of \SI{40}{\degree} and for a variety of magnet gaps. In this graph, regions of negative horizontal stiffness have been de-emphasised by drawing those sections of the curves in light grey. It can be seen here that the `flat' sections of the curve (that correspond to configurations of largely-flat natural frequency against load force) occur largely in the regions of horizontal instability.
 
+\subsubsection{Horizontal and out-of-plane stability due to vertical displacement}
+\seclabel{stabl-v}
+
+In \Figref{mbq-wvf-angle,mbq-kvf-gaps}, design curves were presented under the assumption that the vertical stiffness only was under consideration.
+Due to the inclination of the magnets, however, the horizontal and out-of-plane stiffness will also vary as the magnet spring parameters are changed.
+If active control is used to constrain the floating magnets, it may be desirable to minimise the horizontal instability of the magnet spring in order to reduce the number of sensors and actuators required to stabilise the system.
+
+The horizontal stiffness is calculated with a numerical gradient of the forces when the magnets are centred and when a small horizontal displacement~$\mbqhdisp$ is applied.
+In this case, the horizontal force $\mbqhforce$ will be considered as a function of vertical displacement $\mbqvdisp$, with horizontal stiffness calculated as
+\begin{equation}
+\mbqhstiff(\mbqvdisp) = -\frac{1}{\delta}\biggl[\mbqhforce(\delta,\mbqvdisp,0)-\mbqhforce(0,\mbqvdisp,0)\biggr] = -\frac{1}{\delta}\mbqhforce(\delta,\mbqvdisp,0),
+\end{equation}
+where $\delta$ is a small displacement increment.
+An equivalent formulation can be used to calculate the out-of-plane stiffness due to a vertical displacement based on the out-of-plane force $\mbqpforce$:
+\begin{equation}
+\mbqpstiff(\mbqvdisp) = -\frac{1}{\delta}\biggl[\mbqpforce(0,\mbqvdisp,\delta)-\mbqpforce(0,\mbqvdisp,0)\biggr] = -\frac{1}{\delta}\mbqpforce(0,\mbqvdisp,\delta).
+\end{equation}
+
+An example of spring parameters that achieve positive stability in both the vertical and horizontal directions is shown in \Figref{mbq-kvxyz-gaps-v,mbq-kvxyz-gaps-h}.
+This is possible as the stiffness in the out-of-the-page direction of \Figref{schematic} is always negative (\Figref{mbq-kvxyz-gaps-p}), and as a consequence of Earnshaw's theorem \citep{bassani2006-meccanica} the stiffnesses in each direction must sum to zero; that is, $\mbqhstiff(\mbqvdisp)+\mbqvstiff(\mbqvdisp)+\mbqpstiff(\mbqvdisp)=0$.
+
+\begin{figure}
+\centerline{%
+\subfloat[Vertical stiffness.\figlabel{mbq-kvxyz-gaps-v}]
+  {\pregen{\psfragfig[crop=preview]{examples/oblique/fig/mbq-kvx-gaps}}}%
+\subfloat[Horizontal stiffness.\figlabel{mbq-kvxyz-gaps-h}]
+  {\pregen{\psfragfig[crop=preview]{examples/oblique/fig/mbq-kvy-gaps}}}%
+\subfloat[Out-of-plane stiffness.\figlabel{mbq-kvxyz-gaps-p}]
+  {\pregen{\psfragfig[crop=preview]{examples/oblique/fig/mbq-kvz-gaps}}}%
+}
+\caption{Stiffness in three directions versus displacement for a gap ratio of \num{0.2} and magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments (arrows indicate increasing magnet angle).
+For the horizontal and vertical stiffness plots (a)~and (b), regions of positive stiffness for both directions are coloured; regions of gray indicate that either the vertical and/or horizontal stiffness is negative in that position for that magnet angle.
+%Out-of-plane stiffness plot~(c) shows instability over the entire displacement range.
+}
+\figlabel{mbq-kvxyz-gaps}
+\end{figure}
+
+The drawback of achieving minimal instability is a reduction in the achievable low-stiffness regions of the spring.
+\Figref{mbq-wvf-angle-stabl} shows a plot of natural frequency versus load force for a magnet angle of \SI{40}{\degree} and for a variety of magnet gaps.
+In this graph, regions of negative horizontal stiffness have been de-emphasised by drawing those sections of the curves in light grey.
+It can be seen here that the `flat' sections of the curve (that correspond to configurations of largely-flat natural frequency against load force) occur largely in the regions of horizontal instability.
 \Figref{mbq-wvf-angle-stabl} also demonstrates that when designing the system for horizontal stiffness, a larger magnet gap increases the displacement range of the magnetic spring, albeit with a decrease in possible load force.
 
 \begin{figure}
 \centering
-\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle-stabl}
-\caption{Natural frequency versus load force for gap ratios from \num{0.05} to \num{0.5} in \num{0.05} increments and a magnet angle of \SI{40}{\degree}. Regions of negative horizontal stiffness are drawn in light gray, and displacements are labelled with dotted lines for every change in displacement of \SI{1}{mm}.}
+\pregen{\psfragfig{examples/oblique/fig/mbq-wvf-angle-stabl}}
+\caption{Natural frequency versus load force for gap ratios from \num{0.05} to \num{0.5} in \num{0.05} increments and a magnet angle of \SI{40}{\degree}.
+Regions of negative horizontal stiffness are drawn in light gray, and displacements are labelled with dotted lines for every change in displacement of \SI{1}{mm}.}
 \figlabel{mbq-wvf-angle-stabl}
 \end{figure}
 
+A more detailed investigation on the planar stability of the system is performed in \secref{stabl-3dof}.
+
+
 \subsubsection{Magnet volume}
+\seclabel{mbq-vol}
 
-Having examined the influence of magnet angle and magnet gap on the natural frequency and load force characteristics, it is essential to confirm that this arrangement is scalable for arbitrary loads by scaling up the magnet volumes. With fixed magnet gap ratio of 0.2 and magnet angle of \SI{40}{\degree}, the natural frequency/force characteristic is shown in \Figref{mbq-wvf-vol}. The displacement ranges are proportional to the magnet size such that the system with magnet volume $(\SI{10}{mm})^3$ undergoes displacement from \SIrange{0}{10}{mm} and the system with volume $(\SI{50}{mm})^3$ moves over \SIrange{0}{50}{mm}.
-
-\Figref{mbq-wvf-vol} shows that larger magnet sizes permit larger load forces while also retaining a low natural frequency. In fact, the natural frequency decreases with larger magnet sizes. This shows that the oblique magnet spring system is suitable for bearing large loads with low stiffness, and fits into the category of springs that exhibit `high-static--low-dynamic' stiffness.
+Having examined the influence of magnet angle and magnet gap on the natural frequency and load force characteristics, it is essential to confirm that this arrangement is scalable for arbitrary loads by increasing the magnet volumes.
+With fixed magnet gap ratio of 0.2 and magnet angle of \SI{40}{\degree}, the natural frequency/force characteristic with volumes from $(\SI{10}{mm})^3$ to $(\SI{50}{mm})^3$ is shown in \Figref{mbq-wvf-vol}, which shows that larger magnet sizes permit larger load forces while also retaining a low natural frequency.
+In fact, the natural frequency decreases with larger magnet sizes.
+This shows that the oblique magnet spring system is suitable for bearing large loads with low stiffness, and fits into the category of springs that exhibit `high-static--low-dynamic' stiffness \citep[e.g.,][]{carrella2008-jsv}.
 
 \begin{figure}
 \centering
-\psfragfig{magcode/examples/oblique/fig/mbq-wvf-vol}
-\caption{Natural frequency versus load force for a magnet gap ratio of \num{0.2} and a magnet angle of \SI{40}{\degree} over a range of magnet volumes from $(\SI{10}{mm})^3$ to $(\SI{50}{mm})^3$. Regions of negative horizontal stiffness are drawn in light gray.}
+\pregen{\psfragfig{examples/oblique/fig/mbq-wvf-vol}}
+\caption{Natural frequency versus load force for a magnet gap ratio of \num{0.2} and a magnet angle of \SI{40}{\degree} over a range of magnet volumes from $(\SI{10}{mm})^3$ to $(\SI{50}{mm})^3$.
+The displacement ranges are proportional to the magnet size such that the system with magnet volume $(\SI{10}{mm})^3$ undergoes displacement from \SIrange{0}{10}{mm} and the system with volume $(\SI{50}{mm})^3$ moves over \SIrange{0}{50}{mm}.
+Regions of negative horizontal stiffness are drawn in light gray.}
 \figlabel{mbq-wvf-vol}
 \end{figure}
 
+\subsubsection{Design based on these results}
+
+Clearly there is a large space of design possibilities for such a magnet arrangement.
+Using these results requires an iterative approach based around the following constraints:
+\begin{enumerate}
+\item Magnets are large enough to bear the required load variance, which will inform a maximum and minimum magnet clearance;
+\item Stiffness at the equilibrium point is satisfied by varying the magnet offset and angle;
+\item Load variation is modelled and natural frequency remains within acceptable limits.
+\end{enumerate}
+Generally, a larger magnet size will permit a larger range of approximate natural frequency invariance (\Figref{mbq-wvf-vol}).
+Only by evaluating a number of trial solutions for magnet angle and magnet offset can an acceptable design be found to satisfy a specified amount of load variability.
+
+
+
+\subsection{Investigation into planar stability}
+\seclabel{stabl-3dof}
+
+In \secref{stabl-v}, the translational stiffness of the system in three dimensions was discussed in terms of a change in the vertical equilibrium position of the spring (corresponding to a variation in applied load, say).
+However, this is not enough to establish the global stability of the system due to cross-axis coupling and rotational affects that were not included as part of the model.
+Here, the planar stability of the system will be investigated to attempt to provide some picture of the complex kinetics seen due to planar translation and rotation; the system is assumed to be constrained in a single plane for this analysis with geometry shown in \figref{mbq-angle-schem}.
+
+An analytical formulation for calculating the torques between two cuboid parallel magnets has recently been presented by \citet{janssen2010-ietm}.
+The torque equations will not be reproduced here but they follow a similar (albeit more complex) form than that of \eqref{akoun} for force.
+Note that, with reference to \figref{mbq-angle-schem}, the torques are \emph{not} calculated by using the already-calculated force terms (the blue vectors in that figure); the torque is calculated using a separate integral equation that takes the lever arm into account.
+
+Note, however, that the force and torque equations do not permit a relative rotation between the two interacting magnets (their sides must remain parallel).
+Therefore, in order to analyse the rotational stability of the magnetic system a small angle approximation must be made, which is illustrated in \figref{mbq-angle-schem-approx}:
+due to overall rotation $\mbqrotz$ of the spring the moving magnets will translate around their lever arms $\mbqlever$ (the centre of rotation is here assumed to be the mid-point between the magnet centres) but their angle to the horizontal remains fixed.
+Calculating the force and torque in this way is only valid for small rotations, but is sufficient to establish relationships regarding rotational stability and cross-coupling with translational forces.
+
+\begin{figure}
+\centering
+\pregen{\psfragfig{examples/oblique/fig/mbq-angle-schem}}
+\caption{Geometry of the planar system in which forces and torques due to rotation $\mbqrotz$ are calculated.
+The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever/\mbqunit=\num{2}$, magnet angle $\mbqmagangle=\SI{30}{\degree}$ and magnet gap ratio $\mbqoffset/\mbqunit=\num{0.5}$.
+}
+\figlabel{mbq-angle-schem}
+\end{figure}
+
+\begin{figure}
+\centerline{
+\subfloat[Without rotation.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-angle-schem-1}}}\qquad
+\subfloat[With rotation shown in black; the unrotated position, as in (a), is shown in light grey.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-angle-schem-2}}}\qquad
+\subfloat[With small angle approximation of zero magnet rotation shown in colour; the rotated magnets, as in (b), are shown in black.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-angle-schem-3}}}
+}
+\caption{Visual representation of the small angle approximation in which the magnet structure rotates but the magnets themselves are assumed to remain parallel to their respective partner.}
+\figlabel{mbq-angle-schem-approx}
+\end{figure}
+
+\subsubsection{Theory for planar force and torque calculations}
+
+The model developed for this system in \Secref{geom} is here extended to calculate torques and allow (small) rotations, both around the $\mbqpdir$ axis only.
+
+The vector equations for this new geometry require an additional term to accomodate rotation.
+First define two lever arm vectors for each magnet with respect to a centre of rotation denoted by
+$
+\vect l_1 = [-\mbqlever, 0, 0]\T
+$ and
+$
+\vect l_2 = [ \mbqlever, 0, 0]\T
+$
+in the local coordinate system of the spring (although other centres of rotation are certainly possible).
+These lever arms define additional translations of the magnets $\vect p_1$ and $\vect p_2$ due to rotation of the system:
+\begin{align}
+\eqlabel{vec-levers}
+  \vect p_1 &= \mbqrot{\mbqrotz}\vect l_1 - \vect l_1,
+&
+  \vect p_2 &= \mbqrot{\mbqrotz}\vect l_2 - \vect l_2.
+\end{align}
+The displacement vectors (again in the coordinate system of the magnets) between the magnet pairs are then given by
+\begin{align}
+\eqlabel{vec-displ}
+  \mbqmdispl_1 &=
+    \mbqrot{-\theta}
+    \left(
+    \vect p_1 +
+    \begin{bmatrix}\mbqoffset + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix}
+    \right) +
+    \begin{bmatrix}a\\0\\0\end{bmatrix} , &
+  \mbqmdispl_2 &=
+    \mbqrot{-\phi}
+    \left(
+    \vect p_2 +
+    \begin{bmatrix}-\mbqoffset+ \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix}
+    \right) +
+    \begin{bmatrix}a \\ 0 \\ 0\end{bmatrix} .
+\end{align}
+Also, the displacement vectors in the coordinate system of the magnets from the spring magnet centres to the centre of rotation (required for torque calculation) are given by
+\begin{align}
+\eqlabel{vec-displ-local}
+  \vect t_1 &= \mbqrot{-\theta}\left( -\mbqrot{\mbqrotz}\vect l_1 \right),
+&
+  \vect t_2 &= \mbqrot{-\phi}\left( -\mbqrot{\mbqrotz}\vect l_2 \right).
+\end{align}
+\Eqrangeref{vec-levers}{vec-displ-local} are kept in a more general transformation matrix form to accomodate extensions into more rotational degrees of freedom.
+
+As before, the total force is
+\begin{equation}
+\mbqforce=\mbqforce_1+\mbqforce_2=\mbqrot{\theta} \vect F_m(\mbqmdispl_1)+\mbqrot{\phi}\vect F_m(\mbqmdispl_2),
+\eqlabel{mbq-force3}
+\end{equation}
+where $\vect F_m(\cdot)$ is the magnet force equation given in \eqref{akoun}. The torque is not affected by the rotation transformations (recall it is around the $\mbqpdir$ axis only) and is given by the sum of torques between the magnet pairs
+\begin{equation}
+\mbqptorque= T_{m_\mbqpdir}(\mbqmdispl_1,\vect t_1)+ T_{m_\mbqpdir}(\mbqmdispl_2,\vect t_2),
+\eqlabel{mbq-torque}
+\end{equation}
+where $T_{m_\mbqpdir}$ is the appropriate component of the magnetic torque equation given by \citet{janssen2010-ietm}.
+(To be precise, the equations of Janssen et al.\ are written for magnets with $z$ direction magnetisation, so they require a coordinate transformation as the analysis here casts the magnetisations into the $x$ direction.)
+
+\subsubsection{Planar stability results}
+
+The system is not expected to be completely stable due to cross-axis coupling. For example, after horizontal translation the magnetic force will become asymmetric and a torque will result. Similarly, after a rotation the reverse will occur and a horizontal force will be produced, which can be seen from the resultant vectors in \figref{mbq-angle-schem,mbq-rot-ex-diag}. Due to the large number of possible magnet parameter combinations, only a select number of cases will be analysed in detail here.
+
+The torsional stability due to rotation is affected by the geometric parameters of the system as shown by example in \figref{mbq-rot-ex}, for which each geometry is drawn to relative scale in \figref{mbq-rot-ex-diag}.
+Further torque variations can be effected by varying the lever arm and the position of the centre of rotation.
+The validity of the torque calculations can be assessed by comparison with the effect of the force terms as if the latter were being used to calculate torque directly using the equation
+\begin{equation}
+\eqlabel{mbq-fake-torque}
+\mbqptorque \approx \mbqlever (-\mbqforce_1+\mbqforce_2) \bm\cdot \begin{bmatrix} -\sin\mbqrotz \\\phantom{-}\cos\mbqrotz\end{bmatrix}
+\end{equation}
+where the dot product produces the component of force perpendicular to the lever arm.
+Torques calculated in this manner are shown in \figref{mbq-rot-ex} as dashed lines and it can be seen they match closely for small angles of rotation.
+
+\begin{figure}
+\centering
+\pregen{\psfragfig{examples/oblique/fig/mbq-rot-ex}}
+\caption{Torque versus rotation for a certain spring configuration with parameters
+$\mbqunit = \mbqvdisp = \SI{10}{mm}$,
+$\mbqmagangle = \SI{30}{\degree}$, and
+$\mbqlever/\mbqunit = \num{2}$.
+Dashed lines show for verification torque as if calculated using the magnetic forces around their lever arms only (\eqref{mbq-fake-torque}). Notice that varying the magnet gap ratio (shown) can vary the rotational stiffness from stable ($\mbqoffset/\mbqunit=\{0.25, 0.5\}$) to unstable ($\mbqoffset/\mbqunit=1$). Geometries for these three configurations are shown in \Figref{mbq-rot-ex-diag}.}
+\figlabel{mbq-rot-ex}
+\end{figure}
+
+\begin{figure}
+\centerline{
+\subfloat[$\mbqoffset/\mbqunit=0.25$]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-rot-ex-diag-1}}}\qquad\qquad
+\subfloat[$\mbqoffset/\mbqunit=0.5$]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-rot-ex-diag-2}}}\qquad\qquad
+\subfloat[$\mbqoffset/\mbqunit=1$]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-rot-ex-diag-3}}}
+}
+\caption{Visual representation of the forces and torques at a rotation of $\mbqrotz=\SI{10}{\degree}$ corresponding to the stability results shown in \Figref{mbq-rot-ex}. Force vector lengths are proportional to their magnitude, but torque arc lengths are not.}
+\figlabel{mbq-rot-ex-diag}
+\end{figure}
+
+Stability results will be shown using perturbations of a dynamic simulation of the system in a small number of variations of design parameters.
+The equations of motion are defined as
+\begin{align}
+\begin{split}
+\mbqmass \ddot \mbqhdisp &= \mbqhforce(\mbqhdisp,\mbqvdisp,\mbqrotz) - \mbqhdamp \dot \mbqhdisp , \\
+\mbqmass \ddot \mbqvdisp &= -\mbqmass g + \mbqvforce(\mbqhdisp,\mbqvdisp,\mbqrotz) - \mbqvdamp \dot \mbqvdisp , \\
+\mbqmomentofinertia \ddot \mbqrotz &= \mbqptorque(\mbqhdisp,\mbqvdisp,\mbqrotz) - \mbqzrotdamp \dot \mbqrotz,
+\end{split}
+\eqlabel{mbq-dyn}
+\end{align}
+for which a time-domain solution was produced numerically with a Runge-Kutta technique (Matlab's \texttt{ode45} function). Viscous damping terms $\mbqhdamp$, $\mbqvdamp$, and $\mbqzrotdamp$ account for energy loss in the system. The force and torque terms are those defined in \eqref{mbq-force3,mbq-torque} respectively.
+
+The parameters used in \Tabref{mbq-dyn-param} were used for the dynamic simulations. The equilibrium displacement $y_0$ is found by numerically inverting a static analysis of the magnet forces $\mbqvforce(0,\mbqvdisp_0,0)=\mbqmass g$; a damping ratio of \SI{20}{\%} is assumed to account for eddy current damping and any other energy losses; and the moment of inertia is approximated with $\mbqmomentofinertia=\tfrac13\mbqmass\mbqlever^2$. The parameters have been selected such that the vertical, horizontal, and rotational direct stiffnesses are all positive for this equilibrium displacement.
+
+\begin{table}
+\caption{Parameters used for the dynamic simulations.}
+\tablabel{mbq-dyn-param}
+\centering
+\begin{tabular}{@{}l >{$}c<{$} c l >{$}c<{$} c@{}}
+\toprule
+\multicolumn{3}{c}{Explicit parameters} & \multicolumn{3}{c}{Implicit parameters} \\
+\cmidrule(r){1-3}
+\cmidrule(l){4-6}
+ Mass             & \mbqmass & \SI{3}{kg}            & Equilibrium position & {\mbqvdisp}_0 & \SI{14.04}{mm} \\
+ Damping ratio    & \zeta  & \num{0.2}               & Moment of inertia& \mbqmomentofinertia & \SI{1.60}{g/m^2} \\
+ Magnetisation    & J_1, J_2  & \SI{1}{T}            & Horizontal stiffness & \mbqhstiff & \SI{15.43}{N/m} \\
+ Unit length      & \mbqunit & \SI{20}{mm}           & Vertical stiffness   & \mbqvstiff & \SI{170.5}{N/m} \\
+ Magnet angle     & \mbqmagangle & \SI{45}{\degree}  & Rotational stiffness & \mbqzrotstiff & \SI{31.3}{mN.m/rad{.}} \\
+ Offset ratio     & \mbqoffset/\mbqunit  & \num{0.4} & Horizontal damping & \mbqhdamp & \SI{9.05}{kg/s} \\
+ Magnet ratio     & \mbqmagratio  & \num{0.4}        & Vertical damping   & \mbqvdamp & \SI{2.72}{kg/s} \\
+ Lever ratio      & \mbqlever/\mbqunit  & \num{2}    & Rotational damping & \mbqzrotdamp & \SI{2.83}{mN.m.s/rad{.}} \\
+\bottomrule
+\end{tabular}\end{table}
+
+\begin{figure}
+\centerline{
+\subfloat[Horizontal and vertical displacement from the equilibrium position.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-dyn-xy}}}\qquad
+\subfloat[Displacement map with colour progressing with time from dark to light.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-dyn-xy-map}}}
+}
+\caption{Dynamic simulation of system defined by \eqref{mbq-dyn} with perturbation of $\Delta x=\Delta y=\SI{1.5}{mm}$ and constraint on rotational $\mbqrotz$.}
+\figlabel{mbq-dyn-xy}
+\end{figure}
+
+Assuming that the device is always designed to move freely in the vertical direction to accommodate changing load, there are three  regimes in which we would like to illustrate the stability of the system:
+\begin{enumerate}
+\item constraining rotation;
+\item constraining horizontal displacement;
+\item unconstrained.
+\end{enumerate}
+It is evident that the case of constraining both rotation and horizontal displacement will be stable provided the vertical stiffness is positive.
+The first of the dynamic simulations presented is displacement in the $x$--$y$ plane with constrained rotation.
+Given the system described in \Eqref{mbq-dyn} and a perturbation of $\Delta x=\Delta y=\SI{1.5}{mm}$, the resultant dynamics are shown in \Figref{mbq-dyn-xy} as displacements from the equilibrium position of the spring.
+While this is close to the maximum perturbation for this system before instability, this example illustrates that there is a region near the equilibrium position within which stability is achieved.
+
+\begin{figure}
+\centerline{
+\subfloat[Relative vertical displacement $\mbqvdisp-\mbqvdisp_0$.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-dyn-yr-y}}}\qquad
+\subfloat[Rotation $\mbqrotz$.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-dyn-yr-r}}}
+}
+\caption{Dynamic simulation with perturbation of $\Delta \mbqvdisp=\SI{1.5}{mm}$ and $\Delta \mbqrotz=\SI{3}{\degree}$ with constraint in horizontal displacement $\mbqhdir$.}
+\figlabel{mbq-dyn-yr}
+\end{figure}
+
+The second stability example constrains horizontal displacement while allowing free rotation of the system. A perturbation of $\Delta y=\SI{1.5}{mm}$ and $\Delta \varphi=\SI{3}{\degree}$ is modelled with dynamic results shown in \Figref{mbq-dyn-yr}.
+Again, with one constraint on the system there is a stable region around the equilibrium point.
+In fact, this arrangement is more stable than the last as there is less cross-coupling between the vertical and rotational degrees of freedom.
+
+\begin{figure}
+\centerline{
+\subfloat[Horizontal displacement $\mbqhdisp$.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-dyn-xyr-x}}}\qquad
+\subfloat[Relative vertical displacement $\mbqvdisp-\mbqvdisp_0$.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-dyn-xyr-y}}}\qquad
+\subfloat[Rotation $\mbqrotz$.]
+  {\pregen{\psfragfig{examples/oblique/fig/mbq-dyn-xyr-r}}}
+}
+\caption{Dynamic simulation without constraint and vertical perturbation only. Despite `stable' stiffnesses in each direction (seen in \figref{mbq-dyn-xy,mbq-dyn-yr}), the unconstrained system is unstable due to cross-axis coupling.}
+\figlabel{mbq-dyn-xyr}
+\end{figure}
+
+Finally, it might now be expected that since stability was achieved in both $x$--$y$ and $y$--$\varphi$ regimes, an unconstrained system might be similarly stable.
+Unfortunately this is not the case, as cross-coupling influences are too great and even an incremental perturbation eventually leads to instability as shown in \Figref{mbq-dyn-xyr}.
+(There is a macroscopic perturbation of $\Delta\mbqvdisp=\SI{-1}{mm}$ and incremental perturbations of $\Delta\mbqhdisp=\SI{1e-9}{m}$ and $\Delta\mbqrotz=\SI{1e-9}{deg}$.)
+Despite achieving positive direct stabilities in all three degrees of freedom, some form of control over this cross-coupling instability is required for stable operation; this could take the form of passive bearings or non-contact electromagnetic actuators.
+
+\subsection{Conclusions and future work}
+
+In this paper, a particular magnet geometry was investigated for the purposes of developing a spring for vibration isolation with the goal of a load-invariant natural frequency.
+The resonance--load relationship was found to have significant flat areas, indicating this goal could be achieved for certain geometries.
+The load-bearing capacity could be largely increased by scaling the volumes of the magnets; this was shown to have small effect on the natural frequency of the system.
+
+Since the system uses magnetic levitation to achieve its force characteristic, there are various instabilities inherent in its dynamics.
+Some of these instabilities due to coupling between horizontal and rotational degrees of freedom have been highlighted, but a complete six degree of freedom analysis must await future developments in magnetic torque modelling.
+A physical realisation of this system is currently under construction (using a combination of various phyical constraints and active control to achieve stability), and its details will be reported at a future date.
 
