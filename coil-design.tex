@@ -970,3 +970,109 @@ side. \fxfatal{expand}
     inter-coil gap distances. \fxfatal{parameters for the dual coil}}
   \figlabel{dual-coil}
 \end{figure}
+
+
+
+
+
+%%%%%%%%%%%%%%%%%
+
+\section{Eccentric displacement and radial force}
+
+For eccentric displacement in the radial direction, $\eccen$, the limits of integration must be expressed in a translated coordinate system (see Figure~\ref{fig:int-offset}) and the original integral must be expressed with additional terms to take this into account.
+
+\begin{figure}[b]
+\centering
+\asyinclude{PhD/Figures/Coil/circle-offset}
+\caption{Region of integration for a radially displaced magnet, shifted by $(\xi,\eta)$ from the original coordinate system.}
+\label{fig:int-offset}
+\end{figure}
+
+In order to incorporate eccentric displacement into the integral, terms of $\distra{1}$
+and $\distra{2}$ must be expressed instead in terms of $\distra{1}'$
+and $\distra{2}'$.
+The following transformation can be used to perform this:
+\begin{align}
+\distra{1} &= \sqrt{\distca{1}^2+\distca{2}^2} &
+\distca{1} &= \distca{1}' - \xi                 &
+\distca{1}' &= \distra{1}'\Cos{\distra{2}'}
+\\
+\distra{2} &= \ArcTan{\distca{2},\distca{1}}  &
+\distca{2} &= \distca{2}' - \eta               &
+\distca{2}' &= \distra{1}'\Sin{\distra{2}'}
+\end{align}
+Due to the additional complexity introduced by this transformation, the original integral can no longer by easily solved analytically with respect to $\distra{2}'$. Accordingly, the axial force due to both axial and radial displacement is now given by
+\begin{dmath}[label=eq:cylforcez-ecc]
+F_{z_4}=
+\frac{\const}{\pi}
+\Int{
+  \sum_{e_1}^{\{1,-1\}} \!\!\! \gp{e_1 \m2 f_z}
+  }
+  {\distra{2}',0,2\pi}
+  {\distra{1},r_c,R_c}
+  {\distra{3},-l_c/2,l_c/2}
+\end{dmath},
+where the intermediate term is
+\def\P{\distra{2}}
+\begin{dmath}
+f_z=\gp{1-\frac{\m1}{2}}
+      \EllipticK{\m1}-\EllipticE{\m1}
+\end{dmath},
+with parameters
+\begin{align}
+\m1&=\frac{4 r_m r_1}{\m2^2}, &
+\m2^2 &= \gp{r_m+\distra{1}}^2+\gp{\displ+\half e_1l_m-\distra{3}}^2 .
+\end{align}
+Due to the additional numerical integral that must be evaluated when using \eqref{cylforcez-ecc}, it is approximately an order of magnitude slower to calculate than \eqref{cylforcez}.
+
+The filament method can again be used to verify \eqref{cylforcez-ecc}.
+Kim et al.~\cite{kim1996-ietm} presented an expression for calculating the filamentary force between two non-coaxial circular coils; their equations were corrected for typographical errors and reprinted by Hull and Cansiz~\cite{hull1999-japplphys}.
+However, it is believed that their work is incorrect as the results produced from Kim et al.'s equation are not consistent with either the coaxial filament force  (\eqref{coaxial-filament}) nor the recently published generalisation by Babic and Aykel~\cite{babic2011-ietm-incl-coil} for calculating the force between noncoaxial and inclined circular coils.
+
+The non-coaxial filamentary coil force in the axial direction is taken from the third special case given by Babic and Aykel~\cite{babic2011-ietm-incl-coil}:
+\begin{dmath}[label=eq:eccfilament]
+F_f\fn{r_1,r_2,z,e} = \frac{\mu_0 z r_2 I_1 I_2}{4\pi}
+\Integrate{
+%  \sqrt{\frac{m}{r_1 V^5}}
+  \frac{m_2}{V^2}
+  \gp[2]{ y\Cos{t}-x\Sin{t} }\times
+  \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
+}{t,0,2\pi}
+\end{dmath},
+where
+\begin{gather}
+x = e - r_2\Sin{t} ,\quad  y = r_2\Cos{t} ,\quad
+V = \sqrt{x^2+y^2},
+\notag\\
+m = 4 r_1 V m_2^2 , \quad
+m_2 = \gp{\gp{r_1+V}^2+z^2}^{-1/2}.
+\end{gather}
+%and the radial (or eccentric) force given by
+%\begin{dmath}[label=eq:eccfilamentecc]
+%F_e\fn{r_1,r_2,z,e} = \frac{\mu_0 r_2 I_1 I_2}{4\pi}
+%\Integrate{
+%  m_2\Sin{t}
+%  \times
+%  \gp{ -2\EllipticK{m} + \EllipticE{m}\frac{2-m\gp{r_1/V+1}}{1-m} }
+%}{t,0,2\pi}
+%\end{dmath}.
+%$F_e$ acts in the direction of eccentric displacement.
+\Eqref{eccfilament} can be used with the filament method (as in \eqref{filamentforce}) to calculate thick-coil magnet forces, but this is only useful as a verification as the filament method using a numerical integral is extremely slow to execute (around three orders of magnitude slower than the integral solution of \eqref{cylforcez-ecc}).
+Such a verification is shown in \Figref{magcoil-ecc-compare}, which has system parameters as shown in \Tabref{magcoil-thickthin-compare-param} aside from a larger inner coil radius of \SI{11.5}{mm} and an eccentric displacement of \SI{1.5}{mm}.
+
+Eccentricity acts to increase the axial force of a coil/magnet system as the magnetic material comes closer to the region of large magnetic field strength due to the solenoid (\figref{magcoil-ecc-vary}).
+This result indicates that decreasing the airgap between the coil and magnet as much as possible is desirable to maximise the forces obtained for a given input current.
+
+\begin{figure}
+\centering
+\psfragfig{examples/fig/ecc-compare}
+\caption{Comparison of the filament and the integral method for calculating eccentric thick coil--magnet forces. Due to discretisation in the filament method the results vary near their peak.}
+\figlabel{magcoil-ecc-compare}
+\end{figure}
+
+\begin{figure}
+\centering
+\psfragfig{examples/fig/ecc-vary}
+\caption{Example thick coil forces in the axial direction versus displacement for increasing eccentricities from \SIrange{1}{2.5}{mm} indicated by the arrow. Zero eccentricity is shown dashed.}
+\figlabel{magcoil-ecc-vary}
+\end{figure}
