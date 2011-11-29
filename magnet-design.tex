@@ -827,6 +827,7 @@ shown in \figref{mag-couplingratio-equil}.
 
 
 \section{Oblique magnetic spring design}
+\seclabel{oblique}
 
 In comparison to using springs with a linear force--displacement relationship for vibration isolation, using permanent magnets for load bearing can be advantageous due to the smaller variation in resonance frequency seen with increased load as a result of a corresponding increased stiffness.
 However, two permanent magnets in direct repulsion will not completely eliminate the variability in resonance frequency due to load, only reduce it.
@@ -1357,4 +1358,38 @@ The load-bearing capacity could be largely increased by scaling the volumes of t
 Since the system uses magnetic levitation to achieve its force characteristic, there are various instabilities inherent in its dynamics.
 Some of these instabilities due to coupling between horizontal and rotational degrees of freedom have been highlighted, but a complete six degree of freedom analysis must await future developments in magnetic torque modelling.
 A physical realisation of this system is currently under construction (using a combination of various phyical constraints and active control to achieve stability), and its details will be reported at a future date.
+
+
+\section{Prototype inclined magnet system}
+
+To explore the possibilities raised by the theoretical analysis of the inclined magnetic spring (\secref{oblique}), an honours project was undertaken in 2011 to design and build a prototype based on these ideas \cite{frizenschaf2011-thesis}.
+\note{The members of the project were Yann Frizenschaf, Siobhan Giles, Jack Miller, Thomas Pitman, and Christopher Stapleton.}
+
+The prototype they built used Maytec \note{Maytec Australia Pty Ltd, \url{http://www.maytec.com.au/}} aluminium extrusions to allow modular placement of the inclined magnets with variable magnet angle.
+A photo of their prototype is shown in \figref{oblique-rig}, which shows the main features of the system.
+Six identical magnet pairs were used; four on the long side of the device and two on the short side.
+The rare earth magnets of volume \SI{25x25x12.5}{mm^3} were chosen to generate enough repulsive force to bear a weight of \SI{10}{kg} with a vertical displacement of around \SI{20}{mm} depending on the magnet angle.
+Four electromagnetic actuators were placed at the corners of the device for active vibration isolation.
+For their project, passive levitation control was achieved using a linear bearing to constrain the device to vertical motion, coupled with a rotational bearing to permit rotation around the long horizontal axis.
+The device was quite stable in this configuration, but when analysed for active stabilisation a strong instability around the $y$-axis (yaw rotation) was found.
+
+\begin{figure}
+\centering
+\grf{Figures/Oblique/oblique-rig}
+\label{Prototype inclined magnet isolation device constrained with a linear bearing to translate only in the $y$-direction and rotate solely around the $x$-axis.}
+\figlabel{oblique-rig}
+\end{figure}
+
+\begin{table}
+\caption{Modelled and measured vibration results for the prototype isolator.}
+\tablabel{oblique-rig-resonances}
+\begin{tabular}{@{}lll@{}}
+\toprule
+Magnet angle & \SI{45}{\degree} & \SI{60}{\degree} \\
+Resonance frequency, analytical & \SI{4.9}{Hz} & \SI{4.0}{Hz} \\
+Resonance frequency, measured & \SI{5.1}{Hz} & \SI{3.8}{Hz} \\
+Measured damping ratio & \SI{4.4}{\%} & \SI{9.0}{\%} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
