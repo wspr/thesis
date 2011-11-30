@@ -1163,6 +1163,7 @@ The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever
 \end{figure}
 
 \subsubsection{Theory for planar force and torque calculations}
+\seclabel{oblique-planar-theory}
 
 The model developed for this system in \Secref{geom} is here extended to calculate torques and allow (small) rotations, both around the $\mbqpdir$ axis only.
 
@@ -1380,6 +1381,11 @@ The device was quite stable in this configuration, but when analysed for active 
 \figlabel{oblique-rig}
 \end{figure}
 
+Their six degree of freedom system was modelled using an extension of the theory developed in \secref{oblique-planar-theory} for the planar three degree of freedom system.
+The model predicted the behaviour of the prototype well; \tabref{oblique-rig-resonances} shows the measured and modelled resonance frequency for two magnet angles, which vary by around 5\%.
+The resonance frequencies as a function of load mass are shown in \figref{oblique-resonance}.
+Due to limitations of the resonance frequency measurements, the measured data is quite noisy but the correspondence with the expected modelled results is can still be seen.
+
 \begin{table}
 \caption{Modelled and measured vibration results for the prototype isolator.}
 \tablabel{oblique-rig-resonances}
@@ -1392,4 +1398,66 @@ Measured damping ratio & \SI{4.4}{\%} & \SI{9.0}{\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+\begin{figure}
+\centering
+\grf{Figures/Oblique/resonance}
+\label{Measured and modelled resonance frequencies of the inclined magnet isolation prototype as a function of load mass.}
+\figlabel{oblique-resonance}
+\end{figure}
+
+It is interesting to compare the significant difference in damping ratio for these two magnet angles.
+The strongest contributor to the damping ratio in this system is from induced eddy currents in each permanent magnet by the magnetic field of the other (CROSSREF), as viscous damping in the bearings and due to air resistance can be assumed to be negligible.
+There are two main factors that would cause changes in the magnitude of the induced eddy currents.
+For a varying magnet angle, the vertical displacement between the magnet pairs would be affected.
+Secondly, as the angle between the direction of displacement (vertical, in this case) and the direction of magnetisation increases, the gradient of magnetisation decreases over a certain displacement.
+The effect on the damping ratio with a variety of load masses is shown in \figref{oblique-damping}, where it can be seen that as the magnets become closer together, the magnitude of the induced eddy currents are increased and so on the damping ratio.
+These values were taken in a different configuration than the data shown in \tabref{oblique-rig-resonances}, and the damping ratios are not comparable between these two cases.
+
+\begin{figure}
+\centering
+\grf{Figures/Oblique/damping}
+\label{Measured damping ratios of the inclined magnet isolation prototype.}
+\figlabel{oblique-damping}
+\end{figure}
+
+The theoretical model was also used in a dynamic simulation which predicated the transmissibility of the isolator against ground disturbance.
+The measured and modelled transmissibility is shown in \figref{oblique-frf}, which shows good agreement at low frequencies around the resonance peak.
+The measured results do not roll off at high frequencies, however, and this is an important point: due to the inherent friction in the linear bearing at high frequencies, the performance of the isolator is compromised in the passive design.
+For a high-performance magnetically levitated isolation platform, these experimental results indicate that active control must be used to achieve good high-frequency performance.
+
+\begin{figure}
+\centering
+\grf{Figures/Oblique/frf}
+\label{Measured and modelled transmissibility of the inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet gap of \num{0.5}.}
+\figlabel{oblique-frf}
+\end{figure}
+
+The sharp peak in \figref{oblique-frf} is due to the low damping inherent in magnetically levitated systems.
+This peak can be reduced with the active vibration control using skyhook damping (CROSSREF).
+Measured transmissibility results with and without active vibration control are shown in \figref{oblique-skyhook}.
+The skyhook damping method achieves a clear reduction in the resonance peak; around \SI{9}{dB} in this case.
+Behaviour at higher frequencies is unaffected, as is expected with this method of vibration control (CROSSREF to figure).
+
+\begin{figure}
+\centering
+\grf{Figures/Oblique/skyhook}
+\label{Measured transmissibility of the inclined magnet isolation prototype with and without active vibration control.}
+\figlabel{oblique-skyhook}
+\end{figure}
+
+\subsection{Limitations of the prototype}
+
+This project was unable to achieve active stabilisation of the inclined magnet prototype; a strong instability was found in yaw rotation.
+No attempt in the prototype design was made to investigate variation in horizontal stability, but it is unlikely that the yaw rotation would be stabilised by removing the short-side magnet pairs.
+Indeed, due to the consequences of Earnshaw's theorem it is expected that there will be significant instability in at least one rotational direction unless specific design effort is expended to attempt stability in all rotational degrees of freedom, and even if so this attempt will no doubt have ramifications on the translational performance of the design.
+
+Due to the lightly damped nature of the system and the coupling between different axes for each magnet pair, a significant degree of cross-coupling was observed in the overall vibration behaviour of the system, requiring careful adjustment to excite the structure in the vertical direction only.
+Active control on each corner compounded this problem, as imperfections in the coil manufacture led to variations in coil impedance and therefore differences in force--displacement behaviour for each coil.
+These unbalanced coils also had the capability to induce cross-coupling motion (generally rotations around the horizontal axes) unless carefully calibrated and monitored.
+
+\section{Summary}
+
+A variety of magnet designs were discussed in this chapter.
+A particular focus was placed on the inclined magnet spring and this design was experimentally tested; its results tracked well with theoretical calculations and its utility for vibration isolation was explored.
 
