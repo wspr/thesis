@@ -1,11 +1,11 @@
 \documentclass[11pt,a4paper]{memoir}
 \usepackage{thesis-preamble}
-%\includeonly{magnet-design}
 \EndPreamble
+\includeonly{magnet-design}
 \begin{document}
 
 \title{
-A study on magnetic systems for vibration isolation, with a particular emphasis on using unstable forces for \qzs/.
+Modelling and design of magnetic levitation systems for vibration isolation.
 }
 
 \begin{hideshorttoc}
@@ -18,14 +18,15 @@ A study on magnetic systems for vibration isolation, with a particular emphasis 
 \end{hideshorttoc}
 
 \mainmatter
+\null
+\clearpage
 \pagestyle{wspr}
 \include{intro}
 \include{magnet-theory}
-\include{magnet-design}
 \include{coil-design}
+\include{magnet-design}
 \include{multipole}
 \include{qzs}
-%\include{control}
 \include{xpmt}
 
 \include{conclusion}

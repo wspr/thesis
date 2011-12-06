@@ -14,6 +14,15 @@
 \frenchspacing
 \normalfont
 
+\RequirePackage[
+  crop=pdfcrop,
+  ps2pdf-options={-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress},
+  cleanup={}%.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
+%           .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
+  ]{pstool}
+
+\newcommand\pregen[1]{#1}
+
 \RequirePackage[utf8]{inputenc}% sane input encoding
 \DeclareUnicodeCharacter{2014}{\dash}
 \DeclareUnicodeCharacter{2022}{\item}
@@ -44,16 +53,6 @@
 \let\oldfixme\fxfatal
 \protected\def \fxfatal {\oldfixme}
 
-\RequirePackage[
-  crop=pdfcrop,
-  ps2pdf-options={-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress},
-  cleanup={.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
-           .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
-  ]{pstool}
-\RequirePackage[process=auto]{asyfig}
-\RequirePackage[inline]{asymptote}
-\renewcommand\asydir{asy/}
-
 \RequirePackage{caption}
 \captionsetup[table]{position=top}
 
@@ -63,17 +62,14 @@
 %% Hyperref
 \RequirePackage[ocgcolorlinks,breaklinks,
             plainpages=false,pdfpagelabels,linktocpage]{hyperref}
-\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black}
 
 \definecolor{darkred}{rgb}{0.4,0,0}
 \definecolor{darkgreen}{rgb}{0,0.4,0}
 \definecolor{darkblue}{rgb}{0,0,0.4}
 \hypersetup{
-  linkcolor=darkred,
-  citecolor=darkblue,
-  filecolor=black,
-  urlcolor=black
+  linkcolor=darkred, citecolor=darkblue, filecolor=black, urlcolor=black
 }
+%\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black}
 \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
 
 
@@ -96,7 +92,7 @@
 %% biblatex
 \RequirePackage[
     hyperref,backref,
-    defernums,sortcites,
+    sortcites,
     date=short,
     bibencoding=inputenc,
     maxnames=3,
@@ -122,8 +118,18 @@
 \RequirePackage{breqn}
 \setkeys{breqn}{labelprefix=eq:}
 
+%%%%%%%%%%%
+
+\EndPreamble
+
+\RequirePackage[process=auto]{asyfig}
+\RequirePackage[inline]{asymptote}
+\renewcommand\asydir{asy/}
+
 %%%%%%%%%%%%%%%%%
 %%% FIGURES
+
+\let\subfloat\subbottom
 
 \def\phdpath{PhD/}
 \asypath{\phdpath Figures/}
@@ -162,7 +168,6 @@
 
 % wide:
 \newenvironment{wide}{%
-  \strictpagecheck
   \begin{adjustwidth*}{0pt}{-\marginparsep-\marginparwidth}
     \raggedout
 }{%
@@ -182,8 +187,6 @@
 \newcommand\gridVI[7][0.5em]{%
   #2\hspace{#1}#3\hspace{#1}#4\\[#1]
   #5\hspace{#1}#6\hspace{#1}#7}
-
-
 
 \strictpagecheck
 
