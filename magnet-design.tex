@@ -1233,7 +1233,7 @@ Further torque variations can be effected by varying the lever arm and the posit
 The validity of the torque calculations can be assessed by comparison with the effect of the force terms as if the latter were being used to calculate torque directly using the equation
 \begin{equation}
 \eqlabel{mbq-fake-torque}
-\mbqptorque \approx \mbqlever (-\mbqforce_1+\mbqforce_2) \bm\cdot \begin{bmatrix} -\sin\mbqrotz \\\phantom{-}\cos\mbqrotz\end{bmatrix}
+\mbqptorque \approx \mbqlever (-\mbqforce_1+\mbqforce_2) \bm\cdot \begin{bmatrix} -\sin\mbqrotz \\\phantom{-}\cos\mbqrotz \\ 0\end{bmatrix}
 \end{equation}
 where the dot product produces the component of force perpendicular to the lever arm.
 Torques calculated in this manner are shown in \figref{mbq-rot-ex} as dashed lines and it can be seen they match closely for small angles of rotation.
