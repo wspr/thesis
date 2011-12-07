@@ -40,7 +40,7 @@ magnet volume versus price in \figref{mag-price}.
 TODO: data for nowadays
 
 \begin{figure}
-  \psfragfig{\phdpath Magnets/latex/mag-price}
+  \psfragfig{\phdpath Figures/magnet-prices/mag-price}
   \caption{Magnet price versus magnet volume for rare earth magnets.
     Data obtained from \KJMagnetics/ for cube magnets of magnetisation grade \acro{N42}.}
   \figlabel{mag-price}
@@ -79,27 +79,30 @@ The magnetic forces between the magnets can be calculated by applying the theory
 
 Such forces were calculated between these magnets for a magnet volume $V=(\SI{10}{mm})^3$ over a displacement $x$ from \SIrange{0}{10}{mm} and a magnet size ratio $\gamma$ from $0.1$ to $1$. Note that the forces were calculated with a magnetisation of \SI{1}{T} for both magnets, essentially normalising the output forces by the magnetisation strength. The MATLAB code used to calculate these results is located in the script {examples/mag\_ratio.m} in the code repository \url{http://github.com/wspr/magcode}.
 
-In order to compare the force versus displacement characteristics for a range of magnet size ratios, we will normalise the forces by the force $F_s=F_m(V,1,x)$; that is, the force for a magnet size ratio $\gamma=1$. \Figref{ratio1,ratio2} show the normalised force $\bar F=F/F_s$ as a function of displacement $x$ over a range of magnet size ratios $\gamma$. The figures are drawn as separate graphs in order to avoid overlap of the curves; size ratio $\gamma$ varies from $0$ to $0.4$ in \Figref{ratio1} and from $0.4$ to $0.8$ in \Figref{ratio2}. It can be seen from the two graphs that a magnet size ratio $\gamma$ of around $0.4$ produces the greatest forces; for values both less and greater than $0.4$, the normalised force curves decrease.
+In order to compare the force versus displacement characteristics for a range of magnet size ratios, we will normalise the forces by the force $F_s=F_m(V,1,x)$; that is, the force for a magnet size ratio $\gamma=1$. \Figref{magratios} shows the normalised force $\bar F=F/F_s$ as a function of displacement $x$ over a range of magnet size ratios $\gamma$. The figures are drawn as separate graphs in order to avoid overlap of the curves; size ratio $\gamma$ varies from $0$ to $0.4$ in \Figref{magratio1} and from $0.4$ to $0.8$ in \Figref{magratio2}. It can be seen from the two graphs that a magnet size ratio $\gamma$ of around $0.4$ produces the greatest forces; for values both less and greater than $0.4$, the normalised force curves decrease.
 
 \begin{figure}[p]
-\centering
-\psfragfig{examples/fig/magratio1}
-\caption{Normalised force $\bar F=F/F_s$ as a function of displacement $x$ for a set of magnet ratios $\gamma=\{0.1,0.2,0.3,0.4\}$.}
-\figlabel{ratio1}
+\begin{wide}
+\subfloat
+  [Magnet ratios $\gamma=\{0.1,0.2,0.3,0.4\}$
+   \figlabel{magratio1}]
+  {\psfragfig{magcode/examples/fig/magratio1}}
+\subfloat
+  [Magnet ratios $\gamma=\{0.4,0.5,0.6,0.7,0.8\}$
+   \figlabel{magratio2}]
+  {\psfragfig{magcode/examples/fig/magratio2}}
+\end{wide}
+\caption{
+  Normalised force $\bar F=F/F_s$ as a function of displacement $x$ for two sets of magnet ratios to avoid overlap of the graphs.
+}
+\figlabel{magratios}
 \end{figure}
 
 Some small overlap in the force curves for $\gamma=0.4$ and $\gamma=0.5$ is seen in \Figref{ratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\gamma$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\gamma\approx0.4$.
 
-\begin{figure}[p]
+\begin{figure}
 \centering
-\psfragfig{examples/fig/magratio2}
-\caption{Normalised force $\bar F=F/F_s$ as a function of displacement $x$ for a set of magnet ratios $\gamma=\{0.4,0.5,0.6,0.7,0.8\}$.}
-\figlabel{ratio2}
-\end{figure}
-
-\begin{figure}[p]
-\centering
-\psfragfig{examples/fig/magratios}
+\psfragfig{magcode/examples/fig/magratios}
 \caption{Force between two magnets as a function of magnet height--width ratio $\gamma=a/b$ at a number of fixed displacements from $\SIrange{1}{10}{mm}$. The positions of maximum force are shown with dots, indicating that magnet size ratio to achieve the maximum force is in the region around $\gamma=0.4$.}
 \figlabel{magratio}
 \end{figure}
