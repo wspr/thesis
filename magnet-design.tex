@@ -1070,7 +1070,7 @@ This is possible as the stiffness in the out-of-the-page direction of \Figref{sc
   {\pregen{\psfragfig[crop=preview]
     {magcode/examples/oblique/fig/mbq-kvz-gaps}}}%
 \end{wide}
-\caption{Stiffness in three directions versus displacement for a gap ratio of \num{0.2} and magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments (arrows indicate increasing magnet angle).
+\caption{Stiffness in three directions versus vertical displacement for a gap ratio of \num{0.2} and magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments (arrows indicate increasing magnet angle).
 For the horizontal and vertical stiffness plots (a)~and (b), regions of positive stiffness for both directions are coloured; regions of gray indicate that either the vertical and/or horizontal stiffness is negative in that position for that magnet angle.
 %Out-of-plane stiffness plot~(c) shows instability over the entire displacement range.
 }
@@ -1128,13 +1128,13 @@ Only by evaluating a number of trial solutions for magnet angle and magnet offse
 \subsection{Investigation into planar stability}
 \seclabel{stabl-3dof}
 
-In \secref{stabl-v}, the translational stiffness of the system in three dimensions was discussed in terms of a change in the vertical equilibrium position of the spring (corresponding to a variation in applied load, say).
+In \secref{stabl-v}, the translational stiffness of the system in three directions was discussed in terms of a change in the vertical equilibrium position of the spring (corresponding to a variation in applied load, say).
 However, this is not enough to establish the global stability of the system due to cross-axis coupling and rotational affects that were not included as part of the model.
 Here, the planar stability of the system will be investigated to attempt to provide some picture of the complex kinetics seen due to planar translation and rotation; the system is assumed to be constrained in a single plane for this analysis with geometry shown in \figref{mbq-angle-schem}.
 
 An analytical formulation for calculating the torques between two cuboid parallel magnets has recently been presented by \textcite{janssen2010-ietm}.
 The torque equations will not be reproduced here but they follow a similar (albeit more complex) form than that of \eqref{akoun} for force.
-Note that, with reference to \figref{mbq-angle-schem}, the torques are \emph{not} calculated by using the already-calculated force terms (the blue vectors in that figure); the torque is calculated using a separate integral equation that takes the lever arm into account.
+Note that, with reference to \figref{mbq-angle-schem}, the torques are \emph{not} calculated by using the already-calculated force terms (the vectors $\mbqforce_1$ and~$\mbqforce_2$ in that figure); the torque is calculated using a separate integral equation that takes the lever arm into account.
 
 Note, however, that the force and torque equations do not permit a relative rotation between the two interacting magnets (their sides must remain parallel).
 Therefore, in order to analyse the rotational stability of the magnetic system a small angle approximation must be made, which is illustrated in \figref{mbq-angle-schem-approx}:
@@ -1245,7 +1245,7 @@ Torques calculated in this manner are shown in \figref{mbq-rot-ex} as dashed lin
 $\mbqunit = \mbqvdisp = \SI{10}{mm}$,
 $\mbqmagangle = \SI{30}{\degree}$, and
 $\mbqlever/\mbqunit = \num{2}$.
-Dashed lines show for verification torque as if calculated using the magnetic forces around their lever arms only (\eqref{mbq-fake-torque}). Notice that varying the magnet gap ratio (shown) can vary the rotational stiffness from stable ($\mbqoffset/\mbqunit=\{0.25, 0.5\}$) to unstable ($\mbqoffset/\mbqunit=1$). Geometries for these three configurations are shown in \Figref{mbq-rot-ex-diag}.}
+Dashed lines show verification torques as if calculated using the magnetic forces around their lever arms only (\eqref{mbq-fake-torque}). Notice that varying the magnet gap ratio (shown) can vary the rotational stiffness from stable ($\mbqoffset/\mbqunit=\{0.25, 0.5\}$) to unstable ($\mbqoffset/\mbqunit=1$). Geometries for these three configurations are shown in \Figref{mbq-rot-ex-diag}.}
 \figlabel{mbq-rot-ex}
 \end{figure}
 
@@ -1316,7 +1316,7 @@ Assuming that the device is always designed to move freely in the vertical direc
 It is evident that the case of constraining both rotation and horizontal displacement will be stable provided the vertical stiffness is positive.
 The first of the dynamic simulations presented is displacement in the $x$--$y$ plane with constrained rotation.
 Given the system described in \Eqref{mbq-dyn} and a perturbation of $\Delta x=\Delta y=\SI{1.5}{mm}$, the resultant dynamics are shown in \Figref{mbq-dyn-xy} as displacements from the equilibrium position of the spring.
-While this is close to the maximum perturbation for this system before instability, this example illustrates that there is a region near the equilibrium position within which stability is achieved.
+While this is close to the maximum perturbation for this system before instability, this example illustrates that there is a region around the equilibrium position within which stability is achieved.
 
 \begin{figure}
 \begin{wide}
