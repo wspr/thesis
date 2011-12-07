@@ -14,12 +14,12 @@
   application of the theory outlined in \chapref{magnet-theory}.
 }
 
-\epigraph{As the weaver elaborated his pattern for no end but the
-pleasure of his aesthetic sense, so might a man live his life, or if one
-was forced to believe that his actions were outside his choosing, so might
-a man look at his life, that it made a pattern. There was as little need
-to do this as there was use. It was merely something he did for his own
-pleasure.}{\textcite{maugham1915}}
+\epigraph {
+  As the weaver elaborated his pattern for no end but the pleasure of his aesthetic sense, so might a man live his life, or if one was forced to believe that his actions were outside his choosing, so might a man look at his life, that it made a pattern.
+  There was as little need to do this as there was use.
+  It was merely something he did for his own pleasure.
+}
+{\textcite{maugham1915}}
 
 \section{Introduction}
 
@@ -50,7 +50,10 @@ N52 grade magnets have an approximately 12\% increase in magnetic flux density o
 
 The analysis performed in this thesis is normalised by magnet strength; that is, the remanence magnetisation for any theoretical calculations is assumed to be $\remanence=\SI{1}{T}$.
 
-\section{Simple magnet arrangements}
+\section{Magnets in repulsion}
+
+Two magnets with faces aligned in repulsion create a simple spring with a nonlinear `stiffening' force versus displacement characteristic; as the magnets become closer together the change in force becomes larger.
+When bearing load at equilibrium, for small displacements such an arrangement closely approximates a classic spring--mass--damper system which can be used for vibration isolation \parencite{puppin2002}.
 
 \begin{figure}
   \grf{Figures/Magnets/vspring}
@@ -58,29 +61,59 @@ The analysis performed in this thesis is normalised by magnet strength; that is,
   \figlabel{vspring}
 \end{figure}
 
-The most simple example of a magnetic spring can be seen in
-\figref{vspring}, with one fixed and one floating magnet arranged
-vertically.  With like poles facing, the two magnets repel each other
-and produce an air gap between them. Displacement towards each other
-is restored by the repulsive magnetic force, and displacement away is
-restored by gravity. The floating magnet must be constrained in both
-horizontal directions by the shaft. If the contraint is removed, it
-will be naturally unstable horizontally due to Earnshaw's theorem (see
-\secref{earnshaw}).
+An example of such a magnetic spring can be seen in \figref{vspring}, with one fixed and one floating magnet arranged vertically.
+With like poles facing, the two magnets repel each other and will hold the system at equilibrium with an air gap between them.
+Displacement towards each other is restored by the repulsive magnetic force, and displacement away is restored by gravity.
+The floating magnet must be constrained in both horizontal directions by the shaft.
+If the contraint is removed, it will be naturally unstable horizontally due to Earnshaw's theorem (see \secref{earnshaw}).
 
-A more stable configuration is desired, because the instabilities of
-this spring occur in two orthogonal horizontal directions. Inspired by
-the rearrangements of radial and thrust bearings shown by
-\textcite{yonnet1981}, an improved design is shown in
-\figref{hspring}. Now the spring forces are caused by horizontal
-magnets in \emph{attraction}, in contrast to the earlier arrangement
-shown in \figref{vspring} which uses repulsive force.) Two fixed
-outer magnets both attract a centred floating magnet, so the unstable
-\dof/ is in that horizontal direction. Perturbations in
-the other horizontal direction are restored by the aforementioned
-attraction, which is similarly the cause of the positive vertical
-spring stiffness. Note that the diagram works as both a top \emph{and}
-side view, demonstrating how it is unstable in only one direction.
+A natural question for magnet selection in such cases is `what size should the magnets be?'.
+As magnet price scales with volume (\figref{mag-price}), it is often desirable to minimise the magnet volume for a required force, and the question then becomes what magnet \emph{shape} to choose.
+Permanent magnets in two different shapes are examined here: cuboid and cylindrical.
+
+\subsection{Cuboid magnets}
+
+Consider the basic magnetic spring shown in \Figref{schematic}, consisting of two magnets separated by a displacement, $x$ (measured between the near faces), and generating a repulsive force, $F$, between them. The magnets have square facing sides, a height-to-width ratio of $\gamma=a/b$, and a fixed volume $V$; the height of each magnet is $a=\sqrt[3]{V\gamma^2}$ and the face size width (and length into the page) is $b=\sqrt[3]{V/\gamma}$.
+
+The magnetic forces between the magnets can be calculated by applying the theory of \textcite{akoun1984}, where the force $F=F_m(V,\gamma,x)$ is a function of magnet volume $V$, size ratio $\gamma$, and displacement $x$.
+
+Such forces were calculated between these magnets for a magnet volume $V=(\SI{10}{mm})^3$ over a displacement $x$ from \SIrange{0}{10}{mm} and a magnet size ratio $\gamma$ from $0.1$ to $1$. Note that the forces were calculated with a magnetisation of \SI{1}{T} for both magnets, essentially normalising the output forces by the magnetisation strength. The MATLAB code used to calculate these results is located in the script {examples/mag\_ratio.m} in the code repository \url{http://github.com/wspr/magcode}.
+
+In order to compare the force versus displacement characteristics for a range of magnet size ratios, we will normalise the forces by the force $F_s=F_m(V,1,x)$; that is, the force for a magnet size ratio $\gamma=1$. \Figref{ratio1,ratio2} show the normalised force $\bar F=F/F_s$ as a function of displacement $x$ over a range of magnet size ratios $\gamma$. The figures are drawn as separate graphs in order to avoid overlap of the curves; size ratio $\gamma$ varies from $0$ to $0.4$ in \Figref{ratio1} and from $0.4$ to $0.8$ in \Figref{ratio2}. It can be seen from the two graphs that a magnet size ratio $\gamma$ of around $0.4$ produces the greatest forces; for values both less and greater than $0.4$, the normalised force curves decrease.
+
+\begin{figure}[p]
+\centering
+\psfragfig{examples/fig/magratio1}
+\caption{Normalised force $\bar F=F/F_s$ as a function of displacement $x$ for a set of magnet ratios $\gamma=\{0.1,0.2,0.3,0.4\}$.}
+\figlabel{ratio1}
+\end{figure}
+
+Some small overlap in the force curves for $\gamma=0.4$ and $\gamma=0.5$ is seen in \Figref{ratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\gamma$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\gamma\approx0.4$.
+
+\begin{figure}[p]
+\centering
+\psfragfig{examples/fig/magratio2}
+\caption{Normalised force $\bar F=F/F_s$ as a function of displacement $x$ for a set of magnet ratios $\gamma=\{0.4,0.5,0.6,0.7,0.8\}$.}
+\figlabel{ratio2}
+\end{figure}
+
+\begin{figure}[p]
+\centering
+\psfragfig{examples/fig/magratios}
+\caption{Force between two magnets as a function of magnet height--width ratio $\gamma=a/b$ at a number of fixed displacements from $\SIrange{1}{10}{mm}$. The positions of maximum force are shown with dots, indicating that magnet size ratio to achieve the maximum force is in the region around $\gamma=0.4$.}
+\figlabel{magratio}
+\end{figure}
+
+\subsection{Cylindrical magnets}
+
+\section{Another simple magnet arrangement}
+
+A more stable configuration is desired, because the instabilities of this spring occur in two orthogonal horizontal directions.
+Inspired by the rearrangements of radial and thrust bearings shown by \textcite{yonnet1981}, an improved design is shown in \figref{hspring}.
+Now the spring forces are caused by horizontal magnets in \emph{attraction}, in contrast to the earlier arrangement shown in \figref{vspring} which uses repulsive force.
+Two fixed outer magnets both attract a centred floating magnet, so the unstable \dof/ is in that horizontal direction.
+Perturbations in the other horizontal direction are restored by the aforementioned attraction, which is similarly the cause of the positive vertical spring stiffness.
+Note that the diagram works as both a top \emph{and} side view, demonstrating how it is unstable in only one direction.
 
 \begin{figure}
   \begin{subfigure}
@@ -99,31 +132,20 @@ displacement.}
   \figlabel{hspring}
 \end{figure}
 
-The removal of an unstable \dof/ has its consequences,
-however.  The forces between magnetic dipoles are inverse-square
-functions of the distance between them, and this holds true
-approximately for magnets as well. In the vertical spring, the effect
-of increased load on the spring is displacement toward the fixed
-magnet. This increases the stiffness of the spring.
+The removal of an unstable \dof/ has its consequences, however.
+The forces between magnetic dipoles are inverse-square functions of the distance between them, and this holds true approximately for magnets as well.
+In the vertical spring, the effect of increased load on the spring is displacement toward the fixed magnet.
+This increases the stiffness of the spring.
 
-With the horizontal spring, however, the behaviour is a little more
-complex. For the case shown in \figref{hspringa}, the only forces
-on the floating magnet are horizontal. The vertical spring force
-occurs when the magnet has been displaced as in \figref{hspringb},
-which will increase with distance only for a small range. Beyond this,
-the force will start \emph{decreasing} as the floating magnet becomes
-further enough away from the fixed magnets — at which point the spring
-stiffness turns negative and the floating magnet will be unstable.
+With the horizontal spring, however, the behaviour is a little more complex.
+For the case shown in \figref{hspringa}, the only forces on the floating magnet are horizontal.
+The vertical spring force occurs when the magnet has been displaced as in \figref{hspringb}, which will increase with distance only for a small range.
+Beyond this, the force will start \emph{decreasing} as the floating magnet becomes further enough away from the fixed magnets — at which point the spring stiffness turns negative and the floating magnet will be unstable.
 
-This parabola effect is shown in \figref{h+v-forces-v}, which also
-includes the force curve of the vertical spring. The graph was
-produced from a finite element analysis performed by \ANSYS/, using
-half-inch neodymium rare-earth cube magnets.
-\note{Remanence $B_r=\SI{1.2}{T}$ and coercivity
-  $H_c\approx\SI{900}{kA\cdot m^{-1}}$}
-The effect of varying the gap between the fixed and floating magnets for the
-horizontal spring is also demonstrated; the further away the fixed magnets
-are, the weaker the forces are.
+This parabola effect is shown in \figref{h+v-forces-v}, which also includes the force curve of the vertical spring.
+The graph was produced from a finite element analysis performed by \ANSYS/, using half-inch neodymium rare-earth cube magnets.
+\note{Remanence $B_r=\SI{1.2}{T}$ and coercivity $H_c\approx\SI{900}{kA\cdot m^{-1}}$}
+The effect of varying the gap between the fixed and floating magnets for the horizontal spring is also demonstrated; the further away the fixed magnets are, the weaker the forces are.
 
 \begin{figure}
   \begin{wide}
@@ -141,13 +163,9 @@ set to three magnet widths.}
   \figlabel{h+v-forces-v}
 \end{figure}
 
-\Figref{hvspring} shows how the two springs discussed so far,
-horizontal and vertical, may be combined to reap the benefits of
-both. There are now three fixed magnets: one below, which provides the
-majority of the stiffness of the spring, and two aside, for
-stabilising one \dof/ in the `into the page'
-direction. This simple design gives a basic framework from which to
-build up more complex arrangements.
+\Figref{hvspring} shows how the two springs discussed so far, horizontal and vertical, may be combined to reap the benefits of both.
+There are now three fixed magnets: one below, which provides the majority of the stiffness of the spring, and two aside, for stabilising one \dof/ in the `into the page' direction.
+This simple design gives a basic framework from which to build up more complex arrangements.
 
 \begin{figure}
    \grf{Figures/Magnets/hvspring}
@@ -883,9 +901,10 @@ The spring is composed of two symmetric pairs of oblique magnets; this ensures t
 \begin{figure}
 \centering
 \asyinclude[width=0.8\linewidth]{PhD/Figures/Systems/oblique.asy}
-\caption{Schematic of the oblique-magnet spring.
-When magnet offset $\mbqoffset=0$ and displacement $\mbqvdisp=0$, the magnet faces are aligned and touching.
-Displacements $\mbqhdisp$ and $\mbqpdisp$ (not shown) are in the horizontal and out-of-plane directions, respectively.}
+\caption {
+  Schematic of the oblique-magnet spring. When magnet offset $\mbqoffset=0$ and displacement $\mbqvdisp=0$, the magnet faces are aligned and touching.
+  Displacements $\mbqhdisp$ and $\mbqpdisp$ (not shown) are in the horizontal and out-of-plane directions, respectively.
+}
 \figlabel{mbq-schematic}
 \end{figure}
 
@@ -933,7 +952,7 @@ where $a$ and $d$ are geometric parameters defined in \Figref{schematic}, and $[
 \subsection{Influence of design parameters}
 \seclabel{design}
 
-The analysis in \secref{geom} allow us to calculate total force $\mbqforce$ in terms of displacement.
+The analysis in \secref{geom} allows us to calculate total force $\mbqforce$ in terms of displacement.
 This section will outline the influence of the various design parameters on the force, stiffness, and natural frequency characteristics of the system.
 To begin, vertical force as a function of vertical displacement $\mbqvforce(\mbqvdisp)=\mbqvforce(0,\mbqvdisp,0)$ will be considered (with other displacements $\mbqhdisp=\mbqpdisp=0$).
 
