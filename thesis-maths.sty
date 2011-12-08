@@ -213,6 +213,8 @@
 \newvariable\oradiusCoil[nom=Coil outer radius]{R_c}
 \newvariable\iradiusMag[nom=Magnet inner radius]{r_m}
 \newvariable\oradiusMag[nom=Magnet outer radius]{R_m}
+\def\radiusMag{\oradiusMag}
+\newvariable\cradiusCoil[nom=Clearance between magnet and coil radii]{r_g}
 
 \newvariable\lengthCoil[nom=Coil length]{L_c}
 \newvariable\lengthMag[nom=Magnet length]{L_m}
@@ -226,11 +228,14 @@
 \newvariable\turnsWire[nom=Number of turns in the coil]{N}
 \newvariable\turnsRWire[nom=Number of turns in the radial direction]{N_r}
 \newvariable\turnsZWire[nom=Number of turns in the axial direction]{N_z}
+\newvariable\turnsZMag[nom=Magnet `turns']{N_m}
 
+\newvariable\radiusGap[nom=Difference between the coil inner and magnet outer radii]{r_g}
 \newvariable\radiusWire[nom=Radius of the wire]{r_w}
 \newvariable\diamWire[nom=Diameter of the wire]{d_w}
 
 \newvariable\current[nom=Current]{I}
+\newvariable\currentCoil[nom=Current]{I}
 
 \newvariable\COILnmag[nom=Number of smaller permanent magnets]{n}
 
@@ -445,6 +450,31 @@
 \newvariable\rigNormGap{g}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newvariable\forceMag{F}
+\newvariable\normforceMag{\bar F}
+\def\fpeak{\forceMag_{\mathrm{peak}}}
+\def\fmax{\forceMag_{\mathrm{max}}}
+\def\fnorm{\hat \forceMag_z}
+\def\fnpeak{\hat \forceMag_{\mathrm{peak}}}
+\def\fnmax{\hat \forceMag_{\mathrm{max}}}
+\def\currmax{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
+
+\newcommand\displ{z}
+\newcommand\eccen{y}
+\newcommand\crossarea{A}
+\newcommand\const{C}
+
+\newvariable\ratioCub[nom=Cuboid magnet ratio]{\gamma}
+\newvariable\ratioMag[nom=Cylindrical magnet ratio]{\alpha}
+
+\newvariable\faceCub[nom=Face side length of cuboid magnet]{b}
+\newvariable\lengthCub[nom=Depth of cuboid magnet]{a}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+
+
 
 % Fix these!
 \def\x{x}
