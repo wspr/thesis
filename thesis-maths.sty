@@ -26,15 +26,6 @@
 
 \newcommand\inlinefrac[2]{#1/#2}
 
-\def \groupstrut {\vphantom{k_g}}
-\newcommand\group[1]{%
-  \left[
-    \groupstrut % manually enlarge the smallest delimiter style
-    #1
-  \right]
-}
-\newcommand\fn[1]{\mathopen{}\left(#1\right)}
-\let\gp\group
 
 \newcommand\funcparen[2]{#1\mathopen{}\left(#2\right)}
 
@@ -555,6 +546,7 @@
 \let\crossprod\times
 \let\cross\times
 \let\dotprod\cdot
+\DeclareRobustCommand\invtimes{\,}
 
 \let\grad\Grad
 \let\curl\Curl
