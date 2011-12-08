@@ -1,0 +1,42 @@
+\ProvidesPackage{shortwrite}[2009/07/09 v0.1 Quick shorthands]
+
+\newcount\sw@style
+
+\def\foreign#1{\emph{#1}}
+\def\sw@ensuresingleperiod{\@ifnextchar.{}{.\@}}
+\def\sw@ensurecomma{%
+  \@ifnextchar,{}{%
+    \PackageError{shortwrite}{Don’t forget the comma!}
+      {Abbreviations such as "e.g." and "i.e." should be consistently punctuated.}}} 
+
+\DeclareOption{english}{\sw@style=0}
+\DeclareOption{latin}{\sw@style=1}
+\DeclareOption{plain}{\let\foreign\@firstofone}
+\DeclareOption{nocomma}{\let\sw@ensurecomma\relax}
+\ExecuteOptions{english}
+\ProcessOptions
+
+\ifcase\sw@style
+  \DeclareRobustCommand\Eg{For example\sw@ensurecomma}
+  \DeclareRobustCommand\eg{for example\sw@ensurecomma}
+  \DeclareRobustCommand\Ie{That is\sw@ensurecomma}
+  \DeclareRobustCommand\ie{that is\sw@ensurecomma}
+  \DeclareRobustCommand\Cf{Compare}
+  \DeclareRobustCommand\cf{compare}
+  \DeclareRobustCommand\etc{and so on}
+  \DeclareRobustCommand\etal{and others}
+  \DeclareRobustCommand\vs{versus}
+  \DeclareRobustCommand\resp{respectively}
+\or
+  \DeclareRobustCommand\Eg{\foreign{E.g.}\sw@ensurecomma}
+  \DeclareRobustCommand\eg{\foreign{e.g.}\sw@ensurecomma}
+  \DeclareRobustCommand\Ie{\foreign{I.e.}\sw@ensurecomma}
+  \DeclareRobustCommand\ie{\foreign{i.e.}\sw@ensurecomma}
+  \DeclareRobustCommand\Cf{\foreign{Cf.}\@}% Never at sentence end
+  \DeclareRobustCommand\cf{\foreign{cf.}\@}% Never at sentence end
+  \DeclareRobustCommand\vs{\foreign{vs.}\@}% Never at sentence end
+  \DeclareRobustCommand\etc{\foreign{etc}\sw@ensuresingleperiod}
+  \DeclareRobustCommand\etal{\foreign{et~al}\sw@ensuresingleperiod}
+  \DeclareRobustCommand\resp{resp\sw@ensuresingleperiod}% not latin! 
+\fi
+

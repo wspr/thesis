@@ -1,0 +1,63 @@
+
+\RequirePackage{xparse}
+
+\ExplSyntaxOn
+
+\def\groupstrut{\vphantom{k_g}}
+
+\DeclareDocumentCommand\gp {o m+} {
+  \IfNoValueTF {#1} {
+    \left[
+      \groupstrut % manually enlarge the smallest delimiter style
+      #2
+    \right]
+  } {
+    \csname fngp_#1_l:n\endcsname[
+      #2
+    \csname fngp_#1_r:n\endcsname]
+  }
+}
+
+\DeclareDocumentCommand\fn {o m+} {
+  \mathopen{}
+  \IfNoValueTF {#1} {
+    \mathclose{
+      \left(
+        #2
+      \right)
+    }  
+  } {
+    \mathclose{
+      \csname fngp_#1_l:n\endcsname(
+        #2
+      \csname fngp_#1_r:n\endcsname)
+    }
+  }
+}
+
+\cs_set_eq:NN \fngp_stretch_l:n \left
+\cs_set_eq:NN \fngp_stretch_r:n \right
+
+\cs_set_eq:NN \fngp_small_l:n \use:n
+\cs_set_eq:NN \fngp_small_r:n \use:n
+\cs_set_eq:NN \fngp_big_l:n  \bigl
+\cs_set_eq:NN \fngp_big_r:n  \bigr
+\cs_set_eq:NN \fngp_Big_l:n  \Bigl
+\cs_set_eq:NN \fngp_Big_r:n  \Bigr
+\cs_set_eq:NN \fngp_bigg_l:n \biggl
+\cs_set_eq:NN \fngp_bigg_r:n \biggr
+\cs_set_eq:NN \fngp_Bigg_l:n \Biggl
+\cs_set_eq:NN \fngp_Bigg_r:n \Biggr
+
+\cs_set_eq:cN {fngp_0_l:n} \use:n
+\cs_set_eq:cN {fngp_0_r:n} \use:n
+\cs_set_eq:cN {fngp_1_l:n} \bigl
+\cs_set_eq:cN {fngp_1_r:n} \bigr
+\cs_set_eq:cN {fngp_2_l:n} \Bigl
+\cs_set_eq:cN {fngp_2_r:n} \Bigr
+\cs_set_eq:cN {fngp_3_l:n} \biggl
+\cs_set_eq:cN {fngp_3_r:n} \biggr
+\cs_set_eq:cN {fngp_4_l:n} \Biggl
+\cs_set_eq:cN {fngp_4_r:n} \Biggr
+
+\ExplSyntaxOff
