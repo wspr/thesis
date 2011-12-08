@@ -69,45 +69,72 @@ If the contraint is removed, it will be naturally unstable horizontally due to E
 
 A natural question for magnet selection in such cases is `what size should the magnets be?'.
 As magnet price scales with volume (\figref{mag-price}), it is often desirable to minimise the magnet volume for a required force, and the question then becomes what magnet \emph{shape} to choose.
-Permanent magnets in two different shapes are examined here: cuboid and cylindrical.
+Permanent magnets in two different shapes are examined here: square-face cuboid and cylindrical.
+The MATLAB code used to calculate these results is located in the script {examples/mag\_ratio.m} in the code repository \url{http://github.com/wspr/magcode}.
 
-\subsection{Cuboid magnets}
+\subsection{Square-face cuboid magnets}
 
-Consider the basic magnetic spring shown in \Figref{schematic}, consisting of two magnets separated by a displacement, $x$ (measured between the near faces), and generating a repulsive force, $F$, between them. The magnets have square facing sides, a height-to-width ratio of $\gamma=a/b$, and a fixed volume $V$; the height of each magnet is $a=\sqrt[3]{V\gamma^2}$ and the face size width (and length into the page) is $b=\sqrt[3]{V/\gamma}$.
+Consider the basic magnetic spring shown in \Figref{magratio-schematic}, consisting of two magnets separated by a displacement, $\displ$ (measured between the near faces), and generating a repulsive force, $\forceMag$, between them. The magnets have square facing sides, a height-to-width ratio of $\ratioCub=\lengthMag/\faceCub$, and a fixed volume $\volMag$; the height of each magnet and the face size width (and length into the page) is, \resp,
+\begin{align}
+\lengthMag &= \gp{\volMag\ratioCub^2}^{1/3}, &
+\faceCub   &= \gp{\frac\volMag\ratioCub}^{1/3}.
+\end{align}
 
-The magnetic forces between the magnets can be calculated by applying the theory of \textcite{akoun1984}, where the force $F=F_m(V,\gamma,x)$ is a function of magnet volume $V$, size ratio $\gamma$, and displacement $x$.
+\begin{figure}[b]
+\centering
+\asyinclude[height=4cm]{PhD/Figures/Systems/magratio.asy}
+\caption{Schematic of the magnetic spring. The magnets have square facing sides and extend a distance $\faceCub$ in the direction toward the reader. When $\displ=0$ the magnet faces are touching.}
+\figlabel{magratio-schematic}
+\end{figure}
 
-Such forces were calculated between these magnets for a magnet volume $V=(\SI{10}{mm})^3$ over a displacement $x$ from \SIrange{0}{10}{mm} and a magnet size ratio $\gamma$ from $0.1$ to $1$. Note that the forces were calculated with a magnetisation of \SI{1}{T} for both magnets, essentially normalising the output forces by the magnetisation strength. The MATLAB code used to calculate these results is located in the script {examples/mag\_ratio.m} in the code repository \url{http://github.com/wspr/magcode}.
+The magnetic forces between the magnets can be calculated by applying the theory of \textcite{akoun1984}, where the force $\forceMag=F_m\fn{\volMag,\ratioCub,\displ}$ is a function of magnet volume $\volMag$, size ratio $\ratioCub$, and displacement $\displ$.
 
-In order to compare the force versus displacement characteristics for a range of magnet size ratios, we will normalise the forces by the force $F_s=F_m(V,1,x)$; that is, the force for a magnet size ratio $\gamma=1$. \Figref{magratios} shows the normalised force $\bar F=F/F_s$ as a function of displacement $x$ over a range of magnet size ratios $\gamma$. The figures are drawn as separate graphs in order to avoid overlap of the curves; size ratio $\gamma$ varies from $0$ to $0.4$ in \Figref{magratio1} and from $0.4$ to $0.8$ in \Figref{magratio2}. It can be seen from the two graphs that a magnet size ratio $\gamma$ of around $0.4$ produces the greatest forces; for values both less and greater than $0.4$, the normalised force curves decrease.
+Such forces were calculated between these magnets for a magnet volume $\volMag=(\SI{10}{mm})^3$ over a displacement $\displ$ from \SIrange{0}{10}{mm} and a magnet size ratio $\ratioCub$ from $0.1$ to $1$. Note that the forces were calculated with a magnetisation of \SI{1}{T} for both magnets, essentially normalising the output forces by the magnetisation strength.
+
+In order to compare the force versus displacement characteristics for a range of magnet size ratios, we will normalise the forces by the force $\forceMag_s=F_m(\volMag,1,\displ)$; that is, the force for unity magnet size ratio $\ratioCub=1$. \Figref{magratios} shows the normalised force $\normforceMag=\forceMag/\forceMag_s$ as a function of displacement $\displ$ over a range of magnet size ratios $\ratioCub$. The figures are drawn as separate graphs in order to avoid overlap of the curves; size ratio $\ratioCub$ varies from $0$ to $0.4$ in \Figref{magratio1} and from $0.4$ to $0.8$ in \Figref{magratio2}. It can be seen from the two graphs that a magnet size ratio $\ratioCub$ of around $0.4$ produces the greatest forces; for values both less and greater than $0.4$, the normalised force curves decrease.
 
 \begin{figure}[p]
 \begin{wide}
 \subfloat
-  [Magnet ratios $\gamma=\{0.1,0.2,0.3,0.4\}$
+  [Magnet ratios $\ratioCub=\{0.1,0.2,0.3,0.4\}$
    \figlabel{magratio1}]
   {\psfragfig{magcode/examples/fig/magratio1}}
 \subfloat
-  [Magnet ratios $\gamma=\{0.4,0.5,0.6,0.7,0.8\}$
+  [Magnet ratios $\ratioCub=\{0.4,0.5,0.6,0.7,0.8\}$
    \figlabel{magratio2}]
   {\psfragfig{magcode/examples/fig/magratio2}}
 \end{wide}
 \caption{
-  Normalised force $\bar F=F/F_s$ as a function of displacement $x$ for two sets of magnet ratios to avoid overlap of the graphs.
+  Normalised force $\normforceMag=\forceMag/\forceMag_s$ for square-faced cuboid magnets as a function of displacement $\displ$ for two sets of magnet ratios to avoid overlap of the graphs.
 }
 \figlabel{magratios}
 \end{figure}
 
-Some small overlap in the force curves for $\gamma=0.4$ and $\gamma=0.5$ is seen in \Figref{ratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\gamma$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\gamma\approx0.4$.
-
-\begin{figure}
-\centering
-\psfragfig{magcode/examples/fig/magratios}
-\caption{Force between two magnets as a function of magnet height--width ratio $\gamma=a/b$ at a number of fixed displacements from $\SIrange{1}{10}{mm}$. The positions of maximum force are shown with dots, indicating that magnet size ratio to achieve the maximum force is in the region around $\gamma=0.4$.}
-\figlabel{magratio}
-\end{figure}
+Some small overlap in the force curves for $\ratioCub=0.4$ and $\ratioCub=0.5$ is seen in \Figref{ratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\ratioCub$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\ratioCub\approx0.4$.
 
 \subsection{Cylindrical magnets}
+
+A similar analysis can be performed with cylindrical magnets using a cylindrical magnet ratio defined as the ratio between magnet length and radius $\ratioMag=\lengthMag/\oradiusMag$.
+Accordingly, the magnet length and radius are calculated using, \resp,
+\begin{align}
+\lengthMag &= \gp{ \frac{\volMag}{\pi \ratioMag^2} }^{1/3},  & \radiusMag &= \gp{ \frac{\ratioMag \volMag}{\pi} }^{1/3},
+\end{align}
+with a fixed magnet volume $\volMag$ over a range of magnet ratios $\ratioMag$.
+The force is calculated using \eqref{coaxial-magnet-force} with force \vs\ magnet ratio shown in \figref{magratio-cyl}.
+Interestingly, the behaviour shows a different trend than for cuboid shaped magnets; additionally, the force per unit volume is slightly larger.
+
+
+\begin{figure}
+\begin{wide}
+\subfloat
+  [Square-faced cuboid magnets.\figlabel{magratio}]
+  {\psfragfig{magcode/examples/fig/magratios}}
+\subfloat
+  [Cylindrical magnets.\figlabel{magratio-cyl}]
+  {\psfragfig{magcode/examples/fig/magratios-cyl}}
+\end{wide}
+\caption{Force between two magnets as a function of magnet ratio for a set of fixed displacements from $\SIrange{1}{10}{mm}$. Dots mark the positions of maximum force.}
+\end{figure}
 
 \section{Another simple magnet arrangement}
 
