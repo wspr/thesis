@@ -501,8 +501,8 @@ Note that the result $K_x+K_y+K_z=0$ follows from Earnshaw's theorem
 \cite{earnshaw1842} following from the solution to Laplace's equation.
 
 Allag and Yonnet \cite{allag2009-ietm} have published a description of how torques between cuboid magnets may be analytically calculated in a similar manner.
-It is insightful to analyse their approach, as it will be shown below that it is incorrect.
-A short time after this paper was published a separate research group published the correct equation \cite{janssen2010-ietm} for calculating torques between (anti-)parallel magnets.
+It is instructive to analyse their approach to the theory used to derive these equations, as it will be shown below that it is incorrect.
+A short time after this paper was published a separate research group published the \emph{correct} equation \cite{janssen2010-ietm} for calculating torques between (anti-)parallel magnets.
 
 The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets. This expression for the torque (on the second magnet) can be written as per the style above in the following form.
 \begin{equation}\label{torque}
@@ -644,6 +644,37 @@ In conclusion for this discussion of magnet nodes and their `corner forces', mat
 The posited `corner force' of Bancel does not have a physical basis; using this force as if it were real leads to incorrect results.
 We can only conclude that the original verification of the work by Allag and Yonnet is in error.
 
+
+\section{Forces between orthogonal cuboid magnets}
+
+Two groups of researchers simultaneously published, in the same journal, equivalent methods to calculate the force between orthogonal cuboid magnets \cite{janssen2009-sensorletters,allag2009-sensorletters}.
+The expressions of \textcite{allag2009-sensorletters} are slightly simpler\footnote{Also note a typographical error in the equations of \textcite{janssen2009-sensorletters}.} and are reproduced here for completeness.
+
+\begin{dmath}
+\vect F_{zy} = \frac{J_1J_2}{4\pi\mu_0} \sum_{i,j,k,l,p,q\in\{0,1\}^6} \vect f_{zy}\fn{\vect \delta}\cdot\gp{-1}^{i+j+k+l+p+q}
+\end{dmath}
+Again, the distance between the `corner nodes' of each magnet is given by
+\begin{equation}
+\vect\delta_{i,j,k,l,p,q}=\bm d+\bm R_{j,l,q} - \bm r_{i,k,p} ~,
+\end{equation}
+where
+\begin{align}
+\bm R_{j,l,q}&=\begin{bmatrix}A\gp{-1}^j\\B\gp{-1}^l\\C\gp{-1}^q\end{bmatrix},&
+\bm r_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix}.
+\end{align}
+with magnet dimensions defined as earlier.
+The $\vect f_{zy}$ terms required for calculating the `force between nodes' for orthogonal magnets can now be written as:
+\begin{dgroup}
+\begin{dmath}
+\phi_x\fn{\bm \delta} = vw\Log{r-u}-uv\Log{r+w}-uw\Log{r+v}+\half u^2\ArcTan{\frac{vw}{ru}}+\half v^2\ArcTan{\frac{uw}{rv}}+\half w^2\ArcTan{\frac{uv}{rw}}
+\end{dmath},
+\begin{dmath}
+\phi_y\fn{\bm \delta} = -\half\gp{u^2-v^2}\log\fn{r+w}+uw\log\fn{r-u}+uv\arctan\fn{\tfrac{uw}{rv}}+\half rw
+\end{dmath},
+\begin{dmath}
+\phi_z\fn{\bm \delta} = -\half\gp{u^2-w^2}\log\fn{r+v}+uv\log\fn{r-u}+uw\arctan\fn{\tfrac{uw}{rv}}+\half rv
+\end{dmath}.
+\end{dgroup}
 
 
 
@@ -857,11 +888,6 @@ where
   -\mathlog\left[2+\sqrt{12+4 \ndisp+\ndisp^2}\right]
 \end{dmath}
 
-\subsubsection{Orthogonal magnets}
-
-Much more recently, \textcite{janssen2009-sensorletters} have shown analytical expressions to calculate the force between two magnets with orthogonal magnetisations.
-
-\fxfatal{include}
 
 \subsection{Arbitary magnetisations}
 
