@@ -476,13 +476,14 @@ This simplification results in a faster execution time and more convenient calcu
 A reference implementation of the equations derived in this paper is available (\url{http://github.com/wspr/magcode}) for both Matlab and Mathematica; see respectively the files `ravaud-cylmag.m' and `ravaud-cylmag.nb' in the `examples/' directory.
 
 In previous literature on modelling the forces between cylindrical magnets,
-Nagaraj~\cite{nagaraj1988} investigated and compared the force between cuboid and cylindrical magnets with arbitrary displacements using numerical integration to calculate his results; Furlani~\cite{furlani1993-ietm,furlani1993-ietm-coupl} calculated the force between radially-aligned ring magnets using a numerical discretisation of the magnet volume using theory developed in more detail in his book~\cite{furlani2001-magnetbook}. Hull et al.~\cite{hull1999-japplphys} presented integral equations for calculating the radial and axial forces between a cylindrical magnet and a superconductor, which is equivalent to the force between two cylindrical magnets, and Bassani~\cite{bassani2006-trib-int} presented integral equations for calculating the radial and axial forces between ring magnets. Such integral equations require numerical methods to evaluate. Most recently, Ravaud et al.~\cite{ravaud2010-ietm} derived a closed-form solution using elliptic integrals for the forces between radially-aligned cylindrical magnets; their result is the most straightforward method yet presented for calculating forces in this configuration.
+Nagaraj~\cite{nagaraj1988} investigated and compared the force between cuboid and cylindrical magnets with arbitrary displacements using numerical integration to calculate his results; Furlani~\cite{furlani1993-ietm,furlani1993-ietm-coupl} calculated the force between radially-aligned ring magnets using a numerical discretisation of the magnet volume using theory developed in more detail in his book~\cite{furlani2001-magnetbook}. Hull et al.~\cite{hull1999-japplphys} presented integral equations for calculating the radial and axial forces between a cylindrical magnet and a superconductor, which is equivalent to the force between two cylindrical magnets, and \textcite{bassani2006-trib-int} presented integral equations for calculating the radial and axial forces between ring magnets. Such integral equations require numerical methods to evaluate.
+Most recently, \textcite{ravaud2010-ietm} derived a closed-form solution using elliptic integrals for the forces between radially-aligned cylindrical magnets; their result is the most straightforward method yet presented for calculating forces in this configuration.
 
 \begin{figure}
 \centering
 \asyinclude{PhD/Figures/Coil/coil-mag-equiv.asy}
 \caption{The equivalence between a permanent magnet of magnetisation $J$ (left) in the positive vertical direction, and a current-carrying coil (right) with equivalent magnetisation $J_{\text{eq.}}=\mu_0 N I/h$ for current $I$ shown flowing anti-clockwise from the top through $N$ axial turns across height $h$.}
-\label{fig:coil-mag-equiv}
+\figlabel{coil-mag-equiv}
 \end{figure}
 
 The equation for the force between cylindrical magnets can also be used to calculate the force between thin coils with many axial turns, as both magnet and coil can be modelled as a surface current density around a cylinder (see Fig.\,\ref{fig:coil-mag-equiv}). In related work, Kim et al.~\cite{kim1996-ietm} presented a different integral equation for the radial force between (single-turn) circular coils with eccentric radial displacement, for which further application of their results is required to calculate the forces between coils with many turns, such as for the system examined here. An expression for the force between thin coaxial coils has also been published by Babic et al.~\cite{babic2008-ietm}; it too is more complex than the expression to be presented in the current work.
@@ -496,7 +497,7 @@ A three-dimensional schematic is shown later in Fig.\,\ref{fig:coil-param} that 
 \centering
 \asyinclude{PhD/Figures/Systems/cyl.asy}
 \caption{Two-dimensional side view of the system composed of two coaxial cylindrical magnets with a generated force on the second magnet. (While magnets are shown, either or both may be replaced by a thin coil as shown in Fig.\,\ref{fig:coil-mag-equiv}.) Axial displacement between the magnets may be positive or negative, and their volumes may overlap in the case of a magnet located inside a coil. Arrows within the magnets indicate direction of magnetic polarisation.}
-\label{fig:cyl-schem}
+\figlabel{cyl-schem}
 \end{figure}
 
 \def\m#1{m_{#1}}
@@ -571,7 +572,7 @@ In the simulation results, the magnet experiences zero force when it is axially 
   \bottomrule
   \end{tabular}
 \caption{Parameters used for the example calculations with results shown in Fig.\,\ref{fig:ex1}. The schematic indicates the direction of current flow and the north and south faces of the magnet. A position of positive displacement $z$ is shown.}
-\label{fig:coil-param}
+\figlabel{coil-param}
 \end{figure}
 
 
@@ -604,7 +605,7 @@ In the simulation results, the magnet experiences zero force when it is axially 
     \end{axis}
   \end{tikzpicture}
   \caption{An example of the force generated on a cylindrical magnet by a coil with parameters defined in Fig.\,\ref{fig:coil-param}. Displacement is defined as zero when the coil and magnet are axially centred with respect to each other. The new equation is implemented in Matlab vs the old equation in Mathematica to ensure the two are numerically equivalent.}
-  \label{fig:ex1}  
+  \figlabel{ex1}  
 \end{figure}
 
 
