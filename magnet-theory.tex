@@ -406,46 +406,84 @@ A variety of analytical solutions have been developed to calculate the
 force between cuboid-shaped magnets with parallel/anti-parallel
 magnetisations \cite{akoun1984,nagaraj1988,bonisoli2006}. More complex
 geometries can be realised through superposition of the solutions
-\cite{bancel1999}. \citeauthor{akoun1984}'s expression is
+\cite{bancel1999}.
+
+
+\subsection{Forces between magnets}
+
+The notation for the models to calculate the forces between cuboid magnets is as follows, with the geometry of the system depicted graphically in \figref{akoun}.
+The first magnet has dimensions $[2a, 2b, 2c]\T$ and the second magnet has dimensions $[2A, 2B, 2C]\T$.
+The distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$.
+The magnetisations of the magnets are assumed to be constant and aligned in the $z$-direction (`facing up').
+Negative magnetisation corresponds to a magnet `facing down' and results in forces of reversed sign.
+
+The original expression for the forces between magnets is shown again here as terms within will be referred to later. It is compactly written as six nested summations of intermediate expressions in $x$, $y$, and $z$ directions:
+\begin{equation}\eqlabel{akoun}
+\bm F = \frac{J_1 J_2}{4\pi\mu_0}
+  \sum_{i,j,k,l,p,q\in\{0,1\}^6}
+  \hspace{-5mm}% space hack
+  \bm \phi\fn{\bm \delta_{i,j,k,l,p,q}}
+  \cdot
+  \gp{-1}^{i+j+k+l+p+q} ,
+\end{equation}
+where $\bm\phi(\bm\delta) = [\phi_x(\bm\delta),\phi_y(\bm\delta),\phi_z(\bm\delta)]\T$ will be given later.
+
+This form of \eqref{akoun} arises as it is derived from six nested direct integrals. Rather than expanding the limits of each integral,
+the following summation notation is used instead:
 \begin{equation}
-\vect F_m = \frac{J_1 J_2}{4\pi\mu_0}
-  \sum_{(\e1,\dots,\e6)\in\{1,-1\}^6}
-  \left( \vect f_m(\vect d)
-  \cdot \prod_{i=1}^6 \e i
-  \right)
-,
-\eqlabel{akoun}
+\int_{-a}^{a}
+f(x) \dee x = F(a)-F(-a) = 
+\!\!\! % space hack
+\sum_{i\in\{0,1\}} F(a\gp{-1}^i)\cdot \gp{-1}^i  .
+\end{equation}
+As the limits of the integral occur at the corners of the cuboid magnets, $\bm \phi$ is an intermediate function acting between each combination of corners between the first and second magnet.
+Bancel \cite{bancel1999} used this fact to invent an abstraction for these expressions known as `magnetic nodes' calling what has been written above as $\bm\phi\fn{\bm \delta_{i,j,k,l,p,q}}\cdot\gp{-1}^{i+j+k+l+p+q}$ as the `force' between two magnetic nodes $(i,k,p)$ and $(j,l,q)$.
+Summing the magnetic node forces between every combination of corners of the first and second magnet yields the total force between them.
+This abstraction allows a reduction in the number of calculations required when magnetic nodes overlap; i.e., when calculating the forces between arrays of touching magnets.
+
+The distance between two corners/nodes of two respective magnets, $\bm\delta_{i,j,k,l,p,q}=[u_{i,j}, v_{k,l}, w_{p,q}]\T$, is given by the distance between the magnet centres, $\bm d$, plus and minus the distance between the magnet centre and corner position for the second magnet, $\bm R$ and for the first magnet $\bm r$:
+\begin{equation}
+\bm\delta_{i,j,k,l,p,q}=\bm d+\bm R_{j,l,q} - \bm r_{i,k,p} ~,
 \end{equation}
 where
 \begin{align}
-\vect f_m(\vect d) &=
-\def\arraystretch{1.2}
+\bm R_{j,l,q}&=\begin{bmatrix}A\gp{-1}^j\\B\gp{-1}^l\\C\gp{-1}^q\end{bmatrix},&
+\bm r_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix}.
+\end{align}
+Complete expressions for the corner distances are therefore:
+\begin{dmath}[compact]
+\bm \delta_{i,j,k,l,p,q}=\begin{bmatrix}u_{i,j}\\v_{k,l}\\w_{p,q}\end{bmatrix}=
 \begin{bmatrix}
- \half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\frac{uv}{rw}}+\half ru \\
- \half\gp{u^2-w^2}\Log{r-v}+uv\Log{r-u}+uw\ArcTan{\frac{uv}{rw}}+\half rv \\
- -uw\Log{r-u}-vw\Log{r-v}+uv\ArcTan{\frac{uv}{rw}}-rw
+  \alpha-a\gp{-1}^i+A\gp{-1}^j\\
+  \beta-b\gp{-1}^k+B\gp{-1}^l\\
+  \gamma-c\gp{-1}^p+C\gp{-1}^q
 \end{bmatrix}
-,
-\end{align}
-and
+\end{dmath}.
+The $\bm\phi$ terms required for calculating the `force between nodes' can now be written, where $r=\sqrt{u^2+v^2+w^2}$, as:
+\begin{dgroup}
+\begin{dmath}
+\phi_x\fn{\bm \delta} = \half\gp{v^2-w^2}\log\fn{r-u}+uv\log\fn{r-v}+
++vw\arctan\fn{\tfrac{uv}{rw}}+\half ru ,
+\end{dmath}
+\begin{dmath}
+\phi_y\fn{\bm \delta} = \half\gp{u^2-w^2}\log\fn{r-v}+uv\log\fn{r-u}+
++uw\arctan\fn{\tfrac{uv}{rw}}+\half rv ,
+\end{dmath}
+\begin{dmath}[label=phi_z]
+\phi_z\fn{\bm \delta} = -uw\log\fn{r-u}-vw\log\fn{r-v}+
++uv\arctan\fn{\tfrac{uv}{rw}}-rw .
+\end{dmath}
+\end{dgroup}
+Note that when evaluating these functions numerically, two singularities must be accounted for:
 \begin{align}
-\vect d &=
-\begin{bmatrix}u\\v\\w\end{bmatrix}
-=
-\begin{bmatrix}
-\alpha - \e1 a + \e2 A\\
-\beta  - \e3 b + \e4 B\\
-\gamma - \e5 c + \e6 C
-\end{bmatrix},
-& r &= \sqrt{u^2+v^2+w^2}     .
+\lim_{x\to 0} x \log x &= 0 , & \lim_{x\to 0} \arctan(x/x) &= 0.
 \end{align}
-where $\cuboida{1,2,3}$ and $\cuboidb{1,2,3}$ are the half dimensions of
-the fixed and floating magnets, respectively, and
-$\cuboidoffset{1,2,3}$ is the distance between their centres;
-$J$ and $J'$ are the magnetisations, and $\permVac$ is the permeability
-of free space.
 
-And here are the stiffnesses:
+The stiffness characteristics can be derived by differentiating \eqref{akoun} with respect to displacement in each respective direction, resulting in
+\begin{dmath}[label=akounk]
+\vect K = \frac{JJ'}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k\fn{u_{ij},v_{kl},w_{pq},r} .
+\end{dmath}
+where
 \begin{dgroup}
 \begin{dmath}
 k_x = -\frac{v u^2}{u^2+w^2}-r-v \Log{r-v}
@@ -459,13 +497,154 @@ k_z = \frac{v w^2}{u^2+w^2}
   + 2r+u\Log{r-u}+v \Log{r-v}
 \end{dmath}.
 \end{dgroup}
-These are substituted similarly to the force equations:
-\begin{dmath}[label=akounk]
-\vect K = \frac{JJ'}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k\fn{u_{ij},v_{kl},w_{pq},r} .
-\end{dmath}
-
 Note that the result $K_x+K_y+K_z=0$ follows from Earnshaw's theorem
 \cite{earnshaw1842} following from the solution to Laplace's equation.
+
+Allag and Yonnet \cite{allag2009-ietm} have published a description of how torques between cuboid magnets may be analytically calculated in a similar manner.
+It is insightful to analyse their approach, as it will be shown below that it is incorrect.
+A short time after this paper was published a separate research group published the correct equation \cite{janssen2010-ietm} for calculating torques between (anti-)parallel magnets.
+
+The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets. This expression for the torque (on the second magnet) can be written as per the style above in the following form.
+\begin{equation}\label{torque}
+\bm T=\frac{J_1 J_2}{4\pi\mu_0}
+  \sum_{i,j,k,l,p,q\in\{0,1\}^6}
+  \bm\psi_{i,j,k,l,p,q}
+  \cdot
+  \gp{-1}^{i+j+k+l+p+q} ,
+\end{equation}
+where
+\begin{equation}
+\bm\psi_{i,j,k,l,p,q} = \bm R_{j,l,q}\bm\times \bm \phi\fn{\bm \delta_{i,j,k,l,p,q}} .
+\label{torque-inner}
+\end{equation}
+The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner terms of the summation represent the torque applied on the second magnet due to the influence of one corner of the first magnet and one corner of the second magnet. Allag and Yonnet write this slightly differently in terms of the total torque applied from the entire first magnet on each corner of the second:
+\begin{equation}\label{torqu-1}
+\bm T = \sum_{j,l,q\in\{0,1\}^3} \bm R_{j,l,q}\bm\times \bm f_{j,l,q} ,
+\end{equation}
+where $\bm f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
+\begin{equation}\label{torqu-2}
+\bm f_{j,l,q}=\tfrac{J_1 J_2}{4\pi\mu_0} 
+  \!\!\!\sum_{i,k,p\in\{0,1\}^3}\!\!\! 
+  \bm\phi\fn{\bm d_{i,j,k,l,p,q}}
+  \cdot
+  \gp{-1}^{i+j+k+l+p+q}.
+\end{equation}
+In other words, written in this form the `corner torque' for each node of the second magnet is given by
+\begin{equation}\label{corner-torques}
+  \bm \tau_{j,l,q} = \bm R_{j,l,q} \bm\times \bm f_{j,l,q}.
+\end{equation}
+It is easily seen that \eqref{torqu-1} and \eqref{torqu-2} are equivalent to \eqref{torque} since the inner summation in the former can be migrated out from inside the cross product.
+
+The fallacy is that what has been referred until now as a corner force is in fact not actually a force; rather, it is simply a mathematical abstraction (a limit of an integral) that has no basis in the physics of the situation.
+Using these corner forces to calculate the corner torques is simply not meaningful.
+Indeed, it is not possible to reproduce the analytical results given by Allag and Yonnet in their paper.
+Attempting to deduce our errors led us to discover that corner forces are not real, as will be shown below.
+
+\subsection{Case study showing corner forces are not real forces}
+
+Consider a system of two cube magnets with equal size and magnetisation, and displacement between them only in the vertical direction, with parameters given by
+\begin{gather*}
+a=b=c=A=B=C=0.005\,\text{m},\\
+J_1=J_2=1\,\text{T},\\
+[\alpha, \beta, \gamma]\T=[0, 0, 0.02\,\text{m}]\T .
+\end{gather*}
+These are the same parameters given as example by Allag and Yonnet.
+
+Using \eqref{force} to calculate the resultant force on the second magnet gives
+$F = [0, 0, -2.25\,\text{N}]\T$; this is the expected result since there is only vertical displacement and hence only vertical forces.
+
+Using \eqref{torque} to calculate the resultant torque on the second magnet	gives
+$T= [0.0074\, \text{N\,m}, -0.0074\, \text{N\,m}, 0]\T$.
+As the magnet is in a force-symmetrical position, we do not expect there to be a torque in any direction.
+Thus these calculated figures appear to be incorrect.
+
+Using \eqref{torqu-2}, we can calculate each corner force on the second magnet to investigate from which terms these non-zero torques are appearing.
+Looking only at the torque in the $y$-direction, we know it consists of force components in $x$ and $z$. That is, expanding the cross product of \eqref{corner-torques},
+\begin{equation}\label{tau-y}
+{\tau_y}_{|j,l,q} = {R_z}_{|j,l,q}\cdot {f_x}_{|j,l,q} -
+  {R_x}_{|j,l,q}\cdot {f_z}_{|j,l,q} ~.
+\end{equation}
+We expect that summing ${\tau_y}_{|j,l,q}$ over $j,l,q\in\{0,1\}^3$ should yield zero but we know from the results above that this is not the case.
+Summing the two terms of \eqref{tau-y} separately over the same ranges reveals that the first term (involving $f_x$) does indeed sum to zero but the second term (involving $f_z$) does not. Therefore, the problem lies in the calculation of the vertical corner forces.
+
+Enumerating ${f_z}_{|j,l,q}$  in \tabref{corner-calc} shows the cause of the problem. For adjacent corners of the magnet, the corner forces are not symmetrical and hence result in the calculation of non-zero torques.
+These results are calculated using a Matlab script that can be located online for verification.
+\note{The Matlab script is located in `examples/allag\_torques.m' at \url{http://github.com/wspr/magcode}~.}
+
+\begin{table}
+\caption{Corner forces on the second magnet in the $z$-direction and their resultant corner torques.}
+\figlabel{corner-calc}
+
+\centering
+\newcommand\0{\hphantom{0}}
+\renewcommand\-{\makebox[0pt][r]{$-$}}
+\newcolumntype{C}{>{$}c<{$}}
+\newcolumntype{R}{>{$}r<{$}}
+\begin{tabular}{@{}CCC@{}}
+\toprule
+(j,l,q) & {f_z}_{|j,l,q}\,\text{(N)} & {\tau_y}_{|j,l,q}\,\text{(N\,m)}\\
+\midrule
+(0, 0, 0) &  \-0.638 &  0.00319\0     \\
+(1, 0, 0) &  0.187  &  0.000934     \\
+(0, 1, 0) &  0.187  &  \-0.000934    \\
+(1, 1, 0) &  1.01\0  &  0.00506\0     \\
+(0, 0, 1) &  0.814  &  \-0.00407\0    \\
+(1, 0, 1) &  \-0.749 &  \-0.00375\0    \\
+(0, 1, 1) &  \-0.749 &  0.00375\0     \\
+(1, 1, 1) &  \-2.31\0 &  \-0.0116\0\0    \\
+\midrule
+\multicolumn{1}{r}{\textsc{sum}} & \-2.251 & \-0.00739\0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+\subsubsection{Non-symmetric corner forces}
+
+The expression \eqref{force} for calculating the corner forces contains the clues as to why non-symmetric forces are calculated, as seen above in \tabref{corner-calc}.
+Writing the interaction between two corners as $(i,k,p)\to(j,l,q)$, consider two geometrically-symmetrical cases from the previous example with zero horizontal displacement:
+\begin{itemize}
+\item $(0,0,0)\to(1,0,0)$, and
+\item $(1,0,0)\to(0,0,0)$.
+\end{itemize}
+These two interactions are depicted in \figref{mag-nodes}.
+
+\begin{figure}[t]
+\centering
+\asyinclude{PhD/Figures/Magnets/mag-nodes}
+\caption{Two geometrically-symmetrical node interactions.}
+\figlabel{mag-nodes}
+\end{figure}
+
+The first term in \eqref{phi_z} is $-uv\log(r-u)$. All other terms will be the same since $v$, $w$, and $r$ are constant between the two cases in this example.
+The term $u$, however, will switch signs; for the first case $u = -A-a$ and in the second case $u = A + a$. Accordingly, $\log(r - u)$ will have different magnitudes and so will $\phi_z$.
+Corner forces are therefore not geometrically-symmetrical, and this is the first indication that they do not behave as real forces.
+
+\subsubsection{Corner forces vs.\ distance}
+
+Consider a fixed magnet of size $[2a,2b,2c]\T$ reacting with another magnet of some fixed vertical distance away. Compare two cases for the second magnet:
+\begin{itemize}
+\item	of equal size with $[2A, 2B, 2C]\T=[2a, 2b, 2c]\T$, and
+\item	of greater size with $[2A, 2B, 2C]\T=[6a, 6b, 2c]\T$.
+\end{itemize}
+These two cases are shown in \figref{nodes-bigsmall} highlighting the interaction between two equivalent corners.
+
+\begin{figure}
+\centering
+\asyinclude{PhD/Figures/Magnets/nodes-bigsmall}
+\caption{Two node interactions for a smaller magnet and a larger magnet.}
+\figlabel{nodes-bigsmall}
+\end{figure}
+
+In the second case with the larger magnet, there will be a larger distance between the corners of the magnets than in the first case.
+And yet, because the magnet in the second case is larger the net force between the magnets will be larger, and the corner forces in the second case will be larger as well.
+Obtaining greater forces with greater distances is a direct contradiction in the general behaviour of magnetic forces, which operate with an inverse relationship between force and displacement.
+This is the second indication that corner forces are not real and should be not used to calculate torques.
+
+In conclusion for this discussion of magnet nodes and their `corner forces', mathematical abstraction is not always helpful when trying to create mental models of a calculation based on the physics of the process.
+The posited `corner force' of Bancel does not have a physical basis; using this force as if it were real leads to incorrect results.
+We can only conclude that the original verification of the work by Allag and Yonnet is in error.
+
+
 
 
 \section{Forces between cylindrical magnets}
@@ -862,11 +1041,6 @@ work because they use an analytical expression for the forces between two
 cuboidal magnets under arbitrary translation, with one inclined at any angle
 around the \x-axis.
 
-This article talks about the forces between two cuboid magnets at arbitrary
-angles to each other, and shows the integral used to solve the problem.
-Numerical techniques are used, however, so I'm only interested in their pretty
-picture and the integral itself.
-
 Incidentally, there's nothing special about this particular integral; it's the
 same one used by Bancel in his Magnetic Nodes paper. You kind of need a
 picture, and I don't like the notation, but:
@@ -909,7 +1083,9 @@ vertical axis, calculated with a numerical integration. The final paper
 \cite{elies1999} involves couplings exclusively, making it less applicable to
 this work. Its inclusion here is for completeness.
 
-So, what is this equation that is so useful for me? Given two magnets located
+Their equations are re-written here for each separate publication contains different typographical errors.
+The equations here have been reconstructed by comparing the differences and similarities between the equations in the different papers, and re-written in a more compact form.
+Given two magnets located
 in \threeD/ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$,
 with the plane of the second rotated by $\theta$ around the \x-axis and their
 origins offset by $\inlinevect{x_0,y_0,z_0}$, the forces in the \y- and
