@@ -2,12 +2,6 @@
 \ProvidesPackage{thesis-maths}
 
 %%%%%%%%%%%%%%%%%
-% TeXnicalities %
-\AtBeginDocument{%
-  \let\oldleft\left
-  \def\left{\mathopen{}\oldleft}%
-}
-%%%%%%%%%%%%%%%%%
 %% For COOL
 \let\orig@Integrate\Integrate
 \renewcommand\Integrate[2]{%
@@ -22,10 +16,11 @@
 \Style{LogParen=p,ArcTrig=arc,ImagParen=p,RealParen=p}
 %%%%%%%%%%%%%%%%%
 
+\def\vect{\bm}
+
 \NewDocumentCommand\sumset{mm}{\sum_{#1}^{#2}}
 
 \newcommand\inlinefrac[2]{#1/#2}
-
 
 \newcommand\funcparen[2]{#1\mathopen{}\left(#2\right)}
 

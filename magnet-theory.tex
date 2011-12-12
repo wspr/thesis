@@ -388,15 +388,6 @@ simplified.
 Expressions for the forces between magnets follow directly from
 Maxwell's equations, and may be derived in a number of ways.
 
-\noindent Say $f$ integrates to $F$:
-\begin{dmath*}
-\iiint f(x,y,z)\dee{x}\dee{y}\dee{z} = F(x,y,z),
-\end{dmath*}
-\begin{dmath*}
-\iiint f(x,y,z) \dee{x}\dee{y}\dee{z} =
-  \mathop{\sum\sum\sum}\limits_{i,j,k\in\{1,2\}} F(x_i,y_j,z_k)\cdot(-1)^{i+j+k}
-\end{dmath*}
-
 
 \section{(Anti-)parallel cuboid magnets}
 
@@ -419,7 +410,7 @@ Negative magnetisation corresponds to a magnet `facing down' and results in forc
 
 The original expression for the forces between magnets is shown again here as terms within will be referred to later. It is compactly written as six nested summations of intermediate expressions in $x$, $y$, and $z$ directions:
 \begin{equation}\eqlabel{akoun}
-\bm F = \frac{J_1 J_2}{4\pi\mu_0}
+\bm F_{z,z} = \frac{J_1 J_2}{4\pi\mu_0}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
   \hspace{-5mm}% space hack
   \bm \phi\fn{\bm \delta_{i,j,k,l,p,q}}
@@ -427,15 +418,29 @@ The original expression for the forces between magnets is shown again here as te
   \gp{-1}^{i+j+k+l+p+q} ,
 \end{equation}
 where $\bm\phi(\bm\delta) = [\phi_x(\bm\delta),\phi_y(\bm\delta),\phi_z(\bm\delta)]\T$ will be given later.
+The $(z,z)$ subscript refers to the directions of magnetisation of the magnets.
+Force calculations for magnets oriented in the $x$ or $y$ directions can be found using a coordinate system transformation on \eqref{akoun}.
 
-This form of \eqref{akoun} arises as it is derived from six nested direct integrals. Rather than expanding the limits of each integral,
-the following summation notation is used instead:
+This form of \eqref{akoun} arises as it is derived from six nested direct integrals. 
+Rather than expanding the limits of each integral, the following summation notation is used instead; say $f$ integrates to $F$:
 \begin{equation}
 \int_{-a}^{a}
 f(x) \dee x = F(a)-F(-a) = 
 \!\!\! % space hack
 \sum_{i\in\{0,1\}} F(a\gp{-1}^i)\cdot \gp{-1}^i  .
 \end{equation}
+And therefore for multiple integrations:
+\begin{dmath}
+\Int{ f\fn{x,y,z} } {x,x_0,x_1} {y,y_0,y_1} {z,z_0,z_1}=
+  \sum_{i,j,k\in\{0,1\}^3} F\fn{x_i,y_j,z_k}\cdot\gp{-1}^{i+j+k}
+\end{dmath}
+For $N$ nested integrals, it may be convenient to express this in a product form instead where $f$ is integrated over variables $x_i$ from $u_i\fn{1}$ to $u_i\fn{-1}$:
+\begin{dmath}
+\Int{ f\fn{x_1,x_2,\dots} }{x_1}{x_2} \cdots =
+  \sum_{e_1,e_2,\dots\in\{1,-1\}^N}
+    \gp{ F\fn{u_1\fn{e_1},u_2\fn{e_2},\dots}\prod_{n=1}^{N} e_n }
+\end{dmath}
+
 As the limits of the integral occur at the corners of the cuboid magnets, $\bm \phi$ is an intermediate function acting between each combination of corners between the first and second magnet.
 Bancel \cite{bancel1999} used this fact to invent an abstraction for these expressions known as `magnetic nodes' calling what has been written above as $\bm\phi\fn{\bm \delta_{i,j,k,l,p,q}}\cdot\gp{-1}^{i+j+k+l+p+q}$ as the `force' between two magnetic nodes $(i,k,p)$ and $(j,l,q)$.
 Summing the magnetic node forces between every combination of corners of the first and second magnet yields the total force between them.
@@ -460,20 +465,14 @@ Complete expressions for the corner distances are therefore:
 \end{bmatrix}
 \end{dmath}.
 The $\bm\phi$ terms required for calculating the `force between nodes' can now be written, where $r=\sqrt{u^2+v^2+w^2}$, as:
-\begin{dgroup}
 \begin{dmath}
-\phi_x\fn{\bm \delta} = \half\gp{v^2-w^2}\log\fn{r-u}+uv\log\fn{r-v}+
-+vw\arctan\fn{\tfrac{uv}{rw}}+\half ru ,
+\bm\phi\fn{\bm \delta} =
+\begin{bmatrix}
+\half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\tfrac{uv}{rw}}+\half ru \\
+\half\gp{u^2-w^2}\Log{r-v}+uv\Log{r-u}+uw\ArcTan{\tfrac{uv}{rw}}+\half rv \\
+-uw\Log{r-u}-vw\Log{r-v}+uv\ArcTan{\tfrac{uv}{rw}}-rw 
+\end{bmatrix}
 \end{dmath}
-\begin{dmath}
-\phi_y\fn{\bm \delta} = \half\gp{u^2-w^2}\log\fn{r-v}+uv\log\fn{r-u}+
-+uw\arctan\fn{\tfrac{uv}{rw}}+\half rv ,
-\end{dmath}
-\begin{dmath}[label=phi_z]
-\phi_z\fn{\bm \delta} = -uw\log\fn{r-u}-vw\log\fn{r-v}+
-+uv\arctan\fn{\tfrac{uv}{rw}}-rw .
-\end{dmath}
-\end{dgroup}
 Note that when evaluating these functions numerically, two singularities must be accounted for:
 \begin{align}
 \lim_{x\to 0} x \log x &= 0 , & \lim_{x\to 0} \arctan(x/x) &= 0.
@@ -481,22 +480,20 @@ Note that when evaluating these functions numerically, two singularities must be
 
 The stiffness characteristics can be derived by differentiating \eqref{akoun} with respect to displacement in each respective direction, resulting in
 \begin{dmath}[label=akounk]
-\vect K = \frac{JJ'}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k\fn{u_{ij},v_{kl},w_{pq},r} .
+\vect K_{z,z} = \frac{JJ'}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k\fn{u_{ij},v_{kl},w_{pq},r}
+\cdot \gp{-1}^{i+j+k+l+p+q} ,
 \end{dmath}
 where
-\begin{dgroup}
 \begin{dmath}
-k_x = -\frac{v u^2}{u^2+w^2}-r-v \Log{r-v}
-\end{dmath},
-\begin{dmath}
-k_y = -\frac{u v^2}{v^2+w^2}-r-u \Log{r-u}
-\end{dmath},
-\begin{dmath}
-k_z = \frac{v w^2}{u^2+w^2}
+\bm k = 
+\begin{bmatrix}
+-\frac{v u^2}{u^2+w^2}-r-v \Log{r-v} \\
+-\frac{u v^2}{v^2+w^2}-r-u \Log{r-u} \\
+ \frac{v w^2}{u^2+w^2}
   + \frac{u w^2}{v^2+w^2}
   + 2r+u\Log{r-u}+v \Log{r-v}
-\end{dmath}.
-\end{dgroup}
+\end{bmatrix}
+\end{dmath}
 Note that the result $K_x+K_y+K_z=0$ follows from Earnshaw's theorem
 \cite{earnshaw1842} following from the solution to Laplace's equation.
 
@@ -504,9 +501,9 @@ Allag and Yonnet \cite{allag2009-ietm} have published a description of how torqu
 It is instructive to analyse their approach to the theory used to derive these equations, as it will be shown below that it is incorrect.
 A short time after this paper was published a separate research group published the \emph{correct} equation \cite{janssen2010-ietm} for calculating torques between (anti-)parallel magnets.
 
-The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets. This expression for the torque (on the second magnet) can be written as per the style above in the following form.
-\begin{equation}\label{torque}
-\bm T=\frac{J_1 J_2}{4\pi\mu_0}
+The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets. Their expression for the torque (on the second magnet) can be written as per the style above in the following form.
+\begin{equation}\eqlabel{torque}
+\bm T_{z,z}=\frac{J_1 J_2}{4\pi\mu_0}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
   \bm\psi_{i,j,k,l,p,q}
   \cdot
@@ -515,7 +512,7 @@ The assertion given by Allag and Yonnet is that since the `forces' between the n
 where
 \begin{equation}
 \bm\psi_{i,j,k,l,p,q} = \bm R_{j,l,q}\bm\times \bm \phi\fn{\bm \delta_{i,j,k,l,p,q}} .
-\label{torque-inner}
+\eqlabel{torque-inner}
 \end{equation}
 The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner terms of the summation represent the torque applied on the second magnet due to the influence of one corner of the first magnet and one corner of the second magnet. Allag and Yonnet write this slightly differently in terms of the total torque applied from the entire first magnet on each corner of the second:
 \begin{equation}\label{torqu-1}
@@ -649,9 +646,10 @@ We can only conclude that the original verification of the work by Allag and Yon
 
 Two groups of researchers simultaneously published, in the same journal, equivalent methods to calculate the force between orthogonal cuboid magnets \cite{janssen2009-sensorletters,allag2009-sensorletters}.
 The expressions of \textcite{allag2009-sensorletters} are slightly simpler\footnote{Also note a typographical error in the equations of \textcite{janssen2009-sensorletters}.} and are reproduced here for completeness.
+The signs of these equations has been reversed for consistency with \eqref{akoun} in which the equations calculate the force on the second magnet.
 
-\begin{dmath}
-\vect F_{zy} = \frac{J_1J_2}{4\pi\mu_0} \sum_{i,j,k,l,p,q\in\{0,1\}^6} \vect f_{zy}\fn{\vect \delta}\cdot\gp{-1}^{i+j+k+l+p+q}
+\begin{dmath}[label=orth-magforce]
+\vect F_{z,y} = \frac{J_1J_2}{4\pi\mu_0} \sum_{i,j,k,l,p,q\in\{0,1\}^6} \vect f_{zy}\fn{\vect \delta}\cdot\gp{-1}^{i+j+k+l+p+q}
 \end{dmath}
 Again, the distance between the `corner nodes' of each magnet is given by
 \begin{equation}
@@ -676,6 +674,47 @@ The $\vect f_{zy}$ terms required for calculating the `force between nodes' for 
 \end{dmath}.
 \end{dgroup}
 
+
+\subsection{Examples}
+
+The verification curve of the results of \textcite{akoun1984}, calculated using \eqref{total-force} with the `magnetforces' function, is shown in Figure~\ref{akoun} for the following system:
+\begin{align}
+\begin{split}
+\bm s &=[\SI{20}{mm}, \SI{12}{mm}, \SI{6}{mm}]\T\\
+\bm S &=[\SI{12}{mm}, \SI{20}{mm}, \SI{6}{mm}]\T\\
+\bm d &=[\SI{-4}{mm}+\delta, \SI{-4}{mm}, \SI{8}{mm}]\T\\
+\bm J_1,\bm J_2&=[0,0,\SI{0.38}{T}]\T
+\end{split}
+\end{align}
+
+\begin{figure}
+\begin{wide}
+\begin{minipage}{0.45\linewidth}
+\psfragfig{magcode/examples/fig/akoun-repro}
+\caption{Reproduction of the results shown by \textcite{akoun1984}.}
+\label{akoun}
+\end{minipage}\hfill
+\begin{minipage}{0.45\linewidth}
+\psfragfig{magcode/examples/fig/janssen-repro}
+\caption{Reproduction of the results of \textcite{janssen2009-sensorletters}.}
+\label{janssen}
+\end{minipage}
+\end{wide}
+\end{figure}
+
+
+The verification curve of the results shown by \textcite{janssen2009-sensorletters} is shown in Figure~\ref{janssen} for the following system:
+\begin{align}
+\begin{split}
+\bm s &=[\SI{10}{mm}, \SI{26}{mm}, \SI{14}{mm}]\T\\
+\bm S &=[\SI{14}{mm}, \SI{26}{mm}, \SI{10}{mm}]\T\\
+\bm d &=[\delta, \SI{-8}{mm}, \SI{15}{mm}]\T\\
+\bm J_1 &=[0,0,\SI{1}{T}]\T,\qquad
+\bm J_2=[\SI{1}{T},0,0]\T
+\end{split}
+\end{align}
+
+The Matlab code to generate Figures \ref{akoun} and~\ref{janssen} is located in the file `examples/magnetforces\_example.m' (see Section~\ref{code}).
 
 
 \section{Forces between cylindrical magnets}
@@ -898,17 +937,15 @@ Since their equation for calculating the magnetic field is necessarily more comp
 
 The geometry of the two-magnet system is shown in Figure~\ref{diagram}, in which the magnets have side lengths $\bm s = [2a, 2b, 2c]\T$ and $\bm S = [2A, 2B, 2C]\T$ respectively and the distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
 
-\begin{figure}[t]
-\centering
-\asyinclude{PhD/Figures/Magnets/akoun}
-\caption{Depiction of the geometry for the two-magnet system.}
-\label{diagram}
-\end{figure}
+As shown earlier in \eqref{akoun},
+\textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations.
+This force is denoted below as $\bm F_{z,z}\fn{\bm s, \bm S, \bm d, J_1, J_2}$ as a function of the magnet sizes, the distance between them, and their magnetisation magnitudes $J_1$ and $J_2$.
+From \eqref{orth-magforce}, \textcite{allag2009-electromotion} provide the force expressions for the first magnet with vertical magnetisation and the second magnet with magnetisation in the horizontal $y$-direction.
+This force is denoted below as $\bm F_{z,y}\fn{\bm s, \bm S, \bm d, J_1, J_2}$.
 
-\textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations. This force is denoted herein as $\bm F_{z,z}\fn{\bm s, \bm S, \bm d, J_1, J_2}$ as a function of the magnet sizes, the distance between them, and their magnetisation magnitudes $J_1$ and $J_2$. \textcite{allag2009-electromotion} provide the force expressions for the first magnet with vertical magnetisation and the second magnet with magnetisation in the horizontal $y$-direction. This force is denoted herein as $\bm F_{z,y}\fn{\bm s, \bm S, \bm d, J_1, J_2}$.
-
-The force between a vertically-magnetised magnet and one with magnetisation in the horizontal $x$-direction can be calculated by applied a rotational transformation to $\bm F_{z,y}$ around the $z$-axis. That is,
-\begin{equation}\label{fzx}
+The force between a vertically-magnetised magnet and one with magnetisation in the horizontal $x$-direction can be calculated by applied a rotational transformation to $\bm F_{z,y}$ around the $z$-axis.
+That is,
+\begin{equation}\eqlabel{fzx}
 \bm F_{z,x}\fn{\bm s, \bm S, \bm d, J_1, J_2} = \mathbf R_z\fn{-\tfrac{\pi}2}\bm F_{z,y}\fn{\bm s_{z,x}, \bm S_{z,x},\bm d_{z,x}, J_1, J_2} ,
 \end{equation}
 where
@@ -926,10 +963,10 @@ for which $\Abs{\cdot}$ is the \emph{element-wise} absolute value function and $
 \end{bmatrix}.
 \end{equation}
 
-Using the force expressions $\bm F_{z,x}$, $\bm F_{z,y}$, and $\bm F_{z,z}$ in superposition allow the force to be calculated between a vertically magnetised magnet and another magnet with arbitrary magnetisation direction. By applying c\"oordinate system transformations to these expressions, arbitrary magnetisation directions can be achieved for the first magnet as well.
+Using the force expressions $\bm F_{z,x}$, $\bm F_{z,y}$, and $\bm F_{z,z}$ in superposition allow the force to be calculated between a vertically magnetised magnet and another magnet with arbitrary magnetisation direction. By applying coordinate system transformations to these expressions, arbitrary magnetisation directions can be achieved for the first magnet as well.
 
 For horizontal $x$-direction magnetisation,
-\begin{equation}\label{fxxyz}
+\begin{equation}\eqlabel{fxxyz}
 \bm F_{x,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, J_1, J_2} =
   \mathbf R_y\fn{\tfrac\pi2} 
   \bm F_{z,\{x,y,z\}}\fn{\bm s_x, \bm S_x, \bm d_x, J_1, J_2}
@@ -949,7 +986,7 @@ and $\mathbf R_y\fn{\theta}$ is the rotation matrix around the $y$-axis:
 \end{bmatrix}.
 \end{equation}
 Similarly, for horizontal $y$-direction magnetisation,
-\begin{equation}\label{fyxyz}
+\begin{equation}\eqlabel{fyxyz}
 \bm F_{y,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, J_1, J_2} = \\
   \mathbf R_x\fn{-\tfrac\pi2} 
   \bm F_{z,\{x,y,z\}}\fn{\bm s_y, \bm S_y, \bm d_y, J_1, J_2}
@@ -969,8 +1006,8 @@ and $\mathbf R_x\fn{\theta}$ is the rotation matrix around the $x$-axis:
 \end{bmatrix}.
 \end{equation}
 
-Given the results of the afore-referenced papers by Yonnet et al. and Equations \eqref{fzx}, \eqref{fxxyz}, and~\eqref{fyxyz}, the force between two magnets of arbitrary magnetisation can be written as
-\begin{equation}\label{total-force}
+Given the results of the afore-referenced papers by Yonnet et al. and \eqref{fzx,fxxyz,fyxyz}, the force between two magnets of arbitrary magnetisation can be written as
+\begin{equation}\eqlabel{total-force}
 \bm F\fn{\bm s, \bm S, \bm d,\bm J_1,\bm J_2}=\sum_{i,j\in\{x,y,z\}^2} \bm F_{i,j}\fn{\bm s, \bm S, \bm d, J_{1_i}, J_{2_j}}
 \end{equation}
 where
@@ -978,48 +1015,9 @@ where
 \bm J_1 &= [J_{1_x},J_{1_y},J_{1_z}]\T, &
 \bm J_2 &= [J_{2_x},J_{2_y},J_{2_z}]\T.
 \end{align}
-The theory to evaluate \eqref{total-force} is implemented in the Matlab function `magnetforces'.
+Although it is well known that the principle of superposition can be used in this way,
+this is the first formalisation of this theory to decompose a diagonal magnetisation into its orthogonal components for calculating the forces between diagonally-polarised magnets.
 
-\subsubsection{Examples}
-
-The verification curve of the results of \textcite{akoun1984}, calculated using \eqref{total-force} with the `magnetforces' function, is shown in Figure~\ref{akoun} for the following system:
-\begin{align}
-\begin{split}
-\bm s &=[\SI{20}{mm}, \SI{12}{mm}, \SI{6}{mm}]\T\\
-\bm S &=[\SI{12}{mm}, \SI{20}{mm}, \SI{6}{mm}]\T\\
-\bm d &=[\SI{-4}{mm}+\delta, \SI{-4}{mm}, \SI{8}{mm}]\T\\
-\bm J_1,\bm J_2&=[0,0,\SI{0.38}{T}]\T
-\end{split}
-\end{align}
-
-\begin{figure}
-\begin{wide}
-\begin{minipage}{0.45\linewidth}
-\psfragfig{magcode/examples/fig/akoun-repro}
-\caption{Reproduction of the results shown by \textcite{akoun1984}.}
-\label{akoun}
-\end{minipage}\hfill
-\begin{minipage}{0.45\linewidth}
-\psfragfig{magcode/examples/fig/janssen-repro}
-\caption{Reproduction of the results of \textcite{janssen2009-sensorletters}.}
-\label{janssen}
-\end{minipage}
-\end{wide}
-\end{figure}
-
-
-The verification curve of the results shown by \textcite{janssen2009-sensorletters} is shown in Figure~\ref{janssen} for the following system:
-\begin{align}
-\begin{split}
-\bm s &=[\SI{10}{mm}, \SI{26}{mm}, \SI{14}{mm}]\T\\
-\bm S &=[\SI{14}{mm}, \SI{26}{mm}, \SI{10}{mm}]\T\\
-\bm d &=[\delta, \SI{-8}{mm}, \SI{15}{mm}]\T\\
-\bm J_1 &=[0,0,\SI{1}{T}]\T,\qquad
-\bm J_2=[\SI{1}{T},0,0]\T
-\end{split}
-\end{align}
-
-The Matlab code to generate Figures \ref{akoun} and~\ref{janssen} is located in the file `examples/magnetforces\_example.m' (see Section~\ref{code}).
 
 
 \subsection{Other approaches}
@@ -1119,7 +1117,6 @@ origins offset by $\inlinevect{x_0,y_0,z_0}$, the forces in the \y- and
 
 Forces in both the $y$ and $z$ direction use the $f_3$ function in
 their calculations.
-\begin{dgroup*}
 \begin{dmath}
 F_y = \frac{J^2}{4\pi\permVac}
   \sum_{i_{a,b,c,A,B,C}\in\{0,1\}}
@@ -1134,9 +1131,10 @@ F_z\bigg|_{\theta\neq k\pi} =
 f_{y_2} = f_3\fn{u_0 , y_0 , z_0 , \theta , c i_c , C i_C}
 \end{dmath},
 \begin{dmath}
-f_{z_2} =  f_3\fn{u_1,v_1,w_1,-\theta,0,0}/{\sin\theta}
-         + f_3\fn{u_2,v_2,w_2,\theta,0,0}/{\tan\theta}
+f_{z_2} =  \frac{f_3\fn{u_1,v_1,w_1,-\theta,0,0}}{\sin\theta}
+         + \frac{f_3\fn{u_2,v_2,w_2,\theta,0,0}}{\tan\theta}
 \end{dmath},
+\begin{dgroup}
 \begin{dmath}
 u_0 = x_0 - ai_a + Ai_A
 \end{dmath},
@@ -1155,7 +1153,7 @@ v_2 = y_0-Ci_C\sin\theta
 \begin{dmath}
 w_2 = z_0-ci_c+Ci_C\cos\theta
 \end{dmath}.
-\end{dgroup*}
+\end{dgroup}
 This is the auxiliary function used in the above. All dashed variables are
 local to this function.
 \begin{dgroup*}
