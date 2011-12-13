@@ -211,12 +211,11 @@
 \newvariable\areaWire{a_w}
 \newvariable\resistivity[nom=Resistivity]{\rho}
 
-\newvariable\turnsWire[nom=Number of turns in the coil]{N}
-\newvariable\turnsRWire[nom=Number of turns in the radial direction]{N_r}
-\newvariable\turnsZWire[nom=Number of turns in the axial direction]{N_z}
+\newvariable\turnsCoil[nom=Number of turns in the coil]{N}
+\newvariable\turnsRCoil[nom=Number of turns in the radial direction]{N_r}
+\newvariable\turnsZCoil[nom=Number of turns in the axial direction]{N_z}
 \newvariable\turnsZMag[nom=Magnet `turns']{N_m}
 
-\newvariable\radiusGap[nom=Difference between the coil inner and magnet outer radii]{r_g}
 \newvariable\radiusWire[nom=Radius of the wire]{r_w}
 \newvariable\diamWire[nom=Diameter of the wire]{d_w}
 
@@ -448,11 +447,10 @@
 
 \newcommand\displ{z}
 \newcommand\eccen{y}
-\newcommand\crossarea{A}
-\newcommand\const{C}
 
-\newvariable\ratioCub[nom=Cuboid magnet ratio]{\gamma}
-\newvariable\ratioMag[nom=Cylindrical magnet ratio]{\alpha}
+\newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio]{\gamma}
+\newvariable\ratioCoil[nom=Coil aspect ratio]{\beta}
+\newvariable\ratioMag[nom=Cylindrical magnet aspect ratio]{\alpha}
 
 \newvariable\faceCub[nom=Face side length of cuboid magnet]{b}
 \newvariable\lengthCub[nom=Depth of cuboid magnet]{a}
