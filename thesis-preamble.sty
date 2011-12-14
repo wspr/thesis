@@ -1,6 +1,16 @@
 %!TEX root = thesis.tex
 \ProvidesPackage{thesis-preamble}
 
+\edef\thesisjobname{\jobname}
+\newcommand\chapterinclude[1]{%
+  \def\jobname{#1}
+  \include{#1}
+  \let\asydir\empty
+  \let\jobname\thesisjobname
+}
+
+\newcommand\referpaper#1{\textit{#1}}
+
 %%% PACKAGES
 
 \RequirePackage[T1]{fontenc} % sane font encoding

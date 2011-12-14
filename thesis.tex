@@ -1,7 +1,6 @@
 \documentclass[11pt,a4paper]{memoir}
 \usepackage{thesis-preamble}
 \EndPreamble
-\includeonly{coil-design}
 \begin{document}
 
 \title{
@@ -9,33 +8,33 @@ Modelling and design of magnetic levitation systems for vibration isolation.
 }
 
 \begin{hideshorttoc}
-\include{front}
+\chapterinclude{front}
 \frontmatter
 \pagestyle{plain}
-\include{abstract}
-\include{acknowledgements}
-\include{contents}
+\chapterinclude{abstract}
+\chapterinclude{acknowledgements}
+\chapterinclude{contents}
 \end{hideshorttoc}
 
 \mainmatter
 \null
 \clearpage
 \pagestyle{wspr}
-\include{intro}
-\include{magnet-theory}
-\include{coil-design}
-\include{magnet-design}
-\include{multipole}
-\include{qzs}
-\include{xpmt}
+\chapterinclude{intro}
+\chapterinclude{magnet-theory}
+\chapterinclude{coil-design}
+\chapterinclude{magnet-design}
+\chapterinclude{multipole}
+\chapterinclude{qzs}
+\chapterinclude{xpmt}
 
-\include{conclusion}
+\chapterinclude{conclusion}
 
 \begin{hideshorttoc}
 \backmatter
 \clearpage
 
-\include{references}
+\chapterinclude{references}
 \clearpage
 \end{hideshorttoc}
 
