@@ -1,14 +1,29 @@
-%!TEX root = thesis.tex
+\documentclass[11pt,a4paper]{memoir}
+\def\asydir{\jobname}
+\usepackage{thesis-preamble}
+\EndPreamble
+\begin{document}
+
 \chapter{Magnet--coil actuators}
 
-rectangular coil: \textcite{rovers2010-ietm}
+\referpaper{The work presented in \secref{magnetcoil-forces,magnetcoil-optimisation} has been submitted as a journal publication and is currently under review~\cite{robertson2012-ietm}.}
 
+\section{Literature on the force between coils and magnets}
 
+In \chapref{magnet-theory} the theory was summarised for calculated forces between permanent magnets; many of these methods used a modelling technique in which a permanent magnet is represented as a surface current density around the circumference of the magnet.
+This theory also covers, therefore, the case where the force between a magnet an a coil is under investigation, provided that the coil being modelled can also be represented as an infinitely thin current density.
+This is the case only for `thin' coils consisting of one (or a small number) of windings deep.
 
+The theory of \textcite{akoun1984} for calculating the force between two cuboid permanent magnets was derived by modelling each magnet in terms of `magnetic charge'; an alternative approach was investigated by \textcite{rovers2010-ietm} for calculating the force between a rectangular cross section coil and a permanent magnet, modelling each non-facing side of the magnet with a surface current density.
+Unlike the magnetic charge model, this approach is still valid when the outer volumes of the coil and magnet overlap, such as when a magnet slides within an outer coil.
 
-\section{Introduction}
+The equivalent of the current surface density model for permanent magnets and thin coils means the same results can be used to calculate both systems, as seen in the work for calculating the force between two thin coils or magnets \cite{babic2008-ietm,ravaud2010-ietm,robertson2011-ietm} summarised in \secref{cyl-forces}.
 
-The theory discussed in this paper is based around an integral expression that can be efficiently numerically implemented for calculating the axial force between a coaxial cylindrical magnet and a `thick' solenoid that consists of many turns both radially and axially.
+\section{Coaxial magnet/coil forces}
+
+\subsection{Introduction}
+
+The theory discussed in this section is based around an integral expression that can be efficiently numerically implemented for calculating the axial force between a coaxial cylindrical magnet and a `thick' solenoid that consists of many turns both radially and axially.
 This integral expression is compared against a variety of other methods.
 
 The motivation for this work is the optimisation of the geometry of a coil--magnet actuator.
@@ -19,13 +34,13 @@ In previous work in modelling cylindrical coil/magnet quasi-static forces, Babic
 Their expressions were simplified in a recent publication~\cite{robertson2011-ietm}.
 Babic et al.~\cite{babic2011-ietm} has also published an equation for the axial force between a thin and thick coil under axial displacement, which is consider in more detail in this work.
 
-\subsection{Reproducibility}
+\subsubsection{Reproducibility}
 
 In order for the work in this paper to be easily reproduced and verified, the software implementation of the theory is available for public use at $\langle$\url{http://github.com/wspr/magcode}$\rangle$.
 Refer to the file `\url{magcode/examples/Thick-Coil-Magnet-Forces.nb}' for the source of the graphs in this publication.
 While this file is written for the Mathematica programming language, the software available is written for both Matlab and Mathematica and contains numerical implementations for not just this work but also a variety of other permanent magnet calculations.
 
-\section{Geometry}
+\subsection{Geometry}
 
 The system under investigation is shown in \figref{coil-magnet,coil-schem}.
 In this work there is no restriction on the size or geometry of the magnet or coil.
@@ -34,14 +49,14 @@ The clearance between the inner coil and magnet radii is denoted $\cradiusCoil=\
 
 \begin{figure}
   \centering
-  \asyinclude{PhD/Figures/Coil/coil-magnet.asy}
+  \asyinclude{\jobname/coil-magnet}
 \caption{Three-dimensional sketch of the system composed of a permanent magnet (unshaded, left) and thick coil (shaded, right). The magnet can be modelled as an equivalent cylindrical surface current density, and the coil  as a volumetric current density.}
 \figlabel{coil-magnet}
 \end{figure}
 
 \begin{figure}
   \centering
-  \asyinclude{PhD/Figures/Coil/coil-schem}
+  \asyinclude{\jobname/coil-schem}
 \caption{Schematic of a `sleeve coil' magnetic actuator. This geometry can be described in terms of magnet ratio $\ratioMag=\lengthMag/\oradiusMag$ and coil ratio $\ratioCoil=\lengthCoil/\iradiusCoil$.}
 \figlabel{coil-schem}
 \end{figure}
@@ -51,7 +66,7 @@ The coil may have many turns in both axial and radial directions; denote $\turns
 The permanent magnet is assumed to have a sufficiently large coercivity such that its magnetisation strength will not be affected by the magnetic field of the coil.
 The permanent magnet is also assumed to be homogeneous with a constant magnetisation strength $\remanence$ in the axial direction only.
 
-\section{Thick-coil/magnet axial force methods}
+\subsection{Thick-coil/magnet axial force methods}
 \seclabel{magcoil-theory}
 
 In this section we will discuss the theory for calculating the interaction force between the thick coil and permanent magnet configuration shown in \figref{coil-magnet}.
@@ -59,14 +74,20 @@ In the first two force calculation methods, `filament' and `shell', the coil and
 The final method uses a single integral expression to calculate the force, and two formulations and solutions for this integral are discussed.
 
 \begin{figure}
-    \hspace{1.4cm}%
-    \makebox[0pt][l]{\asyinclude{PhD/Figures/Coil/coil-shell.asy}}%
-    \makebox[0pt][l]{\hspace{-0.5\linewidth}\asyinclude{PhD/Figures/Coil/coil-filament.asy}}%
-\caption{The filament and shell models (left and right, respectively). In the filament model, the magnet and thick coil are modelled with individual current loops. In the shell model, the magnet is modelled as a cylindrical surface current density and the thick coil is modelled as a number of individual concentric surface current densities to represent multiple windings in the radial direction.}
+    \hspace{-7cm}%
+    \makebox[0pt][l]{\asyinclude{\jobname/coil-shell}}%
+    \makebox[0pt][l]{%
+      \hspace{-0.5\linewidth}%
+      \asyinclude{\jobname/coil-filament}%
+    }%
+\caption{
+  The filament and shell models (left and right, respectively). In the filament model, the magnet and thick coil are modelled with individual current loops.
+  In the shell model, the magnet is modelled as a cylindrical surface current density and the thick coil is modelled as a number of individual concentric surface current densities to represent multiple windings in the radial direction.
+}
 \figlabel{filament-shell}
 \end{figure}
 
-\subsection{The filament method}
+\subsubsection{The filament method}
 
 For two circular coaxial loops (i.e., a single turn of a solenoid) carrying currents $I_1$ and $I_2$ respectively,
 the axial force between them is given by~\cite[e.g.]{shiri2009-pier}
@@ -98,10 +119,11 @@ The arrangement of `turns' used to model the permanent magnet is related to an e
 The number of `turns' $\turnsZMag$ used to model the permanent magnet should be chosen to be sufficiently large such that the resultant force converges to a stable value.
 
 
-\subsection{The shell method}
+\subsubsection{The shell method}
 
 In the `shell method', a thick solenoid and a magnet may be modelled by representing each radial layer of turns as a separate thin coil with surface current density $1/\turnsRCoil$ the volume current density.
 The force between them is calculated by summing the forces through superposition of the forces between each thin coil and the magnet.
+\def\m#1{m_{#1}}
 \begin{dmath}[label=shellforce]
 F_{z_2} = \frac{1}{\turnsRCoil}\Sum{ F_s\fn{\oradiusMag,r\fn{n_r},\lengthMag,\lengthCoil,\displ} }{n_r,1,\turnsRCoil}
 \end{dmath}
@@ -134,7 +156,7 @@ with parameters
 \end{align}
 The function $\EllipticPi{n,m}$ is the complete elliptic integral of the third kind with parameter $m$.
 
-\subsection{An integral method}
+\subsubsection{An integral method}
 
 An integral expression for the force between a solenoid and magnet is derived using the theory of Furlani~\cite{furlani2001-magnetbook}.
 Here we have assumed that the solenoid can be modelled as a volume current density and the permanent magnet is modelled as a surface current density around its circumference.
@@ -192,7 +214,7 @@ Note that $\distrb{3}$ and $\distrb{1}$ in \eqref{cylforcez-auxiii} are variable
 Computing \eqref{cylforcez} using a numerical integration is an efficient means to calculate the axial force between a coaxial magnet and solenoid.
 This method is here referred to as the `integral' method.
 
-\subsection{The integral method of Babic et al.}
+\subsubsection{The integral method of Babic et al.}
 
 Babic et al.~\cite{babic2011-ietm} presented a different solution for the integral of \eqref{magcoil-integral}.
 Their solution consists of an entirely analytical component with one separate term requiring a single numerical integration.
@@ -273,7 +295,7 @@ and $\Sign{\cdot}$ represents the sign function
 \end{equation}
 When implementing \eqref{babicforce}, note that $t f_{z_4}=0$ when $t=0$ and the inner term $f_{z_4}$ does not need to be evaluated.
 
-\subsection{Comparison of these methods}
+\subsubsection{Comparison of these methods}
 
 The filament model with a single radial turn ($\turnsRCoil=1$) can be used to verify the thin-coil magnet force, and an initial verification of the integral solution can be performed by comparing the thin-coil results for a thick-coil with coil thickness equal to the wire diameter.
 Force versus displacement calculations are performed with these three techniques (\eqref{filamentforce,shellforce,cylforcez}) using the physical parameters defined in \tabref{magcoil-thin-compare-param}; these are shown in \figref{magcoil-thin-compare} and it can be see that the three models produce comparable results.
@@ -369,13 +391,14 @@ Precision & Babic, \eqref{babicforce} & Integral, \eqref{cylforcez} \\
 While the computational times given in this section are specific to the platform used to perform the calculations, their relative differences should be comparable across different computers and numerical implementations.
 
 \section{Optimisation of a sleeve coil magnetic actuator}
+\seclabel{magnetcoil-optimisation}
 
-In the previous sections, we have presented equations for calculating coil forces with arbitrary examples for verification.
+In the previous section, we have presented equations for calculating coil forces with arbitrary examples for verification.
 These equations can be used for design optimisation for magnetic actuator design; for example, to choose geometric parameters for an inertial shaker to maximise the peak force or to maximise the stroke length.
 In this section, a common `sleeve coil' configuration is investigated in which a cylindrical magnet moves axially within a hollow coil, such that the inner coil radius is greater than the magnet radius; $\iradiusCoil>\oradiusMag$.
 A schematic of this system is shown in \figref{coil-schem}.
 
-\subsection{Relationship between coil impedance and outer diameter}
+\subsubsection{Relationship between coil impedance and outer diameter}
 \seclabel{magcoil-radii}
 
 When attempting to optimise the force output of a coil/magnet design, it is important to carefully consider the parameters to be varied so that comparisons between difference cases are fair.
@@ -406,7 +429,7 @@ Therefore, an expression for the outer radius of the coil for a coil of fixed in
   \oradiusCoil = \sqrt{\frac{\lengthWire\diamWire^2}{\pi \lengthCoil}+\iradiusCoil^2}.
 \end{dmath}
 
-\subsection{Notation}
+\subsubsection{Notation}
 
 From \secref{magcoil-theory}, the axial force versus displacement for a coil/magnet system can be expressed as a function of its gross geometric parameters (defined in \figref{coil-magnet}) as
 \begin{dmath}[label=magcoil-ffn1]
@@ -437,7 +460,7 @@ The goal of the analysis will be to derive optimum values for certain of these p
 
 At the outset it is assumed that increasing the magnet volume $\volMag$ will result in greater forces since there will be a greater amount of magnetic energy in the system; this is not then a parameter to be varied but instead to be selected as necessary.
 
-\subsection{Optimisation of magnet and coil geometry}
+\subsubsection{Optimisation of magnet and coil geometry}
 \seclabel{sleeve}
 
 To perform the optimisation of magnet and coil geometries, the shell method, \eqref{shellforce}, is used to calculate the force as a function of displacement with varying magnet and coil ratios.
@@ -480,7 +503,7 @@ This surface can be seen to be concave, and therefore a single value for $\ratio
 \figlabel{magcoil-fmax-ratios}
 \end{figure}
 
-\subsection{Optimisation of wire diameter}
+\subsubsection{Optimisation of wire diameter}
 \seclabel{wire-diam}
 
 \begin{figure}
@@ -560,7 +583,7 @@ Increasing the volume of the permanent magnet will generally be a more suitable 
 The overall outcome of this modelling is to conclude that after choosing a magnet volume and coil impedance, it is possible to optimise the force--displacement curve according to some cost function to choose the wire diameter, magnet shape, and number of coil turns.
 Designing a device to achieve a certain peak force, say, then requires simply choosing an appropriate magnet size and coil impedance, both of which depend on additional considerations including cost, availability of amplifier specifications, requirements for compact design, and so on.
 
-\section{Conclusion}
+\subsection{Conclusion}
 
 In this section we have summarised and compared the theory for analytically calculating the force generated between a thick coil of varying dimensions and a cylindrical permanent magnet with relative displacement in the axial direction.
 Despite the integral equation for this system being solved by other researchers almost entirely analytically, in some cases such a solution is computationally more expensive than numerical integration.
@@ -580,7 +603,7 @@ This design methodology can also be used to optimise the system parameters using
 
 For eccentric displacement in the radial direction, $\eccen$, the limits of integration must be expressed in a translated coordinate system (see Figure~\ref{fig:int-offset}) and the original integral must be expressed with additional terms to take this into account.
 
-\begin{figure}[b]
+\begin{figure}
 \centering
 \asyinclude{PhD/Figures/Coil/circle-offset}
 \caption{Region of integration for a radially displaced magnet, shifted by $(\xi,\eta)$ from the original coordinate system.}
@@ -1653,5 +1676,5 @@ side. \fxfatal{expand}
   \figlabel{dual-coil}
 \end{figure}
 
-
+\end{document}
 

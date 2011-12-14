@@ -15,6 +15,8 @@ phenomena\dots}{\textcite{boerdijk1956b}}
 }
 
 
+\referpaper{The work presented in \secref{cylforces} is based on material that has been published as a journal paper~\cite{robertson2011-ietm}.}
+
 \section{Magnetic fields}
 
 It's instructive but misleading to think about magnetic fields
@@ -421,11 +423,11 @@ where $\bm\phi(\bm\delta) = [\phi_x(\bm\delta),\phi_y(\bm\delta),\phi_z(\bm\delt
 The $(z,z)$ subscript refers to the directions of magnetisation of the magnets.
 Force calculations for magnets oriented in the $x$ or $y$ directions can be found using a coordinate system transformation on \eqref{akoun}.
 
-This form of \eqref{akoun} arises as it is derived from six nested direct integrals. 
+This form of \eqref{akoun} arises as it is derived from six nested direct integrals.
 Rather than expanding the limits of each integral, the following summation notation is used instead; say $f$ integrates to $F$:
 \begin{equation}
 \int_{-a}^{a}
-f(x) \dee x = F(a)-F(-a) = 
+f(x) \dee x = F(a)-F(-a) =
 \!\!\! % space hack
 \sum_{i\in\{0,1\}} F(a\gp{-1}^i)\cdot \gp{-1}^i  .
 \end{equation}
@@ -470,7 +472,7 @@ The $\bm\phi$ terms required for calculating the `force between nodes' can now b
 \begin{bmatrix}
 \half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\tfrac{uv}{rw}}+\half ru \\
 \half\gp{u^2-w^2}\Log{r-v}+uv\Log{r-u}+uw\ArcTan{\tfrac{uv}{rw}}+\half rv \\
--uw\Log{r-u}-vw\Log{r-v}+uv\ArcTan{\tfrac{uv}{rw}}-rw 
+-uw\Log{r-u}-vw\Log{r-v}+uv\ArcTan{\tfrac{uv}{rw}}-rw
 \end{bmatrix}
 \end{dmath}
 Note that when evaluating these functions numerically, two singularities must be accounted for:
@@ -485,7 +487,7 @@ The stiffness characteristics can be derived by differentiating \eqref{akoun} wi
 \end{dmath}
 where
 \begin{dmath}
-\bm k = 
+\bm k =
 \begin{bmatrix}
 -\frac{v u^2}{u^2+w^2}-r-v \Log{r-v} \\
 -\frac{u v^2}{v^2+w^2}-r-u \Log{r-u} \\
@@ -520,8 +522,8 @@ The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner 
 \end{equation}
 where $\bm f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
 \begin{equation}\label{torqu-2}
-\bm f_{j,l,q}=\tfrac{J_1 J_2}{4\pi\mu_0} 
-  \!\!\!\sum_{i,k,p\in\{0,1\}^3}\!\!\! 
+\bm f_{j,l,q}=\tfrac{J_1 J_2}{4\pi\mu_0}
+  \!\!\!\sum_{i,k,p\in\{0,1\}^3}\!\!\!
   \bm\phi\fn{\bm d_{i,j,k,l,p,q}}
   \cdot
   \gp{-1}^{i+j+k+l+p+q}.
@@ -718,6 +720,7 @@ The Matlab code to generate Figures \ref{akoun} and~\ref{janssen} is located in 
 
 
 \section{Forces between cylindrical magnets}
+\seclabel{cyl-forces}
 
 Ravaud et al.~\cite{ravaud2010-ietm} recently published an expression for the forces between two cylindrical magnets or thin coils (which are equivalent electromagnetically). We have presented a simplification of their equation \parencite{robertson2011-ietm}.
 This simplification results in a faster execution time and more convenient calculation with numerical software.
@@ -739,7 +742,7 @@ The equation for the force between cylindrical magnets can also be used to calcu
 
 The equation of Ravaud et al.~\cite{ravaud2010-ietm} is suitable for use for magnets or coils of any size with no restriction on axial displacement. For magnets, they are assumed to have constant magnetisation that is strong enough such that adjacent magnets will not affect the magnetisation of each other. For coils, they are modelled as surface current densities only; therefore for accurate coil calculations the radial thickness of the coil must be much smaller than its radius and the coil must be wound tightly in the axial direction. The force between thick coils with many radial turns has been shown also by Ravaud~et al.~\cite{ravaud2010-pier}; this expression requires some numerical integration and is accordingly slower to calculate than the expression for thin coils discussed herein.
 
-The system consists of two coaxial cylindrical magnets or current-carrying coils which have a relative axial displacement between them, as shown in Fig.\,\ref{fig:cyl-schem}. 
+The system consists of two coaxial cylindrical magnets or current-carrying coils which have a relative axial displacement between them, as shown in Fig.\,\ref{fig:cyl-schem}.
 A three-dimensional schematic is shown later in Fig.\,\ref{fig:coil-param} that also illustrates the equivalence between a magnet and a coil in this system.
 
 \begin{figure}
@@ -798,7 +801,7 @@ The equivalence of the simplified equation is demonstrated with an example in wh
 \begin{dmath}
 \displ=\half\gp{z_3+z_4}-\half\gp{z_1+z_2}
 \end{dmath}.
-Fig.\,\ref{fig:coil-param} shows the parameters used in the simulations and 
+Fig.\,\ref{fig:coil-param} shows the parameters used in the simulations and
 Fig.\,\ref{fig:ex1} displays the respective outputs calculated with the old equation using Mathematica and the new equation using Matlab.
 These calculations are performed in the example files mentioned in Section~\ref{sec:intro}.
 
@@ -854,7 +857,7 @@ In the simulation results, the magnet experiences zero force when it is axially 
     \end{axis}
   \end{tikzpicture}
   \caption{An example of the force generated on a cylindrical magnet by a coil with parameters defined in Fig.\,\ref{fig:coil-param}. Displacement is defined as zero when the coil and magnet are axially centred with respect to each other. The new equation is implemented in Matlab vs the old equation in Mathematica to ensure the two are numerically equivalent.}
-  \figlabel{ex1}  
+  \figlabel{ex1}
 \end{figure}
 
 
@@ -968,7 +971,7 @@ Using the force expressions $\bm F_{z,x}$, $\bm F_{z,y}$, and $\bm F_{z,z}$ in s
 For horizontal $x$-direction magnetisation,
 \begin{equation}\eqlabel{fxxyz}
 \bm F_{x,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, J_1, J_2} =
-  \mathbf R_y\fn{\tfrac\pi2} 
+  \mathbf R_y\fn{\tfrac\pi2}
   \bm F_{z,\{x,y,z\}}\fn{\bm s_x, \bm S_x, \bm d_x, J_1, J_2}
 \end{equation}
 where
@@ -988,7 +991,7 @@ and $\mathbf R_y\fn{\theta}$ is the rotation matrix around the $y$-axis:
 Similarly, for horizontal $y$-direction magnetisation,
 \begin{equation}\eqlabel{fyxyz}
 \bm F_{y,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, J_1, J_2} = \\
-  \mathbf R_x\fn{-\tfrac\pi2} 
+  \mathbf R_x\fn{-\tfrac\pi2}
   \bm F_{z,\{x,y,z\}}\fn{\bm s_y, \bm S_y, \bm d_y, J_1, J_2}
 \end{equation}
 where
@@ -1259,12 +1262,12 @@ It can be seen that the opposite rotations result in symmetric forces curves, as
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fy}
     \caption{Horizontal forces.}
-    \figlabel{charp-0to2pi-Fy}  
+    \figlabel{charp-0to2pi-Fy}
   \end{subfigure}\hfil
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fz}
     \caption{Horizontal forces.}
-    \figlabel{charp-0to2pi-Fy}  
+    \figlabel{charp-0to2pi-Fy}
   \end{subfigure}
   \end{wide}
   \caption{Vertical and horizontal forces on a rotating magnet situated directly above another.}
