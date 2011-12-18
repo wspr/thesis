@@ -267,6 +267,23 @@ magnetic field.
 \end{table}
 
 
+\section{Assorted}
+
+
+The remanence magnetisation is calculated from the nominal energy
+product of the magnets \cite{campbell1994}. The nominal energy product
+$\BHmax$ is related to the saturation magnetisation by
+\begin{dmath}
+\BHmax = \permVac\gp{\half \Msat}^2,
+\end{dmath}
+which can be used to calculate the remanence with the relation
+$\remanence=\permVac\Msat$:
+\begin{dmath}
+\remanence=\sqrt{4\permVac\BHmax}=\SI{1.39}{T}.
+\end{dmath}
+
+
+
 \section{Analytical expressions for the magnetic field}
 
 New publications on the analytic magnetic field equation for a thick coil appear to be being published at an accelerating rate \cite{danilov1971-nim,urankar1982-ietm,azzerboni1993-ietm,labinac2006-ajp,pechenkov2006-rndt,ravaud2010-emwaves}.
@@ -1274,6 +1291,13 @@ It can be seen that the opposite rotations result in symmetric forces curves, as
   \figlabel{charp-0to2pi}
 \end{figure}
 
+
+\section{Future work}
+
+The code presented here currently only contains algorithms for calculating forces and stiffnesses between cuboid magnets without rotation. \textcite{charpentier1999-ietm-sep} present expressions for two components of the force between cuboid magnets with rotation around one axis (also see their related publications around the same time), but there is no general solution known without using semi-numerical methods \parencite{charpentier2001}.
+
+
+\textcite{janssen2009-ietm} have derived the analytical forces between pyramidal-frustrum shaped magnets, which have not quite yet been published at time of writing. 
 
 
 \section{Reproducible research}
