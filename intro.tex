@@ -1,5 +1,8 @@
-%!TEX root = thesis.tex
-
+\documentclass[11pt,a4paper]{memoir}
+\def\asydir{\jobname}
+\usepackage{thesis-preamble}
+\EndPreamble
+\begin{document}
 \chapter{Introduction}
 
 \epigraph{In my experience I found that the most effective way to express something in order to make others understand is to use the simplest language. Also I learned from teaching that the more rigid the language the less effective it is.}{\textcite{mahathera1990-mindfulness}}
@@ -87,7 +90,7 @@ Active control systems can be used with \qzs/ systems to improve their  performa
   \item Remove the instability at the \qzs/ location with a nonlinear controller;
   \item Online tuning of the system for load-independent operation.
 \end{enumerate}
-The first two of these strategies are investigated in this thesis.
+Only the first of these strategies is investigated in this thesis.
 
 
 \subsection{Project context}
@@ -390,24 +393,23 @@ An analogous result was shown by \textcite{hoque2006} for a three-axis vibration
 In the context of isolating vibration of a train, \textcite{li1999} discuss the disadvantages in tracking when applying skyhook damping for systems that experience very low frequency (\ie, steady state) changes in the base position, but for the purposes of vibration isolation this is not a problem if the ground is assumed to experience disturbance with zero mean.
 (They also use Kalman filters for estimating velocity but such a signal is suitable only for tracking, not for control, due to the time delay due to the processing and calculation of the resultant signal.)
 
-A similar result \fxfatal{check/qualify this} can be achieved with dynamic stiffness control, which can be effected with `semi-active' variable stiffness feedback control \cite{leavitt2007}.
+\subsubsection{Semi-active skyhook damping}
 
-In the original and crude method of implementing skyhook control, the switching mode that is necessary to emulate the `skyhook' in the controlled damping introduces higher order (odd-multiple) harmonics in the frequency response, as shown by \textcite{ahmadian2001}, who later proposed two `jerk-free' skyhook algorithms \cite{ahmadian2004}.
+The `skyhook' term commonly appears in the related field of semi-active vibration control, which uses dynamic stiffness control as a feedback mechanism to approximate absolute velocity feedback control \cite{leavitt2007}.
+In the original and crude method of implementing skyhook control in this manner, the switching mode that is necessary to emulate the `skyhook' in the controlled damping introduces higher order (odd-multiple) harmonics in the frequency response, as shown by \textcite{ahmadian2001}, who later proposed two `jerk-free' skyhook algorithms to avoid this problem \cite{ahmadian2004}.
 
 Further work in the area was established by \textcite{liu2002}, who demonstrated a number of skyhook-like semi-active damping methods, including smoothing functions to eliminate the problem of jerk
 \cite{liu2005}.
   \note{These references by Liu contain essentially the same material, with greater detail in the first. The 2005 paper is easier to read than the 2002 Technical Memorandum simply due to the formatting of the documents.}
 
-\textcite{song2007} used the nonlinearities of semi-active skyhook damping as justification for the design of an adaptive controller for vibration isolation; they did not compare their results with recent work in the skyhook area, however.
+\textcite{song2007} used the nonlinearities of early semi-active skyhook control as justification for the design of an adaptive controller for vibration isolation; they did not compare their results with recent work in the skyhook area, however.
 
 
 \subsubsection{Alternative control approaches}
 
 The introduction given above covers active vibration control with classical acceleration/velocity/displacement feedback methods.
-More advanced methods are briefly discussed here.
-Only works that explicitly target vibration isolation systems are discussed, although there have been many papers published recently that the reader may find interesting albeit off-topic \cite{chatterjee2008,mottershead2008}.
-
-In approximate order of complexity and effectiveness, a variety of vibration isolation control approaches are briefly discussed below.
+More advanced methods are briefly discussed here to highlight the broad scope of the field of active vibration control and to give a brief taste of such variety.
+These various methods are introduced below in approximate order of complexity and/or effectiveness.
 
 \paragraph{Combination approaches of linear feedback}
 
@@ -467,9 +469,12 @@ In high precision contexts, a resonance frequency of less than \SI{1}{Hz} is oft
 Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.
 Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
 
+\textcite{hong2010-rsi} designed a six degree of freedom isolation table that used voice coil motors in concert with leaf springs to suspend the payload.
+Velocity measurements using geophones were used for feedback control using loop shaping and a consideration of the vibration modes of the structure to design a lag controller for the system.
+From a passive system with resonance at \SI{5}{Hz}, the transmissibility was reduced to less than \SI{1}{Hz} with \SI{35}{dB} attentuation at \SI{5}{Hz}.
 
 
-\subsection{Vibrations literature introduced and then ignored}
+\subsection{Vibration neutralisers and narrow-band vibration control}
 
 Until this point in the introduction, the only focus on the vibration control literature has rested upon the area directly related to vibration isolation through modification (whether active, semi-active, or passive) of the supporting structure for the mass.
 The landscape for vibration control is much broader, however.
@@ -504,9 +509,9 @@ A comparison of some of these methods, including skyhook damping and semi-active
 
 \textcite{paulitsch2003} uses an electromechanical actuator that serves as a self-sensing device for vibration control.
 The idea of self-sensing for magnetic levitation purposes (in both cases using a electromagnet) has been shown previously \cite{bleuler1992,vischer1993}.
-These self-sensing devices (perhaps obviously, since the \backemf/ is such a noisy signal) do not perform nearly as well as when using a dedicated sensor, but the technique is particularly interesting for low-cost, low-precision devices.
+These self-sensing devices do not perform nearly as well as when using a dedicated sensor (perhaps obviously, since the \backemf/ is such a noisy signal), but the technique is particularly interesting for low-cost, low-precision devices.
 
-\fxfatal{Use the above literature to justify not using these techniques.}
+The addition of inertial actuators produces additional resonances into the structure and the resonance of the actuator limits the broadband performance of the control. As such, this approach is best suited for use in \emph{a posteriori} vibration control measures. 
 
 \subsubsection{Narrow-band vibration isolation}
 \seclabel{vibneut}
@@ -571,11 +576,10 @@ Especially for low-damping neutralisers, their efficacy decreases rapidly as the
 To avoid the problem of neutraliser de-tuning due to slow variations in the frequency content of the input disturbance, semi-active methods can be used to observe or track the resonance frequency of the disturbance and adjust the stiffness of the neutraliser appropriately in order to retain its tuning.
 Such neutralisers typically use a variable stiffness element, which can take many forms \cite{ting-kong1999,kidner2002,holdhusen2007}.
 \textcite{brennan2006} discusses a wide variety of actuators that may be used to construct a \vibneut/:
-\begin{quote}
+\begin{quote}\itshape
 There is not a single ``best'' way of making an [adaptive tuned vibration absorber].
 It depends upon the required frequency range, the agility (speed of reaction) and cost.
 \end{quote}
-
 An interesting addition to this field was shown by
 \textcite{ivers2008} with a mechanically self-tuning \vibneut/.
 While not as efficacious as an adaptive \vibneut/ that uses an external power source, the ability to adapt to the excitation frequency using only the energy of the disturbance itself is commendable if somewhat esoteric.
@@ -1160,25 +1164,22 @@ only the component of magnetic field in the perpendicular direction
 that influences the eddy force. This has implications on the
 arrangement of eddy current dampers for vibrating structures.
 
-Two configurations of eddy current dampers are shown in
-\figref{eddy}. The two systems behave somewhat differently. A
-comparison (\fxfatal{DOES IT?!?} of the flux through the conductive
-sheets perpendicular to the motion of the mass shows that the vertical
-configuration results in greater damping force. However, this system
-will also exhibit a nonlinear damping force as the gap between the
-magnet and conductor vary with displacement of the mass. In practice
-this should not be a significant problem as the gap will usually be
-somewhat larger than the motion of the mass.
+Two configurations of eddy current dampers are shown in\figref{eddy}.
+The two systems behave somewhat differently.
+A comparison (\fxfatal{DOES IT?!?} of the flux through the conductive sheets perpendicular to the motion of the mass shows that the vertical configuration results in greater damping force.
+However, this system will also exhibit a nonlinear damping force as the gap between the magnet and conductor vary with displacement of the mass.
+In practice this should not be a significant problem as the gap will usually be somewhat larger than the motion of the mass.
 
 \begin{figure}
   \begin{subfigure}
-    \asyinclude{PhD/Figures/Damping/eddy-h}
+    \asyinclude{\jobname/eddy-h}
     \caption{Horizontal configuration; eddy
       currents induced via axial magnetic
       flux.\figlabel{eddy-h}}
   \end{subfigure}
+  \hfil
   \begin{subfigure}
-    \asyinclude{PhD/Figures/Damping/eddy-v}
+    \asyinclude{\jobname/eddy-v}
     \caption{Vertical configuration: eddy
        currents induced via radial magnetic
        flux.\figlabel{eddy-v}}
@@ -1189,10 +1190,7 @@ somewhat larger than the motion of the mass.
 \end{figure}
 
 Experimental results of a magnetically levitated mass
-(\fxfatal{crossref}) later show that the damping in this case is very
-low, making a passive non-contact eddy current damper of high
-importance for vibration suppression in systems that will not be
-receiving significant control effort.
+(\fxfatal{crossref}) later show that the damping in this case is very low, making a passive non-contact eddy current damper of high importance for vibration suppression in systems that will not be receiving significant control effort.
 
 
 \subsection{Summary of magnetics}
@@ -1209,6 +1207,17 @@ In the next section, the marriage is made between magnetic forces and vibration 
 \section{Magnets and vibrations}
 \seclabel{magnetsisolation-apps}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+This section explores the overlap between vibration isolation and magnetic actuation systems.
+For the purposes of this thesis, three broad topics are of interest:
+\begin{description}
+\item[\secref{magnet-platform-isolation}]
+Vibration isolation systems designed using magnetic actuators
+\item[\secref{magnet-nonlinear}]
+The nonlinear dynamics of magnets in motion
+\item[\secref{qzs-explore}]
+The field of `\qzs/', to which a contribution is made in \chapref{qzs}
+\end{description}
 
 \subsection{Vibration isolation platforms}
 \seclabel{magnet-platform-isolation}
@@ -1232,6 +1241,7 @@ It is believed that high-powered electromagnets were required for this design; w
 
 
 \subsection{Nonlinear vibration and/or magnetic systems}
+\seclabel{magnet-nonlinear}
 
 One characteristic property of nonlinear springs is their exhibition of so-called `jump phenomena' whereby the frequency response curve can take multiple values at a single frequency, depending on the initial conditions.
 
@@ -1380,11 +1390,10 @@ Conversely, the broader peak of a hardening spring has been shown to be useful f
 
 
 
-\subsection{(Quasi--)infinite stiffness systems}
+\subsubsection{Quasi--infinite stiffness systems}
 \seclabel{infstiff}
 
-This small section covers an area of research commonly cited in the field.
-A swath of papers have been published by Mizuno over the years
+For completeness, this section covers the opposite of \qzs/: quasi--\emph{infinite} stiffness, largely expounded in a swath of papers over the last decade
 \cite{mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2007}.
 
 Both \textcite{nijsse2001} and \textcite{mizuno2003a} (with related
@@ -1407,10 +1416,43 @@ A variation of this idea was explored later \parencite{mizuno2010-jvc}, with the
 
 
 
-\subsection{Summary of magnets and vibrations}
+
+\section{Structure of this thesis}
+
+This chapter has introduced the themes of this thesis; at this point it is prudent to suggest where the following chapters will lead.
+
+\begin{description}
+\item [\chapref{magnet-theory}]
+      A literature review and extension on the principles of calculating the forces between permanent magnets.
+\item [\chapref{coil-design}]
+      A literature review and extension on the principles of calculating the quasi-static forces for electromagnets, culminating with an optimisation of a common electromagnetic actuator.
+\item [\chapref{magnet-design}]
+      A broad look at using permanent magnets for the design of magnetic load bearing systems, culminating in the analysis of a novel magnetic support that uses inclined magnets to achieve load-invariant resonance frequency.
+\item [\chapref{multipole}]
+      A quick discussion of the use of `multipole' or `Halbach' arrays composed of many various-facing magnets for improving the load bearing capabilities for magnetic supports.
+\item [\chapref{qzs}]
+      An analysis of two \qzs/ systems; first a common design using linear springs, and the second a detailed analysis of the \qzs/ properties achievable using a magnetic system.
+\item [\chapref{xpmt}]
+      Finally, some brief experimental results of a variable-stiffness magnetic support based on some of the principles discussed in \chapref{qzs}.
+\end{description}
+
+\newpage
+\subsection{Contributions of this thesis}
+
+The following works have been published during the course of my postgraduate study.
+In one form or another, most of these works have been incorporated into this thesis and are highlighted herein where appropriate.
+
+\begin{itemize}
+\item \fullcite{robertson2005-ietm}
+\item \fullcite{robertson2006-activeconf}
+\item \fullcite{robertson2007-icsv}
+\item \fullcite{robertson2009-jsv}
+\item \fullcite{robertson2010-maglett}
+\item \fullcite{robertson2010-maglett-fix}
+\item \fullcite{robertson2011-ietm}
+\item \fullcite{robertson2012-jsv}
+\item \fullcite{robertson2012-ietm}
+\end{itemize}
 
 
-\subsection{unfiled}
-
-\textcite{hong2010-rsi}
-
+\end{document}
