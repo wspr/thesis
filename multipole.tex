@@ -21,11 +21,6 @@
 \referpaper{The material presented in \secref{optim-halbach-1d} is based on work that has been published as a journal paper~\cite{robertson2010-maglett}.}
 
 
-\section{Future work}
-
-\textcite{lee2006-mx} and \textcite{cho2001} present different planar arrays using block magnets with trapezoidal and triangular cross-sections, and \textcite{yan2006-iemx} calculate torque for spherical multipole arrays with `dihedral cone'-shaped magnets. And there are a wide variety of cylindrical multipole arrays in use for bearing and brushless motor applications \parencite{zhu2001-ipep}.
-
-
 \section{Multipole}
 
 The next requirement of the design of the magnetic spring is high load
@@ -212,7 +207,29 @@ A schematic of this system is shown in \figref{allag-system}.
 \figlabel{allag-system}
 \end{figure}
 
-The Matlab code to generate \figref{allag} may be found in `examples/multipole\_example.m'. This is a good example of the convenience of using this framework for calculating results of this kind. Of the around 70 lines of code in `multipole\_example.m', only some 20 lines of code are necessary to set up the system parameters and calculate the forces; the rest of the file consists of comments, whitespace, and producing the actual figure itself.
+The Matlab code to generate \figref{allag} may be found in `examples/multipole\_example.m'. An example of the structure of this code is shown below:
+\begin{verbatim}
+fixed_array = struct(...
+  'type','linear',    ...
+  'align','y',        ...
+  'face','up',        ...
+  'msize',  [0.01],   ... % 10cm cube magnet
+  'Nmag_per_wave', 4, ... % 90 degree rotations
+  'Nwaves', 1             % one wavelength of magnetisation
+  );
+
+float_array = fixed_array;
+float_array.face = 'down';
+
+yrange = linspace(-0.08,0.08,201);
+zgap = repmat([0; 0; 0.015],[1 length(yrange)]);
+displ = zgap + [0; 1; 0]*yrange;
+
+forces = multipoleforces(fixed_array, float_array, displ);
+\end{verbatim}
+This is a good example of the convenience of using this framework for calculating results of this kind.
+The bulk of the code is simply definitions for the multiple arrays.
+Of the around 70 lines of code in `multipole\_example.m', only some 20 lines of code are necessary to set up the system parameters and calculate the forces; the rest of the file consists of comments, whitespace, and producing the actual figure itself.
 
 \begin{figure}
 \centering
@@ -291,12 +308,11 @@ Consider two linear Halbach arrays of equal size with height $\mupheight=\SI{10}
 It can be seen in \figref{Nwaves}(a) that for a small number of wavelengths, the discretisation of the magnetisation makes little difference to the force characteristic. But as the number of wavelengths increases the number of magnets per wavelength has an increasing effect. As seen most prominently in \figref{Nwaves}(c), increasing the number of magnets per wavelength $\mupmagperwave$ increases the forces over all values of displacement considered.
 
 \begin{figure*}
-\centering
-\pregen{%
+\begin{wide}
 \subfloat[]{\psfragfig{magcode/examples/magspring/fig/halbach-waves-Nwaves-1}}\hfil
 \subfloat[]{\psfragfig{magcode/examples/magspring/fig/halbach-waves-Nwaves-2}}\hfil
 \subfloat[]{\psfragfig{magcode/examples/magspring/fig/halbach-waves-Nwaves-4}}
-}
+\end{wide}
 \caption{Force vs.\ displacement normalised by the array height $\mupheight$ between two facing linear Halbach arrays with a varying number of magnets per wavelength~$\mupmagperwave$ and a varying number of wavelengths of magnetisation~$\mupNwaves$. The dashed line is the force between two single magnets of equal size to the arrays. Calculated in the file `multipole\_compare.m'.}
 \figlabel{Nwaves}
 \end{figure*}
@@ -358,6 +374,69 @@ Since the force improvement with adjusting $\mupqratio$ is only significant for 
 In conclusion, in optimising the forces between linear Halbach magnet arrays, it has been shown that there is a relationship on the force vs.\ displacement characteristic from both the wavelength of magnetisation and the number of magnets in the array.
 As the wavelength of magnetisation decreases while keeping the array length constant, the effect of increasing the number of magnets per wavelength increases. In order to achieve significantly larger forces over homogeneous magnetisation, a large number of magnets should be used.
 When only a small number of magnets are used, small improvements to the forces can be achieved by using magnets of smaller volume  which are magnetised parallel to the array length and magnets of larger volume which are polarised in the facing direction.
+
+\section{Planar multipole arrays}
+\label{planar-multipole}
+
+Planar multipole arrays consist of a two dimensional stack of magnets that vary in magnetisation as a function of their position. \textcite[Appendix~A]{kim1997-thesis} has proposed a planar multipole array based on the magnetisation of two superimposed linear multipole arrays. Such a system, called here a `planar Halbach' array, is shown in Figure~\ref{trumper-system}, with five magnets per side and 90\textdegree\ magnetisation rotation in both the $x$--$z$ and $y$--$z$ planes between successive magnets.
+
+\begin{figure}
+\centering
+\includegraphics{PhD/Figures/Multipole/pa-trumper}
+\caption{A planar Halbach array, facing up, with magnetisation directions as the superposition of two orthogonal linear Halbach arrays. Non-filled arrowheads denote diagonal magnetisation and empty magnets have zero magnetisation.}
+\label{trumper-system}
+\end{figure}
+
+
+\textcite{moser2002-maglev}, \textcite{rovers2009-ietm}, and \textcite{janssen2009-jsdd} (the latter two with associated publications) have examined the idea of a `quasi-Halbach' planar multipole array in which all magnetisation directions are restricted to one of the orthogonal directions of the axes (i.e., no diagonal magnetisations). Another planar multipole array, simpler again, is the `patchwork' array, which alternates between positive and negative vertical magnetisation between successive magnets in both directions. The patchwork and quasi-Halbach arrays are shown respectively in Figure~\ref{two-planar-arrays}.
+
+\begin{figure}
+\centering
+\subfloat[Patchwork array.]{\includegraphics{PhD/Figures/Multipole/patchwork}}\hfil
+\subfloat[Quasi-Halbach array.]{\includegraphics{PhD/Figures/Multipole/quasi-halbach}}
+\caption{Two planar multipole arrays, facing `towards the reader'. Note the areas of zero magnetisation in the quasi-Halbach array.}
+\label{two-planar-arrays}
+\end{figure}
+
+\subsection{Example of planar Halbach array forces}
+
+Force characteristics for the quasi-Halbach array have been shown recently \cite{janssen2009-jsdd} but the planar Halbach array has not yet been analysed. Since the planar Halbach array uses magnetisations in directions non-orthogonal to the axes, the necessary calculations are more complex than for the quasi-Halbach array. For two facing planar Halbach arrays, Figure~\ref{trumper} shows results of $y$- and $z$-force vs.\ horizontal $y$-displacement with arrays composed of \SI{10}{mm} cube magnets and \SI{15}{mm} vertical displacement between the array centres. Each magnet of each array (except those with zero magnetisation) has a magnetisation of \SI{1}{T}. The Matlab code to generate Figure~\ref{trumper} is located in the file `examples/planar\_multipole\_example.m'.
+
+\begin{figure}
+\centering
+\psfragfig{magcode/examples/fig/planar-halbach}
+\caption{Force vs.\ horizontal displacement results for two planar Halbach arrays such as shown in Figure~\ref{trumper-system}. The $x$-forces are all zero.}
+\label{trumper}
+\end{figure}
+
+Note the differences in the shape of the force curves between Figures~\ref{allag} and~\ref{trumper} for linear and planar arrays respectively; in the planar Halbach case, the vertical force is largely positive even as the arrays shift into their attractive zone, whereas the linear multipole forces are more symmetrical and become significantly negative under a similar displacement. A more detailed comparison between various configurations of Halbach arrays is currently under investigation and will be reported at a later date.
+
+\subsection{Example comparion between planar arrays}
+
+When pairs of arrays are faced in opposition, a vertical force is produced between them that can be larger than the corresponding force between two equivalently-sized magnets with homogeneous magnetisation. Each array configuration has a different magnetic field pattern and has a different force/displacement profile. It is now possible to evaluate between and optimise the array configurations based on the design requirements for which they are required.
+
+The vertical force vs.\ vertical displacement characteristics of each array discussed (linear Halbach, planar Halbach, patchwork, and quasi-Halbach) are compared in Figure~\ref{planar-compare}, with the forces between two single magnets (of the same size as the arrays) included for comparison.
+The linear Halbach, planar Halbach, and quasi-Halbach have all been chosen to have a single wavelength of magnetisation with an end magnet for symmetry.
+Each array has the same outer dimensions of $\SI{50x50}{mm}$, thickness \SI{10}{mm}, and composed of magnets with magnetisation \SI{1}{T}, and each magnet is either cube-shaped or, for the linear array, has a square cross-section.
+The Matlab code to generate Figure~\ref{planar-compare} is located in the file `examples/planar\_compare.m'.
+
+It is interesting that the linear array exhibits the greatest force for a given displacement; this can be explained by the fact that the planar array and the quasi-Halbach array both have regions of zero magnetisation; this degrades their load-bearing ability since there is less inherent magnetic energy in each. These results indicate that the linear array is the most suitable choice for bearing vertical loads; not only are the forces stronger, but the magnetisation arrangement (and hence construction of the array) is simpler as well. It is also notable that despite the much simpler magnetisation pattern of the quasi-Halbach array compared to the planar Halbach array, the results for these two are quite similar, especially at small displacements.
+
+\begin{figure}
+\centering
+\psfragfig{magcode/examples/fig/planar-compare}
+\caption{Vertical forces vs. vertical displacement between the array centres to compare the load-bearing ability of a range of magnet arrays. The dashed vertical line indicates the displacement at which the array faces are in contact.}
+\label{planar-compare}
+\end{figure}
+
+\section{Future work}
+
+\textcite{janssen2009-ietm} have derived expressions to calculate the analytical forces between pyramidal-frustrum shaped magnets, which expressions have not yet been published at time of writing.
+\textcite{lee2006-mx} and \textcite{cho2001} present different planar arrays using block magnets with trapezoidal and triangular cross-sections, and \textcite{yan2006-iemx} calculate torque for spherical multipole arrays with `dihedral cone'-shaped magnets. And there are a wide variety of cylindrical multipole arrays in use for bearing and brushless motor applications \parencite{zhu2001-ipep}.
+
+As such, there is great scope for generalising the approach used in the presented software framework.
+The `magnetforces' function can be extended to calculate torques as well and incorporate different magnet geometries and rotations, and the `multipoleforces' function can be extended to abstract more configurations of linear and planar multipole arrays (including three dimensional stacks of magnets).
+The work introduced here is a very humble beginning to incorporating as much of the cited work above (and this is certainly an incomplete list) into a unified framework for conveniently and confidently calculating the dynamics of permanent magnet--based systems.
 
 
 \end{document}
