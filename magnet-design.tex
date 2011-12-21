@@ -119,6 +119,27 @@ In order to compare the force versus displacement characteristics for a range of
 
 Some small overlap in the force curves for $\ratioCub=0.4$ and $\ratioCub=0.5$ is seen in \Figref{ratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\ratioCub$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\ratioCub\approx0.4$.
 
+\subsection{Cube magnets in two orientations}
+
+As stated in the introduction in \secref{bearings}, by taking a \twoD/ solution for analysing the forces between ring magnets (\ie, assuming the curvature of the magnets has negligible effect), \textcite{yonnet1978} showed that axially- and radially-magnetised ring magnets produce the same reaction forces.
+This is an important result for ring magnets, as it is much more difficult to magnetise a ring in the radial direction.
+There might be considered to be an analogous result for cube magnets; after all, their cross-sections are the same.
+The results shown in \figref{xz-magforce} bely this possibility; in fact, for cube magnets it can be seen that the forces for displacement orthogonal to the magnetisation are exactly half those for magnets which are parallel.
+
+\begin{figure}
+\begin{wide}
+\subfloat
+  [
+   \figlabel{xz-magforce-plot}]
+  {\psfragfig{magcode/examples/fig/xz-magforce}}
+\end{wide}
+\caption{
+  Forces.
+}
+\figlabel{xz-magforce}
+\end{figure}
+
+
 \subsection{Cylindrical magnets}
 
 A similar analysis can be performed with cylindrical magnets using a cylindrical magnet ratio defined as the ratio between magnet length and radius $\ratioMag=\lengthMag/\oradiusMag$.
@@ -142,6 +163,26 @@ Interestingly, the behaviour shows a different trend than for cuboid shaped magn
 \end{wide}
 \caption{Force between two magnets as a function of magnet ratio for a set of fixed displacements from $\SIrange{1}{10}{mm}$. Dots mark the positions of maximum force.}
 \end{figure}
+
+\subsection{Comparing cuboid and cylindrical magnets}
+
+In the previous section it was shown that cylindrical magnets have a slightly larger force per unit volume in their optimum ratio.
+By reformulating the magnet ratios to incorporate face surface area, it is possible to directly compare these two magnet shapes over a range of new aspect ratios.
+
+For square-face cuboid magnets, the magnet ratio $\nu$ is defined as
+\begin{dmath}[compact]
+\nu = \lengthMag^2/\faceCub^2 = \ratioCub^2
+\end{dmath},
+and for cylindrical magnets
+\begin{dmath}[compact]
+\nu = \frac{\lengthMag^2}{\pi\radiusMag^2} = \ratioMag^2/\pi
+\end{dmath}.
+In other words, for equal $\nu$ a cylindrical and cuboid magnet will have the same face area.
+  \note{A technique known as `squaring the circle'.}
+
+\asyinclude{\jobname/equal-area}
+
+A more complete comparison between cuboid and cylindrical magnets was performed by \textcite{nagaraj1988}.
 
 \section{Another simple magnet arrangement}
 
