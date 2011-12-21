@@ -4,11 +4,20 @@
 \EndPreamble
 \begin{document}
 
-\chapter{Magnet--coil actuators}
+\chapter{Electromagnetic actuators}
 
 \referpaper{The work presented in \secref{magnetcoil-forces,magnetcoil-optimisation} has been submitted as a journal publication and is currently under review~\cite{robertson2012-ietm}.}
 
-\section{Literature on the force between coils and magnets}
+\section{Introduction}
+
+The field of electromagnetic actuators spans a large variety of applications.
+The oldest of these is the voice-coil loudspeaker, which is an area still undergoing continued development.
+
+In the introduction a variety of other electromagnetic devices were discussed, including planar and multi--\dof/ actuators (\secref{magnetic-actuators}).
+\textcite{yan2008-ietmx} designed a three \dof/ spherical actuator; their paper cites numerous other works to develop similar devices.
+
+The analysis of a single \dof/ actuator shows that it can be possible to optimise coil size, magnet size, and wire diameter to achieve a given force maximum.
+Other cost functions can be used in the design methodology to achieve other metrics, such as linearity \cite{merit2009}.
 
 In \chapref{magnet-theory} the theory was summarised for calculated forces between permanent magnets; many of these methods used a modelling technique in which a permanent magnet is represented as a surface current density around the circumference of the magnet.
 This theory also covers, therefore, the case where the force between a magnet an a coil is under investigation, provided that the coil being modelled can also be represented as an infinitely thin current density.
@@ -18,6 +27,9 @@ The theory of \textcite{akoun1984} for calculating the force between two cuboid 
 Unlike the magnetic charge model, this approach is still valid when the outer volumes of the coil and magnet overlap, such as when a magnet slides within an outer coil.
 
 The equivalent of the current surface density model for permanent magnets and thin coils means the same results can be used to calculate both systems, as seen in the work for calculating the force between two thin coils or magnets \cite{babic2008-ietm,ravaud2010-ietm,robertson2011-ietm} summarised in \secref{cyl-forces}.
+
+In this chapter, a simple electromagnetic actuator is analysed in detail, using detailed coil/force equations that have only recently been available.
+A new equation is devloped for calculating the force between cylindrical coils and magnets with eccentric displacement, and some examples of alternate electromagnet designs are given based on the modelling results shown.
 
 \section{Coaxial magnet/coil forces}
 
@@ -421,13 +433,15 @@ Assuming that each turn of wire sits directly above or adjacent to its neighbour
 \end{dmath}
 where $\turnsRCoil=\gp{\oradiusCoil-\iradiusCoil}/\diamWire$ and $\turnsZCoil=\lengthCoil/\diamWire$ are the number of turns in the axial and radial directions respectively.
 While this relationship does not model any wire coating or the packing effect of how tightly-wound coils will sit,
-%(since ideally \eqref{coil-lengthwire} will under-represent the number of turns possible in a given cross-sectional area)
+\note{
+  Taking into account of the packing factor will reduce the outer radius by around 10\% of the thickness of the coil \cite{yan2008-ietmx}.
+}
 this equation is simple and allows some conservatism in the quality of the construction of the electromagnet.
 
 Therefore, an expression for the outer radius of the coil for a coil of fixed inner radius and fixed total wire length is
 \begin{dmath}
-  \oradiusCoil = \sqrt{\frac{\lengthWire\diamWire^2}{\pi \lengthCoil}+\iradiusCoil^2}.
-\end{dmath}
+  \oradiusCoil = \sqrt{\frac{\lengthWire\diamWire^2}{\pi \lengthCoil}+\iradiusCoil^2}
+\end{dmath}.
 
 \subsubsection{Notation}
 
@@ -711,14 +725,6 @@ This result indicates that decreasing the airgap between the coil and magnet as 
 \section{Forces due to an electromagnetic field}
 \seclabel{emforces}
 
-This section describes a theoretical, parametric study that was undertaken to
-describe the forces between a cylindrical magnet and cylindrical
-current-carrying coil. While approximate formulations are known in the general
-literature (\fxfatal{reference}), the approach taken here was a complete
-analytical study using the exact geometry of both coil and magnet. The
-forces were numerically evaluated from a series of symbolic integrals in
-Mathematica.
-
 The purpose of these calculations was to design a coil to drive a non-contact
 vibrating platform; a non-contact coil, rather than a classical shaker, say,
 was chosen for its zero stiffness properties; without driving current, the
@@ -729,8 +735,8 @@ zero stiffness; added `mass' via induced eddy currents, etc.}
 
 The study also investigates the possibility of building large, low-cost
 inertial shakers by using an arrangement of smaller magnets instead of one
-large, expensive permanent magnet. (\fxfatal{reference Chris Fuller's work with
-George.}) However, this study does \emph{not} investigate the dynamics
+large, expensive permanent magnet.
+However, this study does \emph{not} investigate the dynamics
 associated with driving the coil with an alternating current; only the static
 force due to a constant current is investigated.
 
@@ -1180,33 +1186,6 @@ how, is required.
 
 \paragraph{Electromagnet parameters}
 
-The magnetic field (which is directly responsible for inducing force
-on a magnet) produced by a coil varies with a number of parameters:
-axial length, inner radius, outer radius, current, number of turns, wire
-diameter, and so on. However, these are not all independent.
-
-The starting point for the design of a coil is to choose its
-resistance, which is performed by matching the impedance of the
-amplifier used to drive the coil. In this case, resistance was taken
-as $R=\SI{8}{\ohm}$. This requirement ensures that comparisons can be
-made between differently sized coils that consume the same amount of
-power.
-
-The resistance of the coil directly infers the length of the wire
-winding, $\lengthWire$, through the relation
-\begin{dmath}
-\lengthWire = \resistanceCoil \areaWire / \resistivity,
-\end{dmath}
-for wire of cross sectional area $\areaWire$, and resistivity $\resistivity$.
-Copper wire with a diameter $\diamWire=\SI{0.2}{mm}$ was selected with an
-approximate resistivity $\resistivity=\SI{1.7e-8}{\ohm.m}$.
-
-The fixed parameters of the coil are driving voltage, resistance, wire
-thickness and material, which in turn fix the total length of wire. The
-results of the parametric study are specific to the values chosen above. Based
-on these values, a relationship between the macroscopic parameters of the coil
-can be derived.
-
 \begin{figure}
   \asyinclude{PhD/Figures/Coil/turns-cross-section}
   \caption{Schematic representation of a crude wire-wound coil with
@@ -1214,74 +1193,14 @@ can be derived.
 \figlabel{coil-turns}
 \end{figure}
 
-The dimensions of a cylindrical coil are depicted in \figref{coil-turns},
-showing three turns of wire in each direction in an
-$\coordca{1}$--$\coordca{3}$ cross-section. Given a total length of wire to
-use (determined by the total resistance allowed for the coil), it is possible
-to derive a relation between the coil length, $\lengthCoil$, and the coil
-radii, $\iradiusCoil$ and $\oradiusCoil$ ($\iradiusCoil<\oradiusCoil$).
-Assuming that each turn of wire sits directly above or adjacent to its
-neighbours, an approximate expression for the total wire length is given by
-\begin{dmath}[label=coil-lengthwire]
-\lengthWire = \turnsZCoil\Sum{2\pi\gp{\iradiusCoil+n\diamWire}}{n,0,N-1}
-  = 2\pi \turnsRCoil \turnsZCoil \gp{\iradiusCoil+\diamWire/2},
-\end{dmath}
-where $\turnsZCoil=\gp{\oradiusCoil-\iradiusCoil}/\diamWire$ and
-$\turnsRCoil=\lengthCoil/\diamWire$ are the number of turns in the axial and
-radial directions. While this does not accurately model the packing effect of
-how tightly-packed coils will sit (since ideally \eqref{coil-lengthwire} will
-under-represent the number of turns possible in a given cross-sectional area),
-this equation is simple and allows some conservatism in the quality of the
-construction of the electromagnet.
-
-Therefore, an expression for the outer radius of the coil that is defined for
-a coil of fixed inner radius and fixed total wire length is:
-\begin{dmath}
-  \oradiusCoil = \iradiusCoil +
-    \dfrac{\lengthWire\diamWire^2}
-          {\pi\lengthCoil\gp{2\iradiusCoil+\diamWire}}
-\end{dmath}.
 
 \paragraph{Overall parameters varied}
-
-In the parametric study to follow, a number of independent parameters have
-been found to vary (assuming fixed impedance and wire diameter): axial distance
-between the magnet and coil centres, $\offsetCoilMag$; axial lengths of the
-magnet and coil, $\lengthMag$ and $\lengthCoil$; inner and outer radius of the
-magnet, $\iradiusMag$ and $\oradiusMag$; and, inner radius, $\iradiusCoil$, of
-the coil.
-
-The remanence of the permanent magnet, $\remanence$, is taken to be \SI{1.2}{T}
-for this section; this approximates using a low-strength rare earth permanent
-magnet. The magnetisation, $\magM$, then, is given by $\remanence/\permVac$.
 
 Later, when dual coils are used to drive the magnet, the effect of the
 adjusting the gap between the two coils on the induced force on the
 magnet is examined.
 
 \fxfatal{Tabulate coil simulation parameters/}
-
-\paragraph{On comparisons}
-
-The various graphs presented later are generated with different geometries of
-the coil(s) and magnet(s). This makes comparisons between separate results
-difficult or inconclusive. This has been done with a mind to try and show
-trends in the behaviours of varying various parameters separately; no single
-set of results can illustrate the behaviour of the system under such a large
-number of parameter variations.
-
-Take the results as shown, then, as indicative of methods that \emph{can} be
-used for optimising a certain electromagnetic design. Without a cost function
-to optimise, however, such `optimisation' here would be premature. \fxfatal{reword}
-
-\subsection{Single coil/single magnet simulations}
-
-In this section, several results are shown demonstrating the effect on the
-force/displacement curves of varying different parameters in a single
-magnet--single coil system. Diagrams, which are drawn to relative scale,
-accompany each force \vs\  displacement curve to illuminate the systems under
-analysis. For axial (side-on) diagrams, the magnet is located at the position
-of maximum force.
 
 \paragraph{Equal length magnet and coil}
 
@@ -1390,29 +1309,6 @@ around the region of maximum force for a certain displacement range.
 Practically, this limits the lower frequency (which has larger displacements)
 at which such a device could impart vibrations into a structure.
 
-\paragraph{Air gap}
-
-A study of the effect of the size of the air gap between the coil and the
-magnet, with results in \figref{vary-airgap}, shows that the smaller the air
-gap, the significantly greater the forces generated. The slight movement of
-the position of maximum force is interesting but negligible.
-
-\begin{figure}
-  \begin{subfigure}
-    \grf{Figures/Coil/single-coil-2d_5_0}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath voicecoil-vary-coilradius-2d}
-  \end{subfigure}
-  \lofcaption{
-    Forces between varius coil and magnet pairs with varying
-    coil inner radius.}{ The peak force is indicated by the labelled points.
-    The magnet radius is $\oradiusMag=\SI{5}{mm}$, and
-    the magnet and coil lengths are $\lengthMag=\lengthCoil=\SI{7.5}{mm}$.
-  }
-  \figlabel{vary-airgap}
-\end{figure}
-
 \paragraph{Eccentricity}
 
 In \secref{manymag}, the superposition of eccentric magnets will be used to
@@ -1519,13 +1415,11 @@ radius of a ring magnet is seen to decrease the total force.
 
 Greater forces can be achieved by filling in the gaps with smaller
 magnets. While great effort could be expended solving an optimal fill
-problem, \note{\Eg, ``Kissing Circles: A French romance in MetaPost''
-  by Denis
-  Roegel:\\\qquad\url{http://www.tug.org/TUGboat/Articles/tb26-1/}} it
+problem, it
 is possible to predict the results of asymptotically filling in the
 empty space with smaller and smaller magnets: the force would converge
 to that achieved with the filled magnet. The impracticalities of
-manufactoring such a magnet would also probably increase the expense
+manufactoring such a magnet would also increase the expense
 prohibitively.
 
 Crudely looking at the problem, application of \eqref{circles} shows
