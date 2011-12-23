@@ -1,4 +1,7 @@
-%!TEX root = thesis.tex
+\documentclass[11pt,a4paper]{memoir}
+\def\asydir{\jobname}
+\usepackage{thesis-preamble}
+\begin{document}
 
 \chapter{Prototype low-stiffness magnetic spring}
 \chaplabel{xpmt}
@@ -31,7 +34,7 @@ the ideas behind the \qzs/ arrangement analysed in detail in \secref{qzs}.
 
 \begin{figure}
   \begin{wide}
-    \asyfig{Rig/rig-schematic}
+    \asyinclude{PhD/Figures/Rig/rig-schematic}
   \end{wide}
   \caption{
     Schematic of the experimental rig (not to scale). Position shown is
@@ -41,7 +44,7 @@ the ideas behind the \qzs/ arrangement analysed in detail in \secref{qzs}.
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=0.8\textwidth]{\phdpath Rig/photo.jpg}
+  \includegraphics[width=0.8\textwidth]{PhD/Experiments/Rig/photo.jpg}
   \caption{Photo of the experimental apparatus. Base shaker is not shown.}
   \figlabel{rig-photo}
 \end{figure}
@@ -143,7 +146,7 @@ for both cube shapes of a certain height and for cylinders with that same
 height and equal face area, such as shown in \figref{equal-area}.
 
 \begin{figure}
-  \asyfig{Magnets/equal-area}
+  \asyinclude{PhD/Figures/Magnets/equal-area}
   \caption{A circle and square of equal area (to scale).}
   \figlabel{equal-area}
 \end{figure}
@@ -208,7 +211,7 @@ certain wire diameter and resistance.
 \begin{figure}
   \begin{wide}
   \begin{sidefigure}
-  \asyfig{Rig/rig-coil}
+  \asyinclude{PhD/Figures/Rig/rig-coil}
   \caption{Schematic of the dual coil electromagnet built for the experimental apparatus. (Not to scale.)
   \figlabel{rig-dual-coil}}
   \end{sidefigure}\hfill
@@ -421,7 +424,7 @@ of the vertical motion of the magnets. This geometry is shown in
 in the `rest' position $\overline{OAB}$ and in a rotated position $\overline{OA'B'}$.
 
 \begin{figure}
-  \asyfig{Rig/horiz-tolerance}
+  \asyinclude{PhD/Figures/Rig/horiz-tolerance}
   \caption{Geometry for calculating the horizontal tolerance of the inner
            dimensions of the coil.}
   \figlabel{horiz-tolerance}
@@ -491,7 +494,7 @@ The normalised magnet gap is $\ngap=\OriginMagGap/\HeightMag$, where
 $\HeightMag$ is the height of the magnets.
 
 \begin{figure}
-  \psfragfig{\phdpath XPMT/latex/turns-qzs}
+  \psfragfig{PhD/Experiments/XPMT/latex/turns-qzs}
   \caption{Rest position of the system as the magnet position varies.}
   \figlabel{turns-qzs}
 \end{figure}
@@ -545,7 +548,7 @@ between the accelerometer measurements of the base and magnet-supported beam:
 \end{dmath}.
 
 \begin{figure}[p]
-  \psfragfig{\phdpath XPMT/latex/ol-undamped-frflin}
+  \psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frflin}
   \caption{Open loop measurements with the electromagnetic coil connected in
            an open circuit as a function of normalised gap~$\ngap$;
            no additional damping is added to the system.}
@@ -553,7 +556,7 @@ between the accelerometer measurements of the base and magnet-supported beam:
 \end{figure}
 
 \begin{figure}[p]
-  \psfragfig{\phdpath XPMT/latex/ol-damped-frflin}
+  \psfragfig{PhD/Experiments/XPMT/latex/ol-damped-frflin}
   \caption{Open loop measurements with the electromagnetic coil connected
            in a closed circuit as a function of normalised gap~$\ngap$.
            The coil adds damping to the system, which can
@@ -590,13 +593,13 @@ at higher frequencies. The natural frequencies and damping ratios are shown
 in \figref{ol-results}.
 
 \begin{figure}[p]
-  \psfragfig{\phdpath XPMT/latex/ol-undamped-frflin-fit}
+  \psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frflin-fit}
   \caption{Curve fit model of \figref{ol-undamped-frflin}. Grey lines show the original data.}
   \figlabel{ol-undamped-frflin-fit}
 \end{figure}
 
 \begin{figure}[p]
-  \psfragfig{\phdpath XPMT/latex/ol-damped-frflin-fit}
+  \psfragfig{PhD/Experiments/XPMT/latex/ol-damped-frflin-fit}
   \caption{Curve fit model of \figref{ol-damped-frflin}.  Grey lines show the original data.}
   \figlabel{ol-damped-frflin-fit}
 \end{figure}
@@ -604,11 +607,11 @@ in \figref{ol-results}.
 \begin{figure}
   \begin{wide}
   \begin{subfigure}
-    \psfragfig{\phdpath XPMT/latex/ol-reson}
+    \psfragfig{PhD/Experiments/XPMT/latex/ol-reson}
     \caption{Model-derived resonant frequencies\figlabel{ol-reson}}
   \end{subfigure}
   \begin{subfigure}
-    \psfragfig{\phdpath XPMT/latex/ol-dampi}
+    \psfragfig{PhD/Experiments/XPMT/latex/ol-dampi}
     \caption{Model-derived damping ratio\figlabel{ol-dampi}}
   \end{subfigure}
   \end{wide}
@@ -647,7 +650,7 @@ system are more prominent, and a clear peak is shown at close to twice the
 `natural' resonance frequency.
 
 \begin{figure}
-  \psfragfig{\phdpath XPMT/latex/ol-undamped-frfnl}
+  \psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frfnl}
   \caption{Open loop measurements without the coil connected; the transmissibility is calculated with \eqref{frfnl}. Black markers show resonant frequencies and the points at twice each resonant frequency, indicating the higher-order dynamics.}
   \figlabel{ol-undamped-frfnl}
 \end{figure}
@@ -666,7 +669,7 @@ to instability. Frequency response measurements over this range of feedback
 gains are shown in \figref{cl-results}.
 
 \begin{figure}
-  \psfragfig{\phdpath XPMT/latex/cl-results}
+  \psfragfig{PhD/Experiments/XPMT/latex/cl-results}
   \caption{Closed loop frequency response measurements for a range of velocity feedback gains.}
   \figlabel{cl-results}
 \end{figure}
@@ -699,7 +702,7 @@ The resonance appearing in the lower frequencies of \figref{cl-results} causes
 the overall transmissibility reduction to have a local minimum.
 
 \begin{figure}
-  \psfragfig{\phdpath XPMT/latex/cl-reduction}
+  \psfragfig{PhD/Experiments/XPMT/latex/cl-reduction}
   \caption{Reduction in overall transmissiblity between \SI{1}{Hz} and \SI{11}{Hz}.}
   \figlabel{cl-reduction}
 \end{figure}
@@ -724,7 +727,7 @@ system (shown in \figref{vibration-base-feedback}) with integrated
 accelerometer measurements used for velocity feedback control.
 
 \begin{figure}
-  \asyfig{Systems/vibration-base-feedback}
+  \asyinclude{PhD/Figures/Systems/vibration-base-feedback}
   \caption{Vibration isolation schematic with active feedback.}
   \figlabel{vibration-base-feedback}
 \end{figure}
@@ -747,7 +750,7 @@ $\laplaceForce=s^2\laplaceMass\BlockController$, the transmissibility of the sys
 \end{dmath}.
 
 \begin{figure}
-  \asyfig{Control/simple-isolator-block}
+  \asyinclude{PhD/Figures/Control/simple-isolator-block}
   \caption{Block diagram of \eqref{simple-isolator-laplace} representing
   the system shown in \figref{vibration-base-feedback}.}
   \figlabel{simple-isolator-block}
@@ -821,3 +824,4 @@ drawback could be mitigated with a different way to estimate the velocity of
 the isolated beam; simply a higher-precision charge amplifier would probably
 be acceptable.
 
+\end{document}

@@ -96,12 +96,12 @@ position.
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-  \asyfig{ZKS/schematic}
+  \asyinclude{PhD/Figures/ZKS/schematic}
   \caption{Inclined springs in their unloaded, uncompressed state, corresponding
 to a vertical displacement of $\ZKSdisp=\ZKSheight$.\figlabel{zks-dia}}
 \end{subfigure}
 \begin{subfigure}
-  \asyfig{ZKS/schematic-qzs}
+  \asyinclude{PhD/Figures/ZKS/schematic-qzs}
   \caption{Inclined springs at a position of maximum negative stiffness,
 corresponding to a vertical displacement of $\ZKSdisp=0$.\figlabel{zks-qzs}}
 \end{subfigure}
@@ -211,13 +211,13 @@ vertical the spring angles before deflection in \figref{zks-dia}).
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-\psfragfig{\phdpath ZKS/fig/ZKSforce-plain}
+\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-plain}
 \caption{Vertical force due to inclined springs only using
 \eqref{ZKSforceinclV} for a range of geometric ratios
 $\ZKSratio$.\figlabel{ZKSforce-plain}}
 \end{subfigure}
 \begin{subfigure}
-\psfragfig{\phdpath ZKS/fig/ZKSforce-total}
+\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-total}
 \caption{Normalised vertical force characteristic of the system calculated
 with \eqref{ZKSforcetotalVnorm}. Minimum displacements are calculated from
 \eqref{ZKSnormMin}; these termination points represent the limiting case of the vertical
@@ -297,14 +297,14 @@ calculated by differentiating \eqref{ZKSforcetotalVnorm} with respect to $x$:
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-\psfragfig{\phdpath ZKS/fig/ZKSstiffness-total}
+\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffness-total}
 
 \caption{\figlabel{ZKSstiffness-vert} Normalised vertical stiffness of the
 system calculated with \eqref{ZKSstiffnessV}.}
 
 \end{subfigure}
 \begin{subfigure}
-\psfragfig{\phdpath ZKS/fig/ZKSstiffnessH-total}
+\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-total}
 
 \caption{\figlabel{ZKSstiffness-horiz} Normalised horizontal stiffness of the
 system calculated with \eqref{ZKSstiffnessH}.}
@@ -363,13 +363,13 @@ order to retain stability.
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-  \psfragfig{\phdpath ZKS/fig/ZKSoffqzs}
+  \psfragfig{PhD/Simulations/ZKS/fig/ZKSoffqzs}
   \caption{\figlabel{ZKSoff}
 The stable and unstable equilibrium points for $\ZKSoff\in\{-0.1, 0, 0.1\}$.
 The rest position will move from the unstable point to the stable point of equilibrium.}
 \end{subfigure}
 \begin{subfigure}
-  \psfragfig{\phdpath ZKS/fig/ZKSratioErr}
+  \psfragfig{PhD/Simulations/ZKS/fig/ZKSratioErr}
   \caption{\figlabel{ZKS-ratioErr}
 The stiffness at equilibrium as $\ZKSoff$ varies; as the stiffness becomes
 negative, the stiffness shown corresponds to the stable point of equilibrium shown in the figure adjacent.}
@@ -454,7 +454,7 @@ vertical stiffnesses may be tuned independently in order to achieve \qzs/ in
 each.
 
 \begin{figure}
-\psfragfig{\phdpath ZKS/fig/ZKSkratio-effect}
+\psfragfig{PhD/Simulations/ZKS/fig/ZKSkratio-effect}
 \caption{Horizontal stiffness characteristic at the vertical \qzs/ condition
 for varying stiffness ratio $\ZKSkratio$ and length ratio $\ZKSlengthratio$,
 calculated with \eqref{ZKSstiffnessHnorm}.}
@@ -483,7 +483,7 @@ vertical spring) results in an increasing value of the vertical spring
 stiffness in order to remain at \qzs/.
 
 \begin{figure}
-  \psfragfig{\phdpath ZKS/fig/ZKS-hk-ratio}
+  \psfragfig{PhD/Simulations/ZKS/fig/ZKS-hk-ratio}
   \caption{Relationship between $\ZKSkratio$ and $\ZKSlengthratio$ at \qzs/
 both horizontally and vertically.}
   \figlabel{ZKS-hk-ratio}
@@ -521,12 +521,12 @@ decreases with $\ZKSlengthratio$).
 \begin{figure}[p]
 \begin{wide}
 \begin{subfigure}
-  \psfragfig{\phdpath ZKS/fig/ZKSstiffnessV-QZS}
+  \psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessV-QZS}
   \caption{\figlabel{ZKSstiffnessV-QZS}
 Normalised vertical stiffness of the system.}
 \end{subfigure}
 \begin{subfigure}
-  \psfragfig{\phdpath ZKS/fig/ZKSstiffnessH-QZS}
+  \psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-QZS}
   \caption{\figlabel{ZKSstiffnessH-QZS}
 Normalised horizontal stiffness of the system.}
 \end{subfigure}
@@ -537,7 +537,7 @@ Normalised horizontal stiffness of the system.}
 \end{figure}
 
 \begin{figure}[p]
-  \psfragfig{\phdpath ZKS/fig/ZKSstiffnessH-NotQZS}
+  \psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-NotQZS}
   \caption{Normalised horizontal stiffness of the system at
 $\ZKSkratio=0.95\ZKSkratioQZS$ in order to obtain a small range of
 displacement around $\ZKSnorm=0$ with positive stiffness (compare
@@ -592,7 +592,7 @@ than fifty percent) in at least one of the springs is required to achieve
 \qzs/.
 
 \begin{figure}
-\psfragfig{\phdpath ZKS/fig/ZKScompress}
+\psfragfig{PhD/Simulations/ZKS/fig/ZKScompress}
 \caption{Compression relationship of the springs for a range of spring
 stiffness ratios, at \qzs/ both horizontally and vertically. A compression of
 100\% implies a change in displacement of the entire spring length, which is
@@ -642,7 +642,7 @@ attention~\cite{nijsse2001,robertson2006,robertson2007}, in which the force
 for small gaps between the magnets.
 
 \begin{figure}
-  \asyfig{Systems/zerok-comb}
+  \asyinclude{PhD/Figures/Systems/zerok-comb}
   \caption{Schematic of a magnetic spring with \qzs/ at
  $\ndispZ=0$ to isolate displacement $x$ from disturbance vibration $y$.
  Large arrows indicate direction of polarisation of the magnets.
@@ -698,7 +698,7 @@ an equivalent equation that is algorithmically easier to apply for
 complex magnet geometries and multipole arrays.
 
 \begin{figure}
-  \asyfig{Magnets/akoun}
+  \asyinclude{PhD/Figures/Magnets/akoun}
   \caption{Geometry for the expression by \textcite{akoun1984} to
   calculate the forces between two parallel cuboid magnets with
   magnetisations in the vertical direction, distance between their centres
@@ -844,7 +844,7 @@ each case. The curves for $\nn=2$ and $\nn=5$ produce much greater errors than
 those shown in \figref{nnfit} and have been omitted for clarity.
 
 \begin{figure}
-  \psfragfig{\phdpath QZS/fig/nnfit}
+  \psfragfig{PhD/Writings/Papers/QZS/fig/nnfit}
   \caption{Modelling errors of \eqref{nnfit} compared to the
   exact \eqref{nforce}, for parameters shown in \tabref{nnfit}.}
   \figlabel{nnfit}
@@ -903,7 +903,7 @@ shown previously in \eqref{stiffness})
   {%
     \let\labelsize\footnotesize
     \def\LBL#1{\colorbox{white}{#1}}%
-    \psfragfig{\phdpath QZS/fig/nnfit-z}%
+    \psfragfig{PhD/Writings/Papers/QZS/fig/nnfit-z}%
   }%
   \caption{Normalised force $\nforceZ$ \vs\  displacement $\ndispZ$
     curves of a \qzs/ magnetic system for a range of
@@ -945,7 +945,7 @@ A positive displacement of the mass ($\ndispZ\ge0$) is unstable, and so
 shows the equilibrium position $\heq{}$ varying over $\mdim$ and $\ngap$ for a
 system of mass $\mass=\SI{0.5}{kg}$.
 
-\begin{figure}  {\psfragfig{\phdpath QZS/fig/heq-map}}
+\begin{figure}  {\psfragfig{PhD/Writings/Papers/QZS/fig/heq-map}}
   \caption{Map of the normalised equilibrium position over varying
     magnet size $\mdim$ and normalised magnet gap $\ngap$ for a system
     with mass $\mass=\SI{0.5}{kg}$.}
@@ -974,7 +974,7 @@ show that for a fixed magnet gap, larger magnets are
 required to support larger loads.
 
 \begin{figure}
-  \asyfig{QZS/heq-combined}
+  \asyinclude{PhD/Figures/QZS/heq-combined}
   \caption{Normalised force \vs\  normalised displacement curve
  illustrating the bounds of both allowable load that can be bourne
  and the displacement range of the magnet; see \eqref{strong,stable}
@@ -987,10 +987,10 @@ required to support larger loads.
 
 \begin{figure}
   \gridIV
-    {\psfragfig{\phdpath QZS/fig/cons-strongN1}}
-    {\psfragfig{\phdpath QZS/fig/cons-strongN2}}
-    {\psfragfig{\phdpath QZS/fig/cons-strongN3}}
-    {\psfragfig{\phdpath QZS/fig/cons-strongNall}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-strongN1}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-strongN2}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-strongN3}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-strongNall}}
   \caption{
     Regions of $\mdim$ and $\ngap$ satisfying
     the static deflection criterion
@@ -1017,10 +1017,10 @@ magnets are required to support the load with a small force gradient.
 
 \begin{figure}
   \gridIV
-    {\psfragfig{\phdpath QZS/fig/cons-softN1}}
-    {\psfragfig{\phdpath QZS/fig/cons-softN2}}
-    {\psfragfig{\phdpath QZS/fig/cons-softN3}}
-    {\psfragfig{\phdpath QZS/fig/cons-softNall}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-softN1}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-softN2}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-softN3}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-softNall}}
 \caption{Regions of $\mdim$ and $\ngap$ satisfying the resonance frequency
   criterion of \eqref{soft} for a range of allowable resonance frequencies and a
   mass $\mass=\SI{0.5}{kg}$. Darker sections denote overlap of the
@@ -1051,10 +1051,10 @@ $\dmax$, limits the lower size of the magnet.
 
 \begin{figure}
   \gridIV
-    {\psfragfig{\phdpath QZS/fig/cons-saturateN1}}
-    {\psfragfig{\phdpath QZS/fig/cons-saturateN2}}
-    {\psfragfig{\phdpath QZS/fig/cons-saturateN3}}
-    {\psfragfig{\phdpath QZS/fig/cons-saturateNall}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-saturateN1}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-saturateN2}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-saturateN3}}
+    {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-saturateNall}}
   \caption{Regions of $\mdim$ and $\ndispZ$ satisfying the
     maximum displacement criterion
     of \eqref{saturate} for a range of disturbance
@@ -1078,10 +1078,10 @@ equilibrium position, this prevents the spring from reaching the very
 low equilibrium stiffnesses found just below the \qzs/ position.
 
 \begin{figure}
-  \gridIV{\psfragfig{\phdpath QZS/fig/cons-stableN1-1}}
-         {\psfragfig{\phdpath QZS/fig/cons-stableN2-1}}
-         {\psfragfig{\phdpath QZS/fig/cons-stableN3-1}}
-         {\psfragfig{\phdpath QZS/fig/cons-stableNall-1}}
+  \gridIV{\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableN1-1}}
+         {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableN2-1}}
+         {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableN3-1}}
+         {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableNall-1}}
 \caption{Regions of $\mdim$ and $\ngap$ satisfying the
   the stability criterion of \eqref{stable} for a range of normalised displacement
   tolerances $\epsilon$ and a maximum disturbance displacement of
@@ -1090,10 +1090,10 @@ low equilibrium stiffnesses found just below the \qzs/ position.
 \end{figure}
 
 \begin{figure}
-  \gridIV{\psfragfig{\phdpath QZS/fig/cons-stableN1-2}}
-         {\psfragfig{\phdpath QZS/fig/cons-stableN2-2}}
-         {\psfragfig{\phdpath QZS/fig/cons-stableN3-2}}
-         {\psfragfig{\phdpath QZS/fig/cons-stableNall-2}}
+  \gridIV{\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableN1-2}}
+         {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableN2-2}}
+         {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableN3-2}}
+         {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-stableNall-2}}
 \caption{Region of $\mdim$, $\ngap$ satisfying the stability criterion
   of \eqref{stable} for a range of disturbance displacements $\dmax$
   and a normalised displacement tolerance $\epsilon=\num{0.1}$. Darker
@@ -1114,14 +1114,14 @@ be used for speculative design work and optimisation.
   \begin{wide}
     \centering
     \gridVI
-      {\psfragfig{\phdpath QZS/fig/cons-allN1}}
-      {\psfragfig{\phdpath QZS/fig/cons-allN2}}
-      {\psfragfig{\phdpath QZS/fig/cons-allN3}}
-      {\psfragfig{\phdpath QZS/fig/cons-allN4}}
-      {\psfragfig{\phdpath QZS/fig/cons-allN5}}
-      {\psfragfig{\phdpath QZS/fig/cons-allN6}}%
+      {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-allN1}}
+      {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-allN2}}
+      {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-allN3}}
+      {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-allN4}}
+      {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-allN5}}
+      {\psfragfig{PhD/Writings/Papers/QZS/fig/cons-allN6}}%
     \\[1.5em]
-    \psfragfig{\phdpath QZS/fig/cons-allNall}
+    \psfragfig{PhD/Writings/Papers/QZS/fig/cons-allNall}
   \end{wide}
 \caption{Regions of $\mdim$, $\ngap$ satisfying all design criteria,
   demonstrating the effects of changing the mass $\mass$ and the
@@ -1162,7 +1162,7 @@ approaches the \qzs/ position (compare with \figref{heq-map}).
 
 \begin{figure}
 \centering
-\psfragfig{\phdpath QZS/fig/kratio}
+\psfragfig{PhD/Writings/Papers/QZS/fig/kratio}
 \caption{
   Contours of stiffness reduction $\QZSkratio{}$ due to the negative
   stiffness of the attractive magnet,
@@ -1216,7 +1216,7 @@ displacement becomes to the \qzs/ position, and the greater the effect of
 the negative stiffness from the attractive magnet.
 
 \begin{figure}
-  \psfragfig{\phdpath QZS/fig/nl-contourss}
+  \psfragfig{PhD/Writings/Papers/QZS/fig/nl-contourss}
 \caption{Contours of nonlinearity shown inside the region of $\mdim$,
   $\ngap$ satisfying all criteria for parameters $\mass=\SI{1}{kg}$,
   $\freqdesign=\SI{5}{Hz}$, $\dmax=\SI{1}{mm}$, $\epsilon=0.1$.
@@ -1225,7 +1225,7 @@ the negative stiffness from the attractive magnet.
 \end{figure}
 
 \begin{figure}
-  \psfragfig{\phdpath QZS/fig/nl-contours-zoom}
+  \psfragfig{PhD/Writings/Papers/QZS/fig/nl-contours-zoom}
   \caption{Zoom of \figref{nl-contours} to show the behaviour of the
  nonlinearity in the lower limits of a magnetic design.}
   \figlabel{nl-contours-zoom}
@@ -1274,7 +1274,7 @@ shifting of the resonance peak as the nonlinearity increases, as
 will be seen later in this section.
 
 \begin{figure}
-  \psfragfig{\phdpath QZS/fig/nl}
+  \psfragfig{PhD/Writings/Papers/QZS/fig/nl}
 \caption{Phase plot of the magnetic system at steady
   state resonance for a range of input disturbance amplitudes
   shown in \tabref{nl}. The
@@ -1403,7 +1403,7 @@ position in its most extreme displacement.
 
 \begin{figure}\centering
 \let\labelsize\footnotesize
-\psfragfig{\phdpath QZS/fig/variance-amp-crop}
+\psfragfig{PhD/Writings/Papers/QZS/fig/variance-amp-crop}
 \caption{Variance gain at a position close to \qzs/, for a range of excitation
 amplitudes $A_e$, as labelled. The spring softening effect at resonance can
 be clearly seen as the amplitude increases. Tabulated values of nonlinearity
@@ -1441,7 +1441,7 @@ linear behaviour.
 
 \begin{figure}\centering
 \let\labelsize\footnotesize
-\psfragfig{\phdpath QZS/fig/variance-gaps-crop-new}
+\psfragfig{PhD/Writings/Papers/QZS/fig/variance-gaps-crop-new}
 \caption{Variance gain of the magnetic system, comparing between two excitation
 amplitudes with varying values of magnet gap $\ngap$, as labelled. Low amplitude
 is $A_e=\SI{0.1}{mm}$ and high amplitude is $A_e=\SI{0.5}{mm}$; shown as dashed
