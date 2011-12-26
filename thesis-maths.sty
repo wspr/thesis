@@ -150,24 +150,6 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% COIL
 
-\newvect\distra{d}[
-  headcmd=\boldsubs{1},
-  elemcmd=\mlistelem,
-  elem={r_1,\phi_1,z_1}]
-\newvect\distrb{d}[
-  headcmd=\boldsubs{2},
-  elemcmd=\mlistelem,
-  elem={r_2,\phi_2,z_2}]
-
-\newvect\distca{d}[
-  headcmd=\boldsubs{1},
-  elemcmd=\mlistelem,
-  elem={x_1,y_1,z_1}]
-\newvect\distcb{d}[
-  headcmd=\boldsubs{2},
-  elemcmd=\mlistelem,
-  elem={x_2,y_2,z_2}]
-
 \newvariable\SuffixCoil{c}
 \newvariable\surfCoil{S_\SuffixCoil}
 \newvariable\volCoil{V_\SuffixCoil}
@@ -179,6 +161,24 @@
 \newvariable\volMag{V_\SuffixMagnet}
 \newvariable\diffsurfMag{s_\SuffixMagnet}
 \newvariable\diffvolMag{v_\SuffixMagnet}
+
+\newvect\distrMag{d}[
+  headcmd=\boldsubs{1},
+  elemcmd=\mlistelem,
+  elem={r_1,\phi_1,z_1}]
+\newvect\distrCoil{d}[
+  headcmd=\boldsubs{2},
+  elemcmd=\mlistelem,
+  elem={r_2,\phi_2,z_2}]
+
+\newvect\distcMag{d}[
+  headcmd=\boldsubs{1},
+  elemcmd=\mlistelem,
+  elem={x_1,y_1,z_1}]
+\newvect\distcCoil{d}[
+  headcmd=\boldsubs{2},
+  elemcmd=\mlistelem,
+  elem={x_2,y_2,z_2}]
 
 \newvect\coordra{A}[
   headcmd=\headcal,

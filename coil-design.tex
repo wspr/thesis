@@ -172,36 +172,36 @@ The function $\EllipticPi{n,m}$ is the complete elliptic integral of the third k
 
 An integral expression for the force between a solenoid and magnet is derived using the theory of Furlani~\cite{furlani2001-magnetbook}.
 Here we have assumed that the solenoid can be modelled as a volume current density and the permanent magnet is modelled as a surface current density around its circumference.
-A solenoid with current volume density~$\magJ$ generates a magnetic field~$\magB$ at a displacement $\distra$ given by the integral over the coil volume~$\volCoil$
+A solenoid with current volume density~$\magJ$ generates a magnetic field~$\magB$ at a displacement $\distrMag$ given by the integral over the coil volume~$\volCoil$
 \begin{dmath}
-\magB\fn{\distra} = \magconst\Int{\frac{\magJ\fn{\distrb}\cross\gp{\distrb -
-\distra}}{\Abs{\distrb-\distra}^3}}{\diffvolCoil,\volCoil}
+\magB\fn{\distrMag} = \magconst\Int{\frac{\magJ\fn{\distrCoil}\cross\gp{\distrCoil -
+\distrMag}}{\Abs{\distrCoil-\distrMag}^3}}{\diffvolCoil,\volCoil}
 \end{dmath},
-where $\distrb$ is the distance vector to the differential coil volume~$d\diffvolCoil$.
+where $\distrCoil$ is the distance vector to the differential coil volume~$d\diffvolCoil$.
 The force due to that field on a permanent magnet with magnetisation vector $\magM$ is given by the integral over the magnet surface $\surfMag$ with normal vector $\normn$
 \begin{dmath}[label=magcoil-force-integral]
-\force = \oint_{\surfMag} \gp{\magM\cross\normn}\cross\magB\fn{\distra}\,d{\diffsurfMag}
+\force = \oint_{\surfMag} \gp{\magM\cross\normn}\cross\magB\fn{\distrMag}\,d{\diffsurfMag}
 \end{dmath},
-where $\distra$ is the distance vector to the differential magnet surface $d\diffsurfMag$.
+where $\distrMag$ is the distance vector to the differential magnet surface $d\diffsurfMag$.
 Following the magnetic field expression in polar coordinates shown by Ravaud et al.~\cite{ravaud2010-emwaves} and taking only the axial component of the force results, \eqref{magcoil-force-integral} is written in full as a function of axial displacement $\displ$ as
 \begin{dmath}[label=magcoil-integral]
 \force{z_3}\fn{\displ} =
 \frac{\remanence\turnsCoil\currentCoil}
      {\lengthCoil\gp{\oradiusCoil-\iradiusCoil}}
-  \Int{ \\\frac{ \distra{1}\distrb{1}\gp{\distrb{1}-\distra{1}}\Cos{\distrb{2}-\distra{2}} }{ \Abs{\distrb-\distra}^3 } }
-  {\distra{2},0,2\pi}
-  {\distra{3},\displ-\lengthMag/2,z+\lengthMag/2}
-  {\distrb{1},\iradiusCoil,\oradiusCoil}
-  {\distrb{2},0,2\pi}
-  {\distrb{3},-\lengthCoil/2,\lengthCoil/2}
+  \Int{ \\\frac{ \distrMag{1}\distrCoil{1}\gp{\distrCoil{1}-\distrMag{1}}\Cos{\distrCoil{2}-\distrMag{2}} }{ \Abs{\distrCoil-\distrMag}^3 } }
+  {\distrMag{2},0,2\pi}
+  {\distrMag{3},\displ-\lengthMag/2,z+\lengthMag/2}
+  {\distrCoil{1},\iradiusCoil,\oradiusCoil}
+  {\distrCoil{2},0,2\pi}
+  {\distrCoil{3},-\lengthCoil/2,\lengthCoil/2}
 \end{dmath}
 where
 \begin{dmath}
-\Abs{\distrb-\distra}=
-\sqrt{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-
-                 \distrb{2}}+\gp{\distrb{3}-\distra{3}}^2}
+\Abs{\distrCoil-\distrMag}=
+\sqrt{\distrMag{1}^2+\distrCoil{1}^2-2\distrMag{1}\distrCoil{1}\Cos{\distrMag{2}-
+                 \distrCoil{2}}+\gp{\distrCoil{3}-\distrMag{3}}^2}
 \end{dmath}.
-Analytically integrating this equation in variables $\distra{2}$, $\distrb{2}$, and~$\distra{3}$ yields
+Analytically integrating this equation in variables $\distrMag{2}$, $\distrCoil{2}$, and~$\distrMag{3}$ yields
 \begin{dmath}[label=cylforcez]
 F_{z_3}=
 \frac{\remanence\turnsCoil\currentCoil}
@@ -209,19 +209,19 @@ F_{z_3}=
 \Int{
   \sum_{e_1}^{\{1,-1\}} \!\!\!\gp{e_1 m_6 f_{z_3}}
   }
-  {\distrb{1},\iradiusCoil,\oradiusCoil}
-  {\distrb{3},-\lengthCoil/2,\lengthCoil/2}
+  {\distrCoil{1},\iradiusCoil,\oradiusCoil}
+  {\distrCoil{3},-\lengthCoil/2,\lengthCoil/2}
 \end{dmath},
 where
 \begin{dmath}
 f_{z_3}=\gp{1-\half m_5}\EllipticK{m_5}-\EllipticE{m_5}
 \end{dmath},
 \begin{align}
-m_5&=\frac{4\oradiusMag\distrb{1}}{m_6^2}, &
-m_6^2 &= \gp{\oradiusMag+\distrb{1}}^2+\gp{\displ+\half e_1 \lengthMag-\distrb{3}}^2 .
+m_5&=\frac{4\oradiusMag\distrCoil{1}}{m_6^2}, &
+m_6^2 &= \gp{\oradiusMag+\distrCoil{1}}^2+\gp{\displ+\half e_1 \lengthMag-\distrCoil{3}}^2 .
 \label{eq:cylforcez-auxiii}
 \end{align}
-Note that $\distrb{3}$ and $\distrb{1}$ in \eqref{cylforcez-auxiii} are variables of integration.
+Note that $\distrCoil{3}$ and $\distrCoil{1}$ in \eqref{cylforcez-auxiii} are variables of integration.
 
 Computing \eqref{cylforcez} using a numerical integration is an efficient means to calculate the axial force between a coaxial magnet and solenoid.
 This method is here referred to as the `integral' method.
@@ -624,42 +624,45 @@ For eccentric displacement in the radial direction, $\eccen$, the limits of inte
 \label{fig:int-offset}
 \end{figure}
 
-In order to incorporate eccentric displacement into the integral, terms of $\distra{1}$
-and $\distra{2}$ must be expressed instead in terms of $\distra{1}'$
-and $\distra{2}'$.
+In order to incorporate eccentric displacement into the integral, terms of $\distrMag{1}$
+and $\distrMag{2}$ must be expressed instead in terms of $\distrMag{1}'$
+and $\distrMag{2}'$.
 The following transformation can be used to perform this:
 \begin{align}
-\distra{1} &= \sqrt{\distca{1}^2+\distca{2}^2} &
-\distca{1} &= \distca{1}' - \xi                 &
-\distca{1}' &= \distra{1}'\Cos{\distra{2}'}
+\distrMag{1} &= \sqrt{\distcMag{1}^2+\distcMag{2}^2} &
+\distcMag{1} &= \distcMag{1}' - \xi                 &
+\distcMag{1}' &= \distrMag{1}'\Cos{\distrMag{2}'}
 \\
-\distra{2} &= \ArcTan{\distca{2},\distca{1}}  &
-\distca{2} &= \distca{2}' - \eta               &
-\distca{2}' &= \distra{1}'\Sin{\distra{2}'}
+\distrMag{2} &= \ArcTan{\distcMag{2},\distcMag{1}}  &
+\distcMag{2} &= \distcMag{2}' - \eta               &
+\distcMag{2}' &= \distrMag{1}'\Sin{\distrMag{2}'}
 \end{align}
-Due to the additional complexity introduced by this transformation, the original integral can no longer by easily solved analytically with respect to $\distra{2}'$. Accordingly, the axial force due to both axial and radial displacement is now given by
+Due to the additional complexity introduced by this transformation, the original integral can no longer by easily solved analytically with respect to $\distrMag{2}'$.
+The variable $\distrMag{1}'$ is not an integration term and therefore $\distrMag{1}'=\radiusMag$.
+Accordingly, the axial force due to both axial and radial displacement is now given by
 \begin{dmath}[label=cylforcez-ecc]
 F_{z_4}=
-\frac{??}{\pi}
+\frac{\turnsCoil \currentCoil \remanence}{\pi\lengthCoil\gp{\oradiusCoil-\iradiusCoil}}
 \Int{
-  \sum_{e_1}^{\{1,-1\}} \!\!\! \gp{e_1 \m2 f_z}
+  \sum_{e_1}^{\{1,-1\}} \!\!\! \gp{e_1 \m2 f_{z_4} }
   }
-  {\distra{2}',0,2\pi}
-  {\distra{1},r_c,R_c}
-  {\distra{3},-l_c/2,l_c/2}
+  {\distrMag{2}',0,\pi}
+  {\distrCoil{1},\iradiusCoil,\oradiusCoil}
+  {\distrCoil{3},-\lengthCoil/2,\lengthCoil/2}
 \end{dmath},
 where the intermediate term is
-\def\P{\distra{2}}
+\def\P{\distrMag{2}}
 \begin{dmath}
 f_z=\gp{1-\frac{\m1}{2}}
       \EllipticK{\m1}-\EllipticE{\m1}
 \end{dmath},
 with parameters
 \begin{align}
-\m1&=\frac{4 r_m r_1}{\m2^2}, &
-\m2^2 &= \gp{r_m+\distra{1}}^2+\gp{\displ+\half e_1l_m-\distra{3}}^2 .
+\m1&=\frac{4 \distrMag{1} \distrCoil{1}}{\m2^2}, &
+\m2^2 &= \gp{\distrMag{1}+\distrCoil{1}}^2+\gp{\displ+\half e_1\lengthMag-\distrCoil{3}}^2 .
 \end{align}
 Due to the additional numerical integral that must be evaluated when using \eqref{cylforcez-ecc}, it is approximately an order of magnitude slower to calculate than \eqref{cylforcez}.
+The expression is slightly optimised for efficiency; from $0$ to $2\pi$ around $\distrMag{2}'$ the integral is symmetric so only the first half is calculated; this approximately halves the execution time of numerical integration.
 
 The filament method can again be used to verify \eqref{cylforcez-ecc}.
 Kim et al.~\cite{kim1996-ietm} presented an expression for calculating the filamentary force between two non-coaxial circular coils; their equations were corrected for typographical errors and reprinted by Hull and Cansiz~\cite{hull1999-japplphys}.
@@ -669,7 +672,6 @@ The non-coaxial filamentary coil force in the axial direction is taken from the 
 \begin{dmath}[label=eccfilament]
 F_f\fn{r_1,r_2,z,e} = \frac{\mu_0 z r_2 I_1 I_2}{4\pi}
 \Integrate{
-%  \sqrt{\frac{m}{r_1 V^5}}
   \frac{m_2}{V^2}
   \gp[2]{ y\Cos{t}-x\Sin{t} }\times
   \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
@@ -694,853 +696,82 @@ m_2 = \gp{\gp{r_1+V}^2+z^2}^{-1/2}.
 %\end{dmath}.
 %$F_e$ acts in the direction of eccentric displacement.
 \Eqref{eccfilament} can be used with the filament method (as in \eqref{filamentforce}) to calculate thick-coil magnet forces, but this is only useful as a verification as the filament method using a numerical integral is extremely slow to execute (around three orders of magnitude slower than the integral solution of \eqref{cylforcez-ecc}).
-Such a verification is shown in \Figref{magcoil-ecc-compare}, which has system parameters as shown in \Tabref{magcoil-thickthin-compare-param} aside from a larger inner coil radius of \SI{11.5}{mm} and an eccentric displacement of \SI{1.5}{mm}.
+Such a verification is shown in \Figref{magcoil-ecc-compare}, which has system parameters as shown in \Tabref{magcoil-thin-compare-param} aside from a larger inner coil radius of \SI{11.5}{mm} and an eccentric displacement of \SI{1.5}{mm}.
 
 Eccentricity acts to increase the axial force of a coil/magnet system as the magnetic material comes closer to the region of large magnetic field strength due to the solenoid (\figref{magcoil-ecc-vary}).
 This result indicates that decreasing the airgap between the coil and magnet as much as possible is desirable to maximise the forces obtained for a given input current.
 
 \begin{figure}
-\centering
-\psfragfig{magcode/examples/fig/ecc-compare}
-\caption{Comparison of the filament and the integral method for calculating eccentric thick coil--magnet forces. Due to discretisation in the filament method the results vary near their peak.}
-\figlabel{magcoil-ecc-compare}
-\end{figure}
-
-\begin{figure}
-\centering
-\psfragfig{magcode/examples/fig/ecc-vary}
-\caption{Example thick coil forces in the axial direction versus displacement for increasing eccentricities from \SIrange{1}{2.5}{mm} indicated by the arrow. Zero eccentricity is shown dashed.}
-\figlabel{magcoil-ecc-vary}
-\end{figure}
-
-
-
-
-
-
-
-
-
-
-\section{Forces due to an electromagnetic field}
-\seclabel{emforces}
-
-The purpose of these calculations was to design a coil to drive a non-contact
-vibrating platform; a non-contact coil, rather than a classical shaker, say,
-was chosen for its zero stiffness properties; without driving current, the
-coil does not add stiffness to the structure (although it does add damping via
-velocity-induced eddy currents). Additionally, the actuator does not add mass
-to the vibratory system. \fxfatal{discuss `zero impendance' instead of
-zero stiffness; added `mass' via induced eddy currents, etc.}
-
-The study also investigates the possibility of building large, low-cost
-inertial shakers by using an arrangement of smaller magnets instead of one
-large, expensive permanent magnet.
-However, this study does \emph{not} investigate the dynamics
-associated with driving the coil with an alternating current; only the static
-force due to a constant current is investigated.
-
-\fxfatal{Figure for dual coil system}
-
-Finally, a symmetric arrangement of two coils in series driving a central
-magnet is examined. Since a coil/magnet pair must be located asymmetrically to
-generate maximum force, generally electromagnets of this type are built with
-`push-pull' coils, where a second coil is added to restore symmetry to the
-force \vs\  displacement response of the actuator.
-
-The study is split into three parts, as described above:
-\begin{enumerate}
-\item Force on a magnet due to a single coil;
-\item Force from a single coil on a multitude of smaller magnets; and,
-\item Force on a magnet due to symmetric dual-coils.
-\end{enumerate}
-
-\subsection{Derivation of the force equations}
-
-In this section, the equations of the force between a single cylindrical coil and a
-cylindrical magnet
-are established; this forms the mathematical basis for the three parts of the
-study. The theory in this section is based on the theory given by
-\textcite{furlani2001-magnetbook}. Conceptually, deriving the force between a coil and
-magnet can be summarised in two steps:
-\begin{itemize}
-\item Integrate a function of the current over the volume of the coil
-  to find the magnetic field produced at a specific point in space.
-\item Integrate a function of the magnetic field over the volume of a
-  magnet to find the force produced by the interaction of the magnetic
-  field of the coil and the magnet itself.
-\end{itemize}
-
-A schematic of the general system is shown in two dimensions in
-\figref{int-geometry}, in which the \compound{co}{ordinate} systems Cartesian
-$(\coordca{1},\coordca{2},\coordca{3})$ and cylindrical
-$(\coordra{1},\coordra{2},\coordra{3})$ are defined for the geometry of the
-coil; and the \compound{co}{ordinate} systems Cartesian
-$(\coordcb{1},\coordcb{2},\coordcb{3})$ and cylindrical
-$(\coordrb{1},\coordrb{2},\coordrb{3})$ are defined for the geometry of the
-magnet. Axial \compound{co}{ordinates} $\coordca{3}$ and $\coordcb{3}$ are oriented in
-the `out-of-page' direction.
-
-\begin{figure}
-\small
-\asyinclude{PhD/Figures/Coil/integral}
-\caption{
-  Cross section schematic of the system with coil cross section
-  $\surfCoil$ and magnet cross section $\surfMag$.
-}
-\figlabel{int-geometry}
-\end{figure}
-
-Start by looking at the magnetic field produced by the electromagnet. Define
-in cylindrical \compound{co}{ordinates} $\distra=\distra{1,2,3}$ as the displacement
-vector for the point in space at which the magnetic field is being calculated
-(inside the volume of the magnet), and $\distrb=\distrb{1,2,3}$ as the
-displacement vector to a differential volume of the coil. The magnetic
-field $\magB$ from a current source $\magJ$ is given by:
-\cite[][\S3.3]{furlani2001-magnetbook}
-\begin{dmath}
-\magB\fn{\distra} = \magconst\Int{\frac{\magJ\fn{\distrb}\cross\gp{\distra -
-\distrb}}{\Abs{\distra-\distrb}^3}}{\diffvolCoil,\volCoil}
-\end{dmath},
-where $\permVac$ is the permeability of free space and $\cross$ is the vector
-cross product.
-
-In \figref{int-geometry} the volumes $\dee\diffvolCoil$ and $\volCoil$ are
-shown as cross-sectional surfaces $\dee\diffsurfCoil$ and $\surfCoil$. In
-cylindrical \compound{co}{ordinates},
-$\dee\diffvolCoil=\distrb{1}\dee{\distrb{1}}\dee{\distrb{2}}\dee{\distrb{3}}$,
-and
-\begin{dmath}
-\Abs{\distra-\distrb} = \sqrt{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-\distrb{2}}+\gp{\distra{3}-\distrb{3}}^2},
-\end{dmath}
-which results in the intermediate expression
-\begin{dmath}
-\magB(\distra{1},\distra{2},\distra{3}) =
-\magconst
-  \Int{
-    \gp{\magJ(\distrb{1},\distrb{2},\distrb{3})\cross
-          \gp{\distra-\distrb}}
-    \cdot
-    \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}
-          -\distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}
-    \distrb{1}
-  }
-  {\distrb{1},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
-  {\distrb{2},0,2\pi}
-  {\distrb{3},\iradiusCoil,\oradiusCoil}
-\end{dmath}
-for inner and outer radii of the coil $\iradiusCoil$ and $\oradiusCoil$
-respectively, axial coil length $\lengthCoil$, and axial distance between the
-magnet and coil centres $\offsetCoilMag$.
-
-The current density of the coil is
-$\magJ(\distrb{1},\distrb{2},\distrb{3})=NI/A\coordra{2}$, where $N$ is the
-number of turns of wire, $I$ is the current flowing in the coil, and
-$A=\lengthCoil\gp{\iradiusCoil-\oradiusCoil}$ is the cross sectional
-area of the electromagnet. Therefore,
-\begin{dmath}
-\magJ\fn{\distrb{1},\distrb{2},\distrb{3}}\cross\gp{\distra-\distrb} =
-  NI/A\cdot\inlinevect{\distra{3}-\distrb{3},0,\distrb{1}-\distra{1}}
-\end{dmath},
-resulting in the final magnetic field equation
-\begin{dmath}[label=coil-B]
-\magB(\distra{1},\distra{2},\distra{3}) =
-\magconst\cdot\frac{NI}{A}
-  \Int{
-      \distrb{1}
-      \inlinevect{\distra{3}-\distrb{3},0,\distrb{1}-\distra{1}}
-      \\
-      \cdot
-      \gp{\distra{1}^2+\distrb{1}^2-2\distra{1}\distrb{1}\Cos{\distra{2}-
-          \distrb{2}}+\gp{\distra{3}-\distrb{3}}^2}^{-3/2}
-  }
-  {\distrb{1},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
-  {\distrb{2},0,2\pi}
-  {\distrb{3},\iradiusCoil,\oradiusCoil}
-\end{dmath}
-or more applicably here (since it is the axial force that is of interest),
-\begin{dmath}
-\magB{z}(\distra{1},\distra{2},\distra{3}) =
-\magconst\cdot\frac{NI}{A}
-\Int{
-  \distrb{1}\gp{\distrb{1}-\distra{1}}
-  \cdot
-  \gp{\distra{1}^2+\distrb{1}^2
-      -2\distra{1}\distrb{1}\Cos{\distra{2}-\distrb{2}}
-      +\gp{\distra{3}-\distrb{3}}^2
-     }^{-3/2}
-  }
-  {\distrb{1},\iradiusCoil,\oradiusCoil}
-  {\distrb{2},0,2\pi}
-  {\distrb{3},\offsetCoilMag-\lengthCoil/2,\offsetCoilMag+\lengthCoil/2}
-\eqlabel{coil-Bz}
-\end{dmath}
-
-To obtain force, the magnetic field from the electromagnet is
-integrated over the region of the permanent magnet. This is the
-summation of a volume and surface integral:
-\begin{dmath}
-\force = \Int{\gp{-\Div{\magM}}\magB}{\diffvolMag,\volMag}+\oint_{\surfMag}
-\gp{\magM\dotprod\normn}\magB\,\dee{\diffsurfMag}
-\end{dmath}
-The magnet is magnetised along its axis, and the magnetisation is
-assumed to be constant (a reasonable assumption for rare earth
-magnets \fxfatal{cite}). The magnetisation is $\magM=M\hat{\vect{z}}$, which implies
-$\Div{\magM}=0$. Therefore,
-\begin{dmath}
-\force = \oint_{S_m} \gp{\magM\dotprod\normn}\magB(\distra{1},\distra{2},\distra{3})\,\dee{s_m} ,
-\end{dmath}
-where $\normn$ is the normal vector of the magnet surface $\surfMag$. For a
-cylindrical magnet with axial magnet length $\lengthMag$,
-\begin{dmath}
-\normn = \left\{
-  \begin{array}{@{}c@{\quad}l}
-    \pm\hat{\vect{z}} &
-        \distra{3} = \pm \half\lengthMag,
-        \quad \distra{1}\leq \oradiusMag \\
-    \hat{\vect{r}} &
-        -\half\lengthMag < \distra{3} < \half\lengthMag,
-        \quad \distra{1}=\oradiusMag
-  \end{array}\right.
-\end{dmath}.
-Since $\magM$ is orthogonal to
-$\hat{\vect{r}}$ their dot product is zero, and
-\begin{dseries}
-\begin{math}
-  \magM\dotprod\normn = \pm M
-\end{math},
-\begin{math}
-  \distra{3}=\pm \half\lengthMag
-\end{math}
-\end{dseries}
-which leads to the final expression
-\begin{dmath}
-\eqlabel{Fds}
-\force =
-  \left.
-  \Int{
-       M \magB\fn{\distra{1},\distra{2},\distra{3}}
-      }
-      {\diffsurfMag,\surfMag}
-  \right|_{\distra{3}=\lengthMag/2}
- +\left.
-  \Int{
-   -M \magB\fn{\distra{1},\distra{2},\distra{3}}
-      }
-      {\diffsurfMag,\surfMag}
-  \right|_{\distra{3}=-\lengthMag/2}
-=
-  \Int{M\magB\fn{\distra{1},\distra{2},\lengthMag/2} \distra{1}}
-      {\distra{1},\iradiusMag,\oradiusMag}
-      {\distra{2},0,2\pi}
- -\Int{M\magB\fn{\distra{1},\distra{2},-\lengthMag/2} \distra{1}}
-      {\distra{1},\iradiusMag,\oradiusMag}
-      {\distra{2},0,2\pi}
-\end{dmath},
-and more applicably,
-\begin{dmath}[label=coilFzindirect]
-F_z =
-  \Int{M\magB{z}\fn{\distra{1},\distra{2},\half\lengthMag} \distra{1}}
-      {\distra{1},\iradiusMag,\oradiusMag}
-      {\distra{2},0,2\pi}
- -
-  \Int{M\magB{z}\fn{\distra{1},\distra{2},-\half\lengthMag} \distra{1}}
-      {\distra{1},\iradiusMag,\oradiusMag}
-      {\distra{2},0,2\pi} ,
-\end{dmath}
-
-Substitution of \eqref{coil-B} into \eqref{coilFz} yields a quintuple integral,
-which can be evaluated to obtain the force on the magnet due to the current carrying coil.
-A complete analytical solution for this integral is not known to be analytically tractable at this time;
-the usual approach is to symbolically integrate as many terms as possible and then
-numerically integrate the rest. Here, the angles $\distra{2}$ and $\distrb{2}$
-are symbolically integrated in \eqref{coilFzindirect} to produce the final
-equation
-\begin{dmath}[label=coilFz]
-  F_z = B_r \tfrac{N I}{A} \Int{
-      \sumset{e_1,e_2}{\{1,-1\}^2}
-      e_1 e_2 f_z\fn{e_1\lengthMag/2,\offsetCoilMag+e_2\lengthCoil/2}
-    }
-    {\distra{1},\iradiusMag,\oradiusMag}
-    {\distrb{1},\iradiusCoil,\oradiusCoil}
-\end{dmath}
-where the intermediate term $f_z$ is
-\def\l#1{l_{#1}}
-\begin{dmath}
-  f_z\fn{\l1,\l2} =
-   \frac
-    {
-     2 \distra{1} \distrb{1}
-     \gp{ \l1 - \l2 }
-    }
-    {
-     \gp{\distra{1}-\distrb{1}}
-     \sqrt{
-          \gp{\distra{1}-\distrb{1}}^2
-         +\gp{\l1-\l2}^2
-     }
-    }\times\\
-    \Pi\fn{
-      -\frac
-        { 4 \distra{1} \distrb{1} }
-        { \gp{\distra{1}-\distrb{1}}^2 }
-      \middle|
-      -\frac
-        { 4 \distra{1} \distrb{1} }
-        {
-          \gp{\distra{1}-\distrb{1}}^2
-         +\gp{\l1-\l2}^2
-        }
-     }
-\end{dmath}.
-The function $\Pi\fn{n|m}$ is the complete elliptic integral of the third kind.
-
-Varying centre displacement $\offsetCoilMag$ produces force versus displacement results for a given magnet/coil geometry.
-Varying $\lengthCoil$, $\lengthMag$ and the other parameters in the integration limits, $\iradiusMag$ ($=0$ for cylindrical magnets), $\oradiusMag$, $\iradiusCoil$, $\oradiusCoil$, allows comparisons to be made between differently sized magnets and coils.
-
-\subsubsection{Including axial offset}
-
-It is also desirable to calculate forces for asymmetric magnet positions, for
-reasons of either evaluating the effects of unbalanced load, or for building
-more complex geometries. It is the latter application that will be
-investigated here, with an analysis of the forces produced with a ring of a
-number of smaller magnets compared to that of using a solid ring magnet.
-
-The integrals used in \eqref{Fds} to calculate the forces have variables of
-integration $\dee\diffsurfMag=\distra{1}\dee{\distra{1}}\dee{\distra{2}}$ and
-integrands containing the the magnetic field $\magB$ in terms of those
-variables $\distra{1}$ and $\distra{2}$. However, when the magnet is no longer
-centred inside the coil, the integration must take place in the shifted
-coördinate system shown in \figref{int-offset}.
-
-\begin{figure}
-\asyinclude{PhD/Figures/Coil/circle-offset}
-\caption{Region of integration for a radially displaced magnet
-       shifted by $(\xi,\eta)$ from the original coördinate system.}
-\figlabel{int-offset}
-\end{figure}
-
-In order to perform this integration, terms in $\magB$ of $\distra{1}$
-and $\distra{2}$ must be expressed instead in terms of $\distra{1}'$
-and $\distra{2}'$. That is, to use a slightly general example, we wish
-to analyse the integral of generic function $A$:
-\begin{dmath}
-\Int{A\fn{\distra{1},\distra{2}}}
-    {a} =
-\Int{A\fn{\distra{1},\distra{2}} \distra{1}'}
-    {\distra{1}'}
-    {\distra{2}'} .
-\end{dmath}
-The following transformation can be used to perform this:
-\begin{align}
-\distra{1} &= \sqrt{\distca{1}^2+\distca{2}^2} &
-\distca{1} &= \distca{1}' - \xi                 &
-\distca{1}' &= \distra{1}'\Cos{\distra{2}'}
-\\
-\distra{2} &= \ArcTan{\distca{2},\distca{1}}  &
-\distca{2} &= \distca{2}' - \eta               &
-\distca{2}' &= \distra{1}'\Sin{\distra{2}'}
-\end{align}
-Accordingly, the force integral for the magnet--coil system with radial eccentricity as well as axial displacement is given by
-\begin{dmath}[label=coileccfz]
-  \frac{NI\remanence}{4A\pi}
-  \Int{
-    \sumset{e_1,e_2}{\{1,-1\}^2}
-      e_1 e_2 f_z\fn{e_1\lengthMag/2,\offsetCoilMag+e_2\lengthCoil/2}
-    }
-    {\distra{1}',\iradiusMag,\oradiusMag}
-    {\distra{2}',0,2\pi}
-    {\distrb{1},\iradiusCoil,\oradiusCoil}
-\end{dmath},
-where the intermediate function $f_z$ is
-\begin{dmath}
-  f_z\fn{l,L} =
-  f_2\fn{l,L}
-  \frac{
-    \distra{1}' \distrb{1} \gp{ l-L }
-    \sqrt{
-      1-\frac{2 \distra{1} \distrb{1} \gp{\cos\fn{\phi_1}-1}}
-             {\gp{l-L}^2+\gp{\distrb{1}-\distra{1}}^2}
-    }
-  }
-  {
-   \gp{\distrb{1}-\distra{1}}^2
-   \sqrt{
-         \distra{1}^2+\distrb{1}^2
-         - 2 \cos\fn{\phi_1} \distra{1} \distrb{1}
-         + \gp{l-L}^2
-        }
-  }
-\end{dmath},
-and the second intermediate function $f_2$ is given by
-\begin{dmath}
-  f_2\fn{l,L} =
-     \Pi\fn{
-       \frac{ - 4 \distra{1} \distrb{1}}
-             {\gp{\distrb{1}-\distra{1}}^2}
-       ;
-       \frac{\phi_1}{2}
-       \middle|
-       \frac{ - 4 \distra{1} \distrb{1}}
-             {\gp{l-L}^2+\gp{\distrb{1}-\distra{1}}^2}
-     }
-     -
-     \Pi\fn{
-       \frac{ - 4 \distra{1} \distrb{1}}
-             {\gp{\distrb{1}-\distra{1}}^2}
-       ;
-       \frac{\phi_1}{2}-\pi
-       \middle|
-       \frac{ - 4 \distra{1} \distrb{1}}
-             {\gp{l-L}^2+\gp{\distrb{1}-\distra{1}}^2}
-     }
-\end{dmath}.
-In \eqref{coileccfz}, two symbolic integrations have been performed (first over $\distrb{3}$ and subsequently over $\distrb{2}$) and the remaining three
-integration variables must be evaluated numerically.
-
-
-\subsubsection{Integration accuracy}
-
-The precision of the numerical integration needs to be selected for an
-appropriate compromise between accuracy and computation time. Varying
-Mathematica's \verb|PrecisionGoal| from 1--4 (which is equivalent to the
-number of `correct' significant figures), a typical force curve \vs\
-displacement calculation ranges in processing time as shown in
-\tabref{numerical-integration-times}. Eleven integrations were performed over
-a range of displacements from zero to \SI{20}{mm} in steps of \SI{2}{mm}. The
-physical parameters used are shown in \tabref{prec-param}.
-
-\begin{table}
-\caption{Processing time of numerical integration for increasing
-precision (in significant figures accurate) of the results.}
-\tablabel{numerical-integration-times}
-\begin{tabular}{lcccc}
-\toprule
-Precision & \num{1}    & \num{2}   & \num{3}  & \num{4}   \\
-Time (s)  & \num{0.25} & \num{1.6} & \num{18} & \num{187} \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-\begin{table}
-\caption{Parameters used in the model for evaluating the numerical precision of integration.}
-\tablabel{prec-param}
-\begin{tabular}{@{}llcc@{}}
-\toprule
-\multicolumn{2}{@{}l}
-  {Parameter}       & Symbol       & Value         \\
-\midrule
-Magnet & Remanence  & $\remanence  $ & \SI{1.2}{T}   \\
-       & Radius     & $\oradiusMag $ & \SI{6.35}{mm} \\
-       & Length     & $\lengthMag  $ & \SI{6.35}{mm} \\
-\midrule
-Coil & Turns        & $\turnsCoil  $ & \num{400}     \\
-     & Current      & $\current    $ & \SI{1}{A}     \\
-     & Inner radius & $\iradiusCoil$ & \SI{7}{mm}    \\
-     & Outer radius & $\oradiusCoil$ & \SI{15}{mm}   \\
-     & Length       & $\lengthCoil $ & \SI{7.5}{mm}  \\
-\bottomrule
-\end{tabular}
-\end{table}
-
-The forces calculated with precisions of one, two, and three significant
-figures are shown in
-\figref{voice-coil-integration-precision} accompanied by the error of the
-curves with respect to the values calculated with a precision of four significant
-figures. The
-error was calculated with
-\begin{dmath*}
-    100 \times \Abs{\frac{F_4 - F_i}{F_4}}
-\end{dmath*}
-where $F_i$ is the force calculated with a precision of $i$. Reasonable results are
-obtained with a precision of two significant figures (error less than 5\%), and very accurate
-results (less than 0.1\% error) are obtained with a precision of three.
-
-\begin{figure}
 \begin{wide}
 \begin{subfigure}
-  \psfragfig{\coilpath voice-coil-integration-precision}
-  \caption{Forces with labelled precisions of 1--3.}
-\end{subfigure}
+\hspace*{-1.5cm}%
+\psfragfig{magcode/examples/fig/ecc-compare}
+\caption{
+  Comparison of the filament and integral methods for calculating eccentric thick coil--magnet forces. Due to discretisation in the filament method the results vary near their peak.
+  \figlabel{magcoil-ecc-compare}
+}
+\end{subfigure}\hfil\hfil
 \begin{subfigure}
-  \psfragfig{\coilpath voice-coil-integration-precision-error}
-  \caption{Percentage error with respect to the forces calculated with a precision of four.}
+\hspace*{-1.5cm}%
+\psfragfig{magcode/examples/fig/ecc-vary}
+\caption{
+  Example thick coil forces in the axial direction versus displacement for increasing eccentricities from \SIrange{1}{2.5}{mm} indicated by the arrow. Zero eccentricity is shown dashed.
+  \figlabel{magcoil-ecc-vary}
+}
 \end{subfigure}
 \end{wide}
-\caption{Precision of numerical integration for calculating the force \vs\  distance
-values on a magnet from an electromagnet.}
-\figlabel{voice-coil-integration-precision}
-\end{figure}
-
-\subsection{Parameters}
-
-Now that a mathematical model is available to perform the calculations,
-thought must be given to the variables used in the forthcoming parametric
-study. The parameters must be varied in such a way that comparisons between
-cases are meaningful. Changing the coil's physical parameters (length, radii,
-wire thickness) affect the current flowing through it for a fixed input
-voltage; these parameters are interrelated and cannot be varied independently
-while making direct comparisons between the change in the forces due to these
-variations. Careful consideration on which parameters to vary directly, and
-how, is required.
-
-\paragraph{Electromagnet parameters}
-
-\begin{figure}
-  \asyinclude{PhD/Figures/Coil/turns-cross-section}
-  \caption{Schematic representation of a crude wire-wound coil with
-    labelled dimensions.}
-\figlabel{coil-turns}
+\caption{Two examples of eccentric thick coil magnet forces calculations.}
 \end{figure}
 
 
-\paragraph{Overall parameters varied}
-
-Later, when dual coils are used to drive the magnet, the effect of the
-adjusting the gap between the two coils on the induced force on the
-magnet is examined.
-
-\fxfatal{Tabulate coil simulation parameters/}
-
-\paragraph{Equal length magnet and coil}
-
-For coils and magnets of equal lengths,
-shown in \figref{voicecoil3-vary-length-2d}, the peak force is
-obtained for magnets with an approximately equal diameter and
-length. Despite the greater volume of magnetic material, the peak force actually
-decreases with increasing magnet lengths.
-
-\begin{figure}
-  \begin{subfigure}
-    \grf{Figures/Coil/single-coil-2d_1_0}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath voicecoil3-vary-length-2d}
-  \end{subfigure}
-  \lofcaption{Forces between various coil and magnet pairs of equal but
-    varying length.}{ The magnet radius is $\oradiusMag=\SI{6.4}{mm}$ and the
-    inner coil radius is $\iradiusCoil=\SI{7}{mm}$. Note the change in
-    outer coil radius as the coil length varies in order to retain a constant
-    resistance.}
-  \figlabel{voicecoil3-vary-length-2d}
-\end{figure}
-
-While this effect is also governed by the length of the coil (which will be
-examined subsequently), \figref{vary-radii} shows that increasing the magnet
-\emph{radius} (and the coil radius in tandem) does increase the
-total force from the electromagnet.
-
-In both cases, the total magnet volume is varied while the coil power is kept
-constant. While it may be intuitive that increasing the size of the magnet
-increases the force due to the coil, this is only true in the second case.
-
-\begin{figure}
-  \begin{subfigure}
-    \grf{Figures/Coil/single-coil-2d_2_0}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath voicecoil3-vary-radii-2d}
-  \end{subfigure}
-  \lofcaption{Forces between various coil and magnet pairs of fixed length
-    but varying diameters.}{ The coil and magnet lengths are
-    $\lengthCoil=\SI{7}{mm}$ and $\lengthMag=\SI{12.7}{mm}$,
-    and the inner radius of the coil is $\iradiusCoil=\oradiusMag+\SI{1}{mm}$.
-    The `glitch' at \SI{0.25}{mm} for the $\oradiusMag=\SI{20}{mm}$ case
-    is due to numerical imprecision in the computation of the integral.}
-  \figlabel{vary-radii}
-\end{figure}
-
-\paragraph{Length/radius ratio between the coil and magnet}
-
-The ratio between the lengths of the coil and magnet has several
-effects on the force between them. \Figref{vary-mag-length} shows the
-effect of increasing the magnet length with a fixed-size coil, for
-which the maximum force produced asymptotes to a maximum as the
-length of the magnet increases.
-
-\begin{figure}
-  \begin{subfigure}
-    \grf{Figures/Coil/single-coil-2d_3_0}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \small\psfragfig{\coilpath voicecoil3-vary-lengthratio-2d}
-  \end{subfigure}
-  \lofcaption{
-Forces between varius coil and magnet pairs with fixed coil length.}{
-The coil length is $\lengthCoil=\SI{20}{mm}$,
-the magnet radius is $\oradiusMag=\SI{6.4}{mm}$, and
-the coil inner radius is $\iradiusCoil=\SI{7}{mm}$.}
-  \figlabel{vary-mag-length}
-\end{figure}
-
-Conversely, \figref{vary-coil-length} shows that \emph{decreasing} the
-length of the coil increases the force created on a fixed-size
-magnet. Recall that as the coil geometry is chosen to ensure a constant
-resistance and hence power consumption. This is shown in the schematics of
-\figref{vary-coil-length}: as the coil length increases, its height decreases.
-
-It is interesting to compare the positions of maximum force
-between the cases shown in \figref{vary-mag-length,vary-coil-length};
-which is depicted in the schematics above each graph.
-It can be seen that the maximum force is obtained, approximately, when
-the shorter of the magnet or coil is axially centred at an edge of the longer.
-
-\begin{figure}
-  \begin{subfigure}
-    \grf{Figures/Coil/single-coil-2d_4_0}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath voicecoil3-vary-lengthratio2-2d}
-  \end{subfigure}
-  \lofcaption{
-Forces between varius coil and magnet pairs with fixed magnet length.}{
-The magnet width is $\lengthMag=\SI{20}{mm}$,
-the magnet radius is $\oradiusMag=\SI{6.4}{mm}$, and
-the coil inner radius is $\iradiusCoil=\SI{7}{mm}$.}
-  \figlabel{vary-coil-length}
-\end{figure}
-
-Finally, it is worth noting the width of the peaks in the
-force/displacement curves for these various systems. The shorter coil
-gives greater forces, but at the expense of a smaller `width' of force
-close to the maximum. When used as shakers, these coils are assumed to
-have a proportional relationship between current and force, which is only valid
-around the region of maximum force for a certain displacement range.
-Practically, this limits the lower frequency (which has larger displacements)
-at which such a device could impart vibrations into a structure.
-
-\paragraph{Eccentricity}
-
-In \secref{manymag}, the superposition of eccentric magnets will be used to
-analyse some multi-magnet cases. The effects of eccentricity of the inner
-magnet are shown in \figref{vary-eccentric}, where it can be seen that
-displacements close to the centre have only a small effect on the force.
-Closer to the inner radius of the coil, however, large increases in force
-occur as the magnet draws near, which follows from results seen previously in
-\figref{vary-airgap}.
-
-\begin{figure}
-  \begin{subfigure}
-    \asyinclude{PhD/Figures/Coil/eccentric}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath coils-offsetTest}
-  \end{subfigure}
-  \lofcaption{
-    Forces between a coil and a magnet with varying radial eccentricity,
-    $\offsetCoilMag$\periodifnocomma}{, shown in \si{mm}.
-    The inner radius of the coil is $\iradiusCoil=\SI{21}{mm}$, and
-    the radius of the magnet is $\oradiusMag=\SI{10}{mm}$
-    Note that while the offset
-    is in the radial direction, the force shown is still in the axial
-    direction.}
-  \figlabel{vary-eccentric}
-\end{figure}
 
 
-\subsection{Approximation of a large magnet by the superposition of others smaller}
-\seclabel{manymag}
 
-As has been shown in \figref{vary-radii}, increasing the radii of the
-magnet/coil system increases the forces generated between them, but it
-can be difficult or expensive to procure such large magnets. A
-collection of smaller magnets can be used instead, with improved cost
-and handling convenience, albeit with some reduction in the maximum
-force achievable.
-
-Referring to \figref{circles}, the radius of a smaller circle, $r$,
-that fits \COILnmag\ times around inside the circumference of a larger circle
-of radius $R$, with a gap between adjacent circles of $d$ is given by
-\begin{dmath}
-\eqlabel{circles}
-r = \frac{R\Sin{\pi/\COILnmag}-d/2}{\Sin{\pi/\COILnmag}+1}.
-\end{dmath}
-
-\begin{figure}
-  \begin{subfigure}
-    \asyinclude{PhD/Figures/Coil/circles}
-  \end{subfigure}
-  \lofcaption{Geometry of smaller circles tangential to a larger
-    circle.}{ $\theta=2\pi/\COILnmag$ for \COILnmag\ smaller circles in total.}
-  \figlabel{circles}
-\end{figure}
-
-This expression can be used to calculate the radius of \COILnmag\ smaller
-magnets that can be used to fill up the volume of a larger one. In the
-first case, the larger magnet is approximated with a concentric
-arrangement of disc magnets, approximating ring magnetisation.
-Such a configuration can be modelled with the same expressions derived
-for the simple cases in the previous section. Superposition can be
-used to extrapolate the force from a single small eccentric magnet to
-a ring of them.
-
-The results for such arrangements are shown in \figref{coils-manyMag},
-where it can be seen that increasing numbers of magnets initially
-increases the force, until the inner radius caused by the shrinking
-small magnets causes the force to reduce.
-
-\fxfatal{Wouldn't comparison with equal magnetic volume be more relevant in some ways?}
-
-\begin{figure}
-  \begin{subfigure}
-    \asyinclude{PhD/Figures/Coil/multimagnet}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath coils-manyMag}
-  \end{subfigure}
-  \lofcaption{Forces due to a coil on circular arrangements of
-    magnets.}{ The outer radius of the magnets is \SI{20}{mm}, and the
-    depths of the magnets and coil are \SI{10}{mm} and \SI{10}{mm}
-    respectively.}
-  \figlabel{coils-manyMag}
-\end{figure}
-
-These results are compared to their equivalent ring magnet geometries,
-for equivalent inner and outer magnet radius with solid composition. In
-\figref{coils-manyMagVerify}, the effect of increasing the inner
-radius of a ring magnet is seen to decrease the total force.
-
-\begin{figure}
-  \begin{subfigure}
-    \asyinclude{PhD/Figures/Coil/ringmagnet}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath coils-manyMagVerify}
-  \end{subfigure}
-  \lofcaption{Forces due to a coil on various ring magnets.}{ The outer
-    radius of the magnets is \SI{20}{mm}, and the depths of the
-    magnets and coil are both \SI{10}{mm} respectively.}
-  \figlabel{coils-manyMagVerify}
-\end{figure}
-
-Greater forces can be achieved by filling in the gaps with smaller
-magnets. While great effort could be expended solving an optimal fill
-problem, it
-is possible to predict the results of asymptotically filling in the
-empty space with smaller and smaller magnets: the force would converge
-to that achieved with the filled magnet. The impracticalities of
-manufactoring such a magnet would also increase the expense
-prohibitively.
-
-Crudely looking at the problem, application of \eqref{circles} shows
-that with six equally spaced magnets in a circle and some small gap
-between them, there is just enough space to fit another equally-sized
-magnet in the centre. That is, the smallest $n$ for which $3r<R$ is six.
-
-For the double-layer arrangement, the outer magnets need to be small
-enough to fit another ring of six equally-sized magnets within them,
-which can in turn fit a centre magnet of the same size. For this
-problem, with some small gap between the magnets, the smallest $n$ is
-twelve.\footnote{\emph{Without} a gap between the magnets, this just
-  bumps up to thirteen, but twelve fill the space a little better in
-  the centre.} Twelve outer magnets, six inner magnets, and one centre
-magnet make nineteen in total.
-
-These filled large-magnet approximations are shown with their force
-curves in \figref{coils-gaps}. In the case of six outer magnets, it
-can be seen that the inner magnet has little influence on the total
-force produced. This echoes the results shown in the eccentricity
-forces of \figref{vary-eccentric}, where the forces increased dramatically
-when the magnet approached close to the coil. The same would be true
-for the nineteen magnet case.
-
-\begin{figure}
-  \begin{subfigure}
-    \asyinclude{PhD/Figures/Coil/manymagnet}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath coils-gaps}
-  \end{subfigure}
-  \lofcaption{Forces due to a coil on `filled in' circular arrangements of
-    magnets.}{ The outer radius of the magnets is \SI{20}{mm}, and the
-    depths of the magnets and coil are both \SI{10}{mm}.}
-  \figlabel{coils-gaps}
-\end{figure}
-
-\paragraph{Cost considerations}
-
-While greater forces can be obtained from using a single large magnet,
-the costs of magnetic material is not proportional to volume. As
-example, consider arrangements similar to that shown in
-\figref{coils-gaps} for the seven and nineteen magnet constructions,
-but omit the centre magnet from each (as it has been shown that the
-force due to that one is small compared to the rest).
-
-Appropriate magnets to build these systems have been chosen from K\&J
-Magnetics and their approximate prices (without volume discount)
-tabulated in \tabref{prices}, based around a nominal large magnet of
-diameter \SI{50.8}{mm} and thickness \SI{6.4}{mm}. While exact radii
-to fill up the gaps could not be chosen, they are close enough to make
-a valid comparison. Significant cost savings on magnetic material can
-be made by using these multi-magnet configurations instead of a single
-magnet, albeit with a decrease in maximum force and an increase in
-construction complexity.
-
-\begin{table}
-\caption[Approximate magnet prices.]
-{Approximate prices for magnets of thickness \SI{6.4}{mm} that could be used
-to construct magnet systems
-as shown in \figref{coils-gaps}. Data obtained from
-\url{http://www.kjmagnetics.com}, 2007/\textsc{may}/08.}
-\tablabel{prices}
-\begin{tabular}{@{}cccc@{}}
-\toprule
-Diameter & Price & Number & Total Price \\
-\midrule
-\SI{50.8}{mm} & \price{17}   & \num{1}  & \price{17} \\
-\SI{15.9}{mm} & \price{1.75} & \num{6}  & \price{10.5} \\
-\SI{ 9.5}{mm} & \price{0.70} & \num{18} & \price{12.6} \\
-\bottomrule
-\end{tabular}
-\end{table}
 
 \subsection{Dual coil simulations}
 \seclabel{dualcoil}
 
-The $NI/A$ term in the force equation between a magnet and coil is the cause
-of some subtle considerations when designing coil--magnet actuators.
-The force created by a single layer coil
-(that is, $N=1$) cannot be improved upon by adding more layers radially,
-because the total length of wire (and hence the resistance, and the
-inverse of current) will grow faster than the linear gains achieved in
-the force.
+The $\turnsCoil\currentCoil/\gp{\oradiusCoil-\iradiusCoil}$ term in the force equation between a magnet and coil is the cause of some subtle considerations when designing coil--magnet actuators.
+The force created by a single layer coil (that is, $\turnsRCoil=1$) cannot be improved upon for a fixed input power by adding more layers radially, because the total length of wire (and hence the resistance, and the inverse of current) will grow faster than the linear gains achieved in the force.
 
-But extra turns of wire are required to achieve a large enough
-resistance to be able to drive the coil without overheating it due to
-excessive current. It has been shown in the previous section that
-increasing the axial length of a coil is also detrimental to the maximum force
-created on a magnet.
-
-A different method of increasing the number of turns is shown here
-that does not have the side-effects of effectively reducing the force
-that is being generated. By wiring two coils in series and in opposite
-winding directions, with the permanent magnet in the gap between them,
-greater forces can be achieved than with a single coil of the same
-resistance. This design is also better at dissipating heat, as the effective
-surface area is greater.
+The previous section has outlined a optimisation technique to achieve the maximum peak force given a fixed magnet volume and input resistance.
+This peak force can be subsequently improved upon by using a different coil design.
+By wiring two half-resistance coils in series and in opposite winding directions, with the permanent magnet in the gap between them (\figref{dual-coil-schematic}), greater forces can be achieved than with a single coil of equivalent resistance.
+This design is also better at dissipating heat, as the effective surface area is greater.
 
 \begin{figure}
-  \asyinclude{PhD/Figures/Coil/dual-coil-single}
-  \caption{Dual coil system.}
-  \figlabel{dual-coil-schematic}
+  \begin{wide}
+  \begin{subfigure}
+  \asyinclude{\jobname/dual-coil}
+  \caption{
+    Schematic.
+    \figlabel{dual-coil-schematic}
+  }
+  \end{subfigure}\hfil  
+  \begin{subfigure}
+  \psfragfig{PhD/Coil/fig/dual-coil}
+  \caption{
+    Example dual coil forces against a comparative single coil system.
+    \figlabel{dual-coil-plot}
+  }
+  \end{subfigure}
+  \end{wide}
+  \caption{Dual coil system.\fxfatal{xoxo}}
+  \figlabel{dual-coil}
 \end{figure}
 
-For two coaxial coils with a distance $G$ between their
-centres, superposition can be used to calculate the forces $F_1$ and
-$F_2$ generated between each and a permanent magnet. A schematic of this
-system is shown in \figref{dual-coil-schematic}. The axial
-distance between the permanent magnet and the two coils is denoted by
-$d_1$ and $d_2$. The total force on the magnet is given by
+For two coaxial coils with a distance $G$ between their centres, superposition can be used to calculate the forces $F_1$ and $F_2$ generated between each and a permanent magnet.
+The axial distance between the permanent magnet and the two coils is denoted by
+$d_1$ and $d_2$.
+The total force on the magnet is given by
 \begin{dmath}
-F_{\mathrm{T}}(d_1,d_2)
+F_{\mathrm{T}}\fn{d_1,G}
   =F_1(d_1)+F_2(d_2)
-  =F_1(d_1)+F_2(G-d_1)
-  =F_1(d_1)-F_1(G-d_1)
+  =F_1(d_1)+F_2(-G+d_1)
+  =F_1(d_1)+F_1(G-d_1)
 \end{dmath}.
 The two coils are assumed to be the same size.
-For a fixed dual-coil geometry, this equation allows an
-investigation of the force \vs\ displacement curves while varying the
-distance between the coils and the position of the permanent magnet.
+For a fixed dual-coil geometry, this equation allows an investigation of the force \vs\ displacement curves while varying the distance between the coils and the position of the permanent magnet.
 
 Less comprehensive parameter variations are performed to analyse the dual coil
 arrangement, as many of the results carry over from the single coil
