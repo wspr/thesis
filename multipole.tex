@@ -22,6 +22,111 @@
 
 
 \section{Multipole}
+\seclabel{multipole}
+
+Applications:
+artificial hearts \parencite{finocchiaro2008,samiappan2008}
+wave power generation \parencite{kimoulakis2008}
+wind power generation \parencite{liu2008-ietm}
+
+\textcite{backers1961} developed a theory for magnetic bearings
+by assuming the effect of curvature of the ring magnets to be
+negligible and looking at the forces between two large flat
+plates. He showed that a periodically recurring magnetisation
+yields stronger forces than a simple homogeneous one. He
+implements this coarsely in an active magnetic bearing with
+cross-section shown previously in \figref{backers-bearing}.
+
+It was not until the wide-spread availability of the high energy
+density rare-earth magnets in the late 1970s that magnetic
+geometries more complicated than
+\citeauthor{backers1961}' % no extra 's'
+became feasible. \textcite{halbach1980} pioneered the research
+on these `multi-pole' magnet arrangements, showing how the ideal
+case of sinusoidal magnetisation may be approximated with a
+structure made up from discrete magnets as shown in
+\figref{halbach}.
+This figure shows magnets with \ang{45} increments of magnetisation, but any integer division of \ang{360} is possible.
+
+In his subsequent paper, \cite{halbach1981} shows some uses for
+his multipole magnets; namely, for creating flux patterns for
+electron beam undulators or wigglers.  While his purposes were
+radically different from those for rotary bearings or this
+research, he founded the principle that by arranging magnets
+with rotating magnetisation directions (generally referred to as
+`Halbach arrays') the magnetic field is concentrated on one side
+of the array, and reduced on the other. \figref{halbach} shows
+this effect with magnetic flux almost exclusively above the
+array, so the magnetic field strength is much stronger above it
+than below. Compare this figure to the flux lines of a single
+magnet as shown in \figref{magflux}—notice how in the latter,
+the flux is symmetrical both above and below the magnet.
+
+As well as increasing the stength of the magnetic field in the desired area of use, this had the added advantage of `shielding' external equipment from the field where the magnetic forces are not required, although there are other possiblities to effect magnetic shielding \cite{becherini2009}.
+
+\textcite{choi2008}
+
+Forces between magnets are governed by their field strengths, so
+it is a natural conclusion that two facing Halbach arrays will
+have greater forces between them than single magnets of the same
+size. \textcite{yonnet1991} examined this effect relating to the
+stiffness of rotary bearings. They show that with bearings with
+\ang{90} rotations between successive magnets (as opposed to
+\citeauthor{backers1961}' % no extra 's'
+bearing which used \ang{180}
+increments), the stiffness can be approximately doubled while
+keeping the magnet volume constant.
+
+\begin{figure}
+\grf{Figures/Magnets/magflux}
+\caption{The magnetic flux lines of a single magnet.}
+\figlabel{magflux}
+\end{figure}
+
+\textcite{bancel1998} look at the field produced by Halbach
+arrays used for a linear position sensor. Their paper derives
+equations for the magnetic flux density of an arbitrary magnet,
+the geometry and magnetisation of which they optimise for their
+purposes. They then use this equation to compute the effects of
+a Halbach array (which they plot), but their analytical
+solutions are not shown. This effort is based around the flux
+density, so naturally no attempt is made to find the force
+equations between two arrays.
+
+There have been some very recent papers dealing with the
+magnetic effects of Halbach arrays used in \maglev/
+transportation \cite{hoburg2004}, predominantly to ensure
+that the magnetic field is not strong enough to affect
+passengers.
+
+\begin{figure}
+\grf{Figures/Multipole/halbach}
+\caption[Magnetic flux lines of a Halbach array.]{%
+  The magnetic flux lines of a Halbach array made from magnets with \ang{45}
+  magnetisation increments (indicated by the arrowheads). The magnetic field
+  can be seen to be much stronger above the array than below it.}
+\figlabel{halbach}
+\end{figure}
+
+For some time it seemed that multipole or Halbach arrays were a
+promising avenue of investigation for building a large-load magnetic
+spring. Multipole arrays are structures composed of a multitude of
+smaller magnets with (consistently) varying directions of
+magnetisation. The advantages of these arrays over homogeneous magnets
+are their single-sided flux patterns and their larger induced forces
+(albeit over smaller distances).
+
+\textcite{moser2006} showed an optimum configuration for a bearing
+with alternating magnetisations in the axial direction (it is rather
+difficult to radially magnetise a ring or disc magnet).
+
+\textcite{chen2002} used stacked magnets of various sizes (with the
+largest magnet rings midway between the inner and outer radii of the
+bearing) in order to maximise the stiffness per cross sectional area of the
+array.
+
+
+\section{Multipole}
 
 The next requirement of the design of the magnetic spring is high load
 capacity. Since radial magnetic bearings work directly with trying to achieve
@@ -207,7 +312,8 @@ A schematic of this system is shown in \figref{allag-system}.
 \figlabel{allag-system}
 \end{figure}
 
-The Matlab code to generate \figref{allag} may be found in `examples/multipole\_example.m'. An example of the structure of this code is shown below:
+The Matlab code to generate \figref{allag} may be found in \code{examples/multipole\_example.m}.
+An example of the structure of this code is shown below:
 \begin{verbatim}
 fixed_array = struct(...
   'type','linear',    ...
@@ -249,8 +355,6 @@ Of the around 70 lines of code in `multipole\_example.m', only some 20 lines of 
 Linear springs constructed with permanent magnets can behave in interesting ways. In levitation contexts, the natural gravity-opposing characteristic with zero power input makes permanent magnets an appealing choice for force generation (e.g., see \cite{iniguez2010-jmmm}). In the context of supporting a variable-mass load for vibration isolation, the non-linear force vs.\ displacement characteristic decreases the amount of variability in the resonance frequency of the structure, since as the mass increases and closes the gap between the magnets, the stiffness also increases \parencite{bonisoli2007-mrc}. When used in attraction, the negative stiffness can be used to decrease the resonance frequencies of a supported mass, applicable for `high-static--low-dynamic' or `quasi--zero stiffness' springs \parencite{carrella2008-jsv,robertson2009-jsv}.
 
 With well-known closed form solutions for calculating the forces between cuboid permanent magnets of parallel magnetisation \parencite{akoun1984} and solutions for the forces with orthogonal magnetisations recently published \parencite{janssen2009-sensorletters,allag2009-sensorletters}, it is now possible to analyse a wide variety of magnet configurations that previously required semi-analytical or finite element analsis techniques. This paper investigates the force characteristics between linear multipole magnet arrays as a function of array size and magnet arrangement using cuboid-shaped magnets. The forces are calculated using the force equations derived by the above researchers.
-
-The results presented in this paper are reproducible \parencite{buckheit1995wavelab} with code located at \url{http://www.github.com/wspr/magcode}. This is a Matlab software package written by the authors for calculating the forces between magnets and multipole arrays of magnets, and is freely available to be used by the public. The directory \path{examples/magspring/} contains the code that has been used to directly generate the figures in this paper. Each figure caption refers to the file from which it is generated.
 
 
 \subsection{Linear multipole magnet arrays}
@@ -294,7 +398,7 @@ It can be seen in \figref{Nwaves}(a) that for a small number of wavelengths, the
 \subfloat[]{\psfragfig{magcode/examples/magspring/fig/halbach-waves-Nwaves-2}}\hfil
 \subfloat[]{\psfragfig{magcode/examples/magspring/fig/halbach-waves-Nwaves-4}}
 \end{wide}
-\caption{Force vs.\ displacement normalised by the array height $\mupheight$ between two facing linear Halbach arrays with a varying number of magnets per wavelength~$\mupmagperwave$ and a varying number of wavelengths of magnetisation~$\mupNwaves$. The dashed line is the force between two single magnets of equal size to the arrays. Calculated in the file `multipole\_compare.m'.}
+\caption{Force vs.\ displacement normalised by the array height $\mupheight$ between two facing linear Halbach arrays with a varying number of magnets per wavelength~$\mupmagperwave$ and a varying number of wavelengths of magnetisation~$\mupNwaves$. The dashed line is the force between two single magnets of equal size to the arrays.}
 \figlabel{Nwaves}
 \end{figure*}
 
@@ -311,7 +415,7 @@ The results shown previously have in general indicated that improvements to the 
 \begin{figure}
 \centering
 \pregen{\psfragfig{magcode/examples/magspring/fig/halbach-max-Nmag}}
-\caption{Force characteristic with arrays each composed of fifty magnets of length $\mupmaglength=\SI{2}{mm}$, over a variety of number of magnets per wavelength~$\mupmagperwave$. The dashed line is the force between two homogeneous magnets of length \SI{100}{mm}. Calculated in `multipole\_const\_Nmag.m'.}
+\caption{Force characteristic with arrays each composed of fifty magnets of length $\mupmaglength=\SI{2}{mm}$, over a variety of number of magnets per wavelength~$\mupmagperwave$. The dashed line is the force between two homogeneous magnets of length \SI{100}{mm}.}
 \figlabel{Nmag-max}
 \end{figure}
 
@@ -336,7 +440,7 @@ This result can be justified intuitively with the recognition that there is a st
 \begin{figure}
 \centering
 \pregen{\psfragfig{magcode/examples/magspring/fig/ratios-compare}}
-\caption{Force characteristic between two modified Halbach arrays of $\mupNwaves=2$ with magnet length ratio $\mupqratio$ between the sizes of vertically- to horizontally-polarised magnets. Calculated in `linear\_quasi\_example.m'.}
+\caption{Force characteristic between two modified Halbach arrays of $\mupNwaves=2$ with magnet length ratio $\mupqratio$ between the sizes of vertically- to horizontally-polarised magnets.}
 \figlabel{ratios-compare}
 \end{figure}
 
@@ -348,7 +452,7 @@ Since the force improvement with adjusting $\mupqratio$ is only significant for 
 \begin{figure}
 \centering
 \pregen{\psfragfig{magcode/examples/magspring/fig/ratios-forcesum}}
-\caption{Integral of the force--displacement characteristic vs.\ magnet length ratio $\mupqratio$ of two modified Halbach arrays of size \SI{100x10x10}{mm} over a displacement range of \SIrange{10}{20}{mm}, shown with varying number of wavelengths of magnetisation $\mupNwaves$. Calculated in `linear\_quasi\_ratios.m'.}
+\caption{Integral of the force--displacement characteristic vs.\ magnet length ratio $\mupqratio$ of two modified Halbach arrays of size \SI{100x10x10}{mm} over a displacement range of \SIrange{10}{20}{mm}, shown with varying number of wavelengths of magnetisation $\mupNwaves$.}
 \figlabel{ratios-forcesum}
 \end{figure}
 
@@ -362,7 +466,7 @@ There is still scope for further analysis of the force behaviour between multipo
 \section{Planar multipole arrays}
 \seclabel{planar-multipole}
 
-It is also possible to calculate the forces between magnet arrays with magnetisation as a function of position in two directions. For two multipole arrays of the structure shown in \figref{trumper-system} that have magnetisation directions based on the superposition of orthogonal linear multipole arrays, results are shown in \figref{trumper} for horizontal displacement with arrays composed of \SI{10}{mm} cube magnets and \SI{15}{mm} vertical displacement between the array centres. Each magnet of each array (except those with zero magnetisation) has a magnetisation of \SI{1}{T}. The Matlab code to generate \figref{trumper} is located in the file `examples/planar\_multipole\_example.m'.
+It is also possible to calculate the forces between magnet arrays with magnetisation as a function of position in two directions. For two multipole arrays of the structure shown in \figref{trumper-system} that have magnetisation directions based on the superposition of orthogonal linear multipole arrays, results are shown in \figref{trumper} for horizontal displacement with arrays composed of \SI{10}{mm} cube magnets and \SI{15}{mm} vertical displacement between the array centres. Each magnet of each array (except those with zero magnetisation) has a magnetisation of \SI{1}{T}.
 
 Note the differences in the shape of the force curves between \figref{allag,trumper}; in the planar multipole arrangement, the vertical force is largely positive even as the arrays shift into their attractive zone, whereas the linear multipole forces are more symmetrical and become significantly negative under a similar displacement. A more detailed comparison between various configurations of multipole arrays is currently under investigation and will be reported at a later date.
 
@@ -388,7 +492,7 @@ Planar multipole arrays consist of a two dimensional stack of magnets that vary 
 
 \subsection{Example of planar Halbach array forces}
 
-Force characteristics for the quasi-Halbach array have been shown recently \cite{janssen2009-jsdd} but the planar Halbach array has not yet been analysed. Since the planar Halbach array uses magnetisations in directions non-orthogonal to the axes, the necessary calculations are more complex than for the quasi-Halbach array. For two facing planar Halbach arrays, \figref{trumper} shows results of $y$- and $z$-force vs.\ horizontal $y$-displacement with arrays composed of \SI{10}{mm} cube magnets and \SI{15}{mm} vertical displacement between the array centres. Each magnet of each array (except those with zero magnetisation) has a magnetisation of \SI{1}{T}. The Matlab code to generate \figref{trumper} is located in the file `examples/planar\_multipole\_example.m'.
+Force characteristics for the quasi-Halbach array have been shown recently \cite{janssen2009-jsdd} but the planar Halbach array has not yet been analysed. Since the planar Halbach array uses magnetisations in directions non-orthogonal to the axes, the necessary calculations are more complex than for the quasi-Halbach array. For two facing planar Halbach arrays, \figref{trumper} shows results of $y$- and $z$-force vs.\ horizontal $y$-displacement with arrays composed of \SI{10}{mm} cube magnets and \SI{15}{mm} vertical displacement between the array centres. Each magnet of each array (except those with zero magnetisation) has a magnetisation of \SI{1}{T}.
 
 \begin{figure}
 \centering
@@ -405,8 +509,7 @@ When pairs of arrays are faced in opposition, a vertical force is produced betwe
 
 The vertical force vs.\ vertical displacement characteristics of each array discussed (linear Halbach, planar Halbach, patchwork, and quasi-Halbach) are compared in \figref{planar-compare}, with the forces between two single magnets (of the same size as the arrays) included for comparison.
 The linear Halbach, planar Halbach, and quasi-Halbach have all been chosen to have a single wavelength of magnetisation with an end magnet for symmetry.
-Each array has the same outer dimensions of $\SI{50x50}{mm}$, thickness \SI{10}{mm}, and composed of magnets with magnetisation \SI{1}{T}, and each magnet is either cube-shaped or, for the linear array, has a square cross-section.
-The Matlab code to generate \figref{planar-compare} is located in the file `examples/planar\_compare.m'.
+Each array has the same outer dimensions of $\SI{50x50}{mm}$, thickness \SI{10}{mm}, and composed of magnets with magnetisation \SI{1}{T}, and each magnet is either cube-shaped or, for the linear array, has a square cross-section..
 
 It is interesting that the linear array exhibits the greatest force for a given displacement; this can be explained by the fact that the planar array and the quasi-Halbach array both have regions of zero magnetisation; this degrades their load-bearing ability since there is less inherent magnetic energy in each. These results indicate that the linear array is the most suitable choice for bearing vertical loads; not only are the forces stronger, but the magnetisation arrangement (and hence construction of the array) is simpler as well. It is also notable that despite the much simpler magnetisation pattern of the quasi-Halbach array compared to the planar Halbach array, the results for these two are quite similar, especially at small displacements.
 
