@@ -1,5 +1,5 @@
 \documentclass[11pt,a4paper]{memoir}
-\def\asydir{\jobname}
+\edef\asydir{\jobname}
 \usepackage{thesis-preamble}
 \EndPreamble
 \begin{document}
@@ -684,10 +684,14 @@ In the case of using magnetic fields for noncontact sensing of material properti
 Magnetic resonance imaging technology is well-known in the community for its non-invasive ability to diagnose a broad range of health issue. Other applications in the medical field include brain imaging \cite{sekino2005,gjini2005,lu2008-ietm,demachi2008}, measurements of the health of the heart \cite{lim2009-ietm}, stimulation of the nervous system \cite{darabant2009}, and studying the effects on tumour growth and immune function \cite{yamaguchi2005-ietm}.
 An interesting biomedical application is remote localisation in six \dof/ within the human body \cite{yang2009-ietm}.
 
-Closer to the engineering field of my vocation, magnetic fields have been used to great effect within the robotics world. A haptic interface for manuipulating small objects with magnetic levitation \cite{vanwest2007}.
+Closer to the engineering field of my vocation, magnetic fields have been used to great effect within the robotics world.
+A haptic interface for manuipulating small objects with magnetic levitation \cite{vanwest2007}.
 A wireless motion capture device \cite{hashi2005}.
-A computer input device built with magnetic sensors placed on the wrist in order to sense single finger-tip motion from the opposite hand \parencite{han2008}.
+A computer input device built with magnetic sensors placed on the wrist in order to sense single finger-tip motion from the opposite hand \cite{han2008}.
 Using a magnet attached to a cantilever excited by an external field in a water tank as an actuator to propel a robotic fish \cite{tomie2005}.
+
+For very precise wind tunnel measurements, supporting structures can interfere with the fluid flow in the working cross-section.
+In such cases, magnetic levitation has been used to suspend objects in a non-contact fashion \cite{higuchi2008}, avoiding this problem.
 
 In the following sections, I will discuss in more detail the literature closer in scope to the research of this thesis.
 
@@ -706,6 +710,7 @@ This section looks broadly at some of the main applications of the field.
 The largest body of research into magnetic levitation is on so-called `\maglev/'
 transportation, reviewed in 2006 by \textcite{lee2006-ietm}.
 Its well-known goal is to use a levitated train or car to provide extremely fast and efficient transportation.
+\note{Indeed, in my experience of explaining my thesis work to others, the first thought most people have when one mentions `magnetic levitation' is of maglev trains.}
 This field, which is rather diverse in terms of the techniques under investigation, is finally now achieving commercial application in the real world after some thirty years of research.
 While it has some concepts in common with this research (large loads, magnets), the techniques used tend to be rather distanced from those that will be applied for this project because they focus on transportation rather than \emph{elimination} of movement.
 
@@ -724,7 +729,7 @@ Each of these devices are capable of supporting small loads, and applying transl
   Note that while these six \dof/ actuators have very high static precision, they do not have the frequency response of the so-called `nano-positioners' using piezoelectric stack acuators.
 }
 
-The initial designs allowed travel in a single direction \parencite[\eg][]{trumper1992} while planar actuators were shown within the decade \parencite[\eg][]{kim1997-thesis,molenaar2000}.
+The initial designs allowed travel in a single direction \parencite[\eg,][]{trumper1992} while planar actuators were shown within the decade \parencite[\eg][]{kim1997-thesis,molenaar2000}.
 Soon after, a six \dof/ non-contact actuator using similar principles was demonstrated \cite{verma2004}.
 
 Each of these devices fulfil different design requirements, and are all subject to continuing research; see the development of the single \dof/ linear magnetic bearing \cite{ro2009-preeng}; the planar actuator of \textcite{kim2007} to support around \SI{2}{kg} over a travel of $\SI{5}{mm}\times\SI{5}{mm}$ with nanometre precision; five \dof/ \cite{fulford2009}; and, a six \dof/ actuator has been demonstrated by \textcite{jansen2008}, which supports loads in the order of \SI{10}{kg} with a relatively large air gap (\SI{1}{mm}--\SI{2}{mm}) and large stroke ($\SI{230}{mm}\times\SI{230}{mm}$).
@@ -732,17 +737,17 @@ Each of these devices fulfil different design requirements, and are all subject 
 
 
 
-\subsubsection{Magnetic bearings}
+\subsubsection{Magnetic bearings, couplings, and gears}
 \seclabel{bearings}
 
 The oldest dynamic mechanical application of magnetics was for rotary
-bearings.  The classic magnetic bearing supports a shaft by applying
-radially centring forces on the spinning rotor. An example schematic
-is shown in \figref{radialbearing}, which is unstable in the axial
-direction due to Earnshaw's theorem. In the most simple of these
-bearings, this instability is constrained with a physical stop.
-Control has been used for many years now to stabilise such systems
-(\eg, by \textcite{shimizu1968}, creating completely non-contact devices.
+bearings.
+The classic magnetic bearing supports a shaft by applying radially centring forces on the spinning rotor.
+An example schematic is shown in \figref{radialbearing}, which is axially unstable due to Earnshaw's theorem (\secref{earnshaw}).
+In the most simple of these bearings, this instability is constrained with a physical stop.
+Control has been used for many years now to stabilise such systems (\eg, early work by \textcite{shimizu1968}), creating completely non-contact devices.
+Such devices are capable of very high speeds due to the absence of mechanical friction and avoiding long-term problems associated with wear.
+Magnetic bearings can also be used to support axial forces with active control in the radial direction \cite{asami2005}; it is possible to combine radial and axial bearings to improve the passive stability characteristics of these bearings, shown by \textcite{delamare1994-ietm} and analysed for non-rotational systems later in \secref[vref]{rotation-freedom}.
 
 \begin{figure}
   \grf[width=0.75\textwidth]{Figures/Bearings/radialbearing}
@@ -761,12 +766,12 @@ The multipole nature of this bearing will be more closely examined in \secref{mu
   \figlabel{backers-bearing}
 \end{figure}
 
-In the early decades of magnetics research, it was not feasible to solve the magneto-static forces completely analytically.
+In the early decades of magnetics research, it was not feasible to solve the magneto-static forces of these systems completely analytically.
 Magnetic bearings could be modelled using a \twoD/ field solution, simplifying the solutions.
 In such a way, \textcite{yonnet1978} showed that the forces between axially- and radially-magnetised bearings are equal (\figref{equalbearings}).
-However, this equality of forces for both orthogonally- or parallelly-magnetised magnets should not be taken as a general result; we will see later that this is in fact not true for cube magnets.
-\fxfatal{cross-ref}
+However, this equality of forces for both orthogonally- or parallelly-magnetised magnets should not be taken as a general result; we will see later that this is in fact not true for cube magnets (see \secref[vref]{cube-compare-orth}).
 His later paper \cite{yonnet1981} continued this work, describing how magnetic bearings may re-arranged to suit different applications, showing a complete taxonomy of different magnetic bearing designs.
+Varying geometrical parameters of these magnetic bearings can signicantly affect the force and stiffness characteristics \cite{bassani2006-trib-int}.
 
 \begin{figure}[hbtp]
   \grf[scale = 0.5]{Figures/Bearings/equalbearings}
@@ -776,36 +781,17 @@ magnetisation.}
   \figlabel{equalbearings}
 \end{figure}
 
-[\textcite{asami2005}] This paper is essentially describing an axial
-bearing with actively control for radial stability. It uses a \FEA\ simulation
-to draw curves similar to those graphs I've made for single magnet springs;
-positive stiffness decreasing with displacement.
+Rotary magnetic bearings have an opposite: the magnetic couple.
+Rather than isolate components from applied loads, the magnetic couple serves to transmit the forces and couple the two components together.
+They can be used, for example, to transmit torque between two separate rotating shafts.
+\textcite{yonnet1981} highlighted in an early treatment on the topic that, even moreso than for magnetic bearings, periodic recurring magnetisation (see \secref{multipole}) is required for magnetic couplings to transmit torque satisfactorily.
+Since then, theory for analysing and proposals for many multipole designs have been analysed \cite{charpentier1999-ietm-mar,charpentier1999-ietm-sep,charpentier2001-compel,chen2003,ravaud2009-coupling-3d,ravaud2010-ietm-coupling}.
 
-Makes a couple of throw-away comments about minimising radial instability
-forces by minimising the axial thickness of the passive bearings, and to have
-less radial direction flux in the `iron part'.
-
-
-
-
-
-\subsubsection{Magnetic couplings}
-
-Rotary magnetic bearings have an opposite: the magnetic couple. Rather
-than isolate components from applied loads, the magnetic couple serves
-to transmit the forces and couple the two components together. They
-can be used, for example, to transmit torque between two separate
-rotating shafts. These are treated by \textcite{yonnet1981}, who says
-periodic recurring magnetisation (see \secref{multipole}) is required in
-order to transmit torque satisfactorily.
-
-Research into the force equations for magnetic bearings and couplings is still active, with analytical \threeD/ equations recently presented by \textcite{ravaud2009-coupling-3d}. Also see \textcite{ravaud2010-ietm-coupling}.
-
-\subsubsection{Magnetic gears}
-
-\textcite{rens2010-ietia}
-
-\textcite{gouda2011-ietm}
+Magnetic couplings can also be used in transmission systems as non-contact `gears'; it is by no means a solved research question on how best such magnetic gears should be designed
+\cite{rens2010-ietia}.
+While magnetic gears might not always have the torque capacity of a mechanical gear, this is dependent on the device and the design of the gear system.
+In some cases, magnetic gears can usefully replace mechanical ones in planetary gear trains avoiding typical problems such as tooth wear and chatter
+\cite{gouda2011-ietm}.
 
 
 \subsection{Magnets opposing motion}
@@ -909,37 +895,24 @@ A review of work in the area of superconducting levitation has been published by
 \subsubsection{Single \dof/ unstable magnetic suspension}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
-The most common form this takes is via an unstable attractive vertical force to directly compensate for gravity; later, \fxfatal{crossref} vertically-passive schemes are seen that require active control in the horizontal directions to maintain stability.
+The most common form this takes is via an unstable attractive vertical force to directly compensate for gravity; vertically-passive designs are shown in \secref[vref]{hspring,choi-spring} that require active control in the horizontal directions to maintain stability.
 
-An advanced approach for this application used backstepping with a nonlinear model to provide robust control without system identification \cite{mahmoud2003}.
+The single degree of freedom magnetic system is very popular as an application for control theory, as it is an unstable system in which both the passive and active magnetic forces are nonlinear with displacement.
+As will be seen later, developing models for magnet and coil forces can be quite involved; for the purposes of control, the closed form expressions introduced in \chapref{magnet-theory} are too complex to integrate into a control methodology.
+One way to overcome this issue is to develop a low-order empirical model for the system, with unknown constants that must be identified; an example of this was shown for a coil-iron suspension by \textcite{agamennoni2004}.
+In contrast, in this work where an empirical model has been used, curve-fitting has been used \emph{a priori} to establish the unknown parameters (\secref{qzs-mag}).
+This method is only possible when sufficient information is known beforehand, and an online method is useful for plant parameters that change over time (such as load force, which can be inherently time-varying).
 
-\textcite{gentili2003}.
-
-\textcite{agamennoni2004} were able to identify the nonlinear dynamics of a coil-iron suspension.
-
+Sufficiently advanced nonlinear control can achieve stability and tracking without the use of system identification.
+As an example, \textcite{mahmoud2003} used backstepping with a nonlinear model to provide robust control of a magnetic suspension and \textcite{queiroz2007} similarly used nonlinear control to stabilise a magnetic bearing with pull--pull electromagnets with parameter uncertainties, while also minimising power consumption of the system.
+\textcite{gentili2003} investigated this system with nonlinear feedback control for robust disturbance suppression.
 \textcite{chang2001} applied nonlinear control to the problem of magnetic levitation, using coupled hybrid magnets (\ie, electromagnets biased with permanent magnet cores) that create a magnetic circuit with the levitated table of \SI{20}{kg}.
-The paper looks at nonlinear analysis and neither passive nor active vibration isolation results are shown.
 
-Even now, basic \PID\ control is still used for control purposes.
-\textcite{li2007} report their success in suspending a magnetic table using a coupled electromechanical model of the system.
-
+However, such advanced control techniques are not always necessary; \textcite{li2007} report their success in using simple \PID/ control for suspending a magnetic table using a coupled electromechanical model of the system.
 \textcite{banerjee2008} used a simple cascaded \PI\ and lead controllers to stabilise an electromagnetic suspension.
 An optimisation technique was used to obtain the control gains necessary to achieve adequate performance over a range of displacement gaps; such control is usually only suitable for fixed-gap systems.
 
-\textcite{gosiewski2008} applied \Hinf/ control to a magnetic suspension.
-Eh.
-
-The negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001}.
-
-I like magnetic levitation of objects in a wind tunnel \cite{higuchi2008}.
-
 Vibration isolation achieved using magnetic suspensions is addressed later in \secref{magnet-platform-isolation}.
-
-
-\subsubsection{Control of unstable magnetic systems}
-
-\textcite{queiroz2007} used nonlinear control to stabilise a magnetic bearing with pull--pull electromagnets with parameter uncertainties, while also minimising power consumption of the system.
-
 
 
 
@@ -1142,6 +1115,10 @@ They showed a configuration of linear and magnetic springs with the notable feat
 In a conventional mass--spring system, the static deflection increases as the stiffness of the support is reduced, and a lower limit on the stiffness is imposed by constraints on the allowable displacement.
 Novel approaches are required to reduce the resonance frequency below that possible with a linear spring.
 One approach is to use a mechanical linkage \cite{winterflood2001}.
+
+\fxfatal{integrate}
+The negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001}.
+
 
 \textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
 
