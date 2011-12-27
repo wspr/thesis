@@ -1369,6 +1369,84 @@ A variation of this idea was explored later \parencite{mizuno2010-jvc}, with the
 
 
 
+\section{Reproducible research}
+
+One of my strong beliefs that has rison out from my short time in the academic world is that as work is distributed electronically and the sheer amount of knowledge grows ever larger, the utility of academic work in a vacuum grows smaller.
+My views here follow closely in the wake of the `reproducible research' movement, which is pithily expoused as \cite{kovacevic2007-icassp}
+\begin{quote}
+[A] scientific article is merely advertisement of scholarship; the real scholarship includes software and data which went into producing the article.
+\end{quote}
+It would be a great and noble achievement to apply this principle to every postgraduate thesis; unfortunately, only aspects of my work live up to this promise.
+
+The principle contribution of my work in this area is the publication of a compilation of code for calculating the forces between magnets and magnetic systems at the website $\langle$\url{http://www.github.com/wspr/magcode}$\rangle$.
+Without delving into the details too fully, the main motivation for publishing this code is that there are a myriad of typographical errors in the literature for calculating the forces between magnets.
+(Examples omitted as no blame is wished to be placed; suffice it to say that my own publications have errors of their own.)
+Equations in a journal manuscript have no meaning aside their typographical representation which can often be unclear or contain errors from the publication process.
+On the other hand, equations in a piece of computer code have intrinsic meaning in that they are a concrete instantiation of a particular mathematical theory.
+
+The specific advantage of publishing code and not just equations in a typeset form are that errors are almost impossible to transmit in this form — unless the theory itself has not been validated correctly, which should rarely happen.
+Being able to take another researchers code and re-purpose it for a new piece of scholarship decreases the chances of error, improves efficiency, and in the long run builds a more stable basis for the hypothetical `pyramid of knowledge' that we profess to be building up in the academic world.
+
+\subsection{Clarifying example}
+
+In this thesis, I shall not be including much code as part of the main text.
+However, to help clarify my point for this section, consider the equation for the force exerted between two coaxial circular current carrying coils:
+\begin{dmath*}
+F_f\fn{r_1,r_2,z}=
+  \mu_0 I_1I_2z\sqrt{\frac{m}{4r_1r_2}}
+  \gp{\EllipticK{m}-\frac{m/2-1}{m-1}\EllipticE{m}}
+\end{dmath*},
+where
+\begin{dmath}
+m=\frac{4r_1r_2}{\gp{r_1+r_2}^2+z^2}
+\end{dmath}.
+The exact terms are not important at this point (for reference, they will be explained in context in \secref{filament-method}).
+
+My point here is that the equation typeset above is of academic merit only; it cannot be directly used to calculate this force.
+By contrast, if I provide some Mathematica code for the same, it now becomes straightforward
+\note{If you indeed have Mathematica; I'll not go into that philosophical can of worms here.}
+to use it for some calculation:
+\begin{verbatim}
+CoilCoilForce[I1_,I2_,r_,R_,z_] = With[ {m=4 r R/((r+R)^2+z^2)},
+  I1 I2 4 \[Pi] 10^-7 Sqrt[m] z
+  ( 2 EllipticK[m] - (2-m)/(1-m) EllipticE[m] ) / (4 Sqrt[r R])
+];
+\end{verbatim}
+Incidentally, when one comes across the elliptic integrals $\EllipticK{\cdot}$ and $\EllipticE{\cdot}$ it can be unclear what notation is being used (which is not always clarified); in some cases, the argument might be for the elliptic parameter $m$, other times the elliptic modulus $k$; they are equivalent and related by $\EllipticK{m}=\EllipticK{k^2}$ but without context — or code — it can hard to know which is intended.
+
+\subsection{Sections of this thesis which are reproducible}
+\def\code#1{`\textsf{#1}'}
+
+As mentioned above, the source for the reproducible material in this thesis is located in the \code{magcode} Github repository, which contains both Matlab and Mathematica libraries for various magnetic calculations.
+The libraries have evolved independently and currently contain differences in their coverage of this work and the literature; the principle goal is to have them extended (beyond the lifetime of this thesis) to complete coverage across a wide range of magnetic systems for a multitude of programming languages.
+
+The following list ties sections of this thesis with code from the repository.
+Not all figures in each section will be reproducible from this list, but most should be.
+\begin{itemize}
+\item[\secref{magnetcoil-forces,magnetcoil-optimisation}]
+This work is presented in the Mathematica code
+\code{examples/Thick-Coil-Magnet-Forces.nb}
+based on the general \code{MagnetCode.m} library.
+
+\item[\secref{unstable-vertical}]
+\code{examples/mag\_ratio.m}.
+
+\item[\secref{oblique}]
+The scripts in \code{examples/oblique/}.
+
+\item[\chapref{multipole}]
+\code{examples/multipole\_example.m}
+
+\item[\secref{optim-halbach-1d}]
+The scripts in \code{examples/magspring/}.
+
+\item[\secref{planar-multipole}]
+\code{examples/planar\_multipole\_example.m} and \code{examples/planar\_compare.m}.
+
+\end{itemize}
+
+Incidentally, the source for this thesis itself, including some of the programmatically drawn figures, is available in $\langle$\url{http://www.github.com/wspr/thesis}$\rangle$.
+Which use of this material is restricted under the copyright of The University of Adelaide, the methods used for writing may be instructive for others following a similar path to my own.
 
 \section{Structure of this thesis}
 
@@ -1389,10 +1467,9 @@ This chapter has introduced the themes of this thesis; at this point it is prude
       Finally, some brief experimental results of a variable-stiffness magnetic support based on some of the principles discussed in \chapref{qzs}.
 \end{description}
 
-\newpage
 \subsection{Contributions of this thesis}
 
-The following works have been published during the course of my postgraduate study.
+The following works have resulted over the course of my postgraduate study.
 In one form or another, most of these works have been incorporated into this thesis and are highlighted herein where appropriate.
 
 \begin{itemize}
