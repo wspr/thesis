@@ -1,5 +1,5 @@
 \documentclass[11pt,a4paper]{memoir}
-\def\asydir{\jobname}
+\edef\asydir{\jobname}
 \usepackage{thesis-preamble}
 \EndPreamble
 \begin{document}
@@ -32,6 +32,7 @@ In this chapter, a simple electromagnetic actuator is analysed in detail, using 
 A new equation is devloped for calculating the force between cylindrical coils and magnets with eccentric displacement, and some examples of alternate electromagnet designs are given based on the modelling results shown.
 
 \section{Coaxial magnet/coil forces}
+\seclabel{magnetcoil-forces}
 
 \subsection{Introduction}
 
@@ -45,12 +46,6 @@ Only the quasi-static force/displacement characteristics are considered; in othe
 In previous work in modelling cylindrical coil/magnet quasi-static forces, Babic et al.~\cite{babic2008-ietm} and Ravaud et al.~\cite{ravaud2010-pier} presented expressions for calculating the force between pairs of thin coils (in which there are many turns axially but the coil is modelled as having zero radial thickness). These expressions can also be used to calculate the force between a thin coil and magnet, using the surface current density model of a permanent magnet.
 Their expressions were simplified in a recent publication~\cite{robertson2011-ietm}.
 Babic et al.~\cite{babic2011-ietm} has also published an equation for the axial force between a thin and thick coil under axial displacement, which is consider in more detail in this work.
-
-\subsubsection{Reproducibility}
-
-In order for the work in this paper to be easily reproduced and verified, the software implementation of the theory is available for public use at $\langle$\url{http://github.com/wspr/magcode}$\rangle$.
-Refer to the file `\url{magcode/examples/Thick-Coil-Magnet-Forces.nb}' for the source of the graphs in this publication.
-While this file is written for the Mathematica programming language, the software available is written for both Matlab and Mathematica and contains numerical implementations for not just this work but also a variety of other permanent magnet calculations.
 
 \subsection{Geometry}
 
@@ -100,6 +95,7 @@ The final method uses a single integral expression to calculate the force, and t
 \end{figure}
 
 \subsubsection{The filament method}
+\seclabel{filament-method}
 
 For two circular coaxial loops (i.e., a single turn of a solenoid) carrying currents $I_1$ and $I_2$ respectively,
 the axial force between them is given by~\cite[e.g.]{shiri2009-pier}

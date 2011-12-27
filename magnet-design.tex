@@ -170,7 +170,6 @@ If the contraint is removed, it will be naturally unstable horizontally due to E
 A natural question for magnet selection in such cases is `what size should the magnets be?'.
 As magnet price scales with volume (\figref{mag-price}), it is often desirable to minimise the magnet volume for a required force, and the question then becomes what magnet \emph{shape} to choose.
 Permanent magnets in two different shapes are examined here: square-face cuboid and cylindrical.
-The MATLAB code used to calculate these results is located in the script {examples/mag\_ratio.m} in the code repository \url{http://github.com/wspr/magcode}.
 
 \subsection{Square-face cuboid magnets}
 
@@ -213,6 +212,7 @@ In order to compare the force versus displacement characteristics for a range of
 Some small overlap in the force curves for $\ratioCub=0.4$ and $\ratioCub=0.5$ is seen in \Figref{ratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\ratioCub$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\ratioCub\approx0.4$.
 
 \subsection{Cube magnets in two orientations}
+\seclabel{cube-compare-orth}
 
 As stated in the introduction in \secref{bearings}, by taking a \twoD/ solution for analysing the forces between ring magnets (\ie, assuming the curvature of the magnets has negligible effect), \textcite{yonnet1978} showed that axially- and radially-magnetised ring magnets produce the same reaction forces.
 This is an important result for ring magnets, as it is much more difficult to magnetise a ring in the radial direction than in the axial direction.
@@ -666,7 +666,7 @@ it easier to control. We'll see how it works out in the experiments\dots.
   {Negative isosurface stiffnesses of the zero stiffness horizontal spring.}
 
 
-\subsubsection{Stability in two \dof/.}
+\subsubsection{Stability in two \dof/}
 \seclabel{choi-spring}
 
 [INTRO]
@@ -756,6 +756,7 @@ This idea of tuning the magnet characteristics to achieve certain stiffness prop
 
 
 \section{Rotational degrees of freedom}
+\seclabel{rotation-freedom}
 
 It becomes more difficult to examine the behaviour of these systems in
 six degrees of freedom. There is no ``Earnshaw's Theorem'' to neatly
@@ -1061,10 +1062,6 @@ As with all magnetic springs, positive stiffness in the vertical direction infer
 This instability may be countered with a linear bearing (or some other physical constraint) or with an active control system.
 
 This section consists of three main parts: \secref{geom} defines the geometry of the system and presents the theory for analysing its behaviour; \secref{design} uses this theory to demonstrate the advantages of this magnet design, specifically in terms of its natural frequency versus applied load; and \secref{stabl-3dof} extends the model to analyse rotations and torques to investigate the planar stability of the system.
-
-The results presented in this paper are reproducible \parencite{kovacevic2007-icassp} with code located at \url{http://www.github.com/wspr/magcode}.
-The directory `examples/oblique' contains the code that has been used to directly generate the figures in this paper.
-
 
 \subsection{Oblique spring geometry and theory}
 \seclabel{geom}
