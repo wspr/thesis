@@ -1,4 +1,9 @@
-%!TEX root = thesis.tex
+\documentclass[11pt,a4paper]{memoir}
+\def\asydir{\jobname}
+\usepackage{thesis-preamble}
+\EndPreamble
+\begin{document}
+
 \chapter{Magnetic and electromagnetic forces}
 \chaplabel{magnet-theory}
 
@@ -1301,11 +1306,5 @@ The code presented here currently only contains algorithms for calculating force
 \textcite{janssen2009-ietm} have derived the analytical forces between pyramidal-frustrum shaped magnets, which have not quite yet been published at time of writing. 
 
 
-\section{Reproducible research}
 
-Some of the results presented in this thesis are reproducible \parencite{kovacevic2007-icassp} with code located at \url{http://www.github.com/wspr/magcode}. This is a software implementation in both Matlab and Mathematica  of much of the above theory for calculating the forces between magnets and multipole arrays of magnets, and is freely available to be used by the public.
-
-This code is written to provide a convenient interface to the theory presented above.
-
-Blah blah blah.
-
+\end{document}
