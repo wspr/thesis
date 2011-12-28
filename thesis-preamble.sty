@@ -61,7 +61,7 @@
   xcolor,
   zref,
 }
-\RequirePackage[draft,inline,nomargin]{fixme}
+\RequirePackage[inline,nomargin]{fixme}
 \let\oldfixme\fxfatal
 \protected\def \fxfatal {\oldfixme}
 
@@ -85,20 +85,6 @@
 }
 %\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black}
 \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
-
-
-\@ifpackageloaded{hyperref}{}{%
-  \PackageError{hyperref}{I am not loaded!}
-    {\string\pdfdef\space requires hyperref.}}
-\def\pdfdef#1{%
-  \def\@tempa{#1}%
-  \afterassignment\@pdfdef
-  \expandafter\def\csname pdfdef@\string#1\endcsname}
-\def\@pdfdef{%
-    \expandafter\expandafter\expandafter\pdfstringdefDisableCommands
-    \expandafter\expandafter\expandafter{%
-    \expandafter\expandafter\expandafter\let\expandafter\@tempa
-      \csname pdfdef@\expandafter\string\@tempa\endcsname}}
 
 \RequirePackage[open,openlevel=4]{bookmark}
 \RequirePackage{hypcap}
@@ -129,7 +115,6 @@
 \RequirePackage{mlist}
 \RequirePackage{thesis-maths}
 \@ifpackageloaded{mathpazo}{\PassOptionsToPackage{mathpazo}{flexisym}}{}
-\@ifpackageloaded{mathptmx}{\PassOptionsToPackage{mathptmx}{flexisym}}{}
 \RequirePackage{breqn}
 \setkeys{breqn}{labelprefix=eq:}
 
@@ -319,6 +304,8 @@
 %%%%%
 
 \def\printtoctitle#1{\section*{#1}}
+\def\printloftitle#1{\section*{#1}}
+\def\printlottitle#1{\section*{#1}}
 
 %%%%%
 
@@ -351,92 +338,6 @@
 \renewcommand*{\descriptionlabel}[1]{\hspace\labelsep\normalfont\itshape #1}
 \tightlists
 
-\newif   \ifshorttoc
-\newenvironment {hideshorttoc} {
-  \addtocontents{toc}{ \protect\ifshorttoc \protect\else }
-}{
-  \addtocontents{toc}{ \protect\fi }
-}
-
-\newcommand*{\setupshorttoc}{%
-  \shorttoctrue
-  \renewcommand*{\contentsname}{Short contents}
-  \let\oldchangetocdepth\changetocdepth
-  \renewcommand{\precistoctext}[1]{%
-    \nobreak
-    \begin{quote}
-      \leftskip    = 0cm plus  0.5fil
-      \rightskip   = 0cm plus -0.5fil
-      \parfillskip = 0cm plus    1fil
-      \footnotesize ##1
-    \end{quote}
-  }
-  \let\oldcftchapterfillnum\cftchapterfillnum
-  \renewcommand*{\changetocdepth}[1]{}
-  \setcounter{tocdepth}{0}% chapters
-  %
-  \renewcommand*{\cftchapterfont}{\hfill}
-  \renewcommand*{\cftchapterfillnum}[1]{%
-    \quad \nobreak p.\,##1\hfill \null \par
-  }
-  %
-  \renewcommand*{\cftpartfont}{\hfill \bfseries}
-  \renewcommand*{\cftpartfillnum}[1]{\hfill\null\par}
-}
-
-\newcommand*{\setupparasubsecs}{%
-  \shorttocfalse
-  \let\oldnumberline\numberline
-  \renewcommand \cftsubsectionfont     {\small}
-  \renewcommand \cftsubsectionpagefont {\upshape\small}
-  \renewcommand \l@subsection [2] {%
-    \ifnum\c@tocdepth > 1
-      \def\numberline####1{\parsesubsection####1\@nil}%
-      \leftskip=\cftsubsectionindent
-      \rightskip=\@tocrmarg
-      \advance\rightskip 0pt plus 2em
-      \parfillskip=\fill
-      \ifhmode
-        \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip \unskip\unskip\unskip\unskip\unskip\unskip\unskip\unskip\,,\space
-      \else
-        \noindent
-      \fi
-      \ignorespaces
-      {\cftsubsectionfont ##1}~{\cftsubsectionpagefont##2}%
-       \let\numberline\oldnumberline\expandafter\ignorespaces
-    \fi
-  }%
-}
-
-\def\parsesubsection#1.#2.#3\@nil{#3 \itshape}
-
-\AtEndDocument{\addtocontents{toc}{\par}}%%% OK
-
-\newcommand*{\setupmaintoc}{%
-  \renewcommand{\contentsname}{Contents}
-  \let\changetocdepth\oldchangetocdepth
-  \renewcommand{\precistoctext}[1]{}
-  \let\cftchapterfillnum\oldcftchapterfillnum
-  \addtodef{\cftchapterbreak}{\par}{}
-  \renewcommand*{\cftchapterfont}{\normalfont}
-  \renewcommand*{\cftchapterleader}{\cftdotfill{\cftchapterdotsep}}
-  \renewcommand*{\cftchapterafterpnum}{}
-  \renewcommand{\cftchapterbreak}{\par\addpenalty{-\@highpenalty}}
-  \setpnumwidth{2.55em}
-  \setrmarg{3.55em}
-  \setcounter{tocdepth}{2}
-  \let\cftpartformatpnum\oldcftpartformatpnum
-  \addtodef{\cftpartbreak}{\par}{}
-  \let\cftbookformatpnum\oldcftbookformatpnum
-  \addtodef{\cftbookbreak}{\par}{}
-}
-
-\renewcommand\chapterprecistoc[1]{%
-  \addtocontents{toc}{\protect\precistoctext{#1}}%
-}
-
-\renewcommand\chapterprecishere[1]{}
-
 
 
 
@@ -460,7 +361,7 @@
 
 \DeclareRobustCommand\dash{%
   \unskip\nobreak\thinspace\textemdash\allowbreak\thinspace\ignorespaces}
-\pdfdef\dash{ — }
+\pdfstringdefDisableCommands{\def\dash{ - }}
 
 \newcommand\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand\newacro[1]{\@namedef{#1}{\acro{#1}}}
