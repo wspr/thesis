@@ -12,8 +12,43 @@
 
 \chapter{Conclusion}
 
-\epigraph{I can't grasp much of anything without putting down my thoughts in writing, so I had to actually get my hands working and write these words.}{\textcite{murakami2008}}
+\epigraph{
+  I can't grasp much of anything without putting down my thoughts in writing, so I had to actually get my hands working and write these words.
+}{\textcite{murakami2008}}
 
 \chapterprecis{And future work.}
 
-Thanks for reading.
+This thesis covers several areas of investigation in
+
+\section{Future work}
+
+This work leaves open many areas of investigation for work to be done in the future.
+Some of these are highlighted here.
+
+\begin{enumerate}
+\item
+Consolidating theory for the forces between magnets for additional magnet shapes.
+The first task here would be to provide a well-tested and efficient implementation to calculate the axial and radial forces between cylindrical magnets given axial and radial displacement.
+To the best of my knowledge, there are no results on the forces between spherical magnets.
+
+\item
+Investigate the non-ideal effects seen in real life with respect to magnet forces; \eg, what is the influence between magnet size and homogeneous magnetisation?
+What are the practical limitations to designing multipole arrays — will demagnetisation occur in some cases, and if so to what extent?
+
+\item
+Are there closed form solutions to the eddy current problem for permanent magnets in the influence of finite thickness coils?
+After taking inductance effects into account, how does this change the optimality for solutions found for electromagnetic coil design?
+
+\item
+The experimental results shown for a \qzs/ magnetic system are for a single \dof/ only; a project to extend these results to six \dof/ is already under way.
+
+\item
+Load balancing for a \qzs/ is required for practical application.
+This is being investigated separately.
+
+\item
+Is it possible to design a nonlinear controller to maintain \qzs/ for a magnetic device?
+Intuitively, there may never be a stable system that achieves perfect \qzs/; therefore, what are the limits to which such a system can be bound?
+
+\end{enumerate}
+
