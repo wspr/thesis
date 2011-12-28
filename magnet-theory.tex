@@ -29,7 +29,7 @@ It's instructive but misleading to think about magnetic fields
 \textcite{sodano2006} who received comments nitpicking comments about
 their terminology \cite{marneffe2007}.
 
-\section{Sources of the magnetic field}
+\subsection{Sources of the magnetic field}
 \seclabel{bhm}
 
 Magnetic fields are created by moving electrons. A long straight wire
@@ -170,7 +170,7 @@ assuming that the air approximates a vacuum (magnetically) and the
 relative permeability of the magnet is unity.
 
 
-\section{Properties of magnetic flux}
+\subsection{Properties of magnetic flux}
 \seclabel{flux}
 
 The previous section introduced $\magB$, the magnetic flux density. An
@@ -233,7 +233,8 @@ due to a `squashing' of the flux lines which the magnets try to
 oppose---but theories like this only help visualising magnetic
 behaviour, \emph{not} for explaining the reasons behind it.
 
-\section{Magnetic materials}
+
+\section{Permanent magnets and magnetic materials}
 
 There are several materials from which permanent magnets can be
 made. Short attention will be placed on the cheaper, legacy magnetic
@@ -277,7 +278,7 @@ magnetic field.
 \end{table}
 
 
-\section{Assorted}
+\subsection{Assorted}
 
 
 The remanence magnetisation is calculated from the nominal energy
@@ -294,25 +295,7 @@ $\remanence=\permVac\Msat$:
 
 
 
-\section{Analytical expressions for the magnetic field}
-
-New publications on the analytic magnetic field equation for a thick coil appear to be being published at an accelerating rate \cite{danilov1971-nim,urankar1982-ietm,azzerboni1993-ietm,labinac2006-ajp,pechenkov2006-rndt,ravaud2010-emwaves}.
-
-Magnetic field from pyramidal frustrum magnets: \cite{compter2010-ietm}
-
-
 \section{Forces between magnets}
-
-Force between single-turn circular coils \cite{babic2008-ietm,shiri2009-pier} can be used in the `filament method' \cite[also see]{akyel2009-pier}.
-
-For fast magnetic field computation, the `fast multipole method' can
-be used \cite{adedoyin2007}. But I haven't used it.
-
-Magnetic fields can induce forces through a variety of
-methods. Electromagnetic actuators often use Lorentz forces
-\cite{hollis1993}.
-
-\textcite{bassani2006-meccanica}
 
 A general technique for finding the forces between two magnets is
 simple to describe. The first magnet creates a magnetic field in the
@@ -412,13 +395,69 @@ simplified.
   \dee s_2
 \end{dmath}.
 
-\subsection{Analytical force expressions}
 
-Expressions for the forces between magnets follow directly from
-Maxwell's equations, and may be derived in a number of ways.
+\subsection{Analytical expressions for the magnetic field}
+
+For the purposes of this work, the analytical calculation of the magnetic flux $\magB$ is largely overlooked in favour of analytical force calculations, which will be dealt with in the next section.
+However, since an analytical formulation for $\magB$ is a requirement for then calculating the force, a short literature review will be covered here for different magnet geometries.
+
+New publications on the analytic magnetic field equation for a thick coil appear to be being published at an accelerating rate \cite{danilov1971-nim,urankar1982-ietm,azzerboni1993-ietm,labinac2006-ajp,pechenkov2006-rndt,ravaud2010-emwaves}.
+
+Magnetic field from pyramidal frustrum magnets: \cite{compter2010-ietm}
 
 
-\section{(Anti-)parallel cuboid magnets}
+Comparison between methods for arc-shaped magnets: \cite{ravaud2009-pier-compare}
+
+Cuboid magnetic field with arbitrary magnetisation: \cite{ravaud2009-pier98}
+
+
+
+\subsection{Other approaches}
+
+To account for magnets that do not have parallel/anti-parallel
+magnetisation, \textcite{chen2002,chen2003} derived an expression in two
+dimensions for the force induced between two L-shaped current
+sheets, then applies this model with the length
+of various legs of the `L' in different configurations set to zero. This
+takes the assumption, like \textcite{yonnet1981}, of infinitely long
+planar cross sections.
+This was suitable for application to a magnetic bearing where
+the curvature of the magnet has a small or negligible effect on the
+force between the magnets. However, for true three dimensional cases
+(such as the forces between two cube magnets) this technique would not
+be suitable.
+
+Rotation of a magnet around an axis is treated by Eliès, Charpentier and
+Lemarquand in numerous papers
+\cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep,elies1999a}, giving equations
+for the forces in the directions other than around which the magnet is
+rotated. Since the equations they present are not self-consistent (some typing
+mistakes have occurred in the publications of the papers), the correct form is
+printed in \secref{french-equations} in an easier to read, abbreviated form.
+
+\textcite{nagaraj1988} derived integrals using the current method
+\fxfatal{crossref} to calculate the forces between cuboid magnets and
+between cylindrical magnets, and compared the differences in
+behaviour.
+
+More complex behaviours, however, cannot be solved analytically as the
+integrals become untractable; for anything approaching the forces
+between two magnets with arbitrary rotations, \emph{numerical}
+integration must be used \cite{elies1999a}. This technique is capable
+of obtaining results in a much more straightforward manner than finite
+element analysis, and must be used for the more complex situations.
+
+\textcite{janssen2009-ietm} have derived the analytical forces between pyramidal-frustrum shaped magnets, which have not quite yet been published at time of writing. 
+
+
+
+\section{Forces between cuboid magnets}
+\seclabel{cuboid}
+
+In this section, the literature for forces between cuboid magnets is introduced in detail (this theory is used extensively in this work).
+The theory for combining the force equations between parallel and orthogonal cuboid magnets is formalised for the purpose of calculating the forces between arbitrarily magnetised cuboid magnets.
+
+\subsection{(Anti-)parallel alignment}
 
 \def\e#1{e_#1}
 
@@ -428,8 +467,6 @@ magnetisations \cite{akoun1984,nagaraj1988,bonisoli2006}. More complex
 geometries can be realised through superposition of the solutions
 \cite{bancel1999}.
 
-
-\subsection{Forces between magnets}
 
 The notation for the models to calculate the forces between cuboid magnets is as follows, with the geometry of the system depicted graphically in \figref{akoun}.
 The first magnet has dimensions $[2a, 2b, 2c]\T$ and the second magnet has dimensions $[2A, 2B, 2C]\T$.
@@ -453,10 +490,13 @@ Force calculations for magnets oriented in the $x$ or $y$ directions can be foun
 This form of \eqref{akoun} arises as it is derived from six nested direct integrals.
 Rather than expanding the limits of each integral, the following summation notation is used instead; say $f$ integrates to $F$:
 \begin{equation}
-\int_{-a}^{a}
-f(x) \dee x = F(a)-F(-a) =
+\Int {f\fn{x}}{x,-a,a} = F\fn{a}-F\fn{-a} =
 \!\!\! % space hack
-\sum_{i\in\{0,1\}} F(a\gp{-1}^i)\cdot \gp{-1}^i  .
+\sum_{i\in\{0,1\}} F\fn{a\gp{-1}^i}\cdot \gp{-1}^i  =
+\!\!\! % space hack
+\sum_{e_i\in\{1,-1\}}
+\!\!\! % space hack
+F\fn{a e_i}\cdot e_i .
 \end{equation}
 And therefore for multiple integrations:
 \begin{dmath}
@@ -671,7 +711,7 @@ The posited `corner force' of Bancel does not have a physical basis; using this 
 We can only conclude that the original verification of the work by Allag and Yonnet is in error.
 
 
-\section{Forces between orthogonal cuboid magnets}
+\subsection{Forces between orthogonal cuboid magnets}
 
 Two groups of researchers simultaneously published, in the same journal, equivalent methods to calculate the force between orthogonal cuboid magnets \cite{janssen2009-sensorletters,allag2009-sensorletters}.
 The expressions of \textcite{allag2009-sensorletters} are slightly simpler\footnote{Also note a typographical error in the equations of \textcite{janssen2009-sensorletters}.} and are reproduced here for completeness.
@@ -746,161 +786,19 @@ The verification curve of the results shown by \textcite{janssen2009-sensorlette
 The Matlab code to generate Figures \ref{akoun} and~\ref{janssen} is located in the file `examples/magnetforces\_example.m' (see Section~\ref{code}).
 
 
-\section{Forces between cylindrical magnets}
-\seclabel{cyl-forces}
+\subsection{Simplified force and stiffness expression for cube magnets}
+\seclabel{cube-forces}
 
-Ravaud et al.~\cite{ravaud2010-ietm} recently published an expression for the forces between two cylindrical magnets or thin coils (which are equivalent electromagnetically). We have presented a simplification of their equation \parencite{robertson2011-ietm}.
-This simplification results in a faster execution time and more convenient calculation with numerical software.
-
-A reference implementation of the equations derived in this paper is available (\url{http://github.com/wspr/magcode}) for both Matlab and Mathematica; see respectively the files `ravaud-cylmag.m' and `ravaud-cylmag.nb' in the `examples/' directory.
-
-In previous literature on modelling the forces between cylindrical magnets,
-Nagaraj~\cite{nagaraj1988} investigated and compared the force between cuboid and cylindrical magnets with arbitrary displacements using numerical integration to calculate his results; Furlani~\cite{furlani1993-ietm,furlani1993-ietm-coupl} calculated the force between radially-aligned ring magnets using a numerical discretisation of the magnet volume using theory developed in more detail in his book~\cite{furlani2001-magnetbook}. Hull et al.~\cite{hull1999-japplphys} presented integral equations for calculating the radial and axial forces between a cylindrical magnet and a superconductor, which is equivalent to the force between two cylindrical magnets, and \textcite{bassani2006-trib-int} presented integral equations for calculating the radial and axial forces between ring magnets. Such integral equations require numerical methods to evaluate.
-Most recently, \textcite{ravaud2010-ietm} derived a closed-form solution using elliptic integrals for the forces between radially-aligned cylindrical magnets; their result is the most straightforward method yet presented for calculating forces in this configuration.
-
-\begin{figure}
-\centering
-\asyinclude{PhD/Figures/Coil/coil-mag-equiv.asy}
-\caption{The equivalence between a permanent magnet of magnetisation $J$ (left) in the positive vertical direction, and a current-carrying coil (right) with equivalent magnetisation $J_{\text{eq.}}=\mu_0 N I/h$ for current $I$ shown flowing anti-clockwise from the top through $N$ axial turns across height $h$.}
-\figlabel{coil-mag-equiv}
-\end{figure}
-
-The equation for the force between cylindrical magnets can also be used to calculate the force between thin coils with many axial turns, as both magnet and coil can be modelled as a surface current density around a cylinder (see Fig.\,\ref{fig:coil-mag-equiv}). In related work, Kim et al.~\cite{kim1996-ietm} presented a different integral equation for the radial force between (single-turn) circular coils with eccentric radial displacement, for which further application of their results is required to calculate the forces between coils with many turns, such as for the system examined here. An expression for the force between thin coaxial coils has also been published by Babic et al.~\cite{babic2008-ietm}; it too is more complex than the expression to be presented in the current work.
-
-The equation of Ravaud et al.~\cite{ravaud2010-ietm} is suitable for use for magnets or coils of any size with no restriction on axial displacement. For magnets, they are assumed to have constant magnetisation that is strong enough such that adjacent magnets will not affect the magnetisation of each other. For coils, they are modelled as surface current densities only; therefore for accurate coil calculations the radial thickness of the coil must be much smaller than its radius and the coil must be wound tightly in the axial direction. The force between thick coils with many radial turns has been shown also by Ravaud~et al.~\cite{ravaud2010-pier}; this expression requires some numerical integration and is accordingly slower to calculate than the expression for thin coils discussed herein.
-
-The system consists of two coaxial cylindrical magnets or current-carrying coils which have a relative axial displacement between them, as shown in Fig.\,\ref{fig:cyl-schem}.
-A three-dimensional schematic is shown later in Fig.\,\ref{fig:coil-param} that also illustrates the equivalence between a magnet and a coil in this system.
-
-\begin{figure}
-\centering
-\asyinclude{PhD/Figures/Systems/cyl.asy}
-\caption{Two-dimensional side view of the system composed of two coaxial cylindrical magnets with a generated force on the second magnet. (While magnets are shown, either or both may be replaced by a thin coil as shown in Fig.\,\ref{fig:coil-mag-equiv}.) Axial displacement between the magnets may be positive or negative, and their volumes may overlap in the case of a magnet located inside a coil. Arrows within the magnets indicate direction of magnetic polarisation.}
-\figlabel{cyl-schem}
-\end{figure}
-
-\def\m#1{m_{#1}}
-The force equation is given by
-\begin{dmath}[label=simpl4]
-F_z = \frac{J_1 J_2}{2\mu_0} \sum_{i=1}^2 \sum_{j=3}^4 \m1\m2\m3 f_z' \gp{-1}^{i+j}
+The function $\magforce$ is the simplication of \eqref{akoun} formula for cube magnets, where $\mdim$ is the side length, $\ndisp=\gamma/\mdim$ is the normalised vertical displacement, and $J_1$ and $J_2$ are the magnetisations of the two magnets:
+\begin{dmath}[label=magforce]
+\magforce = \mdim^2 \nforce
 \end{dmath},
-where the intermediate expression is
-\begin{dmath}[label=simpl4i]
-f_z'=
-  \EllipticK{\m4}
-  - \frac{1}{\m2}\EllipticE{\m4}
-  +
-\gdef\finalterm{
-  \gp[2]{\frac{\m1^2}{\m3^2}-1} \invtimes
-    \EllipticPi{\frac{\m4}{1-\m2},\m4}
-}
-\finalterm
-\end{dmath},
-with parameters
-\begin{align}
-\m1 &= z_i - z_j, \\
-\m2 &= \frac{\gp{r_1-r_2}^2}{\m1^2}+1,\\
-\m3^2 &= \gp{r_1+r_2}^2+\m1^2, \\
-\m4 &= \frac{4 r_1 r_2}{\m3^2}, \qquad 0<\m4\le 1.
-\end{align}
-
-As a result of the simplifications presented here, equation~\eqref{simpl4} contains one-third the number of terms compared to the original equation (three instead of nine) and is defined in terms of four instead of ten parameters. Additionally, the complete elliptic integrals of the first, second, and third kind can all be calculated simultaneously with a single iteration of the arithmetic-geometric mean approach \cite[\S19.8(i)]{DLMF2010}, as they all take the same parameter $\m4$. This makes equation~\eqref{simpl4i} particularly efficient to implement.
-
-\subsection{Numerical evaluation of the axial force}
-\label{sec:numer}
-
-Numerical singularities occur when an expression is mathematically continuous but terms within the expression approach infinity; care must be taken when evaluating such expressions numerically.
-There are two numerical singularities in equation~\eqref{eq:simpl4}.
-The first occurs when the radii are equal such that $\m2=1$ and the following term disappears as $\EllipticPi{\pm\infty,m}=0$:
-\begin{dmath}
-\finalterm = 0 \condition*{\m2=1}
-\end{dmath}.
-
-The second numerical singularity occurs when the magnets/coils have coincident faces such that $\m1=0$ for some values of $i$ and $j$ in the double summation. In this case, the parameter $\m2$ contains the coefficient $1/\m1^2=1/0$. This singularity can be avoided entirely since coincident faces generate no component of force between them, and hence the entire intermediate expression within the summation $\m1\m2\m3 f_z'$ can be defined as zero when $\m1=0$.
-
-\subsection{Implementation efficiency}
-
-Evaluated in Mathematica (including branching to avoid singularities), \eqref{eq:simpl4} took an average of 0.26\,ms on a notebook computer to calculate the force at a single location (10000 samples with random input variables). The original equation by \citeauthor{ravaud2010-ietm} in the same configuration evaluated in 2.2\,ms on average, which is over eight times slower than the new equation. For researchers performing design optimisations with variations over a large number of parameters, such an efficiency improvement is useful in minimising the total computation time of the optimisation process.
-
-\subsection{Example}
-
-The equivalence of the simplified equation is demonstrated with an example in which a magnet of length $h_2=z_4-z_3$ is located axially centred within a coil of length $h_1=z_2-z_1$  and displaced in equal amounts in the positive and negative axial directions. That is, axial displacement $\displ$ between the centres of the magnet and the coil is defined as
-\begin{dmath}
-\displ=\half\gp{z_3+z_4}-\half\gp{z_1+z_2}
-\end{dmath}.
-Fig.\,\ref{fig:coil-param} shows the parameters used in the simulations and
-Fig.\,\ref{fig:ex1} displays the respective outputs calculated with the old equation using Mathematica and the new equation using Matlab.
-These calculations are performed in the example files mentioned in Section~\ref{sec:intro}.
-
-In the simulation results, the magnet experiences zero force when it is axially centred inside the coil. With axial displacement, a restoring force is applied by the coil in the opposite direction of displacement. As shown in Fig.\,\ref{fig:ex1}, the results are identical for both the original and the simplified equations.
-
-\begin{figure}
-\centering
-\hspace{-4cm}\asyinclude{PhD/Figures/Coil/coil-coil.asy}\hspace{-2cm}%
-  \begin{tabular}[b]{@{}ll@{}}
-  \toprule
-  $r_1$ &   \SI{20}{mm} \\
-  $h_1$ &   \SI{20}{mm} \\
-  $J_1$ & $\mu_0NI/h_1$ \\
-  $N$ & $100$ \\
-  $I$ & \SI{1}{A} \\
-  \midrule
-  $r_2$ & \SI{15}{mm} \\
-  $h_2$ & \SI{15}{mm} \\
-  $J_2$ & \SI{1}{T}\\
-  \bottomrule
-  \end{tabular}
-\caption{Parameters used for the example calculations with results shown in Fig.\,\ref{fig:ex1}. The schematic indicates the direction of current flow and the north and south faces of the magnet. A position of positive displacement $z$ is shown.}
-\figlabel{coil-param}
-\end{figure}
-
-
-\begin{figure}
-  \centering
-  \begin{tikzpicture}
-    \begin{axis}
-      [
-        xlabel={Displ.\ $\displ$, mm},
-        ylabel={Axial force $F_z$, N},
-        xtick={-40,-20,20,40},
-        xticklabels = {\llap{$-$}$40$,\llap{$-$}$20$,$20$},
-        ytick={-1,-0.5,0.5,1},
-        yticklabels = {$-1$,$-0.5$,,$1$},
-        axis x line=center,
-        axis y line=center,
-        legend cell align=left,
-        legend entries = {New, Old},
-        legend style = {
-          legend pos = south west,
-        },
-      ]
-      {
-        \draw (axis cs:-50,0) -- (axis cs:50,0);
-        \draw (axis cs:0,-1.4) -- (axis cs:0,1.4);
-        \addplot+[only marks,mark=diamond*,mark options={fill=white},
-,color=black] file {magcode/examples/data/magcyl-matlab.txt};
-        \addplot[style=thick,color=red] file {magcode/examples/data/magcyl-mma.txt};
-      }
-    \end{axis}
-  \end{tikzpicture}
-  \caption{An example of the force generated on a cylindrical magnet by a coil with parameters defined in Fig.\,\ref{fig:coil-param}. Displacement is defined as zero when the coil and magnet are axially centred with respect to each other. The new equation is implemented in Matlab vs the old equation in Mathematica to ensure the two are numerically equivalent.}
-  \figlabel{ex1}
-\end{figure}
-
-
-%%%%%%%%%%%%%%
-
-\section{Simplified force and stiffness expression for cube magnets}
-\secref{cube-forces}
-
-The function $\nforce$ is the simplication of \eqref{akoun}
-formula after the assumptions given in \secref{mag}, where $J_1$ and
-$J_2$ are the magnetisations of the two magnets and
-$\permVac=4\pi\times10^{-7}$ is the `permeability of the vacuum':
+where
 \begin{dmath}[label=nforce]
   \nforce = \frac{J_1J_2}{\pi\permVac} \baraccent{\nforce}
-\end{dmath}
-where
+\end{dmath},
+and
+\begin{footnotesize}
 \begin{dmath}
   \baraccent{\nforce} = \gp{-2+\ndisp}\cdot\Abs{-2+\ndisp}-2 \ndisp \Abs{\ndisp}+\gp{2+\ndisp}\cdot
   \Abs{2+\ndisp}+4 \ndisp \sqrt{4+\ndisp^2}
@@ -934,12 +832,18 @@ where
   \mathlog\left[2+\sqrt{12+4 \ndisp+\ndisp^2}\right]
   \left.  -\ndisp \mathlog\left[2+\sqrt{12+4 \ndisp+\ndisp^2}\right]\right]
 \end{dmath}
+\end{footnotesize}
 
-The normalised stiffness $\nstiffness$ is calculated by differentiating the force equations given by \textcite{akoun1984} before simplifying as with the force terms above:
+The stiffness $\magstiffness$ is calculated by differentiating the force equations given by \textcite{akoun1984} before simplifying as with the force terms above:
+\begin{dmath}[label=magstiffness]
+\magstiffness = \mdim \nstiffness
+\end{dmath},
+where
 \begin{dmath}[label=nstiffness]
   \nstiffness = -\frac{2J_1J_2}{\pi\permVac} \baraccent{\nstiffness}
-\end{dmath}
-where
+\end{dmath},
+and
+\begin{footnotesize}
 \begin{dmath}
   \baraccent{\nstiffness} = \Abs{-2+\ndisp}-2 \Abs{\ndisp}+\Abs{2+\ndisp}+4
   \sqrt{4+\ndisp^2}-2\sqrt{8+\ndisp^2}
@@ -957,9 +861,12 @@ where
   +\mathlog\left[-2+\sqrt{12+4\ndisp+\ndisp^2}\right]
   -\mathlog\left[2+\sqrt{12+4 \ndisp+\ndisp^2}\right]
 \end{dmath}
+\end{footnotesize}
 
+These simplified equations are printed here to emphasise that the $\mdim^2$ relationship shown in \eqref{magforce} and the $\mdim$ linearity in \eqref{magstiffness}. This is interesting because it is not evident from Akoun~and Yonnet's original equations that such a simplification is possible.
 
-\subsection{Arbitary magnetisations}
+\subsection{Cuboid magnets with arbitary magnetisations}
+\seclabel{magforce-arbitary}
 
 Most force expressions are derived from magnetic field equations that are assumed from magnets with magnetisation parallel to one of their sides.
 Superposition can then be used to combine the expressions for orthonogal magnets to generate the force from a magnet with arbitrary magnetisation.
@@ -1051,40 +958,6 @@ this is the first formalisation of this theory to decompose a diagonal magnetisa
 
 
 
-\subsection{Other approaches}
-
-To account for magnets that do not have parallel/anti-parallel
-magnetisation, \textcite{chen2002,chen2003} derived an expression in two
-dimensions for the force induced between two L-shaped current
-sheets, then applies this model with the length
-of various legs of the `L' in different configurations set to zero. This
-takes the assumption, like \textcite{yonnet1981}, of infinitely long
-planar cross sections.
-This was suitable for application to a magnetic bearing where
-the curvature of the magnet has a small or negligible effect on the
-force between the magnets. However, for true three dimensional cases
-(such as the forces between two cube magnets) this technique would not
-be suitable.
-
-Rotation of a magnet around an axis is treated by Eliès, Charpentier and
-Lemarquand in numerous papers
-\cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep,elies1999a}, giving equations
-for the forces in the directions other than around which the magnet is
-rotated. Since the equations they present are not self-consistent (some typing
-mistakes have occurred in the publications of the papers), the correct form is
-printed in \secref{french-equations} in an easier to read, abbreviated form.
-
-\textcite{nagaraj1988} derived integrals using the current method
-\fxfatal{crossref} to calculate the forces between cuboid magnets and
-between cylindrical magnets, and compared the differences in
-behaviour.
-
-More complex behaviours, however, cannot be solved analytically as the
-integrals become untractable; for anything approaching the forces
-between two magnets with arbitrary rotations, \emph{numerical}
-integration must be used \cite{elies1999a}. This technique is capable
-of obtaining results in a much more straightforward manner than finite
-element analysis, and must be used for the more complex situations.
 
 \subsection{Forces between magnets with relative rotation}
 \seclabel{french-equations}
@@ -1303,13 +1176,153 @@ It can be seen that the opposite rotations result in symmetric forces curves, as
 \end{figure}
 
 
-\section{Future work}
+\section{Forces between cylindrical magnets}
+\seclabel{cyl-forces}
 
-The code presented here currently only contains algorithms for calculating forces and stiffnesses between cuboid magnets without rotation. \textcite{charpentier1999-ietm-sep} present expressions for two components of the force between cuboid magnets with rotation around one axis (also see their related publications around the same time), but there is no general solution known without using semi-numerical methods \parencite{charpentier2001}.
+Ravaud et al.~\cite{ravaud2010-ietm} recently published an expression for the forces between two cylindrical magnets or thin coils (which are equivalent electromagnetically). We have presented a simplification of their equation \parencite{robertson2011-ietm}.
+This simplification results in a faster execution time and more convenient calculation with numerical software.
+
+A reference implementation of the equations derived in this paper is available (\url{http://github.com/wspr/magcode}) for both Matlab and Mathematica; see respectively the files `ravaud-cylmag.m' and `ravaud-cylmag.nb' in the `examples/' directory.
+
+In previous literature on modelling the forces between cylindrical magnets,
+Nagaraj~\cite{nagaraj1988} investigated and compared the force between cuboid and cylindrical magnets with arbitrary displacements using numerical integration to calculate his results; Furlani~\cite{furlani1993-ietm,furlani1993-ietm-coupl} calculated the force between radially-aligned ring magnets using a numerical discretisation of the magnet volume using theory developed in more detail in his book~\cite{furlani2001-magnetbook}. Hull et al.~\cite{hull1999-japplphys} presented integral equations for calculating the radial and axial forces between a cylindrical magnet and a superconductor, which is equivalent to the force between two cylindrical magnets, and \textcite{bassani2006-trib-int} presented integral equations for calculating the radial and axial forces between ring magnets. Such integral equations require numerical methods to evaluate.
+Most recently, \textcite{ravaud2010-ietm} derived a closed-form solution using elliptic integrals for the forces between radially-aligned cylindrical magnets; their result is the most straightforward method yet presented for calculating forces in this configuration.
+
+\begin{figure}
+\centering
+\asyinclude{PhD/Figures/Coil/coil-mag-equiv.asy}
+\caption{The equivalence between a permanent magnet of magnetisation $J$ (left) in the positive vertical direction, and a current-carrying coil (right) with equivalent magnetisation $J_{\text{eq.}}=\mu_0 N I/h$ for current $I$ shown flowing anti-clockwise from the top through $N$ axial turns across height $h$.}
+\figlabel{coil-mag-equiv}
+\end{figure}
+
+The equation for the force between cylindrical magnets can also be used to calculate the force between thin coils with many axial turns, as both magnet and coil can be modelled as a surface current density around a cylinder (see Fig.\,\ref{fig:coil-mag-equiv}). In related work, Kim et al.~\cite{kim1996-ietm} presented a different integral equation for the radial force between (single-turn) circular coils with eccentric radial displacement, for which further application of their results is required to calculate the forces between coils with many turns, such as for the system examined here. An expression for the force between thin coaxial coils has also been published by Babic et al.~\cite{babic2008-ietm}; it too is more complex than the expression to be presented in the current work.
+
+The equation of Ravaud et al.~\cite{ravaud2010-ietm} is suitable for use for magnets or coils of any size with no restriction on axial displacement. For magnets, they are assumed to have constant magnetisation that is strong enough such that adjacent magnets will not affect the magnetisation of each other. For coils, they are modelled as surface current densities only; therefore for accurate coil calculations the radial thickness of the coil must be much smaller than its radius and the coil must be wound tightly in the axial direction. The force between thick coils with many radial turns has been shown also by Ravaud~et al.~\cite{ravaud2010-pier}; this expression requires some numerical integration and is accordingly slower to calculate than the expression for thin coils discussed herein.
+
+The system consists of two coaxial cylindrical magnets or current-carrying coils which have a relative axial displacement between them, as shown in Fig.\,\ref{fig:cyl-schem}.
+A three-dimensional schematic is shown later in Fig.\,\ref{fig:coil-param} that also illustrates the equivalence between a magnet and a coil in this system.
+
+\begin{figure}
+\centering
+\asyinclude{PhD/Figures/Systems/cyl.asy}
+\caption{Two-dimensional side view of the system composed of two coaxial cylindrical magnets with a generated force on the second magnet. (While magnets are shown, either or both may be replaced by a thin coil as shown in Fig.\,\ref{fig:coil-mag-equiv}.) Axial displacement between the magnets may be positive or negative, and their volumes may overlap in the case of a magnet located inside a coil. Arrows within the magnets indicate direction of magnetic polarisation.}
+\figlabel{cyl-schem}
+\end{figure}
+
+\def\m#1{m_{#1}}
+The force equation is given by
+\begin{dmath}[label=simpl4]
+F_z = \frac{J_1 J_2}{2\mu_0} \sum_{i=1}^2 \sum_{j=3}^4 \m1\m2\m3 f_z' \gp{-1}^{i+j}
+\end{dmath},
+where the intermediate expression is
+\begin{dmath}[label=simpl4i]
+f_z'=
+  \EllipticK{\m4}
+  - \frac{1}{\m2}\EllipticE{\m4}
+  +
+\gdef\finalterm{
+  \gp[2]{\frac{\m1^2}{\m3^2}-1} \invtimes
+    \EllipticPi{\frac{\m4}{1-\m2},\m4}
+}
+\finalterm
+\end{dmath},
+with parameters
+\begin{align}
+\m1 &= z_i - z_j, \\
+\m2 &= \frac{\gp{r_1-r_2}^2}{\m1^2}+1,\\
+\m3^2 &= \gp{r_1+r_2}^2+\m1^2, \\
+\m4 &= \frac{4 r_1 r_2}{\m3^2}, \qquad 0<\m4\le 1.
+\end{align}
+
+As a result of the simplifications presented here, equation~\eqref{simpl4} contains one-third the number of terms compared to the original equation (three instead of nine) and is defined in terms of four instead of ten parameters. Additionally, the complete elliptic integrals of the first, second, and third kind can all be calculated simultaneously with a single iteration of the arithmetic-geometric mean approach \cite[\S19.8(i)]{DLMF2010}, as they all take the same parameter $\m4$. This makes equation~\eqref{simpl4i} particularly efficient to implement.
+
+\subsection{Numerical evaluation of the axial force}
+\label{sec:numer}
+
+Numerical singularities occur when an expression is mathematically continuous but terms within the expression approach infinity; care must be taken when evaluating such expressions numerically.
+There are two numerical singularities in equation~\eqref{eq:simpl4}.
+The first occurs when the radii are equal such that $\m2=1$ and the following term disappears as $\EllipticPi{\pm\infty,m}=0$:
+\begin{dmath}
+\finalterm = 0 \condition*{\m2=1}
+\end{dmath}.
+
+The second numerical singularity occurs when the magnets/coils have coincident faces such that $\m1=0$ for some values of $i$ and $j$ in the double summation. In this case, the parameter $\m2$ contains the coefficient $1/\m1^2=1/0$. This singularity can be avoided entirely since coincident faces generate no component of force between them, and hence the entire intermediate expression within the summation $\m1\m2\m3 f_z'$ can be defined as zero when $\m1=0$.
+
+\subsection{Implementation efficiency}
+
+Evaluated in Mathematica (including branching to avoid singularities), \eqref{eq:simpl4} took an average of 0.26\,ms on a notebook computer to calculate the force at a single location (10000 samples with random input variables). The original equation by \citeauthor{ravaud2010-ietm} in the same configuration evaluated in 2.2\,ms on average, which is over eight times slower than the new equation. For researchers performing design optimisations with variations over a large number of parameters, such an efficiency improvement is useful in minimising the total computation time of the optimisation process.
+
+\subsection{Example}
+
+The equivalence of the simplified equation is demonstrated with an example in which a magnet of length $h_2=z_4-z_3$ is located axially centred within a coil of length $h_1=z_2-z_1$  and displaced in equal amounts in the positive and negative axial directions. That is, axial displacement $\displ$ between the centres of the magnet and the coil is defined as
+\begin{dmath}
+\displ=\half\gp{z_3+z_4}-\half\gp{z_1+z_2}
+\end{dmath}.
+Fig.\,\ref{fig:coil-param} shows the parameters used in the simulations and
+Fig.\,\ref{fig:ex1} displays the respective outputs calculated with the old equation using Mathematica and the new equation using Matlab.
+These calculations are performed in the example files mentioned in Section~\ref{sec:intro}.
+
+In the simulation results, the magnet experiences zero force when it is axially centred inside the coil. With axial displacement, a restoring force is applied by the coil in the opposite direction of displacement. As shown in Fig.\,\ref{fig:ex1}, the results are identical for both the original and the simplified equations.
+
+\begin{figure}
+\centering
+\hspace{-4cm}\asyinclude{PhD/Figures/Coil/coil-coil.asy}\hspace{-2cm}%
+  \begin{tabular}[b]{@{}ll@{}}
+  \toprule
+  $r_1$ &   \SI{20}{mm} \\
+  $h_1$ &   \SI{20}{mm} \\
+  $J_1$ & $\mu_0NI/h_1$ \\
+  $N$ & $100$ \\
+  $I$ & \SI{1}{A} \\
+  \midrule
+  $r_2$ & \SI{15}{mm} \\
+  $h_2$ & \SI{15}{mm} \\
+  $J_2$ & \SI{1}{T}\\
+  \bottomrule
+  \end{tabular}
+\caption{Parameters used for the example calculations with results shown in Fig.\,\ref{fig:ex1}. The schematic indicates the direction of current flow and the north and south faces of the magnet. A position of positive displacement $z$ is shown.}
+\figlabel{coil-param}
+\end{figure}
 
 
-\textcite{janssen2009-ietm} have derived the analytical forces between pyramidal-frustrum shaped magnets, which have not quite yet been published at time of writing. 
+\begin{figure}
+  \centering
+  \begin{tikzpicture}
+    \begin{axis}
+      [
+        xlabel={Displ.\ $\displ$, mm},
+        ylabel={Axial force $F_z$, N},
+        xtick={-40,-20,20,40},
+        xticklabels = {\llap{$-$}$40$,\llap{$-$}$20$,$20$},
+        ytick={-1,-0.5,0.5,1},
+        yticklabels = {$-1$,$-0.5$,,$1$},
+        axis x line=center,
+        axis y line=center,
+        legend cell align=left,
+        legend entries = {New, Old},
+        legend style = {
+          legend pos = south west,
+        },
+      ]
+      {
+        \draw (axis cs:-50,0) -- (axis cs:50,0);
+        \draw (axis cs:0,-1.4) -- (axis cs:0,1.4);
+        \addplot+[only marks,mark=diamond*,mark options={fill=white},
+,color=black] file {magcode/examples/data/magcyl-matlab.txt};
+        \addplot[style=thick,color=red] file {magcode/examples/data/magcyl-mma.txt};
+      }
+    \end{axis}
+  \end{tikzpicture}
+  \caption{An example of the force generated on a cylindrical magnet by a coil with parameters defined in Fig.\,\ref{fig:coil-param}. Displacement is defined as zero when the coil and magnet are axially centred with respect to each other. The new equation is implemented in Matlab vs the old equation in Mathematica to ensure the two are numerically equivalent.}
+  \figlabel{ex1}
+\end{figure}
 
+
+\section{Summary of the magnetic theory}
+
+An overview of the literature has been presented for calculating the forces, torques, and stiffnesses between permanent magnet configurations of various geometries.
+This theory is used extensively in the remainder of this work.
+Some shortcomings in the literature have been highlighted but are not investigated further here.
 
 
 \end{document}

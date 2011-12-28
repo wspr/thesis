@@ -96,7 +96,7 @@ The final method uses a single integral expression to calculate the force, and t
 \seclabel{filament-method}
 
 For two circular coaxial loops (i.e., a single turn of a solenoid) carrying currents $I_1$ and $I_2$ respectively,
-the axial force between them is given by~\cite[e.g.]{shiri2009-pier}
+the axial force between them is given by~\cite[\eg,]{shiri2009-pier}
 \begin{dmath}[label=coaxial-filament]
 F_f\fn{r_1,r_2,z}=\mu_0 I_1I_2z\sqrt{\frac{m}{4r_1r_2}}\gp{\EllipticK{m}-\frac{m/2-1}{m-1}\EllipticE{m}}
 \end{dmath}
@@ -105,7 +105,7 @@ m=\frac{4r_1r_2}{\gp{r_1+r_2}^2+z^2}
 \end{dmath}
 where $r_1$ and $r_2$ are the coil radii and $z$ is the axial distance between them. The functions $\EllipticK{m}$ and $\EllipticE{m}$ are the complete first and second elliptic integrals respectively with parameter $m$. These functions can also be referred to with notation $\EllipticK{k}$ and $\EllipticE{k}$ in terms of a modulus $k$, where $m=k^2$.
 
-Using the `filament method', \eqref{coaxial-filament,coaxial-filament-aux} can be used to calculate the force between any arrangement of coaxial solenoids by representing each turn of the solenoid as a separate coil, and summing the forces through superposition for every pair-wise combination of coil interaction forces.
+Using the `filament method', \eqref{coaxial-filament,coaxial-filament-aux} can be used to calculate the force between any arrangement of coaxial solenoids by representing each turn of the solenoid as a separate coil, and summing the forces through superposition for every pair-wise combination of coil interaction forces \cite[\eg,][]{babic2008-ietm,akyel2009-pier}.
 Figure~\ref{fig:filament-shell} shows such a filament model for the interaction between a thin coil (representing a permanent magnet) and a thick coil.
 Using this technique, the total force between them is given by
 \begin{dgroup}
