@@ -508,7 +508,7 @@ A comparison of some of these methods, including skyhook damping and semi-active
 The idea of self-sensing for magnetic levitation purposes (in both cases using a electromagnet) has been shown previously \cite{bleuler1992,vischer1993}.
 These self-sensing devices do not perform nearly as well as when using a dedicated sensor (perhaps obviously, since the \backemf/ is such a noisy signal), but the technique is particularly interesting for low-cost, low-precision devices.
 
-The addition of inertial actuators produces additional resonances into the structure and the resonance of the actuator limits the broadband performance of the control. As such, this approach is best suited for use in \emph{a posteriori} vibration control measures. 
+The addition of inertial actuators produces additional resonances into the structure and the resonance of the actuator limits the broadband performance of the control. As such, this approach is best suited for use in \emph{a posteriori} vibration control measures.
 
 \subsubsection{Narrow-band vibration isolation}
 \seclabel{vibneut}
@@ -729,7 +729,7 @@ Each of these devices are capable of supporting small loads, and applying transl
   Note that while these six \dof/ actuators have very high static precision, they do not have the frequency response of the so-called `nano-positioners' using piezoelectric stack acuators.
 }
 
-The initial designs allowed travel in a single direction \parencite[\eg,][]{trumper1992} while planar actuators were shown within the decade \parencite[\eg][]{kim1997-thesis,molenaar2000}.
+The initial designs allowed travel in a single direction \parencite[\eg,][]{trumper1992} while planar actuators were shown within the decade \parencite[\eg,][]{kim1997-thesis,molenaar2000}.
 Soon after, a six \dof/ non-contact actuator using similar principles was demonstrated \cite{verma2004}.
 
 Each of these devices fulfil different design requirements, and are all subject to continuing research; see the development of the single \dof/ linear magnetic bearing \cite{ro2009-preeng}; the planar actuator of \textcite{kim2007} to support around \SI{2}{kg} over a travel of $\SI{5}{mm}\times\SI{5}{mm}$ with nanometre precision; five \dof/ \cite{fulford2009}; and, a six \dof/ actuator has been demonstrated by \textcite{jansen2008}, which supports loads in the order of \SI{10}{kg} with a relatively large air gap (\SI{1}{mm}--\SI{2}{mm}) and large stroke ($\SI{230}{mm}\times\SI{230}{mm}$).
@@ -980,7 +980,7 @@ magnetic field at velocity $\velocity$ is given by
 where $\conductivity$ is the conductivity of the sheet. The force
 $\forceEddy$ due to these eddy currents is the integral over the conductor volume $V$
 \begin{dmath}[compact]
-\forceEddy = \Int{\magJeddy \cross \magflux}{v,V} 
+\forceEddy = \Int{\magJeddy \cross \magflux}{v,V}
            = \conductivity\Int{\gp{\velocity \cross \magflux}\cross \magflux}{v,V}
 \end{dmath},
 which is anti-parallel to $\velocity$. Due to the
@@ -1127,9 +1127,9 @@ Early examples of such designs using inclined springs were shown by \textcite{mo
 These have an approximately cubic force \vs\ displacement characteristic, which may be tuned to achieve a local region of zero stiffness, which is often termed `\qzs/'.
 \textcite{alabuzhev1989} looked at the nonlinear behaviour of such
 systems, and also more recently by
-\textcite{carrella2006,carrella2007-jsv,carrella2008-jsv,carrella2009} and improved by
+\textcite{carrella2006,carrella2007-jsv,carrella2008-jsv,carrella2009-jsv} and improved by
 \textcite{kovacic2008}.
-More recently, the dynamic response of these systems has been analysed \parencite{carrella2009,carrella2008-thesis} and shown to have prominent nonlinearities that distort the frequency response but that do not decrease the vibration isolation efficacy in general.
+More recently, the dynamic response of these systems has been analysed \parencite{carrella2009-jsv,carrella2008-thesis} and shown to have prominent nonlinearities that distort the frequency response but that do not decrease the vibration isolation efficacy in general.
 
 A variety of mechanical linkages and arrangements can be designed for \qzs/ \cite{tarnai2003}.
 Mechanical \qzs/ elements, generally using flexible beam supports in a buckling regime, have been used in application for vibration isolation platforms \cite{platus1999}, mounts for seismic noise attenuation \cite{cella2005}, vibration attenuation from hand-held machinery \cite{sokolov2007}, reduction of aircraft cabin noise \cite{baklanov2007-jsv}, and vehicle driver suspension \cite{lee2007-jsv}.
@@ -1181,7 +1181,7 @@ F_{\text{Duffing}} = \stiffnessLinear x + \stiffnessDuffing x^3.
 The nonlinear dynamics only affected the response of the system when the nonlinear term dominated over the linear term.
 For a \qzs/ spring, $\stiffnessLinear=0$ and the nonlinear dynamics are more significant.
 
-\textcite{carrella2009-jsv}, for example, use the `harmonic balance' method to analyse the nonlinear frequency response of a Duffing oscillator model of a (inclined spring based) \qzs/ system, showing the typical jump-up and jump-down phenomena of such nonlinear systems. 
+\textcite{carrella2009-jsv}, for example, use the `harmonic balance' method to analyse the nonlinear frequency response of a Duffing oscillator model of a (inclined spring based) \qzs/ system, showing the typical jump-up and jump-down phenomena of such nonlinear systems.
 For the purposes of broadband vibration isolation, however, it is instructive to simply examine the power spectra produced with a range of spring stiffnesses and modelling the disturbance input as Gaussian.
 
 \Figref{cubic-resonance-disturb,cubic-resonance-stiffness} show the square root of the ratio of the power spectrum of $s$ and $x$, where $s$ is a white noise signal of variance $S$.
