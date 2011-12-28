@@ -12,12 +12,8 @@
 
 The field of electromagnetic actuators spans a large variety of applications.
 The oldest of these is the voice-coil loudspeaker, which is an area still undergoing continued development.
-
 In the introduction a variety of other electromagnetic devices were discussed, including planar and multi--\dof/ actuators (\secref{magnetic-actuators}).
 \textcite{yan2008-ietmx} designed a three \dof/ spherical actuator; their paper cites numerous other works to develop similar devices.
-
-The analysis of a single \dof/ actuator shows that it can be possible to optimise coil size, magnet size, and wire diameter to achieve a given force maximum.
-Other cost functions can be used in the design methodology to achieve other metrics, such as linearity \cite{merit2009}.
 
 In \chapref{magnet-theory} the theory was summarised for calculated forces between permanent magnets; many of these methods used a modelling technique in which a permanent magnet is represented as a surface current density around the circumference of the magnet.
 This theory also covers, therefore, the case where the force between a magnet an a coil is under investigation, provided that the coil being modelled can also be represented as an infinitely thin current density.
@@ -29,12 +25,14 @@ Unlike the magnetic charge model, this approach is still valid when the outer vo
 The equivalent of the current surface density model for permanent magnets and thin coils means the same results can be used to calculate both systems, as seen in the work for calculating the force between two thin coils or magnets \cite{babic2008-ietm,ravaud2010-ietm,robertson2011-ietm} summarised in \secref{cyl-forces}.
 
 In this chapter, a simple electromagnetic actuator is analysed in detail, using detailed coil/force equations that have only recently been available.
-A new equation is devloped for calculating the force between cylindrical coils and magnets with eccentric displacement, and some examples of alternate electromagnet designs are given based on the modelling results shown.
+A new equation is developed for calculating the force between cylindrical coils and magnets with eccentric displacement.
+The analysis herein of a single \dof/ actuator shows that it can be possible to optimise coil size, magnet size, and wire diameter to achieve a given force maximum.
+Other cost functions can be used in the design methodology to achieve other metrics, such as linearity \cite{merit2009}.
+Finally, an example of an alternate `dual-coil' electromagnet design is given based on the modelling results shown that achieves greater forces than the single-coil design, all else being equal.
+
 
 \section{Coaxial magnet/coil forces}
 \seclabel{magnetcoil-forces}
-
-\subsection{Introduction}
 
 The theory discussed in this section is based around an integral expression that can be efficiently numerically implemented for calculating the axial force between a coaxial cylindrical magnet and a `thick' solenoid that consists of many turns both radially and axially.
 This integral expression is compared against a variety of other methods.
@@ -110,6 +108,7 @@ where $r_1$ and $r_2$ are the coil radii and $z$ is the axial distance between t
 Using the `filament method', \eqref{coaxial-filament,coaxial-filament-aux} can be used to calculate the force between any arrangement of coaxial solenoids by representing each turn of the solenoid as a separate coil, and summing the forces through superposition for every pair-wise combination of coil interaction forces.
 Figure~\ref{fig:filament-shell} shows such a filament model for the interaction between a thin coil (representing a permanent magnet) and a thick coil.
 Using this technique, the total force between them is given by
+\begin{dgroup}
 \begin{dmath}[label=filamentforce]
 F_{z_1} = \Sum{\Sum{\Sum{
     F_f\fn{r\fn{n_r},\oradiusMag,\displ+L\fn{n_m,n_z}}
@@ -121,6 +120,7 @@ r\fn{n_r}=\oradiusCoil+\frac{n_r-1}{\turnsRCoil-1}\gp{\oradiusCoil-\iradiusCoil}
 \begin{dmath}
 L\fn{n_m,n_z}=-\frac12\gp{\lengthMag+\lengthCoil}+\frac{n_z-1}{\turnsZCoil-1}\lengthCoil+\frac{n_m-1}{\turnsZMag-1}\lengthMag
 \end{dmath},
+\end{dgroup}
 where $\oradiusMag$ is the magnet radius, $\iradiusCoil$ and $\oradiusCoil$ are the inner and outer coil radii, $\lengthMag$ and $\lengthCoil$ are the magnet and coil lengths, $z$ is the axial distance between their centres, $\turnsRCoil$ and $\turnsZCoil$ are the number of turns in the thick coil in the radial and axial direction, and $\turnsZMag$ is the number of turns in the thin coil.
 The filament current $I_1=I$ is the current in the thick coil.
 The arrangement of `turns' used to model the permanent magnet is related to an equivalent surface current density with current per turn of $I_2={\remanence \lengthMag}/\gp{\turnsZMag \mu_0}$ and permanent magnet strength~$\remanence$.
@@ -276,10 +276,8 @@ f_{z_4} = \psi_1\sqrt{\ri \m1}
 \begin{dmath}
 \psi_3 = \Integrate{\ArcSinh{\frac{\ri+\Cos{2\varphi}}{\sqrt{\Sin{2\varphi}^2+\ti^2}}}}{\varphi,0,\pi/2}
 \end{dmath},
-\begin{dmath}
-\a1 = \ArcSin{\frac{\ri-1}{\ri+1}\sqrt{\frac{1}{1-\m1}}}
-\end{dmath},
-\begin{dmath}
+\begin{dmath}[compact]
+\a1 = \ArcSin{\frac{\ri-1}{\ri+1}\sqrt{\frac{1}{1-\m1}}},\qquad
 \a2 = \ArcSin{\frac{\ti}{\m2+1}}
 \end{dmath},
 \begin{dmath}
@@ -301,7 +299,7 @@ and $\Sign{\cdot}$ represents the sign function
 +1 & x>0.
 \end{cases}
 \end{equation}
-When implementing \eqref{babicforce}, note that $t f_{z_4}=0$ when $t=0$ and the inner term $f_{z_4}$ does not need to be evaluated.
+When implementing \eqref{babicforce}, note that $t f_{z_4}=0$ when $t=0$ and the inner term $f_{z_4}$ does not need to be evaluated as it otherwise contains a numerical singularity.
 
 \subsubsection{Comparison of these methods}
 
@@ -397,6 +395,131 @@ Precision & Babic, \eqref{babicforce} & Integral, \eqref{cylforcez} \\
 \end{table}
 
 While the computational times given in this section are specific to the platform used to perform the calculations, their relative differences should be comparable across different computers and numerical implementations.
+
+
+
+%%%%%%%%%%%%%%%%%
+
+\subsection{Axial force with eccentric displacement}
+
+The work in the previous sections considered only coaxial forces between a coil and magnet.
+Certain electromagnetic designs will require the consideration of the effect of eccentric displacement; that is, displacement in the radial direction.
+An example of such a design are `pancake coils' \cite[\eg,][]{akyel2003-intermag,shiri2009-pier}, which are thin axially but have a large radial face; eccentric displacement is not constrained and the sensitivity of eccentricity on axial force may be of interest.
+
+The theory for coaxial magnet/coil forces (\eqref{magcoil-integral}) can be extended for the non-coaxial case.
+Under eccentric displacement in the radial direction, $\eccen$, the limits of integration must be expressed in a translated coordinate system (see Figure~\ref{fig:int-offset}) and the original integral must be expressed with additional terms to take this into account.
+
+\begin{figure}
+\centering
+\asyinclude{PhD/Figures/Coil/circle-offset}
+\caption{Region of integration for a radially displaced magnet, shifted by $(\xi,\eta)$ from the original coordinate system.}
+\label{fig:int-offset}
+\end{figure}
+
+In order to incorporate eccentric displacement into the integral, terms of $\distrMag{1}$
+and $\distrMag{2}$ must be expressed instead in terms of $\distrMag{1}'$
+and $\distrMag{2}'$.
+The following transformation can be used to perform this:
+\begin{align}
+\distrMag{1} &= \sqrt{\distcMag{1}^2+\distcMag{2}^2} &
+\distcMag{1} &= \distcMag{1}' - \xi                 &
+\distcMag{1}' &= \distrMag{1}'\Cos{\distrMag{2}'}
+\\
+\distrMag{2} &= \ArcTan{\distcMag{2},\distcMag{1}}  &
+\distcMag{2} &= \distcMag{2}' - \eta               &
+\distcMag{2}' &= \distrMag{1}'\Sin{\distrMag{2}'}
+\end{align}
+Due to the additional complexity introduced by this transformation, the original integral can no longer by easily solved analytically with respect to $\distrMag{2}'$.
+The variable $\distrMag{1}'$ is not an integration term and therefore $\distrMag{1}'=\radiusMag$.
+Accordingly, the axial force due to both axial and radial displacement is now given by
+\begin{dmath}[label=cylforcez-ecc]
+F_{z_4}=
+\frac{\turnsCoil \currentCoil \remanence}{\pi\lengthCoil\gp{\oradiusCoil-\iradiusCoil}}
+\Int{
+  \sum_{e_1}^{\{1,-1\}} \!\!\! \gp{e_1 \m2 f_{z_4} }
+  }
+  {\distrMag{2}',0,\pi}
+  {\distrCoil{1},\iradiusCoil,\oradiusCoil}
+  {\distrCoil{3},-\lengthCoil/2,\lengthCoil/2}
+\end{dmath},
+where the intermediate term is
+\def\P{\distrMag{2}}
+\begin{dmath}
+f_z=\gp{1-\frac{\m1}{2}}
+      \EllipticK{\m1}-\EllipticE{\m1}
+\end{dmath},
+with parameters
+\begin{align}
+\m1&=\frac{4 \distrMag{1} \distrCoil{1}}{\m2^2}, &
+\m2^2 &= \gp{\distrMag{1}+\distrCoil{1}}^2+\gp{\displ+\half e_1\lengthMag-\distrCoil{3}}^2 .
+\end{align}
+This equation has not yet been shown in the literature.
+
+Due to the additional numerical integral that must be evaluated when using \eqref{cylforcez-ecc}, it is approximately an order of magnitude slower to calculate than \eqref{cylforcez}.
+The expression is slightly optimised for efficiency; from $0$ to $2\pi$ around $\distrMag{2}'$ the integral is symmetric so only the first half is calculated; this approximately halves the execution time of numerical integration.
+
+The filament method can again be used to verify \eqref{cylforcez-ecc}.
+Kim et al.~\cite{kim1996-ietm} presented an expression for calculating the filamentary force between two non-coaxial circular coils; their equations were corrected for typographical errors and reprinted by Hull and Cansiz~\cite{hull1999-japplphys}.
+However, it is believed that their work is incorrect as the results produced from Kim et al.'s equation are not consistent with either the coaxial filament force  (\eqref{coaxial-filament}) nor the recently published generalisation by Babic and Aykel~\cite{babic2011-ietm-incl-coil} for calculating the force between noncoaxial and inclined circular coils.
+
+The non-coaxial filamentary coil force in the axial direction is taken from the third special case given by Babic and Aykel~\cite{babic2011-ietm-incl-coil}:
+\begin{dmath}[label=eccfilament]
+F_f\fn{r_1,r_2,z,e} = \frac{\mu_0 z r_2 I_1 I_2}{4\pi}
+\Integrate{
+  \frac{m_2}{V^2}
+  \gp[2]{ y\Cos{t}-x\Sin{t} }\times
+  \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
+}{t,0,2\pi}
+\end{dmath},
+where
+\begin{gather}
+x = e - r_2\Sin{t} ,\quad  y = r_2\Cos{t} ,\quad
+V = \sqrt{x^2+y^2},
+\notag\\
+m = 4 r_1 V m_2^2 , \quad
+m_2 = \gp{\gp{r_1+V}^2+z^2}^{-1/2}.
+\end{gather}
+%and the radial (or eccentric) force given by
+%\begin{dmath}[label=eccfilamentecc]
+%F_e\fn{r_1,r_2,z,e} = \frac{\mu_0 r_2 I_1 I_2}{4\pi}
+%\Integrate{
+%  m_2\Sin{t}
+%  \times
+%  \gp{ -2\EllipticK{m} + \EllipticE{m}\frac{2-m\gp{r_1/V+1}}{1-m} }
+%}{t,0,2\pi}
+%\end{dmath}.
+%$F_e$ acts in the direction of eccentric displacement.
+\Eqref{eccfilament} can be used with the filament method (as in \eqref{filamentforce}) to calculate thick-coil magnet forces, but this is only useful as a verification as the filament method using a numerical integral is extremely slow to execute (around three orders of magnitude slower than the integral solution of \eqref{cylforcez-ecc}).
+Such a verification is shown in \Figref{magcoil-ecc-compare}, which has system parameters as shown in \Tabref{magcoil-thin-compare-param} aside from a larger inner coil radius of \SI{11.5}{mm} and an eccentric displacement of \SI{1.5}{mm}.
+
+
+Eccentricity acts to increase the axial force of a coil/magnet system as the magnetic material comes closer to the region of large magnetic field strength due to the solenoid (\figref{magcoil-ecc-vary}).
+This result indicates that decreasing the airgap between the coil and magnet as much as possible is desirable to maximise the forces obtained for a given input current.
+
+\begin{figure}
+\begin{wide}
+\begin{subfigure}
+\hspace*{-1.5cm}%
+\psfragfig{magcode/examples/fig/ecc-compare}
+\caption{
+  Comparison of the filament and integral methods for calculating eccentric thick coil--magnet forces. Due to discretisation in the filament method the results vary near their peak.
+  \figlabel{magcoil-ecc-compare}
+}
+\end{subfigure}\hfil\hfil
+\begin{subfigure}
+\hspace*{-1.5cm}%
+\psfragfig{magcode/examples/fig/ecc-vary}
+\caption{
+  Example thick coil forces in the axial direction versus displacement for increasing eccentricities from \SIrange{1}{2.5}{mm} indicated by the arrow. Zero eccentricity is shown dashed.
+  \figlabel{magcoil-ecc-vary}
+}
+\end{subfigure}
+\end{wide}
+\caption{Two examples of eccentric thick coil magnet forces calculations.}
+\end{figure}
+
+
+
 
 \section{Optimisation of a sleeve coil magnetic actuator}
 \seclabel{magnetcoil-optimisation}
@@ -607,130 +730,15 @@ This design methodology can also be used to optimise the system parameters using
 
 
 
-%%%%%%%%%%%%%%%%%
-
-\section{Eccentric displacement and radial force}
-
-For eccentric displacement in the radial direction, $\eccen$, the limits of integration must be expressed in a translated coordinate system (see Figure~\ref{fig:int-offset}) and the original integral must be expressed with additional terms to take this into account.
-
-\begin{figure}
-\centering
-\asyinclude{PhD/Figures/Coil/circle-offset}
-\caption{Region of integration for a radially displaced magnet, shifted by $(\xi,\eta)$ from the original coordinate system.}
-\label{fig:int-offset}
-\end{figure}
-
-In order to incorporate eccentric displacement into the integral, terms of $\distrMag{1}$
-and $\distrMag{2}$ must be expressed instead in terms of $\distrMag{1}'$
-and $\distrMag{2}'$.
-The following transformation can be used to perform this:
-\begin{align}
-\distrMag{1} &= \sqrt{\distcMag{1}^2+\distcMag{2}^2} &
-\distcMag{1} &= \distcMag{1}' - \xi                 &
-\distcMag{1}' &= \distrMag{1}'\Cos{\distrMag{2}'}
-\\
-\distrMag{2} &= \ArcTan{\distcMag{2},\distcMag{1}}  &
-\distcMag{2} &= \distcMag{2}' - \eta               &
-\distcMag{2}' &= \distrMag{1}'\Sin{\distrMag{2}'}
-\end{align}
-Due to the additional complexity introduced by this transformation, the original integral can no longer by easily solved analytically with respect to $\distrMag{2}'$.
-The variable $\distrMag{1}'$ is not an integration term and therefore $\distrMag{1}'=\radiusMag$.
-Accordingly, the axial force due to both axial and radial displacement is now given by
-\begin{dmath}[label=cylforcez-ecc]
-F_{z_4}=
-\frac{\turnsCoil \currentCoil \remanence}{\pi\lengthCoil\gp{\oradiusCoil-\iradiusCoil}}
-\Int{
-  \sum_{e_1}^{\{1,-1\}} \!\!\! \gp{e_1 \m2 f_{z_4} }
-  }
-  {\distrMag{2}',0,\pi}
-  {\distrCoil{1},\iradiusCoil,\oradiusCoil}
-  {\distrCoil{3},-\lengthCoil/2,\lengthCoil/2}
-\end{dmath},
-where the intermediate term is
-\def\P{\distrMag{2}}
-\begin{dmath}
-f_z=\gp{1-\frac{\m1}{2}}
-      \EllipticK{\m1}-\EllipticE{\m1}
-\end{dmath},
-with parameters
-\begin{align}
-\m1&=\frac{4 \distrMag{1} \distrCoil{1}}{\m2^2}, &
-\m2^2 &= \gp{\distrMag{1}+\distrCoil{1}}^2+\gp{\displ+\half e_1\lengthMag-\distrCoil{3}}^2 .
-\end{align}
-Due to the additional numerical integral that must be evaluated when using \eqref{cylforcez-ecc}, it is approximately an order of magnitude slower to calculate than \eqref{cylforcez}.
-The expression is slightly optimised for efficiency; from $0$ to $2\pi$ around $\distrMag{2}'$ the integral is symmetric so only the first half is calculated; this approximately halves the execution time of numerical integration.
-
-The filament method can again be used to verify \eqref{cylforcez-ecc}.
-Kim et al.~\cite{kim1996-ietm} presented an expression for calculating the filamentary force between two non-coaxial circular coils; their equations were corrected for typographical errors and reprinted by Hull and Cansiz~\cite{hull1999-japplphys}.
-However, it is believed that their work is incorrect as the results produced from Kim et al.'s equation are not consistent with either the coaxial filament force  (\eqref{coaxial-filament}) nor the recently published generalisation by Babic and Aykel~\cite{babic2011-ietm-incl-coil} for calculating the force between noncoaxial and inclined circular coils.
-
-The non-coaxial filamentary coil force in the axial direction is taken from the third special case given by Babic and Aykel~\cite{babic2011-ietm-incl-coil}:
-\begin{dmath}[label=eccfilament]
-F_f\fn{r_1,r_2,z,e} = \frac{\mu_0 z r_2 I_1 I_2}{4\pi}
-\Integrate{
-  \frac{m_2}{V^2}
-  \gp[2]{ y\Cos{t}-x\Sin{t} }\times
-  \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
-}{t,0,2\pi}
-\end{dmath},
-where
-\begin{gather}
-x = e - r_2\Sin{t} ,\quad  y = r_2\Cos{t} ,\quad
-V = \sqrt{x^2+y^2},
-\notag\\
-m = 4 r_1 V m_2^2 , \quad
-m_2 = \gp{\gp{r_1+V}^2+z^2}^{-1/2}.
-\end{gather}
-%and the radial (or eccentric) force given by
-%\begin{dmath}[label=eccfilamentecc]
-%F_e\fn{r_1,r_2,z,e} = \frac{\mu_0 r_2 I_1 I_2}{4\pi}
-%\Integrate{
-%  m_2\Sin{t}
-%  \times
-%  \gp{ -2\EllipticK{m} + \EllipticE{m}\frac{2-m\gp{r_1/V+1}}{1-m} }
-%}{t,0,2\pi}
-%\end{dmath}.
-%$F_e$ acts in the direction of eccentric displacement.
-\Eqref{eccfilament} can be used with the filament method (as in \eqref{filamentforce}) to calculate thick-coil magnet forces, but this is only useful as a verification as the filament method using a numerical integral is extremely slow to execute (around three orders of magnitude slower than the integral solution of \eqref{cylforcez-ecc}).
-Such a verification is shown in \Figref{magcoil-ecc-compare}, which has system parameters as shown in \Tabref{magcoil-thin-compare-param} aside from a larger inner coil radius of \SI{11.5}{mm} and an eccentric displacement of \SI{1.5}{mm}.
-
-Eccentricity acts to increase the axial force of a coil/magnet system as the magnetic material comes closer to the region of large magnetic field strength due to the solenoid (\figref{magcoil-ecc-vary}).
-This result indicates that decreasing the airgap between the coil and magnet as much as possible is desirable to maximise the forces obtained for a given input current.
-
-\begin{figure}
-\begin{wide}
-\begin{subfigure}
-\hspace*{-1.5cm}%
-\psfragfig{magcode/examples/fig/ecc-compare}
-\caption{
-  Comparison of the filament and integral methods for calculating eccentric thick coil--magnet forces. Due to discretisation in the filament method the results vary near their peak.
-  \figlabel{magcoil-ecc-compare}
-}
-\end{subfigure}\hfil\hfil
-\begin{subfigure}
-\hspace*{-1.5cm}%
-\psfragfig{magcode/examples/fig/ecc-vary}
-\caption{
-  Example thick coil forces in the axial direction versus displacement for increasing eccentricities from \SIrange{1}{2.5}{mm} indicated by the arrow. Zero eccentricity is shown dashed.
-  \figlabel{magcoil-ecc-vary}
-}
-\end{subfigure}
-\end{wide}
-\caption{Two examples of eccentric thick coil magnet forces calculations.}
-\end{figure}
 
 
-
-
-
-
-\subsection{Dual coil simulations}
+\section{Dual coil electromagnet design}
 \seclabel{dualcoil}
 
-The $\turnsCoil\currentCoil/\gp{\oradiusCoil-\iradiusCoil}$ term in the force equation between a magnet and coil is the cause of some subtle considerations when designing coil--magnet actuators.
+Considering the force equation between a magnet and coil (\eqref{magcoil-integral}, and other methods), the constant term $\turnsCoil\currentCoil/\gp{\oradiusCoil-\iradiusCoil}$ is the cause of some subtle considerations when designing electromagnetic actuators.
 The force created by a single layer coil (that is, $\turnsRCoil=1$) cannot be improved upon for a fixed input power by adding more layers radially, because the total length of wire (and hence the resistance, and the inverse of current) will grow faster than the linear gains achieved in the force.
 
-The previous section has outlined a optimisation technique to achieve the maximum peak force given a fixed magnet volume and input resistance.
+The work in \secref{magnetcoil-optimisation} has outlined a optimisation technique to achieve the maximum peak force given a fixed magnet volume and input resistance.
 This peak force can be subsequently improved upon by using a different coil design.
 By wiring two half-resistance coils in series and in opposite winding directions, with the permanent magnet in the gap between them (\figref{dual-coil-schematic}), greater forces can be achieved than with a single coil of equivalent resistance.
 This design is also better at dissipating heat, as the effective surface area is greater.
@@ -756,46 +764,62 @@ This design is also better at dissipating heat, as the effective surface area is
   \figlabel{dual-coil}
 \end{figure}
 
-For two coaxial coils with a distance $G$ between their centres, superposition can be used to calculate the forces $F_1$ and $F_2$ generated between each and a permanent magnet.
+For two coaxial coils with a distance $\coilDualGap$ between their centres, superposition can be used to calculate the forces $F_1$ and $F_2$ generated between each and a permanent magnet free to move between them.
 The axial distance between the permanent magnet and the two coils is denoted by
 $d_1$ and $d_2$.
 The total force on the magnet is given by
-\begin{dmath}
-F_{\mathrm{T}}\fn{d_1,G}
-  =F_1(d_1)+F_2(d_2)
-  =F_1(d_1)+F_2(-G+d_1)
-  =F_1(d_1)+F_1(G-d_1)
+\begin{dmath}[compact]
+F_{\mathrm{T}}\fn{d_1,\coilDualGap}
+  =F_1\fn{d_1}+F_2\fn{d_2}
+  =F_1\fn{d_1}+F_2\fn{-G+d_1}
 \end{dmath}.
 The two coils are assumed to be the same size.
 For a fixed dual-coil geometry, this equation allows an investigation of the force \vs\ displacement curves while varying the distance between the coils and the position of the permanent magnet.
 
-Less comprehensive parameter variations are performed to analyse the dual coil
-arrangement, as many of the results carry over from the single coil
-cases. \Figref{dual-coil} shows a dual-coil design with increasing coil
-gaps. The results are evident: if the coils are too far apart, they
-act separately and their benefit is not realised; conversely, if they
-are too close their effects cancel.
+The improvement that can be achieved with the dual-coil design is demonstrated with an example.
+The results from the previous optimisation for coil and magnet aspect ratios (\figref{magcoil-ratiomax-ratios}) indicated that generally a longer coil than magnet produced larger forces (\ie, a larger coil aspect ratio).
+In such cases, the maximum force experienced by the permanent magnet is seen at a displacement of half the coil length.
+The dual-coil spacing $\coilDualGap$ should be chosen such that the displacement for peak force aligns for both coils so as to achieve maximum force from both coils; for the case of longer coils than magnets, this spacing becomes equal to the coil length.
+In other words, there is zero gap between adjacent coils.
+When the separation distance is larger than this, a long stroke actuator can be designed with such a setup by sacrificing maximum force to achieve a wider but lower force peak.
 
-When the separation distance is larger than that for the maximum force, a long stroke actuator can also be designed with such a setup by sacrificing maximum force to achieve a wider but lower force peak (\eg, separation gap of \SI{12.5}{mm} in \Figref{dual-coil}).
+These ideas are shown by example in \figref{dual-coil}, which shows a dual-coil design with varying coil gap $\coilDualGap$.
+Particular parameters for this example are shown in \tabref{dual-coil-parameters}; note in the dual-coil design, the outer radius of the coil is the only difference, corresponding to fewer radial turns to achieve half the coil resistance.
+The dual-coil design can achieve over 50\% greater peak force than the equivalent resistance single coil design; even when some additional gap is added (such as the $\coilDualGap=\SI{80}{mm}$ case), the peak force is still larger but the stroke length is greatly improved.
+As the coils are separated further, they exhibit a `double peak' characteristic (shown for $\coilDualGap=\SI{90}{mm}$) which essentially bounds the coil gap where the dual-coil design is advantageous over having a single coil alone.
 
-\fxfatal{SHOW THAT THE DUAL COIL IS BETTER!!}
+\begin{table}
+\caption{
+  Explicit and implicit parameters for the dual-coil example.
+  The dual-coil system has twin coils of half resistance.
+}
+\tablabel{dual-coil-parameters}
+\begin{tabular}{@{}lclc@{}}
+\toprule
+\multicolumn{2}{@{}c@{}}{Explicit} & \multicolumn{2}{@{}c@{}}{Implicit} \\
+\cmidrule(r){1-2}
+\cmidrule(l){3-4}
+Magnet ratio & \num{2} & Magnet length & \SI{21.7}{mm} \\
+Coil ratio & \num{5} & Magnet radius & \SI{10.8}{mm} \\
+Wire diameter & \SI{1}{mm} & Coil radius   & \SI{11.8}{mm} \\
+Coil resistance (single) & \SI{8}{\ohm} & Coil length   & \SI{59}{mm} \\
+Magnet volume & $\gp[0]{\SI{20}{mm}}^3$ & Coil thickness (single) & \SI{34}{mm} \\
+Coil current & \SI{1}{A} & Coil thickness (dual) & \SI{22}{mm} \\
+Magnetisation & \SI{1}{T} \\
+\bottomrule
+\end{tabular}
+\end{table}
 
-These results follow directly from the single coil simulations. For
-optimal coil spacing in the dual coil case, the maximum force position
-of a single coil should be used (as in \figref{vary-airgap}) for each
-side. \fxfatal{expand}
+\section{Summary of electromagnetic coil design}
 
-\begin{figure}
-  \begin{subfigure}
-    \grf{Figures/Coil/dual-coil-2d_1_0}
-  \end{subfigure}\par
-  \begin{subfigure}
-    \psfragfig{\coilpath 2coils-trial}
-  \end{subfigure}
-  \caption{Forces between dual-coil/magnet pairs with varying
-    inter-coil gap distances. \fxfatal{parameters for the dual coil}}
-  \figlabel{dual-coil}
-\end{figure}
+In this chapter, theory has been developed for calculating forces between cylindrical coils and magnets; as a contribution to the literature, we have shown a much improved equation for calculating the force between thin coils and how this equation can be used to efficiently calculate thick-coil/magnet forces.
+An equation has also been presented for calculating the axial force between a thick coil and permanent magnet with both axial and radial (or eccentric) displacement.
+
+Two electromagnetic systems have been analysed.
+The first is an optimisation of a `sleeve-type' electromagnetic actuator, and we have shown that analysis of such systems yields optimal values for magnet and coil parameters.
+The outcome from this work is to posit a solution to the inverse problem: given a required electromagnetic force, what magnet sizes and coil windings should be used to achieve this force with minimal space and/or cost?
+
+Secondly, we have shown that the single-coil system analysed in detail can be yet improved by using two equivalent coils in series with halve the resistance; the overall effect is to direct the magnetic field of these coils more efficiently than can be done with a single coil alone.
 
 \end{document}
 
