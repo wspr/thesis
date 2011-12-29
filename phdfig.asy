@@ -8,12 +8,12 @@ defaultpen(fontsize(11pt));
  *******************/
 
 void magnet2d(real width, real height, pair dist, real magangle, real magrotate=0) {
-  path magnet_path = 
+  path magnet_path =
        (+width/2,+height/2)--(-width/2,+height/2)--
        (-width/2,-height/2)--(+width/2,-height/2)--cycle;
 
   real s = 0.8*min(width,height)/2;
-  path arrow_path = 
+  path arrow_path =
     (-s*Cos(magangle),-s*Sin(magangle))--
     (+s*Cos(magangle),+s*Sin(magangle));
 
@@ -43,35 +43,41 @@ void drawcube(triple c, triple o=(0,0,0)) {
         Coil
  *******************/
 
-void coilxo(real inner, real outer, real length, pair dist, real sep = (outer-inner)/3, real xosize = (outer-inner)/15 ){
+void coilxo(real inner, real outer, real length, pair dist, real sep = (outer-inner)/3, real xosize = (outer-inner)/15 , bool swap = false){
 
-  path coil_path = 
+  path coil_path =
        (+length/2,+(outer-inner)/2)--(-length/2,+(outer-inner)/2)--
        (-length/2,-(outer-inner)/2)--(+length/2,-(outer-inner)/2)--cycle;
-       
+
   draw(shift( (0,+(outer+inner)/2) + dist) *coil_path);
   draw(shift( (0,-(outer+inner)/2) + dist) *coil_path);
-  
+
   real Nz = floor(length/sep);
   real Nr = floor( (outer-inner)/sep );
-  
+
   path[] X = (-xosize,xosize) -- (xosize,-xosize) ^^ (-xosize,-xosize) -- (xosize,xosize);
   path[] O = scale(xosize)*unitcircle;
-  
+
   pair Opadding = ( -sep*(Nz-1)/2 ,  inner+((outer-inner)-sep*(Nr-1))/2 );
   pair Xpadding = ( -sep*(Nz-1)/2 , -outer+((outer-inner)-sep*(Nr-1))/2 );
-  
+
+  if (swap) {
+    pair tmp = Xpadding;
+    Xpadding = Opadding;
+    Opadding = tmp;
+  }
+
   for(int zz=0; zz<Nz; ++zz) {
     for(int rr=0; rr<Nr; ++rr) {
       draw( shift( Xpadding+( zz*sep , rr*sep )+dist )*X );
       draw( shift( Opadding+( zz*sep , rr*sep )+dist )*O );
     }
   }
-  
+
 }
 
 void coil2d_half(real width, real height, pair dist) {
-  path coil_path = 
+  path coil_path =
        (+width/2,+height/2)--(-width/2,+height/2)--
        (-width/2,-height/2)--(+width/2,-height/2)--cycle;
 
@@ -141,14 +147,14 @@ void drawspring(pair start = (0,0),
   for(int ii=2; ii<=points; ++ii) {
     p = p -- (width/2*(2*fmod(ii+1,2)-1),nospring+turnheight*(ii-0.5));
   }
-  
+
   p = p--(0,l-nospring)--(0,l);
   draw(shift(start)*rotate(degrees(end-start)-90,(0,0))*p,p=springpen);
 
   if ( label != "" ){
     label(label,0.5(start+end),3labelpos);
   }
-  
+
 }
 
 void drawdamper( pair start = (0,0),
@@ -170,9 +176,9 @@ void drawdamper( pair start = (0,0),
     (width/2,dh+damph)^^
     (0,fh)--(0,l)^^ // upper stem
     (-width/4,fh)--(width/4,fh); // upper stem bar
-  
+
   draw(shift(start)*rotate(degrees(end-start)-90,(0,0))*p);
-  
+
   if ( label != "" ){
     label(label,0.5(start+end),3labelpos);
   }
@@ -186,7 +192,7 @@ void drawmass( pair start = (0,0),
 	       pair labelpos = W ) {
 
   draw(shift(start)*box((-left,0),(right,height)));
-  
+
   if ( label != "" ){
     label("\strut"+label,start+((right-left)/2,height/2));
   }
@@ -206,9 +212,9 @@ void drawinputforce
     (0,l/2-width/2)^^ // lower stem
     circle((end-start)/2,width/2)^^
     (0,l/2+width/2)--(0,l); // upper stem
-  
+
   draw(shift(start)*rotate(degrees(end-start)-90,(0,0))*p);
-      
+
   if ( label != "" ){
     label(label,0.5(start+end),3labelpos);
   }
@@ -295,7 +301,7 @@ void drawmotion
   real   offset   = 1 ,
   real   length   = 1 ,
   string label    = ""  ,
-  pair   labelpos = NE  
+  pair   labelpos = NE
 )
 {
   pair z1, z2, z3;
