@@ -12,32 +12,24 @@ feel justified here in disregarding those aspects of it
 associated with magic, spiritualism, and psychic
 phenomena\dots}{\textcite{boerdijk1956b}}
 
-\referpaper{The work presented in \secref{cylforces} is based on material that has been published as a journal paper~\cite{robertson2011-ietm}.}
+\referpaper{The work presented in \secref{cyl-forces} is based on material that has been published as a journal paper~\cite{robertson2011-ietm}.}
 
 \section{Magnetic fields}
-
-It's instructive but misleading to think about magnetic fields
-`squashing' as they come in proximity to each other. Just ask
-\textcite{sodano2006} who received comments nitpicking comments about
-their terminology \cite{marneffe2007}.
 
 \subsection{Sources of the magnetic field}
 \seclabel{bhm}
 
-Magnetic fields are created by moving electrons. A long straight wire
-will create cylindrical magnet fields, and a small loop will create a
-magnetic dipole. Thus, an electron orbiting a proton is the smallest
-magnetic element.  This is a hydrogen atom. In nature, however,
-hydrogen exists as H$_2$, two protons orbited by two electrons---and
-it happens that the two electrons orbit in opposite directions and the
-magnetic fields of each cancel each other out.  Most material is like
-this: basically, not magnetic.
+Magnetic fields are created by moving electrons.
+A long straight wire will create a cylindrical-like magnet field, and a small loop will create a magnetic dipole.
+Thus, an electron orbiting a proton is the smallest magnetic element.
+This is a hydrogen atom.
+In nature, however, hydrogen exists as H$_2$, two protons orbited by two electrons \dash and it happens that the two electrons orbit in opposite directions and the magnetic fields of each cancel each other out.
+Most material is like this: basically, not magnetic.
 
-The following is a very short introduction to the physics behind
-magnets. A good reference book which inspired this section is
-\textcite{campbell1994}.
+The following is a very short introduction to the physics behind magnets, largely to introduce the notation used later in the thesis.
+A good reference book which inspired this section is\textcite{campbell1994}.
 
-The \define{magnetic dipole} is designated as the microscopic quantity
+The magnetic dipole is designated as the microscopic quantity
 $\mdip = i\vect{A}$, for a current $i$ and a vector area $\vect{A}$
 (direction normal to plane). For a collection of magnetic dipoles (as
 in a permanent magnet), their net effect may be quantified with the
@@ -80,18 +72,18 @@ magnetics,
   \magB = \permVac (\magM + \magH)  \eqlabel{BHM}
 \end{dmath},
 allowing the terms to be unambiguously defined. Henceforth, $\magB$ is
-called the \define{magnetic flux density}, which a measure of the
-total flux per area; and $\magH$ is the \define{magnetic field strength},
+called the magnetic flux density, which a measure of the
+total flux per area; and $\magH$ is the magnetic field strength,
 the effect of external current sources that creates the magnetic
 field.
 \note{The names of these terms are not always consistent in the
   literature. $\magM$ is also known as polarisation, and $\magB$ and $\magH$
   are both sometimes known as the magnetic field.}
 
-Finally, the \define{permeability} $\perm$ of a material (generally
+Finally, the permeability $\perm$ of a material (generally
 only used when the material is not a permanent magnet) is a varying
 term describing the ratio between the magnitudes of the $\magB$ and $\magH$
-fields. The \define{relative permeability} $\permrel$ is the ratio of
+fields. The relative permeability $\permrel$ is the ratio of
 the permeability to $\permVac$.
 \begin{dgroup}
   \begin{dmath}
@@ -125,9 +117,9 @@ nonlinear and hysteresic effects of the magnetic flux density of a
 magnetic material as external magnetic field is applied to it.
 
 Two important features are shown in the \bhcurve/. First, the
-\define{remanence} of the magnet, $B_r$. This value is equal to
+remanence of the magnet, $B_r$. This value is equal to
 $\permVac\Msat$ and occurs when there is no external
-magnetic field. The other is the \define{coercive force}, $H_c$, which
+magnetic field. The other is the coercive force, $H_c$, which
 is the amount of magnetic field strength required to reduce the flux
 density of the magnet to zero.
 
@@ -141,25 +133,17 @@ density of the magnet to zero.
 When the magnet is applying energy, it is operating in the second
 quadrant of its \bhcurve/, \ie, the section of the curve between the
 point of remanence and the coercive force, known as the
-\define{demagnetisation curve}. This is because the energy used for
+demagnetisation curve. This is because the energy used for
 the demagnetisation is being taken by the causes of the
 demagnetisation. At some point in this second quadrant, $-\magB\times\magH$
 will have a maximum. Since this is proportional to the energy
-potential, this is known as the \define{maximum energy product}
+potential, this is known as the maximum energy product
 $\BHmax$, and can be shown to be equal in an ideal magnet to:
 \begin{dmath}
   -\BHmax = \frac{\Msat}{2}
 \end{dmath}
 The potential energy of the magnet is thus directly related to its
 magnetisation.
-
-The constitutive relation for rare earth magnets, assuming a
-high coercivity, is given by \textcite{nagaraj1988}
-\begin{dmath*}
-  \magB = \permVac\magH + \magM ,
-\end{dmath*}
-assuming that the air approximates a vacuum (magnetically) and the
-relative permeability of the magnet is unity.
 
 
 \subsection{Properties of magnetic flux}
@@ -187,8 +171,7 @@ therefore defined as the amount of `fluid' passing through an area:
 This flux is almost analogous to electric current; the only difference
 being that electric current is constrained by the conductor it is
 flowing through, whereas while magnetic flux is known to \emph{prefer}
-areas of greater permeability, it occasionally can deviate from these
-simple paths
+areas of greater permeability, it occasionally can deviate from these simple paths.
 
 It is more instructive for a basic understanding of how magnets behave
 to look at the ways their flux lines interact. The following `magnet
@@ -220,11 +203,12 @@ the saturated material.
 From these axioms, one can generate incorrect, yet applicable,
 theories how and why magnets attract and repel each other. For
 example, two magnets in repulsion have flux lines opposing each
-other. It can be imagined that the reason forces occur between them is
+other.
+It can be imagined that the reason forces occur between them is
 due to a `squashing' of the flux lines which the magnets try to
 oppose---but theories like this only help visualising magnetic
 behaviour, \emph{not} for explaining the reasons behind it.
-
+\note{Just ask \textcite{sodano2006}, who received nitpicking comments about their terminology \cite{marneffe2007}.}
 
 \section{Permanent magnets and magnetic materials}
 
@@ -269,23 +253,6 @@ magnetic field.
 \end{table}
 
 
-\subsection{Assorted}
-
-
-The remanence magnetisation is calculated from the nominal energy
-product of the magnets \cite{campbell1994}. The nominal energy product
-$\BHmax$ is related to the saturation magnetisation by
-\begin{dmath}
-\BHmax = \permVac\gp{\half \Msat}^2,
-\end{dmath}
-which can be used to calculate the remanence with the relation
-$\remanence=\permVac\Msat$:
-\begin{dmath}
-\remanence=\sqrt{4\permVac\BHmax}=\SI{1.39}{T}.
-\end{dmath}
-
-
-
 \section{Forces between magnets}
 
 A general technique for finding the forces between two magnets is
@@ -300,91 +267,42 @@ some magnetic charge. Rare-earth magnets have the convenient property
 of high coercivity that prevents demagnetisation; hence, assumptions
 of a fixed and volume-constant magnetisation hold very well.
 
-In the first step, the integration takes place over the region of the
-first magnet:
+There are two methods that will be outlined here for calculating the magnetic field of a permanent magnet, known as the charge and current models. Respectively, these consist of modelling the magnets as having two surfaces of magnetic charge, or modelling the magnet as being composed of an equivalent surface current density.
+In the expressions to follow, the magnetisation of each magnet has been assumed to be homogeneous and constant, which is a reasonable assumption for modern rare earth magnetic material; hence terms involving $\Div\magM$ and $\Curl\magM$ equate to zero.
+
+In the first step, the integration takes place over the surface of the
+first magnet $S_1$, which is written for the charge model as:
 \begin{dmath}
 \magB_1\fn{\pos_2} =
-  \magconst\Int{
-    \gp{-\Div\magM_1}
-    \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}}{v_1,V_1}
-+ \magconst\oint\limits_{S_1}
-    \gp{\magM_1\dotprod\normn}
-    \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
-    \dee s_1
-\end{dmath}.
-
-In the second step, the integration of the function of the magnetic
-field of the first magnet takes place over the region of the second
-magnet:
-\begin{dmath}
-\force =
-  \int\limits_{V_2}
-  \gp{-\Div\magM_2}
-  \magB_1\fn{\pos_2} \dee v_2
-+ \oint\limits_{S_2}
-  \gp{\magM_2\dotprod\normn}
-  \magB_1\fn{\pos_2} \dee s_2
-\end{dmath}.
-
-Torque is similar.
-\begin{dmath}
-\torque =
-  \int\limits_{V_2}
-  \gp{-\Div\magM_2}
-  \gp{  \lever\crossprod\magB_1\fn{\pos_2} } \dee v_2
-+ \oint\limits_{S_2}
-  \gp{  \magM_2\dotprod\normn       }
-  \gp{  \lever\crossprod\magB_1\fn{\pos_2} } \dee s_2
-\end{dmath}.
-
-The volume integrals contain $\Div\magM$ terms, which will equal zero
-in the regions of constant magnetisation within the regions of the
-magnetic volumes. This is a reasonable assumption for modern rare
-earth magnetic material. The equations above can therefore be
-simplified.
-
-\begin{dmath}
-\magB_1\fn{\pos_2} =
-  \magconst\oint\limits_{S_1}
-    \gp{  \magM_1\dotprod\normn  }
+ \magconst\oint\limits_{S_1}
+    \gp{\magM_1\dotprod\normn_{s_1}}
     \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
     \dee s_1
 \end{dmath},
+and for the current model as:
 \begin{dmath}
-\force =
-  \oint\limits_{S_2}
-  \gp{  \magM_2\dotprod\normn  }
-  \magB_1\fn{\pos_2} \dee s_2
-= \magconst
-  \oint\limits_{S_2}
-  \oint\limits_{S_1}
-    \gp{  \magM_1\dotprod\normn_{s_1}  }
-    \gp{  \magM_2\dotprod\normn_{s_2}  }
+\magB_1\fn{\pos_2} =
+ \magconst\oint\limits_{S_1}
+    \gp{\magM_1\cross\normn_{s_1'}}\cross
     \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
-    \dee s_1
-  \dee s_2
+    \dee s_1'
 \end{dmath},
-\begin{dmath}
-\torque =
-  \oint\limits_{S_2}
-    \gp{  \magM_2\dotprod\normn       }
-    \gp{  \lever\crossprod\magB_1\fn{\pos_2} }
-  \dee s_2
- =
-  \magconst
-  \oint\limits_{S_2}
-    \gp{  \magM_2 \dotprod \normn_{s_2} }
-    \gp{
-      \lever\crossprod
-      \gp{
-        \oint\limits_{S_1}
-          \gp{  \magM_1\dotprod\normn_{s_1}  }
-          \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
-        \dee s_1
-      }
-    }
-  \dee s_2
+where $\normn$ is the normal vector from the surface of integration.
+
+In the second step, the integration of the function of the magnetic field of the first magnet takes place over the surface of the second magnet $S_2$, and the integral for the charge model is:
+\begin{dmath}[label=charge-force]
+\force = \oint\limits_{S_2}
+  \gp{\magM_2\dotprod\normn_{s_2}} \magB_1\fn{\pos_2} \dee s_2
+\end{dmath},
+and for the current model as:
+\begin{dmath}[label=current-force]
+\force = \oint\limits_{S_2}
+  \gp{\magM_2\cross\normn_{s_2'}} \cross \magB_1\fn{\pos_2} \dee s_2'
 \end{dmath}.
+
+\Eqref{charge-force,current-force} are general recipes for calculating the forces between permanent magnets, and a similar formulation will allow for the modelling of electromagnetic coils as well.
+Complex geometries, however, cannot be solved analytically as the integrals become intractable; numerical integration must be used in this case \cite{elies1999a}.
+Generally when this is required the integrals are simplified as much as possible before numerical integration is applied to the remaining terms; for this reason this technique is often called a `semi-numerical' approach, and is capable of obtaining results in a  more straightforward and efficient manner than finite element analysis.
 
 
 \subsection{Analytical expressions for the magnetic field}
@@ -392,50 +310,22 @@ simplified.
 For the purposes of this work, the analytical calculation of the magnetic flux $\magB$ is largely overlooked in favour of analytical force calculations, which will be dealt with in the next section.
 However, since an analytical formulation for $\magB$ is a requirement for then calculating the force, a short literature review will be covered here for different magnet geometries.
 
-New publications on the analytic magnetic field equation for a thick coil appear to be being published at an accelerating rate \cite{danilov1971-nim,urankar1982-ietm,azzerboni1993-ietm,labinac2006-ajp,pechenkov2006-rndt,ravaud2010-emwaves}.
+The magnetic field for cuboid shaped magnets has a concise solution and has been known for some time for magnetisation in a direction orthogonal to the magnet face \cite{akoun1984}.
+Much more recently, expressions were presented for calculating the magnetic field from a cuboid magnet with magnetisation in an arbitrary direction \cite{ravaud2009-pier98}.
 
-Magnetic field from pyramidal frustrum magnets: \cite{compter2010-ietm}
+The magnetic field from `pyramidal frustrum' magnets \cite{compter2010-ietm} is calculated by decomposing the pyramidal frustums into triangular and quadrilateral current sheets of non-square orientation.
+This method is a positive step towards generating a general theory for calculating the magnetic field from arbitrary magnet shapes with flat sides.
 
+The geometry of cylindrical magnets and coils results in elliptic integrals in the solution to their field equations.
+For a cylindrical magnet, the field solutions have been published for axial magnetisations \cite{ravaud2010-ietm} and radial ones \cite{furlani1995-ietm}.
+A comparison between the current and charge models for calculating the magnetic field for radially-magnetised arc-shaped magnets was made by \textcite{ravaud2009-pier-compare}, who state:
+\begin{quote}
+The problem is thus to guess what model is the most appropriate for calculating the three components of the magnetic field produced by permanent magnets.
+It does not seem to be more difficult to use the amperian current model rather than the coulombian [`charge'] model for calculating the magnetic field created by parallelepiped magnets. [\dots] For arc-shaped permanent magnets, it seems to be more difficult to guess what model is the most appropriate.
+\end{quote}
 
-Comparison between methods for arc-shaped magnets: \cite{ravaud2009-pier-compare}
-
-Cuboid magnetic field with arbitrary magnetisation: \cite{ravaud2009-pier98}
-
-
-
-\subsection{Other approaches}
-
-To account for magnets that do not have parallel/anti-parallel
-magnetisation, \textcite{chen2002,chen2003} derived an expression in two
-dimensions for the force induced between two L-shaped current
-sheets, then applies this model with the length
-of various legs of the `L' in different configurations set to zero. This
-takes the assumption, like \textcite{yonnet1981}, of infinitely long
-planar cross sections.
-This was suitable for application to a magnetic bearing where
-the curvature of the magnet has a small or negligible effect on the
-force between the magnets. However, for true three dimensional cases
-(such as the forces between two cube magnets) this technique would not
-be suitable.
-
-Rotation of a magnet around an axis is treated by Eliès, Charpentier and
-Lemarquand in numerous papers
-\cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep,elies1999a}, giving equations
-for the forces in the directions other than around which the magnet is
-rotated. Since the equations they present are not self-consistent (some typing
-mistakes have occurred in the publications of the papers), the correct form is
-printed in \secref{french-equations} in an easier to read, abbreviated form.
-
-\textcite{nagaraj1988} derived integrals to calculate the forces between cuboid magnets and between cylindrical magnets, and compared the differences in behaviour.
-
-More complex behaviours, however, cannot be solved analytically as the
-integrals become untractable; for anything approaching the forces
-between two magnets with arbitrary rotations, \emph{numerical}
-integration must be used \cite{elies1999a}. This technique is capable
-of obtaining results in a much more straightforward manner than finite
-element analysis, and must be used for the more complex situations.
-
-\textcite{janssen2009-ietm} have derived the analytical forces between pyramidal-frustrum shaped magnets, which have not quite yet been published at time of writing.
+Finally, it is interesting from a historical perspective that new publications on the analytic magnetic field equation for a `thick coil' (or toroidal conductor with rectangular cross section, to be more precise/verbose) appear to be being published at an accelerating rate \cite{danilov1971-nim,urankar1982-ietm,babic1988-ietm,azzerboni1993-ietm,labinac2006-ajp,pechenkov2006-rndt,ravaud2010-emwaves}.
+The newer equations tend to be more general and/or robust.
 
 
 
@@ -632,12 +522,10 @@ We expect that summing ${\tau_y}_{|j,l,q}$ over $j,l,q\in\{0,1\}^3$ should yield
 Summing the two terms of \eqref{tau-y} separately over the same ranges reveals that the first term (involving $f_x$) does indeed sum to zero but the second term (involving $f_z$) does not. Therefore, the problem lies in the calculation of the vertical corner forces.
 
 Enumerating ${f_z}_{|j,l,q}$  in \tabref{corner-calc} shows the cause of the problem. For adjacent corners of the magnet, the corner forces are not symmetrical and hence result in the calculation of non-zero torques.
-These results are calculated using a Matlab script that can be located online for verification.
-\note{The Matlab script is located in `examples/allag\_torques.m' at \url{http://github.com/wspr/magcode}~.}
 
 \begin{table}
 \caption{Corner forces on the second magnet in the $z$-direction and their resultant corner torques.}
-\figlabel{corner-calc}
+\tablabel{corner-calc}
 
 \centering
 \newcommand\0{\hphantom{0}}
@@ -870,7 +758,7 @@ Superposition can then be used to combine the expressions for orthonogal magnets
 \textcite{ravaud2009-pier98} instead show the magnetic field equations for a cuboid magnet with arbitrary magnetisation; their work is still to be extended to calculate the forces between such magnets.
 Since their equation for calculating the magnetic field is necessarily more complex, it is not clear whether an equation derived using analytical integration to calculate the force directly (if the integral is even tractable) will be more efficient than the superposition approach outlined below.
 
-The geometry of the two-magnet system is shown in \figref{diagram}, in which the magnets have side lengths $\bm s = [2a, 2b, 2c]\T$ and $\bm S = [2A, 2B, 2C]\T$ respectively and the distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
+The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have side lengths $\bm s = [2a, 2b, 2c]\T$ and $\bm S = [2A, 2B, 2C]\T$ respectively and the distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
 
 As shown earlier in \eqref{akoun},
 \textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations.
@@ -961,63 +849,19 @@ this is the first formalisation of this theory to decompose a diagonal magnetisa
 
 In 1999, a slew of papers were published by researchers at \emph{Laboratoire
 d'Electrotechnique et de Magnétisme de Brest} investigating the forces between
-non-contact magnetic rotational force couplers. These are of interest to this
+non-contact magnetic rotational force couplings.
+These are of interest to this
 work because they use an analytical expression for the forces between two
 cuboidal magnets under arbitrary translation, with one inclined at any angle
 around the \x-axis.
+Three papers were published \cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep}
+that all contain the force expression of interest, with a fourth \cite{elies1998} containing just the force expression in a single direction.
 
-Incidentally, there's nothing special about this particular integral; it's the
-same one used by Bancel in his Magnetic Nodes paper. You kind of need a
-picture, and I don't like the notation, but:
-\begin{dmath}
-  \magB_1 =
-    \iint_{S_{1+}}
-      \frac{J}{4\pi}
-      \frac{\vect{P}_{S_{1+}}\vect{P}}
-           {\overline{P_{S_{1+}}P}^3}
-    \dee{S_{1+}}
-    -
-    \iint_{S_{1-}}
-      \frac{J}{4\pi}
-      \frac{\vect{P}_{S_{1-}}\vect{P}}
-           {\overline{P_{S_{1-}}P}^3}
-    \dee{S_{1-}},
-  \\
-  \vect{F} =
-    \iint_{S_{2+}}
-      \frac{J}{\permVac}\magB_1
-    \dee{S_{2+}}
-    -
-    \iint_{S_{2-}}
-      \frac{J}{\permVac}\magB_1
-    \dee{S_{2-}}.
-\end{dmath}
-This is different to the work of \textcite{akoun1984}, who derive an
-expression for the interaction energy between the two magnets and then
-differentiate to get the forces.
-
-These expressions follow the work of \textcite{bancel1999}, who defined his
-equations as a set of nested functions, unlike the equations of
-\textcite{akoun1984} that were six-nested summations. Back to these new
-papers, three were published \cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep}
-that all contain the expression I am interested in (why didn't they just cite
-the original?), with a fourth \cite{elies1998} containing just the force
-expression in a single direction. There's a little bit extra in the paper by
-\cite{elies1999a} that looks at the forces of two magnets inclined around the
-vertical axis, calculated with a numerical integration. The final paper
-\cite{elies1999} involves couplings exclusively, making it less applicable to
-this work. Its inclusion here is for completeness.
-
-Their equations are re-written here for each separate publication contains different typographical errors.
+Their expressions are re-written here because each separate publication contains different typographical errors.
 The equations here have been reconstructed by comparing the differences and similarities between the equations in the different papers, and re-written in a more compact form.
-Given two magnets located
-in \threeD/ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$,
-with the plane of the second rotated by $\theta$ around the \x-axis and their
-origins offset by $\inlinevect{x_0,y_0,z_0}$, the forces in the \y- and
-\z-directions ($F_y$ and $F_z$) between the two magnets can be calculated.
+Given two magnets located in \threeD/ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$, with the plane of the second rotated by $\theta$ around the \x-axis and their origins offset by $\inlinevect{x_0,y_0,z_0}$, the forces in the \y- and \z-directions ($F_y$ and $F_z$) between the two magnets can be calculated.
 
-Forces in both the $y$ and $z$ direction use the $f_3$ function in
-their calculations.
+Forces in both the $y$ and $z$ direction use the $f_3$ function in their calculations.
 \begin{dmath}
 F_y = \frac{J^2}{4\pi\permVac}
   \sum_{i_{a,b,c,A,B,C}\in\{0,1\}}
@@ -1105,22 +949,14 @@ w = z_0-ci_c+Ci_C+\half C\gp{\cos\theta-1}
 r = \sqrt{u^2+v^2+w^2}
 \end{dmath}.
 \end{dgroup}
-
 This equation is very similar, but not identical, to Akoun~\& Yonnet's
-equation for the same thing. I suspect theirs is more simple because they
-integrate over symmetric limits of integration (\eg, $\int^{+a}_{-a}$). Terms
-that are odd functions integrate to zero in this case.
+equation for the same (\eqref{akoun}).
 
-In order to allow this equation to be used for rotations greater than
-\SI{\sipi}{radians}, additional terms have been added to accommodate for the
-translational offset induced by rotating the magnet around its lower-left
-edge. The preceding $\cos\theta$ provides the sign change of the
-magnetisation, and the $\half\gp{\cos\theta-1}$ terms are used to return the
-origin of the magnet after 180\textdegree\ rotation to the lower-left corner,
-where it is expected.
+In order to allow this equation to be used for rotations greater than \SI{\sipi}{radians}, additional terms have been added to accommodate for the translational offset induced by rotating the magnet around its lower-left edge.
+The preceding $\cos\theta$ provides the sign change of the magnetisation, and the $\half\gp{\cos\theta-1}$ terms are used to return the origin of the magnet after 180\textdegree\ rotation to the lower-left corner, where it is expected.
 
 As an example of using these equations to calculate forces as a function of magnet rotation, \figref{charp-rotate} shows the forces produced between two \SI{10}{mm} cube magnets as a function of rotation angle $\theta$ of the second magnet, with a \SI{20}{mm} offset between their centres.
-Two cases are shown: in the first , the magnets are displaced vertically; in the second, the magnets are displaced horizontally.
+Two cases are shown: in the first, the magnets are displaced vertically; in the second, the magnets are displaced horizontally.
 
 \begin{figure}
   \begin{wide}
@@ -1141,11 +977,8 @@ Two cases are shown: in the first , the magnets are displaced vertically; in the
   \figlabel{charp-rotate}
 \end{figure}
 
-\Figref{charp-rotate} shows that the maximum force between two magnets is
-exhibited when the direction of displacement is in the same direction as their
-magnetisations. For displacements perpendicular to the direction of
-magnetisation of the fixed magnet, forces of equal magnitude are obtained for
-rotation of the second magnet $\theta=k\pi/2$ for $k\in\{0,1,2,\dots\}$.
+\Figref{charp-rotate} shows that the maximum force between two magnets is exhibited when the direction of displacement is in the same direction as their magnetisations.
+For displacements perpendicular to the direction of magnetisation of the fixed magnet, forces of equal magnitude are obtained for rotation of the second magnet $\theta=k\pi/2$ for $k\in\{0,1,2,\dots\}$.
 
 In the following simulations, the second magnet is held at a constant height (one magnet height's separation distance) and moved from left to right over a range of twice the magnet width symmetrically above the first magnet (with respect to the magnets' centres of gravity).
 Four such displacements are made with four different rotations for the second magnet: $0$, $\half\pi$, $\pi$ and $-\half\pi$.
@@ -1242,7 +1075,7 @@ As a result of the simplifications presented here, equation~\eqref{simpl4} conta
 \label{sec:numer}
 
 Numerical singularities occur when an expression is mathematically continuous but terms within the expression approach infinity; care must be taken when evaluating such expressions numerically.
-There are two numerical singularities in equation~\eqref{eq:simpl4}.
+There are two numerical singularities in \eqref{simpl4}.
 The first occurs when the radii are equal such that $\m2=1$ and the following term disappears as $\EllipticPi{\pm\infty,m}=0$:
 \begin{dmath}
 \finalterm = 0 \condition*{\m2=1}
@@ -1252,7 +1085,7 @@ The second numerical singularity occurs when the magnets/coils have coincident f
 
 \subsection{Implementation efficiency}
 
-Evaluated in Mathematica (including branching to avoid singularities), \eqref{eq:simpl4} took an average of 0.26\,ms on a notebook computer to calculate the force at a single location (10000 samples with random input variables). The original equation by \citeauthor{ravaud2010-ietm} in the same configuration evaluated in 2.2\,ms on average, which is over eight times slower than the new equation. For researchers performing design optimisations with variations over a large number of parameters, such an efficiency improvement is useful in minimising the total computation time of the optimisation process.
+Evaluated in Mathematica (including branching to avoid singularities), \eqref{simpl4} took an average of 0.26\,ms on a notebook computer to calculate the force at a single location (10000 samples with random input variables). The original equation by \citeauthor{ravaud2010-ietm} in the same configuration evaluated in 2.2\,ms on average, which is over eight times slower than the new equation. For researchers performing design optimisations with variations over a large number of parameters, such an efficiency improvement is useful in minimising the total computation time of the optimisation process.
 
 \subsection{Example}
 
@@ -1319,6 +1152,8 @@ In the simulation results, the magnet experiences zero force when it is axially 
   {An example of the force generated on a cylindrical magnet by a coil with parameters defined in \figref{coil-param}. Displacement is defined as zero when the coil and magnet are axially centred with respect to each other. The new equation is implemented in Matlab vs the old equation in Mathematica to ensure the two are numerically equivalent.}
   \figlabel{ex1}
 \end{figure}
+
+
 
 
 \section{Summary of the magnetic theory}
