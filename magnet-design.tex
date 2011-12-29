@@ -1183,58 +1183,22 @@ Specifically, for the case of zero offset between the magnets (\Figref{mbq-wvf-a
 
 \subsubsection{Magnet offset}
 
-Having chosen the magnet size ratio, there are two parameters that influence the force and stiffness characteristics of the spring; these are the magnet angle~$\mbqmagangle$ and the magnet offset~$\mbqoffset$.
-Variations in the magnet angle affect the force characteristics to a greater extent and will be examined first.
+\Figref{mbq-wvf-angle} shows the natural frequency versus load curve for a magnet gap ratio of zero.
+Increasing the magnet gap changes the force and stiffness relationships of the spring; \Figref{mbq-wvf-angle-2} shows the same plot with a magnet gap ratio of \num{0.25}.
+The difference in the shape of the curves is not great, but \Figref {mbq-wvf-angle-2} shows that a greater magnet gap results in smaller load forces and a smaller range in load force.
+Also, the angle which corresponds to the almost-flat natural frequency curve has changed to \SI{70}{\degree}.
 
-The theory outlined in \secref{geom} was used to calculate force versus displacement curves over a range of magnet angles from \SIrange{0}{90}{\degree}.
-These are shown in \Figref{mbq-fvx-angle}, which shows a dramatic effect on the force and stiffness characteristics due to changes in the inclination angle of the magnets.
-Of particular interest are the low-stiffness regions in the force curves in \Figref{mbq-fvx-angle}; these are potential areas for improved vibration isolation.
+The natural frequency versus load force is redrawn in \Figref{mbq-kvf-gaps} for a fixed magnet angle of \SI{45}{\degree} over a range of magnet gaps from zero to \num{0.5}.
+At this angle, it can be seen that the region of mostly-flat natural frequency occurs at a gap ratio of \num{0.05}.
+This indicates that the magnet angle should be chosen only after the tolerances of magnet displacement are decided and a minimum gap ratio established.
 
 \begin{figure}
 \centering
-\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-fvx-angle}}
-\caption{Force versus displacement for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.
-The offset distance between the magnets is zero.
-Light gray lines indicate negative stiffness (instability) and markers show the position of quasi--zero stiffness.}
-\figlabel{mbq-fvx-angle}
+\pregen{\psfragfig{examples/oblique/fig/mbq-wvf-gaps}}
+\caption{Natural frequency versus load force for gap ratios from zero to \num{0.5} in increments of \num{0.05} and a magnet angle of \SI{45}{\degree}.}
+\figlabel{mbq-kvf-gaps}
 \end{figure}
 
-\Figref{mbq-fvx-angle} is difficult to use for design purposes because the required load force will affect the dynamic stiffness as the system sits in equilibrium at a given displacement.
-However, this equilibrium displacement is not a parameter of particular interest provided the magnetic spring is still levitating.
-Therefore, for interpreting the operating conditions of the system it is more useful to consider the relationship between load force and natural frequency.
-
-The vertical stiffness $\mbqvstiff$ can be obtained by numerical differentiation of the vertical force $\mbqvforce$:
-\begin{equation}
-  \mbqvstiff(\mbqvdisp) = - \tfrac{1}{2}\bigl[\mbqvforce(\mbqvdisp+\delta)-\mbqvforce(\mbqvdisp-\delta)\bigr]/\delta ,
-\end{equation}
-where $\delta$ is a small displacement increment.
-The natural frequency $\omega_n(\mbqvdisp)$ as a function of displacement was calculated in terms of this vertical stiffness $\mbqvstiff$ with
-\begin{equation}
-  \omega_n(\mbqvdisp) = \sqrt{\frac{\mbqvstiff(\mbqvdisp)}{\mbqmasseq}} = \sqrt{\frac{\mbqvstiff(\mbqvdisp)}{\mbqvforce(\mbqvdisp)/g}}
-\end{equation}
-where the equivalent mass $\mbqmasseq=\mbqvforce(\mbqvdisp)/g$ is the mass required to load the spring such that its equilibrium position lies at the displacement $\mbqvdisp$.
-The force corresponding to this equivalent mass is referred to as the `load force'.
-
-By plotting natural frequency as a function of load force in \Figref{mbq-wvf-angle}, we can choose a magnet angle based on a certain load to satisfy a desired natural frequency.
-Specifically, for the case of zero offset between the magnets (\Figref{mbq-wvf-angle-1}), it can be seen that at a magnet angle of \SI{35}{\degree} the natural frequency is almost independent of force for a large range of applied load (approximately $\SI{30}{N}\pm\SI{10}{N}$).
-
-\begin{figure}
-\begin{wide}
-\subfloat
-  [Zero offset between the magnets.
-   At \SI{35}{\degree} the natural frequency is near-constant for a wide range of load forces.
-  \figlabel{mbq-wvf-angle-1}]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle}}}
-\hfill
-\subfloat
-  [Gap ratio of \num{0.25}.
-   Near-constant natural frequency occurs at \SI{70}{\degree}.
-   \figlabel{mbq-wvf-angle-2}]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle2}}}%
-\end{wide}
-\caption{Natural frequency versus load force for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.}
-\figlabel{mbq-wvf-angle}
-\end{figure}
 
 
 \subsubsection{Horizontal and out-of-plane stability due to vertical displacement}
