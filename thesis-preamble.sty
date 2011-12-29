@@ -5,7 +5,6 @@
 \newcommand\chapterinclude[1]{%
   \def\jobname{#1}
   \include{#1}
-  \let\asydir\empty
   \let\jobname\thesisjobname
 }
 
@@ -125,6 +124,20 @@
 \RequirePackage[process=auto]{asyfig}
 \RequirePackage[inline]{asymptote}
 \renewcommand\asydir{asy}
+
+%% HUH?!?!
+
+\def\asy@input@graphic{%
+    \IfFileExists{"\AsyFile.tex"}{%
+      \catcode`:=12\relax
+      \let\TMPII\jobname
+      \let\jobname\Jobname
+      \@@input"\AsyFile.tex"\relax
+      \let\jobname\TMPII
+    }{%
+      \PackageWarning{asymptote}{file `\AsyFile.tex' not found}%
+    }%
+}
 
 %%%%%%%%%%%%%%%%%
 %%% FIGURES
