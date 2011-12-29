@@ -215,7 +215,11 @@ Of the around 70 lines of code in `multipole\_example.m', only some 20 lines of 
 \begin{figure}
 \centering
 \psfragfig{magcode/examples/fig/allag-repro}
-\caption{Reproduction of Allag et al.'s results~\textcite{allag2009-electromotion}. The forces in the $x$-direction are zero.}
+\lofcaption
+{ Reproduction of Allag et al.'s results~\textcite{allag2009-electromotion}.}
+{
+  The forces in the $x$-direction are zero.
+}
 \figlabel{allag}
 \end{figure}
 
@@ -246,7 +250,9 @@ As the number of magnets per wavelength of magnetisation $\mupmagperwave$ increa
 \begin{figure}
 \centering
 \pregen{\asyinclude{PhD/Figures/Multipole/magperwave}}
-\caption{Three Halbach arrays of equal length, facing up, each with a single wavelength of magnetisation and composed of $\mupmagperwave\in\{2,4,8\}$ magnets per wavelength respectively.}
+\caption
+[Three Halbach arrays of equal length.]
+{Three Halbach arrays of equal length, facing up, each with a single wavelength of magnetisation and composed of $\mupmagperwave\in\{2,4,8\}$ magnets per wavelength respectively.}
 \figlabel{wavelength}
 \end{figure}
 
@@ -255,7 +261,9 @@ The magnetic flux pattern of the array is dependent also on the wavelength of ma
 \begin{figure}
 \centering
 \pregen{\asyinclude{PhD/Figures/Multipole/multipole-variables}}
-\caption{Geometry of a linear Halbach array with four magnets of length $\mupmaglength$ per wavelength of magnetisation $\mupwavelength$. This array contains two wavelengths of magnetisation with an end magnet for symmetry, i.e., $\mupNwaves=2$ and $\mupmagperwave=4$.}
+\caption
+[Geometry of a linear Halbach array with four magnets per wavelength of magnetisation.]
+{Geometry of a linear Halbach array with four magnets of length $\mupmaglength$ per wavelength of magnetisation $\mupwavelength$. This array contains two wavelengths of magnetisation with an end magnet for symmetry, i.e., $\mupNwaves=2$ and $\mupmagperwave=4$.}
 \figlabel{multipole-variables}
 \end{figure}
 
@@ -291,7 +299,9 @@ The results shown previously have in general indicated that improvements to the 
 \begin{figure}
 \centering
 \pregen{\psfragfig{magcode/examples/magspring/fig/halbach-max-Nmag}}
-\caption{Force characteristic with arrays each composed of fifty magnets of length $\mupmaglength=\SI{2}{mm}$, over a variety of number of magnets per wavelength~$\mupmagperwave$. The dashed line is the force between two homogeneous magnets of length \SI{100}{mm}.}
+\caption
+[Force characteristic with arrays each composed of fifty magnets.]
+{Force characteristic with arrays each composed of fifty magnets of length $\mupmaglength=\SI{2}{mm}$, over a variety of number of magnets per wavelength~$\mupmagperwave$. The dashed line is the force between two homogeneous magnets of length \SI{100}{mm}.}
 \figlabel{Nmag-max}
 \end{figure}
 
@@ -301,10 +311,10 @@ While the force characteristic of an eight-magnet wavelength ($\mupmagperwave=8$
 Consider the four-magnet array shown in \figref{magratio} in which the horizontally-polarised magnets of length $b$ are smaller than the vertically-polarised magnets of length $a$.
 Magnet size ratio $\mupqratio=b/a$ is the measure used here to compare different array configurations, for which $\mupqratio=0$ corresponds to an array composed only of vertically-oriented magnets, and $\mupqratio=1$ corresponds to equally-sized magnets of both horizontal and vertical magnetisations (as considered previously in this paper).
 
-\begin{figure}[t]
+\begin{figure}
 \centering
 \pregen{\asyinclude{PhD/Figures/Multipole/magratio}}
-\caption{Schematic of a four-magnet Halbach array with variable magnet sizes. The number of magnets per wavelength $\mupmagperwave=4$ for all arrays of this type except in the degenerate case of $b=0$, hence $\mupmagperwave=2$.}
+\lofcaption{Schematic of a four-magnet Halbach array with variable magnet sizes.}{ The number of magnets per wavelength $\mupmagperwave=4$ for all arrays of this type except in the degenerate case of $b=0$, hence $\mupmagperwave=2$.}
 \figlabel{magratio}
 \end{figure}
 
@@ -363,8 +373,9 @@ Such a system, called here a `planar Halbach' array, is shown in \figref{trumper
 \begin{figure}
 \centering
 \includegraphics{PhD/Figures/Multipole/pa-trumper}
-\caption{
+\lofcaption{
   A planar Halbach array, facing up, with magnetisation directions as the superposition of two orthogonal linear Halbach arrays.
+}{
   Non-filled arrowheads denote diagonal magnetisation and empty magnets have zero magnetisation.
 }
 \figlabel{trumper-system}
@@ -384,7 +395,7 @@ Analysis of the magnetic flux produced by various planar arrays has been done by
 \centering
 \subfloat[Patchwork array.]{\quad\includegraphics{PhD/Figures/Multipole/patchwork}\quad}\hfil
 \subfloat[Quasi-Halbach array.]{\quad\includegraphics{PhD/Figures/Multipole/quasi-halbach}\quad}
-\caption{Two planar multipole arrays, facing `towards the reader'. Note the (unfilled) areas of zero magnetisation in the quasi-Halbach array.}
+\caption[Two planar multipole array designs.]{Two planar multipole array designs, facing `towards the reader'. Note the (unfilled) areas of zero magnetisation in the quasi-Halbach array.}
 \figlabel{two-planar-arrays}
 \end{figure}
 
@@ -398,7 +409,9 @@ Each magnet of each array (except those with zero magnetisation) has a magnetisa
 \begin{figure}
 \centering
 \psfragfig{magcode/examples/fig/planar-halbach}
-\caption{Force vs.\ horizontal displacement results for two planar Halbach arrays such as shown in \figref{trumper-system}. The $x$-forces are all zero.}
+\caption
+[Force vs.\ horizontal displacement results for two planar Halbach arrays.]
+{Force vs.\ horizontal displacement results for two planar Halbach arrays such as shown in \figref{trumper-system}. The $x$-forces are all zero.}
 \figlabel{trumper}
 \end{figure}
 
@@ -424,7 +437,7 @@ This highlights the need to study these systems in more detail outside of the re
 \begin{figure}
 \centering
 \psfragfig{magcode/examples/fig/planar-compare}
-\caption{Vertical forces vs. vertical displacement between the array centres to compare the load-bearing ability of a range of magnet arrays. The dashed vertical line indicates the displacement at which the array faces are in contact.}
+\lofcaption{Vertical forces vs. vertical displacement between the array centres to compare the load-bearing ability of a range of magnet arrays.}{ The dashed vertical line indicates the displacement at which the array faces are in contact.}
 \figlabel{planar-compare}
 \end{figure}
 

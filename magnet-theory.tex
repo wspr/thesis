@@ -247,7 +247,10 @@ coil is wrapped around a permanent magnet to increase the output of
 magnetic field.
 
 \begin{table}
-  \centering
+  \caption[Typical values for various permanent magnets.]
+  {Typical values for various permanent magnets.
+   Adapted from information from \url{http://www.magtech.com.hk/}.}
+  \tablabel{magnets}
   \begin{tabular}{@{} l r@{\,--\,}l r@{\,--\,}l r@{\,--\,}l @{}}
     \toprule
     & \multicolumn{6}{c}{Magnet type}\\
@@ -263,10 +266,6 @@ magnetic field.
                (\si{kJ/m^3})  & \num{6}   & \num{33}  & \num{10}  & \num{80}  &    \num{200} & \num{300}  \\
     \bottomrule
   \end{tabular}
-  \caption[Typical values for various permanent magnets.]
-  {Typical values for various permanent magnets.
-   Adapted from information from \url{http://www.magtech.com.hk/}.}
-  \tablabel{magnets}
 \end{table}
 
 
@@ -427,10 +426,7 @@ rotated. Since the equations they present are not self-consistent (some typing
 mistakes have occurred in the publications of the papers), the correct form is
 printed in \secref{french-equations} in an easier to read, abbreviated form.
 
-\textcite{nagaraj1988} derived integrals using the current method
-\fxfatal{crossref} to calculate the forces between cuboid magnets and
-between cylindrical magnets, and compared the differences in
-behaviour.
+\textcite{nagaraj1988} derived integrals to calculate the forces between cuboid magnets and between cylindrical magnets, and compared the differences in behaviour.
 
 More complex behaviours, however, cannot be solved analytically as the
 integrals become untractable; for anything approaching the forces
@@ -459,6 +455,14 @@ magnetisations \cite{akoun1984,nagaraj1988,bonisoli2006}. More complex
 geometries can be realised through superposition of the solutions
 \cite{bancel1999}.
 
+\begin{figure}
+  \asyinclude{PhD/Figures/Magnets/akoun}
+  \caption{Geometry for the expression by \textcite{akoun1984} to
+  calculate the forces between two parallel cuboid magnets with
+  magnetisations in the vertical direction, distance between their centres
+  $(\alpha,\beta,\gamma)$, and magnet sizes as shown.}
+  \figlabel{akoun}
+\end{figure}
 
 The notation for the models to calculate the forces between cuboid magnets is as follows, with the geometry of the system depicted graphically in \figref{akoun}.
 The first magnet has dimensions $[2a, 2b, 2c]\T$ and the second magnet has dimensions $[2A, 2B, 2C]\T$.
@@ -738,7 +742,7 @@ The $\vect f_{zy}$ terms required for calculating the `force between nodes' for 
 
 \subsection{Examples}
 
-The verification curve of the results of \textcite{akoun1984}, calculated using \eqref{total-force} with the `magnetforces' function, is shown in Figure~\ref{akoun} for the following system:
+The verification curve of the results of \textcite{akoun1984}, calculated using \eqref{total-force} with the `magnetforces' function, is shown in \figref{akoun-verify} for the following system:
 \begin{align}
 \begin{split}
 \bm s &=[\SI{20}{mm}, \SI{12}{mm}, \SI{6}{mm}]\T\\
@@ -753,7 +757,7 @@ The verification curve of the results of \textcite{akoun1984}, calculated using 
 \begin{minipage}{0.45\linewidth}
 \psfragfig{magcode/examples/fig/akoun-repro}
 \caption{Reproduction of the results shown by \textcite{akoun1984}.}
-\label{akoun}
+\figlabel{akoun-verify}
 \end{minipage}\hfill
 \begin{minipage}{0.45\linewidth}
 \psfragfig{magcode/examples/fig/janssen-repro}
@@ -774,8 +778,6 @@ The verification curve of the results shown by \textcite{janssen2009-sensorlette
 \bm J_2=[\SI{1}{T},0,0]\T
 \end{split}
 \end{align}
-
-The Matlab code to generate Figures \ref{akoun} and~\ref{janssen} is located in the file `examples/magnetforces\_example.m' (see Section~\ref{code}).
 
 
 \subsection{Simplified force and stiffness expression for cube magnets}
@@ -1142,8 +1144,6 @@ magnetisations. For displacements perpendicular to the direction of
 magnetisation of the fixed magnet, forces of equal magnitude are obtained for
 rotation of the second magnet $\theta=k\pi/2$ for $k\in\{0,1,2,\dots\}$.
 
-\fxfatal{cross ref yonnet (?) old result for bearings having same force}
-
 In the following simulations, the second magnet is held at a constant height (one magnet height's separation distance) and moved from left to right over a range of twice the magnet width symmetrically above the first magnet (with respect to the magnets' centres of gravity).
 Four such displacements are made with four different rotations for the second magnet: $0$, $\half\pi$, $\pi$ and $-\half\pi$.
 \Figref{charp-0to2pi} shows the forces in the horizontal \y-direction and vertical \z-direction, \resp.
@@ -1183,7 +1183,9 @@ Most recently, \textcite{ravaud2010-ietm} derived a closed-form solution using e
 \begin{figure}
 \centering
 \asyinclude{PhD/Figures/Coil/coil-mag-equiv.asy}
-\caption{The equivalence between a permanent magnet of magnetisation $J$ (left) in the positive vertical direction, and a current-carrying coil (right) with equivalent magnetisation $J_{\text{eq.}}=\mu_0 N I/h$ for current $I$ shown flowing anti-clockwise from the top through $N$ axial turns across height $h$.}
+\caption
+[The equivalence between a permanent magnet and a current-carrying coil.]
+{The equivalence between a permanent magnet of magnetisation $J$ (left) in the positive vertical direction, and a current-carrying coil (right) with equivalent magnetisation $J_{\text{eq.}}=\mu_0 N I/h$ for current $I$ shown flowing anti-clockwise from the top through $N$ axial turns across height $h$.}
 \figlabel{coil-mag-equiv}
 \end{figure}
 
@@ -1197,7 +1199,12 @@ A three-dimensional schematic is shown later in Fig.\,\ref{fig:coil-param} that 
 \begin{figure}
 \centering
 \asyinclude{PhD/Figures/Systems/cyl.asy}
-\caption{Two-dimensional side view of the system composed of two coaxial cylindrical magnets with a generated force on the second magnet. (While magnets are shown, either or both may be replaced by a thin coil as shown in Fig.\,\ref{fig:coil-mag-equiv}.) Axial displacement between the magnets may be positive or negative, and their volumes may overlap in the case of a magnet located inside a coil. Arrows within the magnets indicate direction of magnetic polarisation.}
+\lofcaption{Two-dimensional side view of the system composed of two coaxial cylindrical magnets with a generated force on the second magnet.}
+{
+  (While magnets are shown, either or both may be replaced by a thin coil as shown in Fig.\,\ref{fig:coil-mag-equiv}.)
+  Axial displacement between the magnets may be positive or negative, and their volumes may overlap in the case of a magnet located inside a coil.
+  Arrows within the magnets indicate direction of magnetic polarisation.
+}
 \figlabel{cyl-schem}
 \end{figure}
 
@@ -1272,7 +1279,7 @@ In the simulation results, the magnet experiences zero force when it is axially 
   $J_2$ & \SI{1}{T}\\
   \bottomrule
   \end{tabular}
-\caption{Parameters used for the example calculations with results shown in Fig.\,\ref{fig:ex1}. The schematic indicates the direction of current flow and the north and south faces of the magnet. A position of positive displacement $z$ is shown.}
+\lofcaption{Parameters used for the example calculations with results shown in \figref{ex1}.}{ The schematic indicates the direction of current flow and the north and south faces of the magnet. A position of positive displacement $z$ is shown.}
 \figlabel{coil-param}
 \end{figure}
 
@@ -1305,7 +1312,9 @@ In the simulation results, the magnet experiences zero force when it is axially 
       }
     \end{axis}
   \end{tikzpicture}
-  \caption{An example of the force generated on a cylindrical magnet by a coil with parameters defined in Fig.\,\ref{fig:coil-param}. Displacement is defined as zero when the coil and magnet are axially centred with respect to each other. The new equation is implemented in Matlab vs the old equation in Mathematica to ensure the two are numerically equivalent.}
+  \caption
+  [An example of the force generated on a cylindrical magnet by a coil.]
+  {An example of the force generated on a cylindrical magnet by a coil with parameters defined in Fig.\,\ref{fig:coil-param}. Displacement is defined as zero when the coil and magnet are axially centred with respect to each other. The new equation is implemented in Matlab vs the old equation in Mathematica to ensure the two are numerically equivalent.}
   \figlabel{ex1}
 \end{figure}
 

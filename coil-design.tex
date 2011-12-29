@@ -55,14 +55,16 @@ The clearance between the inner coil and magnet radii is denoted $\cradiusCoil=\
 \begin{figure}
   \centering
   \asyinclude{\jobname/coil-magnet}
-\caption{Three-dimensional sketch of the system composed of a permanent magnet (unshaded, left) and thick coil (shaded, right). The magnet can be modelled as an equivalent cylindrical surface current density, and the coil  as a volumetric current density.}
+\caption
+[\textsc{3d} sketch of the system composed of a permanent magnet and thick coil.]
+{Three-dimensional sketch of the system composed of a permanent magnet (unshaded, left) and thick coil (shaded, right). The magnet can be modelled as an equivalent cylindrical surface current density, and the coil  as a volumetric current density.}
 \figlabel{coil-magnet}
 \end{figure}
 
 \begin{figure}
   \centering
   \asyinclude{\jobname/coil-schem}
-\caption{Schematic of a `sleeve coil' magnetic actuator. This geometry can be described in terms of magnet ratio $\ratioMag=\lengthMag/\oradiusMag$ and coil ratio $\ratioCoil=\lengthCoil/\iradiusCoil$.}
+\lofcaption{Schematic of a `sleeve coil' magnetic actuator.}{ This geometry can be described in terms of magnet ratio $\ratioMag=\lengthMag/\oradiusMag$ and coil ratio $\ratioCoil=\lengthCoil/\iradiusCoil$.}
 \figlabel{coil-schem}
 \end{figure}
 
@@ -85,7 +87,7 @@ The final method uses a single integral expression to calculate the force, and t
       \hspace{-0.5\linewidth}%
       \asyinclude{\jobname/coil-filament}%
     }%
-\caption{
+\caption[The filament and shell models.]{
   The filament and shell models (left and right, respectively). In the filament model, the magnet and thick coil are modelled with individual current loops.
   In the shell model, the magnet is modelled as a cylindrical surface current density and the thick coil is modelled as a number of individual concentric surface current densities to represent multiple windings in the radial direction.
 }
@@ -311,14 +313,19 @@ The results due to the filament model have a small discrepancy around the trough
 \begin{figure}
 \centering
 \psfragfig{magcode/examples/fig/thin-compare}
-\caption{Comparison between three methods for calculating the force versus axial displacement between a coaxial thin coil and magnet.
+\lofcaption{Comparison between three methods for calculating the force versus axial displacement between a coaxial thin coil and magnet.}{
 For the filament and shell methods, the thin coil is modelled as having zero thickness.
 The thick coil force equation models the coil as a volumetric current density in this case with a radial thickness equal to the wire diameter.}
 \figlabel{magcoil-thin-compare}
 \end{figure}
 
 \begin{table}
-\caption{Magnet--coil parameters for verifying thin-coil force equations (\figref{magcoil-thin-compare}). Coil thickness is used for the thick coil equation only.}
+\caption
+  [Magnet--coil parameters for verifying thin-coil force equations.]
+  {
+   Magnet--coil parameters for verifying thin-coil force equations (\figref{magcoil-thin-compare}).
+   Coil thickness is used for the thick coil equation only.
+  }
 \tablabel{magcoil-thin-compare-param}
 \centering
 \begin{tabular}{l>{$}c<{$}l}
@@ -345,7 +352,7 @@ The discrepancy due to the discretisation of the filament model is larger here t
 \begin{figure}
 \centering
 \psfragfig{magcode/examples/fig/thickthin-compare}
-\caption{Comparison between four methods for calculating the force versus axial displacement between a coaxial thick coil and magnet. The discretisation of the filament method incurs a small deviation from the expected results.}
+\lofcaption{Comparison between four methods for calculating the force versus axial displacement between a coaxial thick coil and magnet.}{ The discretisation of the filament method incurs a small deviation from the expected results.}
 \figlabel{magcoil-thickthin-compare}
 \end{figure}
 
@@ -371,7 +378,7 @@ Despite the presence of small variations in the results due to the discretisatio
 
 \begin{table}
 \def\G{\color[gray]{0.7}}
-\caption{Numerical output with increasing integration precision. Greyed digits indicate inaccuracy in the result after rounding to that many significant figures.}
+\lofcaption{Numerical output with increasing integration precision.}{ Greyed digits indicate inaccuracy in the result after rounding to that many significant figures.}
 \tablabel{prec-results}
 \centering
 \begin{tabular}{@{}rll@{}}
@@ -412,7 +419,9 @@ Under eccentric displacement in the radial direction, $\eccen$, the limits of in
 \begin{figure}
 \centering
 \asyinclude{PhD/Figures/Coil/circle-offset}
-\caption{Region of integration for a radially displaced magnet, shifted by $(\xi,\eta)$ from the original coordinate system.}
+\caption
+[Region of integration for a radially displaced magnet.]
+{Region of integration for a radially displaced magnet, shifted by $(\xi,\eta)$ from the original coordinate system.}
 \label{fig:int-offset}
 \end{figure}
 
@@ -501,8 +510,8 @@ This result indicates that decreasing the airgap between the coil and magnet as 
 \begin{subfigure}
 \hspace*{-1.5cm}%
 \psfragfig{magcode/examples/fig/ecc-compare}
-\caption{
-  Comparison of the filament and integral methods for calculating eccentric thick coil--magnet forces. Due to discretisation in the filament method the results vary near their peak.
+\lofcaption{
+  Comparison of the filament and integral methods for calculating eccentric thick coil--magnet forces.}{ Due to discretisation in the filament method the results vary near their peak.
   \figlabel{magcoil-ecc-compare}
 }
 \end{subfigure}\hfil\hfil
@@ -614,7 +623,9 @@ For simplicity, in the examples to follow we shall consider peak force as the me
 \centering
 \psfragfig{magcode/examples/fig/magcoil-magratio}\\
 \psfragfig{magcode/examples/fig/magcoil-coilratio}
-\caption{Normalised force $\fnorm$ versus displacement calculations for two cases: firstly, varying magnet ratio $\ratioMag$ for a fixed coil ratio $\ratioCoil=1$, and secondly varying coil ratio $\ratioCoil$ for a fixed magnet ratio $\ratioMag=2$.}
+\caption
+[Normalised force versus displacement calculations for two cases.]
+{Normalised force $\fnorm$ versus displacement calculations for two cases: firstly, varying magnet ratio $\ratioMag$ for a fixed coil ratio $\ratioCoil=1$, and secondly varying coil ratio $\ratioCoil$ for a fixed magnet ratio $\ratioMag=2$.}
 \figlabel{magcoil-ratios}
 \end{figure}
 
@@ -632,7 +643,9 @@ This surface can be seen to be concave, and therefore a single value for $\ratio
 \centering
 \psfragfig{magcode/examples/fig/magratio-maxforce}\hspace{-1cm}%
 \psfragfig{magcode/examples/fig/magratio-maxforce-cb}
-\caption{Peak normalised force $\fnpeak$ as magnet and coil ratios $\ratioMag$ and $\ratioCoil$ are varied over a \num{20x20} discrete grid for a specific wire diameter, coil impedance, and magnet volume. Maximum normalised peak force is indicated with a star.}
+\caption
+[Peak normalised force as magnet and coil ratios and are varied.]
+{Peak normalised force $\fnpeak$ as magnet and coil ratios $\ratioMag$ and $\ratioCoil$ are varied over a \num{20x20} discrete grid for a specific wire diameter, coil impedance, and magnet volume. Maximum normalised peak force is indicated with a star.}
 \figlabel{magcoil-fmax-ratios}
 \end{figure}
 
@@ -642,7 +655,9 @@ This surface can be seen to be concave, and therefore a single value for $\ratio
 \begin{figure}
 \centering
 \psfragfig{magcode/examples/fig/magcoil-maxcurr}
-\caption{Typical values for maximum current rating for copper wire of varying diameter \cite[adapted]{sams1986-elec-tables}.}
+\caption
+[Typical values for maximum current rating for copper wire of varying diameter.]
+{Typical values for maximum current rating for copper wire of varying diameter \cite[adapted]{sams1986-elec-tables}.}
 \figlabel{magcoil-maxcurr}
 \end{figure}
 
@@ -669,13 +684,15 @@ This produces the curves of maximum peak force shown in \figref{magcoil-ratiomax
 
 \begin{figure}
 \psfragfig{magcode/examples/fig/magcoil-ratiomax-norm}
-\caption{Maximum normalised force per ampere of current, optimised by magnet and coil geometry as a function of wire diameter. Results are shown for three values of coil impedance while the magnet volume is fixed at $\volMag=(\SI{20}{mm})^3$.}
+\lofcaption{Maximum normalised force per ampere of current, optimised by magnet and coil geometry as a function of wire diameter.}{ Results are shown for three values of coil impedance while the magnet volume is fixed at $\volMag=(\SI{20}{mm})^3$.}
 \figlabel{magcoil-ratiomax-norm}
 \end{figure}
 
 \begin{figure}
 \psfragfig{magcode/examples/fig/magcoil-ratiomax}
-\caption{Maximum peak force $\fmax$ versus wire diameter calculated by multiplying the normalised maximum force by the maximum current rating for that wire diameter (\figref{magcoil-maxcurr,magcoil-ratiomax-norm}, \resp).}
+\caption
+[Maximum peak force $\fmax$ versus wire diameter.]
+{Maximum peak force $\fmax$ versus wire diameter calculated by multiplying the normalised maximum force by the maximum current rating for that wire diameter (\figref{magcoil-maxcurr,magcoil-ratiomax-norm}, \resp).}
 \figlabel{magcoil-ratiomax}
 \end{figure}
 
@@ -692,7 +709,9 @@ As shown in \figref{magcoil-ratiomax-norm}, however, as the length of the coil e
 \begin{wide}
 \psfragfig{magcode/examples/fig/magcoil-ratiomax-a}\hfill\psfragfig{magcode/examples/fig/magcoil-ratiomax-b}
 \end{wide}
-\caption{Optimal values of magnet ratio $\ratioMag$ and coil ratio $\ratioCoil$ corresponding to the results shown in \figref{magcoil-ratiomax-norm,magcoil-ratiomax}.}
+\caption
+[Optimal values of magnet ratio and coil ratio.]
+{Optimal values of magnet ratio $\ratioMag$ and coil ratio $\ratioCoil$ corresponding to the results shown in \figref{magcoil-ratiomax-norm,magcoil-ratiomax}.}
 \figlabel{magcoil-ratiomax-ratios}
 \end{figure}
 
@@ -732,7 +751,7 @@ This design methodology can also be used to optimise the system parameters using
 
 
 
-\section{Dual coil electromagnet design}
+\section{Dual-coil electromagnet design}
 \seclabel{dualcoil}
 
 Considering the force equation between a magnet and coil (\eqref{magcoil-integral}, and other methods), the constant term $\turnsCoil\currentCoil/\gp{\oradiusCoil-\iradiusCoil}$ is the cause of some subtle considerations when designing electromagnetic actuators.
@@ -748,19 +767,19 @@ This design is also better at dissipating heat, as the effective surface area is
   \begin{subfigure}
   \asyinclude{\jobname/dual-coil}
   \caption{
-    Schematic.
+    Schematic of the system.
     \figlabel{dual-coil-schematic}
   }
   \end{subfigure}\hfil
   \begin{subfigure}
   \psfragfig{PhD/Coil/fig/dual-coil}
   \caption{
-    Example dual coil forces against a comparative single coil system.
+    Example dual-coil forces against an equivalent single coil system.
     \figlabel{dual-coil-plot}
   }
   \end{subfigure}
   \end{wide}
-  \caption{Dual coil system.\fxfatal{xoxo}}
+  \caption{Electromagnet system with dual push/pull coils.}
   \figlabel{dual-coil}
 \end{figure}
 
@@ -787,12 +806,13 @@ These ideas are shown by example in \figref{dual-coil}, which shows a dual-coil 
 Particular parameters for this example are shown in \tabref{dual-coil-parameters}; note in the dual-coil design, the outer radius of the coil is the only difference, corresponding to fewer radial turns to achieve half the coil resistance.
 The dual-coil design can achieve over 50\% greater peak force than the equivalent resistance single coil design; even when some additional gap is added (such as the $\coilDualGap=\SI{80}{mm}$ case), the peak force is still larger but the stroke length is greatly improved.
 As the coils are separated further, they exhibit a `double peak' characteristic (shown for $\coilDualGap=\SI{90}{mm}$) which essentially bounds the coil gap where the dual-coil design is advantageous over having a single coil alone.
+Larger improvement to the forces could be achieved by optimising the shapes of each separate coil in the dual-coil arrange rather than taking the coil aspect ratio from the original single-coil design.
 
 \begin{table}
-\caption{
-  Explicit and implicit parameters for the dual-coil example.
-  The dual-coil system has twin coils of half resistance.
-}
+\lofcaption
+  {
+    Explicit and implicit parameters for the dual-coil example.}
+  { The dual-coil system has twin coils of half resistance.}
 \tablabel{dual-coil-parameters}
 \begin{tabular}{@{}lclc@{}}
 \toprule

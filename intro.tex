@@ -1,5 +1,4 @@
 \documentclass[11pt,a4paper]{memoir}
-\edef\asydir{\jobname}
 \usepackage{thesis-preamble}
 \EndPreamble
 \begin{document}
@@ -138,8 +137,9 @@ A practical example of this sort of vibration problem is a washing machine that 
 
 \begin{figure}
   \asyinclude{PhD/Figures/Systems/vibration-sdof}
-  \caption{
+  \lofcaption{
     Single \dof/ vibration system; mass $\massMass$ is being excited by disturbance $\forceDisturb$.
+  }{
     Input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\dispMass$ of the mass.
   }
   \figlabel{simple-suppression}
@@ -156,8 +156,9 @@ A schematic of this type of vibration isolation system is shown in \figref{simpl
 
 \begin{figure}
   \asyinclude{PhD/Figures/Systems/vibration-base}
-  \caption{
+  \lofcaption{
     Schematic of vibration isolation; mass $\massMass$ is being isolated from disturbance $\dispBase$.
+  }{
     Input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\dispMass$ of the mass.
   }
   \figlabel{simple-isolation}
@@ -341,7 +342,6 @@ Passive stiffness reduction can be achieved by adding a negative stiffness eleme
 This idea becomes a major theme of the thesis, explored later in this introduction in \secref{qzs-explore}.
 Considering variable stiffness elements that can act in a `semi-active' regime, many methods exist to dynamically adjust the stiffness depending on the support being used \cite[for example]{kidner2002,liu2006-jsv,liu2008-jsv}.
 Semi-active stiffness modification is used more commonly in \vibneut/ applications, described later in \secref{vibneut}, since for vibration isolation applications, in general, the lower the stiffness the better; there is no need to adjust the stiffness on-line if it is already as low as possible.
-\note{Although an exception to this will be discussed later, in which the stiffness of a nonlinear system is adjusted upward to compensate for an increase in mass that would otherwise lead to instability.\fxfatal{crossref}}
 
 \subsection{Active vibration control in practice}
 \seclabel{vibes-feedback}
@@ -486,8 +486,9 @@ This is shown schematically in \figref{vibration-absorb}.
 
 \begin{figure}
    \asyinclude{PhD/Figures/Systems/vibration-inertial}
-   \caption{An inertial force $\forceAbsorb$ designed to reduce the vibration
+   \lofcaption{An inertial force $\forceAbsorb$ designed to reduce the vibration
    response $\dispMass$ due to disturbance $\dispBase$.
+   }{
    The inertial actuator
    has dynamics of its own ($\stiffnessAbsorb$, $\dampingAbsorb$) that
    influence the overall vibration of the structure.}
@@ -527,8 +528,9 @@ For each different stiffness, a dip (or `anti-resonance') is produced in the tra
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/tuned-mass-vs-freq}
-   \caption{
+   \lofcaption{
      \Vibneut/ with a range of neutraliser stiffnesses (labelled).
+  }{
      When the absorber matches the resonance of the structure the vibration amplitude around that frequency is greatly reduced.}
    \figlabel{tuned-mass-vs-fig}
 \end{figure}
@@ -538,7 +540,6 @@ There is a compromise between broad- and narrow-band vibration attentuation.
 It can be seen that for narrowband reduction, low absorber damping produces greater vibration attenuation.
 Conversely, if the \RMS\ transmissiblity of the entire frequency band is calculated, as shown in \figref{rms-inertial}, it can be seen that lower absorber damping \emph{decreases} the overall vibration reduction.
 It is also interesting to note in \figref{rms-inertial} that the maximum reduction broadband transmissibility occurs when the neutraliser is tuned slightly below the resonance frequency of the support.
-\fxfatal{cite someone?!?}
 This would be the appropriate response if the vibration neutraliser were to be used against narrowband vibration with a time-varying resonance peak.
 For a resonance frequency that is known exactly, however, tuning the neutraliser to that exact frequency will yield better results (as shown in \figref{rms-inertial}).
 
@@ -581,7 +582,7 @@ An interesting addition to this field was shown by
 \textcite{ivers2008} with a mechanically self-tuning \vibneut/.
 While not as efficacious as an adaptive \vibneut/ that uses an external power source, the ability to adapt to the excitation frequency using only the energy of the disturbance itself is commendable if somewhat esoteric.
 
-\Vibneut/s have been used to mitigate seismic vibrations in large buildings, but their mass dependence makes their application rather tricky and often impractical. \fxfatal{cite}
+\Vibneut/s have been used to mitigate seismic vibrations in large buildings, but their mass dependence makes their application rather tricky and often impractical.
 \textcite{matta2008} propose a nonlinear rolling structure via which a \vibneut/ can be mounted to good effect despite uncertain masses of either or both of the building and absorber.
 Their work focuses on the interesting idea of using a roof-top garden as a \vibneut/ for a building \cite{matta2008a}.
 
@@ -652,6 +653,10 @@ Magnetic fields produce forces on ferromagnetic material, as well as between par
 The work involved in this thesis covers mainly a single line in this table: nonuniform field, magnetic effect of force on magnet.
 
 \begin{table}
+\caption
+  [Applications of permanent magnet materials.]
+  {Applications of permanent magnet materials, adapted from \textcite{coey2002}.}
+\tablabel{magnet-applications}
 \begin{wide}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -673,9 +678,6 @@ Time varying & Varying field & Dynamic Magnetometers \\
 \bottomrule
 \end{tabular}
 \end{wide}
-\caption{Applications of permanent magnet materials,
-adapted from \textcite{coey2002}.}
-\tablabel{magnet-applications}
 \end{table}
 
 The range of application for the magnetic field mechanisms in \tabref{magnet-applications} are too numerous to list in detail.
@@ -773,9 +775,9 @@ However, this equality of forces for both orthogonally- or parallelly-magnetised
 His later paper \cite{yonnet1981} continued this work, describing how magnetic bearings may re-arranged to suit different applications, showing a complete taxonomy of different magnetic bearing designs.
 Varying geometrical parameters of these magnetic bearings can signicantly affect the force and stiffness characteristics \cite{bassani2006-trib-int}.
 
-\begin{figure}[hbtp]
+\begin{figure}
   \grf[scale = 0.5]{Figures/Bearings/equalbearings}
-  \caption[Two equivalent radial bearings]{Two equivalent radial bearings
+  \caption[Two equivalent radial magnetic bearings.]{Two equivalent radial magnetic bearings
 (with equal forces of repulsion), despite their different directions of
 magnetisation.}
   \figlabel{equalbearings}
@@ -925,9 +927,9 @@ Henry Sodano completed his \PhD/ in 2005 \cite{sodano2005thesis} on
 eddy current damping for flexible structure and has published several
 papers based on that work.\footnote{I recommend the thesis for the
   additional context and literature review.} His work investigates the
-use of non-contact magnetic (permanent \cite{sodano2005,sodano2006,sodano2008} or
+use of non-contact magnetic (permanent \cite{sodano2005,sodano2006,sodano2008-dsmc} or
 electric \cite{sodano2007}) elements to passively \cite{sodano2005} or
-actively \cite{sodano2006,sodano2007,sodano2008} add forces to a structure via
+actively \cite{sodano2006,sodano2007,sodano2008-dsmc} add forces to a structure via
 induced eddy currents. His work investigates the potential for use
 with flexible structures primarily for use in space
 applications.\footnote{Note that not all permanent magnets are created
@@ -960,15 +962,10 @@ in velocity leads to a (possibly nonlinear) viscous damping force that
 is dissipative: it can only decrease the enery of the system. However,
 change in magnetic field generates forces that can be used to apply
 work. This is the same mechanism used by \AC/ current levitating
-devices. \fxfatal{crossref} It is unclear whether significant advantages
-exist over using conductive material rather than ferrous material to
-generate vibration suppression forces. For the conductive case, a
-permanent magnet may be used to increase the field strength of the
-electromagnet at the expense of added viscous damping (which may not
-be undesirable). Also, constant and low frequency forces will not be
-able to be generated without significant control design \dash\ this is
-only possible with \AC/ current resonating with the \backemf/
-of the induced eddy currents in the conductor. \fxfatal{check that}
+devices \cite{laithwaite1965}.
+It is unclear whether significant advantages exist over using conductive material rather than ferrous material to generate vibration suppression forces.
+For the conductive case, a permanent magnet may be used to increase the field strength of the electromagnet at the expense of added viscous damping (which may not be undesirable).
+Also, constant and low frequency forces will not be able to be generated without significant control design.
 
 The generation of eddy currents is an involved calculation, and has
 not been investigated in detail for this thesis. The eddy current
@@ -1012,7 +1009,7 @@ In practice this should not be a significant problem as the gap will usually be 
   \figlabel{eddy}
 \end{figure}
 
-Experimental results of a magnetically levitated mass (\fxfatal{crossref}) later show that the damping in this case is very low, making a passive non-contact eddy current damper of potential importance for vibration suppression in systems that require additional passive damping.
+Experimental results of a magnetically levitated mass show later in \secref{xpmt-ol} that the damping in this case is very low, making a passive non-contact eddy current damper of potential importance for vibration suppression in systems that require additional passive damping.
 Optimisation in this area could investigate the size and shape of the magnet/electromagnet used to best create the field that impinges on the conductor to generate maximal eddy current forces.
 In addition, the formalisation and potential analytical solutions for calculating eddy current forces for a wide range of magnet geometries has not yet been investigated.
 This avenue of research is not persued in this thesis.
@@ -1075,11 +1072,11 @@ The field of nonlinear dynamics is very large, and applications to vibration sup
 Presumably, such phenomena are undesirable for vibration isolation!
 
 A very recent and comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
-It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy (\fxfatal{eg}); in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
-
-\textcite{starosvetsky2008}, with a good review of the literature, talk about the `nonlinear energy sink' idea in which a nonlinear system provides better and broader vibration absorbing.
+It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy; in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
+As an example of the former, \textcite{starosvetsky2008}, with a good review of the literature, talk about the `nonlinear energy sink' idea in which a nonlinear system provides better and broader vibration absorbing than a linear absorber alone.
 
 Interesting results have been shown using nonlinear springs to attach the vibration absorber to the structure, such as \textcite{jo2008} who use repulsive magnetic springs to produce a tuned absorber with a resonance at double the frequency of the main resonance of the structure.
+`Frequency doubling' is a common non-linear effect; it is also seen, for example, in eddy current-based magnetic actuators \cite{sodano2008-dsmc}.
 
 \textcite{mann2008} performed a preliminary investigation into the use of a nonlinear vibration mount for energy harvesting, using a magnetic suspension of repulsive magnets to create a Duffing-like oscillator.
 Large damping ensured that the nonlinear regimes were only realised at large excitation amplitudes, but the idea is that highly nonlinear resonances have a much broader resonance peak through the higher branch around the jump phenomenon.
@@ -1114,14 +1111,6 @@ They showed a configuration of linear and magnetic springs with the notable feat
 
 In a conventional mass--spring system, the static deflection increases as the stiffness of the support is reduced, and a lower limit on the stiffness is imposed by constraints on the allowable displacement.
 Novel approaches are required to reduce the resonance frequency below that possible with a linear spring.
-One approach is to use a mechanical linkage \cite{winterflood2001}.
-
-\fxfatal{integrate}
-The negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001}.
-
-
-\textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
-
 Addition of negative stiffness elements in a design reduces the resonance frequency, which improves vibration isolation.
 Early examples of such designs using inclined springs were shown by \textcite{molyneux1957}.
 These have an approximately cubic force \vs\ displacement characteristic, which may be tuned to achieve a local region of zero stiffness, which is often termed `\qzs/'.
@@ -1134,12 +1123,14 @@ More recently, the dynamic response of these systems has been analysed \parencit
 A variety of mechanical linkages and arrangements can be designed for \qzs/ \cite{tarnai2003}.
 Mechanical \qzs/ elements, generally using flexible beam supports in a buckling regime, have been used in application for vibration isolation platforms \cite{platus1999}, mounts for seismic noise attenuation \cite{cella2005}, vibration attenuation from hand-held machinery \cite{sokolov2007}, reduction of aircraft cabin noise \cite{baklanov2007-jsv}, and vehicle driver suspension \cite{lee2007-jsv}.
 Friction is a limiting factor in these devices \cite{sokolov2007}; this particular problem is obviated when non-contact supports are used.
+Alternatively, \textcite{virgin2008} proposes an interesting alternative to the classical helical spring for vibration isolation support: a `pinched loop' created by a slender beam with both ends clamped has a wide range of tuning possibilities and offers isolation in two degrees of freedom.
 Further detail into the field  of nonlinear passive vibration isolators is given in the recent review by \textcite{ibrahim2008}.
 
 \QZS/ can also be achieved with magnetic systems.
 Magnetic configurations with negative stiffness can be used to augment a positive stiffness support (which can be simply a conventional spring) to lower the resonance frequency.
 For example, \textcite{beccaria1997} used this technique (under the term `magnetic antisprings') to improve the isolation for gravity wave detectors.
 \textcite{carrella2007-euromech,carrella2008-thesis} has also used a attractive magnets in parallel with conventional springs to reduce the resonance frequency of the system.
+Similarly, the negative stiffness of electromagnetic actuators has been used with a low-stiffness membrane \cite{sato2001} to achieve low stiffnesses.
 \textcite{zhou2010-jsv} recently demonstrated an active/passive tunable \QZS/ system that used a moving permanent magnet in attraction to soft-iron-core electromagnets as the negative stiffness element in series with a clamped--clamped beam for positive stiffness.
 A range of stiffness characteristics were demonstrated by varying different system parameters, including the creation of an approximately constant and minimal stiffness over a required displacement range.
 
@@ -1203,7 +1194,10 @@ Significant nonlinearities in the response can be seen in both simulations, noti
 
 \begin{figure}
   \grf{Simulations/Zero_stiffness/eps/cubic-resonance-stiffness}
-  \caption{Cubic stiffness response with varying values of the
+  \caption
+  [Cubic stiffness response with varying values of the
+    stiffness coefficient.]
+  {Cubic stiffness response with varying values of the
     stiffness coefficient (with $S=1$ to compare with
     \figref{cubic-resonance-disturb}) in comparison to some
     approximately similar linear systems.}
