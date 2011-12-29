@@ -314,13 +314,13 @@ This simulation was performed on a magnetic system with \SI{10}{mm} cubes in ver
 The system was excited with a sinusoidal input $p$ at the vertical resonance of the system with a magnitude of \SI{1}{mm}.
 The dynamics were defined in the horizontal and vertical directions, \resp, as
 \begin{dmath}
-\mass \ddot y + \damping \gp{\dot y - \dot p} - F_y\fn{0,y-p,z} + G_d \gp{y-p} = 0
+\mass \ddot y + \damping \gp{\dot y - \dot p} - F_y\fn{0,y-p,z} + \gainDisp \gp{y-p} = 0
 \end{dmath},
 \begin{dmath}
 \mass \ddot z + \damping \dot z - F_z\fn{0,y-p,z} + \mass g = 0
 \end{dmath},
 where $F_y$ and $F_z$ are the magnetic forces calculated with \eqref{akoun}, and $G_d$ is the feedback gain on the relative horizontal displacement term.
-The negative stiffness for this system was calculated as around \SI{-200}{N/m} and the displacement feedback gain was chosen as $G_d=250$ to overcome this.
+The stiffness for this system was calculated as around \SI{-200}{N/m} and the displacement feedback gain was chosen as $\gainDisp=250$ to overcome the instability due to this.
 
 \begin{figure}
   \psfragfig{\phdpath Simulations/Coupling/fig/coupling-oscillations}
@@ -1095,8 +1095,7 @@ The spring is composed of two symmetric pairs of oblique magnets; this ensures t
 \figlabel{mbq-schematic}
 \end{figure}
 
-Note that opposing magnets have parallel sides and anti-parallel magnetisations; hence, the force calculations by \textcite{akoun1984} may be applied to this system.
-Their theory is summarised in \ref{app:akoun}.
+Note that opposing magnets have parallel sides and anti-parallel magnetisations; hence, the force calculations by \textcite{akoun1984} (\eqref{akoun}) may be applied to this system.
 
 Two dimensions are used to describe the relative displacement between adjacent magnet pairs.
 The magnet offset $\mbqoffset$, fixed during operation, is the horizontal face gap in the centred position, and the displacement $\mbqvdisp$ can be considered as the vertical face gap in the centred position, designed to vary as the load on the spring changes.

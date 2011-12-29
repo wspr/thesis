@@ -269,7 +269,7 @@
 \renewcommand\cftdotsep{999} % no dots
 
 % for page numbers:
-\newcommand\thesispage{\normalfont p.\,\thepage}
+\newcommand\thesispage{\normalfont \thepage}
 
 %%% CHAPTERS
 \makechapterstyle{wspr}{%
@@ -313,6 +313,9 @@
 
 %%%%%
 
+\renewcommand\contentsname{Table of Contents}
+\nouppercaseheads
+
 \def\printtoctitle#1{\section*{#1}}
 \def\printloftitle#1{\section*{#1}}
 \def\printlottitle#1{\section*{#1}}
@@ -339,17 +342,21 @@
       ##1}}}
 \makerunningwidth{wspr}{\headwidth}
 \makeheadposition{wspr}{flushright}{flushleft}{}{}
-\makeevenhead{wspr}{\makebox[0pt][c]{\thesispage}} {} {\small\leftmark}
+\makeevenhead{wspr}{\thesispage} {} {\small\leftmark}
 \makeoddhead{wspr} {\small\rightmark}              {} {\thesispage}
 \pagestyle{wspr}
 
+\makeheadrule{wspr}{\dimexpr\textwidth+0.5\marginparwidth+\marginparsep\relax}{0.4pt}
 
 %%% LISTS
 \renewcommand*{\descriptionlabel}[1]{\hspace\labelsep\normalfont\itshape #1}
 \tightlists
 
 
-
+\renewcommand \cftchapterfont   {\scshape}
+\renewcommand \cftsectionfont   {\normalfont}
+\renewcommand \cftsubsectionfont     {\itshape\small}
+\renewcommand \cftsubsectionpagefont {\upshape\small}
 
 
 
