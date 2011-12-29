@@ -4,16 +4,16 @@
 \begin{document}
 \chapter{Introduction}
 
-\epigraph{In my experience I found that the most effective way to express something in order to make others understand is to use the simplest language. Also I learned from teaching that the more rigid the language the less effective it is.}{\textcite{mahathera1990-mindfulness}}
+\epigraph{In my experience I found that the most effective way to express something in order to make others understand is to use the simplest language. Also I learned from teaching that the more rigid the language the less effective it~is.}{\textcite{mahathera1990-mindfulness}}
 
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-\section{Introduction to the central themes of the thesis}
+\section{The central themes of this thesis}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Before launching into detail into the various topics under investigation, this section briefly touches on the issues addressed over the entire thesis: vibrations and their isolation and suppression in \secref{vibrations-summary-intro}; permanent magnets and their role in the design of supporting structures and other devices in \secref{magnets-summary-intro}; and `\qzs/' systems, which unify in this thesis the fields of vibrations and magnets, in \secref{qzs-summary-intro}.
-These three broad areas are then investigated in more detail in \secrangeref{vibrations-explore}{magnetsisolation-apps}.
+The remainder of this chapter is then devoted to investigating these three broad areas in more detail in \secrangeref{vibrations-explore}{magnetsisolation-apps}, concluding with a discussion on reproducible research (\secref{repro-research}) and the structure and contributions of this thesis (\secref{thesis-structure}).
 
 
 \subsection{The problem of vibrations}
@@ -37,13 +37,13 @@ Reducing the effects of self-induced vibration disturbance will be termed `vibra
 for the purposes of this thesis and will be revisited on occassion herein.
 
 There are a variety of `classic' solutions for both vibration isolation and vibration suppression.
-A particularly simple solution for \emph{both} problems is to mount the equipment on a many-ton slab of concrete.
+A particularly simple solution for \emph{both} problems is to mount the equipment on a many-tonne slab of concrete.
 This is not always practical.
 Another common approach for vibration isolation is to support the equipment with pneumatic springs.
 When in operation, these springs provide a low supporting stiffness and low static deflection; they can typically be used to support hundreds of kilograms with resonance frequency of less than five hertz.
 
 Other support methods besides pneumatics are able to achieve low stiffness; this is an area that will be further investigated in the literature review.
-But one method in particular is interesting in this context: permanent magnets can provide low stiffness support without energy expenditure.
+But one method in particular is interesting in this context: permanent magnets can provide low stiffness support without energy expenditure or air supply.
 Their nonlinear forces in both attraction and repulsion allows the possibility of interesting supporting designs, and their non-contact nature allows their use in vacuum and `clean-room' environments.
 
 
@@ -64,7 +64,7 @@ A `synergy' between the two fields is seen in areas such as energy harvesting fr
 Supporting a mass with a noncontact force can also be called `levitation', a topic that deserves its own mention.
 In the mid-1800s, \textcite{earnshaw1842} proved that levitation with the force of permanent magnets alone was impossible, although this did not become common knowledge \note{If it can even be said to be `commonly known' today.
 Anecdotal evidence suggests otherwise.} until much later.
-Exceptions to `Earshaw's Theorem', those being systems in which non-contact levitation is possible, include the use of diamagnetic materials and actively-controlled electromagnetics, amongst some others.
+Exceptions to `Earnshaw's Theorem', those being systems in which non-contact levitation is possible, include the use of diamagnetic materials and actively-controlled electromagnetics, amongst some others.
 It is the possibility of overcoming the instability of levitated magnets by active means that is of interest in this thesis.
 
 
@@ -80,7 +80,7 @@ As systems approach \qzs/, their vibration isolation inproves as the resonant fr
 Operation at the \qzs/ position is not possible as the system is, at best, only marginally stable, and the system must be tuned (based on the applied loading) as close to the \qzs/ position as possible to achieve best results.
 
 Certain magnetic systems are not the only ones to exhibit \qzs/.
-The phenomenon was first proposed using inclined springs to achieve a `buckling' effect.
+The phenomenon was first proposed using inclined springs to achieve negative stiffness with a `buckling' effect.
 Magnets are more convenient in many ways than inclined or buckling springs in that the negative stiffness can be applied directly without having to exploit the byproduct of a mechanical spring or linkage arrangement, which can be more bulky.
 
 Active control systems can be used with \qzs/ systems to improve their  performance in one of three ways:
@@ -94,7 +94,7 @@ Only the first of these strategies is investigated in this thesis.
 
 \subsection{Project context}
 
-The original goal of this project was to design and build a vibration isolation table using non-contact magnetic springs.
+The original germ of an idea for this project was to design and build a vibration isolation table using non-contact magnetic springs.
 This goal can be split into two: the design of a non-contact magnetic spring (suitable for a vibration isolation table); and the design of the vibration isolation table itself.
 
 Vibration isolation tables are generally designed to attenuate natural disturbances from the ground to the tabletop.
@@ -103,10 +103,10 @@ Current commercial models use pneumatic springs to perform this task, and this p
 Using magnets for load bearing brings its own set of challenges.
 For completely non-contact support, active control must be used to stabilise \emph{at least} one \dof/.
 For the design to be worth investigating, some advantage to using magnets should also be demonstrated.
-  \note{Although I took much pleasure in explaining over the years that my \PhD/ project was to `build a table that floats on magnets'.}
+  \note{Although I took much pleasure in explaining over the years that my \PhD/ project was simply to `build a table that floats on magnets'.}
 
 However, the field of active control has been well-established and the feat of building a stabilising controller for a system with relatively simple dynamics is not worthy of the research for a \PhD/.
-The work presented in this thesis is the investigations around the idea of building a `table that floats on magnets' while pulling out enough interesting nuggets to prove worthy of the title of `research'.
+The work presented in this thesis is the multiplicity of investigations that arose around the idea of building a `table that floats on magnets', pulling out enough interesting nuggets to prove worthy of the title of `research'.
 
 
 
@@ -117,7 +117,7 @@ The work presented in this thesis is the investigations around the idea of build
 \seclabel{vibrations-explore}
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-The field of active vibration isolation is a broad topic to cover in review; not everything will be able to be covered here, but it is important to have an overview of what people are doing to place this work in context.
+The field of active vibration isolation is a broad topic to cover in review; not everything will be able to be covered here, but it is important to have an overview of what has gone before to place this work in context.
 The literature review that follows is strongly biased towards papers that have been recently published.
 Tracking their citations backwards will yield a tangled web of prior art in the field of vibration control.
 
@@ -251,10 +251,16 @@ which holds for all $\gainDisp+\gainSkyspring>-\stiffness$. Therefore, negative 
 
 \begin{figure}
    \begin{wide}
+   \begin{subfigure}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
+     \caption{Relative displacement feedback.}
+   \end{subfigure}\hfil
+   \begin{subfigure}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-skyspring}
+     \caption{Absolute displacement feedback.}
+   \end{subfigure}
    \end{wide}
-   \caption{Relative and absolute displacement feedback control.}
+   \caption{Displacement feedback control.}
    \figlabel{disp-vs-sky}
 \end{figure}
 
@@ -277,10 +283,16 @@ It is possible, albeit generally undesirable, to increase the resonance frequenc
 
 \begin{figure}
    \begin{wide}
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-accrel}\hfil
+   \begin{subfigure}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-accrel}
+     \caption{Relative acceleration feedback.}
+   \end{subfigure}\hfil
+   \begin{subfigure}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-skymass}
+     \caption{Absolute acceleration feedback.}
+   \end{subfigure}
    \end{wide}
-   \caption{Relative and absolute acceleration feedback control.}
+   \caption{Acceleration feedback control.}
    \figlabel{acc-vs-sky}
 \end{figure}
 
@@ -295,11 +307,16 @@ In both cases the resonance peak is lowered; the relative velocity feedback corr
 
 \begin{figure}
    \begin{wide}
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-vel}\hfil
+   \begin{subfigure}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-vel}
+     \caption{Relative velocity feedback.}
+   \end{subfigure}\hfil
+   \begin{subfigure}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-sky}
+     \caption{Absolute velocity feedback.}
+   \end{subfigure}
    \end{wide}
-   \caption{Relative and absolute velocity feedback control on the
-   system shown in \figref{simple-isolation}.}
+   \caption{Velocity feedback control.}
    \figlabel{vel-vs-sky}
 \end{figure}
 
@@ -310,30 +327,30 @@ Velocity feedback is stable for
 \end{dmath},
 which is true for $\gainSkyhook+\gainVel>-\damping$.
 While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
-Active damping reduction has been performed to aid the efficacy of vibration neutralisers \cite{kidner1998}, which are discussed briefly in \secref{vibneut}.
+Active damping reduction has been performed to aid the efficacy of `tuned mass dampers' or vibration neutralisers \cite{kidner1998}, which are discussed briefly in \secref{vibneut}.
 
 The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases.
 This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS\ transmissiblity has a local minimum whereas the absolute feedback case continuously decreases.
-It is clear in the ideal case that skyhook damping is the more effective at reducing the total vibration of a system.
+It is clear in the ideal case that absolute velocity feedback is the more effective at reducing the total vibration of a system.
 (The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/rms-transmissibility}
    \caption{\RMS\ transmissibility versus feedback gain of relative and
-   absolute velocity feedback control on the system shown in
+   absolute (`skyhook') velocity feedback control on the system shown in
    \figref{simple-isolation}.}
    \figlabel{rms-transmissibility}
 \end{figure}
 
-Active skyhook damping has been widely implemented in the vibrations literature \cite[for example]{elliott2001,elliott2004,yan2006,kim2008-iecst}.
+Absolute velocity feedback control has been widely implemented in the vibrations literature \cite[for example]{elliott2001,elliott2004,yan2006,kim2008-iecst}.
 Instability can occur in cases when the applied control force affects the dynamics of the base, but this is not a problem when considering comparatively massive support structures.
 
 
 \subsubsection{The analogy with passive control}
 
-As mentioned above, three of the active approaches mentioned above correspond directly to variations for one of the physical parameters of the system: mass, damping, and stiffness.
+Three of the active approaches mentioned above correspond directly to variations for one of the physical parameters of the system: mass, damping, and stiffness.
 Active vibration control is usually only attempted when such passive control is inadequate or impractical.
-\Eg, adding mass reduces the resonance frequency, which improves vibration isolation; however, it is not always practical to do so.
+\Eg, adding mass reduces the resonance frequency, which improves vibration isolation; however, it is not always possible to do so \dash consider, say, weight requirements in a vehicle.
 
 Adding additional damping through viscous elements, equivalent to relative velocity feedback control, will reduce the amplitude of the resonance peak, but vibration isolation at higher frequencies will be degraded.
 Energy generation can be accomplished through electromagnetic damping through induced eddy currents in a coil experiencing relative displacement to a magnetic field, such as investigated by \textcite{graves2000}.
@@ -415,7 +432,7 @@ These various methods are introduced below in approximate order of complexity an
 The active feedback methods introduced in \secref{fundavibes} are orthogonal in the sense that more than one scheme may be applied in parallel.
 For example, acceleration feedback could be used to reduce the resonance frequency, and absolute velocity feedback used to reduce the height of the resonance peak.
 This approach was used by \textcite{savaresi2007} to implement a combination skyhook/acceleration-feedback controller in the context of vehicle vibration control for ride `smoothness'.
-\textcite{gavin2007} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
+\textcite{gavin2007-jsv} discuss using negative stiffness and skyhook damping in the context of isolating machinery in a building.
 
 \paragraph{Adaptive and state control}
 
@@ -897,6 +914,7 @@ A review of work in the area of superconducting levitation has been published by
 
 
 \subsubsection{Single \dof/ unstable magnetic suspension}
+\seclabel{levitation-control}
 
 The most simple variety of magnetic levitation or suspension is the counter-acting of gravity with an active electromagnetic force.
 The most common form this takes is via an unstable attractive vertical force to directly compensate for gravity; vertically-passive designs are shown in \secref[vref]{hspring,choi-spring} that require active control in the horizontal directions to maintain stability.
@@ -912,7 +930,7 @@ As an example, \textcite{mahmoud2003} used backstepping with a nonlinear model t
 \textcite{gentili2003} investigated this system with nonlinear feedback control for robust disturbance suppression.
 \textcite{chang2001} applied nonlinear control to the problem of magnetic levitation, using coupled hybrid magnets (\ie, electromagnets biased with permanent magnet cores) that create a magnetic circuit with the levitated table of \SI{20}{kg}.
 
-However, such advanced control techniques are not always necessary; \textcite{li2007} report their success in using simple \PID/ control for suspending a magnetic table using a coupled electromechanical model of the system.
+However, such advanced control techniques are not always necessary; \textcite{li2007} report their success in using simple \PID\ control for suspending a magnetic table using a coupled electromechanical model of the system.
 \textcite{banerjee2008} used a simple cascaded \PI\ and lead controllers to stabilise an electromagnetic suspension.
 An optimisation technique was used to obtain the control gains necessary to achieve adequate performance over a range of displacement gaps; such control is usually only suitable for fixed-gap systems.
 
@@ -1239,6 +1257,7 @@ A variation of this idea was explored later \parencite{mizuno2010-jvc}, with the
 
 
 \section{Reproducible research}
+\seclabel{repro-research}
 
 One of my strong beliefs that has rison out from my short time in the academic world is that as work is distributed electronically and the sheer amount of knowledge grows ever larger, the utility of academic work in a vacuum grows smaller.
 My views here follow closely in the wake of the `reproducible research' movement, which is pithily expoused as \cite{kovacevic2007-icassp}
@@ -1281,6 +1300,7 @@ CoilCoilForce[I1_,I2_,r_,R_,z_] = With[ {m=4 r R/((r+R)^2+z^2)},
   ( 2 EllipticK[m] - (2-m)/(1-m) EllipticE[m] ) / (4 Sqrt[r R])
 ];
 \end{verbatim}
+As this code is used directly to produce calculations of results, it is much more likely to be correct than a transcribed equation.
 Incidentally, when one comes across the elliptic integrals $\EllipticK{\cdot}$ and $\EllipticE{\cdot}$ it can be unclear what notation is being used (which is not always clarified); in some cases, the argument might be for the elliptic parameter $m$, other times the elliptic modulus $k$; they are equivalent and related by $\EllipticK{m}=\EllipticK{k^2}$ but without context — or code — it can hard to know which is intended.
 
 \subsection{Sections of this thesis which are reproducible}
@@ -1318,6 +1338,7 @@ Incidentally, the source for this thesis itself, including some of the programma
 Which use of this material is restricted under the copyright of The University of Adelaide, the methods used for writing may be instructive for others following a similar path to my own.
 
 \section{Structure of this thesis}
+\seclabel{thesis-structure}
 
 This chapter has introduced the themes of this thesis; at this point it is prudent to suggest where the following chapters will lead.
 
