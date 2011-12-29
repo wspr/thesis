@@ -59,7 +59,7 @@
 \def\newvariable@opt#1[#2]#3{\@newvariable{#1}{}{#3}}
 \def\newvariable@noopt  #1#2{\@newvariable{#1}{}{#2}}
 \newcommand\@newvariable[3]{%
-  \newcommand#1{#3}%
+  \DeclareRobustCommand#1{#3}%
 }
 
 \newcommand\newsignal[3]{%
