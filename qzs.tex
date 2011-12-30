@@ -44,13 +44,13 @@ physical system. An investigation into the literature yields a variety of such
 devices, as previously discussed in \secref{qzs-explore}.
 
 This chapter will investigate the quasi-static behaviour of two of these \qzs/ systems.
-The first, in \secref{qzskzs}, is an `inclined spring' device that has been studied previously in the literature; here, it is studied from a fresh perspective in order to contrast its behaviour with the second \qzs/ system shown in \secref{qzs}: an arrangement of attracting and repelling permanent magnets that allows much simpler tuning of the system to adapt to dynamic load bearing.
+The first, in \secref{qzszks}, is an `inclined spring' device that has been studied previously in the literature; here, it is studied from a fresh perspective in order to contrast its behaviour with the second \qzs/ system shown in \secref{qzs}: an arrangement of attracting and repelling permanent magnets that allows much simpler tuning of the system to adapt to dynamic load bearing.
 
 \referpaper{The work presented in \secref{qzs} is based from material that has been published as a journal paper~\cite{robertson2009-jsv}.}
 
 
 \section{Inclined springs}
-\seclabel{qzskzs}
+\seclabel{qzszks}
 
 A well studied \qzs/ device is that of a load bearing vertical spring in
 parallel with a pair of inclined springs that behave in a buckling
@@ -693,22 +693,8 @@ nonlinear characteristics of the magnetic spring.
 \subsection{Magnet forces}
 \seclabel{qzs-mag}
 
-\TODO
-The force that is generated between parallel cuboid magnets (\ie, with
-faces orthogonal but not necessarily equal) can be calculated
-with the formulation of \textcite{akoun1984}, for magnet
-geometries depicted in \figref{akoun}. \textcite{bancel1999} published
-an equivalent equation that is algorithmically easier to apply for
-complex magnet geometries and multipole arrays.
-
-For this work, the original expression of \textcite{akoun1984} is
-simplified for cubical magnets with a vertical offset; \ie, magnet
-sizes $a=b=c=A=B=C$ and only vertical relative displacements, such
-that $\alpha=\beta=0$.
-Analytical simplifications of the force and stiffness equations have been described in \secref{cube-forces}.
-The distance between the magnet centres with
-respect to the size of the magnets is expressed as a normalised
-length:
+For this work, the simplified expressions of \textcite{akoun1984} for cubical magnets with a vertical offset is used, as shown in \eqref{magforce} in \secref{cube-forces}.
+The distance between the magnet centres $\gamma$ with respect to the size of the magnets (side length $\mdim$) is expressed as a normalised length $\ndisp$:
 \begin{dmath}
   \ndisp = \gamma/\mdim .
 \end{dmath}
@@ -726,8 +712,7 @@ expression for the normalised force $\nforce$ is given in
 
 The stiffness between two cubical magnets can be calculated by differentiating
 the force expression in \eqref{force} with respect to vertical displacement
-$\gamma=\mdim\ndisp$ and can be shown to be proportional to the magnet size
-$\mdim$:
+$\gamma=\mdim\ndisp$ and can be shown to be proportional to the magnet size $\mdim$:
 \begin{dmath}[label=stiffness]
   \magstiffness = \frac{\partial}{\partial\gamma} \magforce
              = \frac1\mdim\frac{\partial}{\partial\ndisp} \mdim^2\nforce
@@ -736,12 +721,12 @@ $\mdim$:
 The derived expression for the normalised stiffness $\nstiffness$
 is given in \eqref{nstiffness} again in \secref{cube-forces}.
 
-A `\qzs/' magnetic spring consists of an attracting magnetic
-pair above a repelling magnet pair as shown in
-\figref{schem}. Parameter $\mdim\ngap$ is the gap between the centres
+A `\qzs/' magnetic spring consists of an attracting magnetic pair above a repelling magnet pair as shown in \figref{schem}, originally introduced in \secref{qzs-basics}.
+Parameter $\mdim\ngap$ is the gap between the centres
 of the magnet pairs at \qzs/, and $x=\mdim\ndispZ$ is the
 static displacement of the floating mass about the centre line between
-the magnets. The parameters $\ngap$ and $\ndispZ$ are referred to
+the magnets.
+The parameters $\ngap$ and $\ndispZ$ are referred to
 as normalised magnet gap and normalised magnet displacement, respectively.
 The force due to the lower magnet in repulsion is
 \begin{align}
@@ -845,12 +830,14 @@ those shown in \figref{nnfit} and have been omitted for clarity.
 
 \begin{table}
   \lofcaption{
-    Best fit parameters for \eqref{nnfit}.}{
+    Best fit parameters for \eqref{nnfit}.
+  }{
     Fixed integer values of $\nn$ were chosen
     for the first two cases, and the latter
     value best fits the model by varying all
     three parameters. Note that these are
-    are unitless parameters.}
+    are unitless parameters.
+  }
   \tablabel{nnfit}
   \begin{tabular}{@{}ccc@{}}
     \toprule

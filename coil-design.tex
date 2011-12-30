@@ -109,7 +109,7 @@ m=\frac{4r_1r_2}{\gp{r_1+r_2}^2+z^2}
 where $r_1$ and $r_2$ are the coil radii and $z$ is the axial distance between them. The functions $\EllipticK{m}$ and $\EllipticE{m}$ are the complete first and second elliptic integrals respectively with parameter $m$. These functions can also be referred to with notation $\EllipticK{k}$ and $\EllipticE{k}$ in terms of a modulus $k$, where $m=k^2$.
 
 Using the `filament method', \eqref{coaxial-filament,coaxial-filament-aux} can be used to calculate the force between any arrangement of coaxial solenoids by representing each turn of the solenoid as a separate coil, and summing the forces through superposition for every pair-wise combination of coil interaction forces \cite[\eg,][]{babic2008-ietm,akyel2009-pier}.
-\figref{fig:filament-shell} shows such a filament model for the interaction between a thin coil (representing a permanent magnet) and a thick coil.
+\figref{filament-shell} shows such a filament model for the interaction between a thin coil (representing a permanent magnet) and a thick coil.
 Using this technique, the total force between them is given by
 \begin{dgroup}
 \begin{dmath}[label=filamentforce]
@@ -141,31 +141,7 @@ F_{z_2} = \frac{1}{\turnsRCoil}\Sum{ F_s\fn{\oradiusMag,r\fn{n_r},\lengthMag,\le
 \begin{dmath}
 r\fn{n_r}=\iradiusCoil+\frac{n_r-1}{\turnsRCoil-1}\gp{\oradiusCoil-\iradiusCoil}
 \end{dmath}
-where $F_s\fn{\oradiusMag,r,\lengthMag,\lengthCoil,z}$ is the force between a permanent magnet and a thin coil, given by~\cite{robertson2011-ietm}
-\begin{dmath}[label=simpl4]
-F_s\fn{\oradiusMag,r,\lengthMag,\lengthCoil,z} = \frac{J_1 J_2}{2\mu_0} \sum_{e_1,e_2}^{\{1,-1\}^2} \!\!\! e_1e_2\m1\m2\m3 f_s
-\end{dmath}.
-$J_1=\remanence$ is the strength of the permanent magnet and $J_2=\mu_0 \turnsZCoil I/\lengthCoil$ where $I$ is the current in the coil.
-The intermediate expression in \eqref{simpl4} is given by
-\begin{dmath}[label=simpl4i]
-f_s=
-  \EllipticK{\m4}
-  - \frac{1}{\m2}\EllipticE{\m4}
-  +
-\gdef\finalterm{
-  \gp[2]{\frac{\m1^2}{\m3^2}-1} \invtimes
-    \EllipticPi{\frac{\m4}{1-\m2},\m4}
-}
-\finalterm
-\end{dmath},
-with parameters
-\begin{align}
-\m1 &= z - \half e_1 \lengthMag - \half e_2 \lengthCoil, &
-\m2 &= \frac{\gp{\oradiusMag-r}^2}{\m1^2}+1,\\
-\m3 &= \sqrt{\gp{\oradiusMag+r}^2+\m1^2}, &
-\m4 &= \frac{4 \oradiusMag r}{\m3}.
-\end{align}
-The function $\EllipticPi{n,m}$ is the complete elliptic integral of the third kind with parameter $m$.
+where $F_s\fn{\oradiusMag,r,\lengthMag,\lengthCoil,z}$ is the force between a permanent magnet and a thin coil, shown previously in \eqref{simpl4}, where $J_1=\remanence$ is the strength of the permanent magnet and $J_2=\mu_0 \turnsZCoil I/\lengthCoil$ where $I$ is the current in the coil.
 
 \subsubsection{An integral method}
 
@@ -218,7 +194,7 @@ f_{z_3}=\gp{1-\half m_5}\EllipticK{m_5}-\EllipticE{m_5}
 \begin{align}
 m_5&=\frac{4\oradiusMag\distrCoil{1}}{m_6^2}, &
 m_6^2 &= \gp{\oradiusMag+\distrCoil{1}}^2+\gp{\displ+\half e_1 \lengthMag-\distrCoil{3}}^2 .
-\label{eq:cylforcez-auxiii}
+\eqlabel{cylforcez-auxiii}
 \end{align}
 Note that $\distrCoil{3}$ and $\distrCoil{1}$ in \eqref{cylforcez-auxiii} are variables of integration.
 
@@ -415,7 +391,7 @@ Certain electromagnetic designs will require the consideration of the effect of 
 An example of such a design are `pancake coils' \cite[\eg,][]{akyel2003-intermag,shiri2009-pier}, which are thin axially but have a large radial face; eccentric displacement is not constrained and the sensitivity of eccentricity on axial force may be of interest.
 
 The theory for coaxial magnet/coil forces (\eqref{magcoil-integral}) can be extended for the non-coaxial case.
-Under eccentric displacement in the radial direction, $\eccen$, the limits of integration must be expressed in a translated coordinate system (see \figref{fig:int-offset}) and the original integral must be expressed with additional terms to take this into account.
+Under eccentric displacement in the radial direction, $\eccen$, the limits of integration must be expressed in a translated coordinate system (see \figref{int-offset}) and the original integral must be expressed with additional terms to take this into account.
 
 \begin{figure}
 \centering
@@ -423,7 +399,7 @@ Under eccentric displacement in the radial direction, $\eccen$, the limits of in
 \caption
 [Region of integration for a radially displaced magnet.]
 {Region of integration for a radially displaced magnet, shifted by $(\xi,\eta)$ from the original coordinate system.}
-\label{fig:int-offset}
+\figlabel{int-offset}
 \end{figure}
 
 In order to incorporate eccentric displacement into the integral, terms of $\distrMag{1}$

@@ -28,8 +28,8 @@
 \RequirePackage[
   crop=pdfcrop,
   ps2pdf-options={-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress},
-  cleanup={}%.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
-%           .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
+  cleanup={.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
+           .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
   ]{pstool}
 
 \newcommand\pregen[1]{#1}
@@ -38,7 +38,7 @@
 \DeclareUnicodeCharacter{2014}{\dash}
 \DeclareUnicodeCharacter{2022}{\item}
 
-\RequirePackage[noload=abbr]{siunitx}
+\RequirePackage{siunitx}
 \protected\def\sipi{\mbox{\ensuremath{\pi}}}
 \sisetup{numaddn=\sipi}
 
@@ -60,6 +60,10 @@
   xcolor,
   zref,
 }
+
+\setkeys{Gin}{quiet} % YES!
+\usepackage{atveryend}
+%\AtVeryEndDocument{\batchmode}
 
 \RequirePackage[font={sf,small}]{caption}
 \captionsetup[table]{position=top}

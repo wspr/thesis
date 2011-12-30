@@ -103,7 +103,7 @@ being discontinuous.
 
 \begin{figure}[htbp]
    \centering
-   \grf{Figures/Theory/BHM}
+   \includegraphics{PhD/Figures/Theory/BHM}
    \caption{The magnetic field, $\magB$, both inside and outside a magnet.}
    \figlabel{BHM}
 \end{figure}
@@ -125,7 +125,7 @@ density of the magnet to zero.
 
 \begin{figure}[htbp]
    \centering
-   \grf{Figures/Theory/BHcurve}
+   \includegraphics{PhD/Figures/Theory/BHcurve}
    \caption{The characteristic $B$ \vs\ $H$ curves for an ideal rare-earth magnet.}
    \figlabel{BHcurve}
 \end{figure}
@@ -154,7 +154,7 @@ analysis of how to derive the paths of magnetic flux is a beyond the scope of th
 Typical flux lines for a rectangular cross-section magnet are shown in \figref{magflux}.
 
 \begin{figure}
-\grf{Figures/Magnets/magflux}
+\includegraphics{PhD/Figures/Magnets/magflux}
 \caption{The magnetic flux lines of a single magnet.}
 \figlabel{magflux}
 \end{figure}
@@ -254,6 +254,7 @@ magnetic field.
 
 
 \section{Forces between magnets}
+\seclabel{magnet-forces}
 
 A general technique for finding the forces between two magnets is
 simple to describe. The first magnet creates a magnetic field in the
@@ -268,7 +269,7 @@ of high coercivity that prevents demagnetisation; hence, assumptions
 of a fixed and volume-constant magnetisation hold very well.
 
 There are two methods that will be outlined here for calculating the magnetic field of a permanent magnet, known as the charge and current models. Respectively, these consist of modelling the magnets as having two surfaces of magnetic charge, or modelling the magnet as being composed of an equivalent surface current density.
-In the expressions to follow, the magnetisation of each magnet has been assumed to be homogeneous and constant, which is a reasonable assumption for modern rare earth magnetic material; hence terms involving $\Div\magM$ and $\Curl\magM$ equate to zero.
+In the expressions to follow, the magnetisation of each magnet has been assumed to be homogeneous and constant, which is usually a reasonable assumption for modern rare earth magnetic material; hence terms involving $\Div\magM$ and $\Curl\magM$ equate to zero.
 
 In the first step, the integration takes place over the surface of the
 first magnet $S_1$, which is written for the charge model as:
@@ -360,9 +361,10 @@ The notation for the models to calculate the forces between cuboid magnets is as
 The first magnet has dimensions $[2a, 2b, 2c]\T$ and the second magnet has dimensions $[2A, 2B, 2C]\T$.
 The distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$.
 The magnetisations of the magnets are assumed to be constant and aligned in the $z$-direction (`facing up').
-Negative magnetisation corresponds to a magnet `facing down' and results in forces of reversed sign.
+Negative magnetisation corresponds to a secondary magnet `facing down' and results in forces of reversed sign.
 
-The original expression for the forces between magnets is shown again here as terms within will be referred to later. It is compactly written as six nested summations of intermediate expressions in $x$, $y$, and $z$ directions:
+The original expression for the forces between magnets is shown here as terms within will be referred to later.
+It is compactly written as six nested summations of intermediate expressions in $x$, $y$, and $z$ directions:
 \begin{equation}\eqlabel{akoun}
 \bm F_{z,z} = \frac{J_1 J_2}{4\pi\mu_0}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
@@ -422,7 +424,7 @@ Complete expressions for the corner distances are therefore:
 \end{bmatrix}
 \end{dmath}.
 The $\bm\phi$ terms required for calculating the `force between nodes' can now be written, where $r=\sqrt{u^2+v^2+w^2}$, as:
-\begin{dmath}
+\begin{dmath}[label=phi-zz]
 \bm\phi\fn{\bm \delta} =
 \begin{bmatrix}
 \half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\tfrac{uv}{rw}}+\half ru \\
@@ -472,11 +474,11 @@ where
 \eqlabel{torque-inner}
 \end{equation}
 The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner terms of the summation represent the torque applied on the second magnet due to the influence of one corner of the first magnet and one corner of the second magnet. Allag and Yonnet write this slightly differently in terms of the total torque applied from the entire first magnet on each corner of the second:
-\begin{equation}\label{torqu-1}
+\begin{equation}\eqlabel{torqu-1}
 \bm T = \sum_{j,l,q\in\{0,1\}^3} \bm R_{j,l,q}\bm\times \bm f_{j,l,q} ,
 \end{equation}
 where $\bm f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
-\begin{equation}\label{torqu-2}
+\begin{equation}\eqlabel{torqu-2}
 \bm f_{j,l,q}=\tfrac{J_1 J_2}{4\pi\mu_0}
   \!\!\!\sum_{i,k,p\in\{0,1\}^3}\!\!\!
   \bm\phi\fn{\bm d_{i,j,k,l,p,q}}
@@ -484,7 +486,7 @@ where $\bm f_{j,l,q}$ is the summed force on a corner of the second magnet due t
   \gp{-1}^{i+j+k+l+p+q}.
 \end{equation}
 In other words, written in this form the `corner torque' for each node of the second magnet is given by
-\begin{equation}\label{corner-torques}
+\begin{equation}\eqlabel{corner-torques}
   \bm \tau_{j,l,q} = \bm R_{j,l,q} \bm\times \bm f_{j,l,q}.
 \end{equation}
 It is easily seen that \eqref{torqu-1} and \eqref{torqu-2} are equivalent to \eqref{torque} since the inner summation in the former can be migrated out from inside the cross product.
@@ -514,7 +516,7 @@ Thus these calculated figures appear to be incorrect.
 
 Using \eqref{torqu-2}, we can calculate each corner force on the second magnet to investigate from which terms these non-zero torques are appearing.
 Looking only at the torque in the $y$-direction, we know it consists of force components in $x$ and $z$. That is, expanding the cross product of \eqref{corner-torques},
-\begin{equation}\label{tau-y}
+\begin{equation}\eqlabel{tau-y}
 {\tau_y}_{|j,l,q} = {R_z}_{|j,l,q}\cdot {f_x}_{|j,l,q} -
   {R_x}_{|j,l,q}\cdot {f_z}_{|j,l,q} ~.
 \end{equation}
@@ -567,7 +569,8 @@ These two interactions are depicted in \figref{mag-nodes}.
 \figlabel{mag-nodes}
 \end{figure}
 
-The first term in \eqref{phi_z} is $-uv\log(r-u)$. All other terms will be the same since $v$, $w$, and $r$ are constant between the two cases in this example.
+The first term of the $z$-component of \eqref{phi-zz} is $-uv\log(r-u)$.
+All other terms will be the same since $v$, $w$, and $r$ are constant between the two cases in this example.
 The term $u$, however, will switch signs; for the first case $u = -A-a$ and in the second case $u = A + a$. Accordingly, $\log(r - u)$ will have different magnitudes and so will $\phi_z$.
 Corner forces are therefore not geometrically-symmetrical, and this is the first indication that they do not behave as real forces.
 
@@ -652,7 +655,7 @@ The verification curve of the results of \textcite{akoun1984}, calculated using 
 \begin{minipage}{0.45\linewidth}
 \psfragfig{magcode/examples/fig/janssen-repro}
 \caption{Reproduction of the results of \textcite{janssen2009-sensorletters}.}
-\label{janssen}
+\figlabel{janssen}
 \end{minipage}
 \end{wide}
 \end{figure}
@@ -995,8 +998,8 @@ It can be seen that the opposite rotations result in symmetric forces curves, as
   \end{subfigure}\hfil
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fz}
-    \caption{Horizontal forces.}
-    \figlabel{charp-0to2pi-Fy}
+    \caption{Vertical forces.}
+    \figlabel{charp-0to2pi-Fz}
   \end{subfigure}
   \end{wide}
   \caption{Vertical and horizontal forces on a rotating magnet situated directly above another.}
@@ -1045,7 +1048,7 @@ A three-dimensional schematic is shown later in \figref{coil-param} that also il
 \end{figure}
 
 \def\m#1{m_{#1}}
-The force equation is given by
+The force equation is given by~\cite{robertson2011-ietm}
 \begin{dmath}[label=simpl4]
 F_z = \frac{J_1 J_2}{2\mu_0} \sum_{i=1}^2 \sum_{j=3}^4 \m1\m2\m3 f_z \gp{-1}^{i+j}
 \end{dmath},
@@ -1068,11 +1071,11 @@ with parameters
 \m3^2 &= \gp{r_1+r_2}^2+\m1^2, \\
 \m4 &= \frac{4 r_1 r_2}{\m3^2}, \qquad 0<\m4\le 1.
 \end{align}
+This equation is particularly efficient to calculate as the complete elliptic integrals of the first, second, and third kind can all be calculated simultaneously with a single iteration of the arithmetic-geometric mean approach \cite[\S19.8(i)]{DLMF2010}.
 
-As a result of the simplifications presented here, equation~\eqref{simpl4} contains one-third the number of terms compared to the original equation (three instead of nine) and is defined in terms of four instead of ten parameters. Additionally, the complete elliptic integrals of the first, second, and third kind can all be calculated simultaneously with a single iteration of the arithmetic-geometric mean approach \cite[\S19.8(i)]{DLMF2010}, as they all take the same parameter $\m4$. This makes equation~\eqref{simpl4i} particularly efficient to implement.
 
 \subsection{Numerical evaluation of the axial force}
-\label{sec:numer}
+\seclabel{numer}
 
 Numerical singularities occur when an expression is mathematically continuous but terms within the expression approach infinity; care must be taken when evaluating such expressions numerically.
 There are two numerical singularities in \eqref{simpl4}.

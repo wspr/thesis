@@ -45,9 +45,34 @@ No permanent magnetic material has been discovered to achieve anywhere near this
 The analysis performed in this thesis is generally normalised by magnet strength; that is, the remanence magnetisation for any theoretical calculations is assumed to be $\remanence=\SI{1}{T}$.
 For reference, grade N42 magnets have a remanence of around \SI{1.3}{T} (varying by manufacturer) and grade N52 magnets of around \SI{1.5}{T}.
 
-ADD ALLAN's RESULTS FOR NON HOMOGENEOUS MAGNETISATION.
+\subsection{Homogeneity of magnetisation}
 
+In \secref{magnet-forces} it was assumed for deriving the equations for the forces between magnets that each magnet had a constant and uniform magnetisation.
+To be fabricated, a homogeneous permanent magnet requires a very strong magnetic field of constant direction and magnitude, and the larger the cross-section of the magnet the harder such a field is to obtain.
+For larger permanent magnets, care must be taken when using the force equations presented in the previous chapter.
+For example, the magnetic field of a grade \textsc{n35} cylindrical magnet with diameter \SI{100}{mm} and thickness \SI{30}{mm} was compared against theoretical calculations (performed with ANSYS) \cite{bruno2011-honoursthesis}.
+While the comparison across axial displacement (\figref{gauss-axial}) only shows that the measured magnetic field is lower than expected, the lateral displacement results (\figref{gauss-lateral}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
 
+\begin{figure}
+\begin{wide}
+\begin{subfigure}[0.45]
+\includegraphics{PhD/Figures/Magnets/gauss-test}
+\caption{Axial displacement down the centreline.}
+\figlabel{gauss-axial}
+\end{subfigure}\hfil
+\begin{subfigure}
+\fbox{\parbox{5cm}{THOSE PROSTHETICS FOOLS DIDN'T PUT THIS GRAPH IN THEIR REPORT}}
+\caption{Lateral displacement with a certain offset.}
+\figlabel{gauss-lateral}
+\end{subfigure}
+\lofcaption{
+  Magnetic field measurements for a large cylindrical permanent magnet.
+}{
+  Measured results are not consistent with the theoretical results that assume constant magnetisation.
+}
+\end{wide}
+
+\end{figure}
 
 \section{Magnets in repulsion}
 \seclabel{unstable-vertical}
@@ -56,7 +81,7 @@ Two magnets with faces aligned in repulsion create a simple spring with a nonlin
 When bearing load at equilibrium, for small displacements such an arrangement closely approximates a classic spring--mass--damper system which can be used for vibration isolation \parencite{puppin2002}.
 
 \begin{figure}
-  \grf{Figures/Magnets/vspring}
+  \includegraphics{PhD/Figures/Magnets/vspring}
   \caption{Magnets in repulsion create a vertical spring.}
   \figlabel{vspring}
 \end{figure}
@@ -109,7 +134,7 @@ In order to compare the force versus displacement characteristics for a range of
 \figlabel{magratios}
 \end{figure}
 
-Some small overlap in the force curves for $\ratioCub=0.4$ and $\ratioCub=0.5$ is seen in \Figref{ratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\ratioCub$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\ratioCub\approx0.4$.
+Some small overlap in the force curves for $\ratioCub=0.4$ and $\ratioCub=0.5$ is seen in \Figref{magratio2}. This indicates that the optimum magnet size ratio (to maximise the force) is dependent on the displacement between the magnets. \Figref{magratio} shows the magnet force varying as a function of magnet size ratio $\ratioCub$ with a set of curves corresponding to fixed displacements from \SIrange{1}{10}{mm}. For each curve, there is a local maxima in the force; this corresponds to the magnet size ratio that produces the greatest force at that displacement. While the magnet size ratio that produces the greatest forces varies with displacement, the graph shows that the optimum magnet size ratio remains around $\ratioCub\approx0.4$.
 
 \subsection{Cube magnets in two orientations}
 \seclabel{cube-compare-orth}
@@ -152,7 +177,7 @@ Accordingly, the magnet length and radius are calculated using, \resp,
 \lengthMag &= \gp{ \frac{\volMag}{\pi \ratioMag^2} }^{1/3},  & \radiusMag &= \gp{ \frac{\ratioMag \volMag}{\pi} }^{1/3},
 \end{align}
 with a fixed magnet volume $\volMag$ over a range of magnet ratios $\ratioMag$.
-The force is calculated using \eqref{coaxial-magnet-force} with force \vs\ magnet ratio shown in \figref{magratio-cyl}.
+The force is calculated using \eqref{simpl4} with force \vs\ magnet ratio shown in \figref{magratio-cyl}.
 Interestingly, the behaviour shows a different trend than for cuboid shaped magnets; additionally, these results suggest that the force per unit volume is slightly larger for cylindrical magnets.
 
 
@@ -320,6 +345,8 @@ degrees of instability in the horizontal directions, which complicates
 its stabilisation.
 
 \subsubsection{Quasi--zero stiffness}
+\seclabel{qzs-basics}
+
 ($k_x=k_y=k_z=0$); analysed in detail in \secref{qzs}
 
 A very interesting system is produced when the two vertical springs
@@ -339,13 +366,13 @@ When vertically centred, the spring achieves \qzs/ in all three translatory dire
 A detailed analysis of this magnet arrangement for \qzs/ is undertaken later in \secref{qzs}.
 
 \begin{figure}
-  \grf{Figures/Systems/zero-stiffness-spring}
+  \includegraphics{PhD/Figures/Systems/zero-stiffness-spring}
   \caption{`Zero stiffness' spring schematic.}
   \figlabel{zero-stiffness-spring}
 \end{figure}
 
 \begin{figure}
-  \grf{Simulations/Single_magnets/z_spring/eps/zspring-vary-gap}
+  \includegraphics{PhD/Simulations/Single_magnets/z_spring/eps/zspring-vary-gap}
   \caption{`Zero stiffness' vertical spring forces \vs\ vertical displacement.}
   \figlabel{zspring-vary-gap}
 \end{figure}
@@ -362,13 +389,13 @@ in attraction.
 
 \begin{figure}
   \begin{subfigure}
-    \grf{Figures/Magnets/hspringa}
+    \includegraphics{PhD/Figures/Magnets/hspringa}
     \caption{At rest, neglecting the magnet weight.}
     \figlabel{hspringa}
   \end{subfigure}
   \hfil
   \begin{subfigure}
-    \grf{Figures/Magnets/hspringb}
+    \includegraphics{PhD/Figures/Magnets/hspringb}
     \caption{After displacement.}
     \figlabel{hspringb}
   \end{subfigure}
@@ -420,7 +447,7 @@ compromise the stability achieved in the out of plane horizontal
 direction.
 
 \begin{figure}
-   \grf{Figures/Magnets/hvspring}
+   \includegraphics{PhD/Figures/Magnets/hvspring}
    \caption[Combination vertical/horizontal magnetic spring.]{Combination
 magnetic spring, with the
 strength of the vertical spring and the stability of the horizontal spring.}
@@ -445,7 +472,7 @@ There is a single magnet dimension gap between the floating magnet and all fixed
 The self-weight of the system is taken to be \SI{5}{N} in order to include some effect of gravity compensation on the device.
 
 \begin{figure}
-   \grf{Figures/Systems/zhv-spring}
+   \includegraphics{PhD/Figures/Systems/zhv-spring}
    \lofcaption{Co-ordinate system of the `ZHV' spring.}
               { The \y\ direction is into the page.}
    \figlabel{zhv-spring}
@@ -453,7 +480,7 @@ The self-weight of the system is taken to be \SI{5}{N} in order to include some 
 
 \begin{figure}
    \begin{wide}
-   \subbottom[\x\ direction.\figlabel{zhvspring-move}]
+   \subbottom[\x\ direction.\figlabel{zhvspring-move-x}]
      {\grf[scale=0.8]{Simulations/Single_magnets/5_magnet_spring/eps/zhvspring-move-x}}
    \subbottom[\y\ direction.\figlabel{zhvspring-move-y}]
      {\grf[scale=0.8]{Simulations/Single_magnets/5_magnet_spring/eps/zhvspring-move-y}}
@@ -464,7 +491,7 @@ The self-weight of the system is taken to be \SI{5}{N} in order to include some 
 
 \begin{figure}
    \centering
-   \grf{Simulations/Single_magnets/5_magnet_spring/eps/zhvspring-move-z}
+   \includegraphics{PhD/Simulations/Single_magnets/5_magnet_spring/eps/zhvspring-move-z}
    \lofcaption{Individual and combined vertical forces on the ZHV spring for
    displacement in the \z\ direction.}{ For this case of $\x=\y=0$, all
    horizontal forces are zero.}
@@ -740,7 +767,7 @@ that between $d$~and $D$.
 
 \begin{figure}
   \begin{subfigure}
-    \grf{Figures/Bearings/delamare-forces}
+    \includegraphics{PhD/Figures/Bearings/delamare-forces}
     \caption{
      The added magnets are spaced farther away,
      so they do not affect the
@@ -748,7 +775,7 @@ that between $d$~and $D$.
      \figlabel{delamare-forces}}
   \end{subfigure}
   \begin{subfigure}
-    \grf{Figures/Bearings/delamare-moments}
+    \includegraphics{PhD/Figures/Bearings/delamare-moments}
     \caption{
       The added magnets \emph{do} affect the radial stability
       because their distance from the centre of rotation is much greater.
@@ -949,7 +976,7 @@ This section consists of three main parts: \secref{geom} defines the geometry of
 \subsection{Oblique spring geometry and theory}
 \seclabel{geom}
 
-A schematic of the oblique magnetic spring is shown in \Figref{schematic}.
+A schematic of the oblique magnetic spring is shown in \Figref{mbq-schematic}.
 Cuboid magnets are used that extend a distance $b$ into the page such that their facing sides are square.
 The magnet angle $\mbqmagangle$ can range from \SIrange{0}{90}{\degree}, where $\mbqmagangle=\SI{0}{\degree}$ has horizontally-oriented magnets and $\mbqmagangle=\SI{90}{\degree}$ has vertically-oriented magnets.
 The spring is composed of two symmetric pairs of oblique magnets; this ensures the horizontal forces cancel when the spring is centred and force is produced in the vertical direction only.
@@ -1003,7 +1030,7 @@ These forces $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are calculated with $\mbqmfor
     \begin{bmatrix}-d+ \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
     \begin{bmatrix}a \\ 0 \\ 0\end{bmatrix} ,
 \end{align}
-where $a$ and $d$ are geometric parameters defined in \Figref{schematic}, and $[\mbqhdisp,\mbqvdisp,\mbqpdisp]\T$ are displacements in the horizontal, vertical, and out-of-plane directions, respectively. In \secref{stabl-3dof} this model will be extended with a small angle approximation to calculate forces and torques due to rotation around the $\mbqpdir$ axis.
+where $a$ and $d$ are geometric parameters defined in \Figref{mbq-schematic}, and $[\mbqhdisp,\mbqvdisp,\mbqpdisp]\T$ are displacements in the horizontal, vertical, and out-of-plane directions, respectively. In \secref{stabl-3dof} this model will be extended with a small angle approximation to calculate forces and torques due to rotation around the $\mbqpdir$ axis.
 
 
 \subsection{Influence of design parameters}
@@ -1121,7 +1148,7 @@ An equivalent formulation can be used to calculate the out-of-plane stiffness du
 \end{equation}
 
 An example of spring parameters that achieve positive stability in both the vertical and horizontal directions is shown in \Figref{mbq-kvxyz-gaps-v,mbq-kvxyz-gaps-h}.
-This is possible as the stiffness in the out-of-the-page direction of \Figref{schematic} is always negative (\Figref{mbq-kvxyz-gaps-p}), and as a consequence of Earnshaw's theorem \parencite{bassani2006-meccanica} the stiffnesses in each direction must sum to zero; that is, $\mbqhstiff(\mbqvdisp)+\mbqvstiff(\mbqvdisp)+\mbqpstiff(\mbqvdisp)=0$.
+This is possible as the stiffness in the out-of-the-page direction of \Figref{mbq-schematic} is always negative (\Figref{mbq-kvxyz-gaps-p}), and as a consequence of Earnshaw's theorem \parencite{bassani2006-meccanica} the stiffnesses in each direction must sum to zero; that is, $\mbqhstiff(\mbqvdisp)+\mbqvstiff(\mbqvdisp)+\mbqpstiff(\mbqvdisp)=0$.
 
 \begin{figure}
 \begin{wide}
@@ -1225,11 +1252,11 @@ The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever
 \begin{figure}
 \begin{wide}
 \subfloat[Without rotation.]
-  {\pregen{\psfragfig[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-1}}}\qquad
+  {\pregen{\includegraphics[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-1}}}\qquad
 \subfloat[With rotation shown in black; the unrotated position, as in (a), is shown in light grey.]
-  {\pregen{\psfragfig[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-2}}}\qquad
+  {\pregen{\includegraphics[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-2}}}\qquad
 \subfloat[With small angle approximation of zero magnet rotation shown in colour; the rotated magnets, as in (b), are shown in black.]
-  {\pregen{\psfragfig[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-3}}}
+  {\pregen{\includegraphics[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-3}}}
 \end{wide}
 \caption[Visual representation of the small angle approximation for magnet rotations.]{Visual representation of the small angle approximation in which the magnet structure rotates but the magnets themselves are assumed to remain parallel to their respective partner.}
 \figlabel{mbq-angle-schem-approx}
@@ -1446,7 +1473,7 @@ A physical realisation of this system is currently under construction (using a c
 
 \section{Prototype inclined magnet system}
 
-To explore the possibilities raised by the theoretical analysis of the inclined magnetic spring (\secref{oblique}), an honours project was undertaken in 2011 to design and build a prototype based on these ideas \cite{frizenschaf2011-thesis}.
+To explore the possibilities raised by the theoretical analysis of the inclined magnetic spring (\secref{oblique}), an honours project was undertaken in 2011 to design and build a prototype based on these ideas \cite{frizenschaf2011-honoursthesis}.
 \note{The members of the project were Yann Frizenschaf, Siobhan Giles, Jack Miller, Thomas Pitman, and Christopher Stapleton.}
 
 The prototype they built used Maytec \note{Maytec Australia Pty Ltd, \url{http://www.maytec.com.au/}} aluminium extrusions to allow modular placement of the inclined magnets with variable magnet angle.
@@ -1459,7 +1486,7 @@ The device was quite stable in this configuration, but when analysed for active 
 
 \begin{figure}
 \begin{wide}
-\grf{Figures/Oblique/oblique-rig}
+\includegraphics{PhD/Figures/Oblique/oblique-rig}
 \end{wide}
 \lofcaption
 [Prototype inclined magnet isolation device.]
@@ -1487,7 +1514,7 @@ Measured damping ratio & \SI{4.4}{\%} & \SI{9.0}{\%} \\
 
 \begin{figure}
 \centering
-\grf{Figures/Oblique/resonance}
+\includegraphics{PhD/Figures/Oblique/resonance}
 \caption{Measured and modelled resonance frequencies of the inclined magnet isolation prototype as a function of load mass.}
 \figlabel{oblique-resonance}
 \end{figure}
@@ -1502,7 +1529,7 @@ These values were taken in a different configuration than the data shown in \tab
 
 \begin{figure}
 \centering
-\grf{Figures/Oblique/damping}
+\includegraphics{PhD/Figures/Oblique/damping}
 \caption{Measured damping ratios of the inclined magnet isolation prototype.}
 \figlabel{oblique-damping}
 \end{figure}
@@ -1514,7 +1541,7 @@ For a high-performance magnetically levitated isolation platform, these experime
 
 \begin{figure}
 \centering
-\grf{Figures/Oblique/frf}
+\includegraphics{PhD/Figures/Oblique/frf}
 \caption
 [Measured and modelled transmissibility of the inclined magnet isolation prototype.]
 {Measured and modelled transmissibility of the inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet gap of \num{0.5}.}
@@ -1529,7 +1556,7 @@ Behaviour at higher frequencies is unaffected, as is expected with this method o
 
 \begin{figure}
 \centering
-\grf{Figures/Oblique/skyhook}
+\includegraphics{PhD/Figures/Oblique/skyhook}
 \caption{Measured transmissibility of the inclined magnet isolation prototype with and without active vibration control.}
 \figlabel{oblique-skyhook}
 \end{figure}
