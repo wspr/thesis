@@ -305,7 +305,7 @@ As shown in \figref{mag-couplingratio-equil}, however, for small displacement re
 Regardless, this is a factor that should be considered for all practical levitation devices.
 
 
-\section{Simple taxonomy of magnetic springs}
+\section{Taxonomy of simple magnetic springs}
 
 In this section we introduce a variety of simple magnetic
 springs, with the mind to analyse their behaviour. It is implicit in
@@ -321,49 +321,44 @@ Earnshaw established the relation for purely magnetic systems that the translato
 Introducing soft iron into the system changes the relation to summing to \emph{less than} zero, reducing the stability of the system.
 Magnetic spring systems can be created with different arrangements of magnets and combinations thereof, influencing the stiffness characteristics in various ways.
 Six spring configurations are examined in \secref{isoforces} with \figrangeref{vattr-forces}{zhv-forces} showing for the different designs their contours of force \vs\ displacement in each direction.
+These plots allow a qualitative assessment of the complexity of the force fields of each spring design.
 
-\subsubsection{Unstable vertical spring}
 
-Unstable vertical ($k_z<0,k_x=k_y=-\half k_z>0$); discussed in the literature review in the context of active control methods (\secref{levitation-control}).
+\subsection{Unstable vertical spring}
+
+Stability criteria: $K_z<0,K_x=K_y=-\half K_z>0$.
 
 The most common magnetic suspension for demonstrating nonlinear
 control design is the unstable vertical arrangement, in which a fixed
 upper magnets applies a gravity-cancelling force on a lower magnet in
-attraction. This design is unstable and thus has a negative
-stiffness. Although it is unstable in only a single \dof/,
-it is inconvenient to bear loads with a negative stiffness spring.
+attraction.
+This arrangement is discussed in the literature review in the context of active control methods (\secref{levitation-control}).
+Although it is unstable in only a single \dof/, it is inconvenient to bear loads with a negative stiffness spring.
 
-\subsubsection{Stable vertical}
 
-($k_z>0,k_x=k_y=-\half k_z<0$); vertical forces analysed in detail in \secref{unstable-vertical}.
+\subsection{Stable vertical}
+
+Stability criteria: $K_z>0,K_x=K_y=-\half K_z<0$.
 
 The opposite of the unstable vertical spring is the stable vertical
 spring, consisting of a fixed lower magnet supporting a floating upper
-magnet in repulsion. Here, there is a positive spring stiffness in the
-vertical, load bearing direction. However, it experiences multiple
-degrees of instability in the horizontal directions, which complicates
-its stabilisation.
+magnet in repulsion.
+The vertical force optimisation for this arrangement has already been analysed in detail in \secref{unstable-vertical}.
 
-\subsubsection{Quasi--zero stiffness}
+Here, there is a positive spring stiffness in the vertical, load bearing direction.
+However, it experiences multiple degrees of instability in the horizontal directions, which adds complication its stabilisation.
+
+\subsection{\QZS/}
 \seclabel{qzs-basics}
 
-($k_x=k_y=k_z=0$); analysed in detail in \secref{qzs}
+Stability criteria: $K_x=K_y=K_z=0$.
 
-A very interesting system is produced when the two vertical springs
-are combined; this is termed the zero stiffness spring. With a
-positive vertical stiffness in series with a negative stiffness, the
-local minimum in the force/displacement curve creates a marginally
-stable point of zero stiffness. With greater displacements, the upper
-attractive magnet can be used to simply \emph{reduce} the natural
-frequency of the system without driving it to zero; this improves
-vibration isolation characteristics without altering the stability of
-the system (given bounded displacements). This is the configuration
-used by \textcite{challa2008} in their tunable vibration energy
-harvesting device.
-
-First introduced by \textcite{nijsse2001}, the zero stiffness spring, \figref{zero-stiffness-spring}, uses equal and opposite magnet pairs to create a force--displacement relationship that has a region of zero slope, shown in \figref{zspring-vary-gap} for half-inch magnet cubes.
-When vertically centred, the spring achieves \qzs/ in all three translatory directions.
-A detailed analysis of this magnet arrangement for \qzs/ is undertaken later in \secref{qzs}.
+First introduced by \textcite{nijsse2001}, the \qzs/ spring, \figref{zero-stiffness-spring}, uses equal and opposite magnet pairs to create a force--displacement relationship that has a region of zero slope, shown in \figref{zspring-vary-gap} for half-inch magnet cubes.
+With a positive vertical stiffness in series with a negative stiffness, the local minimum in the force/displacement curve creates a marginally stable point of \qzs/.
+While the \qzs/ magnetic spring cannot be operated at its centred position of zero stiffness (as it has only marginal stability there), the upper attractive magnet can be considered to simply \emph{reduce} the natural frequency of the system without driving it to zero.
+This improves vibration isolation characteristics without altering the stability of
+the system (given bounded displacements), and this system is analysed in detail in \secref{qzs}..
+This is the configuration used by \textcite{challa2008} in their tunable vibration energy harvesting device.
 
 \begin{figure}
   \includegraphics{PhD/Figures/Systems/zero-stiffness-spring}
@@ -378,14 +373,12 @@ A detailed analysis of this magnet arrangement for \qzs/ is undertaken later in 
 \end{figure}
 
 
-\subsubsection{Horizontal}
+\subsection{Horizontal}
 \seclabel{hspring}
 
-($k_x<0,k_y=k_z=-\half k_x>0$); \secref{hspring}.
+Stability criteria: $K_x<0,K_y=K_z=-\half K_x>0$.
 
-Stability in the vertical direction with only a single degree of
-instability can be achieved with a horizontal arrangement of magnets
-in attraction.
+Unlike the vertical magnetic springs discussed above, a horizontal arrangement of magnets in attraction, \figref{hspring}, provides stability in the vertical direction with only a single degree of horizontal instability.
 
 \begin{figure}
   \begin{subfigure}
@@ -405,46 +398,32 @@ displacement.}
   \figlabel{hspring}
 \end{figure}
 
-A more stable configuration is desired, because the instabilities of this spring occur in two orthogonal horizontal directions.
-Inspired by the rearrangements of radial and thrust bearings shown by \textcite{yonnet1981}, an improved design is shown in \figref{hspring}.
-Now the spring forces are caused by horizontal magnets in \emph{attraction}, in contrast to the earlier arrangement shown in \figref{vspring} which uses repulsive force.
-Two fixed outer magnets both attract a centred floating magnet, so the unstable \dof/ is in that horizontal direction.
-Perturbations in the other horizontal direction are restored by the aforementioned attraction, which is similarly the cause of the positive vertical spring stiffness.
-Note that the diagram works as both a top \emph{and} side view, demonstrating how it is unstable in only one direction.
-
-
-The removal of an unstable \dof/ has its consequences, however.
-The forces between magnetic dipoles are inverse-square functions of the distance between them, and this holds true approximately for magnets as well.
-In the vertical spring, the effect of increased load on the spring is displacement toward the fixed magnet.
-This increases the stiffness of the spring.
-
-With the horizontal spring, however, the behaviour is a little more complex.
+The force--displacement behaviour for the horizontal is a little more complex than for the vertical springs.
 For the case shown in \figref{hspringa}, the only forces on the floating magnet are horizontal.
 The vertical spring force occurs when the magnet has been displaced as in \figref{hspringb}, which will increase with distance only for a small range.
-Beyond this, the force will start \emph{decreasing} as the floating magnet becomes further enough away from the fixed magnets — at which point the spring stiffness turns negative and the floating magnet will be unstable.
-This parabola effect is shown in \figref{h+v-forces-v}, which also includes the force curve of the vertical spring.
-Magnets were \SI{20}{mm} cubes with \SI{1}{T} magnetisation.
+Beyond this, the force will start \emph{decreasing} as the floating magnet becomes further enough away from the fixed magnets — at which point the spring stiffness turns negative and the floating magnet will be unstable, falling to the ground under the influence of gravity.
 The effect of varying the gap between the fixed and floating magnets for the horizontal spring is also demonstrated; the further away the fixed magnets are, the weaker the forces are.
+These behaviours are shown in \figref{h+v-forces-v}, which also includes the force curve of the vertical spring for comparison.
+(Magnets for the simulation were \SI{20}{mm} cubes with \SI{1}{T} magnetisation.)
+The inflection point where the horizontal spring force reaches its peak can also considered to be a \qzs/ point; careful tuning of such a spring could yield similar advantages to the vertical \qzs/ spring introduced in \secref{qzs-basics}.
 
 \begin{figure}
   \psfragfig{PhD/Simulations/Single_magnets/4_magnet_spring/fig/hvspring}
   \caption[Spring forces of the vertical \& horizontal springs.]{
-    Spring forces of the vertical (dashed) and horizontal (solid) springs.
+    Spring forces of the vertical (dashed) and horizontal (solid) springs with cube magnets of size $m=\SI{20}{mm}$. The horizontal spring has a magnet face gap of $l/m\in\{0.1,0.5,1\}$.
   }
   \figlabel{h+v-forces-v}
 \end{figure}
 
 
-\subsubsection{Double stable}
+\subsection{Double stable}
 
+Stability criteria: $K_z>0, K_x>0, K_y<0$.
 
-\Figref{hvspring} shows how the two springs discussed so far, horizontal and vertical, may be combined.
+This horizontal spring can be augmented with the stable vertical spring in order to increase its load bearing capacity.
+\Figref{hvspring} shows how the vertical repulsion and horizontal springs may be combined.
 There are now three fixed magnets: one below, which provides the majority of the stiffness of the spring, and two aside, for stabilising one \dof/ in the out-of-plane direction.
-
-This horizontal spring can be augmented with the stable vertical
-spring in order to increase its load bearing capacity. This does not
-compromise the stability achieved in the out of plane horizontal
-direction.
+An alternative double-stable spring is discussed in \secref{choi-spring}.
 
 \begin{figure}
    \includegraphics{PhD/Figures/Magnets/hvspring}
@@ -454,22 +433,15 @@ strength of the vertical spring and the stability of the horizontal spring.}
    \figlabel{hvspring}
 \end{figure}
 
-An alternative double-stable spring is discussed in \secref{choi-spring}.
 
+\subsubsection{Combined \qzs/ spring}
 
-\subsubsection{Vertical zero stiffness}
-($k_z=0,k_y=-k_x>0$).
+Stability criteria: $K_z=0,K_y=-K_x>0$.
 
-Finally, the horizontal and zero stiffness springs can produce a
-spring approaching zero stiffness in the vertical direction, a small positive
-stiffness in one horizontal direction, and an equal negative stiffness
-in the other.
-
-
-It is also possible to combine the zero stiffness spring with the horizontal spring to add stability to one horizontal degree of freedom.
-Such a design is shown in \figref{zhv-spring} and its forces analysed in three degrees of freedom in \figref{zhvspring-move,zhvspring-move-z}.
-There is a single magnet dimension gap between the floating magnet and all fixed magnets; again, half-inch cubes are used to model the system.
+Finally, the horizontal and \qzs/ springs combined, shown in \figref{zhv-spring}, can produce a system approaching zero stiffness in the vertical direction, a small positive stiffness in one horizontal direction, and an equal negative stiffness in the other.
+A demonstration of the force--displacement curves is shown in \figref{zhvspring-move,zhvspring-move-z}, for a system with half-inch cubes and a single magnet dimension gap between the floating magnet and all fixed magnets.
 The self-weight of the system is taken to be \SI{5}{N} in order to include some effect of gravity compensation on the device.
+The addition of the horizontal magnets produces an asymmetry in the total vertical force characteristic of the system, yet it still retains an inflection point at which \qzs/ can be realised.
 
 \begin{figure}
    \includegraphics{PhD/Figures/Systems/zhv-spring}
@@ -498,18 +470,13 @@ The self-weight of the system is taken to be \SI{5}{N} in order to include some 
    \figlabel{zhvspring-move-z}
 \end{figure}
 
-Translating the spring in two directions simultaneously gives a better
-picture of the stability of the spring. For example, motion in the
-\x-direction showns zero force in the \y, and vice versa.
-The addition of the horizontal magnets produces an asymmetry in the total vertical force characteristic of the system, but it still retains an inflection point at which \qzs/ can be realised.
 
-
-\subsubsection{Isoforces}
+\subsection{Isoforces for magnetic springs}
 \seclabel{isoforces}
 
-
-Analysing the force--displacement characteristics for these devices remains quite challenging.
-To indicate the difficulty of visualising the complex force profile these devices exhibit, representative force component contours are plotted in \figrangeref{vattr-forces}{zhv-forces} against displacement in each direction; these contours are termed `isoforces' as they trace contours of equal force.
+As the magnetic springs become composed of more elements, analysing their force--displacement characteristics is quite challenging.
+As the \threeD/ forces vary with displacement in three \dof/, it isn't possible to directly visualise the behaviour these systems will have under arbitrary displacement.
+An attempt to visualising the complex force profile these devices exhibit is shown in \figrangeref{vattr-forces}{zhv-forces}, in which representative force component contours are plotted against displacement in each direction separately; these contours are termed `isoforces' as they trace contours of equal force.
 
 The simple magnetic systems of a pair of magnets in either attraction or repulsion will be treated first as their qualitative analysis is straightforward; consider their isoforces shown in \figref{vattr-forces,vrepl-forces}, \resp.
 Each figure shows three plots which correspond to each component of force: $F_x$, $F_y$, $F_z$.
@@ -517,27 +484,14 @@ The plots are three dimensional, and contours represent the magnitude of the res
 The vertical components are easiest to comprehend.
 \Figref{iso-vattr-z} shows that as the floating magnet is displaced upwards, the magnitude of the vertical force increases (more blue).
 Contrariwise, \figref{iso-vrepl-z} shows an increase in vertical force with negative displacement.
+The colour scale goes through the spectrum from orange to purple as the forces increase.
+For symmetrical cases like the \x- and \y-direction forces, this makes pale green-blue the colour of zero force, with orange/purple the negative and positive extremes, respectively.
+Thus, for the vertical attracting spring, \figref{iso-vattr-x,iso-vattr-y} demonstrate horizontal stability while for the vertical repelling spring,  \figref{iso-vrepl-x,iso-vrepl-y} demonstrate horizontal instability.
 
-We start out by looking at the simple configuration often used in the
-literature: the spring magnet floating beneath a fixed attractive support
-magnet. This spring is stable in both horizontal directions, but unstable in
-the vertical direction.
+The vertical \qzs/ spring retains this simplicity of representation in \figref{z-forces}, noting particularly the `switching-stability' horizontal behaviour with vertical displacement.
+Above the centred position, the spring dynamically behaves as the vertically attracting spring, and below it behaves as the repulsive spring.
 
-First examine the forces on the floating spring as locations beneath the
-support, shown in \figref{vattr-forces}. No legend makes this a bit confusing,
-but the colour scale goes through the spectrum red to blue as the forces
-increase. For symmetrical cases like the \x- and \y-direction forces, this
-makes pale green-blue the colour of zero force, with orange/purple the
-negative and positive extremes, respectively.
-
-So, in the case of the \x-forces, we see that positive motion in the
-x-direction results in a force in the negative direction; \ie, the force
-opposes the displacement. Similarly for the \y-direction. As is expected, in
-the \z-direction, we see that the closer the spring magnet comes to the
-attractive magnet vertically, the greater the forces in that direction. This
-is instability.
-
-
+\Figref{h-forces,hv-forces,zhv-forces} involve the horizontal spring in combination with other arrangements and the superposition of the isoforces becomes increasingly complex.
 In conclusion, combining simple magnets with a variety of geometries can lead to a wide selection of magnet spring types.
 Only a preliminary analysis of these has been conducted here; in \secref{oblique} a different spring type using inclined magnets is covered in detail, and later in \secref{qzs} the design characteristics of the zero stiffness spring is examined.
 
@@ -562,12 +516,12 @@ Only a preliminary analysis of these has been conducted here; in \secref{oblique
   \end{figure}
 }
 
-\isoforces{vattr}{Isosurface forces of the attracting vertical spring.}
-\isoforces{vrepl}{Isosurface forces of the repelling vertical spring.}
-\isoforces{z}{Isosurface forces of the zero stiffness spring.}
-\isoforces{h}{Isosurface forces of the horizontal spring.}
-\isoforces{hv}{Isosurface forces of the combination spring.}
-\isoforces{zhv}{Isosurface forces of the combination zero stiffness spring.}
+\isoforces{vattr}{Isoforces of the attracting vertical spring.}
+\isoforces{vrepl}{Isoforces of the repelling vertical spring.}
+\isoforces{z}{Isoforces of the zero stiffness spring.}
+\isoforces{h}{Isoforces of the horizontal spring.}
+\isoforces{hv}{Isoforces of the combination spring.}
+\isoforces{zhv}{Isoforces of the combination zero stiffness spring.}
 
 
 \subsection{Stability in two \dof/}
@@ -788,14 +742,7 @@ that between $d$~and $D$.
 
 A magnet spring can be designed along such principles such as shown in
 approximation in \figref{example-8-mag-spring}, which shows a top-down view.
-
-\begin{figure}
-  \asyinclude{PhD/Figures/Systems/magrotate.asy}
-  \caption{Schematic of a single unstable \dof/ concept.}
-  \figlabel{example-8-mag-spring}
-\end{figure}
-
-The translational stability of the system can be assessed using the theory between parallel cuboid magnets (crossref).
+The translational stability of the system can be assessed using the theory between parallel cuboid magnets (\eqref{akoun}).
 In order to model the rotational stability, a measure must be calculated of the torque on the spring design due to rotations around each axis.
 Forces in three directions can only be calculated for parallel magnets, and while there are expressions in the literature to calculate the torques between cuboid magnets \cite{janssen2010-ietm}, these expressions only apply for parallel magnets (\ie, magnets that have no relative rotation between them).
 Furthermore, the moments produced by the magnets at their lever arms around the centre of gravity of the spring are likely to dominate over the torque induced between each pair of magnets, since the rotations will be small but the lever arms will be (relatively) large.
@@ -806,18 +753,18 @@ Finally, if small rotations of the spring are assumed, then the effect of this r
     \begin{subfigure}[0.4]
       \asyinclude{PhD/Figures/Systems/magrotate2.asy}
       \caption{After rotation.}
+      \figlabel{example-8-mag-spring}
     \end{subfigure}\hfil
     \begin{subfigure}[0.4]
       \asyinclude{PhD/Figures/Systems/magrotate3.asy}
       \caption{Small-angle approximation for calculating forces and moments.}
+      \figlabel{magrotate}
     \end{subfigure}
   \end{wide}
-  \caption{}
-  \figlabel{magrotate}
+  \caption{Schematic of a single unstable \dof/ concept.}
 \end{figure}
 
 The total torque on a system such as shown in \figref{example-8-mag-spring} is therefore calculated by neglecting the torques between the magnets and by neglecting the effects of rotation on the forces between the magnets.
-
 A static analysis of forces and torques created in this magnetic spring was performed using the geometry shown in \figref{magrotate-schem}. For this analysis, cube magnets are used for simplicity and the magnet gaps in the centred position are defined to be equal between the strong and the stabilising magnets.
 
 \begin{figure}
@@ -932,22 +879,10 @@ This result indicates that increasing the spring depth does not affect the stabi
   \figlabel{stablerot-depth}
 \end{figure}
 
-But stability in all but one degrees of freedom is not particularly useful in this configuration because the load-bearing ability of the spring is fairly low; there are no magnets that contribute direction towards creating positive vertical forces.
-An alternative magnet design is proposed for this purpose with the goal of retaining the single degree of instability.
-An illustrative example of the force and torque characteristics is shown in \figref{demon-stable12}.
-While the stiffness along the $y$ direction in this case is very low (and hence close to becoming unstable when the spring is perturbed), this example shows that a design is possible that achieves both sufficient load bearing and minimal instability.
-
-\begin{figure}
-  \psfragfig{\phdpath magrotate/fig/stable12-xyzall}
-  \lofcaption{
-    Demonstration of single-degree-of-freedom instability with greater load bearing.
-  }{
-    The gradients of all forces and torques are negative (infering stability)
-    except for the force along the $x$ direction.
-  }
-  \figlabel{demon-stable12}
-\end{figure}
-
+Variation of the magnetic spring parameters in this case indicates that is possible to increase the load-bearing ability of such a design without compromising the stability of the system.
+In this section we have shown one magnetic system that has a single degree of translational instability, and the literature has a small number of other examples \cite{delamare1994-ietm,choi2003}.
+To conclude, there are a plurality of magnet designs that can take advantage of mechanical level arms to stabilise rotational degrees of freedom even if low-order magnet systems exhibit rotational instability.
+Optimisation of such systems is an open question that will require a large amount of ingenuity; it is likely that different requirements will yield varying solutions in this area.
 
 
 \section{Oblique magnetic spring design}
@@ -1252,11 +1187,11 @@ The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever
 \begin{figure}
 \begin{wide}
 \subfloat[Without rotation.]
-  {\pregen{\includegraphics[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-1}}}\qquad
+  {\pregen{\includegraphics{magcode/examples/oblique/fig/mbq-angle-schem-1}}}\qquad
 \subfloat[With rotation shown in black; the unrotated position, as in (a), is shown in light grey.]
-  {\pregen{\includegraphics[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-2}}}\qquad
+  {\pregen{\includegraphics{magcode/examples/oblique/fig/mbq-angle-schem-2}}}\qquad
 \subfloat[With small angle approximation of zero magnet rotation shown in colour; the rotated magnets, as in (b), are shown in black.]
-  {\pregen{\includegraphics[scale=0.8]{magcode/examples/oblique/fig/mbq-angle-schem-3}}}
+  {\pregen{\includegraphics{magcode/examples/oblique/fig/mbq-angle-schem-3}}}
 \end{wide}
 \caption[Visual representation of the small angle approximation for magnet rotations.]{Visual representation of the small angle approximation in which the magnet structure rotates but the magnets themselves are assumed to remain parallel to their respective partner.}
 \figlabel{mbq-angle-schem-approx}
@@ -1407,7 +1342,7 @@ The parameters used in \Tabref{mbq-dyn-param} were used for the dynamic simulati
   {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-dyn-xy-map}}}
 \end{wide}
 \lofcaption
-[Dynamic simulation of the rotationally-constrained system.]
+{Dynamic simulation of the rotationally-constrained system.}
 {Dynamic simulation of the system defined by \eqref{mbq-dyn} with perturbation of $\Delta x=\Delta y=\SI{1.5}{mm}$ and constraint on rotational $\mbqrotz$.}
 \figlabel{mbq-dyn-xy}
 \end{figure}
@@ -1443,11 +1378,11 @@ In fact, this arrangement is more stable than the last as there is less cross-co
 \begin{figure}
 \begin{wide}
 \subfloat[Horizontal displacement $\mbqhdisp$.]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-dyn-xyr-x}}}\qquad
+  {\pregen{\psfragfig[scale=0.9]{magcode/examples/oblique/fig/mbq-dyn-xyr-x}}}\qquad
 \subfloat[Relative vertical displacement $\mbqvdisp-\mbqvdisp_0$.]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-dyn-xyr-y}}}\qquad
+  {\pregen{\psfragfig[scale=0.9]{magcode/examples/oblique/fig/mbq-dyn-xyr-y}}}\qquad
 \subfloat[Rotation $\mbqrotz$.]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-dyn-xyr-r}}}
+  {\pregen{\psfragfig[scale=0.9]{magcode/examples/oblique/fig/mbq-dyn-xyr-r}}}
 \end{wide}
 \caption
 [Dynamic simulation of the unconstrained system.]
@@ -1488,7 +1423,7 @@ The device was quite stable in this configuration, but when analysed for active 
 \begin{wide}
 \includegraphics{PhD/Figures/Oblique/oblique-rig}
 \end{wide}
-\lofcaption
+\caption
 [Prototype inclined magnet isolation device.]
 {Prototype inclined magnet isolation device constrained with a linear bearing to translate only in the $y$-direction and rotate solely around the $x$-axis.}
 \figlabel{oblique-rig}

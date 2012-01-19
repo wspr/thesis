@@ -597,9 +597,11 @@ It can also be seen that an optimal $\ratioMag$ and $\ratioCoil$ could be chosen
 For simplicity, in the examples to follow we shall consider peak force as the metric to be maximised but the methodology for design optimisation holds regardless of the cost function.
 
 \begin{figure}
-\centering
-\psfragfig{magcode/examples/fig/magcoil-magratio}\\
+\begin{wide}
+\raisebox{0.8cm}{\psfragfig{magcode/examples/fig/magcoil-magratio}}
+\hfil
 \psfragfig{magcode/examples/fig/magcoil-coilratio}
+\end{wide}
 \caption
 [Normalised force versus displacement calculations for two cases.]
 {Normalised force $\fnorm$ versus displacement calculations for two cases: firstly, varying magnet ratio $\ratioMag$ for a fixed coil ratio $\ratioCoil=1$, and secondly varying coil ratio $\ratioCoil$ for a fixed magnet ratio $\ratioMag=2$.}
@@ -618,8 +620,8 @@ This surface can be seen to be concave, and therefore a single value for $\ratio
 
 \begin{figure}
 \centering
-\psfragfig{magcode/examples/fig/magratio-maxforce}\hspace{-1cm}%
-\psfragfig{magcode/examples/fig/magratio-maxforce-cb}
+\psfragfig{magcode/examples/fig/magratio-maxforce}\quad
+\raisebox{1cm}{\psfragfig{magcode/examples/fig/magratio-maxforce-cb}}
 \caption
 [Peak normalised force as magnet and coil ratios and are varied.]
 {Peak normalised force $\fnpeak$ as magnet and coil ratios $\ratioMag$ and $\ratioCoil$ are varied over a \num{20x20} discrete grid for a specific wire diameter, coil impedance, and magnet volume. Maximum normalised peak force is indicated with a star.}
@@ -660,19 +662,25 @@ The maximum force obtainable with a coil of certain wire diameter is found by mu
 This produces the curves of maximum peak force shown in \figref{magcoil-ratiomax}, which each show a global maximum against wire diameter, although as the wire diameter increases the achievable peak force remains largely flat.
 
 \begin{figure}
+\begin{wide}
+\null\hspace{-1.5cm}
+\begin{subfigure}
 \psfragfig{magcode/examples/fig/magcoil-ratiomax-norm}
-\lofcaption{Maximum normalised force per ampere of current, optimised by magnet and coil geometry as a function of wire diameter.}{ Results are shown for three values of coil impedance while the magnet volume is fixed at $\volMag=(\SI{20}{mm})^3$.}
+\caption{Maximum normalised force per ampere of current.}
 \figlabel{magcoil-ratiomax-norm}
-\end{figure}
-
-\begin{figure}
+\end{subfigure}\hfil
+\begin{subfigure}
 \psfragfig{magcode/examples/fig/magcoil-ratiomax}
-\caption
-[Maximum peak force $\fmax$ versus wire diameter.]
-{Maximum peak force $\fmax$ versus wire diameter calculated by multiplying the normalised maximum force by the maximum current rating for that wire diameter (\figref{magcoil-maxcurr,magcoil-ratiomax-norm}, \resp).}
+\caption{Maximum peak force $\fmax$ versus wire diameter.}
 \figlabel{magcoil-ratiomax}
+\end{subfigure}
+\end{wide}
+\lofcaption{
+  Maximum peak and normalised force per ampere of current, optimised by magnet and coil geometry as a function of wire diameter.
+}{
+  Results are shown for three values of coil impedance while the magnet volume is fixed at $\volMag=(\SI{20}{mm})^3$.
+}
 \end{figure}
-
 
 It is interesting to consider the parameters chosen for the optimal values of magnet and coil ratios (\figref{magcoil-ratiomax-ratios}).
 Due to the non-smooth current rating data (\figref{magcoil-maxcurr}) and limited by the numerical accuracy of the computations used to generate the results, the optimal magnet and coil ratios are not smooth with wire diameter.

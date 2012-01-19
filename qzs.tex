@@ -91,7 +91,7 @@ position.
   \asyinclude{PhD/Figures/ZKS/schematic}
   \caption{Inclined springs in their unloaded, uncompressed state, corresponding
 to a vertical displacement of $\ZKSdisp=\ZKSheight$.\figlabel{zks-dia}}
-\end{subfigure}
+\end{subfigure}\hfil
 \begin{subfigure}
   \asyinclude{PhD/Figures/ZKS/schematic-qzs}
   \caption{Inclined springs at a position of maximum negative stiffness,
@@ -203,11 +203,11 @@ vertical the spring angles before deflection in \figref{zks-dia}).
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-plain}
+\mbox{\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-plain}}
 \caption{Vertical force due to inclined springs only using
 \eqref{ZKSforceinclV} for a range of geometric ratios
 $\ZKSratio$.\figlabel{ZKSforce-plain}}
-\end{subfigure}
+\end{subfigure}\hfil
 \begin{subfigure}
 \psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-total}
 \caption{Normalised vertical force characteristic of the system calculated
@@ -289,27 +289,21 @@ calculated by differentiating \eqref{ZKSforcetotalVnorm} with respect to $x$:
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffness-total}
-
+\mbox{\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffness-total}}
 \caption{\figlabel{ZKSstiffness-vert} Normalised vertical stiffness of the
 system calculated with \eqref{ZKSstiffnessV}.}
-
-\end{subfigure}
+\end{subfigure}\hfil
 \begin{subfigure}
 \psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-total}
-
 \caption{
   Normalised horizontal stiffness of the system calculated with \eqref{ZKSstiffnessH}.
   \figlabel{ZKSstiffness-horiz}
 }
-
 \end{subfigure}
 \end{wide}
-
 \caption{A comparison of vertical and horizontal stiffness characteristics for
 a range of geometric ratios $\ZKSratio$ at $\ZKSkratio=1$. $\ZKSratioQZS$ is
 calculated at $\ZKSlengthratio=1$.}
-
 \figlabel{ZKSstiffness-both}
 \end{figure}
 
@@ -357,11 +351,11 @@ order to retain stability.
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-  \psfragfig{PhD/Simulations/ZKS/fig/ZKSoffqzs}
+  \mbox{\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSoffqzs}}
   \caption{\figlabel{ZKSoff}
 The stable and unstable equilibrium points for $\ZKSoff\in\{-0.1, 0, 0.1\}$.
 The rest position will move from the unstable point to the stable point of equilibrium.}
-\end{subfigure}
+\end{subfigure}\hfil
 \begin{subfigure}
   \psfragfig{PhD/Simulations/ZKS/fig/ZKSratioErr}
   \caption{\figlabel{ZKS-ratioErr}
@@ -517,10 +511,10 @@ decreases with $\ZKSlengthratio$).
 \begin{figure}[p]
 \begin{wide}
 \begin{subfigure}
-  \psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessV-QZS}
+  \mbox{\null\hspace{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessV-QZS}}
   \caption{\figlabel{ZKSstiffnessV-QZS}
 Normalised vertical stiffness of the system.}
-\end{subfigure}
+\end{subfigure}\hfil
 \begin{subfigure}
   \psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-QZS}
   \caption{\figlabel{ZKSstiffnessH-QZS}
@@ -713,7 +707,7 @@ expression for the normalised force $\nforce$ is given in
 The stiffness between two cubical magnets can be calculated by differentiating
 the force expression in \eqref{force} with respect to vertical displacement
 $\gamma=\mdim\ndisp$ and can be shown to be proportional to the magnet size $\mdim$:
-\begin{dmath}[label=stiffness]
+\begin{dmath}[label=stiffness,compact]
   \magstiffness = \frac{\partial}{\partial\gamma} \magforce
              = \frac1\mdim\frac{\partial}{\partial\ndisp} \mdim^2\nforce
              = \mdim\nstiffness .

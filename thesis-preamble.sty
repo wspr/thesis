@@ -26,6 +26,7 @@
 \normalfont
 
 \RequirePackage[
+  process=auto,
   crop=pdfcrop,
   ps2pdf-options={-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress},
   cleanup={.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
@@ -61,9 +62,6 @@
   zref,
 }
 
-\setkeys{Gin}{quiet} % YES!
-\usepackage{atveryend}
-%\AtVeryEndDocument{\batchmode}
 
 \RequirePackage[font={sf,small}]{caption}
 \captionsetup[table]{position=top}
@@ -122,7 +120,8 @@
 
 \EndPreamble
 
-\RequirePackage[process=auto]{asyfig}
+\setkeys{Gin}{quiet} % Why does this need to be after?
+
 \RequirePackage[inline]{asymptote}
 \renewcommand\asydir{asy}
 

@@ -11,7 +11,7 @@
 \let\Int\Integrate
 
 %\renewcommand\D[3][]{%
-%  \text{\textsc{d}}_{#3^{#1}}\,#2}
+%  \mathrm{\textsc{d}}_{#3^{#1}}\,#2}
 %%%%%%%%%%%%%%%%%
 \Style{LogParen=p,ArcTrig=arc,ImagParen=p,RealParen=p}
 %%%%%%%%%%%%%%%%%
@@ -119,7 +119,7 @@
 \newvariable\freqHPfilter{\freq_c}
 
 \newvariable\dampingRel{c}
-\newvariable\dampingAbs{c_{\textrm{sky}}}
+\newvariable\dampingAbs{c_{\mathrm{sky}}}
 \newvariable\stiffnessRel{k}
 \newsignal\forceIn\laplaceForce{f}
 \newsignal\forceDisturb\laplaceForceDisturb{g}
@@ -261,16 +261,16 @@
 \newfunc\nstiffness{k_m}[elem={\ndisp},index=1]
 
 %% QZS system:
-\newfunc\frepl{F_{\text{repl}}}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
-\newfunc\fattr{F_{\text{attr}}}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
+\newfunc\frepl{F_{\mathrm{repl}}}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
+\newfunc\fattr{F_{\mathrm{attr}}}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
 
 \newfunc\magforceZ{F_z}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
 \newfunc\nforceZ{f_z}[elem={\ngap,\ndispZ},index={1,2}]
 \newfunc\magstiffnessZ{K_z}[elem={\mdim,\ngap,\ndispZ},index={1,2,3}]
 \newfunc\nstiffnessZ{k_z}[elem={\ngap,\ndispZ},index={1,2}]
 
-\newfunc\krepl{K_{\text{repl}}}[elem={\mdim,\ngap,\heq{} },index={1,2,3}]
-\newfunc\kattr{K_{\text{attr}}}[elem={\mdim,\ngap,\heq{} },index={1,2,3}]
+\newfunc\krepl{K_{\mathrm{repl}}}[elem={\mdim,\ngap,\heq{} },index={1,2,3}]
+\newfunc\kattr{K_{\mathrm{attr}}}[elem={\mdim,\ngap,\heq{} },index={1,2,3}]
 \newfunc\QZSkratio{\kappa}[elem={\mdim,\ngap,\heq{} },index={1,2,3}]
 
 \newfunc\heq{h_q}[elem={\mdim,\ngap,\mass},index={1,2,3}]
@@ -280,7 +280,7 @@
 \def\mathlog\left[#1\right]{\log\fn{#1}}
 \def\mathatan\left[#1\right]{\arctan\fn{#1}}
 
-\newcommand\eqdef{\stackrel{\text{\tiny def}}{=}}
+\newcommand\eqdef{\stackrel{\mathrm{\tiny def}}{=}}
 
 %%%%%% ZKS %%%%%%%%%
 
@@ -289,7 +289,7 @@
 \newcommand\ZKSQZS[1]{#1_{\textsc{qzs}}}
 
 \newvariable\ZKSdisp[nom=Vertical displacement of the inclined spring]{x}
-\newvariable\ZKSdispMin[nom=Maximum deflection of the vertical spring]{x_{\text{min}}}
+\newvariable\ZKSdispMin[nom=Maximum deflection of the vertical spring]{x_{\mathrm{min}}}
 \newvariable\ZKSshift[nom=Horizontal displacement of the inclined spring]{y}
 
 \newvariable\ZKSwidth[nom=Inclined spring horizontal dimension]{w}
@@ -322,7 +322,7 @@
   {\alpha}
 
 \newvariable\ZKSnorm[nom=Normalised displacement in the load bearing direction]{\xi}
-\newvariable\ZKSnormMin[nom=Maximum normalised displacement below the equilibrium before the spring reaches zero deflection]{\ZKSnorm_{\text{min}}}
+\newvariable\ZKSnormMin[nom=Maximum normalised displacement below the equilibrium before the spring reaches zero deflection]{\ZKSnorm_{\mathrm{min}}}
 
 
 \newvariable\ZKSoff[nom=Percentage difference between $\ZKSratio$ and $\ZKSratioQZS$]{\epsilon}
@@ -399,7 +399,7 @@
 \newvariable\WidthBeam{\VariableBeam w}
 \newvariable\ThicknessBeam{\VariableBeam t}
 
-\newvariable\DensityAluminium{\rho_{\text{a}}}
+\newvariable\DensityAluminium{\rho_{\mathrm{a}}}
 
 \newvariable\OriginBeam{\VariableBeam o}
 \newvariable\OriginMagLow{ o_m }
@@ -524,8 +524,8 @@
 \newcommand{\flux}{\Phi}
 \newcommand{\perm}{\mu}
 \newcommand{\permrel}{\mu_r}
-\newcommand{\BHmax}{\gp{\magB\magH}_{\text{max}}}
-\newcommand\Msat{M_{\text{sat}}}
+\newcommand{\BHmax}{\gp{\magB\magH}_{\mathrm{max}}}
+\newcommand\Msat{M_{\mathrm{sat}}}
 
 %%%%%%%%%%%%%%%%
 %% Eddy currents
@@ -552,7 +552,7 @@
 \newcommand{\divgrad}{\nabla^2}
 \newcommand{\divgradxyz}[1]{\od{^2#1}{x^2} +\od{^2#1}{y^2} +\od{^2#1}{z^2}}
 
-\def\T{^{\text{T}}}
+\def\T{^{\mathrm{T}}}
 
 \newcommand\bdot{\bm{\cdot}}
 
@@ -605,7 +605,7 @@
 \newcommand\mbqlever{l}
 \newcommand\mbqmagratio{\gamma}
 \newcommand\mbqvolume{V}
-\newcommand\mbqmasseq{m_{\text{eq}}}
+\newcommand\mbqmasseq{m_{\mathrm{eq}}}
 
 \newcommand\mbqdispl{\vect r}
 \newcommand\mbqmdispl{\vect s}
@@ -618,7 +618,7 @@
 %%% put this somewhere %%%
 
 \renewcommand\t[1]{\theta_#1}
-\def\nl{\text{~\color[gray]{0.7}\small\dots}\\}
+\def\nl{\mathrm{~\color[gray]{0.7}\small\dots}\\}
 
 \newcounter{wspr}
 \newcommand\p[1]{%
