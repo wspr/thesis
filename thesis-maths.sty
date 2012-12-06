@@ -275,7 +275,7 @@
 \newfunc\keq{K_q}[elem={\mdim,\ngap,\mass},index={1,2,3}]
 \newfunc\feq{f_q}[elem={\mdim,\ngap,\mass},index={1,2,3}]
 
-\def\mathlog\left[#1\right]{\log\fn{#1}}
+\def\mathlog\left[#1\right]{\ln\fn{#1}}
 \def\mathatan\left[#1\right]{\arctan\fn{#1}}
 
 \newcommand\eqdef{\stackrel{\mathrm{\tiny def}}{=}}
@@ -507,23 +507,27 @@
 \newvect\magH{H}
 \newvect\magB{B}
 \newvariable\remanence[nom=Remanence]{B_r}
+\newvariable\coerce[nom=Coercivity]{H_c}
+\newvariable\Msat[nom=Magnetisation at saturation]{M_{\mathrm{sat}}}
 \newvect\magflux{B}
 \newvect\magM{M}
 \newvect\magJ{J}
+\newcommand\magn[1]{B_{r_{#1}}}
 \newcommand\magJm{\vect{J}_m}
 \newcommand\magjm{\vect{j}_m}
 \newcommand\pos{\vect{x}}
 \newcommand\permVac{\mu_0}
-\newcommand\permMag{\mu_r}
+\newcommand\permvac{\mu_0}
+\newcommand{\perm}{\mu}
+\newcommand{\permrel}{\mu_r}
 \newcommand\magconst{\frac{\permVac}{4\pi}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 \newcommand{\mdip}{\vect{m}}
 \newcommand{\flux}{\Phi}
-\newcommand{\perm}{\mu}
-\newcommand{\permrel}{\mu_r}
 \newcommand{\BHmax}{\gp{\magB\magH}_{\mathrm{max}}}
-\newcommand\Msat{M_{\mathrm{sat}}}
+\newmacro \bhcurve {$\magB$/$\magH$ curve}
+\newmacro \Hinf {\ensuremath{H^\infty}}
 
 %%%%%%%%%%%%%%%%
 %% Eddy currents

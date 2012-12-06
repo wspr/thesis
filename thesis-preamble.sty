@@ -1,6 +1,68 @@
 %!TEX root = thesis.tex
 \ProvidesPackage{thesis-preamble}
 
+
+%%% SHORTCUTS
+
+\RequirePackage[english]{shortwrite}
+
+\newcommand\code[1]{\texttt{#1}}
+\newcommand\note[1]{\unskip\footnote{#1}}
+
+\DeclareRobustCommand\dash{%
+  \unskip\nobreak\thinspace\textemdash\allowbreak\thinspace\ignorespaces}
+
+\newcommand\acro[1]{\textsc{\MakeLowercase{#1}}}
+\newcommand\newacro[1]{\@namedef{#1}{\acro{#1}}}
+
+\newacro{FEA}
+\newacro{FFT}
+\newacro{FEM}
+\newacro{PDF}
+\newacro{RMS}
+\newacro{PID}
+%\newacro{PI}
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newcommand\newmacro[2]{\def#1/{#2}}
+
+\newcommand\price[2][\$]{#1#2}
+\newcommand\usdollar{\textsc{u.s.}\$}
+
+\newmacro \ANSYS {ANSYS}
+\newmacro \Matlab {Matlab}
+\newmacro \maglev {maglev}
+\newmacro \dof    {degree of freedom}
+\newmacro \BnK {Br\"uel~\& Kj\ae r}
+\newmacro \magnetorh {magnetorheological}
+\newmacro \vibneut {vibration neutraliser}
+\newmacro \Vibneut {Vibration neutraliser}
+\newmacro \emf {electromotive force}
+\newmacro \backemf {back--\emf/}
+
+\newmacro \sic {[\textit{sic}]}
+
+\newmacro \KJMagnetics {%
+  \href{http://www.kjmagnetics.com/}
+       {K\,\&\,J~Magnetics}%
+  \cite{kjmagnetics}%
+}
+
+\newmacro \threeD {\textsc{3d}}
+\newmacro \twoD {\textsc{2d}}
+
+\newmacro \AC {time varying}
+\newmacro \PhD {Ph.\,D\sw@ensuresingleperiod}
+\newmacro \qzs {quasi--zero stiffness}
+\newmacro \QZS {Quasi--zero stiffness}
+
+% COMPOUND WORDS
+\newcommand \compound [2] {#1\-#2}
+
+
+
+
 \edef\thesisjobname{\jobname}
 \newcommand\chapterinclude[1]{%
   \def\jobname{#1}
@@ -74,6 +136,7 @@
 %% Hyperref
 \RequirePackage[ocgcolorlinks,breaklinks,
             plainpages=false,pdfpagelabels,linktocpage]{hyperref}
+\pdfstringdefDisableCommands{\def\dash{ - }}
 
 \definecolor{darkred}{rgb}{0.4,0,0}
 \definecolor{darkgreen}{rgb}{0,0.4,0}
@@ -110,6 +173,8 @@
 
 %% MATHS
 \RequirePackage{amsmath,amssymb,bm,cool,mathtools,fngp}
+\newacro{PI}% overwritten by cool.sty
+
 \RequirePackage{mlist}
 \RequirePackage{thesis-maths}
 \@ifpackageloaded{mathpazo}{\PassOptionsToPackage{mathpazo}{flexisym}}{}
@@ -369,68 +434,6 @@
 
 
 
-
-
-%%% SHORTCUTS
-
-\RequirePackage[english]{shortwrite}
-
-\newcommand\code[1]{\texttt{#1}}
-\newcommand\note[1]{\unskip\footnote{#1}}
-
-\DeclareRobustCommand\dash{%
-  \unskip\nobreak\thinspace\textemdash\allowbreak\thinspace\ignorespaces}
-\pdfstringdefDisableCommands{\def\dash{ - }}
-
-\newcommand\acro[1]{\textsc{\MakeLowercase{#1}}}
-\newcommand\newacro[1]{\@namedef{#1}{\acro{#1}}}
-
-\newacro{FEA}
-\newacro{FFT}
-\newacro{FEM}
-\newacro{PDF}
-\newacro{RMS}
-\newacro{PID}
-\newacro{PI}
-
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
-
-\newcommand\newmacro[2]{\def#1/{#2}}
-
-\newcommand\price[2][\$]{#1#2}
-\newcommand\usdollar{\textsc{u.s.}\$}
-
-\newmacro \ANSYS {ANSYS}
-\newmacro \Matlab {Matlab}
-\newmacro \maglev {maglev}
-\newmacro \dof    {degree of freedom}
-\newmacro \BnK {Br\"uel~\& Kj\ae r}
-\newmacro \bhcurve {$B$--$H$ curve}
-\newmacro \Hinf {\ensuremath{H^\infty}}
-\newmacro \magnetorh {magnetorheological}
-\newmacro \vibneut {vibration neutraliser}
-\newmacro \Vibneut {Vibration neutraliser}
-\newmacro \emf {electromotive force}
-\newmacro \backemf {back--\emf/}
-
-\newmacro \sic {[\textit{sic}]}
-
-\newmacro \KJMagnetics {%
-  \href{http://www.kjmagnetics.com/}
-       {K\,\&\,J~Magnetics}%
-  \cite{kjmagnetics}%
-}
-
-\newmacro \threeD {\textsc{3d}}
-\newmacro \twoD {\textsc{2d}}
-
-\newmacro \AC {time varying}
-\newmacro \PhD {Ph.\,D\sw@ensuresingleperiod}
-\newmacro \qzs {quasi--zero stiffness}
-\newmacro \QZS {Quasi--zero stiffness}
-
-% COMPOUND WORDS
-\newcommand \compound [2] {#1\-#2}
 
 
 
