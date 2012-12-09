@@ -11,9 +11,16 @@ size2 = ...
 price2 = ...
   [0.2 0.44 0.8 1.32 2.08 3.08 4.4 6.04 8.04 13.36 39.96 129.44 224.40];
 
+% dec 2012
+size3 = ...
+    2.54*[1/8  3/16 1/4  5/16 3/8  7/16 1/2  9/16 5/8  3/4   1     1.5   2];
+price3 = ...
+         [0.25 0.38 0.68 1.15 1.82 2.70 3.83 5.27 7.02 11.61 26.19 84.26 193.35];
+
 willfig('mag-price','small'); clf; hold on
 plot(size.^3,price,'.-','color',[0 0 0],'markeredgecolor','k')
 plot(size2.^3,price2,'.-','color',[0 0 0],'markeredgecolor','k')
+%plot(size3.^3,price3,'--','color',[0 0 0],'markeredgecolor','k')
 text(2,20,'2011')
 text(0.5,0.5,'2009')
 colourplot
