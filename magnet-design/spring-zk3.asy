@@ -1,6 +1,8 @@
 
 import phdfig;
 
+texpreamble("\def\ax{\mathbf x}\def\az{\mathbf z}");
+
 unitsize(1cm);
 
 real m=1;
@@ -92,5 +94,5 @@ pair aoff = (-4,0)-my/2;
 real xx = 0.5;
 real zz = 0.5;
 draw(shift(aoff)*((xx,0)--(0,0)--(0,zz)),Arrows(size=4pt));
-label("$\mathbf x$",aoff+(xx,0),SE);
-label("$\mathbf z$",aoff+(0,zz),NE);
+label("$\ax$",aoff+(xx,0),SE);
+label("$\az$",aoff+(0,zz),NE);

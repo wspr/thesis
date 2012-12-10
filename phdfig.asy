@@ -4,6 +4,17 @@ import three;
 defaultpen(fontsize(11pt));
 
 /*******************
+      Variables
+ *******************/
+
+texpreamble("
+  \providecommand\ax{\mathbf x}
+  \providecommand\ay{\mathbf y}
+  \providecommand\az{\mathbf z}
+");
+
+
+/*******************
       Magnets
  *******************/
 

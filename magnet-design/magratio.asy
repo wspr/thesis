@@ -2,7 +2,7 @@
 import phdfig;
 
 texpreamble("
-  \def\displ{z}\def\faceCub{b}\def\lengthCub{a}
+  \providecommand\displ{z}\providecommand\faceCub{b}\providecommand\lengthCub{a}
 ");
 
 size(4cm);

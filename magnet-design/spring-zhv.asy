@@ -33,10 +33,17 @@ draw(-mx/2+v-- -arr+arrv, Arrow(size=6pt));
 draw( mx/2+v--  arr+arrv, Arrow(size=6pt));
 draw( my/2+v--  my/2+v+(0,1.2), Arrow(size=6pt));
 
+real lbl = 1;
+draw( hgap+vgap+(0,lbl) -- vgap+(0,lbl) , L="$l_x$", Arrows(size=4pt), align=N);
+draw( -hgap+vgap+(0,lbl) -- vgap+(0,lbl) , L="$l_x$", Arrows(size=4pt), align=N);
+
+draw( hgap+vgap+(lbl,0) -- hgap+(lbl,0) , L="$l_z$", Arrows(size=4pt), align=E);
+draw( hgap-vgap+(lbl,0) -- hgap+(lbl,0) , L="$l_z$", Arrows(size=4pt), align=E);
+
 // axes
-pair aoff = -hgap+(0,-2);
+pair aoff = -hgap-vgap;
 real xx = 0.5;
 real zz = 0.5;
 draw(shift(aoff)*((xx,0)--(0,0)--(0,zz)),Arrows(size=4pt));
-label("$\mathbf x$",aoff+(xx,0),SE);
-label("$\mathbf z$",aoff+(0,zz),NE);
+label("$\ax$",aoff+(xx,0),SE);
+label("$\az$",aoff+(0,zz),NE);
