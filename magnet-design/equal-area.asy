@@ -1,5 +1,6 @@
 
 import phdfig;
+texpreamble("\providecommand\radiusMag{r}");
 
 size(0,3cm);
 

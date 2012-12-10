@@ -876,10 +876,10 @@ To begin, vertical force as a function of vertical displacement $\mbqvforce(\mbq
 
 \subsubsection{Magnet shape}
 
-For this entire analysis, a magnet size ratio of $\mbqmagratio=\mbqmagh/\mbqmagw=0.4$ is used.
+For this entire analysis, a magnet size ratio of $\mbqmagratio=\mbqmagh/\mbqmagw=\num{0.4}$ is used.
 Depending on the exact desired displacement range, values around this magnet ratio produce the maximum force between two opposing cuboid magnets for a fixed magnet volume (\secref*{square-cuboids}).
 For the analysis to follow directly, the magnet volume is fixed at $\mbqvolume=\mbqmagh\mbqmagw^2=(\SI{10}{mm})^3$.
-We define a `unit length' $\mbqunit=\sqrt[3]{V}=\SI{10}{mm}$ and refer in the subsequent analysis to the `magnet gap ratio' defined as $\mbqoffset/\mbqunit$.
+We define a `unit length' $\mbqunit=\sqrt[3]{V}=\SI{10}{mm}$ and refer in the subsequent analysis to the `magnet offset ratio' defined as $\mbqoffset/\mbqunit$.
 The effects of increasing the magnet volume are addressed subsequently.
 
 
@@ -899,8 +899,8 @@ Of particular interest are the low-stiffness regions in the force curves in \Fig
 [
 Force versus displacement of the inclined magnet spring for a range of magnet angles.
 ]
-{Force versus displacement of the inclined magnet spring for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.
-The offset distance $\mbqoffset$ between the magnets is zero.
+{Force versus displacement $\mbqvdisp$ of the inclined magnet spring for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.
+Offset $\mbqoffset$ between the magnets is zero.
 Light gray lines indicate negative stiffness (instability) and markers show the position of quasi--zero stiffness.}
 \figlabel{mbq-fvx-angle}
 \end{figure}
@@ -922,18 +922,18 @@ where the equivalent mass $\mbqmasseq=\mbqvforce(\mbqvdisp)/g$ is the mass requi
 The force corresponding to this equivalent mass is referred to as the `load force'.
 
 By plotting natural frequency as a function of load force in \Figref{mbq-wvf-angle}, we can choose a magnet angle based on a certain load to satisfy a desired natural frequency.
-Specifically, for the case of zero offset $\mbqoffset$ between the magnets (\Figref{mbq-wvf-angle-1}), it can be seen that at a magnet angle of $\mbqmagangle=\SI{35}{\degree}$ the natural frequency is almost independent of force for a large range of applied load (approximately $\SI{30}{N}\pm\SI{10}{N}$).
+Specifically, for the case of zero offset between the magnets $\mbqoffset=0$ (\Figref{mbq-wvf-angle-1}), it can be seen that at a magnet angle of $\mbqmagangle=\SI{35}{\degree}$ the natural frequency is almost independent of force for a large range of applied load (approximately $\SI{30}{N}\pm\SI{10}{N}$).
 
 \begin{figure}
 \begin{wide}
 \subfloat
-  [Zero offset between the magnets.
+  [Zero offset $\mbqoffset$ between the magnets.
    At \SI{35}{\degree} the natural frequency is near-constant for a wide range of load forces.
   \figlabel{mbq-wvf-angle-1}]
   {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle}}}
 \hfill
 \subfloat
-  [Gap ratio of \num{0.25}.
+  [Magnet offset ratio $\mbqoffset/\mbqunit=\num{0.25}$.
    Near-constant natural frequency occurs at \SI{70}{\degree}.
    \figlabel{mbq-wvf-angle-2}]
   {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle2}}}%
@@ -945,19 +945,19 @@ Specifically, for the case of zero offset $\mbqoffset$ between the magnets (\Fig
 
 \subsubsection{Magnet offset}
 
-\Figref{mbq-wvf-angle} shows the natural frequency versus load curve for a magnet gap ratio of zero.
-Increasing the magnet gap $\mbq$ changes the force and stiffness relationships of the spring; \Figref{mbq-wvf-angle-2} shows the same plot with a magnet gap ratio of \num{0.25}.
-The difference in the shape of the curves is not great, but \Figref {mbq-wvf-angle-2} shows that a greater magnet gap results in smaller load forces and a smaller range in load force.
-Also, the angle which corresponds to the almost-flat natural frequency curve has changed to \SI{70}{\degree}.
+\Figref{mbq-wvf-angle} shows the natural frequency versus load curve for a magnet offset ratio $\mbqoffset/\mbqunit$ of zero.
+Increasing the magnet offset $\mbqoffset$ changes the force and stiffness relationships of the spring; \Figref{mbq-wvf-angle-2} shows the same plot with a magnet offset ratio $\mbqoffset/\mbqunit = \num{0.25}$.
+The difference in the shape of the curves is not great, but \Figref {mbq-wvf-angle-2} shows that a greater magnet offset results in smaller load forces and a smaller range in load force.
+Also, the angle which corresponds to the almost-flat natural frequency curve has changed to $\mbqmagangle=\SI{70}{\degree}$.
 
-The natural frequency versus load force is redrawn in \Figref{mbq-kvf-gaps} for a fixed magnet angle of \SI{45}{\degree} over a range of magnet gaps from zero to \num{0.5}.
-At this angle, it can be seen that the region of mostly-flat natural frequency occurs at a gap ratio of \num{0.05}.
-This indicates that the magnet angle should be chosen only after the tolerances of magnet displacement are decided and a minimum gap ratio established.
+The natural frequency versus load force is redrawn in \Figref{mbq-kvf-gaps} for a fixed magnet angle of $\mbqmagangle=\SI{45}{\degree}$ over a range of magnet offset ratios $\mbqoffset$ from zero to \num{0.5}.
+At this angle, it can be seen that the region of mostly-flat natural frequency occurs at a offset ratio of $\mbqoffset/\mbqunit=\num{0.05}$.
+This indicates that the magnet angle should be chosen only after the tolerances of magnet displacement are decided and a minimum offset ratio established.
 
 \begin{figure}
 \centering
 \pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-gaps}}
-\caption{Natural frequency versus load force for gap ratios from zero to \num{0.5} in increments of \num{0.05} and a magnet angle of \SI{45}{\degree}.}
+\caption[Natural frequency versus load force for a range of magnet offset ratios.]{Natural frequency versus load force for magnet offset ratios from zero to \num{0.5} in increments of \num{0.05} and a magnet angle of \SI{45}{\degree}.}
 \figlabel{mbq-kvf-gaps}
 \end{figure}
 
@@ -998,8 +998,8 @@ This is possible as the stiffness in the out-of-the-page direction of \Figref{mb
     {magcode/examples/oblique/fig/mbq-kvz-gaps}}}%
 \end{wide}
 \caption
-[Stiffness in three directions versus vertical displacement for a fixed gap ratio.]
-{Stiffness in three directions versus vertical displacement for a gap ratio of \num{0.2} and magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments (arrows indicate increasing magnet angle).
+[Stiffness in three directions versus vertical displacement for a fixed magnet offset ratio.]
+{Stiffness in three directions versus vertical displacement for a magnet offset ratio of $\mbqoffset/\mbqunit=\num{0.2}$ and magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments (arrows indicate increasing magnet angle).
 For the horizontal and vertical stiffness plots (a)~and (b), regions of positive stiffness for both directions are coloured; regions of gray indicate that either the vertical and/or horizontal stiffness is negative in that position for that magnet angle.
 The out-of-plane stiffness plot~(c) shows instability over the entire displacement range.
 }
@@ -1007,17 +1007,17 @@ The out-of-plane stiffness plot~(c) shows instability over the entire displaceme
 \end{figure}
 
 The drawback of achieving minimal instability is a reduction in the achievable low-stiffness regions of the spring.
-\Figref{mbq-wvf-angle-stabl} shows a plot of natural frequency versus load force for a magnet angle of \SI{40}{\degree} and for a variety of magnet gaps.
+\Figref{mbq-wvf-angle-stabl} shows a plot of natural frequency versus load force for a magnet angle of \SI{40}{\degree} and for a variety of magnet offsets.
 In this graph, regions of negative horizontal stiffness have been de-emphasised by drawing those sections of the curves in light grey.
 It can be seen here that the `flat' sections of the curve (that correspond to configurations of largely-flat natural frequency against load force) occur largely in the regions of horizontal instability.
-\Figref{mbq-wvf-angle-stabl} also demonstrates that when designing the system for horizontal stiffness, a larger magnet gap increases the displacement range of the magnetic spring, albeit with a decrease in possible load force.
+\Figref{mbq-wvf-angle-stabl} also demonstrates that when designing the system for horizontal stiffness, a larger magnet offset increases the displacement range of the magnetic spring, albeit with a decrease in possible load force.
 
 \begin{figure}
 \centering
 \pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle-stabl}}
 \caption
 [Natural frequency versus load force for a fixed magnet angle.]
-{Natural frequency versus load force for gap ratios from \num{0.05} to \num{0.5} in \num{0.05} increments and a magnet angle of \SI{40}{\degree}.
+{Natural frequency versus load force for offset ratios from \num{0.05} to \num{0.5} in \num{0.05} increments and a magnet angle of \SI{40}{\degree}.
 Regions of negative horizontal stiffness are drawn in light gray, and displacements are labelled with dotted lines for every change in displacement of \SI{1}{mm}.}
 \figlabel{mbq-wvf-angle-stabl}
 \end{figure}
@@ -1028,8 +1028,8 @@ A more detailed investigation on the planar stability of the system is performed
 \subsubsection{Magnet volume}
 \seclabel{mbq-vol}
 
-Having examined the influence of magnet angle and magnet gap on the natural frequency and load force characteristics, it is essential to confirm that this arrangement is scalable for arbitrary loads by increasing the magnet volumes.
-With fixed magnet gap ratio of 0.2 and magnet angle of \SI{40}{\degree}, the natural frequency/force characteristic with volumes from $(\SI{10}{mm})^3$ to $(\SI{50}{mm})^3$ is shown in \Figref{mbq-wvf-vol}, which shows that larger magnet sizes permit larger load forces while also retaining a low natural frequency.
+Having examined the influence of magnet angle and magnet offset on the natural frequency and load force characteristics, it is essential to confirm that this arrangement is scalable for arbitrary loads by increasing the magnet volumes.
+With fixed magnet offset ratio of $\mbqoffset/\mbqunit=\num{0.2}$ and magnet angle of $\mbqmagangle=\SI{40}{\degree}$, the natural frequency/force characteristic with volumes from $\mbqvolume=(\SI{10}{mm})^3$ to $\mbqvolume=(\SI{50}{mm})^3$ is shown in \Figref{mbq-wvf-vol}, which shows that larger magnet sizes permit larger load forces while also retaining a low natural frequency.
 In fact, the natural frequency decreases with larger magnet sizes.
 This shows that the oblique magnet spring system is suitable for bearing large loads with low stiffness, and fits into the category of springs that exhibit `high-static--low-dynamic' stiffness \parencite[e.g.,][]{carrella2008-jsv}.
 
@@ -1037,8 +1037,8 @@ This shows that the oblique magnet spring system is suitable for bearing large l
 \centering
 \pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-vol}}
 \caption
-[Natural frequency versus load force for a fixed magnet gap ratio and angle.]
-{Natural frequency versus load force for a magnet gap ratio of \num{0.2} and a magnet angle of \SI{40}{\degree} over a range of magnet volumes from $(\SI{10}{mm})^3$ to $(\SI{50}{mm})^3$.
+[Natural frequency versus load force for a fixed magnet offset ratio and angle.]
+{Natural frequency versus load force for a magnet offset ratio of \num{0.2} and a magnet angle of \SI{40}{\degree} over a range of magnet volumes from $(\SI{10}{mm})^3$ to $(\SI{50}{mm})^3$.
 The displacement ranges are proportional to the magnet size such that the system with magnet volume $(\SI{10}{mm})^3$ undergoes displacement from \SIrange{0}{10}{mm} and the system with volume $(\SI{50}{mm})^3$ moves over \SIrange{0}{50}{mm}.
 Regions of negative horizontal stiffness are drawn in light gray.}
 \figlabel{mbq-wvf-vol}
@@ -1078,7 +1078,7 @@ Calculating the force and torque in this way is only valid for small rotations, 
 \centering
 \pregen{\psfragfig{magcode/examples/oblique/fig/mbq-angle-schem}}
 \lofcaption{Geometry of the planar system in which forces and torques due to rotation $\mbqrotz$ are calculated.}{
-The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever/\mbqunit=\num{2}$, magnet angle $\mbqmagangle=\SI{30}{\degree}$ and magnet gap ratio $\mbqoffset/\mbqunit=\num{0.5}$.
+The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever/\mbqunit=\num{2}$, magnet angle $\mbqmagangle=\SI{30}{\degree}$ and magnet offset ratio $\mbqoffset/\mbqunit=\num{0.5}$.
 }
 \figlabel{mbq-angle-schem}
 \end{figure}
@@ -1163,12 +1163,12 @@ The system is not expected to be completely stable due to cross-axis coupling. F
 
 The torsional stability due to rotation is affected by the geometric parameters of the system as shown by example in \figref{mbq-rot-ex}, for which each geometry is drawn to relative scale in \figref{mbq-rot-ex-diag}.
 Further torque variations can be effected by varying the lever arm and the position of the centre of rotation.
-The validity of the torque calculations can be assessed by comparison with the effect of the force terms as if the latter were being used to calculate torque directly using the equation
+The validity of the torque calculations can be assessed by comparing the torques calculated with the magnet forces only using the equation
 \begin{equation}
 \eqlabel{mbq-fake-torque}
 \mbqptorque \approx \mbqlever (-\mbqforce_1+\mbqforce_2) \bm\cdot \begin{bmatrix} -\sin\mbqrotz \\\phantom{-}\cos\mbqrotz \\ 0\end{bmatrix}
 \end{equation}
-where the dot product produces the component of force perpendicular to the lever arm.
+where the dot product extracts the component of force perpendicular to the lever arm.
 Torques calculated in this manner are shown in \figref{mbq-rot-ex} as dashed lines and it can be seen they match closely for small angles of rotation.
 
 \begin{figure}
@@ -1180,7 +1180,7 @@ Torques calculated in this manner are shown in \figref{mbq-rot-ex} as dashed lin
 $\mbqunit = \mbqvdisp = \SI{10}{mm}$,
 $\mbqmagangle = \SI{30}{\degree}$, and
 $\mbqlever/\mbqunit = \num{2}$.
-Dashed lines show verification torques as if calculated using the magnetic forces around their lever arms only (\eqref{mbq-fake-torque}). Notice that varying the magnet gap ratio (shown) can vary the rotational stiffness from stable ($\mbqoffset/\mbqunit=\{0.25, 0.5\}$) to unstable ($\mbqoffset/\mbqunit=1$). Geometries for these three configurations are shown in \Figref{mbq-rot-ex-diag}.}
+Dashed lines show verification torques calculated by using the magnetic forces around their lever arms only (\eqref{mbq-fake-torque}). Notice that varying the magnet offset ratio (shown) can vary the rotational stiffness from stable ($\mbqoffset/\mbqunit=\{0.25, 0.5\}$) to unstable ($\mbqoffset/\mbqunit=1$). Geometries for these three configurations are shown in \Figref{mbq-rot-ex-diag}.}
 \figlabel{mbq-rot-ex}
 \end{figure}
 
@@ -1246,7 +1246,7 @@ The parameters used in \Tabref{mbq-dyn-param} were used for the dynamic simulati
 \figlabel{mbq-dyn-xy}
 \end{figure}
 
-Assuming that the device is always designed to move freely in the vertical direction to accommodate changing load, there are three  regimes in which we would like to illustrate the stability of the system:
+Assuming that the device is always designed to move freely in the vertical direction to accommodate changing load, there are three regimes in which stability could be assessed:
 \begin{enumerate}
 \item constraining rotation;
 \item constraining horizontal displacement;
@@ -1272,7 +1272,7 @@ While this is close to the maximum perturbation for this system before instabili
 
 The second stability example constrains horizontal displacement while allowing free rotation of the system. A perturbation of $\Delta y=\SI{1.5}{mm}$ and $\Delta \varphi=\SI{3}{\degree}$ is modelled with dynamic results shown in \Figref{mbq-dyn-yr}.
 Again, with one constraint on the system there is a stable region around the equilibrium point.
-In fact, this arrangement is more stable than the last as there is less cross-coupling between the vertical and rotational degrees of freedom.
+In fact, this arrangement is more stable than the previous as there is less cross-coupling between the vertical and rotational degrees of freedom.
 
 \begin{figure}
 \begin{wide}
@@ -1294,24 +1294,25 @@ Unfortunately this is not the case, as cross-coupling influences are too great a
 (There is a macroscopic perturbation of $\Delta\mbqvdisp=\SI{-1}{mm}$ and incremental perturbations of $\Delta\mbqhdisp=\SI{1e-9}{m}$ and $\Delta\mbqrotz=\SI{1e-9}{deg}$.)
 Despite achieving positive direct stabilities in all three degrees of freedom, some form of control over this cross-coupling instability is required for stable operation; this could take the form of passive bearings or non-contact electromagnetic actuators.
 
-\subsection{Conclusions and future work}
+\subsection{Conclusion}
 
-In this paper, a particular magnet geometry was investigated for the purposes of developing a spring for vibration isolation with the goal of a load-invariant natural frequency.
+In this section, a particular magnet geometry was investigated for the purposes of developing a spring for vibration isolation with the goal of a load-invariant natural frequency.
 The resonance--load relationship was found to have significant flat areas, indicating this goal could be achieved for certain geometries.
 The load-bearing capacity could be largely increased by scaling the volumes of the magnets; this was shown to have small effect on the natural frequency of the system.
 
 Since the system uses magnetic levitation to achieve its force characteristic, there are various instabilities inherent in its dynamics.
-Some of these instabilities due to coupling between horizontal and rotational degrees of freedom have been highlighted, but a complete six degree of freedom analysis must await future developments in magnetic torque modelling.
-A physical realisation of this system is currently under construction (using a combination of various phyical constraints and active control to achieve stability), and its details will be reported at a future date.
+Some of these instabilities are due to coupling between horizontal and rotational degrees of freedom have been highlighted, but a complete six degree of freedom analysis must await future developments in magnetic torque modelling.
+A physical realisation of this system has been constructed, which is discussed in \secref{mbq-prototype}.
 
 
 \section{Prototype inclined magnet system}
+\seclabel{mbq-prototype}
 
-To explore the possibilities raised by the theoretical analysis of the inclined magnetic spring (\secref{oblique}), an honours project was undertaken in 2011 to design and build a prototype based on these ideas \cite{frizenschaf2011-honoursthesis}.
+To explore the possibilities raised by the theoretical analysis of the inclined magnetic spring (\secref*{oblique}), an honours project supervised by the author was undertaken in 2011 to design and build a prototype based on these ideas \cite{frizenschaf2011-honoursthesis}.
 \note{The members of the project were Yann Frizenschaf, Siobhan Giles, Jack Miller, Thomas Pitman, and Christopher Stapleton.}
 
 The prototype they built used Maytec \note{Maytec Australia Pty Ltd, \url{http://www.maytec.com.au/}} aluminium extrusions to allow modular placement of the inclined magnets with variable magnet angle.
-A photo of their prototype is shown in \figref{oblique-rig}, which shows the main features of the system.
+A photo of the prototype is shown in \figref{oblique-rig}, which shows the main features of the system.
 Six identical magnet pairs were used; four on the long side of the device and two on the short side.
 The rare earth magnets of volume \SI{25x25x12.5}{mm^3} were chosen to generate enough repulsive force to bear a weight of \SI{10}{kg} with a vertical displacement of around \SI{20}{mm} depending on the magnet angle.
 Four electromagnetic actuators were placed at the corners of the device for active vibration isolation.
@@ -1328,7 +1329,7 @@ The device was quite stable in this configuration, but when analysed for active 
 \figlabel{oblique-rig}
 \end{figure}
 
-Their six degree of freedom system was modelled using an extension of the theory developed in \secref{oblique-planar-theory} for the planar three degree of freedom system.
+The six degree of freedom system was modelled using an extension of the theory developed in \secref{oblique-planar-theory} for the planar three \dof/ system.
 The model predicted the behaviour of the prototype well; \tabref{oblique-rig-resonances} shows the measured and modelled resonance frequency for two magnet angles, which vary by around 5\%.
 The resonance frequencies as a function of load mass are shown in \figref{oblique-resonance}.
 Due to limitations of the resonance frequency measurements, the measured data is quite noisy but the correspondence with the expected modelled results is can still be seen.
@@ -1354,11 +1355,11 @@ Measured damping ratio & \SI{4.4}{\%} & \SI{9.0}{\%} \\
 \end{figure}
 
 It is interesting to compare the significant difference in damping ratio for these two magnet angles.
-The strongest contributor to the damping ratio in this system is from induced eddy currents in each permanent magnet by the magnetic field of the other (CROSSREF), as viscous damping in the bearings and due to air resistance can be assumed to be negligible.
+The strongest contributor to the damping ratio in this system is from induced eddy currents in each permanent magnet by the magnetic field of the other (\secref*{damping}), as viscous damping in the bearings and due to air resistance can be assumed to be negligible.
 There are two main factors that would cause changes in the magnitude of the induced eddy currents.
 For a varying magnet angle, the vertical displacement between the magnet pairs would be affected.
 Secondly, as the angle between the direction of displacement (vertical, in this case) and the direction of magnetisation increases, the gradient of magnetisation decreases over a certain displacement.
-The effect on the damping ratio with a variety of load masses is shown in \figref{oblique-damping}, where it can be seen that as the magnets become closer together, the magnitude of the induced eddy currents are increased and so on the damping ratio.
+The effect on the damping ratio with a variety of load masses is shown in \figref{oblique-damping}, where it can be seen that as the magnets become closer together, the magnitude of the induced eddy currents are increased and so does the damping ratio.
 These values were taken in a different configuration than the data shown in \tabref{oblique-rig-resonances}, and the damping ratios are not comparable between these two cases.
 
 \begin{figure}
@@ -1378,15 +1379,15 @@ For a high-performance magnetically levitated isolation platform, these experime
 \includegraphics{PhD/Figures/Oblique/frf}
 \caption
 [Measured and modelled transmissibility of the inclined magnet isolation prototype.]
-{Measured and modelled transmissibility of the inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet gap of \num{0.5}.}
+{Measured and modelled transmissibility of the inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet offset ratio of \num{0.5}.}
 \figlabel{oblique-frf}
 \end{figure}
 
 The sharp peak in \figref{oblique-frf} is due to the low damping inherent in magnetically levitated systems.
-This peak can be reduced with the active vibration control using skyhook damping (CROSSREF).
+This peak can be reduced with the active vibration control using skyhook damping (\secref*{skyhook-intro}).
 Measured transmissibility results with and without active vibration control are shown in \figref{oblique-skyhook}.
 The skyhook damping method achieves a clear reduction in the resonance peak; around \SI{9}{dB} in this case.
-Behaviour at higher frequencies is unaffected, as is expected with this method of vibration control (CROSSREF to figure).
+Behaviour at higher frequencies is unaffected, as is expected with this method of vibration control (compare \figref{skyhook-ideal}).
 
 \begin{figure}
 \centering
@@ -1399,11 +1400,12 @@ Behaviour at higher frequencies is unaffected, as is expected with this method o
 
 This project was unable to achieve active stabilisation of the inclined magnet prototype; a strong instability was found in yaw rotation.
 No attempt in the prototype design was made to investigate variation in horizontal stability, but it is unlikely that the yaw rotation would be stabilised by removing the short-side magnet pairs.
-Indeed, due to the consequences of Earnshaw's theorem it is expected that there will be significant instability in at least one rotational direction unless specific design effort is expended to attempt stability in all rotational degrees of freedom, and even if so this attempt will no doubt have ramifications on the translational performance of the design.
+Indeed, due to the consequences of Earnshaw's theorem it is expected that there will be significant instability in at least one rotational direction unless specific design effort is expended to attempt stability in all rotational degrees of freedom (\secref*{rotation-freedom}), and even if so this attempt could have negatively affect the performance of the translational behaviour of the design.
 
 Due to the lightly damped nature of the system and the coupling between different axes for each magnet pair, a significant degree of cross-coupling was observed in the overall vibration behaviour of the system, requiring careful adjustment to excite the structure in the vertical direction only.
 Active control on each corner compounded this problem, as imperfections in the coil manufacture led to variations in coil impedance and therefore differences in force--displacement behaviour for each coil.
-These unbalanced coils also had the capability to induce cross-coupling motion (generally rotations around the horizontal axes) unless carefully calibrated and monitored.
+As a result, control signal were difficult to tune such that their resultant forces on the system were in a single \dof/ only.
+When not perfectly tuned, these unbalanced coils also had the capability to induce cross-coupling motion (generally rotations around the horizontal axes) unless carefully calibrated and monitored.
 
 \section{Summary}
 
