@@ -13,13 +13,20 @@
 
 \section{Introduction}
 
-\textcite{backers1961} developed a theory for magnetic bearings
-by assuming the effect of curvature of the ring magnets to be
-negligible and looking at the forces between two large flat
-plates. He showed that a periodically recurring magnetisation
-yields stronger forces than a simple homogeneous one. He
-implements this coarsely in an active magnetic bearing with
-cross-section shown previously in \figref{backers-bearing}.
+The magnetic designs presented in \chapref{magnetic-theory} are based around various configurations of multiple discrete magnets each oriented in specific directions.
+In this chapter, a preliminary analysis is presented on using `multipole' magnet arrays, which are groups of magnets stacked together with varying directions of magnetisation within the array.
+
+Early work in this area focussed on using multipole stacks for magnetic bearings (see \figref[vref]{backers-bearing}), which continue to see research focus in areas such as artificial hearts \parencite{chen2002,finocchiaro2008,samiappan2008}, and wind power generation \parencite{liu2008-ietm}.
+
+Early theory for these magnetic bearings assumed the effect of curvature of the ring magnets to be negligible and analysed the forces between two large flat plates with non-uniform magnetisation as if multiple magnets were stacked together to form a planar structure.
+In such early cases, it was shown that a North--South alternating magnetisation (\ie, \ang{180} rotations between successive magnets) across the plates yields stronger forces than homogeneous magnetisation \cite{backers1961}.
+Using \ang{90} rotation increments the stiffness can be approximately doubled again while keeping the magnet volume constant \cite{yonnet1991}; further optimisation of such systems can yield improvements of up to an order of magnitude \cite{moser2006}.
+Early work by the author demonstrated how these ideas could be used when applied to magnetic springs as discussed in \secref{magnet-design} \cite{robertson2005-ietm}.
+
+Linear drives: wave power generation \parencite{kimoulakis2008}
+
+In levitation contexts, the natural gravity-opposing characteristic with zero power input makes permanent magnets an appealing choice for force generation (e.g., see \cite{iniguez2010-jmmm}).
+
 
 \begin{figure}
 \includegraphics{PhD/Figures/Multipole/halbach.pdf}
@@ -32,133 +39,69 @@ cross-section shown previously in \figref{backers-bearing}.
 \figlabel{halbach}
 \end{figure}
 
-It was not until the wide-spread availability of the high energy
-density rare-earth magnets in the late 1970s that magnetic
-geometries more complicated than
-\citeauthor{backers1961}' % no extra 's'
-became feasible. \textcite{halbach1980} pioneered the research
-on these `multi-pole' magnet arrangements, showing how the ideal
-case of sinusoidal magnetisation may be approximated with a
-structure made up from discrete magnets as shown in
-\figref{halbach}.
+It was not until the wide-spread availability of the high energy density rare-earth magnets in the late 1970s that more complicated magnetic geometries more complicated than became feasible.
+A classical multipole or Halbach array is a linear array of magnets stacked to approximate a single magnet with sinusoidal magnetisation, first analysed in the 1970s \parencite{halbach1981,shute2000-ietm}.
+Multipole arrays have been analysed for a variety of force-producing applications; only a small selection are included in the bibliography here \parencite{lee2004-mx,rovers2009-ietm}.
+The main feature of these multipole arrays behind such a design is to focus the magnetic field on one side of the array, such to increase the forces exerted by which magnetic field on one side of the array and to reduce or eliminate any need for magnetic shielding on the reverse side.
+The lines of magnetic flux produced by one such multipole array is shown in \figref{halbach}, in which the single-sided nature of the magnetic field can clearly be seen.
 This figure shows magnets with \ang{45} increments of magnetisation, but any integer division of \ang{360} is possible.
-Parallel work at the time also presented the curious single-sided nature of the magnetic flux from such multiple arrangements \cite{shute2000-ietm}.
-When discrete magnets are used, the single-sided field is only approximated, but can still result in dramatic differences in magnetic field magnitude from one side of the array to the other.
-\Figref{halbach-lion} shows three Halbach arrays.
-They are arranged all in repulsion, but the top two have their strong sides facing whereas the bottom two have their weak sides facing.
+
+To emphasise the approximately single-sided nature of these arrays, consider the three multipole arrays shown in \figref{halbach-lion} with contours of magnetic field strength.
+The multipole arrays are arranged all in repulsion, but the top pair have their strong sides facing whereas the bottom pair have their weak sides facing.
 In this static arrangement, the forces between the strong pair are about 200 times stronger than the weak pair.
+As well as increasing the stength of the magnetic field in the desired area of use, this had the added advantage of `shielding' external equipment from the field where the magnetic forces are not required, although there are other various possiblities to effect magnetic shielding \cite{becherini2009}.
+Such inherent shielding makes these arrays particularly beneficial in \maglev/ transportation \cite{hoburg2004}, where stray magnetic fields are potentially dangerous to external equipment or personel.
 
-Forces between magnets are governed by their field strengths, so
-it is a natural conclusion that two facing Halbach arrays will
-have greater forces between them than single magnets of the same
-size. \textcite{yonnet1991} examined this effect relating to the
-stiffness of rotary bearings. They show that with bearings with
-\ang{90} rotations between successive magnets (as opposed to
-\citeauthor{backers1961}' % no extra 's'
-bearing which used \ang{180}
-increments), the stiffness can be approximately doubled while
-keeping the magnet volume constant.
-
-\begin{figure}[htbp]
+\begin{figure}
    \centering
    \grf[height=0.4\textheight]{Figures/Multipole/halbach-lion-fieldstr}
    \caption{Opposing Halbach arrays in the strong and weak fields.}
    \figlabel{halbach-lion}
 \end{figure}
 
-As well as increasing the stength of the magnetic field in the desired area of use, this had the added advantage of `shielding' external equipment from the field where the magnetic forces are not required, although there are other various possiblities to effect magnetic shielding \cite{becherini2009}.
-Such inherent shielding makes these arrays particularly beneficial in \maglev/ transportation \cite{hoburg2004}, predominantly to ensure that the magnetic field is not strong enough to affect passengers.
-
-
-An examination of the flux lines of various facing Halbach arrays, as shown in
-\figref{halbach-flux-repl,halbach-flux-attr}, shows how flux interacts between
-the two separate linear arrays. It can be seen that simply by varying the
-direction of magnetisation of the first magnet in the second array, a full
-sinusoid of forces can be achieved between the arrays—at the limits, total
-attraction or repulsion in the vertical direction, as for
-\figref{halbach-flux-repl,halbach-flux-attr} respectively.
+An examination of the flux lines of various facing Halbach arrays, as shown in \figref{halbach-flux-repl,halbach-flux-attr}, shows how flux interacts between the two separate linear arrays.
+It can be seen that simply by varying the direction of magnetisation of the first magnet in the second array, a full sinusoid of forces can be achieved between the arrays — at the limits, total
+attraction or repulsion in the vertical direction, as for \figref{halbach-flux-repl,halbach-flux-attr} respectively.
+The variation of vertical force with horizontal displacement must be carefully considered in the design of a levitation system using such multipole arrays.
 
 \begin{figure}
 \begin{wide}
   \begin{subfigure}
   \includegraphics{PhD/Figures/Multipole/2-halb-repl}
-  \caption{In repulsion.}
-  \figlabel{halbach-flux-repl}
-\end{subfigure}\hfil
+  \caption{In repulsion.\figlabel{halbach-flux-repl}}
+  \end{subfigure}\hfil
 \begin{subfigure}
   \includegraphics{PhD/Figures/Multipole/2-halb-attr}
-  \caption{In attraction.}
-  \figlabel{halbach-flux-attr}
+  \caption{In attraction.\figlabel{halbach-flux-attr}}
 \end{subfigure}
 \end{wide}
 \caption{Magnetic field lines of linear multipole arrays.}
 \end{figure}
 
-In this configuration, then, this restricts the relative lateral motion to
-each other that the springs can experience. A slip by two magnet lengths, and
-the spring will no longer be supporting load---it will be firmly attracted to
-its former opposer! In practise, this is not a concern. The operation of the
-spring is design such that free motion is opposed in the lateral directions,
-and will be implemented with a physical stop (only at the extremes of
-displacement so as to remain non-contact, of course) to prevent calamity of
-this sort.
 
+Many various multipole designs have been presented in the literature, with larger fields and forces produced by triangular or trapezoidal magnets which better approximate true sinusoidal magnetisation \cite{cho2001,lee2006-mx,choi2008,meessen2008-ietm,marble2008-ietm}.
+The theory for calculating the magnetic fields and forces between such irregular magnet shapes is beginning to appear in the literature \cite{janssen2009-ietm}.
+There are a range of designs also presented for cylindrical and spherical actuator/bearing design
+\cite{zhu2001-ipep,yan2006-iemx,xia2008-ietm}, which is outside of the work considered in this thesis.
 
-
-
-\textcite{trumper1996} developed the electromagnetic analogue to the
-Halbach array: a triangular coil-winding arrangement that produces
-sinusoidal and predominantly single-sided flux. This technique could
-prove especially well suited to generating forces against permanent
-magnet arrays.
-
-\textcite{xia2008-ietm} calculates \threeD/ torque from a spherical multipole actuator.
-
-
-\textcite{moser2006} showed an optimum configuration for a bearing
-with alternating magnetisations in the axial direction (it is rather
-difficult to radially magnetise a ring or disc magnet).
-
-\textcite{chen2002} used stacked magnets of various sizes (with the
-largest magnet rings midway between the inner and outer radii of the
-bearing) in order to maximise the stiffness per cross sectional area of the
-array.
-
-\textcite{meessen2008-ietm} analysed quasi-Halbach and trapezoidal linear multipole arrays for slotless tubular actuators.
-The trapezoidal shaped magnets are shown to generate slightly higher forces.
-
-\textcite{choi2008}
-
-
-
-
-\textcite{janssen2009-ietm} have derived expressions to calculate the analytical forces between pyramidal-frustrum shaped magnets, which expressions have not yet been published at time of writing.
-\textcite{lee2006-mx} and \textcite{cho2001} present different planar arrays using block magnets with trapezoidal and triangular cross-sections, and \textcite{yan2006-iemx} calculate torque for spherical multipole arrays with `dihedral cone'-shaped magnets. And there are a wide variety of cylindrical multipole arrays in use for bearing and brushless motor applications \parencite{zhu2001-ipep}.
-
-
-
-Applications:
-artificial hearts \parencite{finocchiaro2008,samiappan2008}
-wave power generation \parencite{kimoulakis2008}
-wind power generation \parencite{liu2008-ietm}
-
+In the following sections, the magnetic theory presented in \chapref{magnet-theory} is abstracted for use to analysed linear and planar multipole arrays constructed of cuboid-shaped magnets.
+It is shown how such systems may be optimised by considering the design parameters for such arrays.
 
 
 \section{Forces between multipole magnet arrays}
 
-A classical multipole or Halbach array is a linear array of magnets stacked to approximate a single magnet with sinusoidal magnetisation, first analysed in the 1970s \parencite{halbach1981,shute2000-ietm}. Multipole arrays have been analysed for a variety of force-producing applications; only a small selection are included in the bibliography here \parencite{lee2004-mx,robertson2005-ietm,rovers2009-ietm}. One objective behind such a design is to focus the magnetic field on one side of the array, such to increase the forces exerted by which magnetic field on one side of the array and to reduce or eliminate any need for magnetic shielding on the reverse side. The magnetic field produced by one such multipole array is shown in \figref{halbach} in which the single-sided nature of the magnetic field can clearly be seen.
-
-Having expressed the forces between two magnets with arbitrary magnetisation, it becomes simple to use this expression iteratively over an array of magnets with varying magnetisation strengths or directions. The force between two arrays is simply the superposition of every combination of forces between the individual magnets in each array.
+Having expressed the forces between two magnets with arbitrary magnetisation (\secref*{magforce-arbitary}), it becomes simple to use this expression iteratively over an array of magnets with varying magnetisation strengths or directions. The force between two arrays is simply the superposition of every combination of forces between the individual magnets in each array.
 
 Some abstractions to the manner in which the iteration over each combination of magnets is performed allows us to simplify the code necessary to express a variety of configurations of the multiple arrays. This facilitates easy comparisons between different designs.
 
-A multipole array can be uniquely defined in terms of several sets of variables.   The simplest such description is:
+A multipole array can be uniquely defined in terms of several sets of variables.
+The simplest such description is:
 \begin{itemize}
 \item Size of each magnet $[\mupmaglength,d,h]\T$,
 \item Number of magnets $T$, and
 \item Magnetisation direction of the first magnet $\vartheta_0$ and rotation between successive magnets $\vartheta_i$.
 \end{itemize}
-Other variables that can also be used to describe the array are: (assuming an array aligned with the $x$-axis)
+Other variables that can also be used to describe the array are: (assuming an array aligned with the $\ax$-axis)
 \begin{itemize}
 \item Length of the array $\muplength = \mupmaglength T$,
 \item Number of magnets per wavelength $M=2\pi/\vartheta_i$,
@@ -220,7 +163,7 @@ Of the around 70 lines of code in `multipole\_example.m', only some 20 lines of 
 \lofcaption
 { Reproduction of Allag et al.'s results~\textcite{allag2009-electromotion}.}
 {
-  The forces in the $x$-direction are zero.
+  The forces in the $\ax$-direction are zero.
 }
 \figlabel{allag}
 \end{figure}
@@ -233,10 +176,7 @@ Of the around 70 lines of code in `multipole\_example.m', only some 20 lines of 
 \section{Towards optimising the forces between linear Halbach arrays}
 \seclabel{optim-halbach-1d}
 
-Linear springs constructed with permanent magnets can behave in interesting ways. In levitation contexts, the natural gravity-opposing characteristic with zero power input makes permanent magnets an appealing choice for force generation (e.g., see \cite{iniguez2010-jmmm}). In the context of supporting a variable-mass load for vibration isolation, the non-linear force vs.\ displacement characteristic decreases the amount of variability in the resonance frequency of the structure, since as the mass increases and closes the gap between the magnets, the stiffness also increases \parencite{bonisoli2007-mrc}. When used in attraction, the negative stiffness can be used to decrease the resonance frequencies of a supported mass, applicable for `high-static--low-dynamic' or `quasi--zero stiffness' springs \parencite{carrella2008-jsv,robertson2009-jsv}.
-
-With well-known closed form solutions for calculating the forces between cuboid permanent magnets of parallel magnetisation \parencite{akoun1984} and solutions for the forces with orthogonal magnetisations recently published \parencite{janssen2009-sensorletters,allag2009-sensorletters}, it is now possible to analyse a wide variety of magnet configurations that previously required semi-analytical or finite element analsis techniques. This paper investigates the force characteristics between linear multipole magnet arrays as a function of array size and magnet arrangement using cuboid-shaped magnets. The forces are calculated using the force equations derived by the above researchers.
-
+This section investigates the optimisation of force characteristics between linear multipole magnet arrays as a function of array size and magnet arrangement using cuboid-shaped magnets.
 
 \subsection{Linear multipole magnet arrays}
 
@@ -385,7 +325,6 @@ Such a system, called here a `planar Halbach' array, is shown in \figref{trumper
 \figlabel{trumper-system}
 \end{figure}
 
-
 \textcite{moser2002-maglev}, \textcite{rovers2009-ietm}, and \textcite{janssen2009-jsdd} (the latter two with associated publications) have examined the idea of a `quasi-Halbach' planar multipole array in which all magnetisation directions are restricted to one of the orthogonal directions of the axes (i.e., no diagonal magnetisations).
 Another planar multipole array, simpler again, is the `patchwork' array, which alternates between positive and negative vertical magnetisation between successive magnets in both directions.
 See Hinds cited by \textcite{kim1997-thesis}, or Chitayat cited by \textcite{cho2001} for examples use for the patchwork array in other circumstances.
@@ -402,6 +341,7 @@ Analysis of the magnetic flux produced by various planar arrays has been done by
 \caption[Two planar multipole array designs.]{Two planar multipole array designs, facing `towards the reader'. Note the (unfilled) areas of zero magnetisation in the quasi-Halbach array.}
 \figlabel{two-planar-arrays}
 \end{figure}
+
 
 \subsection{Example of planar Halbach array forces}
 
@@ -428,15 +368,16 @@ When pairs of arrays are faced in opposition, a vertical force is produced betwe
 Each array configuration has a different magnetic field pattern and has a different force/displacement profile.
 It is now possible to evaluate between and optimise the array configurations based on the design requirements for which they are required.
 
-The vertical force vs.\ vertical displacement characteristics of each array discussed (linear Halbach, planar Halbach, patchwork, and quasi-Halbach) are compared in \figref{planar-compare}, with the forces between two single magnets (of the same size as the arrays) included for comparison.
+The vertical force \vs\ vertical displacement characteristics of each array discussed (linear Halbach, planar Halbach, patchwork, and quasi-Halbach) are compared in \figref{planar-compare}, with the forces between two single magnets (of the same size as the arrays) included for comparison.
 The linear Halbach, planar Halbach, and quasi-Halbach have all been chosen to have a single wavelength of magnetisation with an end magnet for symmetry.
-Each array has the same outer dimensions of $\SI{50x50}{mm}$, thickness \SI{10}{mm}, and composed of magnets with magnetisation \SI{1}{T}, and each magnet is either cube-shaped or, for the linear array, has a square cross-section..
+Each array has the same outer dimensions of $\SI{50x50}{mm}$, thickness \SI{10}{mm}, and composed of magnets with magnetisation \SI{1}{T}, and each magnet is either cube-shaped or, for the linear array, has a square cross-section.
 
 It is interesting that the linear array exhibits the greatest force for a given displacement; this can be explained by the fact that the planar array and the quasi-Halbach array both have regions of zero magnetisation; this degrades their load-bearing ability since there is less inherent magnetic energy in each.
 These results indicate that the linear array is the most suitable choice for bearing vertical loads; not only are the forces stronger, but the magnetisation arrangement (and hence construction of the array) is simpler as well.
 It is also notable that despite the much simpler magnetisation pattern of the quasi-Halbach array compared to the planar Halbach array, the results for these two are quite similar, especially at small displacements.
-However, it must be noted that these differ from the experimental results of \textcite{moser2002-maglev}.
-This highlights the need to study these systems in more detail outside of the realm of theoretical analysis.
+However, it must be noted that these differ from the experimental results of diamagnetic levitation \cite{moser2002-maglev} and from another theoretical study which uses an alternate theory for calculating the forces \cite{campbell2002}.
+It is possible that the effect on the magnetisation of each magnet due to the magnetic field of the other magnets in the array, which is assumed to be negligible, actually has a smeasureable effect in practice.
+These differences highlight the need to study these systems in more detail outside of the realm of theoretical analysis.
 
 \begin{figure}[htbp!]
 \centering
@@ -448,25 +389,13 @@ This highlights the need to study these systems in more detail outside of the re
 \section{Multipole conclusions}
 
 This self-contained chapter contains work outlining the diverse field of multipole magnetic arrangements and formalises the theory for calculating forces between multipole arrays using cuboid magnets.
+The theory presented in previous chapters was abstracted for the purposes of analysing multipole arrays, and analysis was performed on linear and planar `Halbach arrays' for assessing their potential for increasing the load-bearing capacity of a magnetic spring.
+Differences with results in the literature suggests further experimental work should be conducted to establish shortcomings in the theory.
 
-Analysis is performed on linear and planar `Halbach arrays' for assessing their potential for increasing the load-bearing capacity of a magnetic spring.
-The parameters for designing the multipole arrays are critical in achieving useful improvements here, and there are certain caveats with using such designs.
-Primarily, it must be noted that multipole designs will be far more sensitive to lateral displacements, leading to instability far more easily than for homogeneous magnets.
+The parameters for designing the multipole arrays are critical in achieving useful improvements, and there are certain caveats with using such designs.
+Primarily, it must be noted that multipole designs will be more sensitive to lateral displacements, leading to instability more easily, than homogeneous magnets.
 Multipole arrays are best used for devices with restricted degrees of freedom or great control authority for stabilising the inherent instabilities in the device.
 
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
