@@ -896,7 +896,7 @@ The single degree of freedom magnetic system is very popular as an application f
 As will be seen later, developing models for magnet and coil forces can be quite involved; for the purposes of control, the closed form expressions introduced in \chapref{magnet-theory} are too complex to integrate into a control methodology.
 One way to overcome this issue is to develop a low-order empirical model for the system, with unknown parameters that must be identified; an example of this was shown for a coil-iron suspension by \textcite{agamennoni2004}.
 
-In this thesis, curve-fitting of magnetic force versus displacement characteristics has been used \emph{a priori} to establish such unknown parameters (\secref{qzs-mag}).
+In this thesis, curve-fitting of magnetic force versus displacement characteristics has been used \emph{a priori} to establish such unknown parameters (\secref[vref]{qzs-mag}).
 This method is only possible when sufficient information is known beforehand, and an online method is useful for plant parameters that change over time (such as load force, which can be inherently time-varying).
 
 By contrast, sufficiently advanced nonlinear control can achieve stability and tracking without the use of system identification.
@@ -1027,7 +1027,7 @@ This section explores the overlap between vibration isolation and magnetic actua
 For the purposes of this thesis, three broad topics are of interest:
 \begin{description}
 \item[\secref{magnet-platform-isolation}]
-Vibration isolation systems designed using magnetic actuators
+Vibration isolation systems designed using magnetic springs and actuators
 \item[\secref{magnet-nonlinear}]
 The nonlinear dynamics of magnets in motion
 \item[\secref{qzs-explore}]
@@ -1086,7 +1086,7 @@ For the purpose of vibration control, augmenting a linear spring system with non
 \textcite{dangola2006} analysed the nonlinear dynamics of a nonlinear system in which a variation of both stiffness and mass by up to 50\% yields an increase of stiffness of 6\%.
 For an equivalent linear system, the natural frequency variation is ten times greater.
 This is a very interesting result for loading elements for which the mass to be supported is largely variable, in that the frequency response will vary significantly less than for conventional linear springs.
-A system with similar characteristics is proposed in this work (\secref{oblique}).
+A system with similar characteristics is proposed in this thesis (\secref[vref]{oblique}).
 
 However, for weakly nonlinear magnetic springs, variation in the mass will still lead to changes in the resonance frequency.
 \textcite{todaka2001-ietm} created a mechanical linkage to support two magnets in repulsion such that as their air gap increased (due to less mass being supported), a horizontal offset between them was created to lower the linearised operating stiffness.
@@ -1291,7 +1291,7 @@ The scripts in \code{examples/magspring/}.
 \item[\secref{planar-multipole}]
 \code{examples/planar\_multipole\_example.m} and \code{examples/planar\_compare.m}.
 
-\item[\secref{magnetcoil-forces,magnetcoil-optimisation}]
+\item[\secref*{magnetcoil-forces,magnetcoil-optimisation}]
 This work is presented in the Mathematica code
 \code{examples/Thick-Coil-Magnet-Forces.nb}
 based on the general \code{MagnetCode.m} library.
@@ -1301,6 +1301,7 @@ Incidentally, the source for this thesis itself, including some of the programma
 \centerline{$\langle$\url{http://www.github.com/wspr/thesis}$\rangle$.}
 Which use of this material is restricted under the copyright of The University of Adelaide, the methods used for writing may be instructive for others following a similar path to my own.
 
+\newpage
 \section{Structure of this thesis}
 \seclabel{thesis-structure}
 

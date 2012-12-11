@@ -338,21 +338,21 @@ geometries can be realised through superposition of the solutions
 
 The notation for the models to calculate the forces between cuboid magnets is as follows, with the geometry of the system depicted graphically in \figref{akoun}.
 The first magnet has dimensions $[2a, 2b, 2c]\T$ and the second magnet has dimensions $[2A, 2B, 2C]\T$.
-The distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$.
+The distance between their centres is given by $\vect d=[\alpha,\beta,\gamma]\T$.
 The magnetisations of the magnets are assumed to be constant and aligned in the $z$-direction (`facing up').
 Anti-parallel magnets (`negative magnetisation') corresponds to the secondary magnet `facing down' and results in forces of reversed sign.
  \note{This relationship is only true of high-coercivity magnets; for magnets such as ferrites whose own magnetic fields can demagnetise each other, an approximation can be made that the repulsive force between two magnets will be approximately 40\% of the attractive force between them \cite{moskowitz1995}.}
 
-The forces between two $\bm F_{z,z}$ parallel or anti-parallel magnets with remanences $\magn1$ and $\magn2$ and geometry as defined above is compactly written as six nested summations of intermediate expressions in $x$, $y$, and $z$ directions:
+The forces between two $\vect F_{z,z}$ parallel or anti-parallel magnets with remanences $\magn1$ and $\magn2$ and geometry as defined above is compactly written as six nested summations of intermediate expressions in $x$, $y$, and $z$ directions:
 \begin{equation}\eqlabel{akoun}
-\bm F_{z,z} = \frac{\magn1\magn2}{4\pi\mu_0}
+\vect F_{z,z} = \frac{\magn1\magn2}{4\pi\mu_0}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
   \hspace{-5mm}% space hack
-  \bm \phi_{z,z}\fn{\bm \delta_{i,j,k,l,p,q}}
+  \vect \phi_{z,z}\fn{\vect \delta_{i,j,k,l,p,q}}
   \cdot
   \gp{-1}^{i+j+k+l+p+q} ,
 \end{equation}
-where $\bm\phi_{z,z}(\bm\delta) = [\,\phi_x(\bm\delta),\,\phi_y(\bm\delta),\,\phi_z(\bm\delta)\,]\T$ will be given later.
+where $\vect\phi_{z,z}(\vect\delta) = [\,\phi_x(\vect\delta),\,\phi_y(\vect\delta),\,\phi_z(\vect\delta)\,]\T$ will be given later.
 The $(z,z)$ subscript refers to the directions of magnetisation of the magnets.
 Force calculations for magnets oriented in the $x$ or $y$ directions can be found using a coordinate system transformation on \eqref{akoun}.
 
@@ -379,32 +379,32 @@ For $N$ nested integrals, it may be convenient to express this in a product form
     \gp{ F\fn{u_1\fn{e_1},u_2\fn{e_2},\dots}\prod_{n=1}^{N} e_n }
 \end{dmath}
 
-As the limits of the integral occur at the corners of the cuboid magnets, $\bm \phi_{z,z}$ is an intermediate function acting between each combination of corners between the first and second magnet.
-Bancel \cite{bancel1999} used this fact to invent an abstraction for these expressions known as `magnetic nodes' calling what has been written above as $\bm\phi_{z,z}\fn{\bm \delta_{i,j,k,l,p,q}}\cdot\gp{-1}^{i+j+k+l+p+q}$ as the `force' between two magnetic nodes $(i,k,p)$ and $(j,l,q)$.
+As the limits of the integral occur at the corners of the cuboid magnets, $\vect \phi_{z,z}$ is an intermediate function acting between each combination of corners between the first and second magnet.
+Bancel \cite{bancel1999} used this fact to invent an abstraction for these expressions known as `magnetic nodes' calling what has been written above as $\vect\phi_{z,z}\fn{\vect \delta_{i,j,k,l,p,q}}\cdot\gp{-1}^{i+j+k+l+p+q}$ as the `force' between two magnetic nodes $(i,k,p)$ and $(j,l,q)$.
 Summing the magnetic node forces between every combination of corners of the first and second magnet yields the total force between them.
 This abstraction allows a reduction in the number of calculations required when magnetic nodes overlap; i.e., when calculating the forces between arrays of touching magnets.
 
-The distance between two corners/nodes of two respective magnets, $\bm\delta_{i,j,k,l,p,q}=[u_{i,j}, v_{k,l}, w_{p,q}]\T$, is given by the distance between the magnet centres, $\bm d$, plus and minus the distance between the magnet centre and corner position for the second magnet, $\bm R$ and for the first magnet $\bm r$:
+The distance between two corners/nodes of two respective magnets, $\vect\delta_{i,j,k,l,p,q}=[u_{i,j}, v_{k,l}, w_{p,q}]\T$, is given by the distance between the magnet centres, $\vect d$, plus and minus the distance between the magnet centre and corner position for the second magnet, $\vect R$ and for the first magnet $\vect r$:
 \begin{equation}
-\bm\delta_{i,j,k,l,p,q}=\bm d+\bm R_{j,l,q} - \bm r_{i,k,p} ~,
+\vect\delta_{i,j,k,l,p,q}=\vect d+\vect R_{j,l,q} - \vect r_{i,k,p} ~,
 \end{equation}
 where
 \begin{align}
-\bm R_{j,l,q}&=\begin{bmatrix}A\gp{-1}^j\\B\gp{-1}^l\\C\gp{-1}^q\end{bmatrix},&
-\bm r_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix}.
+\vect R_{j,l,q}&=\begin{bmatrix}A\gp{-1}^j\\B\gp{-1}^l\\C\gp{-1}^q\end{bmatrix},&
+\vect r_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix}.
 \end{align}
 Complete expressions for the corner distances are therefore:
 \begin{dmath}[compact]
-\bm \delta_{i,j,k,l,p,q}=\begin{bmatrix}u_{i,j}\\v_{k,l}\\w_{p,q}\end{bmatrix}=
+\vect \delta_{i,j,k,l,p,q}=\begin{bmatrix}u_{i,j}\\v_{k,l}\\w_{p,q}\end{bmatrix}=
 \begin{bmatrix}
   \alpha-a\gp{-1}^i+A\gp{-1}^j\\
   \beta-b\gp{-1}^k+B\gp{-1}^l\\
   \gamma-c\gp{-1}^p+C\gp{-1}^q
 \end{bmatrix}
 \end{dmath}.
-The $\bm\phi_{z,z}$ terms required for calculating the `force between nodes' can now be written, where $r=\sqrt{u^2+v^2+w^2}$, as:
+The $\vect\phi_{z,z}$ terms required for calculating the `force between nodes' can now be written, where $r=\sqrt{u^2+v^2+w^2}$, as:
 \begin{dmath}[label=phi-zz]
-\bm\phi_{z,z}\fn{\bm \delta} =
+\vect\phi_{z,z}\fn{\vect \delta} =
 \begin{bmatrix}
 \half\gp{v^2-w^2}\Log{r-u}+uv\Log{r-v}+vw\ArcTan{\tfrac{uv}{rw}}+\half ru \\
 \half\gp{u^2-w^2}\Log{r-v}+uv\Log{r-u}+uw\ArcTan{\tfrac{uv}{rw}}+\half rv \\
@@ -423,7 +423,7 @@ The stiffness characteristics can be derived by differentiating \eqref{akoun} wi
 \end{dmath}
 where
 \begin{dmath}
-\bm k_{z,z} =
+\vect k_{z,z} =
 \begin{bmatrix}
 -\frac{v u^2}{u^2+w^2}-r-v \Log{r-v} \\
 -\frac{u v^2}{v^2+w^2}-r-u \Log{r-u} \\
@@ -441,32 +441,32 @@ A short time after this paper was published a separate research group published 
 
 The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets. Their expression for the torque (on the second magnet) can be written as per the style above in the following form.
 \begin{equation}\eqlabel{torque}
-\bm T_{z,z}=\frac{\magn1\magn2}{4\pi\mu_0}
+\vect T_{z,z}=\frac{\magn1\magn2}{4\pi\mu_0}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
-  \bm\psi_{i,j,k,l,p,q}
+  \vect\psi_{i,j,k,l,p,q}
   \cdot
   \gp{-1}^{i+j+k+l+p+q} ,
 \end{equation}
 where
 \begin{equation}
-\bm\psi_{i,j,k,l,p,q} = \bm R_{j,l,q}\bm\times \bm \phi_{z,z}\fn{\bm \delta_{i,j,k,l,p,q}} .
+\vect\psi_{i,j,k,l,p,q} = \vect R_{j,l,q}\vect\times \vect \phi_{z,z}\fn{\vect \delta_{i,j,k,l,p,q}} .
 \eqlabel{torque-inner}
 \end{equation}
 The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner terms of the summation represent the torque applied on the second magnet due to the influence of one corner of the first magnet and one corner of the second magnet. Allag and Yonnet write this slightly differently in terms of the total torque applied from the entire first magnet on each corner of the second:
 \begin{equation}\eqlabel{torqu-1}
-\bm T = \sum_{j,l,q\in\{0,1\}^3} \bm R_{j,l,q}\bm\times \bm f_{j,l,q} ,
+\vect T = \sum_{j,l,q\in\{0,1\}^3} \vect R_{j,l,q}\vect\times \vect f_{j,l,q} ,
 \end{equation}
-where $\bm f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
+where $\vect f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
 \begin{equation}\eqlabel{torqu-2}
-\bm f_{j,l,q}=\tfrac{\magn1\magn2}{4\pi\mu_0}
+\vect f_{j,l,q}=\tfrac{\magn1\magn2}{4\pi\mu_0}
   \!\!\!\sum_{i,k,p\in\{0,1\}^3}\!\!\!
-  \bm\phi_{z,z}\fn{\bm d_{i,j,k,l,p,q}}
+  \vect\phi_{z,z}\fn{\vect d_{i,j,k,l,p,q}}
   \cdot
   \gp{-1}^{i+j+k+l+p+q}.
 \end{equation}
 In other words, written in this form the `corner torque' for each node of the second magnet is given by
 \begin{equation}\eqlabel{corner-torques}
-  \bm \tau_{j,l,q} = \bm R_{j,l,q} \bm\times \bm f_{j,l,q}.
+  \vect \tau_{j,l,q} = \vect R_{j,l,q} \vect\times \vect f_{j,l,q}.
 \end{equation}
 It is easily seen that \eqref{torqu-1} and \eqref{torqu-2} are equivalent to \eqref{torque} since the inner summation in the former can be migrated out from inside the cross product.
 
@@ -517,24 +517,24 @@ The signs of these equations has been reversed for consistency with \eqref{akoun
 \end{dmath}
 Again, the distance between the `corner nodes' of each magnet is given by
 \begin{equation}
-\vect\delta_{i,j,k,l,p,q}=\bm d+\bm R_{j,l,q} - \bm r_{i,k,p} ~,
+\vect\delta_{i,j,k,l,p,q}=\vect d+\vect R_{j,l,q} - \vect r_{i,k,p} ~,
 \end{equation}
 where
 \begin{align}
-\bm R_{j,l,q}&=\begin{bmatrix}A\gp{-1}^j\\B\gp{-1}^l\\C\gp{-1}^q\end{bmatrix},&
-\bm r_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix}.
+\vect R_{j,l,q}&=\begin{bmatrix}A\gp{-1}^j\\B\gp{-1}^l\\C\gp{-1}^q\end{bmatrix},&
+\vect r_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix}.
 \end{align}
 with magnet dimensions defined as earlier.
 The $\vect f_{zy}$ terms required for calculating the `force between nodes' for orthogonal magnets can now be written as:
 \begin{dgroup}
 \begin{dmath}
-\phi_x\fn{\bm \delta} = vw\Log{r-u}-uv\Log{r+w}-uw\Log{r+v}+\half u^2\ArcTan{\frac{vw}{ru}}+\half v^2\ArcTan{\frac{uw}{rv}}+\half w^2\ArcTan{\frac{uv}{rw}}
+\phi_x\fn{\vect \delta} = vw\Log{r-u}-uv\Log{r+w}-uw\Log{r+v}+\half u^2\ArcTan{\frac{vw}{ru}}+\half v^2\ArcTan{\frac{uw}{rv}}+\half w^2\ArcTan{\frac{uv}{rw}}
 \end{dmath},
 \begin{dmath}
-\phi_y\fn{\bm \delta} = -\half\gp{u^2-v^2}\Log{r+w}+uw\Log{r-u}+uv\arctan\fn{\tfrac{uw}{rv}}+\half rw
+\phi_y\fn{\vect \delta} = -\half\gp{u^2-v^2}\Log{r+w}+uw\Log{r-u}+uv\arctan\fn{\tfrac{uw}{rv}}+\half rw
 \end{dmath},
 \begin{dmath}
-\phi_z\fn{\bm \delta} = -\half\gp{u^2-w^2}\Log{r+v}+uv\Log{r-u}+uw\arctan\fn{\tfrac{uw}{rv}}+\half rv
+\phi_z\fn{\vect \delta} = -\half\gp{u^2-w^2}\Log{r+v}+uv\Log{r-u}+uw\arctan\fn{\tfrac{uw}{rv}}+\half rv
 \end{dmath}.
 \end{dgroup}
 
@@ -628,24 +628,24 @@ Superposition can then be used to combine the expressions for orthonogal magnets
 \textcite{ravaud2009-pier98} instead show the magnetic field equations for a cuboid magnet with arbitrary magnetisation; their work is still to be extended to calculate the forces between such magnets.
 Since their equation for calculating the magnetic field is necessarily more complex, it is not clear whether an equation derived using analytical integration to calculate the force directly (if the integral is even tractable) will be more efficient than the superposition approach outlined below.
 
-The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have side lengths $\bm s = [2a, 2b, 2c]\T$ and $\bm S = [2A, 2B, 2C]\T$ respectively and the distance between their centres is given by $\bm d=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
+The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have side lengths $\vect s = [2a, 2b, 2c]\T$ and $\vect S = [2A, 2B, 2C]\T$ respectively and the distance between their centres is given by $\vect d=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
 
 As shown earlier in \eqref{akoun},
 \textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations.
-This force is denoted below as $\bm F_{z,z}\fn{\bm s, \bm S, \bm d, \magn1, \magn2}$ as a function of the magnet sizes, the distance between them, and their magnetisation magnitudes $\magn1$ and $\magn2$.
+This force is denoted below as $\vect F_{z,z}\fn{\vect s, \vect S, \vect d, \magn1, \magn2}$ as a function of the magnet sizes, the distance between them, and their magnetisation magnitudes $\magn1$ and $\magn2$.
 From \eqref{orth-magforce}, \textcite{allag2009-electromotion} provide the force expressions for the first magnet with vertical magnetisation and the second magnet with magnetisation in the horizontal $y$-direction.
-This force is denoted below as $\bm F_{z,y}\fn{\bm s, \bm S, \bm d, \magn1, \magn2}$.
+This force is denoted below as $\vect F_{z,y}\fn{\vect s, \vect S, \vect d, \magn1, \magn2}$.
 
-The force between a vertically-magnetised magnet and one with magnetisation in the horizontal $x$-direction can be calculated by applied a rotational transformation to $\bm F_{z,y}$ around the $z$-axis.
+The force between a vertically-magnetised magnet and one with magnetisation in the horizontal $x$-direction can be calculated by applied a rotational transformation to $\vect F_{z,y}$ around the $z$-axis.
 That is,
 \begin{equation}\eqlabel{fzx}
-\bm F_{z,x}\fn{\bm s, \bm S, \bm d, \magn1, \magn2} = \mathbf R_z\fn{-\tfrac{\pi}2}\bm F_{z,y}\fn{\bm s_{z,x}, \bm S_{z,x},\bm d_{z,x}, \magn1, \magn2} ,
+\vect F_{z,x}\fn{\vect s, \vect S, \vect d, \magn1, \magn2} = \mathbf R_z\fn{-\tfrac{\pi}2}\vect F_{z,y}\fn{\vect s_{z,x}, \vect S_{z,x},\vect d_{z,x}, \magn1, \magn2} ,
 \end{equation}
 where
 \begin{align}
-\bm s_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\bm s}, \\
-\bm S_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\bm S}, \\
-\bm d_{z,x} &= \mathbf R_z\fn{\tfrac\pi2}\bm d,
+\vect s_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\vect s}, \\
+\vect S_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\vect S}, \\
+\vect d_{z,x} &= \mathbf R_z\fn{\tfrac\pi2}\vect d,
 \end{align}
 for which $\Abs{\cdot}$ is the \emph{element-wise} absolute value function and $\mathbf R_z\fn{\theta}$ is the rotation matrix around the $z$-axis:
 \begin{equation}
@@ -656,19 +656,19 @@ for which $\Abs{\cdot}$ is the \emph{element-wise} absolute value function and $
 \end{bmatrix}.
 \end{equation}
 
-Using the force expressions $\bm F_{z,x}$, $\bm F_{z,y}$, and $\bm F_{z,z}$ in superposition allow the force to be calculated between a vertically magnetised magnet and another magnet with arbitrary magnetisation direction. By applying coordinate system transformations to these expressions, arbitrary magnetisation directions can be achieved for the first magnet as well.
+Using the force expressions $\vect F_{z,x}$, $\vect F_{z,y}$, and $\vect F_{z,z}$ in superposition allow the force to be calculated between a vertically magnetised magnet and another magnet with arbitrary magnetisation direction. By applying coordinate system transformations to these expressions, arbitrary magnetisation directions can be achieved for the first magnet as well.
 
 For horizontal $x$-direction magnetisation,
 \begin{equation}\eqlabel{fxxyz}
-\bm F_{x,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, \magn1, \magn2} =
+\vect F_{x,\{x,y,z\}}\fn{\vect s, \vect S, \vect d, \magn1, \magn2} =
   \mathbf R_y\fn{\tfrac\pi2}
-  \bm F_{z,\{x,y,z\}}\fn{\bm s_x, \bm S_x, \bm d_x, \magn1, \magn2}
+  \vect F_{z,\{x,y,z\}}\fn{\vect s_x, \vect S_x, \vect d_x, \magn1, \magn2}
 \end{equation}
 where
 \begin{align}
-\bm s_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\bm s}, \\
-\bm S_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\bm S}, \\
-\bm d_x &= \mathbf R_y\fn{-\tfrac\pi2}\bm d,
+\vect s_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\vect s}, \\
+\vect S_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\vect S}, \\
+\vect d_x &= \mathbf R_y\fn{-\tfrac\pi2}\vect d,
 \end{align}
 and $\mathbf R_y\fn{\theta}$ is the rotation matrix around the $y$-axis:
 \begin{equation}
@@ -680,15 +680,15 @@ and $\mathbf R_y\fn{\theta}$ is the rotation matrix around the $y$-axis:
 \end{equation}
 Similarly, for horizontal $y$-direction magnetisation,
 \begin{equation}\eqlabel{fyxyz}
-\bm F_{y,\{x,y,z\}}\fn{\bm s, \bm S, \bm d, \magn1, \magn2} = \\
+\vect F_{y,\{x,y,z\}}\fn{\vect s, \vect S, \vect d, \magn1, \magn2} = \\
   \mathbf R_x\fn{-\tfrac\pi2}
-  \bm F_{z,\{x,y,z\}}\fn{\bm s_y, \bm S_y, \bm d_y, \magn1, \magn2}
+  \vect F_{z,\{x,y,z\}}\fn{\vect s_y, \vect S_y, \vect d_y, \magn1, \magn2}
 \end{equation}
 where
 \begin{align}
-\bm s_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\bm s}, \\
-\bm S_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\bm S}, \\
-\bm d_y &= \mathbf R_x\fn{\tfrac\pi2}\bm d,
+\vect s_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\vect s}, \\
+\vect S_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\vect S}, \\
+\vect d_y &= \mathbf R_x\fn{\tfrac\pi2}\vect d,
 \end{align}
 and $\mathbf R_x\fn{\theta}$ is the rotation matrix around the $x$-axis:
 \begin{equation}
@@ -701,12 +701,12 @@ and $\mathbf R_x\fn{\theta}$ is the rotation matrix around the $x$-axis:
 
 Given the results of the afore-referenced papers by Yonnet et al. and \eqref{fzx,fxxyz,fyxyz}, the force between two magnets of arbitrary magnetisation can be written as
 \begin{equation}\eqlabel{total-force}
-\bm F\fn{\bm s, \bm S, \bm d,\expandafter\bm \magn1,\expandafter\bm \magn2}=\sum_{i,j\in\{x,y,z\}^2} \bm F_{i,j}\fn{\bm s, \bm S, \bm d, J_{1_i}, J_{2_j}}
+\vect F\fn{\vect s, \vect S, \vect d,\expandafter\vect \magn1,\expandafter\vect \magn2}=\sum_{i,j\in\{x,y,z\}^2} \vect F_{i,j}\fn{\vect s, \vect S, \vect d, J_{1_i}, J_{2_j}}
 \end{equation}
 where
 \begin{align}
-\expandafter\bm \magn1 &= [J_{1_x},J_{1_y},J_{1_z}]\T, &
-\expandafter\bm \magn2 &= [J_{2_x},J_{2_y},J_{2_z}]\T.
+\expandafter\vect \magn1 &= [J_{1_x},J_{1_y},J_{1_z}]\T, &
+\expandafter\vect \magn2 &= [J_{2_x},J_{2_y},J_{2_z}]\T.
 \end{align}
 Although it is well known that the principle of superposition can be used in this way,
 this is the first formalisation of this theory to decompose a diagonal magnetisation into its orthogonal components for calculating the forces between diagonally-polarised magnets.
