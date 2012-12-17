@@ -1,6 +1,5 @@
 
 import three;
-
 defaultpen(fontsize(11pt));
 
 /*******************
