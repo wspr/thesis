@@ -52,33 +52,20 @@ The first, in \secref{qzszks}, is an `inclined spring' device that has been stud
 \section{Inclined springs}
 \seclabel{qzszks}
 
-A well studied \qzs/ device is that of a load bearing vertical spring in
-parallel with a pair of inclined springs that behave in a buckling
-regime~\cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007-jsv,carrella2008-thesis,carrella2009-jsv}.
-Generally the studies of this device have only analysed its stiffness
-properties in a single \dof/, in the direction of the primary load
-bearing.
+The spring arrangement shown in \figref{zks} is a well studied planar \qzs/ device~\cite{molyneux1957,alabuzhev1989,carrella2006,carrella2007-jsv,carrella2008-thesis,carrella2009-jsv}.
+It consists of a load bearing vertical spring in parallel with a pair of inclined springs that behave in a buckling regime.
+Generally, analyses of this device have only considered its stiffness properties in a single \dof/, in the direction of the primary load bearing.
 
-This section studies this inclined spring system and re-formulates the force
-and stiffness characteristics in both vertical and horizontal directions,
-describing in some detail the approach by which low stiffness in both
-directions can be achieved. Low stiffness in the vertical direction has been
-previously documented (as cited above) due to the negative vertical stiffness
-of a pair of horizontal springs in compression. Low stiffness in the
-horizontal direction is newly analysed here, which is achieved due to the
-negative stiffness in the horizontal direction of the load-bearing vertical
-spring.
+This section consists of an analysis of the quasi-static behaviour of this inclined spring system and re-formulates the force and stiffness characteristics in both vertical and horizontal directions, describing in some detail the approach by which low stiffness in both directions can be achieved.
+Low stiffness in the vertical direction has been previously documented (as cited above) due to the negative vertical stiffness of a pair of horizontal springs in compression.
+Low stiffness in the horizontal direction is newly analysed here, which is achieved due to the negative stiffness in the horizontal direction of the load-bearing vertical spring.
+To re-iterate, the vertical spring has negative stiffness horizontally, and the horizontal springs have negative stiffness vertically.
 
-To re-iterate, the vertical spring has negative stiffness horizontally, and
-the horizontal springs have negative stiffness vertically.
-
-A drawback of the planar low-stiffness system is noticed, which is that
-large compression ratios are required from the compressed springs in order to
-operate at \qzs/ in both directions.
+A potential drawback of the planar low-stiffness system is noticed, which is that large compressions are required from the springs in order to operate at \qzs/ in both directions simultaneously.
 
 \subsection{Geometry}
 
-\Figref{zks-dia} show the planar inclined spring system without load (\ie,
+\Figref{zks-dia} shows the planar inclined spring system without load (\ie,
 with undeflected springs) and \figref{zks-qzs} shows the same system after
 deflection to the position which has the potential of achieving `\qzs/', which
 is the position of maximum compression of the inclined springs. The overall
@@ -88,26 +75,27 @@ position.
 \begin{figure}
 \begin{wide}
 \begin{subfigure}
-  \asyinclude{PhD/Figures/ZKS/schematic}
+  \asyinclude{\jobname/zks-schematic}
   \caption{Inclined springs in their unloaded, uncompressed state, corresponding
 to a vertical displacement of $\ZKSdisp=\ZKSheight$.\figlabel{zks-dia}}
 \end{subfigure}\hfil
 \begin{subfigure}
-  \asyinclude{PhD/Figures/ZKS/schematic-qzs}
+  \asyinclude{\jobname/zks-schematic-qzs}
   \caption{Inclined springs at a position of maximum negative stiffness,
 corresponding to a vertical displacement of $\ZKSdisp=0$.\figlabel{zks-qzs}}
 \end{subfigure}
 \end{wide}
 \caption{Negative stiffness inclined springs in parallel with a positive stiffness spring.}
+\figlabel{zks}
 \end{figure}
 
 At the unloaded state shown in \figref{zks-dia}, all springs are considered to
 be in their uncompressed state; with inclined spring lengths
 $\ZKSlength=\sqrt{\ZKSheight^2+\ZKSwidth^2}$ and vertical spring length
-$\ZKSvlength=\ZKSlengthratio\ZKSlength$. The inclined springs each have
-stiffness~$\ZKSstiffincl$ and the vertical spring has stiffness
-$\ZKSstiffvert=\ZKSkratio\ZKSstiffincl$. The stiffness and deflection
-properties of the springs are summarised in \tabref{spring-properties}.
+$\ZKSvlength=\ZKSlengthratio\ZKSlength$, where $\ZKSlengthratio$ is defined as the length ratio between the vertical and inclined springs.
+The inclined springs each have stiffness~$\ZKSstiffincl$ and the vertical spring has stiffness
+$\ZKSstiffvert=\ZKSkratio\ZKSstiffincl$, where $\ZKSkratio$ is defined as the stiffness ratio between the vertical and inclined springs.
+The stiffness and deflection properties of the springs are summarised in \tabref{spring-properties}.
 
 \begin{table}
   \caption{Properties of the springs in the \qzs/ inclined spring system
@@ -177,24 +165,19 @@ the vertical component of this inclined spring force is
 
 It is convenient to normalise this result by representing the lengths and
 displacements as ratios of the uncompressed height of the inclined springs.
-\Ie, by making the coördinate substitutions $\ZKSnorm=\ZKSdisp/\ZKSheight$ and
+\Ie, by making the \coordinate/ substitutions $\ZKSnorm=\ZKSdisp/\ZKSheight$ and
 $\ZKSratio=\ZKSwidth/\ZKSheight$, the inclined spring force in the vertical
 direction can be written in non-dimensional form as
-
 \begin{dmath}[label=ZKSforceinclVnorm]
   \frac{\ZKSforceinclV{\ZKSnorm}}{\ZKSheight \ZKSstiffincl} =
     \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
-\end{dmath}.
+\end{dmath},
+where $\ZKSnorm$ is denoted the geometric ratio and $\ZKSratio$ the normalised displacement.
 
-This is a different normalisation than used in the
-literature~\cite{carrella2007-jsv,carrella2008-thesis,carrella2009-jsv}; note that here $\ZKSratio=0$ corresponds to
-unloaded inclined springs at \ang{90} (\ie, vertical) before compression, and
-$\ZKSratio=\infty$ corresponds to unloaded inclined springs at \ang{0} (\ie,
-horizontal). In the coördinate system used here, the displacement origin $x=0$
-corresponds to the position of maximum compression of the inclined springs,
-\ie, when they are horizontal.
+This is a different normalisation than used in the literature~\cite{carrella2007-jsv,carrella2008-thesis,carrella2009-jsv}; note that here $\ZKSratio=0$ corresponds to unloaded inclined springs at \ang{90} (\ie, vertical) before compression, and $\ZKSratio=\infty$ corresponds to unloaded inclined springs at \ang{0} (\ie, horizontal).
+In the \coordinate/ system used here, the displacement origin $\ZKSdisp=0$ corresponds to the position of maximum compression of the inclined springs, \ie, when they are horizontal.
 
-\Figref{ZKSforce-plain} illustrates the characteristic of
+\Figref{ZKSforce-plain} illustrates the force characteristic of
 \eqref{ZKSforceinclV} \vs\  normalised displacement for a range of geometric
 ratios $\ZKSratio$. The `snap-through' forces that cause the negative
 stiffness is especially strong the smaller $\ZKSratio$ becomes (\ie, the more
@@ -225,28 +208,22 @@ from \eqref{ZKSratioQZS}.}
 The total vertical force produced by the system, $\ZKSforcetotalV$, is
 calculated from combining \eqref{ZKSforceinclV} for each inclined spring with
 the force due to the vertical spring:
-
 \begin{dmath}[label=ZKSforcetotalV]
 \ZKSforcetotalV
   = 2\ZKSforceinclV + \ZKSforcevertV
 \end{dmath}.
-
 For vertical displacements, the force due to the vertical spring is given by
-
 \begin{dmath}[label=ZKSforcevertV]
 \ZKSforcevertV
   = \gp{\ZKSheight-x} \ZKSstiffvert
 \end{dmath},
-
 and the total force in the vertical direction can be nondimensionally
 represented by
-
 \begin{dmath}[label=ZKSforcetotalVnorm]
 \frac{\ZKSforcetotalV}{\ZKSheight \ZKSstiffincl} = -\ZKSnorm \ZKSkratio+\ZKSkratio+2
 \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
 \end{dmath},
-
-where $\ZKSkratio=\ZKSstiffvert/\ZKSstiffincl$. This equation is depicted in
+where $\ZKSkratio=\ZKSstiffvert/\ZKSstiffincl$ is the stiffness ratio between the vertical and inclined springs. This equation is depicted in
 \figref{ZKSforcetotalVnorm} for $\ZKSkratio=1$, where it can be seen that by
 selecting $\ZKSratio$ appropriately, it is possible to generate a local region
 of low stiffness at $\ZKSnorm=0$, approaching \qzs/ condition under ideal
@@ -260,7 +237,6 @@ $\ZKSvlengthcomp{\ZKSdispMin,0}=0$. In other words, the spring has been
 compressed to zero length (which would be troublesome to achieve in practice).
 This condition can be solved for $\ZKSdispMin$ and subsequently normalised for
 the equivalent $\ZKSnormMin$, which are given by
-
 \begin{dseries}[label=ZKSnormMin]
 \begin{math}
   \ZKSdispMin = \ZKSheight - \ZKSvlength
@@ -272,19 +248,6 @@ the equivalent $\ZKSnormMin$, which are given by
 
 
 \subsection{Vertical stiffnesses}
-
-The vertical stiffness characteristic, $\ZKSstiffnessV$, of the system is
-calculated by differentiating \eqref{ZKSforcetotalVnorm} with respect to $x$:
-
-\begin{dgroup*}
-\begin{dmath}
-  \ZKSstiffnessV = -\D{}{\ZKSdisp} \ZKSforcetotalV
-\end{dmath},
-\begin{dmath}[label=ZKSstiffnessV]
-% edited to move the gamma^2 in front of the sqrt
-  \frac{\ZKSstiffnessV}{\ZKSstiffincl} = -2\ZKSratio^2 \sqrt{\frac{\ZKSratio^2+1}{\gp{\ZKSratio^2+\ZKSnorm^2}^3}}+\ZKSkratio+2
-\end{dmath}.
-\end{dgroup*}
 
 \begin{figure}
 \begin{wide}
@@ -307,18 +270,26 @@ system calculated with \eqref{ZKSstiffnessV}.}
 \figlabel{ZKSstiffness-both}
 \end{figure}
 
-This equation is shown in \figref{ZKSstiffness-vert} together with the
-associated horizontal stiffness, which will be calculated in
-\secref{qzs-horiz}. The parameter selection required to achieve a \qzs/
+The vertical stiffness characteristic, $\ZKSstiffnessV$, of the system is
+calculated by differentiating \eqref{ZKSforcetotalVnorm} with respect to $x$:
+\begin{dgroup*}
+\begin{dmath}
+  \ZKSstiffnessV = -\D{}{\ZKSdisp} \ZKSforcetotalV
+\end{dmath},
+\begin{dmath}[label=ZKSstiffnessV]
+% edited to move the gamma^2 in front of the sqrt
+  \frac{\ZKSstiffnessV}{\ZKSstiffincl} = -2\ZKSratio^2 \sqrt{\frac{\ZKSratio^2+1}{\gp{\ZKSratio^2+\ZKSnorm^2}^3}}+\ZKSkratio+2
+\end{dmath}.
+\end{dgroup*}
+Graphs of the normalised vertical stiffness ${\ZKSstiffnessV}/{\ZKSstiffincl}$ \vs\ normalised displacement $\ZKSnorm$ is shown in \figref{ZKSstiffness-vert} together with the associated horizontal stiffness, which will be calculated in \secref{qzs-horiz}.
+The parameter selection required to achieve a \qzs/
 condition in the vertical direction can be found by solving
 \eqref{ZKSstiffnessV} for $\ZKSstiffnessV=0$ at $\ZKSnorm=0$. This results in
 the relation
-
 \begin{dmath}[label=ZKSratioQZS]
   \ZKSratioQZS =
     \frac{2}{\sqrt{\ZKSkratio^2+4 \ZKSkratio}}
 \end{dmath}
-
 which is used as the reference value of $\ZKSratio$ in
 \figref{ZKSforce-both,ZKSstiffness-both}.
 
@@ -326,11 +297,9 @@ Achieving exactly \qzs/ with this spring is not feasible in practice as the
 stiffness characteristic becomes negative for $\ZKSratio<\ZKSratioQZS$, as
 shown in \figref{ZKSstiffness-vert}. Define $\ZKSoff$ as the error of
 $\ZKSratioQZS$ as
-
 \begin{dmath}
   \ZKSratio = \gp{1+\ZKSoff}\ZKSratioQZS
 \end{dmath}.
-
 \Figref{ZKSoff} shows the vertical force, $\ZKSforcetotalV$, of the system for
 $\ZKSoff\in\{-0.1, 0, 0.1\}$. It can be seen that negative values of $\ZKSoff$
 correspond to negative stiffness at the equilibrium point $\ZKSnorm=0$. A
