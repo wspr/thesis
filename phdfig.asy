@@ -31,6 +31,14 @@ void magnet2d(real width, real height, pair dist, real magangle, real magrotate=
   draw(shift(dist)*rotate(magrotate)*arrow_path,Arrow(arrowhead=HookHead,size=4pt));
 }
 
+void cuboid2d(real width, real height, pair dist, real magrotate=0) {
+  path magnet_path =
+       (+width/2,+height/2)--(-width/2,+height/2)--
+       (-width/2,-height/2)--(+width/2,-height/2)--cycle;
+
+  filldraw(shift(dist)*rotate(magrotate)*magnet_path,white,black);
+}
+
 void drawcube(triple c, triple o=(0,0,0)) {
   draw(shift(o)*(
     (c.x,  c.y, c.z)--
