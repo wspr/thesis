@@ -229,8 +229,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%   QZS   %%%%%%%%%%%%%%%%%%%%%%%%%
 
-\def\polyc#1{c_#1[\ngap]}
-\def\polyq#1{q_#1[\ngap]}
+\def\polyc#1{c_#1\fn{\ngap}}
+\def\polyq#1{q_#1\fn{\ngap}}
 
 % parameters
 \def\mdim{a}% magnet dimension
@@ -505,6 +505,7 @@
 \newvect\displacement{x}
 \newvect\velocity{v}
 \newcommand\natfreq{\omega_n}
+\newcommand\resfreq{\omega_d}
 \newcommand\approaches{\rightarrow}
 
 \newvect\magH{H}
