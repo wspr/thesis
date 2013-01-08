@@ -1,6 +1,5 @@
 
 import phdfig;
-texpreamble("\def\ax{\mathbf x}\def\az{\mathbf z}");
 
 unitsize(1cm);
 

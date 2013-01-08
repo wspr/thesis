@@ -12,7 +12,7 @@ texpreamble("
   \providecommand\mupvdispl{\delta}
 ");
 
-real h = 1, w = 1, d=1.5h, hdispl = 0.9;
+real h = 1, w = 1, d=1.5h, hdispl = 0.7;
 
 real T = 5;
 real W = 10;
@@ -42,7 +42,7 @@ real W = 10;
   real aa = 0.9;
   draw( O--(O+(aa,0)) , Arrow(size=4pt) );
   draw( O--(O+(0,d)) , Arrow(size=4pt) ,L="$\mupvdispl$", align=SW);
-  draw( O+(-aa,d) -- O+(aa,d) , dashdotted );
+  draw( O+(-aa,d) -- O+(aa,d) , dashed );
   label(O+(aa,0),L="$\muphdispl$",align=S);
 
   magnet2d(w,h,(W-hdispl+0*w,d),-90);

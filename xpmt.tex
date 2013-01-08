@@ -1,14 +1,13 @@
 \documentclass[11pt,a4paper]{memoir}
 \def\asydir{\jobname}
 \usepackage{thesis-preamble}
+\EndPreamble
 \begin{document}
 
 \chapter{Prototype low-stiffness magnetic spring}
 \chaplabel{xpmt}
 
-This chapter covers the implementation details, experiments performed,
-and results obtained from the experimental apparatus built for this
-project.
+This chapter covers the implementation details, experiments performed, and results obtained from the experimental apparatus built for this project used to validate some of the concepts and theory discussed in previous chapters.
 
 \section{Design of the experimental apparatus}
 
@@ -24,7 +23,7 @@ the ideas behind the \qzs/ arrangement analysed in detail in \secref{qzs}.
 
 \begin{figure}
   \begin{wide}
-    \asyinclude{PhD/Figures/Rig/rig-schematic}
+    \asyinclude{\jobname/rig-schematic}
   \end{wide}
   \caption[Schematic of the experimental rig.]{
     Schematic of the experimental rig (not to scale). Position shown is
@@ -34,7 +33,7 @@ the ideas behind the \qzs/ arrangement analysed in detail in \secref{qzs}.
 \end{figure}
 
 \begin{figure}
-  \includegraphics[width=0.8\textwidth]{PhD/Experiments/Rig/photo.jpg}
+  \includegraphics{PhD/Experiments/Rig/photo-labelled.pdf}
   \lofcaption{Photo of the experimental apparatus.}{ Base shaker is not shown.}
   \figlabel{rig-photo}
 \end{figure}
@@ -80,13 +79,13 @@ other is situated above to apply an attractive force (negative stiffness). The
 physical location of the fixed magnets may be moved vertically in order to
 vary the respective amounts of positive and negative stiffness.
 
-The magnet system is designed to look at dynamics in the vertical displacement
+The magnet system is designed to investigate the dynamics in the vertical displacement
 direction; having stability in this direction implies instability in the
 horizontal direction (as discussed in \secref{earnshaw}). In order to remain
 stable, the magnets require a physical constraint, achieved by placing the
 floating magnets at the end of a long pinned rigid beam. Small rotations of
 this beam can be assumed to correspond to largely vertical displacements of
-the end magnets. This is ensured in the design later in
+the end magnets. This is ensured in the design, which is addressed in
 \secref{rotating-beam}.
 
 The beam itself was chosen as a hollow rectangular section in order to
@@ -94,6 +93,9 @@ minimise weight and maximise stiffness; it is assumed to be a rigid body
 for the purposes of these experiments (especially at the low vibrational
 frequencies under investigation).
 
+The pin support was constructed by clamping the beam to a thin piece of flexible plastic which was clamped to the frame.
+The use of a flexural element was chosen to avoid stiction that would be present in a bearing or hinge joint.
+The stiffness of this plastic can be assumed to be negligible as it played no part in the load bearing of the beam.
 Having a physical constraint on the motion of the floating magnets compromises
 the non-contact idea of using magnets for vibration isolation. This
 experimental rig has been designed to analyse the behaviour of the system in
@@ -131,7 +133,7 @@ into an object by boring a round hole as opposed to milling a square one.
 \subsection{Actuators}
 \seclabel{actuators}
 
-to highlight the dynamics of the magnetic support as much as possible, any
+To highlight the dynamics of the magnetic support as much as possible, any
 additional actuators for applying control forces should affect the dynamics of
 the system as little as possible. Fitting with the theme of non-contact
 support, a non-contact actuator should be chosen if possible. An
@@ -142,7 +144,7 @@ with fixed non-biased coils applying force on a moving ferrous material. Since
 only attractive forces can be generated in this configuration, such
 electromagnets must be used in pairs to achieve forces in two directions.
 
-An alternative is to used biased electromagnets, such that either the coil
+An alternative is to use biased electromagnets, such that either the coil
 itself contains a permanent magnet, or the coil acts against a permanent
 magnet, or both. For a biased coil, instability results due to the presence of
 the negative stiffness attractive forces between the permanent magnet and the
@@ -178,16 +180,14 @@ certain wire diameter and resistance.
 \begin{figure}
   \begin{wide}
   \begin{sidefigure}
-  \asyinclude{PhD/Figures/Rig/rig-coil}
+  \asyinclude{\jobname/rig-coil}
   \lofcaption{Schematic of the dual-coil electromagnet built for the experimental apparatus.}{ (Not to scale.)}
   \figlabel{rig-dual-coil}
-  \end{sidefigure}\hfill
+  \end{sidefigure}\hfil
   \begin{sidefigure}
-  \psfragfig{\phdpath Coil/fig/2coils-normdesign}
+  \psfragfig{\phdpath Simulations/Coil/fig/2coils-normdesign}
   \lofcaption{Normalised force \vs\  displacement curve for the dual-coil electromagnet.}
-  { Zero displacement is as shown in \figref{rig-dual-coil}, and
-  negative displacements show symmetric behaviour to that shown here.
-  \figlabel{2coils-normdesign}}
+  { Force is normalised to the maximum value at zero displacement; the force imparted by the coil remains within 10\% of maximum over a displacement range of around \SI{\pm2}{mm}}
 \end{sidefigure}
   \end{wide}
 \end{figure}
@@ -210,19 +210,19 @@ certain wire diameter and resistance.
 \end{table}
 
 The dimensions of the coil were chosen based on the trends shown in the
-analytical calculations from \secref{dualcoil}. A force \vs\  displacement
-curve of this particuar coil is shown in \figref{2coils-normdesign}; from this
+analytical calculations from \secref{dualcoil} to ensure sufficient force over the displacement range expected from the system.
+A force \vs\  displacement curve of this particuar coil is shown in \figref{2coils-normdesign}; from this
 graph, it can be seen that around the centred position (displacement of zero
 in the curve), the force imparted by the coil remains within 10\% of maximum
-around a displacement range of around \SI{\pm2}{mm}.
+over a displacement range of around \SI{\pm2}{mm}, which is acceptable for the purposes of the design.
 
 \subsection{Sensors}
 \seclabel{xpmt-sensors}
 
 The requirements for the sensing equipment is similar to that of the actuators; noncontact spatial measurement is desired to remove any possibility of adding further dynamics to the system.
-A displacement sensor is required to calibrate the position of the fixed and moving magnets in the system.
-Velocity sensors are used for feedback control to add damping to the system (see \secref[vref]{skyhook}) in order to aid the vibration isolation characteristic of the system.
-Accelerometers are used to measure the vibration response on the beam and on the base.
+A displacement sensor is required to measure the position of the fixed and moving magnets in the system.
+Velocity sensors can be used for feedback control to add damping to the system (see \secref[vref]{skyhook}) in order to aid the vibration isolation characteristic of the system.
+Accelerometers are used to measure the vibration response on the beam and on the base and thus determine the transmissibility of the system.
 
 \subsubsection{Displacement sensors}
 
@@ -242,8 +242,7 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
 
     An inductive, or Hall effect, sensor works by exciting a coil with a high
     frequency sinusoidal current which induces eddy currents in the target.
-    \note{An example of a commercial inductive sensor is
-          \url{http://www.microstrain.com/ncdvrt.aspx}}
+%    \note{An example of a commercial inductive sensor is \url{http://www.microstrain.com/ncdvrt.aspx}}
     These eddy currents may be measured very accurately, but the whole effect
     is very dependent on a lack of magnetic noise. This makes these type of
     sensors difficult to use in magnetic applications.
@@ -251,8 +250,8 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
 \item[Capacitive]
 
     A capacitive sensor measures the capacitance between a plate and the
-    target. \note{An example of a commerical capacitive sensor is
-    \url{http://www.micro-epsilon.com/products/displacement-position-sensors/capacitive-sensor/capaNCDT_6019/index.html}.}
+    target.
+%    \note{An example of a commerical capacitive sensor is \url{http://www.micro-epsilon.com/products/displacement-position-sensors/capacitive-sensor/capaNCDT_6019/index.html}.}
     To measure large distances, however, a large capacitive head is
     required (approx.\ $1$\,cm diameter for every $1$\,mm of range
     \cite{boehm1993}).
@@ -262,8 +261,7 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
     `\acro{lvdt}' sensors use a moving probe attached to an electrical
     circuit that exhibits a measureable effect which varies with displacement
     of the probe.
-    \note{An example of a commercial \acro{lvdt} sensor is
-          \url{http://www.microstrain.com/dvrt.aspx}.}
+%    \note{An example of a commercial \acro{lvdt} sensor is \url{http://www.microstrain.com/dvrt.aspx}.}
     Differential Variable Reluctance Transducers
     (`\textsc{dvrt}') are a variation on this idea. The probe must either be
     fixed to the measured object or be pressed against it with a positive
@@ -274,8 +272,7 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
 
     A laser sensor uses interferometry of a reflected laser signal to
     calculate the absolute displacement of the target from the sensor.
-    \note{An example of a commerical laser displacement sensor is
-          \url{http://tinyurl.com/wenglor}.}
+%    \note{An example of a commerical laser displacement sensor is \url{http://tinyurl.com/wenglor}.}
     These sensors have the advantage of being unaffected by electrical or
     magnetic noise and robust working environment against any surface (albeit
     with a suitable finish).
@@ -322,26 +319,27 @@ where $\DisplSensorBeam$ is the vertical displacement measured at the position
 of the sensor, given by
 \begin{dmath}
   \DisplSensorBeam\fn{\DisplSensor} = \gp{\HeightRig - \OriginBeam} - \HeightSensor - \DisplSensor
-\end{dmath}
+\end{dmath}.
 
 \subsubsection{Velocity sensors}
 
 As velocity is defined in terms of a change in displacement from some reference point, it is only meaningful to refer to the velocity of an object with respect to an inertial reference frame.
-With a sensor attached to the ground, separate from the object, relative velocity can be measured between the disturbance and the resulting excitation ($\velMass-\velBase$ in terms of \figref{simple-isolation}).
+With a sensor attached to another body, separate from the object, relative velocity can be measured between the disturbance and the resulting excitation ($\velMass-\velBase$ in terms of \figref{simple-isolation}).
 Laser sensors
     \note{Also known as vibrometers, such as sold by Polytec GmbH: \url{http://www.polytec.com/}}
 and capacitive sensors \cite{nijsse2001} may be used to measure relative velocity directly, while relative velocity may be estimated by differentiating the output of a displacement sensor.
 Such estimation is prone to high frequency noise that must be filtered away.
 
 Absolute velocity sensors must use more complex physical processes to obtain a measure of an object with respect to the `fixed' earth.
-Absolute angular velocity can be infered by measuring the coriolis force induced on a vibrating element due to the rotational energy of the earth \cite{konno1996}.
+Absolute angular velocity can be infered by measuring the coriolis force induced on a vibrating element due to the rotational energy of the earth \cite{konno1996} and is the basis of solid state gyroscope sensors.
 A geophone uses a moving magnet or moving coil arrangement to generate \backemf/ from the motion of an inertial mass \cite{oome2009-saa} from which absolute velocity can be calculated.
 This process is limited in the low frequency by the resonance frequency of the inertial mass and in the high frequency by the roll-off of the frequency response.
 Absolute translational velocity can be estimated by integrating a measured acceleration; this technique (which is used in the experimental apparatus) is discussed in the next section.
 
 \subsubsection{Acceleration sensors}
 
-For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system. Technical specifications, including charge amplifier and filters used, are shown in \tabref{rig-apparatus}.
+For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system.
+Technical specifications of the apparati used, including charge amplifier and filters, are shown in \tabref{rig-apparatus}.
 
 \begin{table}
   \caption{Experimental apparatus used for signal measurement and filtering.}
@@ -356,17 +354,17 @@ For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal
   \end{tabular}
 \end{table}
 
-For open loop measurements, these sensors were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals and estimate the velocities.
-Standard methods for interpreting the accelerometer involve high-pass filtering the measured signal to avoid drift as integration errors accumulate.
-The corner frequency for the integration must be reasonably high, as it is not possible to distinguish between drift and low frequency components in the  signal.
+For open loop measurements, these sensors were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals to estimate the velocities.
+Standard methods for interpreting the accelerometer involve high-pass filtering the measured signal to avoid drift as integration errors accumulate \cite{brennan2007-jsv}.
+The corner frequency for the integration must be reasonably high, as it is not possible to distinguish between drift and low frequency components in the  signal; in this case the charge amplifiers used a \SI{1}{Hz} cut-on frequency.
 An alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signals; for transient or wide-band signals, the typical approach is better suited.
 
-As an alternative, low frequency velocity signals can be estimated by differentiating a displacement measurement.
+Low frequency velocity signals can also be estimated by differentiating a displacement measurement.
 If the displacement sensor is fixed to a fixed inertial reference frame, then this estimate may be combined with an integrated accelerometer measurement to obtain a more accurate estimate of the velocity \cite{bennett2007}.
 However, if relative displacement is measured between two coupled systems (as often the case for vibration isolation) then this technique does not capture the absolute velocity. (\Eg, with reference to \figref{simple-isolation}, the signal $\gp{\velMass-\velBase}$ is being estimated, not $\velMass$.)
 
-Recently, \textcite{williams2009} showed a filter system designed to estimate absolute velocity from accelerometer measurements in order to implement skyhook damping.
-With the addition of a small higher frequency resonance, their filter was able to add damping to and shift the resonance peak into the lower frequencies; unfortunately, this research was published after experimental measurements for this thesis had completed and their ideas were not able to be tested in the apparatus discussed in this section.
+Recently, \textcite{williams2009} showed a filter system designed to estimate absolute velocity from accelerometer measurements that can mitigate the the low-frequency resonance issues seen due the high-pass filters used in the charge amplifiers used (seen in the experimental results in \secref*{acc-resonance}).
+Unfortunately, this research was published after experimental measurements for this thesis had been completed and their ideas were not able to be tested in the apparatus discussed in this section.
 
 
 \subsection{Translational effects of the rotating beam}
@@ -381,7 +379,8 @@ The beam added a horizontal constraint to the system for stability. As the
 beam rotates, the magnets move predominantly in the vertical direction; there
 is still some horizontal motion, however, and the area restricted by the
 electromagnetic coil requires attention to ensure that there is no contact
-between the moving magnet and the fixed coil. However, the smaller the inner
+between the moving magnet and the fixed coil.
+However, the smaller the air gap between the coil and the magnet, and thus the smaller the inner
 radius of the coil, the greater the forces imparted by the coil on the magnet
 (see \figref[vref]{magcoil-ecc-vary}), so the smaller the tolerance the better.
 
@@ -393,8 +392,11 @@ in the `rest' position $\overline{OAB}$ and in a rotated position $\overline{OA'
 
 \begin{figure}
   \asyinclude{PhD/Figures/Rig/horiz-tolerance}
-  \caption{Geometry for calculating the horizontal tolerance of the inner
-           dimensions of the coil.}
+  \caption
+  [Geometry for calculating the minimum horizontal tolerance of the inner
+           dimensions of the coil due to vertical displacement of the magnet arrangement.]
+  {Geometry for calculating the minimum horizontal tolerance $x$ of the inner
+           dimensions of the coil due to vertical displacement $z$ of the magnet arrangement pinned at point $O$.}
   \figlabel{horiz-tolerance}
 \end{figure}
 
@@ -418,8 +420,8 @@ relationship $\Cos{\ArcSin{a}}=\sqrt{1-a^2}$:
 
 From the dimensions chosen for the rig, $l=\SI{300}{mm}$ and
 $h\approx\SI{50}{mm}$, the minimum horizontal tolerance for a vertical
-displacement $z=\SI{1}{mm}$ is \SI{0.168}{mm} and for $z=\SI{2}{mm}$ is
-\SI{0.34}{mm}. (The relationship between $x$ and $z$ being fairly linear for
+displacement $z=\SI{1}{mm}$ is $x=\SI{0.168}{mm}$ and for $z=\SI{2}{mm}$ is
+$x=\SI{0.34}{mm}$. (The relationship between $x$ and $z$ being fairly linear for
 most values of $l$ and $h$ with small ranges of $z$.) This tolerance was
 judged to be small enough to allow a surrounding coil without having a
 significantly diminished force characteristic from the air gap required to
@@ -445,8 +447,10 @@ magnets, they could be adjusted in parallel to achieve a fixed \qzs/ location.
 As the upper magnet placement was lowered, the rest position of the beam moved
 closer to the \qzs/ position (as more force was supported by the upper magnet).
 This relationship is shown in \figref{turns-qzs}.
-The normalised magnet gap is used in the following sections to
-represent the varied configuration of the spring in the experiments.
+The normalised magnet gap $\rigNormGap$ is used in the following sections to
+represent the varied configuration of the spring in the experiments, defined as
+$\rigNormGap=\OriginMagGap/\HeightMag$, where
+$\OriginMagGap$ is the magnet gap at \qzs/ and $\HeightMag$ is the height of the magnets.
 From the geometry of the rig,
 the position of the upper magnet was used to calculate the
 gap between the magnets at \qzs/:
@@ -457,11 +461,11 @@ gap between the magnets at \qzs/:
 \end{dmath},
 where geometrical properties are described in \tabref{rigprop} and
 $\HeightBuffer=\SI{2.5}{mm}$ is a little extra height to account for extra
-space taken up by the beam shell thickness and the shell of the magnet mount.
-The normalised magnet gap is $\ngap=\OriginMagGap/\HeightMag$, where
-$\HeightMag$ is the height of the magnets.
+space taken up by the thicknesses of the beam wall and the magnet mounting.
 
 \begin{figure}
+  \asyinclude{\jobname/spring-zk}
+  \hfil
   \psfragfig{PhD/Experiments/XPMT/latex/turns-qzs}
   \caption{Rest position of the system as the magnet position varies.}
   \figlabel{turns-qzs}
@@ -509,48 +513,54 @@ the dynamics of the system.
 Open loop measurements without the coil connected are shown in
 \figref{ol-undamped-frflin}. and measurements taken with the coil (\ie, with
 added damping) are shown in \figref{ol-damped-frflin}. For both of these results,
-the transmissibility, $\transmissibility$, shown is the transfer function
+the transmissibility $\transmissibility{}$ shown is the transfer function
 between the accelerometer measurements of the base and magnet-supported beam:
 \note{Calculated with \Matlab/'s \texttt{tfestimate} command.}
-\begin{dmath}[label=Tbm]
-  \transmissibility = \frac{\crossSpectMagnetBase}{\powerSpectBase}
-\end{dmath}.
+\begin{dmath}[label=Tbm,compact]
+  \transmissibility{} = \frac{\crossSpectMagnetBase}{\powerSpectBase}
+\end{dmath},
+where $\powerSpectMagnet$ is the power spectral density of the accelerometer
+measurements at the moving magnet, ($\powerSpectMagnet$ is the power spectral density
+of the accelerometer measurements of the base,) and $\crossSpectMagnetBase$ is the cross power spectral density of the two.
 
-\begin{figure}[p]
-  \psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frflin}
+\begin{figure}
+  \begin{wide}
+  \begin{subfigure}
+  \centerline{\psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frflin}}
+  \caption{Open circuit coil; no additional damping is added to the system.\figlabel{ol-undamped-frflin}}
+  \end{subfigure}
+  \hfil
+  \begin{subfigure}
+  \centerline{\psfragfig{PhD/Experiments/XPMT/latex/ol-damped-frflin}}
   \caption
-  [Open loop measurements with the electromagnetic coil connected in an open circuit.]
-  {Open loop measurements with the electromagnetic coil connected in an open circuit as a function of normalised gap~$\ngap$; no additional damping is added to the system.}
-  \figlabel{ol-undamped-frflin}
-\end{figure}
-
-\begin{figure}[p]
-  \psfragfig{PhD/Experiments/XPMT/latex/ol-damped-frflin}
-  \caption
-  [Open loop measurements with the electromagnetic coil connected in a closed circuit.]
-  {Open loop measurements with the electromagnetic coil connected
-           in a closed circuit as a function of normalised gap~$\ngap$.
+  {Closed circuit coil.
            The coil adds damping to the system, which can
            be seen by the reduction in height of the resonant peaks in
-           comparison to \figref{ol-undamped-frflin}.}
-  \figlabel{ol-damped-frflin}
+           comparison to \figref{ol-undamped-frflin}.
+  \figlabel{ol-damped-frflin}}
+  \end{subfigure}
+  \end{wide}
+  \caption
+  [Open loop measurements with the electromagnetic coil connected in an open and closed circuit.]
+  {Open loop measurements with the electromagnetic coil connected in an open and closed circuit as a function of normalised gap~$\rigNormGap$.}
 \end{figure}
+
 
 \subsection{Analysis of the open loop data}
 
 From the measurements shown in the previous section, data fitting of the frequency response functions was used to extract a linear model of the system in each configuration.
-While more sophisticated techniques are possible \cite{chen2009}, fitting the data to a known exact frequency response function yielded acceptable results in this case since the peaks are quite simple.
+While more sophisticated techniques are possible \cite{chen2009}, fitting the data to a known exact frequency response function yielded acceptable results in this case since the linear model is quite simple.
 
 % doublecheck how I want to say this
-The model used to fit the data was a simple vibration isolation system
+The model used to fit the data was a single \dof/ vibration isolation system
 given by \eqref{simple-isolation-freq} in terms of the natural frequency, $\natfreq =
 \sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio = \damping /
 (2\sqrt{\stiffness\mass})$. The resulting expression is
 \begin{dmath}[label=fit-model]
   \transmissibility = \frac
     {2\ii\dampingratio\freq\natfreq + \natfreq^2}
-    {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2},
-\end{dmath}
+    {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2}
+\end{dmath},
 where $\freq$ is the frequency at which to calculate the transmissibility
 $\transmissibility$. The data was fit
     \note{Using \Matlab/'s \code{fminsearch}.}% check
@@ -579,14 +589,15 @@ in \figref{ol-results}.
   \begin{wide}
   \begin{subfigure}
     \psfragfig{PhD/Experiments/XPMT/latex/ol-reson}
-    \caption{Model-derived resonant frequencies\figlabel{ol-reson}}
+    \caption{Model-derived resonant frequencies.\figlabel{ol-reson}}
   \end{subfigure}
+  \hfil
   \begin{subfigure}
     \psfragfig{PhD/Experiments/XPMT/latex/ol-dampi}
-    \caption{Model-derived damping ratio\figlabel{ol-dampi}}
+    \caption{Model-derived damping ratios.\figlabel{ol-dampi}}
   \end{subfigure}
   \end{wide}
-  \caption{Analysed results from fitting the open loop measurements to the isolator model of \eqref{fit-model}.}
+  \caption{Analysed results from fitting the open loop measurements to the isolator model of \eqref{fit-model} with coil circuit open and closed, \resp.}
   \figlabel{ol-results}
 \end{figure}
 
@@ -608,38 +619,34 @@ rejected by the ratio of the cross-spectrum and power-spectrum terms in
 transmissibility instead with a ratio of the individual power spectra of the
 base and magnet:
 \begin{dmath}[label=frfnl]
-  \transmissibility = \sqrt{\powerSpectMagnet/\powerSpectBase},
+  \transmissibility{} = \sqrt{\powerSpectMagnet/\powerSpectBase},
 \end{dmath}
-where $\powerSpectMagnet$ is the power spectra of the accelerometer
-measurements at the moving magnet and $\powerSpectMagnet$ is the power spectra
-of the accelerometer measurements of the base. In this case, any
-nonlinearities in the signals are retained in the final result.
+In this case, any nonlinearities in the signals are retained in the final result.
 
 The transmissibility calculated with this method is shown in
 \figref{ol-undamped-frfnl}. In this case, the nonlinearities present in the
 system are more prominent, and a clear peak is shown at close to twice the
-`natural' resonance frequency.
+`linear' resonance frequency.
 
 \begin{figure}
   \psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frfnl}
   \caption
     [Open loop transmissibility measurements without the coil connected.]
-    {Open loop measurements without the coil connected; the transmissibility is calculated with \eqref{frfnl}. Black markers show resonant frequencies and the points at twice each resonant frequency, indicating the higher-order dynamics.}
+    {Open loop measurements without the coil connected; the transmissibility is calculated with \eqref{frfnl}. Black markers show resonance frequencies and the points at twice each resonance frequency, indicating the nonlinear behaviour.}
   \figlabel{ol-undamped-frfnl}
 \end{figure}
 
 \subsection{Velocity feedback results}
 
-For this experiment, the rest position of the spring was chosen to some low
-resonant frequency (approximately \SI{3.5}{Hz}) and velocity feedback was applied
-to the system. Sampling parameters were as shown previously in
-\tabref{rig-ol-spect}.
-
-In this position, the electromagnetic coil was used in a simple velocity
-feedback controller in an attempt to reduce the height of the resonance peak.
+In this section, results are shown using closed loop feedback control to improve the vibration isolation characteristics of the system.
+For this experiment, the rest position of the spring was chosen to achieve an arbitrary low
+resonance frequency (approximately \SI{3.5}{Hz}).
+In this position, the electromagnetic coil was used in a simple absolute velocity
+feedback controller in an attempt to reduce the magnitude of the resonance peak.
 The gain of the feedback control was increased until the system became close
-to instability. Frequency response measurements over this range of feedback
-gains are shown in \figref{cl-results}.
+to instability.
+Frequency response measurements over this range of feedback gains are shown in \figref{cl-results}.
+Sampling parameters were as shown previously in \tabref{rig-ol-spect}.
 
 \begin{figure}
   \psfragfig{PhD/Experiments/XPMT/latex/cl-results}
@@ -647,11 +654,10 @@ gains are shown in \figref{cl-results}.
   \figlabel{cl-results}
 \end{figure}
 
-To estimate the velocity of the moving beam, the accelerometer measurement is
+To estimate the velocity of the moving beam, the accelerometer measurement was
 integrated by the charge amplifier with a cut-on frequency of \SI{1}{Hz}.
-Because the accelerometers were now being used to measure velocity, the
-transmissibility curves shown in \figref{cl-results} were calculated from the
-ratio of the velocity measurements.
+Because the accelerometers were being used to measure velocity (via integrators in the charge amplifiers used), the transmissibility curves shown in \figref{cl-results} were calculated from the
+ratio of the velocity measurements instead of acceleration measurements.
 
 Due to the presence of higher-order dynamics in the structure, a low pass
 filter was used to reject signals above \SI{50}{Hz}. This also ensured that
@@ -661,8 +667,8 @@ feeding back the velocity signal for the controller.
 The overall improvement to the vibration isolation can be shown by calculating
 the root-mean-square of the transmissibility over a certain frequency range.
 \begin{dmath}
-  \RMSof\transmissibility =
-  \sqrt{\Sum{\transmissibility^2}{\freq,\freq_1,\freq_2}}
+  \RMSof{\transmissibility{}} =
+  \sqrt{\Sum{\transmissibility{\freq}^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}
 The lower frequency limit is defined as $\freq_1=\SI{1}{Hz}$, as the results
 become very noisy below this frequency. The upper frequency limit
@@ -670,17 +676,19 @@ $\freq_2=\SI{11}{Hz}$ was chosen as the higher-order dynamics (not shown in
 \figref{cl-results}) have little impact yet at this frequency.
 
 \Figref{cl-reduction} shows the reduction in root-mean-square transmissibility
-$\RMSof\transmissibility$ the negative feedback gain increases.
-The resonance appearing in the lower frequencies of \figref{cl-results} causes
-the overall transmissibility reduction to have a local minimum.
+$\RMSof{\transmissibility{}}$ as the negative feedback gain increases.
+The overal transmissibility reduction is calculated as $1-\RMSof{\transmissibility{}}/\transmissibility{}_0$, where $T_0$ is the root-mean-square transmissibility of the open loop system.
+The resonance at \SI{1}{Hz} of \figref{cl-results} as the feedback gain increases causes the overall transmissibility reduction to have a local maximum.
 
 \begin{figure}
-  \psfragfig{PhD/Experiments/XPMT/latex/cl-reduction}
-  \caption{Reduction in overall transmissiblity between \SI{1}{Hz} and \SI{11}{Hz}.}
+  \psfragfig{PhD/Experiments/XPMT/latex/cl-reduction-2}
+  \caption[{Reduction on overall transmissiblity as velocity feedback gain was increased.}]{Affect on overall transmissiblity $\RMSof{\transmissibility{}}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
   \figlabel{cl-reduction}
 \end{figure}
 
-\paragraph{On the feedback gain magnitude} \Figref{cl-results,cl-reduction}
+\subsubsection{On the feedback gain magnitude}
+
+\Figref{cl-results,cl-reduction}
 plot results in terms of a `feedback gain' given in dimensionless units. This
 gain is the multiplier from the controller on the velocity signal that also
 incorporates the effects of the amplifiers for both sensors and actuators;
@@ -688,31 +696,41 @@ therefore, the absolute magnitude of this number is unimportant and is used
 purely to demonstrate the range of behaviours seen as the gain is increased
 until instability appears.
 
-\subsubsection{Analysis on the gain-induced resonance}
+\subsection{Analysis on the gain-induced resonance}
+\seclabel{acc-resonance}
 
-The appearance of a low frequency peak in \figref{cl-results} as the feedback
+The appearance of a low frequency peak at \SI{1}{Hz} in \figref{cl-results} as the feedback
 gain is increased is explained by the presence of the high-pass filter
-incorporated in the accelerometer charge amplifier. This behaviour is shown by
-\textcite{ananthaganeshan2001,brennan2007-jsv} for single \dof/
-structures with velocity feedback. Here, the same type of analysis will be
-used to investigate the response of a linear two \dof/ isolator
-system (shown in \figref{vibration-base-feedback}) with integrated
-accelerometer measurements used for velocity feedback control.
+incorporated in the accelerometer charge amplifier, which also has a pole at \SI{1}{Hz}.
+This behaviour has been shown previously for single \dof/ structures with velocity feedback \cite{ananthaganeshan2001,brennan2007-jsv}.
+Here, the same type of analysis will be used to investigate the response of a linear two \dof/ isolator
+system (shown in \figref{vibration-base-feedback}) with integrated accelerometer measurements used for velocity feedback control.
 
-\begin{figure}
+\begin{figure}[t]
+\centerline{
+\begin{minipage}[b]{0.5\textwidth}
   \asyinclude{PhD/Figures/Systems/vibration-base-feedback}
   \caption{Vibration isolation schematic with active feedback.}
   \figlabel{vibration-base-feedback}
+\end{minipage}\qquad
+\begin{minipage}[b]{0.8\textwidth}
+  \asyinclude{PhD/Figures/Control/simple-isolator-block}
+  \caption{Block diagram of \eqref{simple-isolator-laplace} representing
+  the system shown in \figref{vibration-base-feedback}.}
+  \figlabel{simple-isolator-block}
+\end{minipage}
+}
 \end{figure}
+
 
 In the time domain, the response of this linear system is given by
 \begin{dmath}
-\massMass \accMass =
+\mass \accMass =
   \forceIn - \damping\gp{\velMass-\velBase} - \stiffness\gp{\dispMass-\dispBase}
 \end{dmath},
 which can be re-written in the Laplace domain as
 \begin{dmath}[label=simple-isolator-laplace]
-s^2 \laplaceMass \underbrace{\gp{\massMass+\damping/s+\stiffness/s^2}}_{\gp{\Block[2]}^{-1}} =
+s^2 \laplaceMass \underbrace{\gp{\mass+\damping/s+\stiffness/s^2}}_{\gp{\Block[2]}^{-1}} =
   \laplaceForce + s^2 \laplaceBase \underbrace{\gp{\damping/s+\stiffness/s^2}}_{\Block[1]}
 \end{dmath}.
 This is shown as a block diagram in \figref{simple-isolator-block}. If the
@@ -721,13 +739,6 @@ $\laplaceForce=s^2\laplaceMass\BlockController$, the transmissibility of the sys
 \begin{dmath}[label=cl-generic]
   \frac\laplaceMass\laplaceBase = \frac{\Block[1]\Block[2]}{1+\BlockController\Block[2]}
 \end{dmath}.
-
-\begin{figure}
-  \asyinclude{PhD/Figures/Control/simple-isolator-block}
-  \caption{Block diagram of \eqref{simple-isolator-laplace} representing
-  the system shown in \figref{vibration-base-feedback}.}
-  \figlabel{simple-isolator-block}
-\end{figure}
 
 When the controller is some gain $\gain$ in series with an ideal integration of the accelerometer signal, $\BlockController = \gain/s$, \eqref{cl-generic} simplifies to the idealised absolute velocity feedback expression introduced in \secref[vref]{skyhook}:
 \begin{dmath}
@@ -748,7 +759,7 @@ the controller block is defined as
   \BlockController = \frac \gain s \gp{\frac{s}{s+\freqHPfilter}}^2
 \end{dmath},
 where $\gain$ is the feedback gain and $\freqHPfilter$ is the corner frequency
-of the high pass filter in the charge amplifier.
+of the two high pass filters in the charge amplifier.
 
 Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
 the final transfer function between the mass and base states,
@@ -757,23 +768,24 @@ the final transfer function between the mass and base states,
     \frac{ \gp{\damping s+\stiffness} \gp{s+\freqHPfilter}^2 }
          {
            \gain s^3 +
-           \gp{ \massMass s^2 + \damping s + \stiffness }
+           \gp{ \mass s^2 + \damping s + \stiffness }
            \gp{ s+\freqHPfilter }^2
          }
 \end{dmath}.
 This is plotted versus frequency in \figref{cl-filter}, where the resonance
 induced by the high pass filter becomes apparent as the feedback gain is
-increased to 99\% of the maximum gain (which is the gain when the system
-becomes unstable). The simulation uses linear parameters $\freq=\SI{3.5}{Hz}$
+increased to 99\% of the gain margin, which is the gain when the system
+becomes unstable.
+The simulation uses linear parameters $\freq=\SI{3.5}{Hz}$
 and $\dampingratio=\num{0.023}$ in order to show results at similar behaviour to \figref{cl-results}.
 
-In order to calculate the maximum gain of \eqref{cl-filter},
+In order to calculate the gain margin of \eqref{cl-filter},
 $\BlockController\Block[2]$ was evaluated equal to $-1$, where the system
 response of \eqref{cl-generic} becomes unbounded. To do this, first the
 critical frequency was found as the frequency at which
 $\Imag{\BlockController\Block[2]}=0$; this frequency was then substituted into
 $\Real{\BlockController\Block[2]}=-1$, which was solved for $\gain$ to find
-the maximum gain.
+the gain margin.
 
 \begin{figure}[!htbp]
   \begin{wide}
@@ -781,22 +793,27 @@ the maximum gain.
     \psfragfig{\phdpath Simulations/Springs/fig/cl-ideal}
     \caption{Ideal velocity signal.\figlabel{cl-ideal}}
   \end{subfigure}
+  \hfil
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Springs/fig/cl-filter}
-    \caption{Integrated accelerometer feedback with a double high pass filter.\figlabel{cl-filter}}
+    \caption{Integrated accelerometer feedback with a second order high pass filter.\figlabel{cl-filter}}
   \end{subfigure}
   \end{wide}
   \caption
   [Closed loop simulation with increasing gain before instability.]
-  {Closed loop simulation with gains $\{0, 5, 10, 20, 50, 99\}$ percent of the maximum gain before instability in \figref{cl-filter}.}
+  {Closed loop simulation with gains $\{0, 5, 10, 20, 50, 99\}$ percent of the gain margin in \figref{cl-filter}.}
 \end{figure}
 
-Comparing \figref{cl-filter} with \figref{cl-results} shows a clear
-similarity. The corner frequency of the high pass filter at \SI{1}{Hz} in the
+Comparing \figref{cl-filter} with the experimental results of \figref{cl-results} shows a clear similarity.
+The corner frequency of the high pass filter at \SI{1}{Hz} in the
 charge amplifier to measure velocity is an impediment to the vibration
-isolation properties of the feedback-controlled system. This potential
-drawback could be mitigated with a different way to estimate the velocity of
-the isolated beam; simply a higher-precision charge amplifier would probably
-be acceptable.
+isolation properties of the feedback-controlled system.
+This is a fundamental limitation in the use of accelerometers for estimating velocity for vibration control.
+To avoid this issue, the use of geophone sensors which measure velocity directly are a promising alternative to integrated accelerometer measurements.
+However, geophones are not a panacea since their response rolls off at low frequencies, limiting their performance at the frequency range of interest in this case.
+
+\section{Conclusion}
+
+ARGH
 
 \end{document}
