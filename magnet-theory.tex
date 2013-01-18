@@ -723,23 +723,28 @@ non-contact magnetic rotational force couplings.
 These are of interest to this
 work because they use an analytical expression for the forces between two
 cuboidal magnets under arbitrary translation, with one inclined at any angle
-around the \x-axis.
+around the $\ax$ axis.
 Three papers were published \cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep}
 that all contain the force expression of interest, with a fourth \cite{elies1998} containing just the force expression in a single direction.
 
+\begin{figure}
+  \asyinclude{\jobname/magrot.asy}
+  \caption{Geometry for calculating the force between rotated magnets.}
+  \figlabel{magrot}
+\end{figure}
+
 Their expressions are re-written here because each separate publication contains different typographical errors.
 The equations here have been reconstructed by comparing the differences and similarities between the equations in the different papers, and re-written in a more compact form.
-Given two magnets located in \threeD/ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$, with the plane of the second rotated by $\theta$ around the \x-axis and their origins offset by $\inlinevect{x_0,y_0,z_0}$, the forces in the \y- and \z-directions ($F_y$ and $F_z$) between the two magnets can be calculated.
-
-Forces in both the $y$ and $z$ direction use the $f_3$ function in their calculations.
+Given two magnets located in \threeD/ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$, with the plane of the second rotated by $\theta$ around the $\ax$ axis and their centres separated by a distance $\inlinevect{x_0,y_0,z_0}$, the forces in the $\ay$ and $\az$ directions ($\force{2}$ and $\force{3}$) between the two magnets can be calculated using the following equations.
+A side-view schematic of this geometry is shown in \figref{magrot}.
 \begin{dmath}
-F_y = \frac{\magn1\magn2}{4\pi\permVac}
-  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}}
+\force{2} = \frac{\magn1\magn2}{4\pi\permVac}
+  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}^6}
   f_{y_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
 \end{dmath},
 \begin{dmath}
-F_z\bigg|_{\theta\neq k\pi} =
-       \frac{-\magn1\magn2}{4\pi\permVac}\cdot\smash{\sum_{i_{a,b,c,A,B,C}\in\{0,1\}}}
+\force{3}\bigg|_{\theta\neq k\pi} =
+       \frac{-\magn1\magn2}{4\pi\permVac}\cdot\smash{\sum_{i_{a,b,c,A,B,C}\in\{0,1\}^6}}
         f_{z_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
 \end{dmath},
 \begin{dmath}
@@ -771,34 +776,28 @@ w_2 = z_0-ci_c+Ci_C\cos\theta
 \end{dgroup}
 This is the auxiliary function used in the above. All dashed variables are
 local to this function.
-\begin{dgroup*}
-\begin{dmath}
-f_3\fn{u',v',w',\theta',c',C'} =
+\begin{align}
+\begin{split}
+f_3\fn{u',v',w',\theta',c',C'} &=
   u' f_5\gp{\Log{f_4-u'}-1}
-  +\half\gp{f_6^2-{u'}^2}\Log{f_4+f_5}
-  +\half u' \pi \Sign{f_5}\Abs{f_6}
+  +\half\gp{f_6^2-{u'}^2}\Log{f_4+f_5} \\
+  &\quad +\half u' \pi \Sign{f_5}\Abs{f_6}
   +u' f_6 \ArcTan{\frac{u' f_4 - u^2 -f_6^2}{f_5 f_6}}
-  +\half f_4 f_5
-\end{dmath},
-\begin{dmath}
-f_4 = \sqrt{{u'}^2+f_5^2+f_6^2}
-\end{dmath},
-\begin{dmath}
-f_5 = \gp{v'-b i_b}\cos\theta'+\gp{w'-c'}\sin\theta'+B i_B
-\end{dmath},
-\begin{dmath}
-f_6 = -\gp{v'-b i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C'
-\end{dmath}.
-\end{dgroup*}
+  +\half f_4 f_5 \,, 
+\end{split}\\
+f_4 &= \sqrt{{u'}^2+f_5^2+f_6^2} \,, \\
+f_5 &= \gp{v'-b i_b}\cos\theta'+\gp{w'-c'}\sin\theta'+B i_B \,, \\
+f_6 &= -\gp{v'-b i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C' \,.
+\end{align}
 
-The force in the $z$ direction is calculated separately if the second
+The force in the $\az$ direction is calculated separately if the second
 magnet is not rotated around its axis ($f_{z_2}$ has a singularity
 at $\theta=k\pi$).
 \begin{dgroup}
-\begin{dmath}
-F_z\bigg|_{\theta=k\pi} =
+\begin{dmath}[label=Fz-pi]
+\force{3}\bigg|_{\theta=k\pi} =
   \cos\theta\cdot\frac{-\magn1\magn2}{4\pi\permVac}
-  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}}f_{z_1}
+  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}^6}f_{z_1}
   \cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
 \end{dmath},
 \begin{dmath}
@@ -819,31 +818,32 @@ w = z_0-ci_c+Ci_C+\half C\gp{\cos\theta-1}
 r = \sqrt{u^2+v^2+w^2}
 \end{dmath}.
 \end{dgroup}
-This equation is very similar, but not identical, to Akoun~\& Yonnet's
-equation for the same (\eqref{akoun}).
+This equation is similar in form, but not identical, to Akoun~\& Yonnet's equation for the same, \eqref{akoun}.
 
 In order to allow this equation to be used for rotations greater than \SI{\sipi}{radians}, additional terms have been added to accommodate for the translational offset induced by rotating the magnet around its lower-left edge.
-The preceding $\cos\theta$ provides the sign change of the magnetisation, and the $\half\gp{\cos\theta-1}$ terms are used to return the origin of the magnet after 180\textdegree\ rotation to the lower-left corner, where it is expected.
+This is necessary as the original equations used the lower-left corner of the magnet as its point of rotation, whereas the equations presented above use the magnet centre.
+The preceding $\cos\theta$ in \eqref{Fz-pi} provides the sign change of the magnetisation, and the $\half\gp{\cos\theta-1}$ terms are used to return the origin of the magnet after 180\textdegree\ rotation to the lower-left corner, where it is expected.
 
-As an example of using these equations to calculate forces as a function of magnet rotation, \figref{charp-rotate} shows the forces produced between two \SI{10}{mm} cube magnets as a function of rotation angle $\theta$ of the second magnet, with a \SI{20}{mm} offset between their centres.
+As an example of using these equations to calculate forces as a function of magnet rotation, \figref{charp-rotate} shows the forces produced between two \SI{1}{T} \SI{10}{mm} cube magnets as a function of rotation angle $\theta$ of the second magnet, with a \SI{20}{mm} offset between their centres.
 Two cases are shown: in the first, the magnets are displaced vertically; in the second, the magnets are displaced horizontally.
 
 \begin{figure}
   \begin{wide}
+  \hspace{-0.8cm}%
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Theory/latex/charp-rotation-forces}
-    \caption{Vertical displacement.}
+    \caption{\SI{20}{mm} vertical displacement.}
   \end{subfigure}
   \hfil
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Theory/latex/charp-horiz-rotation-forces}
-    \caption{Horizontal displacement.}
+    \caption{\SI{20}{mm} horizontal displacement.}
   \end{subfigure}
   \hfil
   \null
   \end{wide}
-  \caption{Vertical and horizontal forces on a rotating magnet
-    as a function of rotation angle for fixed horizontal and vertical displacements.}
+  \lofcaption{Vertical and horizontal forces on a rotating magnet
+    due to a fixed magnet as a function of rotation angle for fixed horizontal and vertical displacements.}{ The two magnets are \SI{1}{T} \SI{10}{mm} cubes.}
   \figlabel{charp-rotate}
 \end{figure}
 
@@ -852,7 +852,7 @@ For displacements perpendicular to the direction of magnetisation of the fixed m
 
 In the following simulations, the second magnet is held at a constant height (one magnet height's separation distance) and moved from left to right over a range of twice the magnet width symmetrically above the first magnet (with respect to the magnets' centres of gravity).
 Four such displacements are made with four different rotations for the second magnet: $0$, $\half\pi$, $\pi$ and $-\half\pi$.
-\Figref{charp-0to2pi} shows the forces in the horizontal \y-direction and vertical \z-direction, \resp.
+\Figref{charp-0to2pi} shows the forces in the horizontal $\ay$ direction and vertical $\az$ direction, \resp.
 It can be seen that the opposite rotations result in symmetric forces curves, as is expected.
 
 \begin{figure}
@@ -862,17 +862,19 @@ It can be seen that the opposite rotations result in symmetric forces curves, as
     \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fy}
     \caption{Horizontal forces.}
     \figlabel{charp-0to2pi-Fy}
-  \end{subfigure}\hfil
+  \end{subfigure}\qquad\hfil
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fz}
     \caption{Vertical forces.}
     \figlabel{charp-0to2pi-Fz}
   \end{subfigure}
   \end{wide}
-  \caption{Vertical and horizontal forces on a rotating magnet situated directly above another.}
+  \lofcaption{Vertical and horizontal forces on a rotating magnet situated \SI{20}{mm} above another and displaced horizontally for a range of magnet angles.}{ The two magnets are \SI{1}{T} \SI{10}{mm} cubes.}
   \figlabel{charp-0to2pi}
 \end{figure}
 
+Although these rotated-magnet force equations permit displacements in the $\ax$ direction, there is no published equation for calculating the component of force in this direction.
+Numerical integration techniques are currently the best known method if this force must be calculated \cite{charpentier2001-compel}.
 
 \section{Forces between cylindrical magnets}
 \seclabel{cyl-forces}
