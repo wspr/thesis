@@ -41,6 +41,7 @@ A particularly simple solution for \emph{both} problems is to mount the equipmen
 This is not always practical.
 Another common approach for vibration isolation is to support the equipment with pneumatic springs.
 When in operation, these springs provide a low supporting stiffness and low static deflection; they can typically be used to support hundreds of kilograms with resonance frequency of less than five hertz.
+Research in these various methods is still ongoing \cite{yoshioka2001,chen2007,kawashima2007,hong2010-rsi}.
 
 Other support methods besides pneumatics are able to achieve low stiffness; this is an area that will be further investigated in the literature review.
 But one method in particular is interesting in this context: permanent magnets can provide low stiffness support without energy expenditure or air supply.
@@ -443,25 +444,6 @@ This approach was used by \textcite{savaresi2007} to implement a combination abs
 
 
 
-\subsection{Examples of actual vibration isolation platforms}
-
-The literature review until now has focussed mainly on specific systems and techniques for achieving vibration isolation and suppression.
-This small section looks at the end result of much of this research: actual applications into constructing vibration isolation platforms.
-
-\textcite{chen2007} used \Hinf/ control to suppress the resonance peak at around \SI{3}{Hz} of a pneumatic vibration isolation mount.
-Very good reductions in transmissibility were achieved; this technique highlights the appeal of vibration control using an isolator with a damped resonance.
-
-In high precision contexts, a resonance frequency of less than \SI{1}{Hz} is often required, for which very soft pneumatic springs are typically used \cite{kawashima2007}.
-
-\textcite{yoshioka2001} designed and built a prototype vibration isolation platform with a load bearing capacity about \SI{1000}{kg}.
-Their device used a combination of pneumatic, voice-coil linear motors, and piezoelectric actuators to control the first half dozen vibration modes of the platform.
-Feedback velocity of the table and feedforward velocity and displacement of the floor were used as control signals (with integrated accelerometer measurements), and a genetic algorithm was used to generate a set of control gains for the system.
-
-\textcite{hong2010-rsi} designed a six degree of freedom isolation table that used voice coil motors in concert with leaf springs to suspend the payload.
-Velocity measurements using geophones were used for feedback control using loop shaping and a consideration of the vibration modes of the structure to design a lag controller for the system.
-From a passive system with resonance at \SI{5}{Hz}, the transmissibility was reduced to less than \SI{1}{Hz} with \SI{35}{dB} attenuation at \SI{5}{Hz}.
-
-
 \subsection{Vibration neutralisers and narrow-band vibration control}
 \seclabel{narrowband}
 
@@ -477,7 +459,7 @@ These tend to be inertial electromagnetic actuators, also known as `proof-mass' 
 This is shown schematically in \figref{vibration-absorb}.
 
 \begin{figure}
-   \asyinclude{PhD/Figures/Systems/vibration-inertial}
+   \asyinclude{\jobname/vibration-inertial}
    \lofcaption{An inertial force $\forceAbsorb$ designed to reduce the vibration
    response $\dispMass$ due to disturbance $\dispBase$.
    }{
@@ -507,7 +489,8 @@ The addition of inertial actuators produces additional resonances into the struc
 \seclabel{vibneut}
 
 One method of reducing vibration on a supported mass is to attach a supplementary mass that resonates in concert with the disturbance; this has the effect of adding an anti-resonance to the original system at the frequency of interest.
-These are known under various names as `tuned mass dampers', `vibration neutralisers', `dynamic vibration absorbers', and so on.
+These systems are the same schematically as shown for inertial actuators, \figref{vibration-absorb}, with zero force input $\forceAbsorb=0$. 
+They are known under various names as `tuned mass dampers', `vibration neutralisers', `dynamic vibration absorbers', and so on.
 %  \note{No effort has been made to compile an exhaustive list.}
 The descriptions involving such terms as `damper' and `absorber' are not strictly accurate on the grounds that these devices do not primarily act as energy dissipators; rather, they direct energy into a subsystem for which continuous disturbance is not undesirable.
 In this thesis, the term `\vibneut/' is used, following \textcite{kidner1998}, and others.
@@ -516,18 +499,32 @@ The concept of the \vibneut/ does not lie in the focus of this research, but fal
 In the passive application, a \vibneut/ consists of attaching a supplementary mass to the coupled structure for which vibration is to be removed.
 The stiffness of the attachment is chosen by matching the natural frequencies of the structure with that of the additional mass.
 
-To show the affect of varying the resonance frequency of the \vibneut/, \figref{tuned-mass-vs-fig} shows the frequency response of a \vibneut/ with a range of neutraliser stiffnesses.
+To show the affect of varying the resonance frequency of the \vibneut/, \figref{tuned-mass-vs-fig} shows the frequency response of a \vibneut/ with a range of neutraliser stiffnesses with other parameters as shown in \tabref{vibneut-param}.
 For each different stiffness, a dip (or `anti-resonance') is produced at the resonance frequency of the neutraliser in the transmissibility graph.
 The neutraliser frequency should be chosen within narrowband region of desired attenuation; generally, this will be at the resonance frequency of the main structure. 
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/tuned-mass-vs-freq}
    \lofcaption{
-     \Vibneut/ with a range of neutraliser stiffnesses (labelled).
+     \Vibneut/ with a range of neutraliser stiffnesses $\stiffnessAbsorb$ (labelled).
   }{
-     When the absorber matches the resonance of the structure the vibration amplitude around that frequency is greatly reduced.}
+     When the neutraliser is tuned to match the natural frequency of the structure the vibration amplitude around that frequency is greatly reduced.}
    \figlabel{tuned-mass-vs-fig}
 \end{figure}
+
+\begin{table}
+\caption{Parameters used to simulate the \vibneut/ results in \figref{tuned-mass-vs-fig}.}
+\tablabel{vibneut-param}
+\begin{tabular}{cc}
+  \toprule
+  $\mass$ & \SI{100}{kg} \\
+  $\massAbsorb$ & \SI{10}{kg}  \\
+  $\damping$ & \SI{20}{kg/s}  \\
+  $\dampingAbsorb$ & \SI{2}{kg/s}   \\
+  $\stiffness$ & \SI{400}{N/m} \\
+  \bottomrule
+\end{tabular}
+\end{table}
 
 There is a compromise between broadband and narrowband vibration attenuation (not unlike that between shock and vibration isolation, \secref{shock}).
 This is illustrated by comparing the transmissibility reduction at a single target frequency versus the broadband reduction in transmissibility due to the same \vibneut/.
@@ -615,6 +612,7 @@ His design is interesting with respect to this thesis in that it uses both perma
 
 The cross-section of introductory concepts and literature shown in this section have been chosen to illustrate the broad approaches for vibration control of simple systems.
 
+\fixme{TODO}
 
 
 
@@ -1062,7 +1060,7 @@ One characteristic property of nonlinear springs is their exhibition of so-calle
 The field of nonlinear dynamics is very large, and applications to vibration suppression can result in surprising results.
 \textcite{oueini1999} considered the response of a nonlinear plant with an additional cubic nonlinear feedback law and established that vibration attenuation was possible and that nonlinear phenomena such as chaos existed, which would generally be undesirable for vibration isolation.
 
-A very recent and comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
+A comprehensive review of nonlinear vibration isolation systems for a broad range of techniques was published by \textcite{ibrahim2008}.
 It highlights the importance of nonlinear analysis in this field: in some cases, better results can achieved by using nonlinear spring forces to couple to and absorb vibration energy; in other cases, the behaviour of an isolator cannot be adequately modelled by using linear systems theory.
 As an example of the former, \textcite{starosvetsky2008}, with a good review of the literature, talk about the `nonlinear energy sink' idea in which a nonlinear system provides better and broader vibration absorbing than a linear absorber alone.
 
@@ -1091,9 +1089,9 @@ A system with similar characteristics is proposed in this thesis (\secref[vref]{
 However, for weakly nonlinear magnetic springs, variation in the mass will still lead to changes in the resonance frequency.
 \textcite{todaka2001-ietm} created a mechanical linkage to support two magnets in repulsion such that as their air gap increased (due to less mass being supported), a horizontal offset between them was created to lower the linearised operating stiffness.
 This allowed a much smaller variation between the $k/m$ ratio than for flush magnets in repulsion.
-
 \textcite{bonisoli2007-mssp} used an experimental rig to analyse the nonlinear behaviour of a magnetic and linear spring in parallel, with more theoretical analysis published later in the year \cite{bonisoli2007-mrc}.
 They showed a configuration of linear and magnetic springs with the notable feature that the resonance frequency exhibits little dependence on mass loading and nonlinear effects can be seen.
+A contribution in this area is made in this thesis in \secref[vref]{oblique}, in which a purely magnetic device is designed to achieve constant resonance frequency with variations in mass.
 
 
 
@@ -1144,8 +1142,8 @@ And the dynamic behaviour of a nonlinear oscillator varies considerably from tha
 Most obviously, the shape of the frequency response is not independent of the amplitude of the forcing disturbance.
 
 Consider the stable single \dof/ system
-\begin{dmath}
-m \ddot x + b \dot x + \stiffnessDuffing (x+s)^3 = 0,
+\begin{dmath}[label=duffing]
+\mass \ddot x + \damping \dot x + \stiffnessDuffing \gp{x+s}^3 = 0,
 \end{dmath}
 where $s$ is an induced displacement disturbance.
 At the operating position $x=0$, the nonlinear spring stiffness is $3kx^2|_{x=0}=0$.
@@ -1163,41 +1161,53 @@ For a \qzs/ spring, $\stiffnessLinear=0$ and the nonlinear dynamics are more sig
 \textcite{carrella2009-jsv}, for example, use the `harmonic balance' method to analyse the nonlinear frequency response of a Duffing oscillator model of a (inclined spring based) \qzs/ system, showing the typical jump-up and jump-down phenomena of such nonlinear systems.
 For the purposes of broadband vibration isolation, however, it is instructive to simply examine the power spectra produced with a range of spring stiffnesses and modelling the disturbance input as Gaussian.
 
-The square root of the ratio of the power spectra, sometimes known as the variance gain, is used to examine the non-linear system in the frequency domain, as the transmissibility removes nonlinear components of the original signals \cite{savaresi2007}.
-The variance gain of the system for $s$ and $x$ is shown in \figref{cubic-resonance-disturb,cubic-resonance-stiffness}, where $s$ is a white noise signal of variance $S$.
-(The transmissibility is not examined because it removes .)
-The results are compared with the system
-\begin{dmath}
-m \ddot x + b \dot x + k_{\text{lin}}(x+s) = 0,
-\end{dmath}
-which has a linear stiffness $k_{\text{lin}}=3kS^2$ equivalent to the stiffness of the nonlinear spring at the variance displacement.
-Significant nonlinearities in the response can be seen in both simulations, noting in \figref{cubic-resonance-disturb} that the resonance peak changes frequency with input amplitude.
-
 \begin{figure}
-  \includegraphics{PhD/Simulations/Zero_stiffness/eps/cubic-resonance-disturb}
-  \caption{Cubic stiffness response with various amplitudes of
-    disturbance in comparison to some approximately similar linear
-    systems.}
+  \begin{wide}
+    \hspace*{-1cm}\psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-a}
+    \hspace*{+0.5cm}\psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-c}
+  \end{wide}
+  \caption[Frequency response simulations of a nonlinear dynamic system with cubic stiffness with random noise input.]{Frequency response simulations of nonlinear dynamic system \eqref{duffing} with cubic stiffness with random noise inputs of varying variance $S$.}
   \figlabel{cubic-resonance-disturb}
 \end{figure}
 
+The square root of the ratio of the power spectra, sometimes known as the variance gain, is used to examine the non-linear system in the frequency domain, as the transmissibility removes nonlinear components of the original signals \cite{savaresi2007}.
+A comparison between the linear transmissibility and the variance gain of the system for $s$ and $x$ is shown in \figref{cubic-resonance-disturb}, where $s$ is a white noise signal of variance $S$.
+Parameters used in the simulation are shown in \tabref{duffing-param}.
+It can be seen that since the linear transmissibility attempts to reject non-correlated linear signals, as the input amplitude increases its response becomes noisier and much of the shape of the power spectrum is lost due to this.
+Noting that the resonance peak changes frequency with input amplitude.
+
+\begin{table}
+\caption{Parameters used to simulate the dynamics of \eqref{duffing} shown in \figref{cubic-resonance-disturb}.}
+\tablabel{duffing-param}
+\begin{tabular}{lll}
+\toprule
+Simulation time   & & \SI{5000}{s} \\
+Sample time       & & \SI{0.005}{s} \\
+\textsc{fft} size & & $2^{14}$ \\
+Mass              & $\mass$ & \SI{1}{kg} \\
+Stiffness coefficient & $\stiffnessDuffing$ & \SI{1}{kg/m^3} \\
+Damping           & $\damping$ & \SI{0.1}{kg/s} \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The results of the nonlinear simulation are compared with a linearised equivalent of the same system given by
+\begin{dmath}[label=duffing-lin]
+\mass \ddot x + \damping \dot x + \klin\gp{x+s} = 0,
+\end{dmath}
+which has a linear stiffness $\klin=3\stiffness S^2$ equivalent to the stiffness of the nonlinear spring at the variance displacement.
+When comparing against the nonlinear response, the linearised system response is smaller than the \qzs/ response in some cases, but especially as the input amplitude increases and the nonlinearities become stronger.
+This potentially restricts the applications for vibration isolation of using nonlinear springs to achieve low resonance frequencies: only when it becomes infeasible to decrease the stiffness of a conventional linear system any further should a nonlinear system be chosen instead.
+Conversely, the broader `resonance peaks' of the type seen in \figref{cubic-resonance-disturb} have been shown to be useful for energy harvesting purposes, especially for wandering narrowband excitation \cite{ramlan2009-nd}.
+
 \begin{figure}
-  \includegraphics{PhD/Simulations/Zero_stiffness/eps/cubic-resonance-stiffness}
-  \caption
-  [Cubic stiffness response with varying values of the
-    stiffness coefficient.]
-  {Cubic stiffness response with varying values of the
-    stiffness coefficient (with $S=1$ to compare with
-    \figref{cubic-resonance-disturb}) in comparison to some
-    approximately similar linear systems.}
-  \figlabel{cubic-resonance-stiffness}
+  \begin{wide}
+    \psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-b}
+    \hspace*{+0.5cm}\psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-d}
+  \end{wide}
+  \lofcaption{Equivalent simulations to \figref{cubic-resonance-disturb} using linearised \eqref{duffing-lin}.}{ Note the two methods of showing the transmissibility are equivalent for the linear system, although significant differences are seen as the frequency approaches the maximum measurable frequency according to the sampling parameters.}
+  \figlabel{cubic-resonance-disturb-linear}
 \end{figure}
-
-When compared to the linear response of stiffness equivalent to the maximum stiffness reached by the white noise input, the linear system response is \emph{smaller} than the \qzs/ response.
-This restricts the applications for vibration isolation of using nonlinear springs to achieve low resonance frequencies: only when it becomes infeasible to decrease the stiffness of a conventional linear system any further should a nonlinear system be chosen instead.
-Conversely, the broader peak of a hardening spring has been shown to be useful for energy harvesting purposes, especially for wandering narrowband excitation \cite{ramlan2009-nd}.
-
-
 
 \subsubsection{Quasi--infinite stiffness systems}
 \seclabel{infstiff}
@@ -1207,7 +1217,7 @@ For completeness, this section covers the opposite of \qzs/ systems: with a diff
 The quasi--infinite stiffness effect is produced with a series combination of a positive stiffness and a negative stiffness spring such that the resultant stiffness is given by
 \begin{dmath*}[compact]
   k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty
-  \condition{when $ k_2 = -k_1 $.}
+  \condition{when $ k_2 = -k_1 $}
 \end{dmath*}.
 \textcite{xing2005} formalised the idea of \qzs/ and quasi--infinite stiffness systems.
 
@@ -1219,7 +1229,7 @@ These are shown explicitly in the frequency response functions of such systems \
 
 \subsection{Summary of vibrations and magnetics literature}
 
-TODO
+The use of magnetics for vibration systems has seen some 
 
 \section{Reproducible research}
 \seclabel{repro-research}
@@ -1227,7 +1237,7 @@ TODO
 One of my strong beliefs that has risen out from my short time in the academic world is that as work is distributed electronically and the sheer amount of knowledge grows ever larger, the utility of academic work in a vacuum grows smaller.
 My views here follow closely in the wake of the `reproducible research' movement, which is pithily espoused by \textcite{kovacevic2007-icassp}:
 \begin{quote}
-[A] scientific article is merely advertisement of scholarship; the real scholarship includes software and data which went into producing the article.
+\textup [A\textup] scientific article is merely advertisement of scholarship; the real scholarship includes software and data which went into producing the article.
 \end{quote}
 It would be a great and noble achievement to apply this principle to every postgraduate thesis; unfortunately, only aspects of my work live up to this promise.
 
@@ -1276,29 +1286,19 @@ The libraries have evolved independently and currently contain differences in th
 
 The following list ties sections of this thesis with code from the repository.
 Not all figures in each section will be reproducible from this list, but most should be.
-\begin{itemize}
-\item[\secref{unstable-vertical}]
-\code{examples/mag\_ratio.m}.
-
-\item[\secref{oblique}]
-The scripts in \code{examples/oblique/}.
-
-\item[\chapref{multipole}]
-\code{examples/multipole\_example.m}
-
-\item[\secref{optim-halbach-1d}]
-The scripts in \code{examples/magspring/}.
-
-\item[\secref{planar-multipole}]
-\code{examples/planar\_multipole\_example.m} and \code{examples/planar\_compare.m}.
-
-\item[\secref*{magnetcoil-forces,magnetcoil-optimisation}]
-This work is presented in the Mathematica code
-\code{examples/Thick-Coil-Magnet-Forces.nb}
-based on the general \code{MagnetCode.m} library.
-\end{itemize}
-
-Incidentally, the source for this thesis itself, including some of the programmatically drawn figures, is available in\\
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\secref{unstable-vertical} & \code{examples/mag\_ratio.m} \\
+\secref{oblique} & \code{examples/oblique/} \\
+\chapref{multipole} & \code{examples/multipole\_example.m} \\
+\secref{optim-halbach-1d} & \code{examples/magspring/} \\
+\secref{planar-multipole} & \code{examples/planar\_compare/} and \code{examples/multipole_example.m} \\
+\secref*{magnetcoil-forces,magnetcoil-optimisation} & \code{examples/Thick-Coil-Magnet-Forces.nb} \\
+\bottomrule
+\end{tabular}
+\end{center}
+The \LaTeX\ source for this thesis itself, including some of the programmatically drawn figures, is available in\\
 \centerline{$\langle$\url{http://www.github.com/wspr/thesis}$\rangle$.}
 Which use of this material is restricted under the copyright of The University of Adelaide, the methods used for writing may be instructive for others following a similar path to my own.
 
