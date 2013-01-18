@@ -495,7 +495,7 @@
 \newcommand\e{e}
 
 \newcommand\normn{\hat{\vect{n}}}
-\newvect\force{F}
+\newvect\force{F}[elem={x,y,z}]
 \newvect\torque{T}
 \newvect\lever{r}
 
@@ -515,6 +515,7 @@
 \newvariable\Msat[nom=Magnetisation at saturation]{M_{\mathrm{sat}}}
 \newvect\magflux{B}
 \newvect\magM{M}
+\newvect\magN{\overline M}
 \newvect\magJ{J}
 \newcommand\magn[1]{B_{r_{#1}}}
 \newcommand\magJm{\vect{J}_m}
@@ -577,6 +578,8 @@
 \newcommand\mupqratio{\gamma}
 \newcommand\mupmagrot{\vartheta}
 \newcommand\mupmagpol{\mupmagrot_0}
+\newcommand\mupmagpolx{\mupmagrot_{xz}}
+\newcommand\mupmagpoly{\mupmagrot_{yz}}
 \newcommand\muphdgap{p}
 \def\muphdispl{\beta}
 \def\mupvdispl{\delta}
@@ -639,3 +642,6 @@
   \varphi_#1(x_1\whiledo{\value{wspr}<#1}{%
     \stepcounter{wspr}%
     ,x_\thewspr})}
+
+
+\newvariable\klin[nom=Linearised stiffness]{k_{\mathrm{lin}}}
