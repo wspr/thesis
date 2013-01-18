@@ -60,21 +60,22 @@ In \secref{magnet-forces} it was assumed for deriving the equations for the forc
 To be fabricated, a homogeneous permanent magnet requires a very strong magnetic field of constant direction and magnitude, and the larger the cross-section of the magnet the harder such a field is to obtain.
 For larger permanent magnets, care must be taken when using the force equations presented in the previous chapter.
 For example, the magnetic field of a grade \textsc{n35} cylindrical magnet with diameter \SI{100}{mm} and thickness \SI{30}{mm} was compared against theoretical calculations (performed with ANSYS) \cite{bruno2011-honoursthesis}.
-While the comparison across axial displacement (\figref{gauss-axial}) only shows that the measured magnetic field is lower than expected, the lateral displacement results (\figref{gauss-lateral}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
+While the comparison across axial displacement (\figref{gauss-vertical}) only shows that the measured magnetic field is lower than expected, the lateral displacement results (\figref{gauss-radial}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
 
 \begin{figure}
 \begin{wide}
-\begin{subfigure}[0.45]
-\includegraphics{PhD/Figures/Magnets/gauss-test}
-\caption{Axial displacement down the centreline.\figlabel{gauss-axial}}
+\begin{subfigure}
+\psfragfig{PhD/Experiments/Gauss/fig/gauss-vertical}
+\caption{Axial displacement down the centreline.\figlabel{gauss-vertical}}
 \end{subfigure}\hfil
 \begin{subfigure}
-\fbox{\parbox{5cm}{THOSE PROSTHETICS FOOLS DIDN'T PUT THIS GRAPH IN THEIR REPORT}}
-\caption{Lateral displacement with a certain offset.\figlabel{gauss-lateral}}
+\psfragfig{PhD/Experiments/Gauss/fig/gauss-radial}
+\caption{Radial displacement with a \SI{5}{mm} offset.\figlabel{gauss-radial}}
 \end{subfigure}
 \lofcaption{
   Magnetic field measurements for a large cylindrical permanent magnet.
 }{
+  The origin of the measurements is \SI{5}{mm} from the face of the magnet.
   Measured results are not consistent with the theoretical results that assume constant magnetisation.
 }
 \end{wide}
@@ -265,7 +266,8 @@ where $F_y$ and $F_z$ are the magnetic forces calculated with \eqref{akoun}, and
 The (unstable) horizontal stiffness for this system was calculated as around \SI{-200}{N/m} and the displacement feedback gain was chosen as $\gainDisp=250$ to overcome the instability due to this.
 
 \begin{figure}
-  \psfragfig{\phdpath Simulations/Coupling/fig/coupling-oscillations}
+  \asyinclude{\jobname/coupling}\hfil
+  \psfragfig*{\phdpath Simulations/Coupling/fig/coupling-oscillations}
   \lofcaption{Oscillations over time of the displacement of a suspended magnet that is excited through horizontal vibrations of the base magnet.}{ The figure-eight trajectory shows that the horizontal vibration couples to the vertical forces.}
   \figlabel{coupling-oscillations}
 \end{figure}
@@ -1308,8 +1310,8 @@ A physical realisation of this system has been constructed, which is discussed i
 \section{Prototype inclined magnet system}
 \seclabel{mbq-prototype}
 
-To explore the possibilities raised by the theoretical analysis of the inclined magnetic spring (\secref*{oblique}), an honours project supervised by the author was undertaken in 2011 to design and build a prototype based on these ideas \cite{frizenschaf2011-honoursthesis}.
-\note{The members of the project were Yann Frizenschaf, Siobhan Giles, Jack Miller, Thomas Pitman, and Christopher Stapleton.}
+To explore the possibilities raised by the theoretical analysis of the inclined magnetic spring (\secref*{oblique}), an honours project supervised by the author was undertaken in 2011 to design and build a prototype based on these ideas \cite{frizenschaf2011-honoursthesis,frizenschaf2011-acoustics2011}.
+\note{The members of the project were Mr Yann Frizenschaf, Ms Siobhan Giles, Mr Jack Miller, Mr Thomas Pitman, and Mr Christopher Stapleton.}
 
 The prototype they built used Maytec \note{Maytec Australia Pty Ltd, \url{http://www.maytec.com.au/}} aluminium extrusions to allow modular placement of the inclined magnets with variable magnet angle.
 A photo of the prototype is shown in \figref{oblique-rig}, which shows the main features of the system.
