@@ -109,6 +109,7 @@ The magnets used for the experimental apparatus were chosen based on ease of
 availability and construction. Cylindrical magnets were used of dimensions
 $\mbox{\diameter}\,\SI{12.7}{mm}\times\SI{9.5}{mm}$ and material properties as
 shown in \tabref{magnet-prop}.
+The magnets were held in place within a hollow brass cylinder of outer diameter \SI{13.5}{mm}.
 
 \begin{table}
   \lofcaption{Material properties for the magnets in the experimental apparatus.}
@@ -205,6 +206,8 @@ certain wire diameter and resistance.
     Coil outer radius & $\RadiusOCoil$ & \SI{10.7}{mm} \\
     Coil gap & $\GapCoil$ & \SI{7}{mm} \\
     Turns (approx.) & & \num{105} \\
+    \midrule
+    Former inner radius & & \SI{14.2}{mm} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -286,7 +289,7 @@ flexibility of application, and good performance characteristics.
 Relevant operating properties are listed in \tabref{wenglor}.
 
 \begin{table}
-  \caption{Some properties of the Wenglor~05\,MGV\,80 laser distance sensor.}
+  \caption{Relevant properties of the Wenglor~05\,MGV\,80 laser distance sensor.}
   \tablabel{wenglor}
   \begin{tabular}{@{}ll@{}}
     \toprule
@@ -338,18 +341,19 @@ Absolute translational velocity can be estimated by integrating a measured accel
 
 \subsubsection{Acceleration sensors}
 
-For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system.
-Technical specifications of the apparati used, including charge amplifier and filters, are shown in \tabref{rig-apparatus}.
+For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system (\tabref{rig-apparatus}).
+The accelerometers were used with \BnK/ 2635 charge amplifiers set to appropriate gain values for the input signals.
+The signals were low-pass filtered at \SI{50}{Hz} to avoid aliasing effects using a Krohn-Hite Model 3362 digital filter (using a 4-pole Butterworth filter).
 
 \begin{table}
-  \caption{Experimental apparatus used for signal measurement and filtering.}
+  \caption{Relevant properties of the accelerometers used in the experimentation.}
   \tablabel{rig-apparatus}
-  \begin{tabular}{@{}ll@{}}
+  \begin{tabular}{@{}lllll@{}}
     \toprule
-      Base accelerometer & \BnK/ 4367 \\
-      Floating accelerometer & \BnK/ 4332 \\
-      Charge Amplifiers & \BnK/ 2635 \\
-      Low-pass filters & 0000 \\
+           & Model & Charge sensitivity & Weight \\
+    \cmidrule{2-4}
+      Base & 4367 & \SI{20.1}{pC/g} & \SI{13}{g} \\
+      Beam & 4332 & \SI{75.4}{pC/g} & \SI{30}{g} \\
     \bottomrule
   \end{tabular}
 \end{table}
@@ -422,8 +426,9 @@ From the dimensions chosen for the rig, $l=\SI{300}{mm}$ and
 $h\approx\SI{50}{mm}$, the minimum horizontal tolerance for a vertical
 displacement $z=\SI{1}{mm}$ is $x=\SI{0.168}{mm}$ and for $z=\SI{2}{mm}$ is
 $x=\SI{0.34}{mm}$. (The relationship between $x$ and $z$ being fairly linear for
-most values of $l$ and $h$ with small ranges of $z$.) This tolerance was
-judged to be small enough to allow a surrounding coil without having a
+most values of $l$ and $h$ with small ranges of $z$.)
+The actual clearance between the outer radius of the brass cylinder holding the magnets and the inner radius of the coil former was \SI{0.35}{mm}.
+This tolerance was judged to be small enough to allow a surrounding coil without having a
 significantly diminished force characteristic from the air gap required to
 avoid contact.
 
@@ -512,16 +517,17 @@ the dynamics of the system.
 
 Open loop measurements without the coil connected are shown in
 \figref{ol-undamped-frflin}. and measurements taken with the coil (\ie, with
-added damping) are shown in \figref{ol-damped-frflin}. For both of these results,
-the transmissibility $\transmissibility{}$ shown is the transfer function
-between the accelerometer measurements of the base and magnet-supported beam:
+added damping) are shown in \figref{ol-damped-frflin}.
+For both of these results, the transmissibility $\transmissibility{}$ shown is the transfer function between the accelerometer measurements of the base and magnet-supported beam:
 \note{Calculated with \Matlab/'s \texttt{tfestimate} command.}
 \begin{dmath}[label=Tbm,compact]
   \transmissibility{} = \frac{\crossSpectMagnetBase}{\powerSpectBase}
 \end{dmath},
+% TODO: bigger better definition
 where $\powerSpectMagnet$ is the power spectral density of the accelerometer
 measurements at the moving magnet, ($\powerSpectMagnet$ is the power spectral density
 of the accelerometer measurements of the base,) and $\crossSpectMagnetBase$ is the cross power spectral density of the two.
+The variance gain (also see \secref*{qzs-not-zerk}) is analysed in \secref{xpmt-nonlin}.
 
 \begin{figure}
   \begin{wide}
@@ -608,6 +614,7 @@ damping is increased significantly.
 
 
 \subsection{Observed nonlinear behaviour}
+\seclabel{xpmt-nonlin}
 
 The dynamics shown in the undamped case are more nonlinear than the damped
 case; this is due to the greater displacements experienced by the beam moving
@@ -615,18 +622,21 @@ the magnets through greater ranges of stiffness variation. When the
 transmissibility is calculated as the transfer function between the input and
 output signals, the system is assumed to be linear and nonlinearities are
 rejected by the ratio of the cross-spectrum and power-spectrum terms in
-\eqref{Tbm}. A different result can be shown by calculating the
-transmissibility instead with a ratio of the individual power spectra of the
-base and magnet:
+\eqref{Tbm}.
+A different result can be shown by calculating the transmissibility instead with a ratio of the individual power spectra of the base and magnet:
 \begin{dmath}[label=frfnl]
   \transmissibility{} = \sqrt{\powerSpectMagnet/\powerSpectBase},
 \end{dmath}
 In this case, any nonlinearities in the signals are retained in the final result.
+(Recall \secref{qzs-not-zerk} for a comparison between the transmissibility and the variance gain for a cubic stiffness nonlinearity.)
 
 The transmissibility calculated with this method is shown in
-\figref{ol-undamped-frfnl}. In this case, the nonlinearities present in the
-system are more prominent, and a clear peak is shown at close to twice the
-`linear' resonance frequency.
+\figref{ol-undamped-frfnl} for the coil in an open circuit (\ie, low damping).
+In this case, there are significant nonlinearities present in the data, seen by a clear peak at close to twice the `linear' resonance frequency.
+This superharmonic behaviour is similar to that seen in simulations of such a \qzs/ system (\figref[vref]{variance-gaps}).
+When the coil is connected and the damping present in the system increased, these nonlinearities are no longer seen (the results are indistinguishable to those shown in \figref{ol-damped-frflin}).
+The reduced nonlinearity with increased damping is consistent with the work of other researchers \cite{jazar2006}.
+
 
 \begin{figure}
   \psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frfnl}
@@ -809,11 +819,28 @@ The corner frequency of the high pass filter at \SI{1}{Hz} in the
 charge amplifier to measure velocity is an impediment to the vibration
 isolation properties of the feedback-controlled system.
 This is a fundamental limitation in the use of accelerometers for estimating velocity for vibration control.
-To avoid this issue, the use of geophone sensors which measure velocity directly are a promising alternative to integrated accelerometer measurements.
+To avoid this issue, the use of geophone sensors which measure velocity directly (such as used by \textcite{hong2010-rsi}) are a promising alternative to integrated accelerometer measurements.
 However, geophones are not a panacea since their response rolls off at low frequencies, limiting their performance at the frequency range of interest in this case.
 
-\section{Conclusion}
+\section{Conclusion on the experimental results}
 
-ARGH
+In this chapter, the experimental results from a magnetic device have been presented.
+The magnetic device was designed to demonstrate the ability of variable stiffness through position changes of the load-bearing magnets.
+The magnetic system exhibited expected static and dynamic behaviour.
+
+As the system was brought closer to \qzs/, the resonance frequency reduced until the operating point became too close to the position of marginal stability where even slight disturbances would yield instability.
+The minimum resonance frequency that could be achieved passively with this system was around \SI{2}{Hz}.
+A lower resonance frequency than this could be achieved with larger magnets with larger equilibrium magnet gaps, which would result in a larger physical region of stable operation near the \qzs/ position.
+
+Without feedback control and without the actuator coil connected, the system showed very small damping ratios around \num{0.005}; these were dependent on the distance between the magnets at equilibrium. 
+Connecting the non-contact electromagnetic actuator increased this damping ratio to around \num{0.03}--\num{0.04} due to eddy currents induced in the coils from the permanent magnet.
+
+Dynamically, the system showed transmissibilities which could be predicted well by standard single degree of freedom models.
+With the very low damping of the open loop system, superharmonics were clearly visible in the power spectra but the resonance peaks remained linear-like.
+Once the actuator was connected, the additional damping suppressed these nonlinearities.
+
+Absolute velocity feedback control was successful in reducing the transmissibility peaks, but as the gain was increased the additional poles added by the integration filters caused an additional, lower frequency peak to appear as the closed loop system approached the gain margin.
+At best, the resonance peak was reduced by over a decade and the root mean square transmissibility was reduced by around 65\%.
+Improving the performance of the closed loop system may require high fidelity geophones; there are inherent difficulties associated with low frequency feedback control for vibration systems.
 
 \end{document}
