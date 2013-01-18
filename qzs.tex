@@ -7,6 +7,8 @@
 \chapter{\QZS/ design}
 \chaplabel{qzs}
 
+\referpaper{The work presented in \secref{qzs} is based from material that has been published as a journal paper~\cite{robertson2009-jsv}.}
+
 \section{Introduction to \qzs/ springs}
 
 In a conventional mass--spring system, the static deflection increases as the
@@ -45,8 +47,6 @@ devices, as previously discussed in \secref{qzs-explore}.
 
 This chapter will investigate the quasi-static behaviour of two of these \qzs/ systems.
 The first, in \secref{qzszks}, is an `inclined spring' device that has been studied previously in the literature; here, it is studied from a fresh perspective in order to contrast its behaviour with the second \qzs/ system shown in \secref{qzs}: an arrangement of attracting and repelling permanent magnets that allows much simpler tuning of the system to adapt to dynamic load bearing.
-
-\referpaper{The work presented in \secref{qzs} is based from material that has been published as a journal paper~\cite{robertson2009-jsv}.}
 
 
 \section{Inclined springs}
@@ -92,9 +92,9 @@ corresponding to a vertical displacement of $\ZKSdisp=0$.\figlabel{zks-qzs}}
 At the unloaded state shown in \figref{zks-dia}, all springs are considered to
 be in their uncompressed state; with inclined spring lengths
 $\ZKSlength=\sqrt{\ZKSheight^2+\ZKSwidth^2}$ and vertical spring length
-$\ZKSvlength=\ZKSlengthratio\ZKSlength$, where $\ZKSlengthratio$ is defined as the length ratio between the vertical and inclined springs.
+$\ZKSvlength=\ZKSlengthratio\ZKSlength$, where $\ZKSlengthratio$ is denoted the `length ratio' between the vertical and inclined springs.
 The inclined springs each have stiffness~$\ZKSstiffincl$ and the vertical spring has stiffness
-$\ZKSstiffvert=\ZKSkratio\ZKSstiffincl$, where $\ZKSkratio$ is defined as the stiffness ratio between the vertical and inclined springs.
+$\ZKSstiffvert=\ZKSkratio\ZKSstiffincl$, with $\ZKSkratio$ denoted the `stiffness ratio' between the vertical and inclined springs.
 The stiffness and deflection properties of the springs are summarised in \tabref{spring-properties}.
 
 \begin{table}
@@ -118,10 +118,8 @@ $\ZKSdisp$ is the displacement in the load bearing direction, and $\ZKSshift$
 is the displacement in the non--load bearing direction (this is used later for
 the derivation of the horizontal stiffness of the system).
 
-The deflected lengths of the springs from displacement $(\ZKSdisp,\ZKSshift)$
-are denoted for the inclined spring by $\ZKSlengthcomp$ and for the vertical
-spring by $\ZKSvlengthcomp$. The compressed length of the inclined spring (on
-the left) is
+The deflected lengths of the springs from displacement $(\ZKSdisp,\ZKSshift)$ are $\ZKSlengthcomp$ for the inclined spring and $\ZKSvlengthcomp$ for the vertical spring.
+The compressed length of the inclined spring (on the left) is
 \begin{dmath}[label=ZKSlengthcomp]
 \ZKSlengthcomp =
   \sqrt{x^2+\gp{\ZKSwidth+y}^2}
@@ -171,16 +169,16 @@ direction can be written in non-dimensional form as
   \frac{\ZKSforceinclV{\ZKSnorm}}{\ZKSheight \ZKSstiffincl} =
     \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
 \end{dmath},
-where $\ZKSratio$ is denoted the geometric ratio and $\ZKSnorm$ the normalised displacement.
+where $\ZKSratio$ is denoted the `geometric ratio' of the device and $\ZKSnorm$ the normalised displacement.
 
 This is a different normalisation than used in the literature~\cite{carrella2007-jsv,carrella2008-thesis,carrella2009-jsv}; note that here $\ZKSratio=0$ corresponds to unloaded inclined springs at \ang{90} (\ie, vertical) before compression, and $\ZKSratio=\infty$ corresponds to unloaded inclined springs at \ang{0} (\ie, horizontal).
-In the \coordinate/ system used here, the displacement origin $\ZKSdisp=0$ corresponds to the position of maximum compression of the inclined springs, \ie, when they are horizontal.
+In the \coordinate/ system used here, the displacement origin $\ZKSdisp=0$ corresponds to the position of maximum compression of the inclined springs; \ie, when they are horizontal.
 
 \Figref{ZKSforce-plain} illustrates the force characteristic of
 \eqref{ZKSforceinclVnorm} \vs\  normalised displacement for a range of geometric
 ratios $\ZKSratio$.
 The `snap-through' forces that cause the negative
-stiffness is especially strong the smaller $\ZKSratio$ becomes (\ie, the more
+stiffness is especially strong the smaller the geometric ratio $\ZKSratio$ becomes (\ie, the more
 vertical the spring angles before deflection in \figref{zks-dia}).
 
 \begin{figure}
@@ -223,12 +221,12 @@ represented by
 \frac{\ZKSforcetotalV}{\ZKSheight \ZKSstiffincl} = -\ZKSnorm \ZKSkratio+\ZKSkratio+2
 \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
 \end{dmath},
-where $\ZKSkratio=\ZKSstiffvert/\ZKSstiffincl$ is the stiffness ratio between the vertical and inclined springs. This equation is depicted in
-\figref{ZKSforcetotalVnorm} for $\ZKSkratio=1$, where it can be seen that by
-selecting $\ZKSratio$ appropriately, it is possible to generate a local region
-of low stiffness at $\ZKSnorm=0$, approaching \qzs/ condition under ideal
-circumstances. The calculation for $\ZKSratioQZS$, the value of $\ZKSratio$
-for which \qzs/ is achieved, will be shown later in \eqref{ZKSratioQZS}.
+recalling that $\ZKSkratio=\ZKSstiffvert/\ZKSstiffincl$ is the stiffness ratio between the vertical and inclined springs. This equation is depicted in
+\figref{ZKSforcetotalVnorm} for a unity stiffness ratio ($\ZKSkratio=1$), where it can be seen that by
+selecting the geometric ratio $\ZKSratio$ appropriately it is possible to generate a local region
+of low stiffness at displacement $\ZKSnorm=0$, approaching \qzs/ condition under ideal
+circumstances.
+The calculation for $\ZKSratioQZS$, the value of the geometric ratio $\ZKSratio$ for which \qzs/ is achieved, will be shown later in \eqref{ZKSratioQZS}.
 
 The force curves in \figref{ZKSforcetotalVnorm} terminate at a certain point
 in the negative displacement region, which corresponds to the maximum possible
@@ -251,27 +249,41 @@ the equivalent $\ZKSnormMin$, which are given by
 
 \begin{figure}
 \begin{wide}
-\begin{subfigure}
-\mbox{\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffness-total}}
-\caption{\figlabel{ZKSstiffness-vert} Normalised vertical stiffness of the
-system calculated with \eqref{ZKSstiffnessV}.}
-\end{subfigure}\hfil
-\begin{subfigure}
-\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-total}
-\caption{
+\subbottom
+  [\figlabel{ZKSstiffness-vert} Normalised vertical stiffness of the system calculated with \eqref{ZKSstiffnessV}.]
+  {\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffness-total}}%
+\hfil
+\subbottom
+  [
   Normalised horizontal stiffness of the system calculated with \eqref{ZKSstiffnessH}.
-  \figlabel{ZKSstiffness-horiz}
-}
-\end{subfigure}
+  \figlabel{ZKSstiffness-horiz}  
+  ]{\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-total}}
 \end{wide}
 \lofcaption
  {A comparison of vertical and horizontal stiffness characteristics for a range of geometric ratios $\ZKSratio$ at $\ZKSkratio=1$.}
- { $\ZKSratioQZS$ is calculated at $\ZKSlengthratio=1$.}
+ { Plots are labelled with their ratio to $\ZKSratioQZS$, which is calculated for a length ratio of $\ZKSlengthratio=1$.}
 \figlabel{ZKSstiffness-both}
 \end{figure}
 
+\begin{figure}
+\begin{wide}
+  \subbottom
+    [\figlabel{ZKSoff}
+The stable and unstable equilibrium points for $\ZKSoff\in\{-0.1, 0, 0.1\}$.
+The rest position will move from the unstable point to the stable point of equilibrium.]
+    {\mbox{\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSoffqzs}}}\hfil
+  \subbottom
+    [\figlabel{ZKS-ratioErr}
+The stiffness at equilibrium as $\ZKSoff$ varies; as the stiffness becomes
+negative, the stiffness shown corresponds to the stable point of equilibrium shown in the figure adjacent.]
+    {\psfragfig{PhD/Simulations/ZKS/fig/ZKSratioErr}}
+\end{wide}
+\caption{Force and stiffness of the inclined spring system near \qzs/, showing
+the effect of unstable equilibrium.}
+\end{figure}
+
 The vertical stiffness characteristic, $\ZKSstiffnessV$, of the system is
-calculated by differentiating \eqref{ZKSforcetotalVnorm} with respect to $\ZKSdisp$:
+calculated by differentiating the vertical force, \eqref{ZKSforcetotalVnorm}, with respect to vertical displacement~$\ZKSdisp$:
 \begin{dgroup*}
 \begin{dmath}
   \ZKSstiffnessV = -\D{}{\ZKSdisp} \ZKSforcetotalV
@@ -281,7 +293,7 @@ calculated by differentiating \eqref{ZKSforcetotalVnorm} with respect to $\ZKSdi
   \frac{\ZKSstiffnessV}{\ZKSstiffincl} = -2\ZKSratio^2 \sqrt{\frac{\ZKSratio^2+1}{\gp{\ZKSratio^2+\ZKSnorm^2}^3}}+\ZKSkratio+2
 \end{dmath}.
 \end{dgroup*}
-Graphs of the normalised vertical stiffness ${\ZKSstiffnessV}/{\ZKSstiffincl}$ \vs\ normalised displacement $\ZKSnorm$ is shown in \figref{ZKSstiffness-vert} together with the associated horizontal stiffness, which will be analysed in \secref{qzs-horiz}.
+Graphs of the normalised vertical stiffness ${\ZKSstiffnessV}/{\ZKSstiffincl}$ \vs\ normalised displacement $\ZKSnorm$ are shown in \figref{ZKSstiffness-vert} together with the associated horizontal stiffness (\figref{ZKSstiffness-horiz}), which will be analysed in \secref{qzs-horiz}.
 The parameter selection required to achieve a \qzs/
 condition in the vertical direction can be found by solving
 \eqref{ZKSstiffnessV} for $\ZKSstiffnessV=0$ at $\ZKSnorm=0$. This results in
@@ -290,21 +302,22 @@ the relation
   \ZKSratioQZS =
     \frac{2}{\sqrt{\ZKSkratio^2+4 \ZKSkratio}}
 \end{dmath}
-which is used as the reference value of $\ZKSratio$ in
+which is used as the reference value of the geometric ratio $\ZKSratio$ in
 \figref{ZKSforce-both,ZKSstiffness-both}.
 
 Achieving exactly \qzs/ with this spring is not feasible in practice as the
 stiffness characteristic becomes negative for $\ZKSratio<\ZKSratioQZS$, as
 shown in \figref{ZKSstiffness-vert}.
-This is important as the geometric ratio $\ZKSratio$ will have some uncertainty in its value due to physical imperfections such as creep.
+This is important as the geometric ratio $\ZKSratio$ will have some uncertainty in its value due to environmental conditions such as temperature and physical imperfections such as creep.
 Define $\ZKSoff$ as the deviation of $\ZKSratio$ from $\ZKSratioQZS$ as
 \begin{dmath}
   \ZKSratio = \gp{1+\ZKSoff}\ZKSratioQZS
 \end{dmath}.
-\Figref{ZKSoff} shows the vertical force, $\ZKSforcetotalV$, of the system for
+\Figref{ZKSoff} shows the total vertical force, $\ZKSforcetotalV$, of the system for
 $\ZKSoff\in\{-0.1, 0, 0.1\}$. It can be seen that negative values of $\ZKSoff$
+(\ie, a geometric ratio less than that for \qzs/)
 correspond to negative stiffness at normalised displacement $\ZKSnorm=0$.
-A system in this condition will move towards and remain at the position of stable equilibrium indicated in the figure rather than the design point at $\ZKSnorm=0$.
+A system in this condition is in a position of unstable equilibrium, and will move towards and remain at the position of stable equilibrium indicated in the figure rather than the design point at $\ZKSnorm=0$.
 
 \Figref{ZKS-ratioErr} plots the stiffness at this deviated equilibrium point as $\ZKSoff$ varies;
 in the unstable zone, the system will move to the equilibrium point shown in
@@ -314,38 +327,19 @@ It can be seen that the stiffnesses in
 the stable region for $\ZKSoff>0$ are smaller than the stiffnesses in the
 equilibrium region for $\ZKSoff<0$. This highlights the importance of never
 breaching the $\ZKSoff<0$ instability condition. Therefore, a chosen value for
-$\ZKSratio$ will approach $\ZKSratioQZS$ but always be slightly greater in
-order to retain stability.
+the geometric ratio $\ZKSratio$ will approach $\ZKSratioQZS$ but always be slightly greater in
+order to retain stability of the equilibrium position.
 
-\begin{figure}
-\begin{wide}
-\begin{subfigure}
-  \mbox{\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSoffqzs}}
-  \caption{\figlabel{ZKSoff}
-The stable and unstable equilibrium points for $\ZKSoff\in\{-0.1, 0, 0.1\}$.
-The rest position will move from the unstable point to the stable point of equilibrium.}
-\end{subfigure}\hfil
-\begin{subfigure}
-  \psfragfig{PhD/Simulations/ZKS/fig/ZKSratioErr}
-  \caption{\figlabel{ZKS-ratioErr}
-The stiffness at equilibrium as $\ZKSoff$ varies; as the stiffness becomes
-negative, the stiffness shown corresponds to the stable point of equilibrium shown in the figure adjacent.}
-\end{subfigure}
-\end{wide}
-\caption{Force and stiffness of the inclined spring system near \qzs/, showing
-the effect of unstable equilibrium.}
-\end{figure}
+\subsection{Horizontal stiffness characteristic}
+\seclabel{qzs-horiz}
 
 Now that the vertical stiffness characteristics of the system have been analysed and a condition
 derived to achieve \qzs/ in that direction, the same approach will be taken
 for the horizontal behaviour.
 
-\subsection{Horizontal stiffness characteristic}
-\seclabel{qzs-horiz}
-
 In order to calculate the horizontal stiffness of the system, the force from
 the vertical spring needs to be represented in terms of both vertical and
-horizontal displacements. This force, in the direction of the vertical spring,
+horizontal displacements. This force, aligned in the direction of the nominally-vertical spring,
 is
 
 \begin{dmath}[label=ZKSforcevertlong]
@@ -377,21 +371,21 @@ the horizontal direction is
 \ZKSforcetotalH=\ZKSforceinclH-\ZKSforceinclH{\ZKSdisp,-\ZKSshift}+\ZKSforcevertH
 \end{dmath},
 using \eqref{ZKSforcevertH,ZKSforceinclH}. Differentiating with respect to
-$\ZKSshift$ and evaluating at $\ZKSshift=0$ gives the horizontal stiffness
+horizontal displacement $\ZKSshift$ and evaluating at $\ZKSshift=0$ gives the horizontal stiffness
 characteristic as the vertical displacement varies,
 \begin{dmath}[label=ZKSstiffnessH]
 % edited to move elements in front of the sqrts
 \frac{\ZKSstiffnessH}{\ZKSstiffincl} = -2 \ZKSnorm^2 \sqrt{\frac{\ZKSratio^2+1}{\gp{\ZKSratio^2+\ZKSnorm^2}^3}} +\frac{\ZKSkratio \gp{\ZKSnorm-1}}{\ZKSlengthratio\sqrt{\ZKSratio^2+1} +\ZKSnorm-1}+2
 \end{dmath}.
-This equation has been shown previously in \figref{ZKSstiffness-horiz}
-together with the vertical stiffness in \eqref{ZKSstiffnessV}. In these
-figures, it can be seen that while the vertical stiffness is zero at
-$\ZKSnorm=0$ and $\ZKSratio=\ZKSratioQZS$, the horizontal stiffness exhibits
-its own behaviour, and can even be negative (\ie, unstable) for values of
+This equation has been previously graphed together with the vertical stiffness in \figref[vref]{ZKSstiffness-both}.
+In these figures, it can be seen that while the vertical stiffness is zero at
+normalised displacement $\ZKSnorm=0$ and geometric ratio $\ZKSratio=\ZKSratioQZS$ (which is as derived), the horizontal stiffness exhibits
+separate behaviour, and can even be negative (\ie, unstable) for values of
 $\ZKSratio$ lower than around $1.25\ZKSratioQZS$.
 
-Further analysis into the behaviour of the horizontal stiffness at the
-vertical \qzs/ condition is warranted. Substituting the \qzs/ condition of
+Since the vertical stiffness and horizontal stiffness are independent, further analysis into the behaviour of the horizontal stiffness at the
+vertical \qzs/ condition is warranted.
+Substituting the \qzs/ condition of
 \eqref{ZKSratioQZS} into \eqref{ZKSstiffnessH} at displacement $\ZKSnorm=0$,
 gives the normalised horizontal stiffness as a function of stiffness ratio
 $\ZKSkratio$:
@@ -404,10 +398,9 @@ $\ZKSkratio$:
 
 This equation is depicted in \figref{ZKSstiffnessKnorm}; it can be seen that
 the horizontal stiffness of the spring may be chosen by varying both
-$\ZKSkratio$ and $\ZKSlengthratio$. Since the spring length ratio
-$\ZKSlengthratio$ is not found in \eqref{ZKSstiffnessV}, the horizontal and
-vertical stiffnesses may be tuned independently in order to achieve \qzs/ in
-each.
+the spring stiffness ratio $\ZKSkratio$ and the spring length ratio $\ZKSlengthratio$.
+Since the length ratio $\ZKSlengthratio$ is not found in \eqref{ZKSstiffnessV}, the horizontal and
+vertical stiffnesses may be tuned independently in order to achieve \qzs/ in both simultaneously.
 
 \begin{figure}
 \psfragfig{PhD/Simulations/ZKS/fig/ZKSkratio-effect}
@@ -425,11 +418,11 @@ $\ZKSlengthratio$ when the \qzs/ condition is achieved in both the vertical
 and the horizontal directions.
 \begin{dseries}[label=ZKSQZS]
 \begin{math}
-\ZKSkratioQZS =
+\ZKSkratioQZS\fn{\ZKSlengthratio} =
   2 \gp{\sqrt{\ZKSlengthratio^2+1}-1}
 \end{math}, or\quad
 \begin{math}
-\ZKSlengthratioQZS =
+\ZKSlengthratioQZS\fn{\ZKSkratio} =
     \frac{1}{2} \sqrt{\ZKSkratio \gp{\ZKSkratio+4}}
 \end{math}
 \end{dseries}
@@ -458,17 +451,18 @@ effects that may arise due to a large rate of change of stiffness over
 displacement.
 
 \Figref{ZKSstiffnessH-QZS} illustrates that the \qzs/ condition is
-marginal\-ly unstable in the horizontal direction. In practice this requires
-that the system be tuned slightly away from the \qzs/ condition after
+always marginally unstable in the horizontal direction since negative displacement will result in negative stiffness.
+In practice this requires
+that the system be tuned slightly away from the \qzs/ condition in the horizontal direction after
 accommodating for the maximum disturbance displacement of the isolator. It is
 possible to do this without compromising the \qzs/ condition in the vertical
 direction because the spring length ratio $\ZKSlengthratio$ does not affect
 the vertical stiffness.
 
 As an example, \figref{ZKSstiffness-NotQZS} shows the horizontal stiffness for
-$\ZKSkratio=0.95\ZKSkratioQZS$. In comparison with \figref{ZKSstiffnessH-QZS},
+a stiffness ratio detuned by five percent below that required for \qzs/ (\ie, $\ZKSkratio=0.95\ZKSkratioQZS$). In comparison with \figref{ZKSstiffnessH-QZS},
 the spring has a stable displacement range of approximately
-$\ZKSnorm=\pm0.025$. Provided that $\ZKSlengthratio$ is large enough, the
+$\ZKSnorm=\pm0.025$. Provided that the spring length ratio $\ZKSlengthratio$ is large enough, the
 horizontal stiffness at $\ZKSnorm=0$ is still significantly reduced.
 
 Therefore, there is a direct compromise between the nonlinearity of the
@@ -478,16 +472,15 @@ decreases with $\ZKSlengthratio$).
 
 \begin{figure}[p]
 \begin{wide}
-\begin{subfigure}
-  \mbox{\null\hspace{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessV-QZS}}
-  \caption{\figlabel{ZKSstiffnessV-QZS}
-Normalised vertical stiffness of the system.}
-\end{subfigure}\hfil
-\begin{subfigure}
-  \psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-QZS}
-  \caption{\figlabel{ZKSstiffnessH-QZS}
-Normalised horizontal stiffness of the system.}
-\end{subfigure}
+\hspace*{-1cm}
+\subbottom[\figlabel{ZKSstiffnessV-QZS}
+Normalised vertical stiffness of the system.]
+  {\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessV-QZS}}
+\hfil
+\subbottom[\figlabel{ZKSstiffnessH-QZS}
+Normalised horizontal stiffness of the system;
+negative displacement will result in negative stiffness.]
+  {\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-QZS}}
 \end{wide}
 \caption
 [A comparison of vertical and horizontal stiffness characteristics at
@@ -520,7 +513,7 @@ spring system, the amount of compression in each spring at equilibrium can be
 selected.
 
 The amount of spring compression can be analysed with a metric here called the `compression ratio' related to the uncompressed spring length.
-For the inclined and vertical springs, respectively, the compression ratio is given by
+For the inclined and vertical springs, respectively, the compression ratios $\ZKScompressI$ and $\ZKScompressI$ are given by
 \begin{dseries}[label=ZKScompress]
 \begin{math}
 \ZKScompressI = 1 - \frac{\ZKSlengthcomp}{\ZKSlength}
@@ -529,10 +522,10 @@ For the inclined and vertical springs, respectively, the compression ratio is gi
 \ZKScompressV = 1 - \frac{\ZKSvlengthcomp}{\ZKSvlength}
 \end{math}.
 \end{dseries}
-This compression ratio metric is chosen to be zero for a spring in its uncompressed position and unity if it is compressed to its full length (which is the theoretical limit for springs in compression).
+This metric for the compression ratio was chosen to be zero for a spring in its uncompressed position and unity if it is compressed to its full length (which is the theoretical limit for springs in compression).
 
-The compression ratios are evaluated at the \qzs/ condition in both directions; \ie,
-$(\ZKSshift,\ZKSdisp)=(0,0)$, $\ZKSratio=\ZKSratioQZS$, and
+The compression ratios were evaluated at the \qzs/ condition in both directions; \ie,
+$(\ZKSdisp,\ZKSshift)=(0,0)$, $\ZKSratio=\ZKSratioQZS$, and
 $\ZKSlengthratio=\ZKSlengthratioQZS$ (see \eqref{ZKSratioQZS,ZKSQZS}),
 yielding
 
@@ -584,7 +577,7 @@ such effects using leaf springs in a four-bar linkage~\cite{choi2011-ietr}.
 %\figref{zks-dia}) may be able to adapt to horizontal \qzs/ without variable
 %stiffness springs.
 
-Note that the principles discussed for horizontal stiffness can be extended to a three dimensional system, most easily with a rotationally-symmetric structure with horizontally aligned springs in each plane.
+Note that the principles discussed for horizontal stiffness can be extended to a three-dimensional system, most easily with a rotationally-symmetric structure with horizontally aligned springs in each plane.
 The main conclusion from the analysis in this section is that \qzs/ in both vertical and horizontal directions can be achieved with this spring arrangement, which is not generally considered in analyses of this type.
 However, the tuning required to maintain \qzs/ for this spring arrangement is difficult to achieve in practice.
 In the next section, a magnetic system is examined in detail that exploits a similar negative stiffness principle but can be more easily adjusted online.
@@ -1053,11 +1046,27 @@ low equilibrium stiffnesses found just below the \qzs/ position.
 The introduced criteria may be simultaneously satisfied for some specified
 values of mass, resonance frequency, and displacement range ($\mass$, $\freq$,
 and $\dmax$) by varying the free parameters magnet size $\mdim$ and magnet gap
-$\mdim\ngap$. The shared region of the criteria previously introduced
+$\mdim\ngap$.
+A summary of the criteria introduced previously is shown in \tabref{crit-summary}.
+The shared region of the criteria previously introduced
 (\eqrangeref{strong}{stable}) are shown in \figref{cons-all} for various
 combinations of supported mass and resonance frequency. This figure presents a
 complete design map that shows how the techniques presented in this paper can
 be used for speculative design work and optimisation.
+
+\begin{table}
+\caption{Summary of design criteria.}
+\begin{tabular}{lll}
+\toprule
+Criterion & Equation & Figure \\
+\midrule
+Strong   & \eqref*{strong}   & \figref*{cons-strong} \\
+Soft     & \eqref*{soft}     & \figref*{cons-soft}  \\
+Stable   & \eqref*{stable}   & \figref*{cons-stable-1,cons-stable-2}  \\
+Saturate & \eqref*{saturate} & \figref*{cons-saturate}  \\
+\bottomrule
+\end{tabular}
+\end{table}
 
 \begin{figure}
     \centering
@@ -1202,7 +1211,7 @@ small damping forces due to eddy current and air resistance effects
 \cite{fung2005,bonisoli2006,nijsse2001}.
 
 \Figref{nl} shows the steady state response of \eqref{response} for a range of
-ground disturbance amplitudes in increments of \SI{0.2}{mm} up to $A_e=\SI{1}{mm}$.
+peak-to-peak ground disturbance amplitudes in increments of \SI{0.2}{mm} up to $A_e=\SI{1}{mm}$.
 Because the excitation is at resonance, the output displacement is greater
 than the input displacement. The phase plot of the response becomes
 increasingly skewed as the amplitude of vibration, and hence the nonlinearity ratio,
@@ -1356,20 +1365,19 @@ and $A_e=\SI{0.5}{mm}$. Data for the simulations with $A_e=\SI{0.5}{mm}$, includ
 nonlinearity measure $\nk$ and maximum displacement $x_{\text{max}}$, are shown in
 \tabref{variance-gaps}. Two related features are important to note from \figref{variance-gaps}.
 The first is the large decrease in resonance frequency as the magnet gap decreases. The second
-is the corresponding increase in nonlinear behaviour as this occurs. As the equilibrium
-position moves away from the instability at \qzs/, the variance gain quickly exhibits
-linear behaviour.
+is the corresponding increase in nonlinear behaviour as this occurs, seen with both a snap-through resonance and a superharmonic-like behaviour at twice the resonance frequency.
+As the equilibrium position moves away from the instability at \qzs/, the variance gain quickly exhibits linear behaviour.
 
 \begin{figure}\centering
 \let\labelsize\footnotesize
-\psfragfig{PhD/Writings/QZS/fig/variance-gaps-crop-new}
+\psfragfig*{PhD/Writings/QZS/fig/variance-gaps}
 \caption
 [Variance gain of the magnetic system comparing two excitation
 amplitudes.]
 {Variance gain of the magnetic system comparing two excitation
 amplitudes with varying values of magnet gap $\ngap$, as labelled. Low amplitude
 is $A_e=\SI{0.1}{mm}$ and high amplitude is $A_e=\SI{0.5}{mm}$; shown as dashed
-and solid lines, respectively. The nonlinear effect is only prominent in the case
+and solid lines, respectively. The nonlinear effects (snap-through resonance and superharmonic) is only prominent in the case
 close to \qzs/, with an excitation amplitude that almost destabilises the system.
 Tabulated values of nonlinearity and maximum displacement are shown for the high
 amplitude case in \tabref{variance-gaps}.}
@@ -1429,8 +1437,20 @@ damping to the system.
 
 Further research on the practical development of this system is currently being undertaken at The University of Adelaide, with a particular focus on adaptive load balancing, and control for both stabilisation and vibration attenuation in six degrees of freedom \cite{zhu2011-icmt}.
 
-\section{Conclusion on \qzs/}
+\section{Conclusion}
 
-TODO
+This chapter consisted of separate analyses of two \qzs/ systems.
+The first was a mechanical design using linear springs, seen in the literature, and analysed in a planar form herein for the first time.
+It was shown that \qzs/ was possible to achieve in both horizontal and vertical directions simultaneously with careful tuning of the parameters of the system.
+However, were the operating conditions of the system to change, this tuning would be difficult to achieve in practice.
+
+The second analysis considered a simple magnetic \qzs/ arrangement and investigated the parameters necessary to design such a system based on desired load bearing and allowable operating parameters.
+A set of criteria was developed to be considered and the solution space for one such design investigated.
+The nonlinear aspects of using magnetic forces were considered and it was shown that nonlinearities became significantly when the spring tended very closely to its \qzs/ position.
+
+A recurring theme for \qzs/ systems is that they represent an ideal operating condition which can never be achieved in practise.
+For the magnetic design with a quadratic-shaped force curve, instability results from displacements that breach the \qzs/ position.
+For the inclined linear spring design with a cubic-shaped force curve, any slight deviation past the \qzs/ tuning point results in a spring with greater stiffness and a shifted equilibrium position.
+In both cases, the operating point of the system must be chosen only as close as possible to the \qzs/ position; the more extreme the operating requirements the finer the tolerances on manufacturing and, if necessary, stability measures.
 
 \end{document}
