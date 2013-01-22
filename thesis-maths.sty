@@ -56,15 +56,28 @@
     {\newvariable@opt{#1}}
     {\newvariable@noopt{#1}}%
 }
-\def\newvariable@opt#1[#2]#3{\@newvariable{#1}{}{#3}}
+\def\newvariable@opt#1[#2]#3{\@newvariable{#1}{#2}{#3}}
 \def\newvariable@noopt  #1#2{\@newvariable{#1}{}{#2}}
 \newcommand\@newvariable[3]{%
-  \protected\def#1{#3}%
+  \let\nomennom\empty
+  \let\nomenlabel\empty
+  \let\nomensort\empty
+  \setkeys{thesisnomen}{#2}%
+  \edef\@tempa{%
+    \noexpand\newglossaryentry
+      {\ifx\empty\nomenlabel\detokenize{#3}\else\nomenlabel\fi}
+      {
+       name = \unexpanded{$#3$},
+       sort = \ifx\empty\nomensort\detokenize{#3}\else\nomensort\fi,
+       description = \unexpanded\expandafter{\nomennom},
+      }%
+    \protected\def\noexpand #1{\noexpand\gls{\ifx\empty\nomenlabel\detokenize{#3}\else\nomenlabel\fi}}%
+  }\@tempa
 }
 
-\newcommand\newsignal[3]{%
-  \newvariable#1{#3}%
-  \uppercase{\newvariable#2{#3}}}
+\define@key{thesisnomen}{nom}{\gdef\nomennom{#1}}
+\define@key{thesisnomen}{sort}{\gdef\nomensort{#1}}
+\define@key{thesisnomen}{label}{\gdef\nomenlabel{#1}}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\RMSof[1]{#1_{\textsc{rms}}}
@@ -97,15 +110,19 @@
 \newvariable\ii{i}
 \newvariable\freq{\omega}
 
-\newsignal\dispBase\laplaceBase{x_1}
-\newsignal\dispMass\laplaceMass{x_2}
-\newvariable\velMass{\expandafter\dot\dispMass}
-\newvariable\velBase{\expandafter\dot\dispBase}
-\newvariable\accMass{\expandafter\ddot\dispMass}
-\newvariable\accBase{\expandafter\ddot\dispBase}
+\newvariable\dispBase{x_1}
+\newvariable\laplaceBase{X_1}
+\newvariable\velBase{\dot x_1}
+\newvariable\accBase{\ddot x_1}
+
+\newvariable\dispMass{x_2}
+\newvariable\laplaceMass{X_2}
+\newvariable\velMass{\dot x_2}
+\newvariable\accMass{\ddot x_2}
 
 \newvariable\massAbsorb{m_a}
-\newsignal\dispAbsorb\respAbsorb{x_a}
+\newvariable\dispAbsorb{x_a}
+\newvariable\respAbsorb{X_a}
 \newvariable\dampingAbsorb{c_a}
 \newvariable\stiffnessAbsorb{k_a}
 \newvariable\forceAbsorb{f_a}
@@ -118,9 +135,11 @@
 
 \newvariable\dampingRel{c}
 \newvariable\dampingAbs{c_{\mathrm{sky}}}
-\newvariable\stiffnessRel{k}
-\newsignal\forceIn\laplaceForce{f}
-\newsignal\forceDisturb\laplaceForceDisturb{g}
+\let\stiffnessRel\stiffnessLinear
+\newvariable\forceIn{f}
+\newvariable\laplaceForce{F}
+\newvariable\forceDisturb[label=gg]{g}
+\newvariable\laplaceForceDisturb[label=laplaceG]{G}
 
 \newfunc\transmissibility{T}[elem=\ii\freq,index=1]
 
@@ -148,13 +167,13 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% COIL
 
-\newvariable\SuffixCoil{c}
+\newcommand\SuffixCoil{c}
 \newvariable\surfCoil{S_\SuffixCoil}
 \newvariable\volCoil{V_\SuffixCoil}
 \newvariable\diffsurfCoil{s_\SuffixCoil}
 \newvariable\diffvolCoil{v_\SuffixCoil}
 
-\newvariable\SuffixMagnet{m}
+\newcommand\SuffixMagnet{m}
 \newvariable\surfMag{S_\SuffixMagnet}
 \newvariable\volMag{V_\SuffixMagnet}
 \newvariable\diffsurfMag{s_\SuffixMagnet}
@@ -220,7 +239,7 @@
 \newvariable\diamWire[nom=Diameter of the wire]{d_w}
 
 \newvariable\current[nom=Current]{I}
-\newvariable\currentCoil[nom=Current]{I}
+\let\currentCoil\current
 
 \newvariable\COILnmag[nom=Number of smaller permanent magnets]{n}
 
@@ -300,6 +319,9 @@
 \newfunc\ZKSvlengthcomp{H}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
 % [nom=Length of vertical spring under load]
 
+\newcommand\ZKSincl{i}
+\newcommand\ZKSvert{v}
+
 \newvariable\ZKScompress{C}
 \newvariable\ZKScompressI[
   nom=Compression of the inclined springs at \qzs/]{\ZKScompress_\ZKSincl}
@@ -308,8 +330,7 @@
 
 \newvariable\ZKSlengthratio[
     nom=Ratio between inclined and vertical
-        spring lengths, $\ZKSlength$ and $\ZKSlength$]
-  {\eta}
+        spring lengths]{\eta}
 \newvariable\ZKSratio[
     nom=Ratio between the inclined spring
         width and height]
@@ -338,9 +359,6 @@
         the vertical direction is achieved]
   {\ZKSQZS{\ZKSratio}}
 
-\newvariable\ZKSincl{i}
-\newvariable\ZKSvert{v}
-
 \def\ZKSstiff{k}
 \newvariable\ZKSstiffincl[nom=Inclined spring stiffness]{\ZKSstiff_\ZKSincl}
 \newvariable\ZKSstiffvert[nom=Vertical spring stiffness]{\ZKSstiff_\ZKSvert}
@@ -348,7 +366,7 @@
 \newvariable\ZKSstiffnessV[nom=Stiffness characteristic in the vertical direction]{K_v}
 \newvariable\ZKSstiffnessH[nom=Stiffness characteristic in the horizontal direction]{K_h}
 
-\newvariable\ZKSforce{F}
+\newvariable\ZKSforce[label=FF]{F}
 
 \newfunc\ZKSforceincl{\ZKSforce_\ZKSincl}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
 % [nom=Force characteristic of the inclined spring]
@@ -379,7 +397,7 @@
 \newcommand\VariableSensor    [1]{#1_s}
 \newcommand\VariableRigMagnets[1]{#1_m}
 
-\newvariable\InertiaMoment{I}
+\newvariable\InertiaMoment[label=inertiaI]{I}
 \newvariable\InertiaMomentBeam{\VariableBeam\InertiaMoment}
 \newvariable\InertiaMomentMagnets{\VariableRigMagnets\InertiaMoment}
 \newvariable\InertiaMomentTotal{\InertiaMoment_t}
@@ -387,7 +405,7 @@
 \newvariable\BlockInertiaLength{a}
 \newvariable\BlockInertiaHeight{b}
 \newvariable\BlockInertiaOffset{d}
-\newvariable\BlockInertiaMass{m}
+\newvariable\BlockInertiaMass[label=mm]{m}
 
 \newvariable\MassBeam{\VariableBeam m}
 \newvariable\MassBeamOuter{m_1}
@@ -404,7 +422,6 @@
 \newvariable\OriginMagHigh{ o_n }
 \newvariable\OriginMagGap{ o_g }
 \newvariable\OriginQZS{o_q}
-\newvariable\OriginMagDisp{o_x}
 
 \newvariable\MassRigMagnets{\VariableRigMagnets m}
 \newvariable\LengthRigMagnets{\VariableRigMagnets L}
@@ -413,19 +430,24 @@
 
 \newvariable\LengthSensor{\VariableSensor L}
 \newvariable\HeightSensor{\VariableSensor h}
+
 \newvariable\DisplSensor {\VariableSensor x}
 \newvariable\DisplSensorBeam { x_b}
+\newvariable\DisplSensorBeamProj { x_p}
+\newvariable\DisplMag{x_m}
+\newvariable\DisplMagB{v}
+\newvariable\DisplMagU{u}
 
-\newvariable\DiamMag{d}
+\newvariable\DiamMag[label=dd]{d}
 \newvariable\RadiusMag{r}
 \newvariable\RadiusICoil{r_1}
 \newvariable\RadiusOCoil{r_2}
-\newvariable\HeightMag{h}
+\newvariable\HeightMag[label=hh]{h}
 \newvariable\HeightRig{H}
 \def\HeightCoil{h_c}
 \def\GapCoil{g_c}
 
-\newvariable\DispMag{x}
+\newvariable\DispMag[label=xx]{x}
 \newvariable\AngleMag{\theta}
 \newvariable\MomentMag{M_\AngleMag}
 \newvariable\ForceRigMagnets{F_\DispMag}
@@ -434,11 +456,11 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%       EXPERIMENT       %%%%%%%%%%%%%%
 
-\newvariable\rigNormGap{g}
+\newvariable\rigNormGap[label=rignormgap]{g}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-\newvariable\forceMag{F}
+\newvariable\forceMag[label=FFF]{F}
 \newvariable\normforceMag{\bar F}
 \def\fpeak{\forceMag_{\mathrm{peak}}}
 \def\fmax{\forceMag_{\mathrm{max}}}
@@ -450,12 +472,12 @@
 \newcommand\displ{z}
 \newcommand\eccen{y}
 
-\newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio]{\gamma}
+\newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio,label=cuboidaspect]{\gamma}
 \newvariable\ratioCoil[nom=Coil aspect ratio]{\beta}
-\newvariable\ratioMag[nom=Cylindrical magnet aspect ratio]{\alpha}
+\newvariable\ratioMag[nom=Cylindrical magnet aspect ratio,label=cylaspect]{\alpha}
 
-\newvariable\faceCub[nom=Face side length of cuboid magnet]{b}
-\newvariable\lengthCub[nom=Depth of cuboid magnet]{a}
+\newvariable\faceCub[nom=Face side length of cuboid magnet,label=cubside]{b}
+\newvariable\lengthCub[nom=Depth of cuboid magnet,label=cubdept]{a}
 
 
 
@@ -500,8 +522,8 @@
 \newvect\lever{r}
 
 \newcommand\stiffness{k}
-\newvariable\gravity{g}
-\newvariable\disp{x}
+\newvariable\gravity[label=grav]{g}
+\newvariable\disp[label=disp]{x}
 \newvect\displacement{x}
 \newvect\velocity{v}
 \newcommand\natfreq{\omega_n}

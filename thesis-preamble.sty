@@ -129,6 +129,16 @@
 \captionsetup[table]{position=top}
 
 
+%%% NOMEN
+
+\usepackage[style=super3colheader]{glossaries}
+\makeglossaries
+\renewcommand\glossaryname{Nomenclature}
+\renewcommand\entryname{Symbol}
+\renewcommand\pagelistname{Page}
+\addtolength\glsdescwidth{1cm}
+\addtolength\glspagelistwidth{1cm}
+
 
 \RequirePackage{csquotes}
 \MakeOuterQuote{"}
@@ -430,13 +440,12 @@
 %%%
 
 \raggedbottom
+\renewcommand{\insertchapterspace}{}
 
+%%% epigraphs 
 
-
-
-
-
-
+\setlength\epigraphwidth{0.6\textwidth}
+\epigraphfontsize{\footnotesize\em}
 
 
 
