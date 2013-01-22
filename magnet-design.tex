@@ -12,7 +12,7 @@
   There was as little need to do this as there was use.
   It was merely something he did for his own pleasure.
 }
-{\textcite{maugham1915}}
+{\citetitle{maugham1915}\\\textcite{maugham1915}}
 
 \section{Introduction}
 
@@ -250,12 +250,12 @@ freedom. Lateral vibrations will cause vertical vibrations; due to symmetry of
 the forces in the horizontal directions, vertical disturbances will only couple
 to horizontal forces if the magnets are not vertically aligned.
 
-An example of this coupling is shown in \figref{coupling-oscillations} for a
+An example of this is shown in \figref{coupling-oscillations} for a
 suspended magnet that is stabilised in the horizontal direction with the
 addition of active positive stiffness and constrained in the other horizontal direction (\ie, only a planar case is considered).
 This simulation was performed on a magnetic system with \SI{10}{mm} cubes in vertical repulsion, with a floating mass of \SI{0.5}{kg} and damping ratio of \SI{5}{\%}.
 The base magnet was excited with a sinusoidal input $p$ at the vertical resonance of the system with a magnitude of \SI{1}{mm}.
-The dynamics were defined in the horizontal and vertical directions, \resp, as
+The dynamics were defined in the horizontal and vertical directions, \resp,~as
 \begin{dmath}
 \mass \ddot y + \damping \gp{\dot y - \dot p} - F_y\fn{0,y-p,z} + \gainDisp \gp{y-p} = 0
 \end{dmath},
@@ -266,8 +266,8 @@ where $F_y$ and $F_z$ are the magnetic forces calculated with \eqref{akoun}, and
 The (unstable) horizontal stiffness for this system was calculated as around \SI{-200}{N/m} and the displacement feedback gain was chosen as $\gainDisp=250$ to overcome the instability due to this.
 
 \begin{figure}
-  \asyinclude{\jobname/coupling}\hfil
-  \psfragfig*{\phdpath Simulations/Coupling/fig/coupling-oscillations}
+  \subbottom[Schematic.]{\asyinclude{\jobname/coupling}}\hfill
+  \subbottom[Displacement trace.]{\psfragfig{\phdpath Simulations/Coupling/fig/coupling-oscillations}}
   \lofcaption{Oscillations over time of the displacement of a suspended magnet that is excited through horizontal vibrations of the base magnet.}{ The figure-eight trajectory shows that the horizontal vibration couples to the vertical forces.}
   \figlabel{coupling-oscillations}
 \end{figure}
@@ -309,6 +309,7 @@ While not investigated further in this work, the coupling ratio requires careful
 Depending on the ratios of vertical to horizontal resonance frequency (and this will be dependent on the control used, as well), improving the horizontal isolation performance may come as a detriment to the vertical isolation.
 As shown in \figref{mag-couplingratio-equil}, however, for small displacement regimes any coupling problems may be negligible compared to the other sources of disturbance.
 Regardless, this is a factor that should be considered for all practical levitation devices.
+The coupling between vertical and horizontal directions can be amplified in magnetic systems composed of multipole or Halbach arrangements, which is discussed further in \secref[vref]{multipole-coupling}.
 
 
 \section{Simple magnetic springs using cuboid magnets}
@@ -1411,7 +1412,8 @@ When not perfectly tuned, these unbalanced coils also had the capability to indu
 
 \section{Summary}
 
-A variety of magnet designs were discussed in this chapter.
+A number of designs for load bearing using individual magnets in a variety of configurations were introduced and discussed in this chapter.
+It was shown that by carefully introducing addition magnets in a design the degree of instability can be minimised.
 A particular focus was placed on the inclined magnet spring and this design was experimentally tested; its results tracked well with theoretical calculations and its utility for vibration isolation was explored.
 
 

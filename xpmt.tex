@@ -7,6 +7,17 @@
 \chapter{Prototype low-stiffness magnetic spring}
 \chaplabel{xpmt}
 
+\epigraph{While they uncovered the sheaves he stood apathetic beside his
+portable repository of force, round whose hot blackness the morning
+air quivered.  He had nothing to do with preparatory labour.  His
+fire was waiting incandescent, his steam was at high pressure, in
+a few seconds he could make the long strap move at an invisible
+velocity.  Beyond its extent the environment might be corn, straw,
+or chaos; it was all the same to him.  If any of the autochthonous
+idlers asked him what he called himself, he replied shortly, `an
+engineer.'}{\citetitle{hardy1981-tess}\\\textcite{hardy1981-tess}}
+
+\noindent
 This chapter covers the implementation details, experiments performed, and results obtained from the experimental apparatus built for this project used to validate some of the concepts and theory discussed in previous chapters.
 
 \section{Design of the experimental apparatus}
@@ -281,7 +292,6 @@ enumerated below. See \textcite{boehm1993} for a more detailed overview.
     with a suitable finish).
 
 \end{description}
-
 The sensor purchased for the experimental apparatus was a Wenglor 05\,MGV\,80
 opto-electronic sensor, which uses a laser to measure distance over a
 range of \SI{10}{mm}. It was selected for its convenient availability,
@@ -304,25 +314,6 @@ Relevant operating properties are listed in \tabref{wenglor}.
     \bottomrule
   \end{tabular}
 \end{table}
-
-The measured output of the sensor was used infer a magnet displacement, \DispMag, (referenced from the \qzs/ position) with the following transformation:
-\begin{dmath}
-  \DispMag\fn{\DisplSensor,\OriginMagHigh} =
-    \OriginMagDisp\fn{\DisplSensor} - \OriginQZS\fn{\OriginMagHigh}
-\end{dmath},
-where $\OriginQZS$ is the height of the \qzs/ location, given by
-\begin{dmath}
-  \OriginQZS\fn{\OriginMagHigh} = \half\gp{\HeightRig-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}
-\end{dmath},
-and the displacement of the magnets $\OriginMagDisp$ is
-\begin{dmath}
-  \OriginMagDisp\fn{\DisplSensor} = \OriginBeam + \DisplSensorBeam\fn{\DisplSensor} {\cdot} \LengthRigMagnets/\LengthSensor - \HeightBeam + \ThicknessBeam + \half \HeightRigMagnets
-\end{dmath},
-where $\DisplSensorBeam$ is the vertical displacement measured at the position
-of the sensor, given by
-\begin{dmath}
-  \DisplSensorBeam\fn{\DisplSensor} = \gp{\HeightRig - \OriginBeam} - \HeightSensor - \DisplSensor
-\end{dmath}.
 
 \subsubsection{Velocity sensors}
 
@@ -431,6 +422,7 @@ The actual clearance between the outer radius of the brass cylinder holding the 
 This tolerance was judged to be small enough to allow a surrounding coil without having a
 significantly diminished force characteristic from the air gap required to
 avoid contact.
+It should be noted that this tolerance caused a degree of inconvenience since the attachment and positioning of the coil required careful alignment in order to allow free movement of the cylinder holding the magnets.
 
 \section{Experimental results}
 
@@ -442,7 +434,8 @@ in the sections following, data recorded is presented for
 \item Velocity feedback in a single configuration.
 \end{enumerate}
 
-\subsection{Displacement calibration}
+\subsection{Static displacement measurements}
+\seclabel{xpmt-displ}
 
 The upper magnet's position was varied until the limit of stability was
 reached. The lower fixed magnet was kept fixed, which means that the position
@@ -460,23 +453,67 @@ From the geometry of the rig,
 the position of the upper magnet was used to calculate the
 gap between the magnets at \qzs/:
 \begin{dmath}
-  \OriginMagGap =
-    \half\gp{\HeightRig-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}
-    +\HeightMag+\HeightBuffer
+  \OriginMagGap\fn{\OriginMagHigh} =
+    \half\gp{\HeightRig-\OriginMagLow-\OriginMagHigh-\HeightRigMagnets}+\HeightMag-\HeightBuffer
 \end{dmath},
 where geometrical properties are described in \tabref{rigprop} and
 $\HeightBuffer=\SI{2.5}{mm}$ is a little extra height to account for extra
-space taken up by the thicknesses of the beam wall and the magnet mounting.
+space taken up by the thicknesses of the magnet mounting.
+The height of the \qzs/ location itself, $\OriginQZS$, is given by
+\begin{dmath}
+  \OriginQZS\fn{\OriginMagHigh} = \half\gp{\HeightRig-\OriginMagLow+\OriginMagHigh}
+\end{dmath}.
 
 \begin{figure}
   \asyinclude{\jobname/spring-zk}
   \hfil
   \psfragfig{PhD/Experiments/XPMT/latex/turns-qzs}
-  \caption{Rest position of the system as the magnet position varies.}
+  \lofcaption{Rest position of the system as the magnet position varies.}{
+    For simplicity, only a single floating magnet is shown here.}
   \figlabel{turns-qzs}
 \end{figure}
 
-\subsection{Open loop measurements}
+The measured output of the sensor $\DisplSensor$ was used infer a magnet displacement, $\DispMag$, (referenced from the \qzs/ position) with the following relationships.
+Firstly, the rotational origin of the beam was used as a vertical reference point, and the displacement of the beam $\DisplSensorBeam$ at the laser sensor location calculated as
+\begin{dmath}
+  \DisplSensorBeam\fn{\DisplSensor} = \HeightRig - \OriginBeam - \HeightSensor - \DisplSensor
+\end{dmath},
+which can be extrapolated using the respective lever arms to calculate the resultant vertical displacement of the moving magnets with respect to the beam origin with
+\begin{dmath}
+  \DisplSensorBeamProj\fn{\DisplSensorBeam} = \DisplSensorBeam \frac \LengthRigMagnets \LengthSensor
+\end{dmath}.
+This moving magnet displacement can be written with respect to the origin of the frame of the rig with
+\begin{dmath}
+  \DisplMag\fn{\DisplSensorBeamProj} = \OriginBeam + \DisplSensorBeamProj - \HeightBeam + \ThicknessBeam + \half \HeightRigMagnets
+\end{dmath}.
+Accordingly, the displacement of the system $\DispMag$ from the \qzs/ location is given by
+\begin{dmath}
+  \DispMag\fn{\DisplSensor,\OriginMagHigh} = \DisplMag - \OriginQZS
+\end{dmath}.
+
+The displacements between the centres of each magnet in the interacting pairs can be calculated similarly based on the displacement of the moving magnet assembly $\DisplMag$.
+With respect to the frame origin, the magnet centres for the base magnet $m_1$, upper magnet $m_2$, lower moving magnet $m_3$, and upper moving magnet $m_4$ are 
+\begin{align}
+m_1 &= \OriginMagLow - \HeightBuffer - \half\HeightMag  \,, \\% base magnet
+m_2 &= \HeightRig - \gp{\OriginMagHigh - \HeightBuffer - \half\HeightMag}  \,, \\% upper magnet
+m_3 &= \DisplMag - \half\HeightRigMagnets + \half\HeightMag  \,, \\% B moving magnet
+m_4 &= \DisplMag + \half\HeightRigMagnets - \half\HeightMag  \,. % U moving magnet
+\end{align}
+
+\subsection{Predicted resonance frequencies}
+
+From the displacement results shown in \secref{xpmt-displ}, predicted resonance frequencies can be calculated for this system as a function of magnet gap.
+The expected magnetic forces $F$ due to the measured displacements were be calculated using the theory for coaxial cylindrical magnets (\secref[vref]{cyl-forces}) based on magnet centre displacements $m_3-m_1$ and $m_2-m_4$.
+Numerical differentiation was used to calculate the stiffnesses $k$ at these displacements, and the natural frequency at each location calculated with $\natfreq=\sqrt{\stiffness/m_{eq}}$ where $m_{eq}=F/g$ is the equivalent mass borne by the static force $F$.
+With parameters as specified, the expected natural frequency versus magnet gap results are shown in \figref{xpmt-magres}.
+
+\begin{figure}
+  \psfragfig{PhD/Experiments/XPMT/fig/xpmt-magres}
+  \lofcaption{Expected natural frequency as the magnet position varies.}{}
+  \figlabel{xpmt-magres}
+\end{figure}
+
+\subsection{Open loop dynamic measurements}
 \seclabel{xpmt-ol}
 
 As the position of the upper magnet is varied, the amount of negative
@@ -527,7 +564,7 @@ For both of these results, the transmissibility $\transmissibility{}$ shown is t
 where $\powerSpectMagnet$ is the power spectral density of the accelerometer
 measurements at the moving magnet, ($\powerSpectMagnet$ is the power spectral density
 of the accelerometer measurements of the base,) and $\crossSpectMagnetBase$ is the cross power spectral density of the two.
-The variance gain (also see \secref*{qzs-not-zerk}) is analysed in \secref{xpmt-nonlin}.
+The variance gain (also see \secref*{qzs-not-zerk}) of the measurements is analysed in \secref{xpmt-nonlin}.
 
 \begin{figure}
   \begin{wide}
@@ -595,22 +632,25 @@ in \figref{ol-results}.
   \begin{wide}
   \begin{subfigure}
     \psfragfig{PhD/Experiments/XPMT/latex/ol-reson}
-    \caption{Model-derived resonant frequencies.\figlabel{ol-reson}}
+    \caption{Model-derived resonance frequencies shown with predicted values.\figlabel{ol-reson}}
   \end{subfigure}
   \hfil
   \begin{subfigure}
     \psfragfig{PhD/Experiments/XPMT/latex/ol-dampi}
-    \caption{Model-derived damping ratios.\figlabel{ol-dampi}}
+    \caption{Model-derived damping ratios. Closing the coil circuit increased the damping.\figlabel{ol-dampi}}
   \end{subfigure}
   \end{wide}
-  \caption{Analysed results from fitting the open loop measurements to the isolator model of \eqref{fit-model} with coil circuit open and closed, \resp.}
+  \lofcaption{Analysed results from fitting the open loop measurements to the isolator model of \eqref{fit-model}}{. With coil circuit open and closed, the resonance frequencies were constant but the damping ratios changed.}
   \figlabel{ol-results}
 \end{figure}
 
-From \figref{ol-reson} it can be seen that the natural frequency remains
-unaffected by the presence of the electromagnetic coil (which can also be
-observed by comparing \figref{ol-undamped-frflin,ol-damped-frflin}) but the
-damping is increased significantly.
+The curve of the measured resonance frequencies (\figref{ol-reson}) follows the same trend as the predicted  natural frequencies (redrawn from \figref{xpmt-magres}).
+However, their magnitudes are not well matched.
+As the system approaches the \qzs/ position, even small changes in alignment and physical tolerances have significant effects on the calculated instability region; as seen in the low end of the quasi-static measurements, \figref{xpmt-magres}, a fraction of a millimetre change in the position of the top magnet can change the natural frequency by 25\%.
+Associatively, with larger magnet gaps the discrepancy becomes lower.
+Therefore, the discrepancy seen between theoretical and measured results should be expected.
+
+The resonance frequency of the system was unaffected by the presence of the electromagnetic coil (which can also be observed by comparing \figref{ol-undamped-frflin,ol-damped-frflin}) but the damping was increased significantly when the coil circuit was closed.
 
 
 \subsection{Observed nonlinear behaviour}
@@ -646,7 +686,7 @@ The reduced nonlinearity with increased damping is consistent with the work of o
   \figlabel{ol-undamped-frfnl}
 \end{figure}
 
-\subsection{Velocity feedback results}
+\subsection{Closed loop velocity feedback dynamic measurements}
 
 In this section, results are shown using closed loop feedback control to improve the vibration isolation characteristics of the system.
 For this experiment, the rest position of the spring was chosen to achieve an arbitrary low

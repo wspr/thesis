@@ -788,20 +788,13 @@ This design is also better at dissipating heat, as the effective surface area is
 
 \begin{figure}
   \begin{wide}
-  \begin{subfigure}
+  \subbottom[Schematic of the system.\figlabel{dual-coil-schematic}]{%
   \asyinclude{\jobname/dual-coil}
-  \caption{
-    Schematic of the system.
-    \figlabel{dual-coil-schematic}
   }
-  \end{subfigure}\hfil
-  \begin{subfigure}
-  \psfragfig{PhD/Simulations/Coil/fig/dual-coil}
-  \caption{
-    Example dual-coil forces against an equivalent single coil system.
-    \figlabel{dual-coil-plot}
-  }
-  \end{subfigure}
+  \hfil
+  \subbottom[Example dual-coil forces (dashed) against an equivalent single coil system (solid).
+    \figlabel{dual-coil-plot}]{%
+  \psfragfig{PhD/Simulations/Coil/fig/dual-coil}}
   \end{wide}
   \caption{Electromagnet system with dual push/pull coils.}
   \figlabel{dual-coil}

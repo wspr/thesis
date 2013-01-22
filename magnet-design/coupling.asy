@@ -22,11 +22,13 @@ magnet2d(m,m,-vgap,90);
 // floating magnet
 magnet2d(m,m,v,-90);
 
-draw( shift(mx/2-my/2) * ( O -- mx ) , dashed );
+draw( shift(-mx-mx/2-my/2) * ( O -- mx ) , dashed );
 draw( shift(-my/2-vgap) * ( O -- -my ) , dashed );
+draw( ( O -- my ) , dashed );
 
-draw( shift(mx/2-my/2+mx/2) * ( O -- (0,A) ), Arrow(size=6pt),L="$z$");
-draw( shift(-my/2-vgap-my/2) * ( O -- (A,0) ), Arrow(size=6pt),L="$p$");
+draw( shift(-mx-my/2) * ( O -- (0,A) ), Arrow(size=6pt),L="$z$",align=W);
+draw( shift(-my-vgap) * ( O -- (A,0) ), Arrow(size=6pt),L="$p$");
+draw( shift(my/2) * ( O -- (A,0) ), Arrow(size=6pt),L="$y$",align=N);
 
 // axes
 pair aoff = -hgap+(0,-2);

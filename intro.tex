@@ -4,7 +4,7 @@
 \begin{document}
 \chapter{Introduction}
 
-\epigraph{In my experience I found that the most effective way to express something in order to make others understand is to use the simplest language. Also I learned from teaching that the more rigid the language the less effective it~is.}{\textcite{mahathera1990-mindfulness}}
+\epigraph{In my experience I found that the most effective way to express something in order to make others understand is to use the simplest language. Also I learned from teaching that the more rigid the language the less effective it~is.}{\citetitle{mahathera1990-mindfulness}\\\textcite{mahathera1990-mindfulness}}
 
 
 
@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Before launching into detail into the various topics under investigation, this section briefly touches on the issues addressed over the entire thesis: vibrations and their isolation and suppression in \secref{vibrations-summary-intro}; permanent magnets and their role in the design of supporting structures and other devices in \secref{magnets-summary-intro}; and `\qzs/' systems, which unify in this thesis the fields of vibrations and magnets, in \secref{qzs-summary-intro}.
-The remainder of this chapter is then devoted to investigating these three broad areas in more detail in \secrangeref{vibrations-explore}{magnetsisolation-apps}, concluding with a discussion on reproducible research (\secref{repro-research}) and the structure and contributions of this thesis (\secref{thesis-structure}).
+The remainder of this chapter is then devoted to investigating these three broad areas in more detail in \secrangeref{vibrations-explore}{magnetsisolation-apps}, concluding with a discussion on reproducible research (\secref*{repro-research}) and the structure and contributions of this thesis (\secref*{thesis-structure}).
 
 
 \subsection{The problem of vibrations}
@@ -139,14 +139,14 @@ This behaviour is referred to as `vibration suppression' in this thesis.
 %A practical example of this sort of vibration problem is a washing machine that causes itself to vibrate through a rotating imbalance; the imbalance causes oscillations in the drum which, when great enough, forces the drum off its axis of rotation. \note{A common problem in our household. Just have to learn to arrange the washing carefully inside the drum.\footnotemark} \footnotetext{Our washing machine has since broken. Imbalance matters!}
 
 \begin{figure}
-  \asyinclude{PhD/Figures/Systems/vibration-sdof}
-  \caption
-  [Single \dof/ vibration system.]
+  \subbottom[Vibration suppression from disturbance force $\forceDisturb$.\figlabel{simple-suppression}]{\asyinclude{PhD/Figures/Systems/vibration-sdof}}
+  \hfil
+  \subbottom[Vibration isolation from disturbance input $\dispBase$.\figlabel{simple-isolation}]{\asyinclude{PhD/Figures/Systems/vibration-base}}
+  \lofcaption{Two main varieties of vibration control problem.}
   {
-    Single \dof/ vibration system; mass $\mass$ is being excited by disturbance $\forceDisturb$.
-    Input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\dispMass$ of the mass.
+    In both cases, mass $\mass$ is being excited; input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\dispMass$ of the mass.
   }
-  \figlabel{simple-suppression}
+  
 \end{figure}
 
 If the attachment of the mass in \figref{simple-suppression} is assumed \emph{not} to be infinitely massive and stiff, the problem becomes not only to suppress the motion of the mass but also to prevent force transmission from the input disturbance into the base itself.
@@ -157,17 +157,6 @@ Due to reciprocity, decreasing the transmitted force from the mass to the ground
 Isolating the mass from ground vibration is known in this thesis as `vibration isolation' and is the main vibratory problem considered.
 For the purposes of this discussion, there is assumed to be no self-induced vibration in the system.
 A schematic of this type of vibration isolation system is shown in \figref{simple-isolation}, for which a practical example is protecting sensitive equipment from ground-based disturbances.
-
-\begin{figure}
-  \asyinclude{PhD/Figures/Systems/vibration-base}
-  \caption
-  [Schematic of vibration isolation.]
-  {
-    Schematic of vibration isolation; mass $\mass$ is being isolated from disturbance $\dispBase$.
-    Input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\dispMass$ of the mass.
-  }
-  \figlabel{simple-isolation}
-\end{figure}
 
 The schematics illustrating vibration suppression and vibration isolation have been shown with active input forces $\forceIn$ that can be used to tune or adjust  oscillations of the systems.
 In these examples, it is assumed that the input forces have a negligible effect on the dynamics of the ground or base.
@@ -611,10 +600,8 @@ His design is interesting with respect to this thesis in that it uses both perma
 \subsection{Summary of the vibrations literature}
 
 The cross-section of introductory concepts and literature shown in this section have been chosen to illustrate the broad approaches for vibration control of simple systems.
-
-\fixme{TODO}
-
-
+The basic vibration isolation problem was introduced and basic active control solutions presented; of the various feedback models available, absolute velocity feedback gives the best results although there are implementation difficulties in estimating the signal.
+Some aspects of other vibration systems were introduced including semi-active skyhook control, inertial sensors, and vibration neutralisers, introduced to provide some context on the wider research area and the connections between the approaches taken.
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -763,7 +750,7 @@ The multipole nature of this bearing will be more closely examined in \chapref{m
 In the early decades of magnetics research, it was not feasible to solve the magneto-static forces of these systems completely analytically.
 Magnetic bearings could be modelled using a \twoD/ field solution, simplifying the solutions.
 In such a way, \textcite{yonnet1978} showed that the forces between axially- and radially-magnetised bearings are equal (\figref{equalbearings}).
-However, this equality of forces for both orthogonal- or parallel-magnetised magnets should not be taken as a general result; we will see later that this is in fact not true for cube magnets (see \secref[vref]{cube-compare-orth}).
+However, this equality of forces for both orthogonal- or parallel-magnetised magnets should not be taken as a general result; it will be shown later that this is in fact not true for cube magnets (see \secref[vref]{cube-compare-orth}).
 His later paper \cite{yonnet1981} continued this work, describing how magnetic bearings may re-arranged to suit different applications, showing a complete taxonomy of different magnetic bearing designs.
 Varying geometrical parameters of these magnetic bearings can significantly affect the force and stiffness characteristics \cite{bassani2006-trib-int}.
 
@@ -1008,7 +995,7 @@ This avenue of research is not pursued in this thesis.
 
 \subsection{Summary of magnetics}
 
-From brain imagining to \maglev/ trains, magnetic fields can be used for a very wide range of applications. Of particular interest are those areas in which magnetic fields are used to generate translational forces.
+From brain imaging to \maglev/ trains, magnetic fields can be used for a very wide range of applications. Of particular interest are those areas in which magnetic fields are used to generate translational forces.
 
 The inherent instability of magnetic suspensions has been introduced and methods shown for overcoming the problems associated with this.
 Basic magnetic suspension, as the basis for many `levitation platforms' was addressed.
@@ -1229,7 +1216,9 @@ These are shown explicitly in the frequency response functions of such systems \
 
 \subsection{Summary of vibrations and magnetics literature}
 
-The use of magnetics for vibration systems has seen some 
+The interesting static and dynamic force characteristics exhibited by magnetic systems has suggested their use in a variety of vibration control applications.
+Of particular research interest is the nonlinear regimes that such systems can operate within; in some cases, these nonlinearities can be detrimental to vibration isolation, while in others they can help improve vibration suppression.
+For this thesis, the particular use of magnetic systems as softening springs allows them to overcome some limitations seen with linear mechanical springs, the desirable focus in these cases being the `\qzs/' regime to minimise the resonance frequency. 
 
 \section{Reproducible research}
 \seclabel{repro-research}
