@@ -1,21 +1,50 @@
-%!TEX root = thesis.tex
+\documentclass[10pt,a4paper]{memoir}
+\def\asydir{\jobname}
+\usepackage{thesis-preamble}
+\usepackage{geometry}
+\EndPreamble
+\pagestyle{empty}
+\def\standaloneabstract{}
+\begin{document}
 
-\section{Abstract}
+\ifx\standaloneabstract\undefined
 
-Vibration disturbance is a consistent complaint that will always exist to
-negatively influence equipment and processes. The theme of this thesis
-investigates using permanent magnets in the design of a vibration isolation
-mount. Permanent magnets can be used to either support load or to reduce the
-fundamental resonance frequency of a system. In the first half of the thesis,
-simple permanent magnet arrangements are examined for load bearing, with
-multiple designs suitable for a variety of objectives. In this vein,
-electromagnetic coil forces and multipole (or Halbach) arrays of magnets are
-also investigated. In the second half of the thesis, more attention is paid on
-realising these systems for vibration isolation, namely, by reducing the
-resonant frequency with stiffness-reducing elements. Usually these
-stiffness-reducing elements are permanent magnets in attraction, but
-mechanical springs are analysed briefly as well. Some different active control
-techniques are investigated for further improvements to the low-frequency
-isolating design. An experimental prototype tying together the major concepts
-of work is shown last, demonstrating results of an permanent magnet, active,
-low-frequency, vibration-isolating apparatus.
+  \section*{Abstract}
+
+\else
+
+  \noindent {\Large Modelling and design of magnetic levitation systems for vibration isolation}
+
+  \noindent {\scshape Will Robertson}
+
+  \bigskip
+  
+  \expandafter\noindent
+\fi
+Vibration disturbance has a consistent negative impact on equipment and processes.
+The central theme of this thesis is the investigation of using permanent magnets in the design of a system for vibration isolation.
+
+The thesis begins with a comprehensive literature review on the subjects of vibration isolation, active vibration control, permanent magnetic systems, and the common area between these on nonlinear vibration systems using magnetic forces.
+The use of cylindrical and cuboid magnets is the primary focus of this work for which analytical solutions are known for calculating forces and torques.
+Subsequently, the state of the art in analytical modelling of permanent magnet systems is covered, including a contribution in this area for calculating the forces between cylindrical magnets.
+
+A range of load bearing designs using simple permanent magnet arrangements are examined, with multiple designs suitable for a variety of objectives.
+A particular emphasis is placed on a system using inclined magnets, which can exhibit a load-independent resonance frequency.
+Load bearing using multipole magnet arrays is also discussed, in which a large number of magnets are used to generate more complex magnetic fields.
+A variety of multipole arrays are compared against each other, including linear and planar magnetisation patterns, and an optimisation is performed on a linear array with some resulting guidelines for designing such systems for load bearing.
+
+Permanent magnet levitation requires either passive or active stabilisation; therefore, the design of electromagnetic actuators for active control is covered with a new efficient method for calculating the forces between a cylindrical magnet and a solenoid with many turns.
+The optimisation of a solenoid actuator is performed and geometric parameters are found which are near-optimal for a range of operating conditions.
+
+Two \qzs/ systems are introduced and analysed next.
+These systems are designed with a nonlinearity such that low stiffnesses are achieved while bearing large loads.
+The first system analysed is a purely mechanical device using linear springs; unlike most analyses of this design, the horizontal forces are also considered and it is shown that \qzs/ is capable in all translational directions simultaneously.
+However, a notable disadvantage of such spring systems is their difficulty in online tuning to adapt to changing operating conditions.
+A magnetic \qzs/ system is then analysed in detail and design criteria are introduced, providing a design framework for such systems and showing how the complex interaction of variables affects the resulting dynamic behaviour.
+Although the system is nonlinear, the effects of the nonlinearities on the vibration response are shown to be generally negligible.
+
+The thesis concludes with some experimental results of the same \qzs/ system, constructed as a single degree of freedom prototype.
+The quasi-static and dynamic behaviour of the system matches the theory well, and active vibration control is performed to improve the vibration isolation characteristics of the device.
+
+\end{document}
+
