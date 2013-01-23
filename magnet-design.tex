@@ -1204,14 +1204,17 @@ Dashed lines show verification torques calculated by using the magnetic forces a
 
 Stability results will be shown using perturbations of a dynamic simulation of the system in a small number of variations of design parameters.
 The equations of motion are defined as
-\begin{align}
-\begin{split}
-\mbqmass \ddot \mbqhdisp &= \mbqhforce(\mbqhdisp,\mbqvdisp,\mbqrotz) - \mbqhdamp \dot \mbqhdisp , \\
-\mbqmass \ddot \mbqvdisp &= -\mbqmass g + \mbqvforce(\mbqhdisp,\mbqvdisp,\mbqrotz) - \mbqvdamp \dot \mbqvdisp , \\
-\mbqmomentofinertia \ddot \mbqrotz &= \mbqptorque(\mbqhdisp,\mbqvdisp,\mbqrotz) - \mbqzrotdamp \dot \mbqrotz,
-\end{split}
-\eqlabel{mbq-dyn}
-\end{align}
+\begin{dgroup}[label=mbq-dyn]
+\begin{dmath}
+\mbqmass \mbqhacc = \mbqhforce\fn{\mbqhdisp,\mbqvdisp,\mbqrotz} - \mbqhdamp \mbqhvel
+\end{dmath},
+\begin{dmath}
+\mbqmass \mbqvacc = -\mbqmass \gravity + \mbqvforce\fn{\mbqhdisp,\mbqvdisp,\mbqrotz} - \mbqvdamp \mbqvvel
+\end{dmath},
+\begin{dmath}
+\mbqmomentofinertia \mbqaccrotz = \mbqptorque\fn{\mbqhdisp,\mbqvdisp,\mbqrotz} - \mbqzrotdamp \mbqvelrotz
+\end{dmath},
+\end{dgroup}
 for which a time-domain solution was produced numerically with a Runge-Kutta technique (Matlab's \texttt{ode45} function). Viscous damping terms $\mbqhdamp$, $\mbqvdamp$, and $\mbqzrotdamp$ account for energy loss in the system. The force and torque terms are those defined in \eqref{mbq-force3,mbq-torque} respectively.
 
 The parameters used in \Tabref{mbq-dyn-param} were used for the dynamic simulations. The equilibrium displacement $y_0$ is found by numerically inverting a static analysis of the magnet forces $\mbqvforce(0,\mbqvdisp_0,0)=\mbqmass g$; a damping ratio of \SI{20}{\%} is assumed to account for eddy current damping and any other energy losses; and the moment of inertia is approximated with $\mbqmomentofinertia=\tfrac13\mbqmass\mbqlever^2$. The parameters have been selected such that the vertical, horizontal, and rotational direct stiffnesses are all positive for this equilibrium displacement.

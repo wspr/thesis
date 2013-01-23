@@ -790,7 +790,7 @@ $\laplaceForce=s^2\laplaceMass\BlockController$, the transmissibility of the sys
   \frac\laplaceMass\laplaceBase = \frac{\Block[1]\Block[2]}{1+\BlockController\Block[2]}
 \end{dmath}.
 
-When the controller is some gain $\gain$ in series with an ideal integration of the accelerometer signal, $\BlockController = \gain/s$, \eqref{cl-generic} simplifies to the idealised absolute velocity feedback expression introduced in \secref[vref]{skyhook}:
+When the controller is some gain $\gainSkyhook$ in series with an ideal integration of the accelerometer signal, $\BlockController = \gainSkyhook/s$, \eqref{cl-generic} simplifies to the idealised absolute velocity feedback expression introduced in \secref[vref]{skyhook}:
 \begin{dmath}
 \frac{\gainDisp+\stiffness+s \gp{\damping+\gainVel+\gainAcc s}}{\gainDisp+\gainSkyspring+\stiffness+s \gp{\damping+\gainSkyhook+\gainVel+\gp{\gainAcc+\gainSkymass+\mass} s}}
 \end{dmath}
@@ -806,9 +806,9 @@ another for the conditioning electronics in the amplifier; assume for
 simplicity that they have the same cut-on frequency.} \cite{brennan2007-jsv},
 the controller block is defined as
 \begin{dmath}[label=cl-filter-controller]
-  \BlockController = \frac \gain s \gp{\frac{s}{s+\freqHPfilter}}^2
+  \BlockController = \frac \gainSkyhook s \gp{\frac{s}{s+\freqHPfilter}}^2
 \end{dmath},
-where $\gain$ is the feedback gain and $\freqHPfilter$ is the corner frequency
+where $\gainSkyhook$ is the absolute velocity feedback gain and $\freqHPfilter$ is the corner frequency
 of the two high pass filters in the charge amplifier.
 
 Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
@@ -817,7 +817,7 @@ the final transfer function between the mass and base states,
   \frac\laplaceMass\laplaceBase =
     \frac{ \gp{\damping s+\stiffness} \gp{s+\freqHPfilter}^2 }
          {
-           \gain s^3 +
+           \gainSkyhook s^3 +
            \gp{ \mass s^2 + \damping s + \stiffness }
            \gp{ s+\freqHPfilter }^2
          }
@@ -834,7 +834,7 @@ $\BlockController\Block[2]$ was evaluated equal to $-1$, where the system
 response of \eqref{cl-generic} becomes unbounded. To do this, first the
 critical frequency was found as the frequency at which
 $\Imag{\BlockController\Block[2]}=0$; this frequency was then substituted into
-$\Real{\BlockController\Block[2]}=-1$, which was solved for $\gain$ to find
+$\Real{\BlockController\Block[2]}=-1$, which was solved for $\gainSkyhook$ to find
 the gain margin.
 
 \begin{figure}[!htbp]

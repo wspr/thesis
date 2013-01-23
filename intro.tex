@@ -187,7 +187,7 @@ Feedback control allows the properties of the system to be adjusted according th
 
 The dynamic response of the isolated mass is
 \begin{dmath}[label=simple-isolation]
-  \mass\ddot\dispMass +
+  \mass\accMass +
   \dampingRel\gp{\velMass-\velBase} +
   \stiffnessRel\gp{\dispMass-\dispBase} = \forceIn
 \end{dmath}.
@@ -198,7 +198,7 @@ First assume that there is no input force; taking the Laplace transform and rear
   {-\mass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
 
-For ideal linear state feedback control, the input force can be represented as a linear combination of measured relative displacement $\gp{\dispMass-\dispBase}$, relative velocity $\gp{\velMass-\velBase}$, and acceleration $\ddot\dispMass$ of the mass.
+For ideal linear state feedback control, the input force can be represented as a linear combination of measured relative displacement $\gp{\dispMass-\dispBase}$, relative velocity $\gp{\velMass-\velBase}$, and acceleration $\accMass$ of the mass.
 A force sensor can also be used for feedback purposes, but this yields results for lumped-parameter systems equivalent to acceleration feedback; for vibration isolation of flexible systems, there is evidence to suggest force feedback giving greater stability than acceleration feedback \cite{preumont2002-jsv}, especially for lightly damped structures.
 Absolute velocity $\velMass$ and absolute displacement $\dispMass$ of the mass can be estimated by integrating the acceleration, and for completeness we also consider the relative acceleration between the mass and the base ($\accMass-\accBase$) as a possible signal for feedback control.
 The generalised feedback force can then be represented by
@@ -218,7 +218,7 @@ Substituting the feedback force \eqref{feedback-force } into the system dynamics
   \gainAcc \gp{\accMass -\accBase}  +
   \gp{\dampingRel+\gainVel}\gp{\velMass-\velBase} +
   \gp{\stiffnessRel+\gainDisp}\gp{\dispMass-\dispBase} +
-  \gp{\mass+\gainSkymass}\ddot\dispMass +
+  \gp{\mass+\gainSkymass}\accMass +
   \gainSkyhook\velMass +
   \gainSkyspring\dispMass
   = 0
@@ -415,7 +415,8 @@ Highlighting the relevance here, an \Hinf/ control method significantly outperfo
 \subsubsection{Semi-active skyhook damping}
 
 It is important to distinguish between active velocity feedback control and semi-active skyhook damping, of which both are referred to with the term `skyhook' in the literature.
-In this semi-active method, dynamic changes in stiffness or dynamic are used as a feedback mechanism to approximate the absolute velocity feedback control \cite{ahmadian2004,leavitt2007}.
+Semi-active skyhook damping control was introduced by \textcite{karnopp1974-jei}, and is often used in vehicle suspension where active systems are impractical.
+In this method, dynamic changes in stiffness or dynamic are used as a feedback mechanism to approximate the absolute velocity feedback control \cite{ahmadian2004,leavitt2007}.
 This is achieved by switching on the energy dissipation element when it will resist the motion of the isolated mass and switching it off otherwise.
 Semi-active control has the advantages of robustness and low power requirements, especially when large forces would be required for active control.
 Its application is largely directed at vehicle vibration control where it is not practical to use purely active control, and thus falls outside the scope of vibration techniques of interest in this thesis; it is important to distinguish between the two different forms of `skyhook damping', however.
