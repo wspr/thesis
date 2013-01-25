@@ -70,7 +70,7 @@ the ideas behind the \qzs/ arrangement analysed in detail in \secref{qzs}.
    Magnet support lever arm & $\LengthRigMagnets$ & \SI{300  }{mm} \\
         Magnet support mass &   $\MassRigMagnets$ & \SI{ 87  }{g}  \\
              Magnets height &        $\HeightMag$ & \SI{  9.5}{mm} \\
-           Magnets diameter &          $\DiamMag$ & \SI{ 12.7}{mm} \\
+           Magnets diameter &       $2\RadiusMag$ & \SI{ 12.7}{mm} \\
   Lower fixed magnet origin &     $\OriginMagLow$ & \SI{ 44  }{mm} \\
   Upper fixed magnet origin &    $\OriginMagHigh$ & \SI{ 30  }{mm} plus offset\thinspace
   \footnote{Offset varied to adjust the amount of added negative stiffness.} \\
@@ -492,7 +492,7 @@ Accordingly, the displacement of the system $\DispMag$ from the \qzs/ location i
 \end{dmath}.
 
 The displacements between the centres of each magnet in the interacting pairs can be calculated similarly based on the displacement of the moving magnet assembly $\DisplMag$.
-With respect to the frame origin, the magnet centres for the base magnet $m_1$, upper magnet $m_2$, lower moving magnet $m_3$, and upper moving magnet $m_4$ are 
+With respect to the frame origin, the magnet centres for the base magnet $m_1$, upper magnet $m_2$, lower moving magnet $m_3$, and upper moving magnet $m_4$ are
 \begin{align}
 m_1 &= \OriginMagLow - \HeightBuffer - \half\HeightMag  \,, \\% base magnet
 m_2 &= \HeightRig - \gp{\OriginMagHigh - \HeightBuffer - \half\HeightMag}  \,, \\% upper magnet
@@ -872,7 +872,7 @@ As the system was brought closer to \qzs/, the resonance frequency reduced until
 The minimum resonance frequency that could be achieved passively with this system was around \SI{2}{Hz}.
 A lower resonance frequency than this could be achieved with larger magnets with larger equilibrium magnet gaps, which would result in a larger physical region of stable operation near the \qzs/ position.
 
-Without feedback control and without the actuator coil connected, the system showed very small damping ratios around \num{0.005}; these were dependent on the distance between the magnets at equilibrium. 
+Without feedback control and without the actuator coil connected, the system showed very small damping ratios around \num{0.005}; these were dependent on the distance between the magnets at equilibrium.
 Connecting the non-contact electromagnetic actuator increased this damping ratio to around \num{0.03}--\num{0.04} due to eddy currents induced in the coils from the permanent magnet.
 
 Dynamically, the system showed transmissibilities which could be predicted well by standard single degree of freedom models.

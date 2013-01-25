@@ -820,7 +820,7 @@ The spring is composed of two symmetric pairs of oblique magnets; this ensures t
 
 \begin{figure}
 \centering
-\asyinclude[width=0.8\linewidth]{PhD/Figures/Systems/oblique.asy}
+\asyinclude[width=0.8\linewidth]{\jobname/oblique.asy}
 \lofcaption {
   Schematic of the oblique-magnet spring.
 }{
@@ -856,18 +856,18 @@ Then $\mbqforce_1=\mbqrot{\theta} \mbqmforce_1$ and $\mbqforce_2=\mbqrot{\phi}\m
 .
 \end{equation}
 
-These forces $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are calculated with $\mbqmforce_{i}=\vect F_m(\mbqmdispl_{i})$ where $\vect F_m(\cdot)$ given in \eqref{akoun} is the force between parallel cuboid magnets \parencite{akoun1984} and $\mbqmdispl_{1}$ and $\mbqmdispl_{2}$ are the displacement vectors between the magnet centres in the local coordinate system of the magnets given by
+These forces $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are calculated with $\mbqmforce_{i}=\vect F_m\fn{\mbqmdispl_{i}}$ where $\vect F_m\fn{\cdot}$ given in \eqref{akoun} is the force between parallel cuboid magnets \parencite{akoun1984} and $\mbqmdispl_{1}$ and $\mbqmdispl_{2}$ are the displacement vectors between the magnet centres in the local coordinate system of the magnets given by
 \begin{align}
   \mbqmdispl_1 &=
     \mbqrot{-\theta}
-    \begin{bmatrix}d + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
-    \begin{bmatrix}a\\0\\0\end{bmatrix} , &
+    \begin{bmatrix}\mbqoffset + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
+    \begin{bmatrix}\mbqmagh\\0\\0\end{bmatrix} , &
   \mbqmdispl_2 &=
     \mbqrot{-\phi}
-    \begin{bmatrix}-d+ \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
-    \begin{bmatrix}a \\ 0 \\ 0\end{bmatrix} ,
+    \begin{bmatrix}-\mbqoffset + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
+    \begin{bmatrix}\mbqmagh \\ 0 \\ 0\end{bmatrix} ,
 \end{align}
-where $a$ and $d$ are geometric parameters defined in \Figref{mbq-schematic}, and $[\mbqhdisp,\mbqvdisp,\mbqpdisp]\T$ are displacements in the horizontal, vertical, and out-of-plane directions, respectively. In \secref{stabl-3dof} this model will be extended with a small angle approximation to calculate forces and torques due to rotation around the $\mbqpdir$ axis.
+where $\mbqmagh$ and $\mbqoffset$ are geometric parameters defined in \Figref{mbq-schematic}, and $[\mbqhdisp,\mbqvdisp,\mbqpdisp]\T$ are displacements in the horizontal, vertical, and out-of-plane directions, respectively. In \secref{stabl-3dof} this model will be extended with a small angle approximation to calculate forces and torques due to rotation around the $\mbqpdir$ axis.
 
 
 \subsection{Influence of design parameters}
@@ -1082,8 +1082,7 @@ Calculating the force and torque in this way is only valid for small rotations, 
 \pregen{\psfragfig{magcode/examples/oblique/fig/mbq-angle-schem}}
 \lofcaption{Geometry of the planar system in which forces and torques due to rotation $\mbqrotz$ are calculated.}{
 The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever/\mbqunit=\num{2}$, magnet angle $\mbqmagangle=\SI{30}{\degree}$ and magnet offset ratio $\mbqoffset/\mbqunit=\num{0.5}$.
-}
-\figlabel{mbq-angle-schem}
+\figlabel{mbq-angle-schem}}
 \end{figure}
 
 \begin{figure}
@@ -1385,7 +1384,7 @@ For a high-performance magnetically levitated isolation platform, these experime
 \includegraphics{PhD/Figures/Oblique/frf}
 \caption
 [Measured and modelled transmissibility of the inclined magnet isolation prototype.]
-{Measured and modelled transmissibility of the inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet offset ratio of \num{0.5}.}
+{Measured and modelled transmissibility of the inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet offset ratio of \num{0.5}. Behaviour from \SI{15}{Hz} is due to bearing friction.}
 \figlabel{oblique-frf}
 \end{figure}
 
