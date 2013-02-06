@@ -19,20 +19,7 @@ In \chapref{magnet-theory} the theory was summarised for calculated forces betwe
 This theory also covers, therefore, the case where the force between a magnet and a coil is under investigation, provided that the coil being modelled can also be represented as an infinitely thin current density.
 This is the case only for `thin' coils consisting of one (or a small number of) windings deep.
 
-The theory of \textcite{akoun1984} for calculating the force between two cuboid permanent magnets was derived by modelling each magnet in terms of `magnetic charge'; an alternative approach was investigated by \textcite{rovers2010-ietm} for calculating the force between a rectangular cross section coil and a permanent magnet, modelling each non-facing side of the magnet with a surface current density.
-Unlike the magnetic charge model, this approach is still valid when the outer volumes of the coil and magnet overlap, such as when a magnet slides within an outer coil.
-
 The equivalence of the current surface density model for permanent magnets and thin coils means the same results can be used to calculate both systems, as seen in the work for calculating the force between two thin coils or magnets \cite{babic2008-ietm,ravaud2010-ietm,robertson2011-ietm} summarised in \secref{cyl-forces}.
-
-In this chapter, a simple electromagnetic actuator is analysed in detail, using detailed coil/force equations that have only recently been available.
-A new equation is developed for calculating the force between cylindrical coils and magnets with eccentric displacement.
-The analysis herein of a single \dof/ actuator shows that it can be possible to optimise coil size, magnet size, and wire diameter to achieve a given force maximum.
-Other cost functions can be used in the design methodology to achieve other metrics, such as linearity \cite{merit2009-ietm}.
-Finally, an example of an alternate `dual-coil' electromagnet design is given based on the modelling results shown that achieves greater forces than the single-coil design, all else being equal.
-
-
-\section{Coaxial magnet/coil forces}
-\seclabel{magnetcoil-forces}
 
 The theory discussed in this section is based around an integral expression that can be efficiently numerically implemented for calculating the axial force between a coaxial cylindrical magnet and a `thick' solenoid that consists of many turns both radially and axially.
 This integral expression is compared against a variety of other methods.
@@ -41,14 +28,12 @@ The motivation for this work is the optimisation of the geometry of a coil--magn
 The design of a `sleeve coil actuator' is considered in which a magnet of a certain volume moves inside a fixed coil of a certain impedance, and wish to optimise the geometric parameters to maximise the peak force of the actuator (although other metrics are also possible).
 Only the quasi-static force/displacement characteristics are considered; in other words, any inductance effects caused by the moving magnet are neglected, which could affect the high-frequency behaviour of the device.
 
-When considering the literature for calculating the force between an electromagnetic coil and a cylindrical permanent magnet, expressions for both magnet--magnet and coil--coil forces are applicable since magnets and coils are electromagnetically equivalent according to the surface current density model of a permanent magnet.
-In early work in this field, Cooper et al.~\cite{cooper1973-ietm} presented an integral expression for calculating the force between two cylindical magnets.
-Later, Furlani~\cite{furlani1993-ietm} published expressions for calculating the force between axially magnetised ring magnets, which with zero internal radius collapse to an expression for cylindrical magnets.
-However, this expression used an algorithm that requires discretising the magnet volumes into a large number of `magnetic charge' point sources and summing the contributions between each interacting pair; this is equivalent to a numerical integration in terms of computational efficiency.
+In this chapter, a simple electromagnetic actuator is analysed in detail, using detailed coil/force equations that have only recently been available.
+A new equation is developed for calculating the force between cylindrical coils and magnets with eccentric displacement.
+The analysis herein of a single \dof/ actuator shows that it can be possible to optimise coil size, magnet size, and wire diameter to achieve a given force maximum.
+Other cost functions can be used in the design methodology to achieve other metrics, such as linearity \cite{merit2009-ietm}.
+Finally, an example of an alternate `dual-coil' electromagnet design is given based on the modelling results shown that achieves greater forces than the single-coil design, all else being equal.
 
-More recently Babic et al.~\cite{babic2008-ietm} and Ravaud et al.~\cite{ravaud2010-pier} presented closed form expressions for calculating the force between pairs of thin coils (in which there are many turns axially but the coil is modelled as having zero radial thickness).
-The expressions of Ravaud et al.~\cite{ravaud2010-pier} were simplified further in a recent publication by the present authors~\cite{robertson2011-ietm}.
-Babic et al.~\cite{babic2011-ietm} has also published an equation for the axial force between a thin and thick coil under axial displacement, which is considered in more detail in this work.
 
 \section{Geometry}
 

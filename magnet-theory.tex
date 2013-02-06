@@ -944,13 +944,19 @@ The theory formalising the superposition of magnetic interations outlined in \se
 
 \section{Forces between cylindrical magnets}
 \seclabel{cyl-forces}
+\seclabel{magnetcoil-forces}
 
-Ravaud et al.~\cite{ravaud2010-ietm} recently published an expression for the forces between two cylindrical magnets or thin coils (which are equivalent electromagnetically). At part of the work of these thesis, a simplification of their equation has been presented \parencite{robertson2011-ietm}.
+The force equations between cylindrical magnets are usually more difficult to derive than for cuboid magnets since their integrals involve a cylindrical coordinate system.
+In early work in this field, \textcite{cooper1973-ietm} presented an integral expression for calculating the force between two cylindical magnets.
+\textcite{nagaraj1988} investigated and compared the force between cuboid and cylindrical magnets with arbitrary displacements using numerical integration to calculate his results; \textcite{furlani1993-ietm,furlani1993-ietm-coupl} calculated the force between radially-aligned ring magnets using a numerical discretisation of the magnet volume.
+\textcite{hull1999-japplphys} presented integral equations for calculating the radial and axial forces between a cylindrical magnet and a superconductor, which is equivalent to the force between two cylindrical magnets, and \textcite{bassani2006-trib-int} presented integral equations for calculating the radial and axial forces between ring magnets.
+The forces between non-coaxial cylindrical magnets were considered by \textcite{agashe2008-applphys,vokoun2009-jmmm}, with a very recent publication under review with the most efficient solution yet presented \cite{conway2013-ietm}.
+All such integral equations require some degree of numerical integration to evaluate, excepting those of Furlani who uses the discretision method instead.
+
+\textcite{babic2008-ietm} and \textcite{ravaud2010-pier} presented closed form expressions for calculating the force between pairs of thin coils (in which there are many turns axially but the coil is modelled as having zero radial thickness).
+At part of the work of this thesis, a simplification of the force equation of \textcite{ravaud2010-pier} has been presented \cite{robertson2011-ietm}.
 This simplification results in a faster execution time and more convenient calculation with numerical software.
 
-In previous literature on modelling the forces between cylindrical magnets,
-Nagaraj~\cite{nagaraj1988} investigated and compared the force between cuboid and cylindrical magnets with arbitrary displacements using numerical integration to calculate his results; Furlani~\cite{furlani1993-ietm,furlani1993-ietm-coupl} calculated the force between radially-aligned ring magnets using a numerical discretisation of the magnet volume using theory developed in more detail in his book~\cite{furlani2001-magnetbook}. Hull et al.~\cite{hull1999-japplphys} presented integral equations for calculating the radial and axial forces between a cylindrical magnet and a superconductor, which is equivalent to the force between two cylindrical magnets, and \textcite{bassani2006-trib-int} presented integral equations for calculating the radial and axial forces between ring magnets. Such integral equations require numerical methods to evaluate.
-Most recently, \textcite{ravaud2010-ietm} derived a closed-form solution using elliptic integrals for the forces between radially-aligned cylindrical magnets; their result is the most straightforward method yet presented for calculating forces in this configuration.
 
 \begin{figure}
 \centering
@@ -961,11 +967,9 @@ Most recently, \textcite{ravaud2010-ietm} derived a closed-form solution using e
 \figlabel{coil-mag-equiv}
 \end{figure}
 
-The equation for the force between cylindrical magnets can also be used to calculate the force between thin coils with many axial turns, as both magnet and coil can be modelled as a surface current density around a cylinder (see \figref{coil-mag-equiv}). In related work, Kim et al.~\cite{kim1996-ietm} presented a different integral equation for the radial force between (single-turn) circular coils with eccentric radial displacement, for which further application of their results is required to calculate the forces between coils with many turns, such as for the system examined here. An expression for the force between thin coaxial coils has also been published by Babic et al.~\cite{babic2008-ietm}; it too is more complex than the expression to be presented in the current work.
-
-The equation of Ravaud et al.~\cite{ravaud2010-ietm} is suitable for use for magnets or coils of any size with no restriction on axial displacement. For magnets, they are assumed to have constant magnetisation that is strong enough such that adjacent magnets will not affect the magnetisation of each other. For coils, they are modelled as surface current densities only; therefore for accurate coil calculations the radial thickness of the coil must be much smaller than its radius and the coil must be wound tightly in the axial direction. The force between thick coils with many radial turns has been shown also by Ravaud~et al.~\cite{ravaud2010-pier}; this expression requires some numerical integration and is accordingly slower to calculate than the expression for thin coils discussed herein.
-
-The system consists of two coaxial cylindrical magnets or current-carrying coils which have a relative axial displacement between them, as shown in \figref{cyl-schem}.
+The equation for the force between cylindrical magnets can also be used to calculate the force between thin coils with many axial turns, as both magnet and coil can be modelled as a surface current density around a cylinder (see \figref{coil-mag-equiv}). In related work, \textcite{kim1996-ietm} presented a different integral equation for the radial force between (single-turn) circular coils with eccentric radial displacement, for which further application of their results is required to calculate the forces between coils with many turns.
+Little attention has been paid to the forces between rotated cylindrical magnets; \textcite{babic2011-ietm-incl-coil} presented equations for calculating the forces between rotated and eccentric (single-turn) circular coils.
+These expressions can be used with superposition to calculate the forces between rotated and inclined thin-wall solenoids or permanent magnets.
 
 \begin{figure}
 \centering
@@ -980,11 +984,12 @@ The system consists of two coaxial cylindrical magnets or current-carrying coils
 \end{figure}
 
 \def\m#1{m_{#1}}
-The force equation is given by~\cite{robertson2011-ietm}
+The magnetic system of interest here consists of two coaxial cylindrical magnets or current-carrying coils which have a relative axial displacement between them, as shown in \figref{cyl-schem}.
+After simplification of the work of \textcite{ravaud2010-ietm}, the equation for calculating axial force $\Fax$ is given by~\cite{robertson2011-ietm}
 \begin{dmath}[label=simpl4]
-F_z = \frac{\magn1 \magn2}{2\mu_0} \sum_{i=1}^2 \sum_{j=3}^4 \m1\m2\m3 f_z \gp{-1}^{i+j}
+\Fax = \frac{\magn1 \magn2}{2\mu_0} \sum_{i=1}^2 \sum_{j=3}^4 \m1\m2\m3 f_z \gp{-1}^{i+j}
 \end{dmath},
-where the intermediate expression is defined in terms of complete elliptic integrals of the first, second, and third kind ($\EllipticK{m}$, $\EllipticE{m}$, and $\EllipticPi{n,m}$, respectively)
+where the intermediate expression $f_z$ is defined in terms of complete elliptic integrals of the first, second, and third kind ($\EllipticK{m}$, $\EllipticE{m}$, and $\EllipticPi{n,m}$, respectively)
 \begin{dmath}[label=simpl4i]
 f_z=
   \EllipticK{\m4}
