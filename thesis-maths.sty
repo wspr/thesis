@@ -261,7 +261,7 @@
 \newcommand\approaches{\rightarrow}
 
 \newvariable\flux[nom=Magnetic flux]{\bm\Phi}
-\newvariable\magH[nom=Magnetic field strength]{H}
+\newvariable\magH[nom=Magnetic field strength]{\vect H}
 \newvariable\magB[nom=Magnetic flux density]{\vect B}
 \newvariable\remanence[nom=Remanence magnetisation]{B_r}
 \newcommand\magn[1]{{\remanence}_{#1}}
@@ -275,7 +275,6 @@
 \newvariable\magJm[nom=Equivalent `surface current' due to magnetisation]{\vect{J}_m}
 \newvariable\magjm[nom=Differential `Surface current' due to magnetisation]{\vect{j}_m}
 
-
 \newvariable\permVac[nom=Permeability of the vacuum]{\mu_0}
 \let\permvac\permVac
 
@@ -284,6 +283,45 @@
 \let\permMag\perm
 \newvariable{\permrel}[nom=Relative permeability of a material]{\mu_r}
 \newcommand\magconst{\frac{\permVac}{4\pi}}
+
+%%%%%%%%%%%%%%%%%%%%%%%%
+%% MAGNETS
+%%%%%%%%%%%%%%%%%%%%%%%%
+
+\newvariable\cdx[nom={$\ax$-component of $\magcd$}]{\alpha}
+\newvariable\cdy[nom={$\ay$-component of $\magcd$}]{\beta}
+\newvariable\cdz[nom={$\az$-component of $\magcd$}]{\gamma}
+\newvariable\magcd[nom={Distance vector between the centres of two magnets, $\magcd=\inlinevect{\cdx,\cdy,\cdz}\T$}]{\vect d}
+
+\newvariable\cnrx[nom={$\ax$-component of $\cornerd$}]{u}
+\newvariable\cnry[nom={$\ay$-component of $\cornerd$}]{v}
+\newvariable\cnrz[nom={$\az$-component of $\cornerd$}]{w}
+\newvariable\cornerd[nom={Distance vector between a pair of corners/nodes of two magnets, $\cornerd=\inlinevect{\cnrx,\cnry,\cnrz}\T$}]{\bm\delta}
+\newvariable\cnrl[nom={Euclidean distance of $\cornerd$}]{r}
+
+\newvariable\cdcnrX[nom={Distance vector between a magnet's centre and one of its corners/nodes (fixed magnet)}]{\vect r}
+\newvariable\cdcnrF[nom={Distance vector between a magnet's centre and one of its corners/nodes (floating magnet)}]{\vect R}
+
+\newvariable\Fzz[nom={Force between two cuboid magnets magnetised in the $\az$-direction},sort=Fzz]{\vect F_{z,z}}
+\newvariable\Fzznode[nom={`Force' between two magnetic nodes for cuboid magnets magnetised in the $\az$-direction, used to calculate $\Fzz$}]{\bm\phi_{z,z}}
+
+\newvariable\Fzy[nom={Force between two cuboid magnets; the first magnetised in the $\az$-direction, the second in $\ay$},sort=Fzz]{\vect F_{z,y}}
+\newvariable\Fzynode[nom={`Force' between two magnetic nodes for orthogonally-magnetised cuboid magnets, used to calculate $\Fzy$}]{\bm\phi_{z,y}}
+
+\newvariable\Kzz[nom={Stiffness between two cuboid magnets magnetised in the $\az$-direction},sort=Kzz]{\vect K_{z,z}}
+\newvariable\Tzz[nom={Torque between two cuboid magnets magnetised in the $\az$-direction},sort=Tzz]{\vect T_{z,z}}
+\newvariable\Tzy[nom={Torque between two cuboid magnets; the first magnetised in the $\az$-direction, the second in $\ay$},sort=Tzz]{\vect T_{z,y}}
+
+\newvariable\hwxX[nom={Half-length of cuboid magnet (fixed), $\ax$-direction}]{a}
+\newvariable\hwyX[nom={Half-length of cuboid magnet (fixed), $\ay$-direction}]{b}
+\newvariable\hwzX[nom={Half-length of cuboid magnet (fixed), $\az$-direction}]{c}
+
+\newvariable\hwxF[nom={Half-length of cuboid magnet (floating), $\ax$-direction}]{A}
+\newvariable\hwyF[nom={Half-length of cuboid magnet (floating), $\ay$-direction}]{B}
+\newvariable\hwzF[nom={Half-length of cuboid magnet (floating), $\az$-direction}]{C}
+
+\newvariable\Fax[nom={Force in the axial direction},label=Fax]{F_z}
+\newvariable\Fecc[nom={Force in the radial direction}]{F_r}
 
 %%%%%%%%%%%%%%%%%%%%%%%%
 
