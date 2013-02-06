@@ -446,78 +446,10 @@ where
   + 2r+u\Log{r-u}+v \Log{r-v}
 \end{bmatrix}
 \end{dmath}
-Note that the sum of the stiffness components ${K_{z,z}}_x+{K_{z,z}}_y+{K_{z,z}}_z=0$ follows from Earnshaw's theorem
-\cite{earnshaw1842} following from the solution to Laplace's equation.
-
-Allag and Yonnet \cite{allag2009-ietm} have published a description of how torques between cuboid magnets may be analytically calculated in a similar manner.
-It is instructive to analyse their approach to the theory used to derive these equations, as it will be shown below that it is incorrect.
-A short time after this paper was published a separate research group published the \emph{correct} equation \cite{janssen2010-ietm} for calculating torques between (anti-)parallel magnets.
-
-The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets. Their expression for the torque (on the second magnet) can be written as per the style above in the following form.
-\begin{equation}\eqlabel{torque}
-\vect T_{z,z}=\frac{\magn1\magn2}{4\pi\mu_0}
-  \sum_{i,j,k,l,p,q\in\{0,1\}^6}
-  \vect\psi_{i,j,k,l,p,q}
-  \cdot
-  \gp{-1}^{i+j+k+l+p+q} ,
-\end{equation}
-where
-\begin{equation}
-\vect\psi_{i,j,k,l,p,q} = \vect R_{j,l,q}\vect\times \vect \phi_{z,z}\fn{\vect \delta_{i,j,k,l,p,q}} .
-\eqlabel{torque-inner}
-\end{equation}
-The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner terms of the summation represent the torque applied on the second magnet due to the influence of one corner of the first magnet and one corner of the second magnet. Allag and Yonnet write this slightly differently in terms of the total torque applied from the entire first magnet on each corner of the second:
-\begin{equation}\eqlabel{torqu-1}
-\vect T = \sum_{j,l,q\in\{0,1\}^3} \vect R_{j,l,q}\vect\times \vect f_{j,l,q} ,
-\end{equation}
-where $\vect f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
-\begin{equation}\eqlabel{torqu-2}
-\vect f_{j,l,q}=\tfrac{\magn1\magn2}{4\pi\mu_0}
-  \!\!\!\sum_{i,k,p\in\{0,1\}^3}\!\!\!
-  \vect\phi_{z,z}\fn{\vect d_{i,j,k,l,p,q}}
-  \cdot
-  \gp{-1}^{i+j+k+l+p+q}.
-\end{equation}
-In other words, written in this form the `corner torque' for each node of the second magnet is given by
-\begin{equation}\eqlabel{corner-torques}
-  \vect \tau_{j,l,q} = \vect R_{j,l,q} \vect\times \vect f_{j,l,q}.
-\end{equation}
-It is easily seen that \eqref{torqu-1} and \eqref{torqu-2} are equivalent to \eqref{torque} since the inner summation in the former can be migrated out from inside the cross product.
-
-In the interests of clarify, it should be noted that what has been referred to until now as a corner force is in fact not actually a force; rather, it is simply a mathematical abstraction (a limit of an integral) that has no basis in the physics of the situation.
+Note that the sum of the stiffness components ${K_{z,z}}_x+{K_{z,z}}_y+{K_{z,z}}_z=0$ follows from Earnshaw's theorem \cite{earnshaw1842} following from the solution to Laplace's equation.
 
 
-\subsection{Non-symmetric corner forces}
 
-Writing the interaction between two corners as $(i,k,p)\to(j,l,q)$, consider two geometrically-symmetrical cases from the previous example with zero horizontal displacement:
-\begin{itemize}
-\item $(0,0,0)\to(1,0,0)$, and
-\item $(1,0,0)\to(0,0,0)$.
-\end{itemize}
-These two interactions are depicted in \figref{mag-nodes}.
-
-\begin{figure}[t]
-\centering
-\asyinclude{PhD/Figures/Magnets/mag-nodes}
-\caption{Two geometrically-symmetrical node interactions.}
-\figlabel{mag-nodes}
-\end{figure}
-
-\subsection{Corner forces vs.\ distance}
-
-Consider a fixed magnet of size $[2a,2b,2c]\T$ reacting with another magnet of some fixed vertical distance away. Compare two cases for the second magnet:
-\begin{itemize}
-\item	of equal size with $[2A, 2B, 2C]\T=[2a, 2b, 2c]\T$, and
-\item	of greater size with $[2A, 2B, 2C]\T=[6a, 6b, 2c]\T$.
-\end{itemize}
-These two cases are shown in \figref{nodes-bigsmall} highlighting the interaction between two equivalent corners.
-
-\begin{figure}
-\centering
-\asyinclude{PhD/Figures/Magnets/nodes-bigsmall}
-\caption{Two node interactions for a smaller magnet and a larger magnet.}
-\figlabel{nodes-bigsmall}
-\end{figure}
 
 
 \subsection{Forces between orthogonal cuboid magnets}
