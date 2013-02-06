@@ -279,13 +279,33 @@ and for the current model as:
   \gp{\magM_2\cross\normn_{s_2'}} \cross \magB_1\fn{\pos_2} \dee s_2'
 \end{dmath}.
 
-\Eqref{charge-force,current-force} are general recipes for calculating the forces between permanent magnets, and a similar formulation will allow for the modelling of electromagnetic coils as well.
-Complex geometries, however, cannot be solved analytically as the integrals become intractable; numerical integration must be used in this case \cite{elies1999a}.
-Generally when this is required the integrals are simplified as much as possible before numerical integration is applied to the remaining terms; for this reason this technique is often called a `semi-numerical' approach, and is capable of obtaining results in a  more straightforward and efficient manner than finite element analysis.
+\Eqref{charge-force,current-force} are general recipes for deriving equations to calculate the forces between permanent magnets, and a similar formulation will allow for the modelling of electromagnetic coils as well.
+A comparison between the current and charge models for calculating the magnetic field for radially-magnetised arc-shaped magnets was made by \textcite{ravaud2009-pier-compare}, who stated:
+\begin{quote}
+The problem is thus to guess what model is the most appropriate for calculating the three components of the magnetic field produced by permanent magnets.
+It does not seem to be more difficult to use the Amperian current model rather than the Coulombian [`charge'] model for calculating the magnetic field created by parallelepiped magnets. [\dots] For arc-shaped permanent magnets, it seems to be more difficult to guess what model is the most appropriate.
+\end{quote}
+One important consideration to bear in mind for deriving force equations is that charge model precludes having overlap between the two volumes, such as when a magnet slides within an outer coil.
+As an example, the theory of \textcite{akoun1984} for calculating the force between two cuboid permanent magnets was derived by modelling each magnet using the charge model; whereas \textcite{rovers2010-ietm} used the current model for calculating the force between a rectangular cross section coil and a permanent magnet.
+Since a permanent magnet can be modelled as a thin coil, the two expressions can be compared and they only give equivalent results when the two volumes do not overlap.
 
-FURLANI
+\Eqref{charge-force,current-force} cannot be solved analytically for complex geometries as the integrals become intractable; numerical integration must be used in this case \cite{charpentier2001}.
+When this is necessary, the integrals are generally simplified as much as possible before numerical integration is applied to the remaining terms; for this reason this technique is often called a `semi-numerical' approach, and is capable of obtaining results in a more straightforward and efficient manner than finite element analysis.
 
-\subsubsection{Analytical expressions for the magnetic field}
+An alternative method to the numerical integration approach is proposed by \textcite{furlani2001-magnetbook} in which a magnetic source is discretised into a large number of `point charges' and the analytical expression for force between each pair combination summed through superposition.
+In this case, a general equation for calculating the force between two magnets using the surface charge method can be written as: \cite{furlani1993-ietm}
+\begin{dmath}
+\force = \frac{\remanence^2\permvac}{2\pi}
+  \sum_{A_2}\gp{\sum_{A_1}\gp{
+    \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
+  }\Delta A_1}\Delta A_2
+\end{dmath},
+where $A_1$ and $A_2$ are the areas of surface charge in the two magnets, and $\pos_1$ and $\pos_2$ are the position vectors of each surface charge in the interactive pair.
+While this method does allow the modelling of arbitrary geometries, care must be taken to use a fine enough discretisation mesh to achieve convergence of the solution, and as the mesh becomes finer the algorithm increases in solution time at a rate approximately square to the number of point charges in the model.
+This discretisation method is avoided in this thesis due to the limited advantage it has over using the semi-numerical approach that uses numerical integration directly.
+
+
+\section{Analytical expressions for calculating the magnetic flux density}
 
 For the purposes of this work, the analytical calculation of the magnetic flux $\magB$ is largely overlooked in favour of analytical force calculations, which will be dealt with in the next section.
 However, since an analytical formulation for $\magB$ is a requirement for then calculating the force, a short literature review will be covered here for different magnet geometries.
@@ -293,18 +313,12 @@ However, since an analytical formulation for $\magB$ is a requirement for then c
 The magnetic field for cuboid shaped magnets has a concise solution and has been known for some time for magnetisation in a direction orthogonal to the magnet face \cite{akoun1984}.
 Much more recently, expressions were presented for calculating the magnetic field from a cuboid magnet with magnetisation in an arbitrary direction \cite{ravaud2009-pier98}.
 
-The magnetic field from `pyramidal frustrum' magnets \cite{compter2010-ietm} can calculated by decomposing the pyramidal frustums into triangular and quadrilateral current sheets of non-square orientation.
-This method is a positive step towards generating a general theory for calculating the magnetic field from arbitrary magnet shapes with flat sides.
+Expressions for calculating the magnetic field due to magnetic prisms with triangular faces \cite{compter2010-ietm,janssen2010-compel,rubeck2013-ietm} can be used using superposition to find the magnetic field from magnets with the shape of a quadrilateral pyramidal frustrum, which is a six-sided solid with two parallel faces and four non-orthogonal faces.
+Such magnet shapes can be stacked to form efficient planar multipole arrays \cite{janssen2009-ietm} (see also \chapref[vref]{multipole}).
 
 The geometry of cylindrical magnets and coils results in elliptic integrals in the solution to their field equations.
-For a cylindrical magnet, the field solutions have been published for axial magnetisations \cite{ravaud2010-ietm} and radial ones \cite{furlani1995-ietm}.
-A comparison between the current and charge models for calculating the magnetic field for radially-magnetised arc-shaped magnets was made by \textcite{ravaud2009-pier-compare}, who state:
-\begin{quote}
-The problem is thus to guess what model is the most appropriate for calculating the three components of the magnetic field produced by permanent magnets.
-It does not seem to be more difficult to use the Amperian current model rather than the Coulombian [`charge'] model for calculating the magnetic field created by parallelepiped magnets. [\dots] For arc-shaped permanent magnets, it seems to be more difficult to guess what model is the most appropriate.
-\end{quote}
-
-Finally, it is interesting from a historical perspective that new publications on the analytic magnetic field equation for a `thick coil' (or toroidal conductor with rectangular cross section, to be more precise/verbose) appear to be being published at an accelerating rate \cite{danilov1971-nim,urankar1982-ietm,babic1988-ietm,azzerboni1993-ietm,labinac2006-ajp,pechenkov2006-rndt,ravaud2010-emwaves,zhang2012-ietm}.
+For a cylindrical magnet, the field solutions have been published for both axial magnetisation \cite{ravaud2010-ietm} and radial magnetisation \cite{furlani1995-ietm}.
+It is interesting from a historical perspective that new publications on the analytic magnetic field equation for a `thick coil' (or toroidal conductor with rectangular cross section, to be more precise/verbose) appear to be being published at an accelerating rate \cite{danilov1971-nim,urankar1982-ietm,babic1988-ietm,azzerboni1993-ietm,labinac2006-ajp,pechenkov2006-rndt,ravaud2010-emwaves,zhang2012-ietm}.
 The newer equations tend to be more general and/or robust.
 
 
