@@ -1,4 +1,12 @@
-%!TEX root = thesis.tex
+\nonstopmode
+
+\documentclass[10pt,a4paper]{memoir}
+\def\asydir{\jobname}
+\usepackage{thesis-preamble}
+\usepackage{geometry}
+\EndPreamble
+\pagestyle{empty}
+\begin{document}
 
 \chapter{Conclusion}
 
@@ -6,26 +14,85 @@
   I can't grasp much of anything without putting down my thoughts in writing, so I had to actually get my hands working and write these words.
 }{\textcite{murakami2008}}
 
-It turns out that I forgot to write this chapter.
+\section{Thesis summary}
+
+Vibration disturbance from environmental sources is a continual problem.
+The work of this thesis has been an investigation into developing electromagnetic systems for providing vibration isolation.
+As this work was cross-disciplinary, a broad literature review was conducted on vibration isolations systems, electromagnetic devices, and nonlinear \qzs/ structures.
+The perceived advantages of \qzs/ for vibration isolation formed an inspiration for the type of magnetic system to investigate in this work.
+
+The modelling of magnetic forces for complex magnet geometries is still an active field of research.
+There are a broad range of geometric possibilities of permanent magnet systems for load bearing (`magnetic springs'); an overview of such magnetic springs using cuboid magnets was presented.
+For single-axis load bearing, magnetic force is optimised for a magnet depth of around 40\% the face size; magnetic cylinders will generate slightly greater forces than square-faced cuboids.
+
+Magnetic systems tend to exhibit significant trade-offs in their force and stiffness characteristics, especially involving degrees of instability.
+A rotationally-stable magnetic spring was proposed but initial results from simulation suggest the system is highly sensitive.
+Achieving rotational stability decreases the load-bearing ability of the system.
+
+As more discrete magnets are used in a magnetic spring design, the cross-coupling force--displacement characteristics become increasingly difficult to analyse.
+It is suggested that the fewer magnets used to achieve a desired behaviour the more robust and well-characterised the system will be.
+
+Three main analyses of different magnetic springs were presented.
+\begin{enumerate}
+\item
+An oblique magnet spring design was presented to achieve a load-independent resonance frequency (\secref*[vref]{oblique}).
+Primarily designed for single-axis operation, cross-coupling between axes resulted in planar instability even for positive stiffnesses in both translational directions.
+The study of this instability demonstrated the complexity of designing such systems theoretically.
+
+\item
+A study on multipole magnet arrays with various multipole configurations, and the parameters that affect their performance, was presented to achieve larger peak forces for the same magnet volume (\chapref[vref]{multipole}).
+Multipole arrays have increased cost involved with fabrication and system design, but provide unique advantages over using discrete magnets.
+In particular, the single-sided nature of the magnetic field is an advantage in all systems where some shielding of the magnetic field is required.
+
+\item
+Detailed analysis of the parameters involved in a \qzs/ design with one repulsive and one attractive set of magnet forces (\secref*[vref]{qzs}).
+\end{enumerate}
+It has been shown that magnetic springs are highly flexible in the design objectives they can achieve.
+
+In addition to modelling the passive magnetic forces, an optimisation for designing electromagnetic actuators was presented using a particularly efficient method (\chapref[vref]{em}).
+In this case, the optimised variable was peak force, and it was shown that optimal geometric parameters can be derived given magnet volume and coil resistance alone.
+
+A \qzs/ prototype with one degree of freedom was built and low frequency vibration isolation demonstrated (\chapref[vref]{xpmt}).
+One major obstacle with improving vibration isolation at these low frequencies is the difficulty with measuring inertial properties, specifically velocity, for performing active feedback control.
 
 \section{Future work}
 
-This work leaves open many areas of investigation for work to be done in the future.
+This work leaves open many areas of investigation for the future.
 Some of these are highlighted here.
 
-\begin{enumerate}
+\subsection{Magnetic forces}
+
+\begin{enumerate}\itemsep=\medskipamount
 \item
 Consolidating theory for the forces between magnets for additional magnet shapes.
-The first task here would be to provide a well-tested and efficient implementation to calculate the axial and radial forces between cylindrical magnets given axial and radial displacement.
-To the best of my knowledge, there are no results on the forces between spherical magnets.
+Some unexplored areas of research here are:
+\begin{enumerate}
+\item Forces between cuboid and cylindrical magnets with rotation.
+\item Magnetic torque between magnets with rotation.
+\item Forces and torques between spherical magnets.
+\end{enumerate}
+Finite element analysis should not be required in order to conduct a dynamic simulation with realistic forces and torques of an electromagnetic system.
 
 \item
 Investigate the non-ideal effects seen in real life with respect to magnet forces; \eg, what is the influence between magnet size and homogeneous magnetisation?
 What are the practical limitations to designing multipole arrays — will demagnetisation occur in some cases, and if so to what extent?
 
-\item
-Are there closed form solutions to the eddy current problem for permanent magnets in the influence of finite thickness coils?
-After taking inductance effects into account, how does this change the optimality for solutions found for electromagnetic coil design?
+\end{enumerate}
+
+\subsection{Electromagnetic forces}
+
+\begin{enumerate}
+\item For designing coil actuators, the inductance of the system determines the bandwidth of operation.
+This should be included in the optimisation routine; it is suspected this will have significant effects on the suitable geometries in some cases.
+
+\item An extension on calculating coil forces to include straight sections could allow very fast analytic solutions compared to finite element analysis for more complex coil geometries such as `race-track' shapes.
+
+\item A thermal model could be incorporated into the analysis to ensure specific temperature bounds during operation.
+\end{enumerate}
+
+\subsection{\QZS/}
+
+\begin{enumerate}
 
 \item
 The experimental results shown for a \qzs/ magnetic system are for a single \dof/ only; a project to extend these results to six \dof/ is already under way.
@@ -36,15 +103,12 @@ This is being investigated separately.
 
 \item
 Is it possible to design a nonlinear controller to maintain \qzs/ for a magnetic device?
-Intuitively, there may never be a stable system that achieves perfect \qzs/; therefore, what are the limits to which such a system can be bound?
+Intuitively, there cannot be a stable system that achieves perfect \qzs/; therefore, what are the limits to which such a system can be bound?
 
 \item
 `Skyhook damping' requires an estimate of the absolute velocity for feedback control.
 Integrating accelerometer measurements has limitations at low frequencies due to filters in the charge amplification and the integration technique itself.
 Magnetic geophones offer an alternative sensing option and other estimation filters have been presented; to what degree can low-frequency vibration be measured?
-
-\item
-Etc. etc.
-
 \end{enumerate}
 
+\end{document}
