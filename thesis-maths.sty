@@ -288,37 +288,37 @@
 %% MAGNETS
 %%%%%%%%%%%%%%%%%%%%%%%%
 
-\newvariable\cdx[nom={$\ax$-component of $\magcd$}]{\alpha}
-\newvariable\cdy[nom={$\ay$-component of $\magcd$}]{\beta}
-\newvariable\cdz[nom={$\az$-component of $\magcd$}]{\gamma}
+\newvariable\cdx[nom={$\ax$-component of $\magcd$},label=cdx]{\alpha}
+\newvariable\cdy[nom={$\ay$-component of $\magcd$},label=cdy]{\beta}
+\newvariable\cdz[nom={$\az$-component of $\magcd$},label=cdz]{\gamma}
 \newvariable\magcd[nom={Distance vector between the centres of two magnets, $\magcd=\inlinevect{\cdx,\cdy,\cdz}\T$}]{\vect d}
 
-\newvariable\cnrx[nom={$\ax$-component of $\cornerd$}]{u}
-\newvariable\cnry[nom={$\ay$-component of $\cornerd$}]{v}
-\newvariable\cnrz[nom={$\az$-component of $\cornerd$}]{w}
+\newvariable\cnrx[nom={$\ax$-component of $\cornerd$},label=cnrx]{u}
+\newvariable\cnry[nom={$\ay$-component of $\cornerd$},label=cnry]{v}
+\newvariable\cnrz[nom={$\az$-component of $\cornerd$},label=cnrz]{w}
 \newvariable\cornerd[nom={Distance vector between a pair of corners/nodes of two magnets, $\cornerd=\inlinevect{\cnrx,\cnry,\cnrz}\T$}]{\bm\delta}
-\newvariable\cnrl[nom={Euclidean distance of $\cornerd$}]{r}
+\newvariable\cnrl[nom={Euclidean distance of $\cornerd$},label=cnrl]{r}
 
 \newvariable\cdcnrX[nom={Distance vector between a magnet's centre and one of its corners/nodes (fixed magnet)}]{\vect r}
 \newvariable\cdcnrF[nom={Distance vector between a magnet's centre and one of its corners/nodes (floating magnet)}]{\vect R}
 
 \newvariable\Fzz[nom={Force between two cuboid magnets magnetised in the $\az$-direction},sort=Fzz]{\vect F_{z,z}}
-\newvariable\Fzznode[nom={`Force' between two magnetic nodes for cuboid magnets magnetised in the $\az$-direction, used to calculate $\Fzz$}]{\bm\phi_{z,z}}
+\newvariable\Fzznode[nom={`Force' between two magnetic nodes for cuboid magnets magnetised in the $\az$-direction, used to calculate $\Fzz$},sort=zzzgreek-uzz]{\bm\phi_{z,z}}
 
-\newvariable\Fzy[nom={Force between two cuboid magnets; the first magnetised in the $\az$-direction, the second in $\ay$},sort=Fzz]{\vect F_{z,y}}
-\newvariable\Fzynode[nom={`Force' between two magnetic nodes for orthogonally-magnetised cuboid magnets, used to calculate $\Fzy$}]{\bm\phi_{z,y}}
+\newvariable\Fzy[nom={Force between two cuboid magnets; the first magnetised in the $\az$-direction, the second in $\ay$},sort=Fzy]{\vect F_{z,y}}
+\newvariable\Fzynode[nom={`Force' between two magnetic nodes for orthogonally-magnetised cuboid magnets, used to calculate $\Fzy$},sort=zzzgreek-uzy]{\bm\phi_{z,y}}
 
 \newvariable\Kzz[nom={Stiffness between two cuboid magnets magnetised in the $\az$-direction},sort=Kzz]{\vect K_{z,z}}
 \newvariable\Tzz[nom={Torque between two cuboid magnets magnetised in the $\az$-direction},sort=Tzz]{\vect T_{z,z}}
-\newvariable\Tzy[nom={Torque between two cuboid magnets; the first magnetised in the $\az$-direction, the second in $\ay$},sort=Tzz]{\vect T_{z,y}}
+\newvariable\Tzy[nom={Torque between two cuboid magnets; the first magnetised in the $\az$-direction, the second in $\ay$},sort=Tzy]{\vect T_{z,y}}
 
 \newvariable\hwxX[nom={Half-length of cuboid magnet (fixed), $\ax$-direction}]{a}
 \newvariable\hwyX[nom={Half-length of cuboid magnet (fixed), $\ay$-direction}]{b}
-\newvariable\hwzX[nom={Half-length of cuboid magnet (fixed), $\az$-direction}]{c}
+\newvariable\hwzX[nom={Half-length of cuboid magnet (fixed), $\az$-direction},label=hwzX]{c}
 
-\newvariable\hwxF[nom={Half-length of cuboid magnet (floating), $\ax$-direction}]{A}
-\newvariable\hwyF[nom={Half-length of cuboid magnet (floating), $\ay$-direction}]{B}
-\newvariable\hwzF[nom={Half-length of cuboid magnet (floating), $\az$-direction}]{C}
+\newvariable\hwxF[nom={Half-length of cuboid magnet (floating), $\ax$-direction},label=hwxF]{A}
+\newvariable\hwyF[nom={Half-length of cuboid magnet (floating), $\ay$-direction},label=hwyF]{B}
+\newvariable\hwzF[nom={Half-length of cuboid magnet (floating), $\az$-direction},label=hwzF]{C}
 
 \newvariable\Fax[nom={Force in the axial direction},label=Fax]{F_z}
 \newvariable\Fecc[nom={Force in the radial direction}]{F_r}
@@ -552,7 +552,7 @@
 \newvariable\ZKSdispMin[nom=Maximum deflection of the vertical spring]{z_{\mathrm{min}}}
 \newvariable\ZKSshift[nom=Horizontal displacement of the inclined spring,label=ZKS-x]{x}
 
-\newvariable\ZKSwidth[nom=Inclined spring horizontal dimension]{w}
+\newvariable\ZKSwidth[nom=Inclined spring horizontal dimension,label=ZKSwidth]{w}
 \newvariable\ZKSheight[nom=Inclined spring vertical dimension]{h}
 \newvariable\ZKSlength[nom=Undeflected inclined spring length]{L_0}
 \newmvar\newfunc\ZKSlengthcomp{L}[elem={\ZKSdisp,\ZKSshift},index={1,2}]{nom=Length of inclined spring under load}
@@ -575,10 +575,12 @@
     nom=Ratio between inclined and vertical
         spring lengths]{\eta}
 \newvariable\ZKSratio[
+    label=ZKSratio,
     nom=Ratio between the inclined spring
         width and height]
   {\gamma}
 \newvariable\ZKSkratio[
+    label=ZKSkratio,
     nom=Ratio between the inclined and
         vertical spring stiffnesses]
   {\alpha}
@@ -651,10 +653,10 @@
 \newvariable\InertiaMomentMagnets[nom=Magnets moment of inertia]{\VariableRigMagnets\InertiaMoment}
 \newvariable\InertiaMomentTotal[nom=Total moment of inertia]{\InertiaMoment_t}
 
-\newvariable\BlockInertiaLength[nom=Block length for calculating moment of inertia]{a}
-\newvariable\BlockInertiaHeight[nom=Block height for calculating moment of inertia]{b}
-\newvariable\BlockInertiaOffset[nom=Block offset for calculating moment of inertia]{d}
-\newvariable\BlockInertiaMass[label=mm,nom=Block mass for calculating moment of inertia]{m}
+%\newvariable\BlockInertiaLength[nom=Block length for calculating moment of inertia]{a}
+%\newvariable\BlockInertiaHeight[nom=Block height for calculating moment of inertia]{b}
+%\newvariable\BlockInertiaOffset[nom=Block offset for calculating moment of inertia]{d}
+%\newvariable\BlockInertiaMass[label=mm,nom=Block mass for calculating moment of inertia]{m}
 
 \newvariable\MassBeam[nom=Beam mass]{\VariableBeam m}
 \newvariable\MassBeamOuter[nom=Beam `outer' mass]{m_1}
@@ -784,7 +786,7 @@
 \newvariable\mbqmagangle[label=theta-mbq,nom=Inlined magnets inclination]{\theta}
 \newvariable\mbqoffset[label=d-mbq,nom=Inclined magnets centres horizontal offset at the nominal position]{d}
 
-\newvariable\mbqunit[nom={Cuboid magnet unit length, cube root of volume}]{u}
+\newvariable\mbqunit[nom={Cuboid magnet unit length, cube root of volume},label=mbqunit]{u}
 \newvariable\mbqlever[label=l-mbq,nom={Lever arm}]{l}
 %\newvariable\mbqmagratio[label=gamma-mbq]{\gamma}
 %\newvariable\mbqvolume[label=V-mbq]{V}
@@ -792,8 +794,8 @@
 \let\mbqvolume\volume
 \newvariable\mbqmasseq[nom=Equivalent mass]{m_{\mathrm{eq}}}
 
-\newvariable\mbqdispl[nom=Position vector]{\vect r}
-\newvariable\mbqmdispl[nom=Position vector]{\vect s}
+\newvariable\mbqdispl[nom=Position vector,label=mbqdispl]{\vect r}
+\newvariable\mbqmdispl[nom=Position vector,label=mbqmdispl]{\vect s}
 
 \newcommand\mbqrot[1]{\mathbf R(#1)}
 
