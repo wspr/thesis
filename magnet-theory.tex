@@ -31,13 +31,14 @@ However, there are a number of compounds that do retain an asymmetry in their el
 \seclabel{bhm}
 
 The magnetic dipole is designated as the microscopic quantity
-$\mdip = i\vect{A}$, for a current $i$ and a vector area $\vect{A}$
+$\mdip = \current\vecarea$, for a current $\current$ and a vector area $\vecarea$
 (direction normal to plane). For a collection of magnetic dipoles (as
-in a permanent magnet), their net effect may be quantified with the
+in a permanent magnet) in a vanishingly small volume $\volume$, their net effect may be quantified with the
 macroscopic magnetisation of the material, $\magM$:
 \begin{dmath}
-  \magM =  \lim_{\Delta V \rightarrow 0} \frac{\sum \mdip}{\Delta V}  \eqlabel{M}
+  \magM =  \lim_{\volume \rightarrow 0} \frac{\sum \mdip}{\volume}  \eqlabel{M}
 \end{dmath}.
+Permanent magnets are generally analysed under the assumption that their magnetisation $\magM$ is homogeneous throughout the volume.
 Inside the magnet itself (with no other external fields present), the magnetic field, $\magB$, is given by the relation \cite{campbell1994}
 \begin{dmath}[label=BM]
   \magB = \permVac \magM
@@ -45,14 +46,14 @@ Inside the magnet itself (with no other external fields present), the magnetic f
 where the proportionality constant $\permVac$ is known as the permeability of the vacuum.
 
 The equivalence of the magnetic field produced by a current-carrying coil and a permanent magnet is well established.
-Therefore, it is possible to consider the magnetisation of a permanent magnet to be the result of an (abstract) surface current density $\vect{J}_m$ defined by
+Therefore, it is possible to consider the magnetisation of a permanent magnet to be the result of an (abstract) surface current density $\magJm$ defined by
 \begin{dmath}
-  \vect{J}_m = \curl\magM
+  \magJm = \curl\magM
 \end{dmath}.
-This is a good starting point for describing the magnetic effects of an external current density $\vect{J}$ acting on a magnet.
+This is a good starting point for describing the magnetic effects of an external current density $\magJ$ acting on a magnet.
 To differentiate between such an induced magnetic field and that caused spontaneously by the magnetic material $\magM$, the induced magnetic field is denoted $\magH$, defined equivalently
 \begin{dmath}
-  \vect{J} = \curl\magH
+  \magJ = \curl\magH
 \end{dmath}.
 These three terms involving magnetic field can now be related to account for both internal and external forms of magnetisation (\ie, magnetic field caused by permanent magnets or by current carrying conductors) as \cite{campbell1994}
 \begin{dmath}[label=BHM]
@@ -123,7 +124,7 @@ In which case, it can be convenient to calculate the coercivity with the relatio
 \begin{figure}[htbp]
    \centering
    \includegraphics{PhD/Figures/Theory/BHcurve}
-   \caption{The characteristic $B$ \vs\ $H$ curves for an ideal rare-earth magnet.}
+   \caption{The characteristic $\magB$ \vs\ $\magH$ curves for an ideal rare-earth magnet.}
    \figlabel{BHcurve}
 \end{figure}
 
@@ -148,7 +149,7 @@ modern interpretations using electromagnetic fields involving quantum
 theory. Nonetheless, the name sticks. Magnetic flux, $\flux$, is
 therefore defined as the amount of `magnetic fluid' passing through an area:
 \begin{dmath}
-  \flux = \magB \cdot A
+  \flux = \magB \cdot \vecarea
 \end{dmath}
 This flux is almost analogous to electric current; the only difference
 being that electric current is constrained by the conductor it is
@@ -157,7 +158,7 @@ areas of greater permeability, it occasionally can deviate from these simple pat
 
 \begin{figure}
 \includegraphics{PhD/Figures/Magnets/magflux}
-\caption{The magnetic flux lines of a single magnet.}
+\caption{Lines of magnetic flux of a single magnet.}
 \figlabel{magflux}
 \end{figure}
 
@@ -250,33 +251,33 @@ Respectively, these consist of modelling the magnets as having two surfaces of `
 In the expressions to follow, the magnetisation of each magnet has been assumed to be homogeneous and constant, which is usually a reasonable assumption for modern rare earth magnetic material; hence terms involving $\Div\magM$ and $\Curl\magM$ equate to zero.
 
 In the first step, the integration takes place over the surface of the
-first magnet $S_1$, which is written for the charge model as:
+first magnet $\surface_1$, which is written for the charge model as:
 \begin{dmath}
 \magB_1\fn{\pos_2} =
- \magconst\oint\limits_{S_1}
-    \gp{\magM_1\dotprod\normn_{s_1}}
+ \magconst\oint\limits_{\surface_1}
+    \gp{\magM_1\dotprod\normn_{\diffsurface_1}}
     \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
-    \dee s_1
+    \dee \diffsurface_1
 \end{dmath},
 and for the current model as:
 \begin{dmath}
 \magB_1\fn{\pos_2} =
- \magconst\oint\limits_{S_1}
-    \gp{\magM_1\cross\normn_{s_1'}}\cross
+ \magconst\oint\limits_{\surface_1}
+    \gp{\magM_1\cross\normn_{\diffsurface_1'}}\cross
     \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
-    \dee s_1'
+    \dee \diffsurface_1'
 \end{dmath},
-where $\normn$ is the normal vector from the surface of integration.
+where $\normn$ is the normal vector from the differential surface of integration $\dee\diffsurface$.
 
 In the second step, the integration of the function of the magnetic field of the first magnet takes place over the surface of the second magnet $S_2$, and the integral for the charge model is:
 \begin{dmath}[label=charge-force]
-\force = \oint\limits_{S_2}
-  \gp{\magM_2\dotprod\normn_{s_2}} \magB_1\fn{\pos_2} \dee s_2
+\force = \oint\limits_{\surface_2}
+  \gp{\magM_2\dotprod\normn_{\diffsurface_2}} \magB_1\fn{\pos_2} \dee \diffsurface_2
 \end{dmath},
 and for the current model as:
 \begin{dmath}[label=current-force]
-\force = \oint\limits_{S_2}
-  \gp{\magM_2\cross\normn_{s_2'}} \cross \magB_1\fn{\pos_2} \dee s_2'
+\force = \oint\limits_{\surface_2}
+  \gp{\magM_2\cross\normn_{\diffsurface_2'}} \cross \magB_1\fn{\pos_2} \dee \diffsurface_2'
 \end{dmath}.
 
 \Eqref{charge-force,current-force} are general recipes for deriving equations to calculate the forces between permanent magnets, and a similar formulation will allow for the modelling of electromagnetic coils as well.
@@ -296,11 +297,11 @@ An alternative method to the numerical integration approach is proposed by \text
 In this case, a general equation for calculating the force between two magnets using the surface charge method can be written as: \cite{furlani1993-ietm}
 \begin{dmath}
 \force = \frac{\remanence^2\permvac}{2\pi}
-  \sum_{A_2}\gp{\sum_{A_1}\gp{
+  \sum_{\area_2}\gp{\sum_{\area_1}\gp{
     \frac{\pos_2-\pos_1}{\Abs{\pos_2-\pos_1}^3}
-  }\Delta A_1}\Delta A_2
+  }\Delta \area_1}\Delta \area_2
 \end{dmath},
-where $A_1$ and $A_2$ are the areas of surface charge in the two magnets, and $\pos_1$ and $\pos_2$ are the position vectors of each surface charge in the interactive pair.
+where $\area_1$ and $\area_2$ are the areas of surface charge in the two magnets, and $\pos_1$ and $\pos_2$ are the position vectors of each surface charge in the interactive pair.
 While this method does allow the modelling of arbitrary geometries, care must be taken to use a fine enough discretisation mesh to achieve convergence of the solution, and as the mesh becomes finer the algorithm increases in solution time at a rate approximately square to the number of point charges in the model.
 This discretisation method is avoided in this thesis due to the limited advantage it has over using the semi-numerical approach that uses numerical integration directly.
 
@@ -346,14 +347,15 @@ geometries can be realised through superposition of the solutions
   {Geometry for the expression by \textcite{akoun1984} to
   calculate the forces between two parallel cuboid magnets with
   magnetisations in the vertical direction, distance between their centres
-  $(\alpha,\beta,\gamma)$, and magnet sizes as shown.}
+  $\magcd=\inlinevect{\cdx,\cdy,\cdz}\T$, and magnet sizes as shown.}
   \figlabel{akoun}
 \end{figure}
 
 The notation for the models to calculate the forces between cuboid magnets is as follows, with the geometry of the system depicted graphically in \figref{akoun}.
 The first magnet has dimensions $\inlinevect{2\hwxX, 2\hwyX, 2\hwzX}\T$ and the second magnet has dimensions $[2\hwxF, 2\hwyF, 2\hwzF]\T$.
-The distance between their centres is given by $\magcd=[\alpha,\beta,\gamma]\T$.
-The magnetisations of the magnets are assumed to be constant and aligned in the $z$-direction (`facing up').
+The distance between their centres is given by $\magcd=\inlinevect{\cdx,\cdy,\cdz}\T$.
+The force calculated is that acting on the second magnet; for this reason the first magnet is sometimes refered to as the `fixed' magnet and the second the `floating' one.
+The magnetisations of the magnets are assumed to be constant and aligned in the $\az$ direction (`facing up').
 Anti-parallel magnets (`negative magnetisation') corresponds to the secondary magnet `facing down' and results in forces of reversed sign.
  \note{This relationship is only true of high-coercivity magnets; for magnets such as ferrites whose own magnetic fields can demagnetise each other, an approximation can be made that the repulsive force between two magnets will be approximately 40\% of the attractive force between them \cite{moskowitz1995}.}
 
@@ -366,9 +368,9 @@ The forces between two $\Fzz$ parallel or anti-parallel magnets with remanences 
   \cdot
   \gp{-1}^{i+j+k+l+p+q} ,
 \end{equation}
-where $\Fzznode\fn{\cornerd} = [\,\phi_x(\cornerd),\,\phi_y(\cornerd),\,\phi_z(\cornerd)\,]\T$ will be given later.
+where $\Fzznode\fn{\cornerd} = \inlinevect{\phi_x\fn{\cornerd},\phi_y\fn{\cornerd},\phi_z\fn{\cornerd}}\T$ will be given later.
 The $(z,z)$ subscript refers to the directions of magnetisation of the magnets.
-Force calculations for magnets oriented in the $x$ or $y$ directions can be found using a coordinate system transformation on \eqref{akoun}.
+Force calculations for magnets oriented in the $\ax$ or $\ay$ directions can be found using a coordinate system transformation on \eqref{akoun}.
 
 This form of \eqref{akoun} arises as it is derived from six nested direct integrals.
 Rather than expanding the limits of each integral, the following summation notation is used instead; say $f$ integrates to $F$:
@@ -432,7 +434,7 @@ Note that when evaluating these functions, two numerical singularities must be a
 
 The stiffness characteristics can be derived by differentiating \eqref{akoun} with respect to displacement in each respective direction, resulting in
 \begin{dmath}[label=akounk]
-\vect K_{z,z} = \frac{\magn1\magn2}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k_{z,z}\fn{u_{ij},v_{kl},w_{pq},r}
+\Kzz = \frac{\magn1\magn2}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k_{z,z}\fn{u_{ij},v_{kl},w_{pq},r}
 \cdot \gp{-1}^{i+j+k+l+p+q} ,
 \end{dmath}
 where
@@ -459,7 +461,7 @@ The expressions of \textcite{allag2009-sensorletters} are slightly simpler and a
 The signs of these equations has been reversed for consistency with \eqref{akoun} in which the equations calculate the force on the second magnet.
 
 \begin{dmath}[label=orth-magforce]
-\vect F_{z,y} = \frac{\magn1\magn2}{4\pi\mu_0} \sum_{i,j,k,l,p,q\in\{0,1\}^6} \vect f_{zy}\fn{\bm \delta}\cdot\gp{-1}^{i+j+k+l+p+q}
+\Fzy = \frac{\magn1\magn2}{4\pi\mu_0} \sum_{i,j,k,l,p,q\in\{0,1\}^6} \Fzynode\fn{\bm \delta}\cdot\gp{-1}^{i+j+k+l+p+q}
 \end{dmath}
 Again, the distance between the `corner nodes' of each magnet is given by
 \begin{equation}
@@ -471,12 +473,12 @@ where
 \cdcnrX_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix}.
 \end{align}
 with magnet dimensions defined as earlier.
-The $\vect f_{zy}$ terms required for calculating the `force between nodes' for orthogonal magnets can now be written as:
+The $\Fzynode$ terms required for calculating the `force between nodes' for orthogonal magnets can now be written as:
 \begin{align}
 \begin{split}
-\phi_x\fn{\cornerd} &= vw\Log{r-u}-uv\Log{r+w}-uw\Log{r+v}+\\&\qquad\half u^2\ArcTan{\frac{vw}{ru}}+\half v^2\ArcTan{\frac{uw}{rv}}+\half w^2\ArcTan{\frac{uv}{rw}} \,,\\
-\phi_y\fn{\cornerd} &= -\half\gp{u^2-v^2}\Log{r+w}+uw\Log{r-u}+uv\arctan\fn{\tfrac{uw}{rv}}+\half rw \,,\\
-\phi_z\fn{\cornerd} &= -\half\gp{u^2-w^2}\Log{r+v}+uv\Log{r-u}+uw\arctan\fn{\tfrac{uw}{rv}}+\half rv \,.
+{\Fzynode}_x\fn{\cornerd} &= vw\Log{r-u}-uv\Log{r+w}-uw\Log{r+v}+\\&\qquad\half u^2\ArcTan{\frac{vw}{ru}}+\half v^2\ArcTan{\frac{uw}{rv}}+\half w^2\ArcTan{\frac{uv}{rw}} \,,\\
+{\Fzynode}_y\fn{\cornerd} &= -\half\gp{u^2-v^2}\Log{r+w}+uw\Log{r-u}+uv\arctan\fn{\tfrac{uw}{rv}}+\half rw \,,\\
+{\Fzynode}_z\fn{\cornerd} &= -\half\gp{u^2-w^2}\Log{r+v}+uv\Log{r-u}+uw\arctan\fn{\tfrac{uw}{rv}}+\half rv \,.
 \end{split}
 \end{align}
 
@@ -570,71 +572,71 @@ Superposition can then be used to combine the expressions for orthonogal magnets
 \textcite{ravaud2009-pier98} instead show the magnetic field equations for a cuboid magnet with arbitrary magnetisation; their work is still to be extended to calculate the forces between such magnets.
 Since their equation for calculating the magnetic field is necessarily more complex, it is not clear whether an equation derived using analytical integration to calculate the force directly (if the integral is even tractable) will be more efficient than the superposition approach outlined below.
 
-The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have side lengths $\vect s = [2a, 2b, 2c]\T$ and $\vect S = [2A, 2B, 2C]\T$ respectively and the distance between their centres is given by $\magcd=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
+The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have side lengths $\mwX = [2\hwxX, 2\hwyX, 2\hwzX]\T$ and $\mwF = [2\hwxF, 2\hwyF, 2\hwzF]\T$ respectively and the distance between their centres is given by $\magcd=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
 
 As shown earlier in \eqref{akoun},
 \textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations.
-This force is denoted below as $\Fzz\fn{\vect s, \vect S, \magcd, \magn1, \magn2}$ as a function of the magnet sizes, the distance between them, and their magnetisation magnitudes $\magn1$ and $\magn2$.
-From \eqref{orth-magforce}, \textcite{allag2009-electromotion} provide the force expressions for the first magnet with vertical magnetisation and the second magnet with magnetisation in the horizontal $y$-direction.
-This force is denoted below as $\vect F_{z,y}\fn{\vect s, \vect S, \magcd, \magn1, \magn2}$.
+This force is denoted below as $\Fzz\fn{\mwX, \mwF, \magcd, \magn1, \magn2}$ as a function of the magnet sizes, the distance between them, and their magnetisation magnitudes $\magn1$ and $\magn2$.
+From \eqref{orth-magforce}, \textcite{allag2009-electromotion} provide the force expressions for the first magnet with vertical magnetisation and the second magnet with magnetisation in the horizontal $\ay$ direction.
+This force is denoted below as $\Fzy\fn{\mwX, \mwF, \magcd, \magn1, \magn2}$.
 
-The force between a vertically-magnetised magnet and one with magnetisation in the horizontal $x$-direction can be calculated by applied a rotational transformation to $\vect F_{z,y}$ around the $z$-axis.
+The force between a vertically-magnetised magnet and one with magnetisation in the horizontal $\ax$ direction can be calculated by applied a rotational transformation to $\Fzy$ around the $\az$ axis.
 That is,
 \begin{equation}\eqlabel{fzx}
-\vect F_{z,x}\fn{\vect s, \vect S, \magcd, \magn1, \magn2} = \mathbf R_z\fn{-\tfrac{\pi}2}\vect F_{z,y}\fn{\vect s_{z,x}, \vect S_{z,x},\magcd_{z,x}, \magn1, \magn2} ,
+\Fzx\fn{\mwX,\mwF, \magcd, \magn1, \magn2} = \rotZ\fn{-\tfrac{\pi}2}\Fzx\fn{\mwX_{z,x}, \mwF_{z,x},\magcd_{z,x}, \magn1, \magn2} ,
 \end{equation}
 where
 \begin{align}
-\vect s_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\vect s}, \\
-\vect S_{z,x} &= \Abs{\mathbf R_z\fn{\tfrac\pi2}\vect S}, \\
-\magcd_{z,x} &= \mathbf R_z\fn{\tfrac\pi2}\magcd,
+\mwX_{z,x} &= \Abs{\rotZ\fn{\tfrac\pi2}\mwX}, \\
+\mwF_{z,x} &= \Abs{\rotZ\fn{\tfrac\pi2}\mwF}, \\
+\magcd_{z,x} &= \rotZ\fn{\tfrac\pi2}\magcd,
 \end{align}
-for which $\Abs{\cdot}$ is the \emph{element-wise} absolute value function and $\mathbf R_z\fn{\theta}$ is the rotation matrix around the $z$-axis:
+for which $\Abs{\cdot}$ is the \emph{element-wise} absolute value function and $\rotZ\fn{\theta}$ is the rotation matrix around the $\az$ axis:
 \begin{equation}
-\mathbf R_z\fn\theta = \begin{bmatrix}
+\rotZ\fn\theta = \begin{bmatrix}
 \cos\theta & -\sin\theta & 0 \\
 \sin\theta & \hphantom{-{}}\cos\theta & 0 \\
 0 & 0 & 1
 \end{bmatrix}.
 \end{equation}
 
-Using the force expressions $\vect F_{z,x}$, $\vect F_{z,y}$, and $\Fzz$ in superposition allow the force to be calculated between a vertically magnetised magnet and another magnet with arbitrary magnetisation direction. By applying coordinate system transformations to these expressions, arbitrary magnetisation directions can be achieved for the first magnet as well.
+Using the force expressions $\Fzx$, $\Fzy$, and $\Fzz$ in superposition allow the force to be calculated between a vertically magnetised magnet and another magnet with arbitrary magnetisation direction. By applying coordinate system transformations to these expressions, arbitrary magnetisation directions can be achieved for the first magnet as well.
 
-For horizontal $x$-direction magnetisation,
+For horizontal $\ax$ direction magnetisation,
 \begin{equation}\eqlabel{fxxyz}
 \vect F_{x,\{x,y,z\}}\fn{\vect s, \vect S, \magcd, \magn1, \magn2} =
-  \mathbf R_y\fn{\tfrac\pi2}
-  \vect F_{z,\{x,y,z\}}\fn{\vect s_x, \vect S_x, \magcd_x, \magn1, \magn2}
+  \rotY\fn{\tfrac\pi2}
+  \vect F_{z,\{z,y,x\}}\fn{\vect s_x, \vect S_x, \magcd_x, \magn1, \magn2}
 \end{equation}
 where
 \begin{align}
-\vect s_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\vect s}, \\
-\vect S_x &= \Abs{\mathbf R_y\fn{-\tfrac\pi2}\vect S}, \\
-\magcd_x &= \mathbf R_y\fn{-\tfrac\pi2}\magcd,
+\vect s_x &= \Abs{\rotY\fn{-\tfrac\pi2}\vect s}, &
+\vect S_x &= \Abs{\rotY\fn{-\tfrac\pi2}\vect S}, &
+\magcd_x &= \rotY\fn{-\tfrac\pi2}\magcd,
 \end{align}
-and $\mathbf R_y\fn{\theta}$ is the rotation matrix around the $y$-axis:
+and $\rotY\fn{\theta}$ is the rotation matrix around the $\ay$ axis:
 \begin{equation}
-\mathbf R_y\fn\theta = \begin{bmatrix}
+\rotY\fn\theta = \begin{bmatrix}
 \cos\theta & 0 & -\sin\theta \\
 0 & 1 & 0 \\
 \sin\theta & 0 & \hphantom{-{}}\cos\theta \\
 \end{bmatrix}.
 \end{equation}
-Similarly, for horizontal $y$-direction magnetisation,
+Similarly, for horizontal $\ay$ direction magnetisation,
 \begin{equation}\eqlabel{fyxyz}
 \vect F_{y,\{x,y,z\}}\fn{\vect s, \vect S, \magcd, \magn1, \magn2} = \\
-  \mathbf R_x\fn{-\tfrac\pi2}
-  \vect F_{z,\{x,y,z\}}\fn{\vect s_y, \vect S_y, \magcd_y, \magn1, \magn2}
+  \rotX\fn{-\tfrac\pi2}
+  \vect F_{z,\{x,z,y\}}\fn{\vect s_y, \vect S_y, \magcd_y, \magn1, \magn2}
 \end{equation}
 where
 \begin{align}
-\vect s_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\vect s}, \\
-\vect S_y &= \Abs{\mathbf R_x\fn{\tfrac\pi2}\vect S}, \\
-\magcd_y &= \mathbf R_x\fn{\tfrac\pi2}\magcd,
+\vect s_y &= \Abs{\rotX\fn{\tfrac\pi2}\vect s}, &
+\vect S_y &= \Abs{\rotX\fn{\tfrac\pi2}\vect S}, &
+\magcd_y &= \rotX\fn{\tfrac\pi2}\magcd,
 \end{align}
-and $\mathbf R_x\fn{\theta}$ is the rotation matrix around the $x$-axis:
+and $\rotX\fn{\theta}$ is the rotation matrix around the $\ax$ axis:
 \begin{equation}
-\mathbf R_x\fn\theta = \begin{bmatrix}
+\rotX\fn\theta = \begin{bmatrix}
 1 & 0 & 0 \\
 0 & \cos\theta & -\sin\theta \\
 0 & \sin\theta & \hphantom{-{}}\cos\theta \\
@@ -659,7 +661,7 @@ this is the first formalisation of this theory to decompose a diagonal magnetisa
 \subsection{Forces between magnets with relative rotation}
 \seclabel{french-equations}
 
-In 1999, a slew of papers were published by researchers at \emph{Laboratoire
+In 1999, a number of papers were published by researchers at \emph{Laboratoire
 d'Electrotechnique et de Magnétisme de Brest} investigating the forces between
 non-contact magnetic rotational force couplings.
 These are of interest to this
@@ -667,7 +669,7 @@ work because they use an analytical expression for the forces between two
 cuboidal magnets under arbitrary translation, with one inclined at any angle
 around the $\ax$ axis.
 Three papers were published \cite{elies1998,charpentier1999-ietm-mar,charpentier1999-ietm-sep}
-that all contain the force expression of interest, with a fourth \cite{elies1998} containing just the force expression in a single direction.
+that all contain the force expression of interest.
 
 \begin{figure}
   \asyinclude{\jobname/magrot.asy}
@@ -677,43 +679,43 @@ that all contain the force expression of interest, with a fourth \cite{elies1998
 
 Their expressions are re-written here because each separate publication contains different typographical errors.
 The equations here have been reconstructed by comparing the differences and similarities between the equations in the different papers, and re-written in a more compact form.
-Given two magnets located in \threeD/ space, of sizes $\inlinevect{A,B,C}$ and $\inlinevect{a,b,c}$, with the plane of the second rotated by $\theta$ around the $\ax$ axis and their centres separated by a distance $\inlinevect{x_0,y_0,z_0}$, the forces in the $\ay$ and $\az$ directions ($\force{2}$ and $\force{3}$) between the two magnets can be calculated using the following equations.
+Given two magnets located in \threeD/ space, of sizes $\inlinevect{2\hwxX,2\hwyX,2\hwzX}$ and $\inlinevect{2\hwxF,2\hwyF,2\hwzF}$, with the plane of the second rotated by $\mrot$ around the $\ax$ axis and their centres separated by a distance $\inlinevect{\cdx,\cdy,\cdz}$, the forces in the $\ay$ and $\az$ directions ($\force{2}$ and $\force{3}$) between the two magnets can be calculated using the following equations.
 A side-view schematic of this geometry is shown in \figref{magrot}.
 \begin{dmath}
 \force{2} = \frac{\magn1\magn2}{4\pi\permVac}
-  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}^6}
-  f_{y_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
+  \sum_{i_{\hwxX,\hwyX,\hwzX,\hwxF,\hwyF,\hwzF}\in\{0,1\}^6}
+  f_{y_2}\cdot\gp{-1}^{i_\hwxX+i_\hwyX+i_\hwzX+i_\hwxF+i_\hwyF+i_\hwzF}
 \end{dmath},
 \begin{dmath}[label=charpz]
-\force{3}\bigg|_{\theta\neq k\pi} =
-       \frac{-\magn1\magn2}{4\pi\permVac}\cdot\smash{\sum_{i_{a,b,c,A,B,C}\in\{0,1\}^6}}
-        f_{z_2}\cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
+\force{3}\bigg|_{\mrot\neq k\pi} =
+       \frac{-\magn1\magn2}{4\pi\permVac}\cdot\smash{\sum_{i_{\hwxX,\hwyX,\hwzX,\hwxF,\hwyF,\hwzF}\in\{0,1\}^6}}
+        f_{z_2}\cdot\gp{-1}^{i_\hwxX+i_\hwyX+i_\hwzX+i_\hwxF+i_\hwyF+i_\hwzF}
 \end{dmath},
 \begin{dmath}
-f_{y_2} = f_3\fn{u_0 , y_0 , z_0 , \theta , c i_c , C i_C}
+f_{y_2} = f_3\fn{u_0 , \cdy , \cdz , \mrot , \hwzX i_c , \hwzF i_C}
 \end{dmath},
 \begin{dmath}
-f_{z_2} =  \frac{f_3\fn{u_1,v_1,w_1,-\theta,0,0}}{\sin\theta}
-         + \frac{f_3\fn{u_2,v_2,w_2,\theta,0,0}}{\tan\theta}
+f_{z_2} =  \frac{f_3\fn{u_1,v_1,w_1,-\mrot,0,0}}{\sin\mrot}
+         + \frac{f_3\fn{u_2,v_2,w_2,\mrot,0,0}}{\tan\mrot}
 \end{dmath},
 \begin{dgroup}
 \begin{dmath}
-u_0 = x_0 - ai_a + Ai_A
+u_0 = \cdx - \hwxX i_a + \hwxF i_A
 \end{dmath},
 \begin{dmath}
-u_1 = u_0-2x_0
+u_1 = u_0-2\cdx
 \end{dmath},
 \begin{dmath}
-v_1 = -v_2\cos\theta - w_2\sin\theta
+v_1 = -v_2\cos\mrot - w_2\sin\mrot
 \end{dmath},
 \begin{dmath}
-w_1 = v_2\sin\theta - w_2\cos\theta
+w_1 = v_2\sin\mrot - w_2\cos\mrot
 \end{dmath},
 \begin{dmath}
-v_2 = y_0-Ci_C\sin\theta
+v_2 = \cdy-\hwzF i_C\sin\mrot
 \end{dmath},
 \begin{dmath}
-w_2 = z_0-ci_c+Ci_C\cos\theta
+w_2 = \cdz - \hwzX i_c + \hwzF i_C\cos\mrot
 \end{dmath}.
 \end{dgroup}
 This is the auxiliary function used in the above. All dashed variables are
@@ -724,47 +726,14 @@ f_3\fn{u',v',w',\theta',c',C'} &=
   u' f_5\gp{\Log{f_4-u'}-1}
   +\half\gp{f_6^2-{u'}^2}\Log{f_4+f_5} \\
   &\quad +\half u' \pi \Sign{f_5}\Abs{f_6}
-  +u' f_6 \ArcTan{\frac{u' f_4 - u^2 -f_6^2}{f_5 f_6}}
+  +u' f_6 \ArcTan{\frac{u' f_4 - {u'}^2 -f_6^2}{f_5 f_6}}
   +\half f_4 f_5 \,, 
 \end{split}\\
 f_4 &= \sqrt{{u'}^2+f_5^2+f_6^2} \,, \\
-f_5 &= \gp{v'-b i_b}\cos\theta'+\gp{w'-c'}\sin\theta'+B i_B \,, \\
-f_6 &= -\gp{v'-b i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C' \,.
+f_5 &= \gp{v'-\hwyX i_b}\cos\theta'+\gp{w'-c'}\sin\theta'+2\hwyF i_B \,, \\
+f_6 &= -\gp{v'-\hwyX i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C' \,.
 \end{align}
-
-The force in the $\az$ direction is calculated separately if the second
-magnet is not rotated around its axis ($f_{z_2}$ has a singularity
-at $\theta=k\pi$).
-\begin{dgroup}
-\begin{dmath}[label=Fz-pi]
-\force{3}\bigg|_{\theta=k\pi} =
-  \cos\theta\cdot\frac{-\magn1\magn2}{4\pi\permVac}
-  \sum_{i_{a,b,c,A,B,C}\in\{0,1\}^6}f_{z_1}
-  \cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
-\end{dmath},
-\begin{dmath}
-f_{z_1} =
-  \half uw\Log{\frac{r+u}{r-u}}+\half vw\Log{\frac{r+v}{r-v}}+
-  uv\ArcTan{\frac{uv}{wr}-wr}
-\end{dmath},
-\begin{dmath}
-u = x_0-ai_i+Ai_A
-\end{dmath},
-\begin{dmath}
-v = y_0-bi_b+Bi_B+\half B\gp{\cos\theta-1}
-\end{dmath},
-\begin{dmath}
-w = z_0-ci_c+Ci_C+\half C\gp{\cos\theta-1}
-\end{dmath},
-\begin{dmath}
-r = \sqrt{u^2+v^2+w^2}
-\end{dmath}.
-\end{dgroup}
-This equation is similar in form, but not identical, to Akoun~\& Yonnet's equation for the same, \eqref{akoun}.
-
-In order to allow this equation to be used for rotations greater than \SI{\sipi}{radians}, additional terms have been added to accommodate for the translational offset induced by rotating the magnet around its lower-left edge.
-This is necessary as the original equations used the lower-left corner of the magnet as its point of rotation, whereas the equations presented above use the magnet centre.
-The preceding $\cos\theta$ in \eqref{Fz-pi} provides the sign change of the magnetisation, and the $\half\gp{\cos\theta-1}$ terms are used to return the origin of the magnet after 180\textdegree\ rotation to the lower-left corner, where it is expected.
+For $\mrot=k\pi$, \eqref{akoun} of \textcite{akoun1984} should be used instead.
 
 Although these rotated-magnet force equations permit displacements in the $\ax$ direction, there is no published equation for calculating the component of force in this direction.
 Numerical integration techniques are currently the best known method if this force must be calculated \cite{charpentier2001-compel}.
@@ -946,7 +915,7 @@ The force equations between cylindrical magnets are usually more difficult to de
 In early work in this field, \textcite{cooper1973-ietm} presented an integral expression for calculating the force between two cylindical magnets.
 \textcite{nagaraj1988} investigated and compared the force between cuboid and cylindrical magnets with arbitrary displacements using numerical integration to calculate his results; \textcite{furlani1993-ietm,furlani1993-ietm-coupl} calculated the force between radially-aligned ring magnets using a numerical discretisation of the magnet volume.
 \textcite{hull1999-japplphys} presented integral equations for calculating the radial and axial forces between a cylindrical magnet and a superconductor, which is equivalent to the force between two cylindrical magnets, and \textcite{bassani2006-trib-int} presented integral equations for calculating the radial and axial forces between ring magnets.
-The forces between non-coaxial cylindrical magnets were considered by \textcite{agashe2008-applphys,vokoun2009-jmmm}, with a very recent publication under review with the most efficient solution yet presented \cite{conway2013-ietm}.
+The forces between non-coaxial cylindrical magnets were considered by \textcite{agashe2008-applphys,vokoun2009-jmmm}, with a very recent publication in press with the most efficient solution yet presented \cite{conway2013-ietm}.
 All such integral equations require some degree of numerical integration to evaluate, excepting those of Furlani who uses the discretision method instead.
 
 \textcite{babic2008-ietm} and \textcite{ravaud2010-pier} presented closed form expressions for calculating the force between pairs of thin coils (in which there are many turns axially but the coil is modelled as having zero radial thickness).
@@ -959,7 +928,7 @@ This simplification results in a faster execution time and more convenient calcu
 \asyinclude{PhD/Figures/Coil/coil-mag-equiv.asy}
 \caption
 [The equivalence between a permanent magnet and a current-carrying coil.]
-{The equivalence between a permanent magnet of magnetisation $J$ (left) in the positive vertical direction, and a current-carrying coil (right) with equivalent magnetisation $J_{\text{eq.}}=\mu_0 N I/h$ for current $I$ shown flowing anti-clockwise from the top through $N$ axial turns across height $h$.}
+{The equivalence between a permanent magnet of magnetisation $J=\remanence$ (left) in the positive vertical direction, and a current-carrying coil (right) with equivalent magnetisation $J_{\text{eq.}}=\permvac \turnsCoil \current/\lengthCoil$ for current $\current$ shown flowing anti-clockwise from the top through $\turnsCoil$ axial turns across length $\lengthCoil$.}
 \figlabel{coil-mag-equiv}
 \end{figure}
 
