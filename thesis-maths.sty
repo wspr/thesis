@@ -174,6 +174,8 @@
 %%%%%%%%%%%%%%%%%%%%%%%
 %% MAGNETS
 
+\newvariable\incr[nom={Displacement increment}]{\delta}
+
 \newvect\cuboida{V_a}[
   elemcmd=\mlistelem,
   elem={a,b,c}
@@ -196,16 +198,16 @@
 \def\fnmax{\hat \forceMag_{\mathrm{max}}}
 \def\currmax{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
 
-\newcommand\displ{z}
 \newcommand\eccen{y}
 
 \newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio,label=cuboidaspect]{\gamma}
 \newvariable\ratioCoil[nom=Coil aspect ratio]{\beta}
 \newvariable\ratioMag[nom=Cylindrical magnet aspect ratio,label=cylaspect]{\alpha}
+\newvariable\ratioLengthArea[nom={Ratio of magnet length squared to face area}]{\nu}
 
 \newvariable\lengthCub[nom=Cuboid magnet depth,label=cubdept]{a}
 \newvariable\faceCub[nom=Cuboid magnet face side length,label=cubside]{b}
-
+\newvariable\lengthCube[nom=Cube magnet side length,label=cubelength]{c}
 
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -219,23 +221,7 @@
 \newvariable\area[nom=Area]{A}
 \newvariable\surface[nom=Surface]{S}
 \newvariable\diffsurface[nom=Differential surface]{s}
-\newvariable\vecarea[nom=Vector area (direction normal to plane)]{A}
-
-% Fix these!
-\def\x{x}
-\def\y{y}
-\def\z{z}
-\def\vv{v}
-
-\def\xv{\group{\x-\vv}}
-\def\yy{\xi}
-\def\cc{c_1}
-\def\d{c_2}
-\def\q#1{K_#1}
-\def\Q{K}
-
-\let\oldforall\forall
-\def\forall{\,\oldforall\,}
+\newvariable\vecarea[nom=Vector area (direction normal to plane)]{\vect A}
 
 \let\olddot\dot
 \let\oldddot\ddot
@@ -246,14 +232,19 @@
 
 \newvariable\normn[nom=Surface normal vector,sort=n]{\hat{\vect{n}}}
 \newvariable\forceMag[label=FFF,nom=Magnitude of force]{F}
-\newvariable\stiffnessMag[label=KKK,nom=Magnitude of stiffness coefficient]{K}
+\newvariable\forceMagnet[label=Fm,nom=Magnetic force]{F_m}
+\newvariable\stiffnessMag[label=KKK,nom={Magnitude of stiffness characteristic (derivative of force with respect to displacement)}]{K}
 \newvariable\normforceMag[nom=Normalised force magnitude,sort=Fbar]{\bar \forceMag}
 \newmvar\newvect\force{F}[elem={x,y,z}]{nom=Force vector}
 \newmvar\newvect\torque{T}{nom=Torque vector}
 \newmvar\newvect\lever{r}{nom=Lever arm vector}
 
-\newvariable\gravity[label=grav,nom=Gravity force]{g}
+\newvariable\forceGrav[label=forceGrav,nom=Gravity force]{F_g}
+\newvariable\gravity[label=grav,nom=Acceleration due to gravity]{g}
 \newvariable\disp[label=disp,nom=Displacement]{x}
+\let\displ\disp
+
+\newcommand\equil{\text{eq}}
 
 \newmvar\newvect\displacement{x}{nom=Displacement vector}
 %\newvariable\pos[nom=Displacement vector]{\vect{x}}
@@ -340,7 +331,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \newvariable{\mdip}[nom=Magnetic dipole]{\vect m}
-\newcommand{\BHmax}{\gp{\magB\magH}_{\mathrm{max}}}
+\newcommand{\BHmax}{\ensuremath{\gp{\magB\magH}_{\mathrm{max}}}}
 \newmacro \bhcurve {$\magB$/$\magH$ curve}
 \newmacro \Hinf {\ensuremath{H^\infty}}
 
@@ -382,7 +373,8 @@
 \newvariable\stiffness[nom=Stiffness coefficient]{k}
 \newvariable\klin[nom=Linearised stiffness at a certain point]{k_{\mathrm{lin}}}
 
-\newvariable\stiffnessLinear[label=stiffness-coeff,nom={Coefficient of linear stiffness}]{k}
+%\newvariable\stiffnessLinear[label=stiffness-coeff,nom={Coefficient of linear stiffness}]{k}
+\let\stiffnessLinear\stiffness
 \newvariable\stiffnessQuad[nom=Coefficient of quadratic stiffness]{k_2}
 \newvariable\stiffnessDuffing[nom=Coefficient of cubic (Duffing) stiffness]{k_3}
 
@@ -518,7 +510,7 @@
 \let\freqdesign\resfreq
 \newvariable\damping[nom=Damping coefficient,label=qzs-damping]{b}
 
-\newvariable\ccA[nom=Coefficient for empirical magnet force equation]{A}
+\newvariable\ccA[nom=Coefficient for empirical magnet force equation,label=coeffA]{A}
 \newvariable\ccB[nom=Coefficient for empirical magnet force equation,label=coeffB]{B}
 \newvariable\ccC[nom=Coefficient for empirical magnet force equation]{C}
 \newvariable\ccD[nom=Coefficient for empirical magnet force equation]{D}
@@ -798,10 +790,15 @@
 
 \newvariable\mbqmforce[nom=Force vector between inclined magnets in the local coordinate systems of the fixed magnet]{\vect G}
 \newvariable\mbqmagangle[label=theta-mbq,nom=Inlined magnets inclination]{\theta}
+\newvariable\mbqcompmagangle[label=phi-mbq,nom=Inlined magnets inclination (complementary)]{\phi}
 \newvariable\mbqoffset[label=d-mbq,nom=Inclined magnets centres horizontal offset at the nominal position]{d}
 
 \newvariable\mbqunit[nom={Cuboid magnet unit length, cube root of volume},label=mbqunit]{u}
+\let\msize\mbqunit
 \newvariable\mbqlever[label=l-mbq,nom={Lever arm}]{l}
+\newvariable\mbqCoMvec[label=lvec-mbq,nom={Displacement vector between magnet centre and centre of mass}]{\vect l}
+\newvariable\mbqCoMvec[label=tvec-mbq,nom={Lever arm vector }]{\vect t}
+\newvariable\mbqleverdispl[label=pvec-mbq,nom={Displacement vector due to rotation around centre of mass}]{\vect p}
 %\newvariable\mbqmagratio[label=gamma-mbq]{\gamma}
 %\newvariable\mbqvolume[label=V-mbq]{V}
 \let\mbqmagratio\ratioCub
@@ -811,7 +808,8 @@
 \newvariable\mbqdispl[nom=Position vector,label=mbqdispl]{\vect r}
 \newvariable\mbqmdispl[nom=Position vector,label=mbqmdispl]{\vect s}
 
-\newcommand\mbqrot[1]{\mathbf R(#1)}
+%\newcommand\mbqrot[1]{\mathbf R(#1)}
+\let\mbqrot\rotZ
 
 %%%%%
 
