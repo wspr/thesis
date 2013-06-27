@@ -34,6 +34,7 @@
 \newmacro \Matlab {Matlab}
 \newmacro \maglev {maglev}
 \newmacro \dof    {degree of freedom}
+\newmacro \dofs    {degrees of freedom}
 \newmacro \BnK {Br\"uel~\& Kj\ae r}
 \newmacro \magnetorh {magnetorheological}
 \newmacro \vibneut {vibration neutraliser}
@@ -91,7 +92,7 @@
   process=auto,
   crop=pdfcrop,
   ps2pdf-options={-dCompatibilityLevel=1.4 -dPDFSETTINGS=/prepress},
-  cleanup={.tex,.dvi,.ps,.pdf,.log,.aux,-blx.bib,%
+  cleanup={.tex,.dvi,.ps,.pdf,.log,-blx.bib,%
            .nav,.out,.out.ps,.pfg,.snm,.toc,.mp}
   ]{pstool}
 
@@ -131,7 +132,7 @@
 
 %%% NOMEN
 
-\usepackage[style=super3colheader]{glossaries}
+\usepackage[style=super3colheader,section,sanitize]{glossaries}
 \glsdisablehyper
 
 \makeglossaries
@@ -168,8 +169,8 @@
     sortcites,
     date=short,
     bibencoding=inputenc,
-    maxnames=3,
-    minnames=2,
+    maxnames=2,
+    minnames=1,
     firstinits=true,
     sorting=nyt,
     bibstyle=numeric,
@@ -197,7 +198,7 @@
 
 \EndPreamble
 
-\setkeys{Gin}{quiet} % Why does this need to be after?
+% \setkeys{Gin}{quiet}
 
 \RequirePackage[inline]{asymptote}
 \renewcommand\asydir{asy}

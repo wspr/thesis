@@ -133,7 +133,7 @@ As the number of magnets per wavelength of magnetisation $\mupmagperwave$ increa
 
 Note the presence in \figref{halbach,multipole-variables} and in general of an `end magnet' that adds symmetry to the discretisation of the magnetisation. This extra magnet is necessary to balance the forces in the horizontal direction.
 
-Provided that enough information is specified and it is internally consistent, multipole arrays can be defined in terms of any combination of the variables listed above when defining the geometry of each array.
+Provided that enough information is specified and it is internally consistent, multipole arrays can be defined in terms of any combination of the variables listed previously when defining the geometry of each array.
 Rather than explicitly enumerating the location and magnetic orientation of each magnet, software written to calculate multipole array forces (\secref*{repro-research}) requires just an axis with which to align the array and the facing direction of its `strong' side.
 Input variables can be specified only as necessary by the user, and the unspecified properties of the multitude of magnets in the arrays can be inferred directly.
 
@@ -142,14 +142,14 @@ Using a collection of conditional statements becomes cumbersome, since many perm
 Furthermore, additions of variables to the code become difficult since each path through code must be analysed and possibly edited to correspond to the overall changes.
 For this reason, a mathematical approach to processing input variables and calculating the unspecified ones is presented.
 
-Since the variables defined above are not all orthogonal, it is useful to express the coupled ones (only) as equations of constraint which need to be solved simultaneously:
+Since the variables defined previously are not all orthogonal, it is useful to express the coupled ones (only) as equations of constraint which need to be solved simultaneously:
 \begin{align}\eqlabel{mup-cons}
-\mupwavelength &= \mupmagperwave \muplength, & 
-\muplength &= \mupNmag \mupmaglength, & 
-\mupNwaves &= \mupNmag/\mupmagperwave, & 
+\mupwavelength &= \mupmagperwave \muplength, &
+\muplength &= \mupNmag \mupmaglength, &
+\mupNwaves &= \mupNmag/\mupmagperwave, &
 \mupmagperwave &= 360\text{\textdegree}/\mupmagrot,
 \end{align}
-where, for convenience below, the additional end magnet (for symmetry) is omitted.
+where, for convenience, the additional end magnet (for symmetry) is omitted.
 Taking logarithms and writing these constraints \eqref{mup-cons} in matrix form yields
 \begin{equation}
 \eqlabel{mup-cons-matrix}
@@ -227,11 +227,11 @@ This process is generalisable provided that the specified variables are defined 
 Furthermore, in the case that more variables are specified than required, the unspecified variables will still be calculated correctly provided that the specified variables are consistent with \eqref{mup-cons}.
 If the specified variables are not consistent the solution process will fail, providing a simple method to check the validity of the input.
 
-Using the above process yields properties of the multipole arrays as defined in \eqref{mup-cons}.
+Using this process yields properties of the multipole arrays as defined in \eqref{mup-cons}.
 As previously mentioned, it is undesirable to have an integer number of wavelengths of magnetisation in the magnet arrays such that $\mupNmag=\mupNwaves\mupmagperwave$ as the horizontal force between two arrays is non-zero when aligned vertically.
 It is preferable to achieve zero lateral force by adding an additional end magnet such that $\mupNmag=\mupNwaves\mupmagperwave+1$.
-However, this equation cannot be represented by the linear (after taking logarithms) algebra above.
-Therefore, after the solution process defined above is taken, some additional processing to handle these cases is required.
+However, this equation cannot be represented in the linear (after taking logarithms) algebra of \eqref{mup-cons-known}.
+Therefore, after the solution process defined previously is taken, some additional processing to handle these cases is required.
 
 
 %%%%%%%%%%%%%%%%%
@@ -349,7 +349,7 @@ Since the force improvement with adjusting $\mupqratio$ is only significant for 
 
 \subsubsection{Separation between successive magnets}
 
-In the above analysis, all calculations have been performed assuming that there is zero separation between successive magnets in the multipole arrays.
+In the previous analysis, all calculations have been performed assuming that there is zero separation between successive magnets in the multipole arrays.
 If the arrays are constructed from standard magnets, there will usually be a thin coating on the magnets to prevent corrosion.
 By allowing some additional separation between the magnets, it may simplify the construction of the arrays to use a non-magnetic former, in which solid walls are used to locate and hold each magnet in place.
 The magnets in this case will have a small separation between their faces in the direction in which they are stacked; it is important to evaluate the influence this separation has on the generated forces.
@@ -360,7 +360,7 @@ The force--displacement characteristic was calculated for the arrays while varyi
 The results are presented in terms of normalised vertical displacement $\mupvdispl/\mupheight$ and normalised separation distance $\mupfacegap/\mupmaglength$.
 
 Even comparatively thin wall thicknesses compared to the magnet size has a noticeable effect on the forces generated at small vertical displacements $\mupvdispl$ between the arrays.
-The far-field forces are less affected, implying for large multipole array structures it is indeed suitable to add a magnet separation using a nonmagnetic former to set the magnets in place.  
+The far-field forces are less affected, implying for large multipole array structures it is indeed suitable to add a magnet separation using a nonmagnetic former to set the magnets in place.
 As shown in the figure, however, once the separation distance becomes large enough, it is better to simply use opposing magnets; the magnet separation is so large that the magnetic interaction between the magnets is limited to the directly opposing pairs.
 Since the magnetic force between opposing parallel magnets is less than anti-parallel opposing magnets (recall \secref*{cube-compare-orth}), this arrangement results in smaller forces than having a set of widely spaced magnets all magnetised in the same direction (\figref{mup-sep-eq}).
 
@@ -450,12 +450,12 @@ This design requires magnets with \ang{45} magnetisation directions; it is possi
 Recent work in this area has suggested more complex structures for optimising the field strength or repulsion force generated by planar arrays, including using \threeD/ variations in magnetisation \cite{choi2008,choi2010-ietm}, triangular as well as rectangular cross-section magnets \cite{cho2001}, and using pyramidal-frustum-shaped magnets \cite{lee2006-mx,janssen2009-ietm} to stack with less empty space than the planar- or quasi-Halbach arrays.
 A variation on the planar- and quasi-Halbach array has also been suggested \cite{min2010-ietm}.
 This is insufficient scope in this work to compare the broad range of possibilities available.
-An example is shown demonstrating a simple comparison between the more straightforward arrays presented above.
+An example is shown demonstrating a simple comparison between the more straightforward arrays presented previously.
 
 \subsection{Equations describing planar magnetisation patterns}
 
 The planar magnet arrays discussed can be considered to be composed of $N_x\times N_y$ magnets each with magnetisation vector $\magM_{ij}$ for $i\in\{1\dots N_x\}$ and $j\in\{1\dots N_y\}$.
-The planar designs have periodic magnetisations as functions of $i$ and $j$, which are described below in terms of normalised magnetisation $\magN = \magM/\remanence$, where $\remanence$ is the remanence magnetisation of the magnet.
+The planar designs have periodic magnetisations as functions of $i$ and $j$, which are described following in terms of normalised magnetisation $\magN = \magM/\remanence$, where $\remanence$ is the remanence magnetisation of the magnet.
 For example, the normalised magnetisation of a homogeneous magnet aligned vertically facing up would be $\magN=\inlinevect{0,0,1}\T$.
 In the equations to follow, the arrays are assumed to be aligned in the $\ax$--$\ay$ plane with their magnetic field extending largely into the $+\az$ direction (\ie, facing `up'); for arrays facing down in the $-\az$ direction, the normalised magnetisation in the $\az$ direction should have reversed sign.
 
@@ -493,7 +493,7 @@ i & \mupmagpol+\mupmagrot\gp{i-1} & \magN\T \\
 
 \subsubsection{Planar Halbach array}
 
-In the planary Halbach array, the \emph{directions} of magnetisation are found from the addition of two orthogonal linear Halbach array magnetisations; however, as written below this results in magnets having greater than unity normalised magnetisation, which implies that stronger than regular magnets would be used.
+In the planary Halbach array, the \emph{directions} of magnetisation are found from the addition of two orthogonal linear Halbach array magnetisations; however, as written following this results in magnets having greater than unity normalised magnetisation, which implies that stronger than regular magnets would be used.
 \begin{dmath}
 \magN\fn{i,j} = \matr{}{\Cos{\mupmagpolx+\mupmagrot\gp{i-1}} ; \Cos{\mupmagpoly+\mupmagrot\gp{j-1}} ; \Sin{\mupmagpolx+\mupmagrot\gp{i-1}} + \Sin{\mupmagpoly+\mupmagrot\gp{j-1}}}
 \end{dmath},
