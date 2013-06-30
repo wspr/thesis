@@ -23,6 +23,15 @@
 \newacro{PID}
 %\newacro{PI}
 
+\DeclareRobustCommand\maggrade[1]{%
+  \edef\@tempa{\rmdefault}%
+  \ifx\f@family\@tempa
+    \textsc{n#1}%
+  \else
+    N#1%
+  \fi
+}
+
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newcommand\newmacro[2]{\def#1/{#2}}
@@ -79,8 +88,9 @@
 
 \RequirePackage[T1]{fontenc} % sane font encoding
 \RequirePackage{textcomp} % provide lots of new symbols
-\RequirePackage{lmodern} % for sensible sans and tt font
+\RequirePackage{lmodern}
 \RequirePackage[sc,osf]{mathpazo}% for math
+%\RequirePackage[defaultsans]{lato}
 \RequirePackage{microtype}
 \RequirePackage{pifont}
 \newcommand\diameter{\Pisymbol{psy}{'306}}
