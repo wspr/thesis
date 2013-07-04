@@ -1,4 +1,4 @@
-size(0,6cm);
+size(0,8cm);
 
 texpreamble("
 \providecommand\nforceZ{f_z(d,h)}\
@@ -19,7 +19,7 @@ ht=3,
 xover=0.7,
 xmax=gp+xover;
 
-real u=0.6;   // axes overshoot
+real u=0.7;   // axes overshoot
 real fmax, feq;
 real t=0.05; // tick length
 
@@ -60,8 +60,6 @@ draw(t2+(0,ah)--(t1.x,t2.y+ah),Arrows);
 label("$2\dmax/\mdim$",((t1.x+t2.x)/2,t2.y+ah),N);
 
 // bound labels
-label("\vbox{\baselineskip=0.9\baselineskip\hbox{Upper}\hbox{bound}}",(-xmax,fmax),W);
-label("\vbox{\baselineskip=0.9\baselineskip\hbox{Lower}\hbox{bound}}",(-xmax,fmin),W);
 
 draw(force,linewidth(1pt)+squarecap);
 
@@ -69,17 +67,20 @@ draw(force,linewidth(1pt)+squarecap);
 draw((-xmax,0)--(u,0),Arrows(size=4pt));
 draw((0,-u)--(0,ht),Arrows(size=4pt));
 label("Normalised displacement, $\ndispZ$",(-xmax/2,-u));
-label("\vbox{\baselineskip=0.9\baselineskip\hbox{Normalised}\hbox{force, $\nforceZ$}}",(0,0.65 ht),align=E);
+label("\vbox{\hbox{Normalised}\hbox{force, $\nforceZ$}}",(0,1.1 ht),align=E);
 
 // ticks
 draw((-ee,-t)--(-ee,+t));
 draw((-heq,-t)--(-heq,+t));
 draw((-gp,-t)--(-gp,+t));
 draw((-t,feq)--(t,feq));
-draw((-t,-heq+dmax)--(t,-heq+dmax));
+draw((-t,fmax)--(t,fmax));
+draw((-t,fmin)--(t,fmin));
 
 // axes labels
 label("$\feq{}$",(0,feq),E);
+label("$\nforceZ{1,0}$",(0,fmin),E);
+label("$\nforceZ{1,-\ngap+1}$",(0,fmax),E);
 
 label("\strut$-\epsilon$",(-ee,0),S);
 label("\strut$\heq{}$",(-heq,0),S);
