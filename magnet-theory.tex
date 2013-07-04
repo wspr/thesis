@@ -108,13 +108,13 @@ The performance of a magnet is linked to its behaviour under demagnetisation, as
 The behaviour is shown by the \bhcurve/ of the magnetic material, an example of which is shown for an ideal magnet in \figref{BHcurve}.
 Two important features are shown in the \bhcurve/ indicated in \figref{BHcurve}.
 First, the remanence of the magnet, $\remanence=\permvac\Msat$, is the value used to indicate the `strength' of the magnet alone corresponding to its saturation magnetisation.
-The remanence refers to the amount of magnetic flux density that is measured in the absence of an applied external magnetic field, and it is a common term in practise since the internal magnetisation of a magnet $\Msat$ cannot be measured directly.
+The remanence refers to the amount of magnetic flux density that is measured in the absence of an applied external magnetic field, and it is a common term in practice since the internal magnetisation of a magnet $\Msat$ cannot be measured directly.
 
 The second feature of interest on the \bhcurve/ is the coercivity, $\coerce$, which is the amount of magnetic field strength required to reduce the magnetic flux density within the magnet to zero.
 The larger the coercivity, the greater the ability of a permanent magnet to resist demagnetisation due to the influence of external magnetic fields.
 For the purposes of this thesis, rare earth magnets will be considered which have sufficiently large coercivities to avoid demagnetisation effects.
 
-For theoretical magnetic force analysis (covered in \secref{magnet-forces} and later), the `strength' value to model the permanent magnets is defined in practise by the remanence of the magnet.
+For theoretical magnetic force analysis (covered in \secref{magnet-forces} and later), the `strength' value to model the permanent magnets is defined in practice by the remanence of the magnet.
 For cases such as finite element analysis, it can be necessary to instead define the permeability and coercivity of the magnets.
 In which case, it can be convenient to calculate the coercivity with the relation
 \begin{dmath}
@@ -358,7 +358,7 @@ Anti-parallel magnets (`negative magnetisation') corresponds to the secondary ma
 
 The forces between two $\Fzz$ parallel or anti-parallel magnets with remanences $\magn1$ and $\magn2$ and geometry defined previously is compactly written as six nested summations of intermediate expressions in $\ax$, $\ay$, and $\az$ directions:
 \begin{equation}\eqlabel{akoun}
-\Fzz = \frac{\magn1\magn2}{4\pi\mu_0}
+\Fzz = \frac{\magn1\magn2}{4\pi\permVac}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
   \hspace{-5mm}% space hack
   \Fzznode\fn{\cornerd_{i,j,k,l,p,q}}
@@ -459,7 +459,7 @@ The signs of their equations have been reversed for consistency with \eqref{akou
 
 The force on a magnet magnetised in the $\ay$ direction due to its interaction with a magnet magnetised in the $\az$ direction is \parencite{allag2009-sensorletters}
 \begin{dmath}[label=orth-magforce]
-\Fzy = \frac{\magn1\magn2}{4\pi\mu_0} \sum_{i,j,k,l,p,q\in\{0,1\}^6} \Fzynode\fn{\bm \delta}\cdot\gp{-1}^{i+j+k+l+p+q}
+\Fzy = \frac{\magn1\magn2}{4\pi\permVac} \sum_{i,j,k,l,p,q\in\{0,1\}^6} \Fzynode\fn{\bm \delta}\cdot\gp{-1}^{i+j+k+l+p+q}
 \end{dmath}
 Again, the distance between the `corner nodes' of each magnet is given by
 \begin{dmath}
@@ -872,7 +872,7 @@ It is interesting to analyse their approach used to derive their equations, as i
 The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets.
 Their expression for the torque (on the second magnet) can be written as per the previous style in the following form:
 \begin{equation}\eqlabel{torque}
-\Tzz=\frac{\magn1\magn2}{4\pi\mu_0}
+\Tzz=\frac{\magn1\magn2}{4\pi\permVac}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
   \bm\psi_{i,j,k,l,p,q}
   \cdot
@@ -889,7 +889,7 @@ The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner 
 \end{equation}
 where $\vect f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
 \begin{equation}\eqlabel{torqu-2}
-\vect f_{j,l,q}=\tfrac{\magn1\magn2}{4\pi\mu_0}
+\vect f_{j,l,q}=\tfrac{\magn1\magn2}{4\pi\permVac}
   \!\!\!\sum_{i,k,p\in\{0,1\}^3}\!\!\!
   \Fzznode\fn{\magcd_{i,j,k,l,p,q}}
   \cdot
@@ -988,7 +988,7 @@ These expressions can be used with superposition to calculate the forces between
 The magnetic system of interest here consists of two coaxial cylindrical magnets or current-carrying coils which have a relative axial displacement between them, as shown in \figref{cyl-schem}.
 After simplification of the work of \textcite{ravaud2010-ietm}, the equation for calculating axial force $\Fax$ is given by~\cite{robertson2011-ietm}
 \begin{dmath}[label=simpl4]
-\Fax = \frac{\magn1 \magn2}{2\mu_0} \sum_{i=1}^2 \sum_{j=3}^4 \m1\m2\m3 f_z \gp{-1}^{i+j}
+\Fax = \frac{\magn1 \magn2}{2\permVac} \sum_{i=1}^2 \sum_{j=3}^4 \m1\m2\m3 f_z \gp{-1}^{i+j}
 \end{dmath},
 where the intermediate expression $f_z$ is defined in terms of complete elliptic integrals of the first, second, and third kind ($\EllipticK{m}$, $\EllipticE{m}$, and $\EllipticPi{n,m}$, respectively)
 \begin{dmath}[label=simpl4i]
