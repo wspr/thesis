@@ -13,7 +13,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 Before launching into detail into the various topics under investigation, this section briefly touches on the issues addressed over the entire thesis: vibrations and their isolation and suppression in \secref{vibrations-summary-intro}; permanent magnets and their role in the design of supporting structures and other devices in \secref{magnets-summary-intro}; and `\qzs/' systems, which unify in this thesis the fields of vibrations and magnets, in \secref{qzs-summary-intro}.
-The remainder of this chapter is then devoted to investigating these three broad areas in more detail in \secrangeref{vibrations-explore}{magnetsisolation-apps}, concluding with a discussion on reproducible research (\secref*{repro-research}) and the structure and contributions of this thesis (\secref*{thesis-structure}).
+The remainder of this chapter is then devoted to investigating these three broad areas in more detail in \secrangeref{vibrations-explore}{magnetsisolation-apps}, concluding with the structure and contributions of this thesis (\secref*{thesis-structure}).
 
 
 \subsection{The problem of vibrations}
@@ -138,9 +138,9 @@ This behaviour is referred to as `vibration suppression' in this thesis.
 %A practical example of this sort of vibration problem is a washing machine that causes itself to vibrate through a rotating imbalance; the imbalance causes oscillations in the drum which, when great enough, forces the drum off its axis of rotation. \note{A common problem in our household. Just have to learn to arrange the washing carefully inside the drum.\footnotemark} \footnotetext{Our washing machine has since broken. Imbalance matters!}
 
 \begin{figure}
-  \subbottom[Vibration suppression from disturbance force $\forceDisturb$.\figlabel{simple-suppression}]{\asyinclude{PhD/Figures/Systems/vibration-sdof}}
+  \subbottom[Vibration suppression from disturbance force $\forceDisturb$.\figlabel{simple-suppression}]{\asyinclude{\jobname/vibration-sdof}}
   \hfil
-  \subbottom[Vibration isolation from disturbance input $\dispBase$.\figlabel{simple-isolation}]{\asyinclude{PhD/Figures/Systems/vibration-base}}
+  \subbottom[Vibration isolation from disturbance input $\dispBase$.\figlabel{simple-isolation}]{\asyinclude{\jobname/vibration-base}}
   \lofcaption{Two main varieties of vibration control problem.}
   {
     In both cases, mass $\mass$ is being excited; input force $\forceIn$ can be generated using feedforward or feedback control to minimise the displacement $\dispMass$ of the mass.
@@ -224,25 +224,25 @@ Substituting the feedback force \eqref{feedback-force} into the system dynamics 
 \end{dmath}.
 The transfer function between base and mass displacement for this generalised feedback case is
 \begin{dmath}[label=tf-genfeedback]
-  \frac{\laplaceMass\fn{s}}{\laplaceBase\fn{s}} =
+  \frac{\laplaceMass\fn{\s}}{\laplaceBase\fn{\s}} =
   \frac{
-          \gainAcc s^2 +
-          \gp{\dampingRel+\gainVel}s +
+          \gainAcc \s^2 +
+          \gp{\dampingRel+\gainVel}\s +
           \gp{\stiffnessRel+\gainDisp}
        }
        {
-          \gp{\mass+\gainAcc+\gainSkymass} s^2
-         +\gp{\dampingRel+\gainSkyhook+\gainVel} s
+          \gp{\mass+\gainAcc+\gainSkymass} \s^2
+         +\gp{\dampingRel+\gainSkyhook+\gainVel} \s
          +\gp{\stiffnessRel+\gainDisp+\gainSkyspring}
        }
 \end{dmath},
-where $s=\ii\freq$ is the Laplace variable.
+where $\s=\ii\freq$ is the Laplace variable.
 From \eqref{isolation-feedback} it can be seen that there is an exact equivalence between the feedback gains of three of the different signals and a corresponding physical parameter of the system.
 Relative displacement and velocity feedback correspond to a variation in the stiffness and damping, respectively, and absolute acceleration feedback to the mass.
 
 \eqref{tf-genfeedback} describes a system which is stable for characteristic solutions of the denominator (\ie, the poles of the system) which have negative real components. These can be analysed easily with the quadratic equation. Note that the feedback gains for the absolute versus relative signals always appear together in the denominator of the transfer function (\eg, $\gainAcc+\gainSkymass$), and hence affect the stability of the system identically.
 
-To illustrate the effect of various control gains, from transfer function \eqref{tf-genfeedback} the transmissibility $\Abs{\transmissibility}$ will be drawn in the following sections with parameters $\mass=\SI{1}{kg}$, $\damping=\SI{0.5}{kg/s}$ and $\stiffness=\SI{10}{N/m}$, and each of the six control gains $\gainArbitrary$ varied independently.
+To illustrate the effect of various control gains, from transfer function \eqref{tf-genfeedback} the transmissibility magnitude $\Abs{\transmissibility}$ will be drawn in the following sections with parameters $\mass=\SI{1}{kg}$, $\damping=\SI{0.5}{kg/s}$ and $\stiffness=\SI{10}{N/m}$, and each of the six control gains $\gainArbitrary$ varied independently.
 
 \subsubsection{Displacement feedback}
 \Figref{disp-vs-sky} shows the effect of varying the control gains for relative displacement and absolute displacement ($\gainDisp$ and $\gainSkyspring$).
@@ -807,9 +807,9 @@ We start with the equation for the magnetic field; when there are no external cu
 \begin{dmath}[compact]
 \grad\magB = 0 \implies \divgrad\magB = 0
 \end{dmath}.
-The potential energy of a magnet is proportional to the magnetic field it is subjected to, $U = -\magM\bdot\magB$, so when the magnetisation is time-invariant  (as in the case of a permanent magnet), and as a consequence
+The potential energy of a magnet is proportional to the magnetic field it is subjected to, $\potentialEnergy = -\magM\bdot\magB$, so when the magnetisation is time-invariant  (as in the case of a permanent magnet), and as a consequence
 \begin{dmath}[compact,label=earnshaw]
-\divgrad U = \divgradxyz{U} = 0
+\divgrad \potentialEnergy = \divgradxyz{\potentialEnergy} = 0
 \end{dmath}.
 The double derivatives of the energy are the stiffnesses in each direction.
 For a levitating magnet in a state of stable equilibrium, these three terms must be greater than zero.
@@ -963,10 +963,10 @@ magnetic field at velocity $\velocity$ is given by
 \magJeddy = \conductivity\gp{\velocity \cross \magflux}.
 \end{dmath}
 where $\conductivity$ is the conductivity of the sheet. The force
-$\forceEddy$ due to these eddy currents is the integral over the conductor volume $V$
+$\forceEddy$ due to these eddy currents is the integral over the conductor volume $\volume$
 \begin{dmath}[compact]
-\forceEddy = \Int{\magJeddy \cross \magflux}{v,V}
-           = \conductivity\Int{\gp{\velocity \cross \magflux}\cross \magflux}{v,V}
+\forceEddy = \Int{\magJeddy \cross \magflux}{\diffvolume,\volume}
+           = \conductivity\Int{\gp{\velocity \cross \magflux}\cross \magflux}{\diffvolume,\volume}
 \end{dmath},
 which is anti-parallel to $\velocity$. Due to the
 cross terms, the maximum force is obtained for magnetic fields
@@ -1139,17 +1139,17 @@ Most obviously, the shape of the frequency response is not independent of the am
 
 Consider the stable single \dof/ system
 \begin{dmath}[label=duffing]
-\mass \ddot x + \damping \dot x + \stiffnessDuffing \gp{x+s}^3 = 0,
+\mass \ddot \disp + \damping \dot \disp + \stiffnessDuffing \gp{\disp+\disturb}^3 = 0,
 \end{dmath}
-where $s$ is an induced displacement disturbance.
-At the operating position $x=0$, the nonlinear spring stiffness is $3kx^2|_{x=0}=0$.
-For a disturbance $s$, the spring is perturbed and generates a reaction force of $ks^3$ on the mass.
-The stiffness here is $3ks^2$; \ie, dependent on the amplitude of disturbance.
+where $\disp$ is displacement and $\disturb$ is an induced displacement disturbance.
+At the operating position $\disp=0$, the nonlinear spring stiffness is $3\stiffness\disp^2|_{\disp=0}=0$.
+For a disturbance $\disturb$, the spring is perturbed and generates a reaction force of $\stiffness \disturb^3$ on the mass.
+The stiffness here is $3\stiffness\disturb^2$; \ie, dependent on the amplitude of disturbance.
 The ramifications of this nonlinear force on the vibratory response of the system are not exactly straightforward.
 
 \textcite{tentor2001} analysed a spring generated by repulsion magnets which behaved as a Duffing oscillator for large amplitude vibrations:
 \begin{dmath}
-F_{\text{Duffing}} = \stiffnessLinear x + \stiffnessDuffing x^3.
+\forceDuffing = \stiffnessLinear \disp + \stiffnessDuffing \disp^3.
 \end{dmath}
 The nonlinear dynamics only affected the response of the system when the nonlinear term dominated over the linear term.
 For a \qzs/ spring, $\stiffnessLinear=0$ and the nonlinear dynamics are more significant.
@@ -1162,7 +1162,7 @@ For the purposes of broadband vibration isolation, however, it is instructive to
     \hspace*{-1.3cm}\psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-a}
     \hspace*{+0.5cm}\psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-c}
   \end{wide}
-  \caption[Frequency response simulations of a nonlinear dynamic system with cubic stiffness with random noise input.]{Frequency response simulations of nonlinear dynamic system \eqref{duffing} with cubic stiffness with random noise inputs of varying variance $S$.}
+  \caption[Frequency response simulations of a nonlinear dynamic system with cubic stiffness with random noise input.]{Frequency response simulations of nonlinear dynamic system \eqref{duffing} with cubic stiffness with random noise inputs of varying variance $\varianceNoise$.}
   \figlabel{cubic-resonance-disturb}
 \end{figure}
 
@@ -1176,7 +1176,7 @@ For the purposes of broadband vibration isolation, however, it is instructive to
 \end{figure}
 
 The square root of the ratio of the power spectra, sometimes known as the variance gain, is used to examine the non-linear system in the frequency domain, as the transmissibility removes nonlinear components of the original signals \cite{savaresi2007}.
-A comparison between the linear transmissibility and the variance gain of the system for $s$ and $x$ is shown in \figref{cubic-resonance-disturb}, where $s$ is a white noise signal of variance $S$.
+A comparison between the linear transmissibility and the variance gain of the system for $\disturb$ and $\disp$ is shown in \figref{cubic-resonance-disturb}, where $\disturb$ is a white noise signal of variance $\varianceNoise$.
 Parameters used in the simulation are shown in \tabref{duffing-param}.
 It can be seen that since the linear transmissibility attempts to reject non-correlated linear signals, as the input amplitude increases its response becomes noisier and much of the shape of the power spectrum is lost due to this.
 Note that the resonance peak changes frequency with input amplitude.
@@ -1198,9 +1198,9 @@ Damping           & $\damping$ & \SI{0.1}{kg/s} \\
 
 The results of the nonlinear simulation can be compared with a linearised equivalent of the same system given by
 \begin{dmath}[label=duffing-lin]
-\mass \ddot x + \damping \dot x + \klin\gp{x+s} = 0,
+\mass \ddot \disp + \damping \dot \disp + \klin\gp{\disp+\disturb} = 0,
 \end{dmath}
-which has a linear stiffness $\klin=3\stiffness S^2$ equivalent to the stiffness of the nonlinear spring at the variance displacement.
+which has a linear stiffness $\klin=3\stiffness \varianceNoise^2$ equivalent to the stiffness of the nonlinear spring at the variance displacement.
 Frequency response simulations of this linearised system are shown in \figref{cubic-resonance-disturb-linear}.
 
 When comparing against the nonlinear response, the linearised system response is smaller than the \qzs/ response in some cases, but especially as the input amplitude increases and the nonlinearities become stronger.
@@ -1214,8 +1214,8 @@ For completeness, this section covers the opposite of \qzs/ systems: with a diff
 \cite{nijsse2001,mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2003c,mizuno2010-jvc} and later being extended to multi-\dof/ \cite{hoque2006,mizuno2007}.
 The quasi--infinite stiffness effect is produced with a series combination of a positive stiffness and a negative stiffness spring such that the resultant stiffness is given by
 \begin{dmath*}[compact]
-  k_T = \frac{ k_1 k_2 }{ k_1 + k_2 } = \infty
-  \condition{when $ k_2 = -k_1 $}
+  \stiffness_T = \frac{ \stiffness_1 \stiffness_2 }{ \stiffness_1 + \stiffness_2 } = \infty
+  \condition{when $ \stiffness_2 = -\stiffness_1 $}
 \end{dmath*}.
 \textcite{xing2005} formalised the idea of \qzs/ and quasi--infinite stiffness systems.
 

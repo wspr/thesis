@@ -132,7 +132,8 @@
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
       }%
-    \protected\def\noexpand #1{\noexpand\gls{\nomenlabel}}%
+%    \protected\def\noexpand #1{\noexpand\gls{\nomenlabel}}%
+    \protected\def\noexpand #1{}%
    }
  }
 
@@ -157,7 +158,8 @@
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
       }%
-    \exp_not:N #1 \exp_not:N #2 { {\exp_not:N \gls{\nomenlabel} } } [ \exp_not:n {#4} ]
+%    \exp_not:N #1 \exp_not:N #2 { {\exp_not:N \gls{\nomenlabel} } } [ \exp_not:n {#4} ]
+    \exp_not:N #1 \exp_not:N #2 {  } [ \exp_not:n {#4} ]
    }
  }
 \errorcontextlines=999
@@ -221,6 +223,7 @@
 \newvariable\area[nom=Area]{A}
 \newvariable\surface[nom=Surface]{S}
 \newvariable\diffsurface[nom=Differential surface]{s}
+\newvariable\diffvolume[nom=Differential volume,label=diffvolume]{v}
 \newvariable\vecarea[nom=Vector area (direction normal to plane)]{\vect A}
 
 \let\olddot\dot
@@ -230,6 +233,8 @@
 
 \newvariable\e[nom={Euler's number, the natural logarithm base, $\approx 2.71828$}]{e}
 
+\newvariable\varianceNoise[nom=White noise variance]{S_w}
+\newvariable\forceDuffing[nom=Duffing spring force]{F_{\text{Duffing}}}
 \newvariable\normn[nom=Surface normal vector,sort=n]{\hat{\vect{n}}}
 \newvariable\forceMag[label=FFF,nom=Magnitude of force]{F}
 \newvariable\forceMagnet[label=Fm,nom=Magnetic force]{F_m}
@@ -243,6 +248,7 @@
 \newvariable\gravity[label=grav,nom=Acceleration due to gravity]{g}
 \newvariable\disp[label=disp,nom=Displacement]{x}
 \let\displ\disp
+\newvariable\disturb[nom=Disturbance,label=disturbance]{s}
 
 \newcommand\equil{\text{eq}}
 
@@ -382,15 +388,18 @@
 \newvariable\ii[nom=The imaginary number $\sqrt{-1}$]{i}
 \newvariable\freq[nom=Frequency]{\omega}
 
-\newvariable\dispBase[nom=Base displacement]{x_1}
+\def\maybedot{}
+\newvariable\dispBase[nom=Base displacement]{\maybedot x_1}
 \newvariable\laplaceBase[nom={Base response, Laplace domain}]{X_1}
-\newcommand\velBase{\dot x_1}
-\newcommand\accBase{\ddot x_1}
+\newcommand\velBase{{\let\maybedot\dot \dispBase}}
+\newcommand\accBase{{\let\maybedot\ddot \dispBase}}
 
-\newvariable\dispMass[nom=Displacement of the vibration mass]{x_2}
+\newvariable\dispMass[nom=Displacement of the vibration mass]{\maybedot x_2}
 \newvariable\laplaceMass[nom={Vibration mass response, Laplace domain}]{X_2}
-\newcommand\velMass{\dot x_2}
-\newcommand\accMass{\ddot x_2}
+\newcommand\velMass{{\let\maybedot\dot \dispMass}}
+\newcommand\accMass{{\let\maybedot\ddot \dispMass}}
+
+\newvariable\s[nom=Laplace variable,label=laplace-s]{s}
 
 \newvariable\massAbsorb[nom=Vibration neutraliser mass]{m_a}
 \newvariable\dispAbsorb[nom=Vibration neutraliser displacement]{x_a}
@@ -414,7 +423,7 @@
 \newvariable\forceDisturb[label=gg,nom=Force disturbance]{g}
 \newvariable\laplaceForceDisturb[label=laplaceG,nom={Force disturbance response, Laplace domain}]{G}
 
-\newfunc\transmissibility{T}[elem=\ii\freq,index=1]
+\newmvar\newfunc\transmissibility{T}[elem=\ii\freq,index=1]{nom=Transmissibility,label=transmissibility}
 
 \newcommand\gainArbitrary{g_{(\cdot)}}
 \newvariable\gainDisp[nom=Feedback gain on relative displacement]{g_d}
@@ -435,6 +444,8 @@
 \newvariable\crossSpectMagnetBase
   [nom=Cross spectrum accelerometer measurements between the moving magnet and base disturbance]
   {P_{mb}}
+
+\newvariable\potentialEnergy[nom=Potential energy,label=potential]{U}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% COIL
