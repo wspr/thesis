@@ -1,6 +1,13 @@
 
 import phdfig;
 
+texpreamble("
+\providecommand\magnetGap{G}
+\providecommand\springDepth{d}
+\providecommand\lengthCube{c}
+\providecommand\leverArm{l}
+");
+
 size(6cm);
 
 real as = 4pt; // arrowheads
@@ -37,39 +44,39 @@ drawground(width=s2,origin=( w2,  d2+g+s2),wlen=1,angle=180,whiskers=7);
 
 z = (0,-2);
 p = (0,0) -- (w1,0);
-draw( shift(z)*p , Arrows(size=as) , L="$w_1$", align=S);
+draw( shift(z)*p , Arrows(size=as) , L="$\leverArm_1$", align=S);
 
 z = (0,-4.5);
 p = (0,0) -- (w2,0);
-draw( shift(z)*p , Arrows(size=as) , L="$w_2$", align=S);
+draw( shift(z)*p , Arrows(size=as) , L="$\leverArm_2$", align=S);
 
 // heights
 
 z = (-2,0);
 p = (0,0) -- (0,d1);
-draw( shift(z)*p , Arrows(size=as) , L="$d_1$", align=W);
+draw( shift(z)*p , Arrows(size=as) , L="$\springDepth$", align=W);
 
 z = (-2,d1);
 p = (0,0) -- (0,g);
-draw( shift(z)*p , Arrows(size=as) , L="$g_1$", align=W);
+draw( shift(z)*p , Arrows(size=as) , L="$\magnetGap$", align=W);
 
 // msizes
 
 z = (w1-s1/2,d1-s1-1);
 p = (0,0) -- (s1,0);
-draw( shift(z)*p , Arrows(size=as) , L="$s_1$", align=S);
+draw( shift(z)*p , Arrows(size=as) , L="$\lengthCube_1$", align=S);
 
 z = (w2-s2/2,d2-s2-1);
 p = (0,0) -- (s2,0);
-draw( shift(z)*p , Arrows(size=as) , L="$s_2$", align=S);
+draw( shift(z)*p , Arrows(size=as) , L="$\lengthCube_2$", align=S);
 
 z = (w1+s1/2+1,d1-s1);
 p = (0,0) -- (0,s1);
-draw( shift(z)*p , Arrows(size=as) , L="$s_1$", align=E);
+draw( shift(z)*p , Arrows(size=as) , L="$\lengthCube_1$", align=E);
 
 z = (w2+s2/2+1,d2-s2);
 p = (0,0) -- (0,s2);
-draw( shift(z)*p , Arrows(size=as) , L="$s_2$", align=E);
+draw( shift(z)*p , Arrows(size=as) , L="$\lengthCube_2$", align=E);
 
 
 // axes

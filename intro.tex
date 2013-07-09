@@ -1139,7 +1139,7 @@ Most obviously, the shape of the frequency response is not independent of the am
 
 Consider the stable single \dof/ system
 \begin{dmath}[label=duffing]
-\mass \ddot \disp + \damping \dot \disp + \stiffnessDuffing \gp{\disp+\disturb}^3 = 0,
+\mass \ddot {\disp} + \damping \dot {\disp} + \stiffnessDuffing \gp{\disp+\disturb}^3 = 0,
 \end{dmath}
 where $\disp$ is displacement and $\disturb$ is an induced displacement disturbance.
 At the operating position $\disp=0$, the nonlinear spring stiffness is $3\stiffness\disp^2|_{\disp=0}=0$.
@@ -1190,7 +1190,7 @@ Simulation time   & & \SI{5000}{s} \\
 Sample time       & & \SI{0.005}{s} \\
 \textsc{fft} size & & $2^{14}$ \\
 Mass              & $\mass$ & \SI{1}{kg} \\
-Stiffness coefficient & $\stiffnessDuffing$ & \SI{1}{kg/m^3} \\
+Nonlinear stiffness coefficient & $\stiffnessDuffing$ & \SI{1}{kg/m^3} \\
 Damping           & $\damping$ & \SI{0.1}{kg/s} \\
 \bottomrule
 \end{tabular}
@@ -1198,7 +1198,7 @@ Damping           & $\damping$ & \SI{0.1}{kg/s} \\
 
 The results of the nonlinear simulation can be compared with a linearised equivalent of the same system given by
 \begin{dmath}[label=duffing-lin]
-\mass \ddot \disp + \damping \dot \disp + \klin\gp{\disp+\disturb} = 0,
+\mass \ddot {\disp} + \damping \dot {\disp} + \klin\gp{\disp+\disturb} = 0,
 \end{dmath}
 which has a linear stiffness $\klin=3\stiffness \varianceNoise^2$ equivalent to the stiffness of the nonlinear spring at the variance displacement.
 Frequency response simulations of this linearised system are shown in \figref{cubic-resonance-disturb-linear}.

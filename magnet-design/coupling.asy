@@ -1,6 +1,12 @@
 
 import phdfig;
 
+texpreamble("
+\providecommand\disturb{s}
+\providecommand\dispvert{z}
+\providecommand\disphoriz{y}
+");
+
 unitsize(1cm);
 
 real m=1;
@@ -26,9 +32,9 @@ draw( shift(-mx-mx/2-my/2) * ( O -- mx ) , dashed );
 draw( shift(-my/2-vgap) * ( O -- -my ) , dashed );
 draw( ( O -- my ) , dashed );
 
-draw( shift(-mx-my/2) * ( O -- (0,A) ), Arrow(size=6pt),L="$z$",align=W);
-draw( shift(-my-vgap) * ( O -- (A,0) ), Arrow(size=6pt),L="$p$");
-draw( shift(my/2) * ( O -- (A,0) ), Arrow(size=6pt),L="$y$",align=N);
+draw( shift(-mx-my/2) * ( O -- (0,A) ), Arrow(size=6pt),L="$\dispvert$",align=W);
+draw( shift(-my-vgap) * ( O -- (A,0) ), Arrow(size=6pt),L="$\disturb$");
+draw( shift(my/2) * ( O -- (A,0) ), Arrow(size=6pt),L="$\disphoriz$",align=N);
 
 // axes
 pair aoff = -hgap+(0,-2);

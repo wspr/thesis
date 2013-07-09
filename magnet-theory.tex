@@ -123,7 +123,7 @@ In which case, it can be convenient to calculate the coercivity with the relatio
 
 \begin{figure}[htbp]
    \centering
-   \includegraphics{PhD/Figures/Theory/BHcurve}
+   \includegraphics{Figures/BHcurve}
    \caption{The characteristic $\magB$ \vs\ $\magH$ curves for an ideal rare-earth magnet.}
    \figlabel{BHcurve}
 \end{figure}
@@ -410,9 +410,9 @@ Complete expressions for the corner distances are therefore:
 \begin{dmath}[compact]
 \cornerd_{i,j,k,l,p,q}=\begin{bmatrix}\cnrx_{i,j}\\\cnry_{k,l}\\\cnrz_{p,q}\end{bmatrix}=
 \begin{bmatrix}
-  \alpha-\hwxX\gp{-1}^i+\hwxF\gp{-1}^j\\
-  \beta-\hwyX\gp{-1}^k+\hwyF\gp{-1}^l\\
-  \gamma-\hwzX\gp{-1}^p+\hwzF\gp{-1}^q
+  \cdx-\hwxX\gp{-1}^i+\hwxF\gp{-1}^j\\
+  \cdy-\hwyX\gp{-1}^k+\hwyF\gp{-1}^l\\
+  \cdz-\hwzX\gp{-1}^p+\hwzF\gp{-1}^q
 \end{bmatrix}
 \end{dmath}.
 The $\Fzznode$ terms required for calculating the `force between nodes' can now be written, where $\cnrl=\sqrt{\cnrx^2+\cnry^2+\cnrz^2}$, as:
@@ -431,21 +431,21 @@ Note that when evaluating these functions, two numerical singularities must be a
 
 The stiffness characteristics can be derived by differentiating \eqref{akoun} with respect to displacement in each respective direction, resulting in
 \begin{dmath}[label=akounk]
-\Kzz = \frac{\magn1\magn2}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \vect k_{z,z}\fn{u_{ij},v_{kl},w_{pq},r}
+\Kzz = \frac{\magn1\magn2}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \Kzznode\fn{\cnrx_{ij},\cnry_{kl},\cnrz_{pq},\cnrl}
 \cdot \gp{-1}^{i+j+k+l+p+q} ,
 \end{dmath}
 where
 \begin{dmath}
-\vect k_{z,z} =
+\Kzznode =
 \begin{bmatrix}
--\frac{v u^2}{u^2+w^2}-r-v \Log{r-v} \\
--\frac{u v^2}{v^2+w^2}-r-u \Log{r-u} \\
- \frac{v w^2}{u^2+w^2}
-  + \frac{u w^2}{v^2+w^2}
-  + 2r+u\Log{r-u}+v \Log{r-v}
+-\frac{\cnry \cnrx^2}{\cnrx^2+\cnrz^2}-\cnrl-\cnry \Log{\cnrl-\cnry} \\
+-\frac{\cnrx \cnry^2}{\cnry^2+\cnrz^2}-\cnrl-\cnrx \Log{\cnrl-\cnrx} \\
+ \frac{\cnry \cnrz^2}{\cnrx^2+\cnrz^2}
+  + \frac{\cnrx \cnrz^2}{\cnry^2+\cnrz^2}
+  + 2\cnrl+\cnrx\Log{\cnrl-\cnrx}+\cnry \Log{\cnrl-\cnry}
 \end{bmatrix}
 \end{dmath}
-Note that the sum of the stiffness components ${K_{z,z}}_x+{K_{z,z}}_y+{K_{z,z}}_z=0$ follows from Earnshaw's theorem \cite{earnshaw1842} following from the solution to Laplace's equation.
+Note that the sum of the stiffness components ${\Kzz}_x+{\Kzz}_y+{\Kzz}_z=0$ follows from Earnshaw's theorem \cite{earnshaw1842} following from the solution to Laplace's equation.
 
 
 
@@ -467,16 +467,16 @@ Again, the distance between the `corner nodes' of each magnet is given by
 \end{dmath},
 where
 \begin{align}
-\cdcnrF_{j,l,q}&=\begin{bmatrix}A\gp{-1}^j\\B\gp{-1}^l\\C\gp{-1}^q\end{bmatrix},&
-\cdcnrX_{i,k,p}&=\begin{bmatrix}a\gp{-1}^i\\b\gp{-1}^k\\c\gp{-1}^p\end{bmatrix},
+\cdcnrF_{j,l,q}&=\begin{bmatrix}\hwxF\gp{-1}^j\\\hwyF\gp{-1}^l\\\hwzF\gp{-1}^q\end{bmatrix},&
+\cdcnrX_{i,k,p}&=\begin{bmatrix}\hwxX\gp{-1}^i\\\hwyX\gp{-1}^k\\\hwzX\gp{-1}^p\end{bmatrix},
 \end{align}
 with magnet dimensions defined as earlier.
 The $\Fzynode$ terms required for calculating the `force between nodes' for orthogonal magnets are
 \begin{align}
 \begin{split}
-{\Fzynode}_x\fn{\cornerd} &= vw\Log{r-u}-uv\Log{r+w}-uw\Log{r+v}+\\&\qquad\half u^2\ArcTan{\frac{vw}{ru}}+\half v^2\ArcTan{\frac{uw}{rv}}+\half w^2\ArcTan{\frac{uv}{rw}} \,,\\
-{\Fzynode}_y\fn{\cornerd} &= -\half\gp{u^2-v^2}\Log{r+w}+uw\Log{r-u}+uv\arctan\fn{\tfrac{uw}{rv}}+\half rw \,,\\
-{\Fzynode}_z\fn{\cornerd} &= -\half\gp{u^2-w^2}\Log{r+v}+uv\Log{r-u}+uw\arctan\fn{\tfrac{uw}{rv}}+\half rv \,.
+{\Fzynode}_x\fn{\cornerd} &= \cnry\cnrz\Log{\cnrl-\cnrx}-\cnrx\cnry\Log{\cnrl+\cnrz}-\cnrx\cnrz\Log{\cnrl+\cnry}+\\&\qquad\half \cnrx^2\ArcTan{\frac{\cnry\cnrz}{\cnrl\cnrx}}+\half \cnry^2\ArcTan{\frac{\cnrx\cnrz}{\cnrl\cnry}}+\half \cnrz^2\ArcTan{\frac{\cnrx\cnry}{\cnrl\cnrz}} \,,\\
+{\Fzynode}_y\fn{\cornerd} &= -\half\gp{\cnrx^2-\cnry^2}\Log{\cnrl+\cnrz}+\cnrx\cnrz\Log{\cnrl-\cnrx}+\cnrx\cnry\arctan\fn{\tfrac{\cnrx\cnrz}{\cnrl\cnry}}+\half \cnrl\cnrz \,,\\
+{\Fzynode}_z\fn{\cornerd} &= -\half\gp{\cnrx^2-\cnrz^2}\Log{\cnrl+\cnry}+\cnrx\cnry\Log{\cnrl-\cnrx}+\cnrx\cnrz\arctan\fn{\tfrac{\cnrx\cnrz}{\cnrl\cnry}}+\half \cnrl\cnry \,.
 \end{split}
 \end{align}
 
@@ -570,7 +570,7 @@ Superposition can then be used to combine the expressions for orthogonal magnets
 \textcite{ravaud2009-pier98} instead show the magnetic field equations for a cuboid magnet with arbitrary magnetisation; their work is still to be extended to calculate the forces between such magnets.
 Since their equation for calculating the magnetic field is necessarily more complex, it is not clear whether an equation derived using analytical integration to calculate the force directly (if the integral is even tractable) will be more efficient than the superposition approach outlined in the following.
 
-The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have sides of length $\mwX = [2\hwxX, 2\hwyX, 2\hwzX]\T$ and $\mwF = [2\hwxF, 2\hwyF, 2\hwzF]\T$ respectively and the distance between their centres is given by $\magcd=[\alpha,\beta,\gamma]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
+The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have sides of length $\mwX = [2\hwxX, 2\hwyX, 2\hwzX]\T$ and $\mwF = [2\hwxF, 2\hwyF, 2\hwzF]\T$ respectively and the distance between their centres is given by $\magcd=[\cdx,\cdy,\cdz]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
 
 As shown earlier in \eqref{akoun},
 \textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations.
@@ -590,7 +590,7 @@ where
 \magcd_{z,x} &= \rotZ\fn{\tfrac\pi2}\magcd,
 \end{align}
 for which $\Abs{\cdot}$ is the \emph{element-wise} absolute value function and $\rotZ\fn{\theta}$ is the rotation matrix around the $\az$ axis:
-\begin{equation}
+\begin{equation}\eqlabel{rotZ}
 \rotZ\fn\theta = \begin{bmatrix}
 \cos\theta & -\sin\theta & 0 \\
 \sin\theta & \hphantom{-{}}\cos\theta & 0 \\
@@ -602,14 +602,14 @@ Using the force expressions $\Fzx$, $\Fzy$, and $\Fzz$ in superposition allows t
 
 For horizontal $\ax$ direction magnetisation,
 \begin{equation}\eqlabel{fxxyz}
-\vect F_{x,\{x,y,z\}}\fn{\vect s, \vect S, \magcd, \magn1, \magn2} =
+\vect F_{x,\{x,y,z\}}\fn{\mwX, \mwF, \magcd, \magn1, \magn2} =
   \rotY\fn{\tfrac\pi2}
-  \vect F_{z,\{z,y,x\}}\fn{\vect s_x, \vect S_x, \magcd_x, \magn1, \magn2}
+  \vect F_{z,\{z,y,x\}}\fn{\mwX_x, \mwF_x, \magcd_x, \magn1, \magn2}
 \end{equation}
 where
 \begin{align}
-\vect s_x &= \Abs{\rotY\fn{-\tfrac\pi2}\vect s}, &
-\vect S_x &= \Abs{\rotY\fn{-\tfrac\pi2}\vect S}, &
+\mwX_x &= \Abs{\rotY\fn{-\tfrac\pi2}\mwX}, &
+\mwF_x &= \Abs{\rotY\fn{-\tfrac\pi2}\mwF}, &
 \magcd_x &= \rotY\fn{-\tfrac\pi2}\magcd,
 \end{align}
 and $\rotY\fn{\theta}$ is the rotation matrix around the $\ay$ axis:
@@ -622,14 +622,14 @@ and $\rotY\fn{\theta}$ is the rotation matrix around the $\ay$ axis:
 \end{equation}
 Similarly, for horizontal $\ay$ direction magnetisation,
 \begin{equation}\eqlabel{fyxyz}
-\vect F_{y,\{x,y,z\}}\fn{\vect s, \vect S, \magcd, \magn1, \magn2} = \\
+\vect F_{y,\{x,y,z\}}\fn{\mwX, \mwF, \magcd, \magn1, \magn2} = \\
   \rotX\fn{-\tfrac\pi2}
-  \vect F_{z,\{x,z,y\}}\fn{\vect s_y, \vect S_y, \magcd_y, \magn1, \magn2}
+  \vect F_{z,\{x,z,y\}}\fn{\mwX_y, \mwF_y, \magcd_y, \magn1, \magn2}
 \end{equation}
 where
 \begin{align}
-\vect s_y &= \Abs{\rotX\fn{\tfrac\pi2}\vect s}, &
-\vect S_y &= \Abs{\rotX\fn{\tfrac\pi2}\vect S}, &
+\mwX_y &= \Abs{\rotX\fn{\tfrac\pi2}\mwX}, &
+\mwF_y &= \Abs{\rotX\fn{\tfrac\pi2}\mwF}, &
 \magcd_y &= \rotX\fn{\tfrac\pi2}\magcd,
 \end{align}
 and $\rotX\fn{\theta}$ is the rotation matrix around the $\ax$ axis:
@@ -641,9 +641,9 @@ and $\rotX\fn{\theta}$ is the rotation matrix around the $\ax$ axis:
 \end{bmatrix}.
 \end{equation}
 
-Given the results of the afore-referenced papers by Yonnet et al. and \eqref{fzx,fxxyz,fyxyz}, the force between two magnets of arbitrary magnetisation can be written as
+Given the results of the afore-referenced papers by Yonnet et al.\ and \eqref{fzx,fxxyz,fyxyz}, the force between two magnets of arbitrary magnetisation can be written as
 \begin{equation}\eqlabel{total-force}
-\vect F\fn{\vect s, \vect S, \magcd,\expandafter\vect \magn1,\expandafter\vect \magn2}=\sum_{i,j\in\{x,y,z\}^2} \vect F_{i,j}\fn{\vect s, \vect S, \magcd, J_{1_i}, J_{2_j}}
+\vect F\fn{\mwX, \mwF, \magcd,\expandafter\vect \magn1,\expandafter\vect \magn2}=\sum_{i,j\in\{x,y,z\}^2} \vect F_{i,j}\fn{\mwX, \mwF, \magcd, J_{1_i}, J_{2_j}}
 \end{equation}
 where
 \begin{align}
@@ -721,7 +721,7 @@ The following auxiliary function is used in the above. All dashed variables are
 local to this function.
 \begin{align}
 \begin{split}
-f_3\fn{u',v',w',\theta',c',C'} &=
+f_3\fn{u',v',w',\mrot',c',C'} &=
   u' f_5\gp{\Log{f_4-u'}-1}
   +\half\gp{f_6^2-{u'}^2}\Log{f_4+f_5} \\
   &\quad +\half u' \pi \Sign{f_5}\Abs{f_6}
@@ -729,18 +729,18 @@ f_3\fn{u',v',w',\theta',c',C'} &=
   +\half f_4 f_5 \,,
 \end{split}\\
 f_4 &= \sqrt{{u'}^2+f_5^2+f_6^2} \,, \\
-f_5 &= \gp{v'-\hwyX i_b}\cos\theta'+\gp{w'-c'}\sin\theta'+2\hwyF i_B \,, \\
-f_6 &= -\gp{v'-\hwyX i_b}\sin\theta'+\gp{w'-c'}\cos\theta'+C' \,.
+f_5 &= \gp{v'-\hwyX i_b}\cos\mrot'+\gp{w'-c'}\sin\mrot'+2\hwyF i_B \,, \\
+f_6 &= -\gp{v'-\hwyX i_b}\sin\mrot'+\gp{w'-c'}\cos\mrot'+C' \,.
 \end{align}
 For $\mrot=k\pi$, \eqref{akoun} of \textcite{akoun1984} should be used instead.
 
 The force in the $\az$ direction is calculated separately if the second
 magnet is not rotated around its axis ($f_{z_2}$ has a singularity
-at $\theta=k\pi$).
+at $\mrot=k\pi$).
 \begin{dgroup}
 \begin{dmath}[label=Fz-pi]
-\force{3}\bigg|_{\theta=k\pi} =
-  \cos\theta\cdot\frac{-\magn1\magn2}{4\pi\permVac}
+\force{3}\bigg|_{\mrot=k\pi} =
+  \cos\mrot\cdot\frac{-\magn1\magn2}{4\pi\permVac}
   \sum_{i_{a,b,c,A,B,C}\in\{0,1\}^6}f_{z_1}
   \cdot\gp{-1}^{i_a+i_b+i_c+i_A+i_B+i_C}
 \end{dmath},
@@ -753,10 +753,10 @@ f_{z_1} =
 u = x_0-ai_i+Ai_A
 \end{dmath},
 \begin{dmath}
-v = y_0-bi_b+Bi_B+\half B\gp{\cos\theta-1}
+v = y_0-bi_b+Bi_B+\half B\gp{\cos\mrot-1}
 \end{dmath},
 \begin{dmath}
-w = z_0-ci_c+Ci_C+\half C\gp{\cos\theta-1}
+w = z_0-ci_c+Ci_C+\half C\gp{\cos\mrot-1}
 \end{dmath},
 \begin{dmath}
 r = \sqrt{u^2+v^2+w^2}
@@ -766,14 +766,14 @@ This equation is similar in form, but not identical, to Akoun~\& Yonnet's equati
 
 In order to allow this equation to be used for rotations greater than \SI{\sipi}{radians}, additional terms have been added to accommodate for the translational offset induced by rotating the magnet around its lower-left edge.
 This is necessary as the original equations used the lower-left corner of the magnet as its point of rotation, whereas the equations presented here use the magnet centre.
-The preceding $\cos\theta$ in \eqref{Fz-pi} provides the sign change of the magnetisation, and the $\half\gp{\cos\theta-1}$ terms are used to return the origin of the magnet after 180\textdegree\ rotation to the lower-left corner, where it is expected.
+The preceding $\cos\mrot$ in \eqref{Fz-pi} provides the sign change of the magnetisation, and the $\half\gp{\cos\mrot-1}$ terms are used to return the origin of the magnet after 180\textdegree\ rotation to the lower-left corner, where it is expected.
 
 Although these rotated-magnet force equations permit displacements in the $\ax$ direction, there is no published equation for calculating the component of force in this direction.
 Numerical integration techniques are currently the best known method if this force must be calculated \cite{charpentier2001-compel}.
 
 \subsubsection{Theoretical simulations}
 
-As an example of using these equations to calculate forces as a function of magnet rotation, \figref{charp-rotate} shows the forces produced between two \SI{1}{T} \SI{10}{mm} cube magnets as a function of rotation angle $\theta$ of the second magnet, with a \SI{20}{mm} offset between their centres.
+As an example of using these equations to calculate forces as a function of magnet rotation, \figref{charp-rotate} shows the forces produced between two \SI{1}{T} \SI{10}{mm} cube magnets as a function of rotation angle $\mrot$ of the second magnet, with a \SI{20}{mm} offset between their centres.
 Two cases are shown: in the first, the magnets are displaced vertically; in the second, the magnets are displaced horizontally.
 
 \begin{figure}
@@ -797,7 +797,7 @@ Two cases are shown: in the first, the magnets are displaced vertically; in the 
 \end{figure}
 
 \Figref{charp-rotate} shows that the maximum force between two magnets is exhibited when the direction of displacement is in the same direction as their magnetisations.
-For displacements perpendicular to the direction of magnetisation of the fixed magnet, forces of equal magnitude are obtained for rotation of the second magnet $\theta=k\pi/2$ for $k\in\{0,1,2,\dots\}$.
+For displacements perpendicular to the direction of magnetisation of the fixed magnet, forces of equal magnitude are obtained for rotation of the second magnet $\mrot=k\pi/2$ for $k\in\{0,1,2,\dots\}$.
 
 In the following simulations, the second magnet is held at a constant height (of a  separation distance of one magnet height) and moved from left to right over a range of twice the magnet width symmetrically above the first magnet (with respect to their centres of mass).
 Four such displacements are made with four different rotations for the second magnet: $0$, $\half\pi$, $\pi$ and $-\half\pi$.
@@ -846,7 +846,7 @@ The vertical displacement was measured with a Wenglor CP35MHT80 laser sensor, an
 \end{figure}
 
 The geometry of the rotational assembly is shown in \figref{rot-geom}.
-A number of vertical force \vs\ vertical displacement measurements were taken for a discrete set of angle rotations $\theta$.
+A number of vertical force \vs\ vertical displacement measurements were taken for a discrete set of angle rotations $\mrot$.
 Of the tests performed, two sets of results are shown in \figref{magrotmeas}: N45 \SI{15x20x10}{mm} cuboids and \maggrade{52} \SI{25x25x10}{mm} cuboids.
 Experimental results match well with theoretical calculations performed using \eqref{charpz}.
 Larger errors with smaller displacements are believed to be caused due to misalignment between the magnets, which would cause larger force discrepancies in the near-field of the magnetic interactions.
@@ -874,18 +874,18 @@ Their expression for the torque (on the second magnet) can be written as per the
 \begin{equation}\eqlabel{torque}
 \Tzz=\frac{\magn1\magn2}{4\pi\permVac}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
-  \bm\psi_{i,j,k,l,p,q}
+  \Tzznode_{i,j,k,l,p,q}
   \cdot
   \gp{-1}^{i+j+k+l+p+q} ,
 \end{equation}
 where
 \begin{equation}
-\bm\psi_{i,j,k,l,p,q} = \cdcnrF_{j,l,q}\vect\times \Fzznode\fn{\cornerd_{i,j,k,l,p,q}} .
+\Tzznode_{i,j,k,l,p,q} = \cdcnrF_{j,l,q}\vect\times \Fzznode\fn{\cornerd_{i,j,k,l,p,q}} .
 \eqlabel{torque-inner}
 \end{equation}
 The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner terms of the summation represent the torque applied on the second magnet due to the influence of one corner of the first magnet and one corner of the second magnet. Allag and Yonnet write this slightly differently in terms of the total torque applied from the entire first magnet on each corner of the second:
 \begin{equation}\eqlabel{torqu-1}
-\vect T = \sum_{j,l,q\in\{0,1\}^3} \cdcnrF_{j,l,q}\vect\times \vect f_{j,l,q} ,
+\Tzz = \sum_{j,l,q\in\{0,1\}^3} \cdcnrF_{j,l,q}\vect\times \vect f_{j,l,q} ,
 \end{equation}
 where $\vect f_{j,l,q}$ is the summed force on a corner of the second magnet due to every corner of the first magnet, given by
 \begin{equation}\eqlabel{torqu-2}

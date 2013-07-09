@@ -132,8 +132,8 @@
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
       }%
-%    \protected\def\noexpand #1{\noexpand\gls{\nomenlabel}}%
-    \protected\def\noexpand #1{}%
+    \protected\def\noexpand #1{\noexpand\gls{\nomenlabel}}%
+%    \protected\def\noexpand #1{}%
    }
  }
 
@@ -158,8 +158,8 @@
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
       }%
-%    \exp_not:N #1 \exp_not:N #2 { {\exp_not:N \gls{\nomenlabel} } } [ \exp_not:n {#4} ]
-    \exp_not:N #1 \exp_not:N #2 {  } [ \exp_not:n {#4} ]
+    \exp_not:N #1 \exp_not:N #2 { {\exp_not:N \gls{\nomenlabel} } } [ \exp_not:n {#4} ]
+%    \exp_not:N #1 \exp_not:N #2 {  } [ \exp_not:n {#4} ]
    }
  }
 \errorcontextlines=999
@@ -191,8 +191,6 @@
   elem={\alpha,\beta,\gamma}
 ]
 
-\newvariable\choiGap[nom=Gap between dual base magnets in the `Choi' magnet spring design]{G}
-
 \def\fpeak{\forceMag_{\mathrm{peak}}}
 \def\fmax{\forceMag_{\mathrm{max}}}
 \def\fnorm{\hat \forceMag_z}
@@ -210,7 +208,8 @@
 \newvariable\lengthCub[nom=Cuboid magnet depth,label=cubdept]{a}
 \newvariable\faceCub[nom=Cuboid magnet face side length,label=cubside]{b}
 \newvariable\lengthCube[nom=Cube magnet side length,label=cubelength]{c}
-
+\newvariable\magnetGap[nom=Gap between magnets in various magnetic spring designs]{G}
+\let\choiGap\magnetGap
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -257,14 +256,15 @@
 \let\pos\displacement
 
 \newmvar\newvect\velocity{v}{nom=Velocity vector}
-\newvariable\natfreq[nom=Natural frequency]{\omega_n}
-\newvariable\resfreq[nom=Resonance frequency]{\omega_d}
+\newvariable\natfreq[nom={Natural frequency, $\sqrt{\stiffness/\mass}$}]{\omega_n}
+\newvariable\resfreq[nom={Resonance frequency, $\natfreq\sqrt{1-\dampingratio^2}$}]{\omega_d}
 \newcommand\approaches{\rightarrow}
 
 \newvariable\flux[nom=Magnetic flux]{\bm\Phi}
 \newvariable\magH[nom=Magnetic field strength]{\vect H}
 \newvariable\magB[nom=Magnetic flux density]{\vect B}
 \newvariable\remanence[nom=Remanence magnetisation]{B_r}
+\newvariable\maggradesym[nom={Magnet grade, units \si{MG.Oe}},label=maggradesym]{N}
 \newcommand\magn[1]{{\remanence}_{#1}}
 \newvariable\coerce[nom=Coercivity]{H_c}
 \newvariable\Msat[nom=Magnetisation at saturation]{M_{\mathrm{sat}}}
@@ -312,17 +312,20 @@
 \newvariable\Fzx[nom={Force between two cuboid magnets; the first magnetised in the $\az$ direction, the second in $\ax$},sort=Fzy]{\vect F_{z,x}}
 
 \newvariable\Kzz[nom={Stiffness between two cuboid magnets magnetised in the $\az$-direction},sort=Kzz]{\vect K_{z,z}}
+\newvariable\Kzznode[nom={`Stiffness' between two magnetic nodes for cuboid magnets magnetised in the $\az$ direction, used to calculate $\Kzz$},sort=kzz]{\vect k_{z,z}}
 \newvariable\Tzz[nom={Torque between two cuboid magnets magnetised in the $\az$-direction},sort=Tzz]{\vect T_{z,z}}
+\newvariable\Txx[nom={Torque between two cuboid magnets magnetised in the $\ax$-direction},sort=Tzz]{\vect T_{x,x}}
+\newvariable\Tzznode[nom={`Torque' between two magnetic nodes for cuboid magnets magnetised in the $\az$ direction, used to calculate $\Kzz$},sort=zzzgreek-w]{\bm\psi}
 \newvariable\Tzy[nom={Torque between two cuboid magnets; the first magnetised in the $\az$-direction, the second in $\ay$},sort=Tzy]{\vect T_{z,y}}
 
-\newvariable\hwxX[nom={Half-length of cuboid magnet (fixed), $\ax$-direction}]{a}
-\newvariable\hwyX[nom={Half-length of cuboid magnet (fixed), $\ay$-direction}]{b}
-\newvariable\hwzX[nom={Half-length of cuboid magnet (fixed), $\az$-direction},label=hwzX]{c}
+\newvariable\hwxX[nom={Half-length of cuboid magnet (fixed), $\ax$ direction}]{a}
+\newvariable\hwyX[nom={Half-length of cuboid magnet (fixed), $\ay$ direction}]{b}
+\newvariable\hwzX[nom={Half-length of cuboid magnet (fixed), $\az$ direction},label=hwzX]{c}
 \newvariable\mwX[nom={Vector of magnet side lengths (fixed)}]{\vect s}
 
-\newvariable\hwxF[nom={Half-length of cuboid magnet (floating), $\ax$-direction},label=hwxF]{A}
-\newvariable\hwyF[nom={Half-length of cuboid magnet (floating), $\ay$-direction},label=hwyF]{B}
-\newvariable\hwzF[nom={Half-length of cuboid magnet (floating), $\az$-direction},label=hwzF]{C}
+\newvariable\hwxF[nom={Half-length of cuboid magnet (floating), $\ax$ direction},label=hwxF]{A}
+\newvariable\hwyF[nom={Half-length of cuboid magnet (floating), $\ay$ direction},label=hwyF]{B}
+\newvariable\hwzF[nom={Half-length of cuboid magnet (floating), $\az$ direction},label=hwzF]{C}
 \newvariable\mwF[nom={Vector of magnet side lengths (floating)}]{\vect S}
 
 \newvariable\Fax[nom={Force in the axial direction},label=Fax]{F_z}
@@ -338,7 +341,7 @@
 %%%%%%%%%%%%%%%%%%%%%%%%
 
 \newvariable{\mdip}[nom=Magnetic dipole]{\vect m}
-\newcommand{\BHmax}{\ensuremath{\gp{BH}_{\mathrm{max}}}}
+\newvariable{\BHmax}[nom=Maximum energy product,sort=BHmax]{\ensuremath{\gp{BH}_{\mathrm{max}}}}
 \newmacro \bhcurve {$\magB$/$\magH$ curve}
 \newmacro \Hinf {\ensuremath{H^\infty}}
 
@@ -433,7 +436,7 @@
 \newvariable\gainSkyhook[nom=Feedback gain on absolute velocity]{g_c}
 \newvariable\gainSkyspring[nom=Feedback gain on absolute acceleration]{g_k}
 
-\newvariable\dampingratio[nom=Damping ratio]{\zeta}
+\newvariable\dampingratio[nom={Damping ratio, $0.5\dampingRel/\sqrt{\stiffness\mass}$.}]{\zeta}
 
 \newvariable\powerSpectMagnet
   [nom=Power spectrum accelerometer measurements of the moving magnet]
@@ -566,7 +569,10 @@
 
 \providecommand\labelsize{\scriptsize}
 
-\newvariable\ZKSdisp[nom=Vertical displacement of the inclined spring]{z}
+\newvariable\dispvert[nom=Vertical displacement,label=dispvert]{z}
+\newvariable\disphoriz[nom=Horizontal displacement,label=disphoriz]{y}
+%\newvariable\ZKSdisp[nom=Vertical displacement of the inclined spring]{z}
+\let\ZKSdisp\dispvert
 \newvariable\ZKSdispMin[nom=Maximum deflection of the vertical spring]{z_{\mathrm{min}}}
 \newvariable\ZKSshift[nom=Horizontal displacement of the inclined spring,label=ZKS-x]{x}
 
@@ -735,13 +741,17 @@
 
 \newvariable\muplength[nom=Multipole array length,label=l-mup]{l}
 \newvariable\mupheight[nom=Multipole array height,label=h-mup]{h}
-\newvariable\mupdepth[nom=Multipole array depth,label=d-mup]{d}
+%\newvariable\mupdepth[nom=Multipole array depth,label=d-mup]{d}
+\newvariable\springDepth[nom=Magnetic spring depth,label=springdepth]{d}
+\let\mupdepth\springDepth
+
 \newvariable\mupwavelength[nom=Multipole array wavelength]{\lambda}
 \newvariable\mupfacegap[nom=Multipole array face gap,label=g-mup]{g}
 \newvariable\mupmaglength[nom=Length of each magnet in a multipole array,label=m-mup]{m}
 \newvariable\mupmagperwave[nom=Multipole array number of magnets per wavelength,label=R-mup]{R}
 \newvariable\mupNmag[nom=Multipole array number of magnets,label=N-mup]{N}
 \newvariable\mupNwaves[nom=Multipole array number of wavelengths]{W}
+\let\mupNwave\mupNwaves % oops
 
 \newvariable\mupqlh[label=mup-ql,nom={Length of horizontally-magnetised quasi-Halbach array magnets}]{m_1}
 \newvariable\mupqlv[label=mup-qL,nom={Length of vertically-magnetised quasi-Halbach array magnets}]{m_2}
@@ -752,8 +762,10 @@
 \newvariable\mupmagpolx[nom=Magnetisation direction in the $\ax$--$\az$ plane of the first magnet in a multipole array]{\vartheta_{xz}}
 \newvariable\mupmagpoly[nom=Magnetisation direction in the $\ay$--$\az$ plane of the first magnet in a multipole array]{\vartheta_{yz}}
 \newvariable\muphdgap[nom={Dual-multipole array horizontal offset}]{p}
-\newvariable\muphdispl[label=beta-mup,nom={Multipole array horizontal displacement}]{y}
-\newvariable\mupvdispl[label=delta-mup,nom={Multipole array vertical displacement}]{z}
+%\newvariable\muphdispl[label=beta-mup,nom={Multipole array horizontal displacement}]{y}
+%\newvariable\mupvdispl[label=delta-mup,nom={Multipole array vertical displacement}]{z}
+\let\muphdispl\disphoriz
+\let\mupvdispl\dispvert
 %\newvariable\volume[nom=Multipole array volume,label=V-mup]{V}
 \newvariable\magnamp[nom=Amplitude of magnetisation vector,label=M-mup]{M}
 
@@ -765,22 +777,29 @@
 \newcommand\mbqvdir{y}
 \newcommand\mbqhdir{x}
 \newcommand\mbqpdir{z}
+\let\mbqvaxis\ay
+\let\mbqhaxis\ax
+\let\mbqpaxis\az
+
+\newvariable\mbqvpert[nom={Perturbation in $\mbqvdisp$.}]{\Delta\mbqvdir}
+\newvariable\mbqhpert[nom={Perturbation in $\mbqhdisp$.}]{\Delta\mbqhdir}
+\newvariable\mbqrotpert[nom={Perturbation in $\mbqrotz$.}]{\Delta\varphi}
 
 % \newvariable\mbqmass[nom=Inclined]{M}
 \let\mbqmass\mass
 \newvariable\mbqmomentofinertia[nom=Inclined magnet system moment of inertia]{I_m}
 \newvariable\mbqrotz[label=zzzgreek-uu,nom=Inclined magnets planar rotation]{\varphi}
-\newcommand\mbqvelrotz{\dot{\varphi}}
-\newcommand\mbqaccrotz{\ddot{\varphi}}
+\newcommand\mbqvelrotz{\dot{\mbqrotz}}
+\newcommand\mbqaccrotz{\ddot{\mbqrotz}}
 \newvariable\mbqvdisp[nom=Inclined magnets vertical displacement]{\mbqvdir}
 \newvariable\mbqhdisp[nom=Inclined magnets horizontal displacement]{\mbqhdir}
 \newvariable\mbqpdisp[nom=Inclined magnets out-of-plane displacement]{\mbqpdir}
-\newcommand\mbqvvel{\dot\mbqvdir}
-\newcommand\mbqhvel{\dot\mbqhdir}
-\newcommand\mbqpvel{\dot\mbqpdir}
-\newcommand\mbqvacc{\ddot\mbqvdir}
-\newcommand\mbqhacc{\ddot\mbqhdir}
-\newcommand\mbqpacc{\ddot\mbqpdir}
+\newcommand\mbqvvel{\dot{\mbqvdisp}}
+\newcommand\mbqhvel{\dot{\mbqhdisp}}
+\newcommand\mbqpvel{\dot{\mbqpdisp}}
+\newcommand\mbqvacc{\ddot{\mbqvdisp}}
+\newcommand\mbqhacc{\ddot{\mbqhdisp}}
+\newcommand\mbqpacc{\ddot{\mbqpdisp}}
 %\newvariable\mbqmagh[label=a-mbq,nom=Cuboid magnet depth]{a}
 %\newvariable\mbqmagw[label=b-mbq,nom=Cuboid magnet face size]{b}
 \let\mbqmagh\lengthCub
@@ -808,6 +827,7 @@
 \newvariable\mbqunit[nom={Cuboid magnet unit length, cube root of volume},label=mbqunit]{u}
 \let\msize\mbqunit
 \newvariable\mbqlever[label=l-mbq,nom={Lever arm}]{l}
+\let\leverArm\mbqlever
 \newvariable\mbqCoMvec[label=lvec-mbq,nom={Displacement vector between magnet centre and centre of mass}]{\vect l}
 \newvariable\mbqCoMvec[label=tvec-mbq,nom={Lever arm vector }]{\vect t}
 \newvariable\mbqleverdispl[label=pvec-mbq,nom={Displacement vector due to rotation around centre of mass}]{\vect p}
@@ -819,6 +839,7 @@
 
 \newvariable\mbqdispl[nom=Position vector,label=mbqdispl]{\vect r}
 \newvariable\mbqmdispl[nom=Position vector,label=mbqmdispl]{\vect s}
+\newvariable\mbqlocl[nom=Displacement vectors from the spring magnet centres to the centre of rotation in the coordinate system of the magnets,label=mbqlocl]{\vect t}
 
 %\newcommand\mbqrot[1]{\mathbf R(#1)}
 \let\mbqrot\rotZ

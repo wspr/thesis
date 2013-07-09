@@ -1,6 +1,11 @@
 
 import phdfig;
 
+texpreamble("
+\providecommand\lengthCube{c}
+\providecommand\magnetGap{G}
+");
+
 unitsize(1cm);
 
 real m=1;
@@ -23,8 +28,8 @@ magnet2d(m,m,v,-90);
 
 draw(-mx/2+v-- -arr+arrv, Arrow(size=6pt));
 draw( mx/2+v--  arr+arrv, Arrow(size=6pt));
-draw( shift(0,0.75)*( -mx/2 -- mx/2 ) , Arrows(size=4pt) , L="$m$" , align=N );
-draw( shift(0,0.75)*( -mx/2 -- -hgap+mx/2 ) , Arrows(size=4pt) , L="$l$" );
+draw( shift(0,0.75)*( -mx/2 -- mx/2 ) , Arrows(size=4pt) , L="$\lengthCube$" , align=N );
+draw( shift(0,0.75)*( -mx/2 -- -hgap+mx/2 ) , Arrows(size=4pt) , L="$\magnetGap$" );
 
 // axes
 pair aoff = -hgap+(0,-2);

@@ -154,6 +154,25 @@
 \addtolength\glspagelistwidth{1cm}
 
 
+\usepackage{docmute}
+
+%%%%%%%%%%%%%%%%%%%%
+
+%% MATHS
+\RequirePackage{amsmath,amssymb,bm,cool,mathtools,fngp}
+\newacro{PI}% overwritten by cool.sty
+
+\RequirePackage{mlist}
+\RequirePackage{thesis-maths}
+\@ifpackageloaded{mathpazo}{\PassOptionsToPackage{mathpazo}{flexisym}}{}
+\RequirePackage{breqn}
+\setkeys{breqn}{labelprefix=eq:}
+
+%%%%%%%%%%%
+
+\EndPreamble
+
+
 \RequirePackage{csquotes}
 \MakeOuterQuote{"}
 
@@ -191,28 +210,13 @@
 \bibliography{journals,phd,ARK}
 \renewcommand\bibname{References}
 
-\usepackage{docmute}
-
-%%%%%%%%%%%%%%%%%%%%
-
-%% MATHS
-\RequirePackage{amsmath,amssymb,bm,cool,mathtools,fngp}
-\newacro{PI}% overwritten by cool.sty
-
-\RequirePackage{mlist}
-\RequirePackage{thesis-maths}
-\@ifpackageloaded{mathpazo}{\PassOptionsToPackage{mathpazo}{flexisym}}{}
-\RequirePackage{breqn}
-\setkeys{breqn}{labelprefix=eq:}
-
-%%%%%%%%%%%
-
-\EndPreamble
 
 % \setkeys{Gin}{quiet}
 
+\ifpdf % otherwise pstool screws up
 \RequirePackage[inline]{asymptote}
 \renewcommand\asydir{asy}
+\fi
 
 %% HUH?!?!
 

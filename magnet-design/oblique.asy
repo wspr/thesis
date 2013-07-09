@@ -8,6 +8,7 @@ texpreamble("
 \providecommand\mbqmagw{w}
 \providecommand\mbqmagh{h}
 \providecommand\mbqvdisp{v}
+\providecommand\mbqmagangle{\theta}
 \providecommand\mbqoffset{o}
 ");
 
@@ -55,7 +56,7 @@ tmpb = tmpSE+rotate(T)*(tmpL,0);
 draw(tmpSE--tmpa,dashed);
 draw(tmpSE--tmpb,dashed);
 
-draw(tmpa{N}..tmpb,L="$\theta$",Arrow(size=as),align=(-1,-0.2));
+draw(tmpa{N}..tmpb,L="$\mbqmagangle$",Arrow(size=as),align=(-1,-0.2));
 
 // float magnets
 
