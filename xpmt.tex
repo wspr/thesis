@@ -79,7 +79,7 @@ vary the respective amounts of positive and negative stiffness.
         Magnet support mass &   $\MassRigMagnets$ & \SI{ 87  }{g}  \\
              Magnets height &        $\HeightMag$ & \SI{  9.5}{mm} \\
            Magnets diameter &       $2\RadiusMag$ & \SI{ 12.7}{mm} \\
-          Magnets remanence &       $B_r$ & \SI{1.3}{T} \\
+          Magnets remanence &       $\remanence$ & \SI{1.3}{T} \\
   Lower fixed magnet origin &     $\OriginMagLow$ & \SI{ 44  }{mm} \\
   Upper fixed magnet origin &    $\OriginMagHigh$ & \SI{ 30  }{mm} plus offset\thinspace
   \footnote{Offset varied to adjust the amount of added negative stiffness.} \\
@@ -188,7 +188,7 @@ The dual-coil electromagnetic arrangement described in \secref{dualcoil} was
 custom-built for the actuator for the experimental apparatus. A schematic of
 the dual-coil system is shown in \figref{rig-dual-coil} with parameters in
 \tabref{coil-prop}. The coil was designed to have an impedance of
-\SI{8}{\ohm}, from which the outer radius of the coil was calculated given a
+$\resistanceCoil=\SI{8}{\ohm}$, from which the outer radius of the coil was calculated given a
 certain wire diameter and resistance.
 
 \begin{figure}
@@ -219,6 +219,7 @@ certain wire diameter and resistance.
     Coil outer radius & $\RadiusOCoil$ & \SI{10.7}{mm} \\
     Coil gap & $\GapCoil$ & \SI{7}{mm} \\
     Turns (approx.) & & \num{105} \\
+    Resistance (total) & $\resistanceCoil$ & \SI{8}{\ohm} \\
     \midrule
     Former inner radius & & \SI{14.2}{mm} \\
     \bottomrule
@@ -442,19 +443,19 @@ Accordingly, the displacement of the system $\DispMag$ from the \qzs/ location i
 \end{dmath}.
 
 The displacements between the centres of each magnet in the interacting pairs can be similarly calculated based on the displacement of the moving magnet assembly $\DisplMag$.
-With respect to the frame origin, the magnet centres for the base magnet $m_1$, upper magnet $m_2$, lower moving magnet $m_3$, and upper moving magnet $m_4$ are
+With respect to the frame origin, the magnet centres for the base magnet $\MagCentre_1$, upper magnet $\MagCentre_2$, lower moving magnet $\MagCentre_3$, and upper moving magnet $\MagCentre_4$ are
 \begin{align}
-m_1 &= \OriginMagLow - \HeightBuffer - \half\HeightMag  \,, \\% base magnet
-m_2 &= \HeightRig - \gp{\OriginMagHigh - \HeightBuffer - \half\HeightMag}  \,, \\% upper magnet
-m_3 &= \DisplMag - \half\HeightRigMagnets + \half\HeightMag  \,, \\% B moving magnet
-m_4 &= \DisplMag + \half\HeightRigMagnets - \half\HeightMag  \,. % U moving magnet
+\MagCentre_1 &= \OriginMagLow - \HeightBuffer - \half\HeightMag  \,, \\% base magnet
+\MagCentre_2 &= \HeightRig - \gp{\OriginMagHigh - \HeightBuffer - \half\HeightMag}  \,, \\% upper magnet
+\MagCentre_3 &= \DisplMag - \half\HeightRigMagnets + \half\HeightMag  \,, \\% B moving magnet
+\MagCentre_4 &= \DisplMag + \half\HeightRigMagnets - \half\HeightMag  \,. % U moving magnet
 \end{align}
 
 \subsection{Predicted resonance frequencies}
 
 From the displacement results shown in \secref{xpmt-displ}, predicted resonance frequencies can be calculated for this system as a function of magnet gap.
-The expected magnetic forces $F$ due to the measured displacements were calculated using the theory for coaxial cylindrical magnets (\secref[vref]{cyl-forces}) based on magnet centre displacements $m_3-m_1$ and $m_2-m_4$.
-Numerical differentiation was used to calculate the stiffnesses $k$ at these displacements, and the natural frequency at each location calculated with $\natfreq=\sqrt{\stiffness/m_{eq}}$ where $m_{eq}=F/g$ is the equivalent mass borne by the static force $F$.
+The expected magnetic forces $F$ due to the measured displacements were calculated using the theory for coaxial cylindrical magnets (\secref[vref]{cyl-forces}) based on magnet centre displacements $\MagCentre_3-\MagCentre_1$ and $\MagCentre_2-\MagCentre_4$.
+Numerical differentiation was used to calculate the stiffnesses $k$ at these displacements, and the natural frequency at each location calculated with $\natfreq=\sqrt{\stiffness/\smash{\masseq}}$ where $\masseq=\forceMag/\gravity$ is the equivalent mass borne by the static force $\forceMag$.
 With parameters as specified, the expected natural frequency versus magnet gap results are shown in \figref{xpmt-magres}.
 
 \begin{figure}
@@ -508,7 +509,7 @@ added damping) are shown in \figref{ol-damped-frflin}.
 For both of these results, the transmissibility $\transmissibility{}$ shown is the transfer function between the accelerometer measurements of the base and magnet-supported beam:
 \note{Calculated with \Matlab/'s \texttt{tfestimate} command.}
 \begin{dmath}[label=Tbm,compact]
-  \transmissibility{} = \frac{\crossSpectMagnetBase}{\powerSpectBase}
+  \transmissibility{\freq} = \frac{\crossSpectMagnetBase\fn{\freq}}{\powerSpectBase\fn{\freq}}
 \end{dmath},
 % TODO: bigger better definition
 where $\powerSpectMagnet$ is the power spectral density of the accelerometer
@@ -550,13 +551,13 @@ given by \eqref{simple-isolation-freq} in terms of the natural frequency, $\natf
 \sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio = \damping /
 (2\sqrt{\stiffness\mass})$:
 \begin{dmath}[label=fit-model]
-  \transmissibility = \frac
+  \transmissibility{\freq} = \left| \frac
     {2\ii\dampingratio\freq\natfreq + \natfreq^2}
-    {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2}
+    {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2} \right|
 \end{dmath},
 where $\freq$ is the frequency at which to calculate the transmissibility
-$\transmissibility$. The data was fit
-    \note{Using \Matlab/'s \code{fminsearch}.}% check
+$\transmissibility{\freq}$. The data was fit
+    \note{Using \Matlab/'s \code{fminsearch}.} % check
 to \eqref{fit-model} between $\half\natfreq \le \freq
 \le 2\natfreq$, with well-fit transmissibility around the resonance peak at each measurement taken.
 Plots of the curve fit models shown against the measured data are shown in \figref{ol-undamped-frflin-fit,ol-damped-frflin-fit}.
@@ -614,7 +615,7 @@ rejected by the ratio of the cross-spectrum and power-spectrum terms in
 \eqref{Tbm}.
 A different result can be shown by instead calculating the transmissibility via a ratio of the individual power spectra of the magnet and base:
 \begin{dmath}[label=frfnl]
-  \transmissibility{} = \sqrt{\powerSpectMagnet/\powerSpectBase},
+  \transmissibility{\freq} = \sqrt{\frac{\powerSpectMagnet\fn{\freq}}{\powerSpectBase\fn{\freq}}},
 \end{dmath}
 In this case, any nonlinearities in the signals are retained in the final result.
 (Recall \secref{qzs-not-zerk} for a comparison between the transmissibility and the variance gain for a cubic stiffness nonlinearity.)
@@ -664,7 +665,7 @@ aliasing was avoided when taking the frequency response measurements and when
 feeding back the velocity signal for the controller.
 
 The overall improvement to the vibration isolation can be shown by calculating
-the root-mean-square of the transmissibility over a certain frequency range:
+the \RMS/ of the transmissibility over a certain frequency range:
 \begin{dmath}
   \RMSof{\transmissibility{}} =
   \sqrt{\Sum{\transmissibility{\freq}^2}{\freq,\freq_1,\freq_2}}
@@ -674,9 +675,9 @@ become very noisy below this frequency. The upper frequency limit
 $\freq_2=\SI{11}{Hz}$ was chosen as the higher-order dynamics (not shown in
 \figref{cl-results}) have little impact below this frequency.
 
-\Figref{cl-reduction} shows the reduction in root-mean-square transmissibility
+\Figref{cl-reduction} shows the reduction in \RMS/ transmissibility
 $\RMSof{\transmissibility{}}$ as the negative feedback gain increases.
-The overal transmissibility reduction is calculated as $1-\RMSof{\transmissibility{}}/\transmissibility{}_0$, where $T_0$ is the root-mean-square transmissibility of the open loop system.
+The overal transmissibility reduction is calculated as $1-\RMSof{\transmissibility{}}/\transmissibility{}_0$, where $\transmissibility{}_0$ is the \RMS/ transmissibility of the open loop system.
 The resonance at \SI{1}{Hz} observed in \figref{cl-results} as the feedback gain increases causes the overall transmissibility reduction to have a local maximum.
 
 \begin{figure}
@@ -729,18 +730,18 @@ In the time domain, the response of this linear system is given by
 \end{dmath},
 which can be re-written in the Laplace domain as
 \begin{dmath}[label=simple-isolator-laplace]
-s^2 \laplaceMass \underbrace{\gp{\mass+\damping/s+\stiffness/s^2}}_{\gp{\Block[2]}^{-1}} =
-  \laplaceForce + s^2 \laplaceBase \underbrace{\gp{\damping/s+\stiffness/s^2}}_{\Block[1]}
+\s^2 \laplaceMass \underbrace{\gp{\mass+\damping/\s+\stiffness/\s^2}}_{\gp{\Block[2]}^{-1}} =
+  \laplaceForce + \s^2 \laplaceBase \underbrace{\gp{\damping/\s+\stiffness/\s^2}}_{\Block[1]}
 \end{dmath}.
 This is shown as a block diagram in \figref{simple-isolator-block}. If the
 control force is written as a function of the acceleration of the mass,
-$\laplaceForce=s^2\laplaceMass\BlockController$, the transmissibility of the system is
+$\laplaceForce=\s^2\laplaceMass\BlockController$, the transmissibility of the system is
 \begin{dmath}[label=cl-generic]
   \frac\laplaceMass\laplaceBase = \frac{\Block[1]\Block[2]}{1+\BlockController\Block[2]}
 \end{dmath}.
-When the controller is some gain $\gainSkyhook$ in series with an ideal integration of the accelerometer signal, $\BlockController = \gainSkyhook/s$, \eqref{cl-generic} simplifies to the idealised absolute velocity feedback expression:
+When the controller is some gain $\gainSkyhook$ in series with an ideal integration of the accelerometer signal, $\BlockController = \gainSkyhook/\s$, \eqref{cl-generic} simplifies to the idealised absolute velocity feedback expression:
 \begin{dmath}
-\frac\laplaceMass\laplaceBase =\frac{\stiffness+\damping s}{\stiffness+\gp{\damping+\gainSkyhook}s+\mass s^2}
+\frac\laplaceMass\laplaceBase =\frac{\stiffness+\damping \s}{\stiffness+\gp{\damping+\gainSkyhook}\s+\mass \s^2}
 \end{dmath}.
 This result is plotted in \figref{cl-ideal} for equivalent values of stiffness and damping as the experimental setup.
 
@@ -754,7 +755,7 @@ another for the conditioning electronics in the amplifier; assume for
 simplicity that they have the same cut-on frequency.} \cite{brennan2007-jsv},
 the controller block is defined as
 \begin{dmath}[label=cl-filter-controller]
-  \BlockController = \frac \gainSkyhook s \gp{\frac{s}{s+\freqHPfilter}}^2
+  \BlockController = \frac \gainSkyhook \s \gp{\frac{\s}{\s+\freqHPfilter}}^2
 \end{dmath},
 where $\gainSkyhook$ is the absolute velocity feedback gain and $\freqHPfilter$ is the corner frequency
 of the two high pass filters in the charge amplifier.
@@ -763,11 +764,11 @@ Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
 the final transfer function between the mass and base states,
 \begin{dmath}[label=cl-filter]
   \frac\laplaceMass\laplaceBase =
-    \frac{ \gp{\damping s+\stiffness} \gp{s+\freqHPfilter}^2 }
+    \frac{ \gp{\damping \s+\stiffness} \gp{\s+\freqHPfilter}^2 }
          {
-           \gainSkyhook s^3 +
-           \gp{ \mass s^2 + \damping s + \stiffness }
-           \gp{ s+\freqHPfilter }^2
+           \gainSkyhook \s^3 +
+           \gp{ \mass \s^2 + \damping \s + \stiffness }
+           \gp{ \s+\freqHPfilter }^2
          }
 \end{dmath}.
 This is plotted versus frequency in \figref{cl-filter}, where the resonance
@@ -828,6 +829,6 @@ With the very low damping of the open loop system, superharmonics were clearly v
 Once the actuator was connected, the additional eddy current damping suppressed these nonlinearities.
 
 Absolute velocity feedback control was successful in reducing the transmissibility peaks, but as the gain was increased the additional poles added by the integration filters caused an additional lower frequency peak to appear as the closed loop system approached the gain margin.
-At best, the resonance peak was reduced by over an order of magnitude and the root mean square transmissibility was reduced by around 65\%.
+At best, the resonance peak was reduced by over an order of magnitude and the \RMS/ transmissibility was reduced by around 65\%.
 
 \end{document}

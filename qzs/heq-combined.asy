@@ -7,6 +7,7 @@ texpreamble("
 \providecommand\ngap{d}
 \providecommand\mdim{a}
 \providecommand\ndispZ{h}
+\providecommand\dmin{\epsilon}
 \providecommand\dmax{\delta}
 ");
 
@@ -82,7 +83,7 @@ label("$\feq{}$",(0,feq),E);
 label("$\nforceZ{1,0}$",(0,fmin),E);
 label("$\nforceZ{1,-\ngap+1}$",(0,fmax),E);
 
-label("\strut$-\epsilon$",(-ee,0),S);
+label("\strut$-\dmin$",(-ee,0),S);
 label("\strut$\heq{}$",(-heq,0),S);
 label("$\ndispZ\sb{\text{max}}$",(-heq+dmax,0),S);
 label("\strut$-\ngap+1$",(-gp,0),S);

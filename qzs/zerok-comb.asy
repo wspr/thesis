@@ -18,6 +18,8 @@ pair[] z=new pair[8];
 pair[] k;
 
 texpreamble("
+\providecommand\dispBase{y}
+\providecommand\dispMass{x}
 \providecommand\nforceZ{f_z(d,h)}
 \providecommand\heq{h_{eq}}
 \providecommand\feq{f_{eq}}
@@ -59,13 +61,13 @@ k[1] = (m/2,0)+fleq;
 k[2] = k[1]+(0.4,0);
 k[3] = k[2]+(0,0.4);
 draw(k[1]--k[2]--k[3],Arrow(size=4));
-label("$x$",k[3],E);
+label("$\dispMass$",k[3],E);
 
 k[1] = (-m/2-l-f,0)+ (fixb+fixu)/2;
 k[2] = k[1]-(0.4,0);
 k[3] = k[2]+(0,0.4);
 draw(k[1]--k[2]--k[3],Arrow(size=4));
-label("$y$",k[3],W);
+label("$\dispBase$",k[3],W);
 
 // a.d
 f = 2;

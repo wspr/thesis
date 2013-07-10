@@ -13,7 +13,7 @@
 %\renewcommand\D[3][]{%
 %  \mathrm{\textsc{d}}_{#3^{#1}}\,#2}
 %%%%%%%%%%%%%%%%%
-\Style{LogParen=p,ArcTrig=arc,ImagParen=p,RealParen=p}
+\Style{LogParen=p,ArcTrig=arc,ImagParen=p,RealParen=p,DSymb={\mathrm d},IntegrateDifferentialDSymb={\mathrm d}}
 %%%%%%%%%%%%%%%%%
 
 
@@ -381,12 +381,12 @@
 \newvariable\freq[nom=Frequency]{\omega}
 
 \def\maybedot{}
-\newvariable\dispBase[nom=Base displacement]{\maybedot x_1}
+\newvariable\dispBase[nom=Base displacement]{\noexpand\maybedot x_1}
 \newvariable\laplaceBase[nom={Base response, Laplace domain}]{X_1}
 \newcommand\velBase{{\let\maybedot\dot \dispBase}}
 \newcommand\accBase{{\let\maybedot\ddot \dispBase}}
 
-\newvariable\dispMass[nom=Displacement of the vibration mass]{\maybedot x_2}
+\newvariable\dispMass[nom=Displacement of the vibration mass]{\noexpand\maybedot x_2}
 \newvariable\laplaceMass[nom={Vibration mass response, Laplace domain}]{X_2}
 \newcommand\velMass{{\let\maybedot\dot \dispMass}}
 \newcommand\accMass{{\let\maybedot\ddot \dispMass}}
@@ -416,6 +416,9 @@
 \newvariable\laplaceForceDisturb[label=laplaceG,nom={Force disturbance response, Laplace domain}]{G}
 
 \newmvar\newfunc\transmissibility{T}[elem=\ii\freq,index=1]{nom=Transmissibility,label=transmissibility}
+\newmvar\newfunc\varianceGain{V}[elem=\freq,index=1]{nom={Variance gain, alternative of transmissibility $\transmissibility$},label=varianceGain}
+\newvariable\Time[nom=Time,label=time]{t}
+\newvariable\period[nom=Period,label=period]{T}
 
 \newcommand\gainArbitrary{g_{(\cdot)}}
 \newvariable\gainDisp[nom=Feedback gain on relative displacement]{g_d}
@@ -531,6 +534,7 @@
 \newvariable\ndisp[nom=Normalised nominal magnet displacement,label=qzsl]{l}
 \newvariable\ndispZ[nom=Normalised nominal magnet displacement,label=qzsh]{h}
 \newvariable\dmax[nom=Maximum displacement bound,label=qzsdelta]{\delta}
+\newvariable\dmin[nom={Closest (normalised) allowable displacement from \qzs/ to avoid instability},label=qzsepsilon]{\epsilon}
 \newvariable\mass[nom=Mass]{m}
 \let\massMass\mass %% rm
 \let\freqdesign\resfreq
@@ -571,7 +575,9 @@
 
 \def\mathlog\left[#1\right]{\ln\fn{#1}}
 \def\mathatan\left[#1\right]{\arctan\fn{#1}}
-\newcommand\eqdef{\stackrel{\mathrm{\tiny def}}{=}}
+\newcommand\eqdef{\stackrel{\makebox[0pt][c]{\tiny def}}{=}}
+
+\newvariable\ampExcite[nom=Amplitude of sinusoidal base excitation]{A_e}
 
 %%%%%% ZKS %%%%%%%%%
 
@@ -592,11 +598,11 @@
 \newvariable\ZKSwidth[nom=Inclined spring horizontal dimension,label=ZKSwidth]{w}
 \newvariable\ZKSheight[nom=Inclined spring vertical dimension]{h}
 \newvariable\ZKSlength[nom=Undeflected inclined spring length]{L_0}
-\newmvar\newfunc\ZKSlengthcomp{L}[elem={\ZKSdisp,\ZKSshift},index={1,2}]{nom=Length of inclined spring under load}
+\newmvar\newfunc\ZKSlengthcomp{L}[elem={\ZKSshift,\ZKSdisp},index={1,2}]{nom=Length of inclined spring under load}
 
 \newvariable\ZKSvlength[nom=Undeflected vertical spring length]{H_0}
 
-\newmvar\newfunc\ZKSvlengthcomp{H}[elem={\ZKSdisp,\ZKSshift},index={1,2}]{nom=Length of vertical spring under load,label=ZKS-H}
+\newmvar\newfunc\ZKSvlengthcomp{H}[elem={\ZKSshift,\ZKSdisp},index={1,2}]{nom=Length of vertical spring under load,label=ZKS-H}
 
 \newcommand\ZKSincl{i}
 \newcommand\ZKSvert{v}
@@ -653,11 +659,11 @@
 
 \newcommand\ZKSforce{F}
 
-\newmvar\newfunc\ZKSforceincl{\ZKSforce_\ZKSincl}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+\newmvar\newfunc\ZKSforceincl{\ZKSforce_\ZKSincl}[elem={\ZKSshift,\ZKSdisp},index={1,2}]
  {nom=Force characteristic of the inclined spring}
-\newmvar\newfunc\ZKSforcevert{\ZKSforce_\ZKSvert}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+\newmvar\newfunc\ZKSforcevert{\ZKSforce_\ZKSvert}[elem={\ZKSshift,\ZKSdisp},index={1,2}]
  {nom=Force characteristic of the vertical spring}
-\newmvar\newfunc\ZKSforcetotal{\ZKSforce_t}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+\newmvar\newfunc\ZKSforcetotal{\ZKSforce_t}[elem={\ZKSshift,\ZKSdisp},index={1,2}]
  {nom=Force characteristic of the \qzs/ spring system}
 
 \newmvar\newfunc\ZKSforceinclV{\ZKSforce_{\ZKSincl_v}}[elem=\ZKSdisp,index=1]
@@ -667,11 +673,11 @@
 \newmvar\newfunc\ZKSforcetotalV{\ZKSforce_{t_v}}[elem=\ZKSdisp,index=1]
  {nom=Vertical component of $\ZKSforcetotal$}
 
-\newmvar\newfunc\ZKSforceinclH{\ZKSforce_{\ZKSincl_h}}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+\newmvar\newfunc\ZKSforceinclH{\ZKSforce_{\ZKSincl_h}}[elem={\ZKSshift,\ZKSdisp},index={1,2}]
  {nom=Horizontal component of $\ZKSforceincl$}
-\newmvar\newfunc\ZKSforcevertH{\ZKSforce_{\ZKSvert_h}}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+\newmvar\newfunc\ZKSforcevertH{\ZKSforce_{\ZKSvert_h}}[elem={\ZKSshift,\ZKSdisp},index={1,2}]
  {nom=Horizontal component of $\ZKSforcevert$}
-\newmvar\newfunc\ZKSforcetotalH{\ZKSforce_{t_h}}[elem={\ZKSdisp,\ZKSshift},index={1,2}]
+\newmvar\newfunc\ZKSforcetotalH{\ZKSforce_{t_h}}[elem={\ZKSshift,\ZKSdisp},index={1,2}]
  {nom=Horizontal component of $\ZKSforcetotal$}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
@@ -743,6 +749,8 @@
 \newvariable\EquivMassRig[nom=Equivalent mass of the beam]{m_e}
 
 \newvariable\rigNormGap[label=rignormgap,nom=Normalised magnet gap]{g}
+
+\newvariable\MagCentre[nom={Magnet centre position}]{{x_m}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -852,6 +860,7 @@
 \let\mbqmagratio\ratioCub
 \let\mbqvolume\volume
 \newvariable\mbqmasseq[nom=Equivalent mass]{m_{\mathrm{eq}}}
+\let\masseq\mbqmasseq
 
 \newvariable\mbqdispl[nom=Position vector,label=mbqdispl]{\vect r}
 \newvariable\mbqmdispl[nom=Position vector,label=mbqmdispl]{\vect s}
