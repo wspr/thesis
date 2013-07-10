@@ -108,8 +108,8 @@
                   \tl_replace_all:Nnn \l_tmpa_tl {\chi} {zzzgreek-v}
                   \tl_replace_all:Nnn \l_tmpa_tl {\psi} {zzzgreek-w}
                   \tl_replace_all:Nnn \l_tmpa_tl {\omega} {zzzgreek-x}
-                  \tl_set:Nf \l_tmpa_tl { \l_tmpa_tl }  
-                  \tl_set:Nx #1 { \tl_to_str:N \l_tmpa_tl }  
+                  \tl_set:Nf \l_tmpa_tl { \l_tmpa_tl }
+                  \tl_set:Nx #1 { \tl_to_str:N \l_tmpa_tl }
  }
 
 \DeclareDocumentCommand \newvariable { m O{} m }
@@ -120,7 +120,7 @@
   \ifx \nomenlabel \empty \edef \nomenlabel { \detokenize{#3} } \fi
   \ifx \empty \nomensort \tl_set:Nn \nomensort {#3} \fi
   \wspr_greek_trans:N \nomensort
-  
+
   \tl_if_empty:NT \nomennom \ERROR
   \use:x
    {
@@ -147,7 +147,7 @@
   \ifx \nomenlabel \empty \edef \nomenlabel { \detokenize{#3} } \fi
   \ifx \empty \nomensort \tl_set:Nn \nomensort {#3} \fi
   \wspr_greek_trans:N \nomensort
-  
+
   \tl_if_empty:NT \nomennom \ERROR
   \use:x
    {
@@ -732,7 +732,7 @@
 \let\RadiusMag\oradiusMag
 
 \newvariable\HeightMag[label=hh,nom=Height of the magnets]{h}
-\newvariable\HeightRig[nom=Height of the rig,label=HH]{H}
+\newvariable\HeightRig[nom=Height of the apparatus,label=HH]{H}
 \newvariable\HeightCoil[nom=Height of the coil]{h_c}
 \newvariable\GapCoil[nom=Axial gap between the dual coils,label=gap-coil]{G}
 
