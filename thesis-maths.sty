@@ -132,7 +132,8 @@
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
       }%
-    \protected\def\noexpand #1{\noexpand\gls{\nomenlabel}}%
+    \protected\def\noexpand #1{{\noexpand\color{red}\noexpand\gls{\nomenlabel}}}%
+%    \protected\def\noexpand #1{\noexpand\gls{\nomenlabel}}%
 %    \protected\def\noexpand #1{}%
    }
  }
@@ -158,7 +159,8 @@
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
       }%
-    \exp_not:N #1 \exp_not:N #2 { {\exp_not:N \gls{\nomenlabel} } } [ \exp_not:n {#4} ]
+    \exp_not:N #1 \exp_not:N #2 { {\noexpand\color{red}\exp_not:N \gls{\nomenlabel} } } [ \exp_not:n {#4} ]
+%    \exp_not:N #1 \exp_not:N #2 { {\exp_not:N \gls{\nomenlabel} } } [ \exp_not:n {#4} ]
 %    \exp_not:N #1 \exp_not:N #2 {  } [ \exp_not:n {#4} ]
    }
  }
@@ -523,7 +525,7 @@
 \newvariable\mass[nom=Mass]{m}
 \let\massMass\mass %% rm
 \let\freqdesign\resfreq
-\newvariable\damping[nom=Damping coefficient,label=qzs-damping]{b}
+\newvariable\damping[nom=Damping coefficient,label=qzs-damping]{c}
 
 \newvariable\ccA[nom=Coefficient for empirical magnet force equation,label=coeffA]{A}
 \newvariable\ccB[nom=Coefficient for empirical magnet force equation,label=coeffB]{B}
@@ -536,7 +538,7 @@
 % "functions": variables that depend on parameters
 
 %% single magnets:
-\newmvar\newfunc\magforce{F_m}[elem={\mdim,\ndisp},index={1,2}]{nom={Magnet force}}
+\newmvar\newfunc\magforce{F_m}[elem={\mdim,\ndisp},index={1,2}]{nom={Magnet force vector}}
 \newmvar\newfunc\nforce{f_m}[elem={\ndisp},index=1]{nom=Normalised magnet force}
 \newmvar\newfunc\magstiffness{K_m}[elem={\mdim,\ndisp},index={1,2}]{nom=Magnet stiffness}
 \newmvar\newfunc\nstiffness{k_m}[elem={\ndisp},index=1]{nom=Normalised magnet stiffness}
@@ -738,6 +740,8 @@
 \newglossaryentry{mup}{name={Multipole magnet design}, description={\nopostdesc}}
 \def\nomenparent{mup}
 
+\newvariable\mupi[nom={Magnet index in the $\ax$ direction.},label=mupi]{i}
+\newvariable\mupj[nom={Magnet index in the $\ay$ direction.},label=mupj]{j}
 
 \newvariable\muplength[nom=Multipole array length,label=l-mup]{l}
 \newvariable\mupheight[nom=Multipole array height,label=h-mup]{h}
@@ -746,7 +750,8 @@
 \let\mupdepth\springDepth
 
 \newvariable\mupwavelength[nom=Multipole array wavelength]{\lambda}
-\newvariable\mupfacegap[nom=Multipole array face gap,label=g-mup]{g}
+%\newvariable\mupfacegap[nom=Multipole array face gap,label=g-mup]{G}
+\let\mupfacegap\magnetGap
 \newvariable\mupmaglength[nom=Length of each magnet in a multipole array,label=m-mup]{m}
 \newvariable\mupmagperwave[nom=Multipole array number of magnets per wavelength,label=R-mup]{R}
 \newvariable\mupNmag[nom=Multipole array number of magnets,label=N-mup]{N}
@@ -755,7 +760,7 @@
 
 \newvariable\mupqlh[label=mup-ql,nom={Length of horizontally-magnetised quasi-Halbach array magnets}]{m_1}
 \newvariable\mupqlv[label=mup-qL,nom={Length of vertically-magnetised quasi-Halbach array magnets}]{m_2}
-\newvariable\mupqratio[label=gamma-mup,nom={Ratio between magnet length in a quasi-Halbach array}]{\gamma}
+\newvariable\mupqratio[label=gamma-mup,nom={Ratio between magnet lengths in a quasi-Halbach array}]{\gamma}
 
 \newvariable\mupmagrot[nom=Multipole array magnetisation rotation between successive magnets]{\vartheta}
 \newvariable\mupmagpol[nom=Magnetisation direction of the first magnet in a multipole array]{\vartheta_0}

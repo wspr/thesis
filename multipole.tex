@@ -115,8 +115,7 @@ Other variables that can also be used to describe the array are:
 As the number of magnets per wavelength of magnetisation $\mupmagperwave$ increases, the magnetisation pattern of the array more closely approximates true sinusoidal magnetisation, as shown in \figref{wavelength}.
 
 \begin{figure}
-\centering
-\pregen{\asyinclude{PhD/Figures/Multipole/multipole-variables}}
+\asyinclude{\jobname/multipole-variables}
 \caption
 [Geometry of a linear Halbach array with four magnets per wavelength of magnetisation.]
 {Geometry of a linear Halbach array with four magnets ($\mupmagperwave=4$) of length $\mupmaglength$ per wavelength of magnetisation $\mupwavelength$. This array contains two wavelengths of magnetisation ($\mupNwaves=2$) with an end magnet for symmetry.}
@@ -124,8 +123,7 @@ As the number of magnets per wavelength of magnetisation $\mupmagperwave$ increa
 \end{figure}
 
 \begin{figure}
-\centering
-\pregen{\asyinclude{PhD/Figures/Multipole/magperwave}}
+\asyinclude{\jobname/magperwave}
 \caption
 [Three Halbach arrays of equal length.]
 {Three Halbach arrays of equal length, facing up, each with a single wavelength of magnetisation and composed of $\mupmagperwave\in\{2,4,8\}$ magnets per wavelength respectively.}
@@ -291,7 +289,7 @@ The first has the minimum number of wavelengths of magnetisation ($\mupNwaves=1$
 
 \begin{figure}
 \centering
-\pregen{\asyinclude{\jobname/multipole-max-nmag}}
+\asyinclude{\jobname/multipole-max-nmag}
 \caption{Two multipole arrays of equal length and number of magnets demonstrating extremes in wavelength of magnetisation $\mupNwaves$ and number of magnets per wavelength $\mupmagperwave$.}
 \figlabel{mup-max-nmag}
 \end{figure}
@@ -315,8 +313,7 @@ Consider the four-magnet array shown in \figref{mupmagratio-schem} in which the 
 Magnet size ratio $\mupqratio=\mupqlh/\mupqlv$ is the measure used here to compare different array configurations, for which $\mupqratio=0$ corresponds to an array composed only of vertically-oriented magnets, and $\mupqratio=1$ corresponds to equally-sized magnets of both horizontal and vertical magnetisations (as considered previously in this section).
 
 \begin{figure}
-\centering
-\pregen{\asyinclude{PhD/Figures/Multipole/magratio}}
+\asyinclude{\jobname/magratio}
 \lofcaption{Schematic of a four-magnet Halbach array with variable magnet sizes.}{ The number of magnets per wavelength $\mupmagperwave=4$ for all arrays of this type except in the degenerate case of $\mupqlh=0$, hence $\mupmagperwave=2$.}
 \figlabel{mupmagratio-schem}
 \end{figure}
@@ -369,7 +366,6 @@ As shown in the figure, however, once the separation distance becomes large enou
 Since the magnetic force between opposing parallel magnets is less than anti-parallel opposing magnets (recall \secref*{cube-compare-orth}), this arrangement results in smaller forces than having a set of widely spaced magnets all magnetised in the same direction (\figref{mup-sep-eq}).
 
 \begin{figure}
-\centering
 \asyinclude{\jobname/multipole-sep}
 \caption{Opposing multipole arrays with magnet separation $\mupfacegap$.}
 \figlabel{mup-sep}
@@ -458,7 +454,7 @@ An example is shown demonstrating a simple comparison between the more straightf
 
 \subsection{Equations describing planar magnetisation patterns}
 
-Planar magnet arrays are composed of $N_x\times N_y$ magnets each with magnetisation vector $\magM_{ij}$ for $i\in\{1\dots N_x\}$ and $j\in\{1\dots N_y\}$.
+Planar magnet arrays are composed of $\mupNmag_x\times \mupNmag_y$ magnets each with magnetisation vector $\magM_{\mupi\mupj}$ for $\mupi\in\{1\dots \mupNmag_x\}$ and $\mupj\in\{1\dots \mupNmag_y\}$.
 The planar designs have periodic magnetisations as functions of $i$ and $j$, which are described as follows in terms of normalised magnetisation $\magN = \magM/\remanence$, where $\remanence$ is the remanence magnetisation of the magnet.
 For example, the normalised magnetisation of a homogeneous magnet aligned vertically facing up would be $\magN=\inlinevect{0,0,1}\T$.
 In the equations to follow, the arrays are assumed to be aligned in the $\ax$--$\ay$ plane with their magnetic field extending largely into the $+\az$ direction (\ie, facing `up'); for arrays facing down in the $-\az$ direction, the normalised magnetisation in the $\az$ direction should have reversed sign.
@@ -467,30 +463,31 @@ In the equations to follow, the arrays are assumed to be aligned in the $\ax$--$
 
 The patchwork array is only magnetised in the out-of-plane direction.
 \begin{dmath}[compact]
-\magN\fn{i,j} = \matr{}{0;0; \Cos{i\pi}\Cos{j\pi}} = \matr{}{0; 0; \gp{-1}^{i+j}}
+\magN\fn{\mupi,\mupj} = \matr{}{0;0; \Cos{\mupi\pi}\Cos{\mupj\pi}} = \matr{}{0; 0; \gp{-1}^{\mupi+\mupj}}
 \end{dmath}.
 
 \subsubsection{Linear Halbach array}
 
-A linear Halbach array has homogeneous magnetisation along one horizontal direction; in this case, the array is chosen to vary magnetisation along the $\ax$ direction (\ie, $N_y=1$).
+A linear Halbach array has homogeneous magnetisation along one horizontal direction; in this case, the array is chosen to vary magnetisation along the $\ax$ direction (\ie, $\mupNmag_y=1$).
 \begin{dmath}[label=linear-halbach]
-\magN\fn{i} = \matr{}{\Cos{\mupmagpol+\mupmagrot\gp{i-1}}; 0; \Sin{\mupmagrot+\mupmagrot\gp{i-1}}}
+\magN\fn{\mupi} = \matr{}{\Cos{\mupmagpol+\mupmagrot\gp{\mupi-1}}; 0; \Sin{\mupmagrot+\mupmagrot\gp{\mupi-1}}}
 \end{dmath},
 where $\mupmagpol$ is the magnetisation direction of the first magnet in the $\ax$--$\az$ plane and $\mupmagrot$ is the magnetisation rotation per magnet.
-\Eg, for the linear Halbach array shown in \figref{linear-halbach} where $\mupmagpol=\ang{90}$, $\mupmagrot=\ang{90}$, and $N_x=5$ (and $i=1$ starts from the left), the normalised magnetisation vectors for each magnet are shown in \tabref{linear-halbach-magn}.
+\Eg, for the linear Halbach array shown in \figref{linear-halbach} where $\mupmagpol=\ang{90}$, $\mupmagrot=\ang{90}$, and $\mupNmag_x=5$ (and $\mupi=1$ starts from the left), the normalised magnetisation vectors for each magnet are shown in \tabref{linear-halbach-magn}.
 
 \begin{table}
 \caption{Calculated normalised magnetisation vectors using \eqref{linear-halbach} for the linear Halbach array shown in \figref{linear-halbach}.}
 \tablabel{linear-halbach-magn}
-\begin{tabular}{>{$}c<{$}>{$}c<{$}>{$}c<{$}}
+\def\foo{\phantom{$[$\,}\gdef\foo{$[$\,}}
+\begin{tabular}{>{$}c<{$}>{$}c<{$}@{\foo}>{$}r<{$}@{\,$,$\,}>{$}c<{$}@{\,$,$\,}>{$}r<{$}@{\,$]$}}
 \toprule
-i & \mupmagpol+\mupmagrot\gp{i-1} & \magN\T \\
+\mupi & \mupmagpol+\mupmagrot\gp{\mupi-1} & \multicolumn{3}{c}{$\magN\T$} \\
 \midrule
-1 & \ang{90} & \inlinevect{0,0,+1} \\
-2 & \ang{180} & \inlinevect{-1,0,0} \\
-3 & \ang{270} & \inlinevect{0,0,-1} \\
-4 & \ang{0} & \inlinevect{+1,0,0} \\
-5 & \ang{90} & \inlinevect{0,0,+1} \\
+1 & \ang{90} & 0 & 0 & +1 \\
+2 & \ang{180} & -1 & 0 & 0 \\
+3 & \ang{270} & 0 & 0 & -1 \\
+4 & \ang{0} & +1 & 0 & 0 \\
+5 & \ang{90} & 0 & 0 & +1 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -499,7 +496,7 @@ i & \mupmagpol+\mupmagrot\gp{i-1} & \magN\T \\
 
 In the planary Halbach array, the \emph{directions} of magnetisation are found from the superposition of two orthogonal linear Halbach array magnetisations,
 \begin{dmath}
-\magN\fn{i,j} = \matr{}{\Cos{\mupmagpolx+\mupmagrot\gp{i-1}} ; \Cos{\mupmagpoly+\mupmagrot\gp{j-1}} ; \Sin{\mupmagpolx+\mupmagrot\gp{i-1}} + \Sin{\mupmagpoly+\mupmagrot\gp{j-1}}}
+\magN\fn{\mupi,\mupj} = \matr{}{\Cos{\mupmagpolx+\mupmagrot\gp{\mupi-1}} ; \Cos{\mupmagpoly+\mupmagrot\gp{\mupj-1}} ; \Sin{\mupmagpolx+\mupmagrot\gp{\mupi-1}} + \Sin{\mupmagpoly+\mupmagrot\gp{\mupj-1}}}
 \end{dmath},
 where $\mupmagpolx$ and $\mupmagpoly$ are the directions of magnetisation of the initial magnet in the $\ax$--$\az$ and $\ay$--$\az$ planes, \resp.
 However, as written this results in certain magnets having greater than unity normalised magnetisation, which implies that stronger than regular magnets would be required.
@@ -507,13 +504,13 @@ Therefore, care must be taken when using this equation to ensure that the vector
 
 \subsubsection{Quasi-Halbach array}
 
-Finally, for simplicitly assume for the quasi-Halbach array that the magnetisation vector for the initial magnet is in the $+\az$ direction as shown in \figref{quasi-halbach} (bottom left corresponds to $i=j=1$).
+Finally, for simplicitly assume for the quasi-Halbach array that the magnetisation vector for the initial magnet is in the $+\az$ direction as shown in \figref{quasi-halbach} (bottom left corresponds to $\mupi=\mupj=1$).
 The magnetisation function for each magnet in the array is given by
 \begin{dmath}
-\magN\fn{i,j} = \matr{}{
-  \Sin{\half\pi i} \Cos{\half \pi j} ;
-  \Cos{\half\pi i} \Sin{\half \pi j} ;
-  \Sin{\half\pi i} \Sin{\half \pi j} ;
+\magN\fn{\mupi,\mupj} = \matr{}{
+  \Sin{\half\pi \mupi} \Cos{\half \pi \mupj} ;
+  \Cos{\half\pi \mupi} \Sin{\half \pi \mupj} ;
+  \Sin{\half\pi \mupi} \Sin{\half \pi \mupj} ;
 }
 \end{dmath}.
 
@@ -613,7 +610,7 @@ Such a system has an increased working range of horizontal displacement before f
 \psfragfig{magcode/examples/planar_compare/fig/double-halbach}
 \caption
   [Force \vs\ horizontal displacement results between a pair of double-Halbach multipole arrays.]
-  {Force \vs\ horizontal displacement results between a pair of double-Halbach multipole arrays (\figref{mup-2planar}) with an offset $\muphdgap$ 90\% of one magnet width.
+  {Force \vs\ horizontal displacement results between a pair of double-Halbach multipole arrays (\figref{mup-2planar}) with an offset $\muphdgap$ of \SI{90}{\%} of one magnet width.
   Dashed lines show the vertical force contribution by each individual planar Halbach array.}
 \figlabel{double-halbach}
 \end{figure}
