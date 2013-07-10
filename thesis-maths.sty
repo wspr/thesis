@@ -193,15 +193,6 @@
   elem={\alpha,\beta,\gamma}
 ]
 
-\def\fpeak{\forceMag_{\mathrm{peak}}}
-\def\fmax{\forceMag_{\mathrm{max}}}
-\def\fnorm{\hat \forceMag_z}
-\def\fnpeak{\hat \forceMag_{\mathrm{peak}}}
-\def\fnmax{\hat \forceMag_{\mathrm{max}}}
-\def\currmax{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
-
-\newcommand\eccen{y}
-
 \newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio,label=cuboidaspect]{\gamma}
 \newvariable\ratioCoil[nom=Coil aspect ratio]{\beta}
 \newvariable\ratioMag[nom=Cylindrical magnet aspect ratio,label=cylaspect]{\alpha}
@@ -329,10 +320,6 @@
 \newvariable\hwyF[nom={Half-length of cuboid magnet (floating), $\ay$ direction},label=hwyF]{B}
 \newvariable\hwzF[nom={Half-length of cuboid magnet (floating), $\az$ direction},label=hwzF]{C}
 \newvariable\mwF[nom={Vector of magnet side lengths (floating)}]{\vect S}
-
-\newvariable\Fax[nom={Force in the axial direction},label=Fax]{F_z}
-\newvariable\Fecc[nom={Force in the radial direction}]{F_r}
-\let\Fr\Fecc
 
 \newvariable\rotX[nom={Planar rotation matrix around the $\ax$ axis}]{\mathbf R_x}
 \newvariable\rotY[nom={Planar rotation matrix around the $\ay$ axis}]{\mathbf R_y}
@@ -470,8 +457,12 @@
 \newvariable\diffsurfMag[nom={Region of the integration surface of the magnet}]{s_\SuffixMagnet}
 \newvariable\diffvolMag[nom={Region of the integration volume of the magnet}]{v_\SuffixMagnet}
 
-\newmvar\newvect\distrMag{d}[headcmd=\boldsubs{1},elemcmd=\mlistelem,elem={r_1,\phi_1,z_1}]{nom={Position vector for magnet volume $\distrMag=\inlinevect{\distrMag{1},\distrMag{2},\distrMag{3}}^T$},label=d1}
-\newmvar\newvect\distrCoil{d}[headcmd=\boldsubs{2},elemcmd=\mlistelem,elem={r_2,\phi_2,z_2}]{nom={Position vector for coil volume $\distrCoil=\inlinevect{\distrCoil{1},\distrCoil{2},\distrCoil{3}}^T$},label=d2}
+\newmvar\newvect\distrMag{d}[headcmd=\boldsubs{1},elemcmd=\mlistelem,elem={\distr_1,\dista_1,\distz_1}]{nom={Position vector for magnet volume $\distrMag=\inlinevect{\distrMag{1},\distrMag{2},\distrMag{3}}^T$},label=d1}
+\newmvar\newvect\distrCoil{d}[headcmd=\boldsubs{2},elemcmd=\mlistelem,elem={\distr_2,\dista_2,\distz_2}]{nom={Position vector for differential coil volume in cylindrical coordinates, $\inlinevect{\distrCoil{1},\distrCoil{2},\distrCoil{3}}^T$},label=d2}
+
+\newvariable\distr[nom={Radial component of distance vector in cylindrical coordinates},label=distr]{r}
+\newvariable\dista[nom={Angular component of distance vector in cylindrical coordinates}]{\phi}
+\newvariable\distz[nom={Axial component of distance vector in cylindrical coordinates}]{z}
 
 \newvect\distcMag{d}[headcmd=\boldsubs{1},elemcmd=\mlistelem,elem={x_1,y_1,z_1}]
 \newvect\distcCoil{d}[headcmd=\boldsubs{2},elemcmd=\mlistelem,elem={x_2,y_2,z_2}]
@@ -506,6 +497,24 @@
 \newvariable\COILnmag[nom=Number of smaller permanent magnets]{n}
 
 \newvariable\coilDualGap[label=G-coil,nom=Gap (axial) between adjacent coils]{G}
+
+\newvariable\forceFilament[nom={Axial force between two circular current loops}]{F_f}
+\newvariable\forceThickCoil[nom={Axial force between a thick coil and a magnet}]{F_c}
+\newvariable\radius[nom=Radius,label=radius]{r}
+
+\newvariable\Fax[nom={Axial force between two cylindrical thin coils/magnets},label=Fax]{F_z}
+\newvariable\Fecc[nom={Radial force between two cylindrical thin coils/magnets}]{F_r}
+\let\Fr\Fecc
+\let\forceShell\Fax
+
+\def\fpeak{\forceMag_{\mathrm{peak}}}
+\def\fmax{\forceMag_{\mathrm{max}}}
+\newvariable\fnorm[nom={Thick-coil/magnet force evaluated with a current of \SI{1}{A}}]{\hat \forceThickCoil}
+\newvariable\fnpeak[nom={Peak coil/magnet force over displacement}]{\hat \forceMag_{\mathrm{peak}}}
+\newvariable\fnmax[nom={Optimised coil/magnet peak force}]{\hat \forceMag_{\mathrm{max}}}
+\newvariable\currmax[nom={Maximum current for a given (copper) wire diameter}]{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
+
+\newvariable\safetyFactor[nom={Factor of safety},label=safetyFactor]{S}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%   QZS   %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -571,7 +580,9 @@
 
 \providecommand\labelsize{\scriptsize}
 
-\newvariable\dispvert[nom=Vertical displacement,label=dispvert]{z}
+\newvariable\dispvert[nom={Vertical displacement},label=dispvert]{z}
+\newvariable\dispaxial[nom={Axial displacement},label=dispaxial]{z}
+\newvariable\dispradial[nom=Eccentric (radial) distance between two cylindrical objects]{e_r}
 \newvariable\disphoriz[nom=Horizontal displacement,label=disphoriz]{y}
 %\newvariable\ZKSdisp[nom=Vertical displacement of the inclined spring]{z}
 \let\ZKSdisp\dispvert

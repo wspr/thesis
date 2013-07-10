@@ -22,16 +22,16 @@ draw( (Disp-Lm/2,-Rm-offset)--(Disp+Lm/2,-Rm-offset) , Arrows(6pt),L="$\lengthMa
 draw( (hcnt+2*offset,0)--(hcnt+2*offset,-Ri) , Arrow(6pt), L="$\iradiusCoil$", align=E );
 draw( (hcnt+offset,0)--(hcnt+offset,-Ro) , Arrow(6pt), L="$\oradiusCoil$", align=W );
 
-draw( (-Lc/2+Rg/6,-Ri+Rg/6) -- 
+draw( (-Lc/2+Rg/6,-Ri+Rg/6) --
       (-Lc/2+Rg/6,-Ri+2*Rg/6) --
       (+Lc/2-Rg/6,-Ri+2*Rg/6) --
       (+Lc/2-Rg/6,-Ri+Rg/6)
-    , L="$N_z$", align=N
+    , L="$\turnsZCoil$", align=N
 );
 
 draw( (+Lc/2+Rg/6,  -Ri-Rg/6) --
       (+Lc/2+2*Rg/6,-Ri-Rg/6) --
       (+Lc/2+2*Rg/6,-Ro+Rg/6) --
       (+Lc/2+Rg/6,  -Ro+Rg/6)
-    , L="$N_r$", align=E
+    , L="$\turnsRCoil$", align=E
 );
