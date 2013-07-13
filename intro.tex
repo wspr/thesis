@@ -338,14 +338,14 @@ which is true for $\gainSkyhook+\gainVel>-\damping$.
 While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
 Such active damping reduction has been performed to aid the efficacy of `tuned mass dampers' or vibration neutralisers \cite{kidner1998}, which are discussed briefly in \secref{vibneut}.
 
-The absolute and relative velocity feedback results may be compared by calculating the \RMS\ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases.
-This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS\ transmissibility has a local minimum whereas the absolute feedback case continuously decreases.
+The absolute and relative velocity feedback results may be compared by calculating the \RMS/ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases.
+This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS/ transmissibility has a local minimum whereas the absolute feedback case continuously decreases.
 It is clear in the ideal case that absolute velocity feedback is the more effective at reducing the total vibration of a system.
 (The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/rms-transmissibility}
-   \caption{\RMS\ transmissibility versus feedback gain of relative and
+   \caption{\RMS/ transmissibility versus feedback gain of relative and
    absolute (`skyhook') velocity feedback control of the system shown in
    \figref{simple-isolation}.}
    \figlabel{rms-transmissibility}
@@ -523,7 +523,7 @@ This is illustrated by comparing the transmissibility reduction at a single targ
 It can be seen that for attenuation at resonance, low absorber damping produces greater vibration attenuation.
 The maximum attentuation is achieved when the \vibneut/ resonance matches the frequency of interest.
 
-Conversely, if the \RMS\ transmissibility of an entire frequency band is calculated, as shown in \figref{rms-inertial}, it can be seen that lower absorber damping \emph{decreases} the overall vibration reduction.
+Conversely, if the \RMS/ transmissibility of an entire frequency band is calculated, as shown in \figref{rms-inertial}, it can be seen that lower absorber damping \emph{decreases} the overall vibration reduction.
 It is also interesting to note that in \figref{rms-inertial} the maximum reduction in broadband transmissibility occurs when the neutraliser is tuned slightly below the resonance frequency of the support.
 This would be the appropriate response if the vibration neutraliser were to be used against narrowband vibration with a time-varying resonance peak.
 
@@ -539,12 +539,12 @@ This would be the appropriate response if the vibration neutraliser were to be u
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Springs/fig/rms-inertial}
     \caption{
-      \RMS\ transmissibility, for a range of absorber damping values.
+      \RMS/ transmissibility, for a range of absorber damping values.
       Greater broadband reductions result from \emph{higher} damping.\figlabel{rms-inertial}}
   \end{subfigure}
 \end{wide}
 \caption{
-  Single-frequency transmissibility reduction and broadband \RMS\ transmissibility versus \vibneut/ stiffness for a range of damping ratios.
+  Single-frequency transmissibility reduction and broadband \RMS/ transmissibility versus \vibneut/ stiffness for a range of damping ratios.
 }
 \end{figure}
 
@@ -900,7 +900,7 @@ As an example, \textcite{mahmoud2003} used backstepping with a nonlinear model t
 \textcite{chang2001} applied nonlinear control to the problem of magnetic levitation, using coupled hybrid magnets (\ie, electromagnets biased with permanent magnet cores) that create a magnetic circuit with the levitated table of \SI{20}{kg}.
 
 However, such advanced control techniques are not always necessary; \textcite{li2007} report their success in using simple \PID\ control for suspending a magnetic table using a coupled electromechanical model of the system.
-\textcite{banerjee2008} used a simple cascaded \PI\ and lead controllers to stabilise an electromagnetic suspension.
+\textcite{banerjee2008} used a simple cascaded proportional--integral and lead controllers to stabilise an electromagnetic suspension.
 An optimisation technique was used to obtain the control gains necessary to achieve adequate performance over a range of displacement gaps; such control is usually only suitable for fixed-gap systems.
 
 Vibration isolation achieved using magnetic suspensions is addressed later in \secref{magnet-platform-isolation}.
@@ -1139,20 +1139,20 @@ Most obviously, the shape of the frequency response is not independent of the am
 
 Consider the stable single \dof/ system
 \begin{dmath}[label=duffing]
-\mass \ddot {\disp} + \damping \dot {\disp} + \stiffnessDuffing \gp{\disp+\disturb}^3 = 0,
+\mass \ddot {\disp} + \damping \dot {\disp} + \stiffness_3 \gp{\disp+\disturb}^3 = 0,
 \end{dmath}
 where $\disp$ is displacement and $\disturb$ is an induced displacement disturbance.
-At the operating position $\disp=0$, the nonlinear spring stiffness is $3\stiffness\disp^2|_{\disp=0}=0$.
-For a disturbance $\disturb$, the spring is perturbed and generates a reaction force of $\stiffness \disturb^3$ on the mass.
-The stiffness here is $3\stiffness\disturb^2$; \ie, dependent on the amplitude of disturbance.
+At the operating position $\disp=0$, the nonlinear spring stiffness is $3\stiffness_3\disp^2|_{\disp=0}=0$.
+For a disturbance $\disturb$, the spring is perturbed and generates a reaction force of $\stiffness_3 \disturb^3$ on the mass.
+The stiffness here is $3\stiffness_3\disturb^2$; \ie, dependent on the amplitude of disturbance.
 The ramifications of this nonlinear force on the vibratory response of the system are not exactly straightforward.
 
 \textcite{tentor2001} analysed a spring generated by repulsion magnets which behaved as a Duffing oscillator for large amplitude vibrations:
 \begin{dmath}
-\forceDuffing = \stiffnessLinear \disp + \stiffnessDuffing \disp^3.
+\forceMag_{\mathrm{Duffing}} = \stiffness \disp + \stiffness_3 \disp^3.
 \end{dmath}
 The nonlinear dynamics only affected the response of the system when the nonlinear term dominated over the linear term.
-For a \qzs/ spring, $\stiffnessLinear=0$ and the nonlinear dynamics are more significant.
+For a \qzs/ spring, $\stiffness=0$ and the nonlinear dynamics are more significant.
 
 \textcite{carrella2009-jsv}, for example, use the `harmonic balance' method to analyse the nonlinear frequency response of a Duffing oscillator model of an inclined spring based \qzs/ system, showing the typical jump-up and jump-down phenomena of such nonlinear systems.
 For the purposes of broadband vibration isolation, however, it is instructive to simply examine the power spectra produced with a range of spring stiffnesses and modelling the disturbance input as Gaussian.
@@ -1190,7 +1190,7 @@ Simulation time   & & \SI{5000}{s} \\
 Sample time       & & \SI{0.005}{s} \\
 \textsc{fft} size & & $2^{14}$ \\
 Mass              & $\mass$ & \SI{1}{kg} \\
-Nonlinear stiffness coefficient & $\stiffnessDuffing$ & \SI{1}{kg/m^3} \\
+Nonlinear stiffness coefficient & $\stiffness_3$ & \SI{1}{kg/m^3} \\
 Damping           & $\damping$ & \SI{0.1}{kg/s} \\
 \bottomrule
 \end{tabular}
@@ -1251,7 +1251,7 @@ This chapter has introduced the themes of this thesis; at this point it is prude
 \item [\chapref{xpmt}]
       Experimental results of a variable-stiffness magnetic support based on the principles discussed in \chapref{qzs}.
 \item [\chapref{conc}]
-      As summary of the main findings from the preceding chapters, and a list of possible future directions for subsequent research.
+      A summary of the main findings from the preceding chapters, and a list of possible future directions for subsequent research.
 \end{description}
 
 
@@ -1268,6 +1268,11 @@ This chapter has introduced the themes of this thesis; at this point it is prude
   \citetitle{#1},
   \citefield{#1}{booktitle}.\\
 }
+\newcommand\citeconfx[1]{%
+  \item[\citeyear{#1}]
+  \citetitle{#1},
+  \citefield{#1}{booktitle}. Under review.\\
+}
 
 The following first-authored articles have been published over the course of this \PhD/ research.
 In one form or another, most of these works have been incorporated into this thesis and are highlighted herein where appropriate.
@@ -1282,6 +1287,8 @@ In one form or another, most of these works have been incorporated into this the
 \citejournal{robertson2011-ietm}
 \citejournal{robertson2012-jsv}
 \citejournal{robertson2012-ietm}
+\citeconfx{robertson2013-aas-zks}
+\citeconfx{robertson2013-aas-qzs}
 \end{itemize}
 
 \noindent Much of the work in this thesis is publicly available for use in the research community under the principles of reproducible research \parencite{kovacevic2007-icassp}.

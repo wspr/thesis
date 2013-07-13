@@ -114,7 +114,7 @@ The magnetic forces between the magnets can be calculated by applying the theory
 
 Such forces were calculated between these magnets for a magnet volume $\volMag=\gp{\SI{10}{mm}}^3$ over a displacement $\displ$ from \SIrange{0}{10}{mm} and a magnet size ratio $\ratioCub$ from \num{0.1} to \num{1}. Note that the forces were calculated with a magnetisation of \SI{1}{T} for both magnets, essentially normalising the output forces by the magnetisation strength.
 
-In order to compare the force versus displacement characteristics for a range of magnet size ratios, the forces are normalised by the  $\forceMag_s=\Fzz{\volMag,1,\displ}$; that is, the force for unity magnet size ratio $\ratioCub=1$. \Figref{magratios} shows the normalised force $\normforceMag=\forceMag/\forceMag_s$ as a function of displacement $\displ$ over a range of magnet size ratios $\ratioCub$. The figures are drawn as separate graphs in order to avoid overlap of the curves; size ratio $\ratioCub$ varies from \num{0} to \num{0.4} in \Figref{magratio1} and from \num{0.4} to \num{0.8} in \Figref{magratio2}. It can be seen from the two graphs that a magnet size ratio $\ratioCub$ of around \num{0.4} produces the greatest forces; for values both less and greater than \num{0.4}, the normalised force curves decrease.
+In order to compare the force versus displacement characteristics for a range of magnet size ratios, the forces are normalised by the  $\forceMag_s=\Fzz{\volMag,1,\displ}$; that is, the force for unity magnet size ratio $\ratioCub=1$. \Figref{magratios} shows the normalised force $\forceMag/\forceMag_s$ as a function of displacement $\displ$ over a range of magnet size ratios $\ratioCub$. The figures are drawn as separate graphs in order to avoid overlap of the curves; size ratio $\ratioCub$ varies from \num{0} to \num{0.4} in \Figref{magratio1} and from \num{0.4} to \num{0.8} in \Figref{magratio2}. It can be seen from the two graphs that a magnet size ratio $\ratioCub$ of around \num{0.4} produces the greatest forces; for values both less and greater than \num{0.4}, the normalised force curves decrease.
 
 \begin{figure}
 \begin{wide}
@@ -128,7 +128,7 @@ In order to compare the force versus displacement characteristics for a range of
   {\psfragfig{magcode/examples/fig/magratio2}}
 \end{wide}
 \caption{
-  Normalised force $\normforceMag=\forceMag/\forceMag_s$ for square-faced cuboid magnets as a function of displacement $\displ$.
+  Normalised force $\forceMag/\forceMag_s$ for square-faced cuboid magnets as a function of displacement $\displ$.
 }
 \figlabel{magratios}
 \end{figure}
@@ -148,20 +148,11 @@ The results shown in \figref{xz-magforce-plot} show that these forces are not eq
 
 \begin{figure}
 \begin{wide}
-\begin{subfigure}
-  \asyinclude{\jobname/twomagdir}
-  \caption{
-    Schematic of the two magnet orientations.
-    \figlabel{xz-magforce-schem}
-  }
-\end{subfigure}
-\begin{subfigure}
-  \psfragfig{magcode/examples/fig/xz-magforce}
-  \caption{
-    Forces in two directions versus displacement.
-    \figlabel{xz-magforce-plot}
-  }
-\end{subfigure}
+  \subfloat[Schematic of the two magnet orientations.
+    \figlabel{xz-magforce-schem}]{\quad\asyinclude{\jobname/twomagdir}\quad}
+  \qquad
+  \subfloat[Forces in two directions versus displacement.
+    \figlabel{xz-magforce-plot}]{\psfragfig{magcode/examples/fig/xz-magforce}}
 \end{wide}
 \caption[Force/displacement curves between two cube magnets in two orientations.]{
   Force/displacement curves between two cube magnets in two orientations with side lengths of \SI{10}{mm} and a magnetisation of \SI{1}{T}.
@@ -184,9 +175,11 @@ Interestingly, the behaviour for cylindrical magnets shows a different trend tha
 
 \begin{figure}
 \begin{wide}
+\hspace{-1cm}
 \subfloat
   [Square-faced cuboid magnets.\figlabel{magratio}]
   {\psfragfig{magcode/examples/fig/magratios}}
+\qquad
 \subfloat
   [Cylindrical magnets. Note the greater force peaks compared to the cuboid magnets.\figlabel{magratio-cyl}]
   {\psfragfig{magcode/examples/fig/magratios-cyl}}
@@ -842,16 +835,16 @@ Accordingly, the total force of the spring is given by the superposition of forc
 \eqlabel{mbq-force}
 \end{equation}
 To calculate $\mbqforce_{1}$ and $\mbqforce_{2}$ a local coordinate system  is defined for each magnet pair aligned in each direction of magnetisation.
-Then $\mbqforce_1=\mbqrot{\mbqmagangle} \mbqmforce_1$ and $\mbqforce_2=\mbqrot{\mbqcompmagangle}\mbqmforce_2$, where $\mbqcompmagangle=\pi-\mbqmagangle$, $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are the forces between the magnet pairs in the local coordinate systems of the base magnets, and $\mbqrot{\cdot}$ is the planar rotation matrix given in \eqref[vref]{rotZ}.
+Then $\mbqforce_1=\mbqrot\fn{\mbqmagangle} \mbqmforce_1$ and $\mbqforce_2=\mbqrot\fn{\mbqcompmagangle}\mbqmforce_2$, where $\mbqcompmagangle=\pi-\mbqmagangle$, $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are the forces between the magnet pairs in the local coordinate systems of the base magnets, and $\mbqrot\fn{\cdot}$ is the planar rotation matrix given in \eqref[vref]{rotZ}.
 
 These forces $\mbqmforce_{1}$ and $\mbqmforce_{2}$ are calculated with $\mbqmforce_{i}=\Fzz\fn{\mbqmdispl_{i}}$ where $\Fzz\fn{\cdot}$ given in \eqref{akoun} is the force between parallel cuboid magnets \parencite{akoun1984} and $\mbqmdispl_{1}$ and $\mbqmdispl_{2}$ are the displacement vectors between the magnet centres in the local coordinate system of the magnets given by
 \begin{align}
   \mbqmdispl_1 &=
-    \mbqrot{-\mbqmagangle}
+    \mbqrot\fn{-\mbqmagangle}
     \begin{bmatrix}\mbqoffset + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
     \begin{bmatrix}\mbqmagh\\0\\0\end{bmatrix} , &
   \mbqmdispl_2 &=
-    \mbqrot{-\mbqcompmagangle}
+    \mbqrot\fn{-\mbqcompmagangle}
     \begin{bmatrix}-\mbqoffset + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix} +
     \begin{bmatrix}\mbqmagh \\ 0 \\ 0\end{bmatrix} ,
 \end{align}
@@ -1097,22 +1090,22 @@ in the local coordinate system of the spring (although other centres of rotation
 These lever arms define additional translations of the magnets $\mbqleverdispl_1$ and $\mbqleverdispl_2$ due to rotation of the system:
 \begin{align}
 \eqlabel{vec-levers}
-  \mbqleverdispl_1 &= \mbqrot{\mbqrotz}\mbqCoMvec_1 - \mbqCoMvec_1,
+  \mbqleverdispl_1 &= \mbqrot\fn{\mbqrotz}\mbqCoMvec_1 - \mbqCoMvec_1,
 &
-  \mbqleverdispl_2 &= \mbqrot{\mbqrotz}\mbqCoMvec_2 - \mbqCoMvec_2.
+  \mbqleverdispl_2 &= \mbqrot\fn{\mbqrotz}\mbqCoMvec_2 - \mbqCoMvec_2.
 \end{align}
 The displacement vectors (again in the coordinate system of the magnets) between the magnet pairs are then given by
 \begin{align}
 \eqlabel{vec-displ}
   \mbqmdispl_1 &=
-    \mbqrot{-\mbqmagangle}
+    \mbqrot\fn{-\mbqmagangle}
     \left(
     \mbqleverdispl_1 +
     \begin{bmatrix}\mbqoffset + \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix}
     \right) +
     \begin{bmatrix}a\\0\\0\end{bmatrix} , &
   \mbqmdispl_2 &=
-    \mbqrot{-\mbqcompmagangle}
+    \mbqrot\fn{-\mbqcompmagangle}
     \left(
     \mbqleverdispl_2 +
     \begin{bmatrix}-\mbqoffset+ \mbqhdisp \\ \mbqvdisp \\ \mbqpdisp \end{bmatrix}
@@ -1122,15 +1115,15 @@ The displacement vectors (again in the coordinate system of the magnets) between
 Also, the displacement vectors in the coordinate system of the magnets from the spring magnet centres to the centre of rotation (required for torque calculation) are given by
 \begin{align}
 \eqlabel{vec-displ-local}
-  \mbqlocl_1 &= \mbqrot{-\mbqmagangle}\left( -\mbqrot{\mbqrotz}\mbqCoMvec_1 \right),
+  \mbqlocl_1 &= \mbqrot\fn{-\mbqmagangle}\left( -\mbqrot\fn{\mbqrotz}\mbqCoMvec_1 \right),
 &
-  \mbqlocl_2 &= \mbqrot{-\mbqcompmagangle}\left( -\mbqrot{\mbqrotz}\mbqCoMvec_2 \right).
+  \mbqlocl_2 &= \mbqrot\fn{-\mbqcompmagangle}\left( -\mbqrot\fn{\mbqrotz}\mbqCoMvec_2 \right).
 \end{align}
 \Eqrangeref{vec-levers}{vec-displ-local} are kept in a more general transformation matrix form to accomodate extensions into additional rotational \dofs/.
 
 As before, the total force is
 \begin{equation}
-\mbqforce=\mbqforce_1+\mbqforce_2=\mbqrot{\mbqmagangle} \Fzz(\mbqmdispl_1)+\mbqrot{\mbqcompmagangle}\Fzz(\mbqmdispl_2),
+\mbqforce=\mbqforce_1+\mbqforce_2=\mbqrot\fn{\mbqmagangle} \Fzz(\mbqmdispl_1)+\mbqrot\fn{\mbqcompmagangle}\Fzz(\mbqmdispl_2),
 \eqlabel{mbq-force3}
 \end{equation}
 where $\Fzz\fn{\cdot}$ is the magnet force equation given in \eqref{akoun}. The torque is not affected by the rotation transformations (recall it is around the $\mbqpaxis$ axis only) and is given by the sum of torques between the magnet pairs

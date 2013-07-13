@@ -136,14 +136,14 @@ The forces on the mass are calculated by analysing the components due to each sp
 The force due to the inclined spring
 (on the left of \figref{zks-dia}), in the direction of the spring, is given by
 \begin{dmath}
-\ZKSforceincl = \gp{\ZKSlength-\ZKSlengthcomp} \ZKSstiffincl
+\ZKSforceincl\fn{\ZKSshift,\ZKSdisp} = \gp{\ZKSlength-\ZKSlengthcomp} \ZKSstiffincl
   = \gp{\sqrt{\ZKSwidth^2+\ZKSheight^2}-
         \sqrt{\gp{\ZKSwidth+\ZKSshift}^2}+\ZKSdisp^2} \ZKSstiffincl
 \end{dmath}.
 Assuming only vertical displacement ($\ZKSshift=0$),
 the vertical component of this inclined spring force is
 \begin{dmath}[label=ZKSforceinclV,compact]
-\ZKSforceinclV = \ZKSforceincl{0,2} \frac{\ZKSdisp}{\ZKSlengthcomp{0,2}}
+\ZKSforceinclV\fn{\ZKSshift,\ZKSdisp} = \ZKSforceincl\fn{0,\ZKSdisp} \frac{\ZKSdisp}{\ZKSlengthcomp{0,2}}
 % from LaTeXPrint[Fv, x, 0]; bring stiffincl to the front:
 =  \ZKSdisp \ZKSstiffincl
   \gp{
@@ -157,7 +157,7 @@ With the \coordinate/ substitutions $\ZKSnorm=\ZKSdisp/\ZKSheight$ and
 $\ZKSratio=\ZKSwidth/\ZKSheight$, the inclined spring force in the vertical
 direction can be written in non-dimensional form as
 \begin{dmath}[label=ZKSforceinclVnorm]
-  \frac{\ZKSforceinclV{\ZKSnorm}}{\ZKSheight \ZKSstiffincl} =
+  \frac{\ZKSforceinclV\fn{\ZKSnorm}}{\ZKSheight \ZKSstiffincl} =
     \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
 \end{dmath},
 where $\ZKSratio$ is denoted the `geometric ratio' of the device and $\ZKSnorm$ the normalised displacement.
@@ -172,19 +172,14 @@ The `snap-through' forces that cause the negative stiffness are especially stron
 
 \begin{figure}
 \begin{wide}
-\begin{subfigure}
-\mbox{\null\hspace*{-1cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-plain}}
-\caption{Vertical force due to inclined springs only using
+\subbottom[Vertical force due to inclined springs only using
 \eqref{ZKSforceinclV} for a range of geometric ratios
-$\ZKSratio$.\figlabel{ZKSforce-plain}}
-\end{subfigure}\hfil
-\begin{subfigure}
-\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-total}
-\caption{Normalised vertical force characteristic of the system calculated
+$\ZKSratio$.\figlabel{ZKSforce-plain}]{\hspace*{-1.5cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-plain}}
+\hfil
+\subbottom[Normalised vertical force characteristic of the system calculated
 with \eqref{ZKSforcetotalVnorm}. Minimum displacements are calculated from
 \eqref{ZKSnormMin}; these termination points represent the limiting case of the vertical
-spring being compressed to zero length.\figlabel{ZKSforcetotalVnorm}}
-\end{subfigure}
+spring being compressed to zero length.\figlabel{ZKSforcetotalVnorm}]{\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-total}}
 \end{wide}
 \lofcaption{Vertical forces due to the inclined springs.}{ $\ZKSratioQZS$ is the
 value of $\ZKSratio$ for which \qzs/ is achieved at $\ZKSnorm=0$, calculated
@@ -192,22 +187,22 @@ from \eqref{ZKSratioQZS}.}
 \figlabel{ZKSforce-both}
 \end{figure}
 
-The total vertical force produced by the system, $\ZKSforcetotalV$, is
+The total vertical force produced by the system, $\ZKSforcetotalV\fn{\ZKSshift,\ZKSdisp}$, is
 calculated by combining \eqref{ZKSforceinclV} for each inclined spring with
 the force due to the vertical spring:
 \begin{dmath}[label=ZKSforcetotalV]
-\ZKSforcetotalV
-  = 2\ZKSforceinclV + \ZKSforcevertV
+\ZKSforcetotalV\fn{\ZKSshift,\ZKSdisp}
+  = 2\ZKSforceinclV\fn{\ZKSshift,\ZKSdisp} + \ZKSforcevertV\fn{\ZKSshift,\ZKSdisp}
 \end{dmath}.
 For vertical displacements, the force due to the vertical spring is given by
 \begin{dmath}[label=ZKSforcevertV]
-\ZKSforcevertV
+\ZKSforcevertV\fn{\ZKSshift,\ZKSdisp}
   = \gp{\ZKSheight-\ZKSdisp} \ZKSstiffvert
 \end{dmath},
 and the total force in the vertical direction can be nondimensionally
 represented by
 \begin{dmath}[label=ZKSforcetotalVnorm]
-\frac{\ZKSforcetotalV}{\ZKSheight \ZKSstiffincl} = -\ZKSnorm \ZKSkratio+\ZKSkratio+2
+\frac{\ZKSforcetotalV\fn{\ZKSshift,\ZKSdisp}}{\ZKSheight \ZKSstiffincl} = -\ZKSnorm \ZKSkratio+\ZKSkratio+2
 \ZKSnorm \gp{\sqrt{\frac{\ZKSratio^2+1}{\ZKSratio^2+\ZKSnorm^2}}-1}
 \end{dmath},
 recalling that $\ZKSkratio=\ZKSstiffvert/\ZKSstiffincl$ is the stiffness ratio between the vertical and inclined springs. This equation is depicted in
@@ -275,7 +270,7 @@ The vertical stiffness characteristic, $\ZKSstiffnessV$, of the system is
 calculated by differentiating the vertical force, \eqref{ZKSforcetotalVnorm}, with respect to vertical displacement~$\ZKSdisp$:
 \begin{dgroup*}
 \begin{dmath}
-  \ZKSstiffnessV = -\D{}{\ZKSdisp} \ZKSforcetotalV
+  \ZKSstiffnessV = -\D{}{\ZKSdisp} \ZKSforcetotalV\fn{\ZKSshift,\ZKSdisp}
 \end{dmath},
 \begin{dmath}[label=ZKSstiffnessV]
 % edited to move the gamma^2 in front of the sqrt
@@ -301,7 +296,7 @@ The deviation of $\ZKSratio$ from $\ZKSratioQZS$, $\ZKSoff$, can be defined by
 \begin{dmath}
   \ZKSratio = \gp{1+\ZKSoff}\ZKSratioQZS
 \end{dmath}.
-\Figref{ZKSoff} shows the total vertical force, $\ZKSforcetotalV$, of the system for
+\Figref{ZKSoff} shows the total vertical force, $\ZKSforcetotalV\fn{\ZKSshift,\ZKSdisp}$, of the system for
 $\ZKSoff\in\{-0.1, 0, 0.1\}$. It can be seen that negative values of $\ZKSoff$
 (\ie, a geometric ratio less than that for \qzs/)
 correspond to negative stiffness at normalised displacement $\ZKSnorm=0$.
@@ -332,7 +327,7 @@ is
 
 \begin{dmath}[label=ZKSforcevertlong]
 % edited to insert \ZKSlength
-\ZKSforcevert =
+\ZKSforcevert\fn{\ZKSshift,\ZKSdisp} =
   \gp{\ZKSlengthratio\ZKSlength-\sqrt{\ZKSshift^2+
   \gp{-\ZKSheight+\ZKSdisp+\ZKSlengthratio\ZKSlength}^2}} \ZKSstiffvert
 \end{dmath},
@@ -340,23 +335,23 @@ recalling that $\ZKSshift$ is the displacement of the mass in the horizontal
 direction. Substituting $\ZKSshift=0$ into \eqref{ZKSforcevertlong} yields the
 previous \eqref{ZKSforcevertV}. The horizontal component of this force is
 \begin{dmath}[label=ZKSforcevertH]
-\ZKSforcevertH = \ZKSforcevert\frac{\ZKSshift}{\ZKSvlengthcomp}
+\ZKSforcevertH\fn{\ZKSshift,\ZKSdisp} = \ZKSforcevert\fn{\ZKSshift,\ZKSdisp}\frac{\ZKSshift}{\ZKSvlengthcomp}
 \end{dmath}.
 Similarly, the horizontal component of the force from the inclined spring on
 the left (referring to \figref{zks-dia}) is given by
 \begin{dmath}[label=ZKSforceinclH]
-\ZKSforceinclH = \ZKSforceincl \frac{\ZKSwidth+\ZKSshift}{\ZKSlengthcomp}
+\ZKSforceinclH\fn{\ZKSshift,\ZKSdisp}\bigg|_{\text{left}} = \ZKSforceincl\fn{\ZKSshift,\ZKSdisp} \frac{\ZKSwidth+\ZKSshift}{\ZKSlengthcomp}
 \end{dmath},
 and the horizontal component of the force from the inclined spring on the
 right is
 \begin{dmath}
-\ZKSforceinclH\bigg|_{\text{right}} = -\ZKSforceinclH{-\ZKSshift,2}
+\ZKSforceinclH\fn{\ZKSshift,\ZKSdisp}\bigg|_{\text{right}} = -\ZKSforceinclH\fn{-\ZKSshift,\ZKSdisp}
 \end{dmath}.
 The stiffness characteristic in the horizontal direction, $\ZKSstiffnessH$,
 is derived in a similar fashion to the vertical stiffness. The total force in
 the horizontal direction is
 \begin{dmath}
-\ZKSforcetotalH=\ZKSforceinclH-\ZKSforceinclH{-\ZKSshift,\ZKSdisp}+\ZKSforcevertH
+\ZKSforcetotalH\fn{\ZKSshift,\ZKSdisp}=\ZKSforceinclH\fn{\ZKSshift,\ZKSdisp}-\ZKSforceinclH\fn{-\ZKSshift,\ZKSdisp}+\ZKSforcevertH\fn{\ZKSshift,\ZKSdisp}
 \end{dmath},
 using \eqref{ZKSforcevertH,ZKSforceinclH}. Differentiating with respect to
 horizontal displacement $\ZKSshift$ and evaluating at $\ZKSshift=0$ gives the horizontal stiffness
@@ -618,26 +613,26 @@ The distance between the magnet centres $\cdz$ with respect to the size of the m
   \ndisp = \cdz/\mdim .
 \end{dmath}
 After some manipulation of the original equation given these simplifying
-assumptions, the force $\magforce{}$ on the second magnet in
+assumptions, the force $\magforce\fn{\mdim,\ndisp}$ on the second magnet in
 attraction (\ie, for magnets with polarisation in the same direction)
 can be shown to be directly proportional to the facing area of the magnets,
 $\mdim^2$, for a fixed normalised displacement, $\ndisp$, between the magnets:
 \begin{dmath}[label=force]
-  \magforce = \mdim^2 \nforce .
+  \magforce\fn{\mdim,\ndisp} = \mdim^2 \nforce\fn{\ndisp} .
 \end{dmath}
 For magnets in repulsion, the expression has opposite sign. The derived
-expression for the normalised force $\nforce$ was given in
+expression for the normalised force $\nforce\fn{\ndisp}$ was given in
 \eqref{nforce} in \secref[vref]{cube-forces}.
 
 The stiffness between two cubical magnets can be calculated by differentiating
 the force expression in \eqref{force} with respect to vertical displacement
 $\cdz=\mdim\ndisp$ and can be shown to be proportional to the magnet size $\mdim$:
 \begin{dmath}[label=stiffness,compact]
-  \magstiffness = \frac{\partial}{\partial\cdz} \magforce
-             = \frac1\mdim\frac{\partial}{\partial\ndisp} \mdim^2\nforce
-             = \mdim\nstiffness .
+  \magstiffness\fn{\mdim,\ndisp} = \frac{\partial}{\partial\cdz} \magforce\fn{\mdim,\ndisp}
+             = \frac1\mdim\frac{\partial}{\partial\ndisp} \mdim^2\nforce\fn{\ndisp}
+             = \mdim\nstiffness\fn{\ndisp} .
 \end{dmath}
-The derived expression for the normalised stiffness $\nstiffness$
+The derived expression for the normalised stiffness $\nstiffness\fn{\ndisp}$
 is given in \eqref[vref]{nstiffness}.
 
 A `\qzs/' magnetic spring consists of an attracting magnetic pair above a repelling magnet pair as shown in \figref{schem}, originally introduced in \secref{qzs-basics}.
@@ -649,20 +644,20 @@ The parameters $\ngap$ and $\ndispZ$ are referred to
 as normalised magnet gap and normalised magnet displacement, respectively.
 The force due to the lower magnet in repulsion is
 \begin{align}
-\frepl &= -\magforce{\mdim,\mdim\ngap+\mdim\ndispZ} \\
-       &= -\mdim^2\nforce{\ngap+\ndispZ},
+\frepl &= -\magforce\fn{\mdim,\mdim\ngap+\mdim\ndispZ} \\
+       &= -\mdim^2\nforce\fn{\ngap+\ndispZ},
 \end{align}
 and the force due to the upper magnet in attraction is
 \begin{align}
-\fattr &= \magforce{\mdim,-\mdim\ngap+\mdim\ndispZ} \\
-       &= \mdim^2\nforce{-\ngap+\ndispZ}.
+\fattr &= \magforce\fn{\mdim,-\mdim\ngap+\mdim\ndispZ} \\
+       &= \mdim^2\nforce\fn{-\ngap+\ndispZ}.
 \end{align}
 The total force on the floating magnet, $\magforceZ$, is a superposition
 of $\frepl$ and $\fattr$, yielding
 \begin{align}
   \magforceZ &= \frepl+\fattr \\
-          &= \mdim^2\gp{-\nforce{ \ngap+\ndispZ}
-                     +\nforce{-\ngap+\ndispZ}} \\
+          &= \mdim^2\gp{-\nforce\fn{ \ngap+\ndispZ}
+                     +\nforce\fn{-\ngap+\ndispZ}} \\
           &\eqdef \mdim^2 \nforceZ . \eqlabel{nforceZ}
 \end{align}
 The stiffness of the system can be similarly expressed as
@@ -671,8 +666,8 @@ The stiffness of the system can be similarly expressed as
 \end{dmath},
 where
 \begin{dmath}[label=nstiffnessZ]
-  \nstiffnessZ = -\nstiffness{ \ngap+\ndispZ}
-                  +\nstiffness{-\ngap+\ndispZ}
+  \nstiffnessZ = -\nstiffness\fn{ \ngap+\ndispZ}
+                  +\nstiffness\fn{-\ngap+\ndispZ}
 \end{dmath}.
 The force $\nforceZ$ and stiffness $\nstiffnessZ$ of the magnetic spring are
 readily calculated for values of normalised displacement and gap, $\ndispZ$
@@ -702,15 +697,15 @@ $\polyc2$, and $\polyc4$ require high-order polynomials to represent the
 variation sufficiently well.
 
 Due to the complexity of the expression, a simpler approximation of
-the normalised force $\nforce$ can be found by numerically fitting the
+the normalised force $\nforce\fn{\ndisp}$ can be found by numerically fitting the
 constant coefficients $\ccA$, $\ccB$, and possibly $\nn$ in the empirical
 approximation for the forces between two magnets
 \begin{dmath}[label=nnfit]
-  \nforce \approx \frac{\ccA}{\gp{\ccB+\ndisp}^\nn}.
+  \nforce\fn{\ndisp} \approx \frac{\ccA}{\gp{\ccB+\ndisp}^\nn}.
 \end{dmath}
 \textcite{xu1993} used the more complicated approximation
 \begin{dmath}
-  \nforce \approx \ccD\gp{\frac{\ccA}{\ccB+\ndisp}}^\nn+\ccC
+  \nforce\fn{\ndisp} \approx \ccD\gp{\frac{\ccA}{\ccB+\ndisp}}^\nn+\ccC
 \end{dmath}
 although in this case the additional complexity does not justify
 the slight increase in accuracy this expression may offer.
