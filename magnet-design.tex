@@ -454,15 +454,15 @@ The addition of the horizontal magnets produces an asymmetry in the total vertic
     \begin{wide}
       \vspace*{-0.5cm}
       \centerline{
-      \subfloat[$\ax$-forces.\figlabel{iso-#1-x}]{%
+      \subfloat[$\ax$ forces.\figlabel{iso-#1-x}]{%
         \psfragfig
           {PhD/Simulations/Single_magnets/all_springs/frag/#1-xforce}%
       }\hspace*{-0.5cm}%
-      \subfloat[$\ay$-forces.\figlabel{iso-#1-y}]{%
+      \subfloat[$\ay$ forces.\figlabel{iso-#1-y}]{%
         \psfragfig
           {PhD/Simulations/Single_magnets/all_springs/frag/#1-yforce}%
       }\hspace*{-0.5cm}%
-      \subfloat[$\az$-forces.\figlabel{iso-#1-z}]{%
+      \subfloat[$\az$ forces.\figlabel{iso-#1-z}]{%
         \psfragfig
           {PhD/Simulations/Single_magnets/all_springs/frag/#1-zforce}%
       }%
@@ -495,14 +495,14 @@ The colour scale goes through the spectrum from orange to purple as the forces i
 The vertical components are easiest to comprehend.
 \Figref{iso-vattr-z} shows that as the floating magnet is displaced upwards, the magnitude of the vertical force increases (becoming more blue).
 Contrariwise, \figref{iso-vrepl-z} shows an increase in vertical force with negative displacement for the spring with magnets in repulsion.
-For symmetrical cases like the $\ax$- and $\ay$-direction forces, this makes pale green-blue the colour of zero force, with orange and purple the negative and positive extremes, respectively.
+For symmetrical cases like the forces in the $\ax$ and $\ay$ directions, this makes pale green-blue the colour of zero force, with orange and purple the negative and positive extremes, respectively.
 Thus, for the vertical attracting spring, \figref{iso-vattr-x,iso-vattr-y} demonstrate horizontal stability while for the vertical repelling spring,  \figref{iso-vrepl-x,iso-vrepl-y} demonstrate horizontal instability.
 
 The vertical \qzs/ spring (\secref*{qzs-basics}) retains this simplicity of representation in \figref{z-forces}, noting particularly the `switching-stability' horizontal behaviour with vertical displacement.
 Above the centred position, the spring dynamically behaves as the vertically attracting spring, and below it behaves as the repulsive spring.
 
 The isoforces of the horizontal spring (\figref{h-forces}, \secref*{hspring}) show similar shapes to the vertical \qzs/ spring (\figref{z-forces}), albeit rotated ninety degrees.
-Note, however, that due to the differences in magnetisation direction between the magnets, a different a stability pattern is seen; increases in $\ay$- and $\az$-displacement respectively both result in restoring forces.
+Note, however, that due to the differences in magnetisation direction between the magnets, a different a stability pattern is seen; increases in $\ay$ and $\az$ displacement respectively both result in restoring forces.
 
 The final two `combination' springs, \figref{hv-forces,zhv-forces}, involve superposition of isoforces seen previously.
 As more magnets are used, the more complex the isoforce patterns become.
@@ -549,7 +549,7 @@ This design consists of two fixed vertical magnets with some horizontal offset b
 The work by \textcite{choi2003} was focussed on active control of this system in one degree of freedom to achieve stability; with the theory developed for modelling the forces between magnets in \chapref{magnet-theory}, this design can be analysed in more detail.
 The stability and force characteristics of this design are strongly related to the geometry of the system; the sizes and aspect ratios of each magnet can be varied, along with the distance separating the fixed base magnets.
 Verification of the translational stability of the system is shown in \figref{choi-stiffness}, which shows the stiffness in each direction as a function of vertical displacement for an example system using \SI{20}{mm} \SI{1}{T} cube magnets and $\choiGap=\SI{20}{mm}$ separation between the fixed magnets.
-It can be seen that for a certain range of vertical displacement, both the $\ax$- and $\az$-stiffnesses are positive, indicating a single degree of instability.
+It can be seen that for a certain range of vertical displacement, both the $\ax$ and $\az$ stiffnesses are positive, indicating a single degree of instability.
 When four such devices (or any other symmetric pair configuration) are arranged in a plane, the rotational degrees of freedom can all be stabilised \cite{choi2003}.
 
 The design of such a device has not been analysed until now; while \textcite{choi2003} demonstrated the concept, their work did not investigate the influence of varying the design parameters.
@@ -1232,7 +1232,7 @@ Assuming that the device is always designed to move freely in the vertical direc
 \item unconstrained.
 \end{enumerate}
 It is evident that the case of constraining both rotation and horizontal displacement will be stable provided the vertical stiffness is positive.
-The first of the dynamic simulations presented is displacement in the $x$--$y$ plane with constrained rotation.
+The first of the dynamic simulations presented is displacement in the $\ax$--$\ay$ plane with constrained rotation.
 Given the system described in \Eqref{mbq-dyn} and a perturbation of $\mbqhpert=\mbqvpert=\SI{1.5}{mm}$, the resultant dynamics are shown in \Figref{mbq-dyn-xy} as displacements from the equilibrium position of the spring.
 While this is close to the maximum perturbation for this system before instability, this example illustrates that there is a region around the equilibrium position within which stability is achieved.
 
@@ -1296,7 +1296,7 @@ Six identical magnet pairs were used; four on the long side of the device and tw
 The rare earth magnets of volume \SI{25x25x12.5}{mm^3} were chosen to generate enough repulsive force to bear a weight of \SI{10}{kg} with a vertical displacement of around \SI{20}{mm} depending on the magnet angle.
 Four electromagnetic actuators were placed at the corners of the device for active vibration isolation.
 For the project, passive levitation control was achieved using a linear bearing to constrain the device to vertical motion, coupled with a rotational bearing to permit rotation around the long horizontal axis.
-The device was quite stable in this configuration, but when analysed for active stabilisation a strong instability around the $y$-axis (yaw rotation) was found.
+The device was quite stable in this configuration, but when analysed for active stabilisation a strong instability around the $\ay$ axis (yaw rotation) was found.
 
 \begin{figure}
 \begin{wide}
