@@ -15,12 +15,9 @@
 \newcommand\acro[1]{\textsc{\MakeLowercase{#1}}}
 \newcommand\newacro[1]{\@namedef{#1}{\acro{#1}}}
 
-\newacro{FEA}
 \newacro{FFT}
-\newacro{FEM}
 \newacro{PDF}
 \newacro{PID}
-%\newacro{PI}
 
 \DeclareRobustCommand\maggrade[1]{%
   \edef\@tempa{\rmdefault}%
@@ -58,8 +55,8 @@
   \cite{kjmagnetics}%
 }
 
-\newmacro \threeD {\textsc{3d}}
-\newmacro \twoD {\textsc{2d}}
+\newmacro \threeD {three dimensional}
+\newmacro \twoD {two dimensional}
 
 \newmacro \AC {time varying}
 \newmacro \PhD {Ph.\,D\sw@ensuresingleperiod}
@@ -90,7 +87,9 @@
 \RequirePackage{textcomp} % provide lots of new symbols
 \RequirePackage{lmodern}
 \RequirePackage[sc,osf]{mathpazo}% for math
-%\RequirePackage[defaultsans]{lato}
+
+\usepackage[scaled=0.86]{berasans}
+
 \RequirePackage{microtype}
 \RequirePackage{morefloats}
 \RequirePackage{pifont}
@@ -136,8 +135,8 @@
   zref,
 }
 
-
-\RequirePackage[font={sf,small}]{caption}
+\let\setstretch\setSpacing % memoir is stupid
+\RequirePackage[format=hang,indent=-3em,labelfont={small},textfont={sf,small,stretch=1.15}]{caption}
 \captionsetup[table]{position=top}
 
 
@@ -160,6 +159,8 @@
 
 %% MATHS
 \RequirePackage{amsmath,amssymb,bm,cool,mathtools,fngp}
+\let\PI\relax
+\newacro{PI}
 
 \RequirePackage{mlist}
 \RequirePackage{thesis-maths}
@@ -209,6 +210,8 @@
 \bibliography{journals,phd,ARK}
 \renewcommand\bibname{References}
 
+\newcommand\epicite[1]{`\citetitle{#1}\rlap'\\\textcite{#1}}
+\newcommand\epicitenq[1]{\citetitle{#1}\\\textcite{#1}}
 
 % \setkeys{Gin}{quiet}
 

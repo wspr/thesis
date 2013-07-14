@@ -62,7 +62,7 @@ label("$2\hwyF$",displ+rotate(magrot)*(my2/2),align=N);
 draw( shift(lx)*( magO -- (magO.x,displ.y) ) , Arrows(size=4pt) , p=pen_dim, L="$\cdz$");
 draw( shift(ly)*( magO -- (displ.x,magO.y) ) , Arrows(size=4pt) , p=pen_dim, L="$\cdy$");
 
-draw( displ -- displ + 0.6*(-1,-2) , p=linewidth(2*w_body), Arrow(size=6pt) , L="$\force$", align=4*S+0.5*E);
+draw( displ -- displ + 0.6*(-1,-2) , p=linewidth(2*w_body), Arrow(size=6pt) , L="$\forceVec$", align=4*S+0.5*E);
 
 // dashes
 draw( magO -- lx , p=pen_dim+dashed+grey);

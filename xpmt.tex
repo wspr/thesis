@@ -15,9 +15,10 @@ a few seconds he could make the long strap move at an invisible
 velocity.  Beyond its extent the environment might be corn, straw,
 or chaos; it was all the same to him.  If any of the autochthonous
 idlers asked him what he called himself, he replied shortly, `an
-engineer.'}{\citetitle{hardy1981-tess}\\\textcite{hardy1981-tess}}
+engineer.'}{\epicite{hardy1981-tess}}
 
-\noindent
+\referpaper{The work presented in this chapter has been submitted in condensed form as a conference paper~\cite{robertson2013-aas-qzs}.}
+
 This chapter covers the implementation details, experiments performed, and results obtained from the experimental apparatus built for this project to validate some of the concepts and theory discussed in previous chapters.
 
 \section{Design of the experimental apparatus}
@@ -706,20 +707,20 @@ This behaviour has been shown previously for single \dof/ structures with veloci
 Here, the same type of analysis will be used to investigate the response of a linear two \dof/ isolator
 system (shown in \figref{vibration-base-feedback}) with integrated accelerometer measurements used for velocity feedback control.
 
-\begin{figure}[t]
-\centerline{
-\begin{minipage}[b]{0.5\textwidth}
-  \asyinclude{PhD/Figures/Systems/vibration-base-feedback}
+\begin{figure}
+\begin{wide}
+\begin{minipage}[b]{0.4\linewidth}\centering
+  \asyinclude{\jobname/vibration-base-feedback}
   \caption{Vibration isolation schematic with active feedback.}
   \figlabel{vibration-base-feedback}
 \end{minipage}\qquad
-\begin{minipage}[b]{0.8\textwidth}
-  \asyinclude{PhD/Figures/Control/simple-isolator-block}
+\begin{minipage}[b]{0.5\linewidth}\centering
+  \asyinclude{\jobname/simple-isolator-block}
   \caption{Block diagram of \eqref{simple-isolator-laplace} representing
   the system shown in \figref{vibration-base-feedback}.}
   \figlabel{simple-isolator-block}
 \end{minipage}
-}
+\end{wide}
 \end{figure}
 
 

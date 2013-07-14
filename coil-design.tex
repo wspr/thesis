@@ -7,6 +7,8 @@
 \chapter{Electromagnetic actuators}
 \chaplabel{coil-design}
 
+\epigraph{Oh no!!}{WHOM}
+
 \referpaper{The work presented in \secref{magnetcoil-forces,magnetcoil-optimisation} is based on material that has been published as a journal paper~\cite{robertson2012-ietm}.}
 
 \section{Introduction}
@@ -77,18 +79,11 @@ The final method uses a single integral expression to calculate the force, and t
 The shell method and the first integral method were developed as part of the current study; the other two methods in from literature, examined for comparison.
 
 \begin{figure}
-  \iftrue
-    \includegraphics{\jobname/coils-rendered}
-  \else
-    \hspace{-7cm}%
-    \makebox[0pt][l]{\asyinclude{\jobname/coil-shell}}%
-    \makebox[0pt][l]{%
-      \hspace{-0.5\linewidth}%
-      \asyinclude{\jobname/coil-filament}%
-    }%
-  \fi
-\caption[The filament and shell models.]{
-  Schematic of the filament and shell models (left and right, respectively). In the filament model, the magnet and thick coil are modelled with individual current loops.
+  \subbottom[Filament model.]{\asyinclude{\jobname/coil-filament}}\hfil
+  \subbottom[Shell model.]{\asyinclude{\jobname/coil-shell}}
+  \caption[The filament and shell models.]{
+  Schematics of the filament and shell models.
+  In the filament model, the magnet and thick coil are modelled with individual current loops.
   In the shell model, the magnet is modelled as a cylindrical surface current density and the thick coil is modelled as a number of individual concentric surface current densities to represent multiple windings in the radial direction.
 }
 \figlabel{filament-shell}
@@ -152,9 +147,9 @@ A solenoid with current volume density~$\magJ$ generates a magnetic field~$\magB
 \distrMag}}{\Abs{\distrCoil-\distrMag}^3}}{\diffvolCoil,\volCoil}
 \end{dmath},
 where $\distrCoil$ is the distance vector to the differential coil volume~$d\diffvolCoil$.
-The force due to that field on a permanent magnet with magnetisation vector $\magM$ is given by the integral over the magnet surface $\surfMag$ with normal vector $\normn$
+The vector force $\forceVec$ due to that field on a permanent magnet with magnetisation vector $\magM$ is given by the integral over the magnet surface $\surfMag$ with normal vector $\normn$
 \begin{dmath}[label=magcoil-force-integral]
-\force = \oint_{\surfMag} \gp{\magM\cross\normn}\cross\magB\fn{\distrMag}\,d{\diffsurfMag}
+\forceVec = \oint_{\surfMag} \gp{\magM\cross\normn}\cross\magB\fn{\distrMag}\,d{\diffsurfMag}
 \end{dmath},
 where $\distrMag$ is the distance vector to the differential magnet surface $d\diffsurfMag$.
 Following the magnetic field expression in polar coordinates shown by Ravaud et al.~\cite{ravaud2010-emwaves} and taking only the axial component of the force results, \eqref{magcoil-force-integral} is written in full as a function of axial displacement $\dispaxial$ as
@@ -211,7 +206,7 @@ With parameters are as described earlier in this section, the force exerted on a
 \def\ri{\rho}
 \def\HeumanLambda{\Lambda_0}
 \def\a{\xi_}
-\def\m#1{m_{\ifcase#1\or 7\or 8\fi}}
+\def\m#1{m_#1}
 \begin{dmath}[label=babicforce]
 {\forceThickCoil}_4 = \frac{\turnsCoil \currentCoil \remanence \oradiusMag^3}{6 \lengthCoil \gp{\oradiusCoil-\iradiusCoil}} \sum_{e_1,e_2,e_3}^{\{1,-1\}^3} \gp{e_1 e_2 e_3 \,\ti \,f_{c_4}}
 \end{dmath}
@@ -415,7 +410,7 @@ The following transformation can be used to perform this:
 \end{align}
 Due to the additional complexity introduced by this transformation, the original integral can no longer be easily solved analytically with respect to $\distrMag{2}'$.
 The variable $\distrMag{1}'$ is not an integration term and therefore $\distrMag{1}'=\radiusMag$.
-Accordingly, the axial force due to both axial and radial displacement is now given by
+Accordingly, after rederiving the integral, the axial force due to both axial and radial displacement is now given by
 \begin{dmath}[label=cylforcez-ecc]
 f_{c_4}=
 \frac{\turnsCoil \currentCoil \remanence}{\pi\lengthCoil\gp{\oradiusCoil-\iradiusCoil}}
@@ -520,7 +515,7 @@ In the theory developed in \secref{magcoil-theory}, the force is calculated usin
 When designing a coil, however, it is instead more applicable to fix the coil resistance and wire thickness and calculate the number of turns and outer coil radius from these values.
 In this way, comparisons between different geometries will be indicative of force for some fixed electrical input power as each coil variation will draw the same amount of current for a given driving voltage.
 
-The resistance of the coil $\resistanceCoil$ directly infers the length of the wire winding, $\lengthWire$, through the relation
+The resistance of the coil $\resistanceCoil$ directly infers the length of the wire winding,~$\lengthWire$, through the relation
 \begin{dmath}
 \lengthWire = \resistanceCoil \areaWire / \resistivity,
 \end{dmath}
@@ -658,7 +653,7 @@ As the wire diameter increases, the resistance per unit length decreases and a l
   Maximum peak and normalised force per ampere of current, optimised by magnet and coil geometry as a function of wire diameter.
 }{
   Results are shown for three values of coil impedance while the magnet volume is fixed at $\volMag=(\SI{20}{mm})^3$.
-Solid, labelled lines have a safety factor of 100\%; dashed lines represent the same curves using a \SI{20}{\%} safety factor on current; they exhibit the same shape with a proportionally lower peak amplitude.
+Solid, labelled lines have a safety factor of 100\%; dashed lines represent the same curves using a \SI{20}{\%} safety factor on allowable maximum current; they exhibit the same shape with a proportionally lower peak amplitude.
 }
 \figlabel{magcoil-ratiomax-comb}
 \end{figure}

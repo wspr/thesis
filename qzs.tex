@@ -7,6 +7,8 @@
 \chapter{\QZS/ design}
 \chaplabel{qzs}
 
+\epigraph{Don't know!}{Fill me in}
+
 \referpaper{The work presented in \secref{qzs} is based on material that has been published as a journal paper~\cite{robertson2009-jsv}.}
 
 \section{Introduction to \qzs/ springs}
@@ -677,9 +679,9 @@ expressions are too complex for use in any calculation where they must be
 inverted (say, finding a value of $\ngap$ for which a certain $\nstiffnessZ$
 holds). It is therefore necessary to obtain a simpler model of $\nforceZ$.
 
-Previously \cite{nijsse2001,robertson2006-activeconf}, $\nforceZ$ has been modelled as a quadratic polynomial with coefficients $\polyq0$, $\polyq2$ that vary with magnet gap:
+Previously \cite{nijsse2001,robertson2006-activeconf}, $\nforceZ$ has been modelled as a quadratic polynomial with coefficients $\qqO$, $\qqII$ that vary with magnet gap:
 \begin{dmath}[label=quad]
-\nforceZ \approx \polyq2 \,\ndispZ^2 + \polyq0  .
+\nforceZ \approx \qqII \,\ndispZ^2 + \qqO  .
 \end{dmath}
 Over small displacement ranges this approximation yields adequate results, but
 the resulting model is dependent on the gap between the magnets and local to
@@ -688,12 +690,12 @@ the displacement range used to fit the model.
 A more accurate result (which is also accurate over larger displacement
 ranges) can be achieved with a quartic polynomial approximation,
 \begin{dmath}[label=quartic]
-\nforceZ \approx \polyc4 \,\ndispZ^4 + \polyc2 \,\ndispZ^2 + \polyc0 ,
+\nforceZ \approx \qqIV \,\ndispZ^4 + \qqII \,\ndispZ^2 + \qqO ,
 \end{dmath}
 but the same criticisms hold as for the quadratic polynomial model: the
 resulting model is not general; furthermore, if the model approximation is to
-also represent changes in magnet gap $\ngap$, the functions $\polyc0$,
-$\polyc2$, and $\polyc4$ require high-order polynomials to represent the
+also represent changes in magnet gap $\ngap$, the functions $\qqO$,
+$\qqII$, and $\qqIV$ require high-order polynomials to represent the
 variation sufficiently well.
 
 Due to the complexity of the expression, a simpler approximation of
@@ -767,9 +769,9 @@ those shown in \figref{nnfit} and have been omitted for clarity.
 
 An empirical approximation of \eqref{force} for the force between two coaxial cubical magnets  is thus given by
 \begin{equation}
-\magforce{\mdim,x} \approx \pm \mdim^2 \remanence^2 \frac{\SI{6.028e5}{}}{\gp{0.1883+x/\mdim}^{4.197}}
+\magforce\fn{\mdim,x} \approx \pm \mdim^2 \remanence^2 \frac{\SI{6.028e5}{}}{\gp{0.1883+x/\mdim}^{4.197}}
 \end{equation}
-with force $\magforce{\mdim,x}$ in Newtons, magnet size $\mdim$ and centre displacement
+with force $\magforce\fn{\mdim,x}$ in Newtons, magnet size $\mdim$ and centre displacement
 $x$ both in metres, and remanence magnetisation $\remanence$ in Tesla, where the expression is
 positive for magnets in repulsion and negative for magnets in attraction.
 

@@ -187,19 +187,6 @@
 
 \newvariable\incr[nom={Displacement increment}]{\delta}
 
-\newvect\cuboida{V_a}[
-  elemcmd=\mlistelem,
-  elem={a,b,c}
-]
-\newvect\cuboidb{V_b}[
-  elemcmd=\mlistelem,
-  elem={A,B,C}
-]
-\newvect\cuboidoffset{\Delta}[
-  elemcmd=\mlistelem,
-  elem={\alpha,\beta,\gamma}
-]
-
 \newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio,label=cuboidaspect]{\gamma}
 \newvariable\ratioCoil[nom=Coil aspect ratio]{\beta}
 \newvariable\ratioMag[nom=Cylindrical magnet aspect ratio,label=cylaspect]{\alpha}
@@ -292,11 +279,14 @@
 \newcommand\cdz{d_z}
 \newvariable\magcd[nom={Distance vector between the centres of two magnets, $\magcd=\inlinevect{\cdx,\cdy,\cdz}$}]{\vect d}
 
-\newvariable\cnrx[nom={$\ax$ component of $\cornerd$},label=cnrx]{r_x}
-\newvariable\cnry[nom={$\ay$ component of $\cornerd$},label=cnry]{r_y}
-\newvariable\cnrz[nom={$\az$ component of $\cornerd$},label=cnrz]{r_z}
+%\newvariable\cnrx[nom={$\ax$ component of $\cornerd$},label=cnrx]{\delta_x}
+%\newvariable\cnry[nom={$\ay$ component of $\cornerd$},label=cnry]{\delta_y}
+%\newvariable\cnrz[nom={$\az$ component of $\cornerd$},label=cnrz]{\delta_z}
+\newcommand\cnrx{\delta_x}
+\newcommand\cnry{\delta_y}
+\newcommand\cnrz{\delta_z}
 \newvariable\cornerd[nom={Distance vector between a pair of corners/nodes of two magnets, $\cornerd=\inlinevect{\cnrx,\cnry,\cnrz}$}]{\bm\delta}
-\newvariable\cnrl[nom={Euclidean distance of $\cornerd$},label=cnrl]{r}
+\newvariable\cnrl[nom={Euclidean distance of $\cornerd$, $\sqrt{\cnrx^2+\cnry^2+\cnrz^2}$},label=cnrl]{r}
 
 \newvariable\cdcnrX[nom={Distance vector between a magnet's centre and one of its corners/nodes (fixed magnet)}]{\vect r}
 \newvariable\cdcnrF[nom={Distance vector between a magnet's centre and one of its corners/nodes (floating magnet)}]{\vect R}
@@ -306,6 +296,8 @@
 
 \newvariable\Fzy[nom={Force between two cuboid magnets; the first magnetised in the $\az$ direction, the second in $\ay$},sort=Fzy]{\vect F_{z,y}}
 \newvariable\Fzynode[nom={`Force' between two magnetic nodes for orthogonally-magnetised cuboid magnets, used to calculate $\Fzy$},sort=zzzgreek-uzy]{\bm\phi_{z,y}}
+\newvariable\Kzy[nom={Stiffness between two cuboid magnets; the first magnetised in the $\az$ direction, the second in $\ax$},sort=Kzy]{\vect K_{z,y}}
+\newvariable\Kzynode[nom={`Stiffness' between two magnetic nodes for cuboid magnets magnetised in the $\az$ and $\ay$ directions respectively, used to calculate $\Kzz$},sort=kzy]{\vect k_{z,y}}
 
 \newvariable\Fzx[nom={Force between two cuboid magnets; the first magnetised in the $\az$ direction, the second in $\ax$},sort=Fzy]{\vect F_{z,x}}
 
@@ -340,7 +332,7 @@
 
 \newvariable{\mdip}[nom=Magnetic dipole]{\vect m}
 \newvariable{\BHmax}[nom=Maximum energy product,sort=BHmax]{\ensuremath{\gp{BH}_{\mathrm{max}}}}
-\newmacro \bhcurve {$\magB$/$\magH$ curve}
+\newmacro \bhcurve {$\magB$--$\magH$ curve}
 \newmacro \Hinf {\ensuremath{H^\infty}}
 
 %%%%%%%%%%%%%%%%
@@ -516,21 +508,22 @@
 
 \def\fpeak{\forceMag_{\mathrm{peak}}}
 \def\fmax{\forceMag_{\mathrm{max}}}
-\newvariable\fnorm[nom={Thick-coil/magnet force evaluated with a current of \SI{1}{A}}]{\hat \forceThickCoil}
-\newvariable\fnpeak[nom={Peak coil/magnet force over displacement}]{\hat \forceMag_{\mathrm{peak}}}
-\newvariable\fnmax[nom={Optimised coil/magnet peak force}]{\hat \forceMag_{\mathrm{max}}}
-\newvariable\currmax[nom={Maximum current for a given (copper) wire diameter}]{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
+%\newvariable\fnorm[nom={Thick-coil/magnet force evaluated with a current of \SI{1}{A}}]{\hat \forceThickCoil}
+%\newvariable\fnpeak[nom={Peak coil/magnet force over displacement}]{\hat \forceMag_{\mathrm{peak}}}
+%\newvariable\fnmax[nom={Optimised coil/magnet peak force}]{\hat \forceMag_{\mathrm{max}}}
+%\newvariable\currmax[nom={Maximum current for a given (copper) wire diameter}]{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
+\newcommand\fnorm{\hat\forceThickCoil}
+\newcommand\fnpeak{\expandafter\hat\fpeak}
+\newcommand\fnmax{\expandafter\hat\fmax}
+\newcommand\currmax{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
 
-\newvariable\safetyFactor[nom={Factor of safety},label=safetyFactor]{S}
+\newvariable\safetyFactor[nom={Factor of safety},label=safetyFactor]{S_f}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%   QZS   %%%%%%%%%%%%%%%%%%%%%%%%%
 
 \newglossaryentry{qzs}{name={\QZS/}, description={\nopostdesc}}
 \def\nomenparent{qzs}
-
-\def\polyc#1{c_#1\fn{\ngap}}
-\def\polyq#1{q_#1\fn{\ngap}}
 
 % parameters
 \newvariable\mdim[nom=Cube magnet side length,label=qzsa]{a}
@@ -544,10 +537,14 @@
 \let\freqdesign\resfreq
 \newvariable\damping[nom=Damping coefficient,label=qzs-damping]{c}
 
-\newvariable\ccA[nom=Coefficient for empirical magnet force equation,label=coeffA]{A}
-\newvariable\ccB[nom=Coefficient for empirical magnet force equation,label=coeffB]{B}
-\newvariable\ccC[nom=Coefficient for empirical magnet force equation]{C}
-\newvariable\ccD[nom=Coefficient for empirical magnet force equation]{D}
+\newvariable\qqO[nom={Polynomial coefficient for modelling magnet force},sort=Qz1]{q_0\fn{\ngap}}
+\newvariable\qqII[nom={Polynomial coefficient for modelling magnet force},sort=Qz2]{q_2\fn{\ngap}}
+\newvariable\qqIV[nom={Polynomial coefficient for modelling magnet force},sort=Qz2]{q_4\fn{\ngap}}
+
+\newvariable\ccA[nom=Coefficient for empirical magnet force equation,label=coeffA]{Q_0}
+\newvariable\ccB[nom=Coefficient for empirical magnet force equation,label=coeffB]{Q_1}
+\newvariable\ccC[nom=Coefficient for empirical magnet force equation]{Q_2}
+\newvariable\ccD[nom=Coefficient for empirical magnet force equation]{Q_3}
 \newvariable\nn[nom=Exponential for empirical magnet force equation,label=qzs-n]{n}
 
 \newvariable\nk[nom=Nonlinearity measure]{\eta_k}

@@ -1,6 +1,6 @@
 
-texpreamble("
-");
+settings.prc=false;
+settings.render=0;
 
 import phdfig;
 import three;
