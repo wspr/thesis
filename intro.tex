@@ -256,21 +256,6 @@ The system with displacement feedback is stable according to the inequality
 \end{dmath},
 which holds for all $\gainDisp+\gainSkyspring>-\stiffness$. Therefore, negative feedback gain may be used to lower the resonance frequency of the structure by decreasing the effective stiffness of the system.
 
-\begin{figure}
-   \begin{wide}
-   \begin{subfigure}
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
-     \caption{Relative displacement feedback.}
-   \end{subfigure}\hfil
-   \begin{subfigure}
-     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skyspring}
-     \caption{Absolute displacement feedback.}
-   \end{subfigure}
-   \end{wide}
-   \caption{Displacement feedback control.}
-   \figlabel{disp-vs-sky}
-\end{figure}
-
 This idea presupposes that the absolute displacement is a state that can be measured.
 Disregarding slow and inaccurate sensors that can do this directly (such as using the Global Positioning System), the absolute displacement of an object can only be estimated based on other measurements of the system.
 The simplest form of this is by double-integrating an accelerometer signal, such as used by \textcite{zhu2006} in combination with other control techniques for vibration isolation in micro-gravity.
@@ -290,7 +275,27 @@ The system with acceleration feedback is stable according to the inequality
 which is true for all $\gainAcc+\gainSkymass>-\mass$.
 It is therefore possible, albeit generally undesirable, to increase the resonance frequency of the system with negative acceleration gain, which corresponds to an effective decrease of the mass of the system.
 
-\begin{figure}
+\subsubsection{Velocity feedback}
+\seclabel{skyhook-intro}
+
+Acceleration and displacement feedback both primarily affect the resonance frequency of the system; velocity feedback is different.
+The transmissibilities due to the influence of relative velocity and absolute velocity feedback ($\gainVel$ and $\gainSkyhook$) are shown in \figref{vel-vs-sky}.
+    \note{In the literature, absolute velocity feedback is often referred to as `skyhook damping'. This term will generally not be used in this thesis as there is potential for confusion with `semi-active skyhook damping', a technique discussed later in this chapter which is used in rather different contexts.}
+In both cases the resonance peak is lowered; the relative velocity feedback corresponds to a reduction in attenuation at higher frequencies, while for absolute velocity feedback the high frequency response is unaffected.
+
+\begin{figure}[p]
+   \begin{wide}
+   \begin{subfigure}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-relspring}\hfil
+     \caption{Relative displacement feedback.}
+   \end{subfigure}\hfil
+   \begin{subfigure}
+     \psfragfig{\phdpath Simulations/Springs/fig/sdof-skyspring}
+     \caption{Absolute displacement feedback.}
+   \end{subfigure}
+   \end{wide}
+   \caption{Displacement feedback control.}
+   \figlabel{disp-vs-sky}
    \begin{wide}
    \begin{subfigure}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-accrel}
@@ -303,18 +308,6 @@ It is therefore possible, albeit generally undesirable, to increase the resonanc
    \end{wide}
    \caption{Acceleration feedback control.}
    \figlabel{acc-vs-sky}
-\end{figure}
-
-
-\subsubsection{Velocity feedback}
-\seclabel{skyhook-intro}
-
-Acceleration and displacement feedback both primarily affect the resonance frequency of the system; velocity feedback is different.
-The transmissibilities due to the influence of relative velocity and absolute velocity feedback ($\gainVel$ and $\gainSkyhook$) are shown in \figref{vel-vs-sky}.
-    \note{In the literature, absolute velocity feedback is often referred to as `skyhook damping'. This term will generally not be used in this thesis as there is potential for confusion with `semi-active skyhook damping', a technique discussed later in this chapter which is used in rather different contexts.}
-In both cases the resonance peak is lowered; the relative velocity feedback corresponds to a reduction in attenuation at higher frequencies, while for absolute velocity feedback the high frequency response is unaffected.
-
-\begin{figure}
    \begin{wide}
    \begin{subfigure}
      \psfragfig{\phdpath Simulations/Springs/fig/sdof-vel}
@@ -345,7 +338,7 @@ It is clear in the ideal case that absolute velocity feedback is the more effect
 
 \begin{figure}
    \psfragfig{\phdpath Simulations/Springs/fig/rms-transmissibility}
-   \caption{\RMS/ transmissibility versus feedback gain of relative and
+   \caption{\expandafter\MakeUppercase\RMS/ transmissibility versus feedback gain of relative and
    absolute (`skyhook') velocity feedback control of the system shown in
    \figref{simple-isolation}.}
    \figlabel{rms-transmissibility}
@@ -529,17 +522,17 @@ This would be the appropriate response if the vibration neutraliser were to be u
 
 \begin{figure}
 \begin{wide}
-  \begin{subfigure}
+  \begin{subfigure}[0.44]
     \psfragfig{\phdpath Simulations/Springs/fig/inertial-trans-delta}
     \caption{
-      Transmissibility reduction at resonance, for a range of absorber damping values.
+      Transmissibility reduction at resonance \vs\ stiffness, for a range of absorber damping values.
       Greater reductions result from \emph{lower} damping.\figlabel{inertial-trans-delta}}
   \end{subfigure}
-  \qquad\qquad
-  \begin{subfigure}
+  \qquad
+  \begin{subfigure}[0.44]
     \psfragfig{\phdpath Simulations/Springs/fig/rms-inertial}
     \caption{
-      \RMS/ transmissibility, for a range of absorber damping values.
+      \expandafter\MakeUppercase\RMS/ transmissibility \vs\ stiffness, for a range of absorber damping values.
       Greater broadband reductions result from \emph{higher} damping.\figlabel{rms-inertial}}
   \end{subfigure}
 \end{wide}
