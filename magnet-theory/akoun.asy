@@ -21,7 +21,7 @@ currentprojection=orthographic((2,2,2),up=(0,0,1));
 
 // axes
 real X1=-1, X2=4, Y1=-1, Y2=4, Z1=-1, Z2=4;
-triple axisoffset=(-10,2,8);
+triple axisoffset=(-10,2,15);
 draw(shift(axisoffset)*((X1,0,0)--(X2,0,0)),Arrow3);
 draw(shift(axisoffset)*((0,Y1,0)--(0,Y2,0)),Arrow3);
 draw(shift(axisoffset)*((0,0,Z1)--(0,0,Z2)),Arrow3);
@@ -42,7 +42,7 @@ label(L="\vbox{\hbox{Fixed}\hbox{magnet}}",project((-a,-b,c)),2N+W);
 // second magnet
 real A=3.5, B=2.5, C=4.5;
 triple M=(A,B,C);
-triple gap=(-15,12,5);
+triple gap=(-25,12,5);
 draw(shift(gap)*((-a,0,0)--(a,0,0)),gray);
 draw(shift(gap)*((0,-b,0)--(0,b,0)),gray);
 draw(shift(gap)*((0,0,-c)--(0,0,c)),gray);

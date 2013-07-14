@@ -397,18 +397,18 @@ Bancel \cite{bancel1999} used this fact to invent an abstraction for these expre
 Summing the magnetic node forces between every combination of corners of the first and second magnet yields the total force between them.
 This abstraction allows a reduction in the number of calculations required when magnetic nodes overlap; \ie, when calculating the forces between arrays of touching magnets.
 
-The distance between two corners/nodes of two respective magnets, $\cornerd_{i,j,k,l,p,q}=[\cnrx_{i,j}, \cnry_{k,l}, \cnrz_{p,q}]\T$, is given by the distance between the magnet centres, $\magcd=\inlinevect{\cdx,\cdy,\cdz}$, minus and plus the distance between the magnet centre and corner position for the fixed magnet, $\cdcnrX$, and for the floating magnet, $\cdcnrF$, \resp:
+The distance between two corners/nodes of two respective magnets, ${\cornerd}_{i,j,k,l,p,q}=\inlinevect{{\cnrx}_{i,j}, {\cnry}_{k,l}, {\cnrz}_{p,q}}$, is given by the distance between the magnet centres, $\magcd=\inlinevect{\cdx,\cdy,\cdz}$, minus and plus the distance between the magnet centre and corner position for the fixed magnet, $\cdcnrX$, and for the floating magnet, $\cdcnrF$, \resp:
 \begin{dmath}
-\cornerd_{i,j,k,l,p,q}=\magcd - \cdcnrX_{i,k,p} + \cdcnrF_{j,l,q}
+{\cornerd}_{i,j,k,l,p,q}=\magcd - {\cdcnrX}_{i,k,p} + {\cdcnrF}_{j,l,q}
 \end{dmath},
 where
 \begin{align}
-\cdcnrX_{i,k,p}&=\begin{bmatrix}\hwxX\gp{-1}^i\\\hwyX\gp{-1}^k\\\hwzX\gp{-1}^p\end{bmatrix},&
-\cdcnrF_{j,l,q}&=\begin{bmatrix}\hwxF\gp{-1}^j\\\hwyF\gp{-1}^l\\\hwzF\gp{-1}^q\end{bmatrix}.
+{\cdcnrX}_{i,k,p}&=\begin{bmatrix}\hwxX\gp{-1}^i\\\hwyX\gp{-1}^k\\\hwzX\gp{-1}^p\end{bmatrix},&
+{\cdcnrF}_{j,l,q}&=\begin{bmatrix}\hwxF\gp{-1}^j\\\hwyF\gp{-1}^l\\\hwzF\gp{-1}^q\end{bmatrix}.
 \end{align}
 Complete expressions for the corner distances are therefore:
 \begin{dmath}[compact]
-\cornerd_{i,j,k,l,p,q}=\begin{bmatrix}\cnrx_{i,j}\\\cnry_{k,l}\\\cnrz_{p,q}\end{bmatrix}=
+{\cornerd}_{i,j,k,l,p,q}=\begin{bmatrix}{\cnrx}_{i,j}\\{\cnry}_{k,l}\\{\cnrz}_{p,q}\end{bmatrix}=
 \begin{bmatrix}
   \cdx-\hwxX\gp{-1}^i+\hwxF\gp{-1}^j\\
   \cdy-\hwyX\gp{-1}^k+\hwyF\gp{-1}^l\\
@@ -431,7 +431,7 @@ Note that when evaluating these functions, two numerical singularities must be a
 
 The stiffness characteristics can be derived by differentiating \eqref{akoun} with respect to displacement in each respective direction, resulting in
 \begin{dmath}[label=akounk]
-\Kzz = \frac{\magn1\magn2}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \Kzznode\fn{\cnrx_{ij},\cnry_{kl},\cnrz_{pq},\cnrl}
+\Kzz = \frac{\magn1\magn2}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \Kzznode\fn{{\cnrx}_{ij},{\cnry}_{kl},{\cnrz}_{pq},\cnrl}
 \cdot \gp{-1}^{i+j+k+l+p+q} ,
 \end{dmath}
 where
@@ -823,6 +823,7 @@ Larger errors with smaller displacements are believed to be caused due to misali
   \begin{wide}
   \subbottom[\SI{15x20x10}{mm} N45 cube magnets.]{\psfragfig{PhD/magrotate/Results/rot-cuboid-15x10x20}}\hfil
   \subbottom[\SI{25x25x10}{mm} \maggrade{52} cuboid magnets.]{\psfragfig{PhD/magrotate/Results/rot-cuboid-25x10x25}}
+  \hspace*{-7mm}
   \end{wide}
   \caption{
     Vertical force \vs\ angle of rotation for a set of vertical magnet centre displacements at zero rotation, labelled.
@@ -893,14 +894,15 @@ The same group later published analogous equations for the force between orthogo
 The theory formalising the superposition of magnetic interations outlined in \secref{magforce-arbitary} can be used directly to calculate the torques between arbitrarily magnetised cuboid magnets.
 
 \begin{figure}
-\subbottom[Two geometrically-symmetrical node interactions.
+\subbottom
+  [Two geometrically-symmetrical node interactions.
 \figlabel{mag-nodes}]
-  %{\asyinclude{PhD/Figures/Magnets/mag-nodes}}
-   {\includegraphics{PhD/Figures/Magnets/mag-nodes-cached}}\hfill
-\subbottom[Two node interactions for a smaller magnet and a larger magnet.
+  {\asyinclude{\jobname/mag-nodes}}
+\hfill
+\subbottom
+  [Two node interactions for a smaller magnet and a larger magnet.
 \figlabel{nodes-bigsmall}]
-  %{\fbox{\asyinclude{PhD/Figures/Magnets/nodes-bigsmall}}}}
-  {\includegraphics{PhD/Figures/Magnets/nodes-bigsmall-cached}}
+  {\asyinclude{\jobname/nodes-bigsmall}}
 \caption{Two examples of interacting magnetic nodes.}
 \end{figure}
 
