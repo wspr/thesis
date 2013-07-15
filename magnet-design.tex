@@ -907,13 +907,13 @@ Specifically, for the case of zero offset between the magnets $\mbqoffset=0$ (\F
   [Zero offset $\mbqoffset$ between the magnets.
    At \SI{35}{\degree} the natural frequency is near-constant for a wide range of load forces.
   \figlabel{mbq-wvf-angle-1}]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle}}}
+  {\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle}}
 \hfill
 \subfloat
   [Magnet offset ratio $\mbqoffset/\mbqunit=\num{0.25}$.
    Near-constant natural frequency occurs at \SI{70}{\degree}.
    \figlabel{mbq-wvf-angle-2}]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle2}}}%
+  {\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle2}}%
 \end{wide}
 \caption[Natural frequency versus load force for a range of magnet angles.]{Natural frequency versus load force for magnet angles from \SIrange{0}{90}{\degree} in \SI{5}{\degree} increments.}
 \figlabel{mbq-wvf-angle}
@@ -932,8 +932,7 @@ At this angle, it can be seen that the region of mostly-flat natural frequency o
 This indicates that the magnet angle should be chosen only after the tolerances of magnet displacement are decided and a minimum offset ratio established.
 
 \begin{figure}
-\centering
-\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-gaps}}
+\psfragfig{magcode/examples/oblique/fig/mbq-wvf-gaps}
 \caption[Natural frequency versus load force for a range of magnet offset ratios.]{Natural frequency versus load force for magnet offset ratios from zero to \num{0.5} in increments of \num{0.05} and a magnet angle of \SI{45}{\degree}.}
 \figlabel{mbq-kvf-gaps}
 \end{figure}
@@ -962,16 +961,15 @@ This is possible as the stiffness in the out-of-the-page direction of \Figref{mb
 
 \begin{figure}
 \begin{wide}
-\hspace{-1cm}
 \subfloat[Vertical stiffness.\figlabel{mbq-kvxyz-gaps-v}]
-  {\pregen{\psfragfig[crop=preview]
-    {magcode/examples/oblique/fig/mbq-kvx-gaps}}}%
+  {\psfragfig[crop=preview]
+    {magcode/examples/oblique/fig/mbq-kvx-gaps}}%
 \subfloat[Horizontal stiffness.\figlabel{mbq-kvxyz-gaps-h}]
-  {\pregen{\psfragfig[crop=preview]
-    {magcode/examples/oblique/fig/mbq-kvy-gaps}}}%
+  {\psfragfig[crop=preview]
+    {magcode/examples/oblique/fig/mbq-kvy-gaps}}%
 \subfloat[Out-of-plane stiffness.\figlabel{mbq-kvxyz-gaps-p}]
-  {\pregen{\psfragfig[crop=preview]
-    {magcode/examples/oblique/fig/mbq-kvz-gaps}}}%
+  {\psfragfig[crop=preview]
+    {magcode/examples/oblique/fig/mbq-kvz-gaps}}%
 \end{wide}
 \caption
 [Stiffness in three directions versus vertical displacement for a fixed magnet offset ratio.]
@@ -989,8 +987,7 @@ It can be seen here that the `flat' sections of the curve (that correspond to co
 \Figref{mbq-wvf-angle-stabl} also demonstrates that when designing the system for horizontal stiffness, a larger magnet offset increases the displacement range of the magnetic spring, albeit with a decrease in possible load force.
 
 \begin{figure}
-\centering
-\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle-stabl}}
+\psfragfig{magcode/examples/oblique/fig/mbq-wvf-angle-stabl}
 \caption
 [Natural frequency versus load force for a fixed magnet angle.]
 {Natural frequency versus load force for offset ratios from \num{0.05} to \num{0.5} in \num{0.05} increments and a magnet angle of \SI{40}{\degree}.
@@ -1010,8 +1007,7 @@ In fact, the natural frequency decreases with larger magnet sizes.
 This shows that the oblique magnet spring system is suitable for bearing large loads with low stiffness, and fits into the category of springs that exhibit `high-static--low-dynamic' stiffness \parencite[e.g.][]{carrella2008-jsv}.
 
 \begin{figure}
-\centering
-\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-wvf-vol}}
+\psfragfig{magcode/examples/oblique/fig/mbq-wvf-vol}
 \caption
 [Natural frequency versus load force for a fixed magnet offset ratio and angle.]
 {Natural frequency versus load force for a magnet offset ratio of \num{0.2} and a magnet angle of \SI{40}{\degree} over a range of magnet volumes from $\gp{\SI{10}{mm}}^3$ to $\gp{\SI{50}{mm}}^3$.
@@ -1232,9 +1228,9 @@ While this is close to the maximum perturbation for this system before instabili
 \begin{figure}
 \begin{wide}
 \subfloat[Relative vertical displacement $\mbqvdisp-\mbqvdisp_0$.]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-dyn-yr-y}}}\qquad
+  {\psfragfig{magcode/examples/oblique/fig/mbq-dyn-yr-y}}\qquad
 \subfloat[Rotation $\mbqrotz$.]
-  {\pregen{\psfragfig{magcode/examples/oblique/fig/mbq-dyn-yr-r}}}
+  {\psfragfig{magcode/examples/oblique/fig/mbq-dyn-yr-r}}
 \end{wide}
 \caption
 [Dynamic simulation of the horizontally-constrained system.]
@@ -1248,12 +1244,13 @@ In fact, this arrangement is more stable than the previous as there is less cros
 
 \begin{figure}
 \begin{wide}
+\hspace*{-1cm}%
 \subfloat[Horizontal displacement $\mbqhdisp$.]
-  {\pregen{\psfragfig[scale=0.9]{magcode/examples/oblique/fig/mbq-dyn-xyr-x}}}\qquad
-\subfloat[Relative vertical displacement $\mbqvdisp-\mbqvdisp_0$.]
-  {\pregen{\psfragfig[scale=0.9]{magcode/examples/oblique/fig/mbq-dyn-xyr-y}}}\qquad
+  {\psfragfig{magcode/examples/oblique/fig/mbq-dyn-xyr-x}}\quad
+\subfloat[Relative vert.\ displacement $\mbqvdisp-\mbqvdisp_0$.]
+  {\psfragfig{magcode/examples/oblique/fig/mbq-dyn-xyr-y}}\quad
 \subfloat[Rotation $\mbqrotz$.]
-  {\pregen{\psfragfig[scale=0.9]{magcode/examples/oblique/fig/mbq-dyn-xyr-r}}}
+  {\psfragfig{magcode/examples/oblique/fig/mbq-dyn-xyr-r}}
 \end{wide}
 \caption
 [Dynamic simulation of the unconstrained system.]

@@ -35,7 +35,7 @@ dot( knee , blue );
 label( "Knee" , knee , W );
 label( "Saturation" , sat+satoff , NW);
 
-draw( -knee -- (Hci,0), dashed+blue );
+draw( -knee -- (Hci,0), dotted );
 label( "$\coerce{}_i$" , (Hci,0) , S);
 
 // draw( (0,0) -- sat , dashed , Arrow(position=0.3) );
@@ -54,7 +54,7 @@ label("$\magB$",AY,align=NE);
 
 // curves
 
-draw( satoff+sat{-1,0} .. (-Hc,0) .. {-1,0}-sat-satoff , Arrow(position=0.5) );
+draw( satoff+sat{-1,0} .. (-Hc,0) .. {-1,0}-sat-satoff , Arrow(position=0.6) );
 draw( satoff+sat{-1,0} .. (-Hc,0) .. {-1,0}-sat-satoff , Arrow(position=1.5) );
-draw( -sat-satoff{1,0} .. (Hc,0) .. {1,0}satoff+sat  , Arrow(position=0.5) );
+draw( -sat-satoff{1,0} .. (Hc,0) .. {1,0}satoff+sat  , Arrow(position=0.55) );
 draw( -sat-satoff{1,0} .. (Hc,0) .. {1,0}satoff+sat  , Arrow(position=1.5) );

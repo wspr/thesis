@@ -764,12 +764,12 @@ Two cases are shown: in the first, the magnets are displaced vertically; in the 
   \begin{wide}
   \hspace{-0.8cm}%
   \begin{subfigure}
-    \psfragfig{\phdpath Simulations/Theory/latex/charp-rotation-forces}
+    \psfragfig{\jobname/charp-rotation-forces}
     \caption{\SI{20}{mm} vertical displacement.}
   \end{subfigure}
   \hfil
   \begin{subfigure}
-    \psfragfig{\phdpath Simulations/Theory/latex/charp-horiz-rotation-forces}
+    \psfragfig{\jobname/charp-horiz-rotation-forces}
     \caption{\SI{20}{mm} horizontal displacement.}
   \end{subfigure}
   \hfil
@@ -792,12 +792,12 @@ It can be seen that the opposite rotations result in symmetric force curves, as 
   \begin{wide}
   \hspace{-1cm}%
   \begin{subfigure}
-    \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fy}
+    \psfragfig*{\jobname/charp-0to2pi-Fy}
     \caption{Horizontal forces.}
     \figlabel{charp-0to2pi-Fy}
   \end{subfigure}\qquad\hfil
   \begin{subfigure}
-    \psfragfig{\phdpath Simulations/Theory/latex/charp-0to2pi-Fz}
+    \psfragfig*{\jobname/charp-0to2pi-Fz}
     \caption{Vertical forces.}
     \figlabel{charp-0to2pi-Fz}
   \end{subfigure}
@@ -824,25 +824,24 @@ The vertical displacement was measured with a Wenglor CP35MHT80 laser sensor, an
 \lofcaption{
   Geometry of the rotational assembly to determine magnet centre offsets.
 }{
-  Upper magnet rotates on a lever arm around point $O_m$ of length \SI{53}{mm} to the magnet centre.
+  Upper magnet rotates on a lever arm around point $O_m$ of length $z_l=\SI{53}{mm}$ to the magnet centre.
 }
 \figlabel{rot-geom}
 \end{figure}
 
 The geometry of the rotational assembly is shown in \figref{rot-geom}.
-A number of vertical force \vs\ vertical displacement measurements were taken for a discrete set of angle rotations $\mrot$.
-Of the tests performed, two sets of results are shown in \figref{magrotmeas}: N45 \SI{15x20x10}{mm} cuboids and \maggrade{52} \SI{25x25x10}{mm} cuboids.
+A number of vertical force \vs\ vertical displacement measurements were taken for a discrete set of rotations $\mrot$.
+Of the tests performed, two sets of results are shown in \figref{magrotmeas}: \maggrade{45} \SI{15x20x10}{mm} cuboids and \maggrade{52} \SI{25x25x10}{mm} cuboids.
 Experimental results match well with theoretical calculations performed using \eqref{charpz}.
 Larger errors with smaller displacements are believed to be caused due to misalignment between the magnets, which would cause larger force discrepancies in the near-field of the magnetic interactions.
 
 \begin{figure}
   \begin{wide}
-  \subbottom[\SI{15x20x10}{mm} N45 cube magnets.]{\psfragfig{PhD/magrotate/Results/rot-cuboid-15x10x20}}\hfil
+  \subbottom[\SI{15x20x10}{mm} \maggrade{45} cuboid magnets.]{\psfragfig{PhD/magrotate/Results/rot-cuboid-15x10x20}}\hfil
   \subbottom[\SI{25x25x10}{mm} \maggrade{52} cuboid magnets.]{\psfragfig{PhD/magrotate/Results/rot-cuboid-25x10x25}}
-  \hspace*{-7mm}
   \end{wide}
-  \caption{
-    Vertical force \vs\ angle of rotation for a set of vertical magnet centre displacements at zero rotation, labelled.
+  \caption[Measured forces \vs\ angle of rotation for a rotating magnet assembly.]{
+    Measured forces \vs\ angle of rotation for a rotating magnet assembly showing a set of lever arm displacements, $z_l$, labelled.
     Solid lines show theoretical calculations using \eqref{charpz} and circles show experimental measurements.
     As the magnets become closer together, the cases of the magnets hinder their rotation, limiting their maximum angle.
   }
@@ -895,6 +894,21 @@ Writing the interaction between two corners as $(i,k,p)\to(j,l,q)$, consider two
 These two interactions are depicted in \figref{mag-nodes}.
 The magnetic node force calculated in these two cases are not the same, violating symmetry.
 
+
+\begin{figure}[b!]
+\subbottom
+  [Two geometrically-symmetrical node interactions.
+\figlabel{mag-nodes}]
+  {\hspace*{-1cm}\asyinclude{\jobname/mag-nodes}}
+\hfill
+\subbottom
+  [Two node interactions for a smaller magnet and a larger magnet.
+\figlabel{nodes-bigsmall}]
+  {\quad\asyinclude{\jobname/nodes-bigsmall}\quad}
+\caption{Two examples of interacting magnetic nodes.}
+\end{figure}
+
+
 Consider a fixed magnet of size $[2a,2b,2c]\T$ reacting with another magnet of some fixed vertical distance away. Compare two cases for the second magnet:
 \begin{itemize}
 \item	of equal size with $[2A, 2B, 2C]\T=[2a, 2b, 2c]\T$, and
@@ -908,20 +922,6 @@ Despite these two results that show that `node forces' do not behave like classi
 (Their generalisation allowed the centre of rotation to be located at an arbitrary point rather than the centre of the cuboid magnet.)
 The same group later published analogous equations for the force between orthogonally-magnetised cuboid magnets \cite{janssen2011-ietm}.
 The theory formalising the superposition of magnetic interations outlined in \secref{magforce-arbitary} can be used directly to calculate the torques between arbitrarily magnetised cuboid magnets.
-
-\begin{figure}
-\subbottom
-  [Two geometrically-symmetrical node interactions.
-\figlabel{mag-nodes}]
-  {\asyinclude{\jobname/mag-nodes}}
-\hfill
-\subbottom
-  [Two node interactions for a smaller magnet and a larger magnet.
-\figlabel{nodes-bigsmall}]
-  {\asyinclude{\jobname/nodes-bigsmall}}
-\caption{Two examples of interacting magnetic nodes.}
-\end{figure}
-
 
 
 

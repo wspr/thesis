@@ -1,7 +1,12 @@
 
 import phdfig;
 
-texpreamble("\providecommand\force{\vec F}");
+texpreamble("
+\providecommand\force{\vec F}
+\providecommand\cdx{d_x}
+\providecommand\cdy{d_y}
+\providecommand\cdz{d_z}
+");
 
 unitsize(1cm);
 
@@ -46,10 +51,10 @@ pair ly = (0,displ.y-1.5);
 
 
 // labels
-draw( shift(lx)*( magO -- (magO.x,displ.y) ) , Arrows(size=4pt) , p=pen_dim, L="$z_c$",align=W);
-draw( shift(ly)*( magO -- (displ.x,magO.y) ) , Arrows(size=4pt) , p=pen_dim, L="$y_c$");
+draw( shift(lx)*( magO -- (magO.x,displ.y) ) , Arrows(size=4pt) , p=pen_dim, L="$\cdz$",align=W);
+draw( shift(ly)*( magO -- (displ.x,magO.y) ) , Arrows(size=4pt) , p=pen_dim, L="$\cdy$");
 
-draw( shift(lx2)*( magO -- rorigin ) , Arrows(size=4pt) , p=pen_dim, L="$z_m$",align=E);
+draw( shift(lx2)*( magO -- rorigin ) , Arrows(size=4pt) , p=pen_dim, L="$z_l$",align=E);
 
 // dashes
 draw( magO -- lx2 , p=pen_dim+dashed+grey);
