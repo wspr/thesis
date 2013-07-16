@@ -77,7 +77,7 @@
   \let\jobname\thesisjobname
 }
 
-\newcommand\referpaper[1]{\textit{#1}}
+\newcommand\referpaper[1]{\begin{quote}\textit{#1}\end{quote}}
 
 \g@addto@macro\quote{\itshape}
 
@@ -206,6 +206,11 @@
     sorting=nyt,
     bibstyle=numeric,
     citestyle=numeric-comp,
+    backref,
+    block=ragged,
+    biburlnumpenalty=9000,
+    biburlucpenalty=9000,
+    biburllcpenalty=9000,
   ]{biblatex}
 \def\bibfont{\small}
 \bibliography{journals,phd,ARK}

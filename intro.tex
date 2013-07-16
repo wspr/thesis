@@ -1157,8 +1157,8 @@ For the purposes of broadband vibration isolation, however, it is instructive to
 
 \begin{figure}
   \begin{wide}
-    \hspace*{-1.3cm}\psfragfig*{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-b}
-    \hspace*{+0.5cm}\psfragfig*{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-d}
+    \hspace*{-1.3cm}\psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-b}
+    \hspace*{+0.5cm}\psfragfig{PhD/Simulations/Zero_stiffness/fig/cubic-resonance-disturb-d}
   \end{wide}
   \lofcaption{Equivalent simulations to \figref{cubic-resonance-disturb} using linearised \eqref{duffing-lin}.}{ Note the two methods of showing the transmissibility are equivalent for the linear system, although significant differences are seen as the frequency approaches the maximum measurable frequency according to the sampling parameters.}
   \figlabel{cubic-resonance-disturb-linear}
@@ -1226,63 +1226,40 @@ For this thesis, the particular use of magnetic systems as softening springs all
 
 This chapter has introduced the themes of this thesis; at this point it is prudent to suggest where the following chapters will lead.
 
-\begin{description}
-\item [\chapref{magnet-theory}]
-      A literature review and extension on the principles of calculating the forces between permanent magnets.
-\item [\chapref{magnet-design}]
-      An overview of using permanent magnets for the design of magnetic load bearing systems, culminating in the analysis of a novel magnetic support that uses inclined magnets to achieve load-invariant resonance frequency.
-\item [\chapref{multipole}]
-      A short discussion of the use of multipole or `Halbach' arrays composed of many variously-oriented magnets for improving the load bearing capabilities for magnetic supports.
-\item [\chapref{coil-design}]
-      A literature review and extension on the principles of calculating the quasi-static forces for electromagnets, culminating with an optimisation of a common electromagnetic actuator.
-\item [\chapref{qzs}]
-      An analysis of two \qzs/ systems; first a common design using linear springs, and the second a detailed analysis of the \qzs/ properties achievable using a magnetic system.
-\item [\chapref{xpmt}]
-      Experimental results of a variable-stiffness magnetic support based on the principles discussed in \chapref{qzs}.
-\item [\chapref{conc}]
-      A summary of the main findings from the preceding chapters, and a list of possible future directions for subsequent research.
-\end{description}
+The first half of this thesis is focused specifically on the analysis and design of purely magnetic systems, beginning with the theory on calculating forces between magnets (\chapref{magnet-theory}).
+\Chapref{magnet-design} then discusses load bearing systems composed of collections of singular magnets in various geometries and configurations, culminating in the analysis of a novel magnetic support that uses inclined magnets to achieve load-invariant resonance frequency.
+These studies conclude in \chapref{multipole} with a discussion and analysis of using multipole or `Halbach' arrays, which are composed of many variously-oriented magnets, for improving the load bearing capabilities for magnetic supports.
 
+The thread of the second half of the thesis is the realisation of an experimental apparatus to demonstrate the ideas of a magnetic spring design.
+Since all forms of unguided magnetic levitation require some degree of active control, \chapref{coil-design} develops theory for calculating quasi-static forces of electromagnets, and performs an optimisation of an electromagnetic actuator suitable for such a task.
+In discussing \qzs/ systems for vibration isolation, \chapref{qzs} begins with a planar analysis of a more typical spring-based design from the literature.
+It is shown following that a magnetic system can be more flexible for adaptive tuning.
+In the analysis of this \qzs/ magnetic system, emphasis is made on the small region in which stable operation is achieved.
+Finally, a prototype based on this magnetic system is presented in \chapref{xpmt} demonstrating results to illustrate low frequency vibration isolation and the ability of active vibration control to improve the vibration transmissibility.
+\chapref{conc} summarises the main findings from the preceding chapters, and suggests a list of possible future directions to take for subsequent research.
+
+Much of the work in this thesis is publicly available for use in the research community under the principles of reproducible research \parencite{kovacevic2007-icassp}.
+This can be found in the code repository $\langle$\url{http://www.github.com/wspr/magcode}$\rangle$, which is a compilation of code for calculating the forces between magnets and magnetic systems.
+A discussion of the philosophy behind this effort and a summary of the reproducible work in this thesis are discussed in \chapref{repro-research}.
 
 \newpage
 \section{Publications arising from this thesis}
-
-\newcommand\citejournal[1]{%
-  \item[\citeyear{#1}]
-  \citetitle{#1},
-  \citefield{#1}{journaltitle}.\\
-}
-\newcommand\citeconf[1]{%
-  \item[\citeyear{#1}]
-  \citetitle{#1},
-  \citefield{#1}{booktitle}.\\
-}
-\newcommand\citeconfx[1]{%
-  \item[\citeyear{#1}]
-  \citetitle{#1},
-  \citefield{#1}{booktitle}. Under review.\\
-}
 
 The following first-authored articles have been published over the course of this \PhD/{} research.
 In one form or another, most of these works have been incorporated into this thesis and are highlighted herein where appropriate.
 
 \begin{itemize}
-\citejournal{robertson2005-ietm}
-\citeconf{robertson2006-activeconf}
-\citeconf{robertson2007-icsv}
-\citejournal{robertson2009-jsv}
-\citejournal{robertson2010-maglett}
-\citejournal{robertson2010-maglett-fix}
-\citejournal{robertson2011-ietm}
-\citejournal{robertson2012-jsv}
-\citejournal{robertson2012-ietm}
-\citeconfx{robertson2013-aas-zks}
-\citeconfx{robertson2013-aas-qzs}
+\item\fullcite{robertson2005-ietm}
+\item\fullcite{robertson2006-activeconf}
+\item\fullcite{robertson2007-icsv}
+\item\fullcite{robertson2009-jsv}
+\item\fullcite{robertson2010-maglett}
+\item\fullcite{robertson2010-maglett-fix}
+\item\fullcite{robertson2011-ietm}
+\item\fullcite{robertson2012-jsv}
+\item\fullcite{robertson2012-ietm}
+\item\fullcite{robertson2013-aas-zks}
+\item\fullcite{robertson2013-aas-qzs}
 \end{itemize}
-
-\noindent Much of the work in this thesis is publicly available for use in the research community under the principles of reproducible research \parencite{kovacevic2007-icassp}.
-This can be found in the code repository $\langle$\url{http://www.github.com/wspr/magcode}$\rangle$, which is a compilation of code for calculating the forces between magnets and magnetic systems.
-The principles behind this effort and a summary of reproducible work in this thesis are discussed in \chapref{repro-research}.
-
 
 \end{document}
