@@ -1,8 +1,6 @@
 
 import phdfig;
 
-defaultpen(fontsize(9pt));
-
 texpreamble("
 \providecommand\mbqforce{f}
 \providecommand\mbqmagw{w}
@@ -12,7 +10,7 @@ texpreamble("
 \providecommand\mbqoffset{o}
 ");
 
-size(8cm,8cm);
+size(7cm);
 
 real T = 40, TT = 180-T;
 real a = 0.6, b = 1, g = 0.9, d = 2, dy = d*Cos(T), G = 3.2;

@@ -356,7 +356,7 @@ geometries can be realised through superposition of the solutions
 \end{figure}
 
 The notation for the models to calculate the forces between cuboid magnets is as follows, with the geometry of the system depicted graphically in \figref{akoun}.
-The first magnet has dimensions $\inlinevect{2\hwxX, 2\hwyX, 2\hwzX}$ and the second magnet has dimensions $[2\hwxF, 2\hwyF, 2\hwzF]\T$.
+The first magnet has dimensions $\inlinevect{2\hwxX, 2\hwyX, 2\hwzX}$ and the second magnet has dimensions $\inlinevect{2\hwxF, 2\hwyF, 2\hwzF}$.
 The distance between their centres is given by $\magcd=\inlinevect{\cdx,\cdy,\cdz}$.
 The force calculated is that acting on the second magnet; for this reason the first magnet is sometimes refered to as the `fixed' magnet and the second the `floating' one.
 The magnetisations of the magnets are assumed to be constant and aligned in the $\az$ direction (`facing up').
@@ -485,7 +485,7 @@ The $\Fzynode=\inlinevect{\phi_x,\phi_y,\phi_z}$ terms required for calculating 
 \end{split}
 \end{align}
 The stiffness characteristics can be derived by differentiating \eqref{orth-magforce} with respect to displacement in each respective direction, resulting in
-\begin{dmath}[label=akounk]
+\begin{dmath}[label=akounkzy]
 \Kzy = \frac{\magn1\magn2}{4\pi\permVac} \sum_{(i,j,k,l,p,q)\in\{0,1\}^6} \Kzynode\fn{{\cnrx}_{(ij)},{\cnry}_{(kl)},{\cnrz}_{(pq)},\cnrl}
 \cdot \gp{-1}^{i+j+k+l+p+q} ,
 \end{dmath}
@@ -587,7 +587,7 @@ Superposition can then be used to combine the expressions for orthogonal magnets
 \textcite{ravaud2009-pier98} instead show the magnetic field equations for a cuboid magnet with arbitrary magnetisation; their work is still to be extended to calculate the forces between such magnets.
 Since their equation for calculating the magnetic field is necessarily more complex, it is not clear whether an equation derived using analytical integration to calculate the force directly (if the integral is even tractable) will be more efficient than the superposition approach outlined in the following.
 
-The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have sides of length $\mwX = [2\hwxX, 2\hwyX, 2\hwzX]\T$ and $\mwF = [2\hwxF, 2\hwyF, 2\hwzF]\T$ respectively and the distance between their centres is given by $\magcd=[\cdx,\cdy,\cdz]\T$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
+The geometry of the two-magnet system is shown in \figref{akoun}, in which the magnets have sides of length $\mwX = \inlinevect{2\hwxX, 2\hwyX, 2\hwzX}$ and $\mwF = \inlinevect{2\hwxF, 2\hwyF, 2\hwzF}$ respectively and the distance between their centres is given by $\magcd=\inlinevect{\cdx,\cdy,\cdz}$. The calculations always assume that the first magnet is fixed and force is acting on the second magnet. The signs must be reversed to obtain the forces acting on the first magnet.
 
 As shown earlier in \eqref{akoun},
 \textcite{akoun1984} provide the force expressions for magnets with vertical magnetisations.
@@ -792,12 +792,12 @@ It can be seen that the opposite rotations result in symmetric force curves, as 
   \begin{wide}
   \hspace{-1cm}%
   \begin{subfigure}
-    \psfragfig*{\jobname/charp-0to2pi-Fy}
+    \psfragfig{\jobname/charp-0to2pi-Fy}
     \caption{Horizontal forces.}
     \figlabel{charp-0to2pi-Fy}
   \end{subfigure}\qquad\hfil
   \begin{subfigure}
-    \psfragfig*{\jobname/charp-0to2pi-Fz}
+    \psfragfig{\jobname/charp-0to2pi-Fz}
     \caption{Vertical forces.}
     \figlabel{charp-0to2pi-Fz}
   \end{subfigure}
@@ -909,10 +909,10 @@ The magnetic node force calculated in these two cases are not the same, violatin
 \end{figure}
 
 
-Consider a fixed magnet of size $[2a,2b,2c]\T$ reacting with another magnet of some fixed vertical distance away. Compare two cases for the second magnet:
+Consider a fixed magnet of size $\inlinevect{2a,2b,2c}$ reacting with another magnet of some fixed vertical distance away. Compare two cases for the second magnet:
 \begin{itemize}
-\item	of equal size with $[2A, 2B, 2C]\T=[2a, 2b, 2c]\T$, and
-\item	of greater size with $[2A, 2B, 2C]\T=[6a, 6b, 2c]\T$.
+\item	of equal size with $\inlinevect{2A, 2B, 2C}=\inlinevect{2a, 2b, 2c}$, and
+\item	of greater size with $\inlinevect{2A, 2B, 2C}=\inlinevect{6a, 6b, 2c}$.
 \end{itemize}
 These two cases are shown in \figref{nodes-bigsmall} highlighting the interaction between two equivalent corners.
 The magnetic node force calculated for these cases show that the interaction between the further-apart nodes produces greater magnetic node forces than for the closer nodes.

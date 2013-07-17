@@ -1,3 +1,7 @@
+
+settings.prc=false;
+settings.render=0;
+
 import solids;
 
 size(4cm,4cm);

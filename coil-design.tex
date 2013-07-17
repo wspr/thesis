@@ -43,12 +43,7 @@ To describe the geometry of the magnet--coil configuration, two aspect ratios ar
 The clearance (or gap) between the inner coil and magnet radii is denoted $\cradiusCoil=\iradiusCoil-\oradiusMag$.
 
 \begin{figure}
-  \centering
-  \iftrue
-    \includegraphics{\jobname/coil-rendered}
-  \else
-    \asyinclude{\jobname/coil-magnet}
-  \fi
+  \asyinclude{\jobname/coil-magnet}
 \caption
 [\textsc{3d} sketch of the system composed of a permanent magnet and thick coil.]
 {Three-dimensional sketch of the system composed of a permanent magnet (unshaded, left) and thick coil (shaded, right). The magnet can be modelled as an equivalent cylindrical surface current density, and the coil  as a volumetric current density.}
@@ -588,7 +583,7 @@ For simplicity, in the examples to follow the metric to be maximised is chosen t
 
 \begin{figure}
 \begin{wide}
-\subbottom[Varying magnet ratio $\ratioMag$ for a fixed coil ratio $\ratioCoil=1$.]{\minibox[c]{\psfragfig{magcode/examples/fig/magcoil-magratio}\\[0.5ex] \qquad Displacement, mm\\[1ex]}}\quad
+\subbottom[Varying magnet ratio $\ratioMag$ for a fixed coil ratio $\ratioCoil=1$.]{\minibox[c]{\psfragfig{magcode/examples/fig/magcoil-magratio}\\[0.5ex] \qquad\footnotesize Displacement, mm\\[1.5ex]}}\quad
 \subbottom[Varying coil ratio $\ratioCoil$ for a fixed magnet ratio $\ratioMag=2$.]{\minibox{\psfragfig{magcode/examples/fig/magcoil-coilratio}}}
 \end{wide}
 \caption
@@ -609,8 +604,8 @@ This surface can be seen to be concave, and therefore a single value for $\ratio
 
 \begin{figure}
 \centering
-\psfragfig{magcode/examples/fig/magratio-maxforce}\hspace*{-1.5cm}
-\psfragfig{magcode/examples/fig/magratio-maxforce-cb}
+\psfragfig{magcode/examples/fig/magratio-maxforce}\hspace*{5mm}
+\raisebox{11.5mm}{\psfragfig{magcode/examples/fig/magratio-maxforce-cb}}
 \caption
 [Peak normalised force as magnet and coil ratios and are varied.]
 {Peak normalised force $\fnpeak$ as magnet and coil ratios $\ratioMag$ and $\ratioCoil$ are varied over a \num{20x20} discrete grid for a specific wire diameter, coil impedance, and magnet volume. Maximum normalised peak force is indicated with a star.}

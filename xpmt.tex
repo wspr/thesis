@@ -9,7 +9,11 @@
 
 \referpaper{The work presented in this chapter has been submitted in condensed form as a conference paper~\cite{robertson2013-aas-qzs}.}
 
+\noindent
+In the previous chapter, a single \dof/ magnetic \qzs/ system was analysed theoretically.
 This chapter covers the implementation details, experiments performed, and results obtained from the experimental apparatus built for this project to validate some of the concepts and theory discussed in previous chapters.
+The behaviour of the open loop transmissibilities are examined in terms of magnet position; in addition, a velocity feedback vibration control system is implemented to improve the vibration isolation performance of the device.
+
 
 \section{Design of the experimental apparatus}
 
@@ -186,13 +190,13 @@ certain wire diameter and resistance.
   \begin{wide}
   \begin{sidefigure}
   \asyinclude{\jobname/rig-coil}
-  \lofcaption{Schematic of the dual-coil electromagnet built for the experimental apparatus.}{ (Not to scale.)}
+  \lofcaption{Schematic of the dual-coil electromagnet built for the apparatus.}{ (Not to scale.)}
   \figlabel{rig-dual-coil}
   \end{sidefigure}\hfil
   \begin{sidefigure}
   \psfragfig{\phdpath Simulations/Coil/fig/2coils-normdesign}
-  \lofcaption{Normalised force \vs\  displacement curve for the dual-coil electromagnet.\figlabel{2coils-normdesign}}
-  { Force is normalised to the maximum value at zero displacement; the force imparted by the coil remains within 10\% of maximum over a displacement range of around \SI{\pm2}{mm}}
+  \lofcaption{Normalised force \vs\ displacement curve for the electromagnet.\figlabel{2coils-normdesign}}
+  { Force is normalised to the maximum value at zero displacement.}
 \end{sidefigure}
   \end{wide}
 \end{figure}
@@ -221,7 +225,7 @@ The dimensions of the coil were chosen based on the trends shown in the
 analytical calculations from \secref{dualcoil} to ensure sufficient force over the displacement range expected from the system.
 A force \vs\  displacement curve of this particuar coil is shown in \figref{2coils-normdesign}; from this
 graph, it can be seen that around the centred position (displacement of zero
-in the curve), the force imparted by the coil remains within 10\% of maximum
+in the curve), the force imparted by the coil remains within \SI{10}{\%} of maximum
 over a displacement range of around \SI{\pm2}{mm}, which is acceptable for the purposes of the design.
 
 \subsection{Sensors}
@@ -335,7 +339,7 @@ in the `rest' position $\overline{OAB}$ and in a rotated position $\overline{OA'
   [Geometry for calculating the minimum horizontal tolerance of the inner
            dimensions of the coil due to vertical displacement of the magnet arrangement.]
   {Geometry for calculating the minimum horizontal tolerance $x$ of the inner
-           dimensions of the coil due to vertical displacement $z$ of the magnet arrangement pinned at point $O$.}
+           dimensions of the coil due to vertical displacement $\dispvert$ of the magnet arrangement pinned at point $O$.}
   \figlabel{horiz-tolerance}
 \end{figure}
 
@@ -351,17 +355,17 @@ calculated as a function of rotation angle $\theta$
 \end{dgroup}
 where $l$ is the horizontal length of the magnet arrangement, and $h$ is the
 vertical height. This can be expressed in terms of the vertical displacement
-of the main beam, $z$, with $\Sin{\theta}=z/l$ and using the trigonometric
+of the main beam, $\dispvert$, with $\Sin{\theta}=z/l$ and using the trigonometric
 relationship $\Cos{\ArcSin{a}}=\sqrt{1-a^2}$:
 \begin{dmath}
-  x = h z / l + l - \sqrt{l^2-z^2}
+  x = h \dispvert / l + l - \sqrt{l^2-z^2}
 \end{dmath}.
 
 From the dimensions chosen for the apparatus, $l=\SI{300}{mm}$ and
 $h\approx\SI{50}{mm}$, the minimum horizontal tolerance for a vertical
-displacement $z=\SI{1}{mm}$ is $x=\SI{0.168}{mm}$ and for $z=\SI{2}{mm}$ is
-$x=\SI{0.34}{mm}$. (The relationship between $x$ and $z$ being fairly linear for
-most values of $l$ and $h$ with small ranges of $z$.)
+displacement $\dispvert=\SI{1}{mm}$ is $x=\SI{0.168}{mm}$ and for $\dispvert=\SI{2}{mm}$ is
+$x=\SI{0.34}{mm}$. (The relationship between $x$ and $\dispvert$ being fairly linear for
+most values of $l$ and $h$ with small ranges of $\dispvert$.)
 The actual clearance between the outer radius of the brass cylinder holding the magnets and the inner radius of the coil former was \SI{0.35}{mm}.
 This tolerance was judged to be small enough to allow a surrounding coil without having a
 significantly diminished force characteristic from the air gap required to
@@ -673,7 +677,7 @@ The resonance at \SI{1}{Hz} observed in \figref{cl-results} as the feedback gain
 
 \begin{figure}
   \psfragfig{PhD/Experiments/XPMT/latex/cl-reduction-2}
-  \caption[{Reduction on overall transmissiblity as velocity feedback gain was increased.}]{Affect on overall transmissiblity $\RMSof{\transmissibility{}}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
+  \caption[{Transmissiblity reduction for increased velocity feedback gain.}]{Affect on overall transmissiblity $\RMSof{\transmissibility{}}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
   \figlabel{cl-reduction}
 \end{figure}
 

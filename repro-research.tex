@@ -1,26 +1,29 @@
 \chapter{Reproducible research}
-\chaplabel{repro-research}
+\label{repro-research}
 
 One of my strong beliefs that has risen out from my short time in the academic world is that as work is distributed electronically and the sheer amount of knowledge grows ever larger, the utility of academic work in a vacuum grows smaller.
 My views here follow closely in the wake of the `reproducible research' movement, which is pithily espoused by \textcite{kovacevic2007-icassp}:
 \begin{quote}
 \textup [A\textup] scientific article is merely advertisement of scholarship; the real scholarship includes software and data which went into producing the article.
 \end{quote}
+Reproducible research, therefore, is not just a clear explanation of the work in a thesis or article, but includes a publicly accessible repository of software and data by which means other researchers can follow directly without the inefficiences of re-inventing the wheel.
 It would be a great and noble achievement to apply this principle to every postgraduate thesis; unfortunately, only aspects of my work live up to this promise.
 
-The principle contribution of my work in the area of reproducible research is the publication of a compilation of code for calculating the forces between magnets and magnetic systems at the website $\langle$\url{http://www.github.com/wspr/magcode}$\rangle$.
-Without delving into the details too fully, the main motivation for publishing this code is that there are a myriad of typographical errors in the literature for calculating the forces between magnets.
+The principle contribution of my work in the area of reproducible research is the publication of a compilation of code for calculating the forces between magnets and magnetic systems at the following address:\\
+\centerline{$\langle$\url{http://www.github.com/wspr/magcode}$\rangle$}
+
+Without delving into the details too fully, the main motivation for publishing this code is that there are a myriad of typographical errors in the literature for calculating the forces and torques between magnets.
 (Examples omitted as no blame is wished to be placed; suffice it to say that my own publications have errors of their own.)
 Equations in a journal manuscript have no meaning aside their typographical representation which can often be unclear or contain errors from the publication process.
 On the other hand, equations in a piece of computer code have intrinsic meaning in that they are a concrete instantiation of a particular mathematical theory.
 
 The specific advantage of publishing code and not just equations in a typeset form are that errors are almost impossible to transmit in this form — unless the theory itself has not been validated correctly, which should rarely happen.
-Being able to take another researcher's code and re-purpose it for a new piece of scholarship decreases the chances of error, improves efficiency, and in the long run builds a more stable basis for the hypothetical `pyramid of knowledge' that we profess to be building up in the academic world.
+Being able to take another researcher's code and re-purpose it for a new piece of scholarship decreases the chances of error, improves efficiency, and in the long run builds a more stable basis for the hypothetical `pyramid of knowledge' that we are slowly constructing in the academic world.
 
 \subsection{Clarifying example}
 
-In this thesis, I shall not be including much code as part of the main text.
-However, to help clarify my point for this section, consider the equation for the force exerted between two coaxial circular current carrying coils:
+In this thesis, I have not included any prgramming code as part of the main text.
+To help clarify my point for this section, consider the equation for the force exerted between two coaxial circular current carrying coils:
 \begin{dmath}[label=repro-example]
 F_f\fn{r_1,r_2,z}=
   \permVac I_1I_2z\sqrt{\frac{m}{4r_1r_2}}
@@ -32,7 +35,7 @@ m=\frac{4r_1r_2}{\gp{r_1+r_2}^2+z^2}
 \end{dmath*}.
 The exact terms are not important at this point (for reference, they are explained in context in \secref{filament-method}).
 
-My point here is that \eqref{repro-example} is of academic merit only; it cannot be used directly in any computational system to calculate this force.
+My point is that \eqref{repro-example} is of academic merit only; it cannot be used directly in any computational system to calculate this force.
 By contrast, if I provide some Mathematica code for the same, it now becomes straightforward
 \note{If you indeed have Mathematica; I'll not go into that philosophical can of worms here.}
 to use it for some calculation:
@@ -43,26 +46,33 @@ CoilCoilForce[I1_,I2_,r_,R_,z_] = With[ {m=4 r R/((r+R)^2+z^2)},
 ];
 \end{verbatim}
 As this code is used directly to produce calculations of results, it is much more likely to be correct than a transcribed equation.
-Incidentally, when one comes across the elliptic integrals $\EllipticK{\cdot}$ and $\EllipticE{\cdot}$ it can be unclear what notation is being used (which is not always clarified); in some cases, the argument might be for the elliptic parameter $m$, other times the elliptic modulus $k$; they are equivalent and related by $\EllipticK{m}=\EllipticK{k^2}$ but without context — or code — it can be hard to know which is intended.
+
+This equation has not been chosen randomly; it emphasises one of the advantages of sharing code rather than just equations.
+When one comes across the elliptic integrals $\EllipticK{\cdot}$ and $\EllipticE{\cdot}$ it can be unclear what notation is being used (which is not always clarified); in some cases, the argument might be for the elliptic parameter $m$, other times the elliptic modulus $k$; they are equivalent and related by $\EllipticK{m}=\EllipticK{k^2}$ but without context it can be hard to know which is intended.
+If code is provided, there is no chance of misunderstanding.
 
 \subsection{Sections of this thesis which are reproducible}
 \def\code#1{`\textsf{#1}'}
 
 As mentioned previously, the source for the reproducible material in this thesis is located in the \code{magcode} Github repository, which contains both Matlab and Mathematica libraries for various magnetic calculations.
-The libraries have evolved independently and currently contain differences in their coverage of this work and the literature; the principle goal is to have them extended (beyond the lifetime of this thesis) to complete coverage across a wide range of magnetic systems for a multitude of programming languages.
+(And even an automatic bridge from Matlab to ANSYS for certain types of magnetic force calculation.)
+The libraries have evolved independently for each mathematical language and currently contain differences in their coverage of this work and the literature; the principle goal is to have them extended (beyond the lifetime of this thesis) to complete coverage across a wide range of magnetic systems for a multitude of programming languages.
 
 The following list ties sections of this thesis with code from the repository.
 Not all figures in each section will be reproducible from this list, but most should be.
+\begin{center}
 \begin{tabular}{@{}ll@{}}
 \toprule
 \secref{unstable-vertical} & \code{examples/mag\_ratio.m} \\
 \secref{oblique} & \code{examples/oblique/} \\
 \chapref{multipole} & \code{examples/multipole\_example.m} \\
 \secref{optim-halbach-1d} & \code{examples/magspring/} \\
-\secref{planar-multipole} & \code{examples/planar\_compare/} and \code{examples/multipole_example.m} \\
+\secref{planar-multipole} & \code{examples/planar\_compare/} \\
+ & \code{examples/multipole_example.m} \\
 \secref*{magnetcoil-forces,magnetcoil-optimisation} & \code{examples/Thick-Coil-Magnet-Forces.nb} \\
 \bottomrule
 \end{tabular}
-The \LaTeX\ source for this thesis itself, including some of the programmatically drawn figures, is available in\\
+\end{center}
+The \LaTeX\ source for this thesis itself, including the programmatically drawn figures, is available in\\
 \centerline{$\langle$\url{http://www.github.com/wspr/thesis}$\rangle$.}
 While use of this material is restricted under the copyright of The University of Adelaide, the methods used for writing may be instructive for others following a similar path to my own.

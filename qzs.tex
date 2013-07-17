@@ -7,7 +7,7 @@
 \chapter{\QZS/ design}
 \chaplabel{qzs}
 
-\referpaper{The work presented in \secref{qzs} is based on material that has been published as a journal paper~\cite{robertson2009-jsv}.}
+\referpaper{The work presented in \secref{qzs} is based on material that has been published as a journal paper~\cite{robertson2009-jsv}. The work in \secref{qzszks} has been submitted as a conference paper~\cite{robertson2013-aas-zks}.}
 
 \section{Introduction to \qzs/ springs}
 
@@ -172,14 +172,18 @@ The `snap-through' forces that cause the negative stiffness are especially stron
 
 \begin{figure}
 \begin{wide}
-\subbottom[Vertical force due to inclined springs only using
+\subbottom
+  [Vertical force due to inclined springs only using
 \eqref{ZKSforceinclV} for a range of geometric ratios
-$\ZKSratio$.\figlabel{ZKSforce-plain}]{\hspace*{-1.5cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-plain}}
+$\ZKSratio$.\figlabel{ZKSforce-plain}]
+  {\hspace*{-1.5cm}\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-plain}}
 \hfil
-\subbottom[Normalised vertical force characteristic of the system calculated
+\subbottom
+  [Normalised vertical force characteristic of the system calculated
 with \eqref{ZKSforcetotalVnorm}. Minimum displacements are calculated from
 \eqref{ZKSnormMin}; these termination points represent the limiting case of the vertical
-spring being compressed to zero length.\figlabel{ZKSforcetotalVnorm}]{\psfragfig{PhD/Simulations/ZKS/fig/ZKSforce-total}}
+spring being compressed to zero length.\figlabel{ZKSforcetotalVnorm}]
+  {\psfragfig{\jobname/ZKSforce-total}}
 \end{wide}
 \lofcaption{Vertical forces due to the inclined springs.}{ $\ZKSratioQZS$ is the
 value of $\ZKSratio$ for which \qzs/ is achieved at $\ZKSnorm=0$, calculated
@@ -1344,7 +1348,7 @@ As the equilibrium position moves away from the instability at \qzs/, the varian
 
 \begin{figure}\centering
 \let\labelsize\footnotesize
-\psfragfig{PhD/Writings/QZS/fig/variance-gaps}
+\psfragfig{\jobname/variance-gaps}
 \caption
 [Variance gain of the magnetic system comparing two excitation
 amplitudes.]

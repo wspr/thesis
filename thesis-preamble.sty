@@ -136,22 +136,24 @@
 }
 
 \let\setstretch\setSpacing % memoir is stupid
-\RequirePackage[format=hang,indent=-3em,labelfont={small},textfont={sf,small,stretch=1.15}]{caption}
+\RequirePackage[format=hang,indent=-3em,labelfont={sc,small},textfont={rm,small,stretch=1.15}]{caption}
 \captionsetup[table]{position=top}
 \subcaptionlabelfont{\normalfont}
 \subcaptionfont{\sffamily}
 
 %%% NOMEN
 
-\usepackage[style=super3colheader,section,sanitize]{glossaries}
+\usepackage[section,sanitize]{glossaries}
+\usepackage{glossary-longragged}
+\glossarystyle{longragged3colheader}
 \glsdisablehyper
 
 \makeglossaries
 \renewcommand\glossaryname{Nomenclature}
 \renewcommand\entryname{Symbol}
 \renewcommand\pagelistname{Page}
-\addtolength\glsdescwidth{1cm}
-\addtolength\glspagelistwidth{1cm}
+%\addtolength\glsdescwidth{1cm}
+\addtolength\glspagelistwidth{1.6cm}
 
 
 \usepackage{docmute}
@@ -200,26 +202,32 @@
     sortcites,
     date=short,
     bibencoding=inputenc,
-    maxnames=2,
-    minnames=1,
+    maxcitenames=2,
+    mincitenames=1,
+    maxbibnames=10,
+    minbibnames=10,
     firstinits=true,
     sorting=nyt,
     bibstyle=numeric,
     citestyle=numeric-comp,
     backref,
     block=ragged,
-    biburlnumpenalty=9000,
-    biburlucpenalty=9000,
-    biburllcpenalty=9000,
+    isbn=false,
+%    biburlnumpenalty=9000,
+%    biburlucpenalty=9000,
+%    biburllcpenalty=9000,
   ]{biblatex}
 \def\bibfont{\small}
 \bibliography{journals,phd,ARK}
-\renewcommand\bibname{References}
+\renewbibmacro*{in:}{}% remove "In: " before the journal title
+\AtBeginDocument{\renewcommand\bibname{References}}
 
 \newcommand\epicite[1]{`\citetitle{#1}\rlap'\\\textcite{#1}}
 \newcommand\epicitenq[1]{\citetitle{#1}\\\textcite{#1}}
 
-% \setkeys{Gin}{quiet}
+\ifpdf
+\setkeys{Gin}{quiet}
+\fi
 
 \ifpdf % otherwise pstool screws up
 \RequirePackage[inline]{asymptote}

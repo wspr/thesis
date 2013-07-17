@@ -24,9 +24,10 @@ The perceived advantages of \qzs/ for vibration isolation formed an inspiration 
 
 The modelling of magnetic forces for complex magnet geometries is still an active field of research.
 Forces between pairs of both cuboid and cylindrical shaped magnets can be calculated from equations from the literature, and since these equations can often be time-consuming to transcribe, a compilation of this theory is provided in a Matlab program for use by the general public.
- 
-There are a broad range of geometric possibilities of permanent magnet systems for load bearing (`magnetic springs'); an overview of such magnetic springs using cuboid magnets was presented.
-For single-axis load bearing, magnetic force is maximised for a magnet depth of around 40\% the face size; magnetic cylinders will generate slightly greater forces than square-faced cuboids.
+The main contribution in this area from this thesis is the significant simplification of the force equation between coaxial cylindrical magnets (\secref*{cyl-forces}).
+
+There are a broad range of geometric possibilities of permanent magnet systems for load bearing (`magnetic springs', \chapref[vref]{magnet-design}); an overview of such magnetic springs using cuboid magnets was presented.
+For single-axis load bearing, magnetic force is maximised for a magnet depth of around \SI{40}{\%} the face size; magnetic cylinders will generate slightly greater forces than square-faced cuboids.
 Magnetic systems tend to exhibit significant trade-offs in their force and stiffness characteristics, especially involving degrees of instability.
 A rotationally-stable magnetic spring was proposed but initial results from simulation suggest the system is highly sensitive to perturbations and imbalances.
 Achieving rotational stability decreases the load-bearing ability of the system.
@@ -46,18 +47,20 @@ An investigation on linear magnet arrays showed that significant numbers of magn
 A comparison was performed comparing linear and planar multipole arrays, and it was shown that their cross-coupling behaviour differs significantly between the two.
 
 The third magnetic study was a theoretical investigation leading into an experimental component.
-For this study, a detailed analysis was performed of the parameters involved in a \qzs/ design with one repulsive and one attractive set of magnet forces (\secref*[vref]{qzs}).
-A \qzs/ prototype with one degree of freedom was built and low frequency vibration isolation demonstrated (\chapref[vref]{xpmt}).
+For this study, a detailed analysis was performed of the parameters involved in a \qzs/ design with one repulsive and one attractive set of magnet forces (\secref[vref]{qzs}).
+Prior to this, a preliminary study was performed on a \qzs/ system using inclined linear mechanical springs (\secref[vref]{zksqzs}) where it was shown that although planar \qzs/ was possible to achieve it required careful tuning and could not be easily adapted for account for changing loading conditions.
+
+Following from the theoretical analysis of the \qzs/ magnetic spring, a one \dof/ prototype was built and low frequency vibration isolation demonstrated (\chapref[vref]{xpmt}).
 Experimental measurements demonstrated that the damping induced by eddy currents in the permanent magnets for this system was very low (around $\dampingratio<\SI{1}{\%}$), but increased the closer the magnets became.
 This damping ratio was negligible compared to the eddy currents induced in the electromagnetic actuator of the system.
 Due to this low damping ratio, the resonance peaks for the system were significant, and active control was investigated as a method to improve the transmissibility at resonance.
 One major obstacle with improving vibration isolation at these low frequencies is the difficulty with measuring inertial properties, specifically velocity, for performing active feedback control.
 
 In the construction of the apparatus for the \qzs/ experimental procedure, an electromagnetic actuator was constructed using a dual-coil design.
-For many magnetic systems in research, the electromagnetic actuator is not the focus of investigation and it was proposed that an optimisation could be performed to reduce the size and cost of constructing the coils.
-Before this could be performed, the magnetic forces between cylindrical magnet and coil needed to be modelled, and a particularly efficient method for calculating magnet--coil interaction forces was presented.
+For many magnetic systems in research, the electromagnetic actuator is not the focus of investigation and it was proposed that an optimisation could be performed to reduce the size and cost of constructing such devices.
+Before this could be performed, the magnetic forces between cylindrical magnet and coil needed to be modelled, and a particularly efficient method for calculating forces between a cylindrical magnet and an electromagnetic coil with many radial windings was presented.
 
-This method was then used in an optimisation for designing electromagnetic actuators (\chapref[vref]{em}).
+This method was then used in an optimisation for designing electromagnetic actuators (\chapref[vref]{coil-design}).
 In this case, the optimised variable was peak force, and it was shown that optimal geometric parameters can be derived given magnet volume and coil resistance alone.
 A wire diameter of around \SI{1.5}{mm} was shown to produce the most efficient actuators, with a cylindrical magnet length to diameter aspect ratio of approximately \num{0.75} and a coil length to diameter aspect ratio of approximately \num{2.5}.
 
@@ -109,27 +112,38 @@ This should be included in any optimisation routine; it is suspected this will h
 
 \item A thermal model could be incorporated into the analysis to ensure specific temperature bounds during dynamic operation.
 The development of a multi-physics simulation involving magnetic forces, eddy current forces, induction effects, and thermal effects would provide a powerful tool for electromagnet design.
+
+\item Having an electromagnet design in which the moving magnet sits inside a fixed coil allows for little off-axis motion.
+An interesting companion piece to the electromagnetic optimisation performed in this thesis could examine `pancake' coils for use in longer-stroke multi-directional actuators.
+The efficiency and force generation would be affected by eccentric displacement, but can a reasonable compromise be found between the two?
+\end{enumerate}
+
+\subsection{Vibration control}
+
+\begin{enumerate}
+\item
+`Skyhook damping' requires an estimate of the absolute velocity for feedback control.
+Integrating accelerometer measurements has limitations at low frequencies due to filters in the charge amplification and the integration technique itself.
+Magnetic geophones offer an alternative sensing option and other estimation filters have been presented; to what degree can low-frequency vibration be measured for active control?
+
+\item
+Is it possible to construct a highly sensitive acceleration sensor based on the motion of a levitating magnet near its \qzs/ position?
 \end{enumerate}
 
 \subsection{\QZS/}
 
 \begin{enumerate}
-
 \item
 The experimental results shown for a \qzs/ magnetic system are for a single \dof/ only; a project to extend these results to six \dof/ is already under way.
 
 \item
-Load balancing for a \qzs/ is required for practical application.
-This is being investigated separately.
+Load balancing for maintaining \qzs/ and avoiding instability is required for practical application.
+This is also being investigated separately in a parallel project.
 
 \item
 Is it possible to design a nonlinear controller to maintain \qzs/ for a magnetic device?
 Intuitively, there cannot be a stable system that achieves perfect \qzs/; therefore, what are the limits to which such a system can be bound?
-
-\item
-`Skyhook damping' requires an estimate of the absolute velocity for feedback control.
-Integrating accelerometer measurements has limitations at low frequencies due to filters in the charge amplification and the integration technique itself.
-Magnetic geophones offer an alternative sensing option and other estimation filters have been presented; to what degree can low-frequency vibration be measured?
 \end{enumerate}
+
 
 \end{document}

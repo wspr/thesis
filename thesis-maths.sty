@@ -224,7 +224,7 @@
 \newvariable\forceMag[label=FFF,nom=Magnitude of force]{F}
 \newvariable\forceMagnet[label=Fm,nom=Magnetic force]{F_m}
 \newvariable\stiffnessMag[label=KKK,nom={Magnitude of stiffness characteristic (derivative of force with respect to displacement)}]{K}
-\newvariable\forceVec[nom=Force vector]{\mathbf F}
+\newvariable\forceVec[nom=Force vector]{\vect F}
 \newmvar\newvect\torque{T}{nom=Torque vector}
 \newmvar\newvect\lever{r}{nom=Lever arm vector}
 
@@ -258,8 +258,8 @@
 \newmvar\newvect\magM{M}{nom=Magnetisation vector}
 \newmvar\newvect\magN{\hat M}{nom=Unit magnetisation vector}
 \newmvar\newvect\magJ{J}{nom=Current density vector}
-\newvariable\magJm[nom=Equivalent `surface current' due to magnetisation]{\mathbf J_m}
-\newvariable\magjm[nom=Differential `Surface current' due to magnetisation]{\mathbf j_m}
+\newvariable\magJm[nom=Equivalent `surface current' due to magnetisation]{\vect J_m}
+\newvariable\magjm[nom=Differential `Surface current' due to magnetisation]{\vect j_m}
 
 \newvariable\permVac[nom=Permeability of the vacuum]{\mu_0}
 \let\permvac\permVac
@@ -377,13 +377,13 @@
 \newvariable\freq[nom=Frequency]{\omega}
 
 \def\maybedot{}
-\newvariable\dispBase[nom=Base displacement]{\noexpand\maybedot x_1}
-\newvariable\laplaceBase[nom={Base response, Laplace domain}]{X_1}
+\newvariable\dispBase[nom=Base displacement,sort=x1]{\noexpand\maybedot x_1}
+\newvariable\laplaceBase[nom={Base response, Laplace domain},sort=X1]{X_1}
 \newcommand\velBase{{\let\maybedot\dot \dispBase}}
 \newcommand\accBase{{\let\maybedot\ddot \dispBase}}
 
-\newvariable\dispMass[nom=Displacement of the vibration mass]{\noexpand\maybedot x_2}
-\newvariable\laplaceMass[nom={Vibration mass response, Laplace domain}]{X_2}
+\newvariable\dispMass[nom=Displacement of the vibration mass,sort=x2]{\noexpand\maybedot x_2}
+\newvariable\laplaceMass[nom={Vibration mass response, Laplace domain},sort=X2]{X_2}
 \newcommand\velMass{{\let\maybedot\dot \dispMass}}
 \newcommand\accMass{{\let\maybedot\ddot \dispMass}}
 
@@ -398,8 +398,9 @@
 
 % todo
 \newcommand\Block[1][999]{%
-  \ifcase #1 G_0\or G_1\or G_2\or G_3\or G_4\else G\fi
+  \ifcase #1 \transferFunction_0\or \transferFunction_1\or \transferFunction_2\or \transferFunction_3\or \transferFunction_4\else \transferFunction\fi
 }
+\newvariable\transferFunction[nom=Transfer function,label=transferfunction]{G}
 \newvariable\BlockController[nom=Controller transfer function]{K_c}
 \newcommand\freqHPfilter{\freq_c}
 
@@ -637,18 +638,24 @@
 
 \newcommand\ZKSQZS{_{\textsc{qzs}}}
 
-\newvariable\ZKSlengthratioQZS[
-    nom=Value of $\ZKSlengthratio$ corresponding
-        to \qzs/ in both directions]
+\newcommand
+%\newvariable
+\ZKSlengthratioQZS
+%   [nom=Value of $\ZKSlengthratio$ corresponding
+%        to \qzs/ in both directions]
   {\eta\ZKSQZS}
-\newvariable\ZKSkratioQZS[
-    nom=Value of $\ZKSkratio$ corresponding to
-        \qzs/ in both directions]
+%\newvariable
+\newcommand
+\ZKSkratioQZS
+%   [nom=Value of $\ZKSkratio$ corresponding to
+%        \qzs/ in both directions]
   {\alpha\ZKSQZS}
-\newvariable\ZKSratioQZS[
-    nom=Value of $\ZKSratio$ for which \qzs/ in
-        the vertical direction is achieved,
-    sort=\gamma]
+%\newvariable
+\newcommand
+  \ZKSratioQZS
+%   [nom=Value of $\ZKSratio$ for which \qzs/ in
+%        the vertical direction is achieved,
+%    sort=\gamma]
   {\ZKSratio\ZKSQZS}
 
 \newcommand\ZKSstiff{k}
@@ -659,9 +666,6 @@
 \newvariable\ZKSstiffnessH[nom=Stiffness characteristic in the horizontal direction]{K_h}
 
 \newcommand\ZKSforce{F}
-
-
-
 \protected\def\SUBSUB{}
 \newvariable\ZKSforceincl
  [nom={Force characteristic of the inclined spring, with vertical component $\ZKSforceinclV$ and horizontal component $\ZKSforceinclH$}]
@@ -752,7 +756,7 @@
 
 \newvariable\rigNormGap[label=rignormgap,nom=Normalised magnet gap]{g}
 
-\newvariable\MagCentre[nom={Magnet centre position}]{{x_m}}
+\newvariable\MagCentre[nom={Magnet centre position},sort=xm]{{x_m}}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
@@ -773,14 +777,17 @@
 \newvariable\mupwavelength[nom=Multipole array wavelength]{\lambda}
 %\newvariable\mupfacegap[nom=Multipole array face gap,label=g-mup]{G}
 \let\mupfacegap\magnetGap
-\newvariable\mupmaglength[nom=Length of each magnet in a multipole array,label=m-mup]{m}
+%\newvariable\mupmaglength[nom=Length of each magnet in a multipole array,label=m-mup]{b}
+\let\mupmaglength\faceCub
 \newvariable\mupmagperwave[nom=Multipole array number of magnets per wavelength,label=R-mup]{R}
 \newvariable\mupNmag[nom=Multipole array number of magnets,label=N-mup]{N}
 \newvariable\mupNwaves[nom=Multipole array number of wavelengths]{W}
 \let\mupNwave\mupNwaves % oops
 
-\newvariable\mupqlh[label=mup-ql,nom={Length of horizontally-magnetised quasi-Halbach array magnets}]{m_1}
-\newvariable\mupqlv[label=mup-qL,nom={Length of vertically-magnetised quasi-Halbach array magnets}]{m_2}
+%\newvariable\mupqlh[label=mup-ql,nom={Length of horizontally-magnetised quasi-Halbach array magnets}]{m_1}
+%\newvariable\mupqlv[label=mup-qL,nom={Length of vertically-magnetised quasi-Halbach array magnets}]{m_2}
+\newcommand\mupqlh{\mupmaglength_1}
+\newcommand\mupqlv{\mupmaglength_2}
 \newvariable\mupqratio[label=gamma-mup,nom={Ratio between magnet lengths in a quasi-Halbach array}]{\gamma}
 
 \newvariable\mupmagrot[nom=Multipole array magnetisation rotation between successive magnets]{\vartheta}

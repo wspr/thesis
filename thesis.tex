@@ -13,7 +13,7 @@ Modelling and design of magnetic levitation systems for vibration isolation
 \pagestyle{plain}
 
 \chapterinclude{abstract}
-
+\cleardoublepage
 
 \chapterinclude{acknowledgements}
 \cleardoublepage
@@ -36,8 +36,10 @@ Modelling and design of magnetic levitation systems for vibration isolation
 \renewcommand\glossarypreamble{%
   \thispagestyle{chapter}
   Most mathematical symbols used in this document are listed herein with page number cross-referencing.
-  Page numbers listed will not include where these symbols are used in graphs or figures.
+  Page numbers listed will not include where these symbols are used in graphs or some figures.
   There are some cases where the same symbol has been used for multiple purposes; these should be unambiguous based on the context of the work.
+  
+  In mathematical contexts, care has been take to be consistent in the use of parentheses for function arguments (such as $f(x)=x^2$) and square brackets for both grouping ($A\times\gp{B\times C}$) and vector/matrix notation ($\vect F = \inlinevect{F_x,F_y,F_z}$).
   \par\bigskip
 }
 \small\printglossary[title=\glossaryname,toctitle=\glossaryname]\normalsize
@@ -57,8 +59,14 @@ Modelling and design of magnetic levitation systems for vibration isolation
 \backmatter
 \clearpage
 
-\chapterinclude{references}
+\DeleteQuotes
+\MakeInnerQuote{"}
+\printbibliography
+
 \clearpage
+
+\appendix
+\include{repro-research}
 
 \thispagestyle{empty}
 \null

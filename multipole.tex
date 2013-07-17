@@ -131,7 +131,7 @@ As the number of magnets per wavelength of magnetisation $\mupmagperwave$ increa
 Note the presence in \figref{halbach,multipole-variables} and in general of an `end magnet' that adds symmetry to the discretisation of the magnetisation. This extra magnet is necessary to balance the forces in the horizontal direction.
 
 Provided that enough information is specified and it is internally consistent, multipole arrays can be defined in terms of any combination of the magnet and array variables when defining the geometry of each array.
-Rather than explicitly enumerating the location and magnetic orientation of each magnet, software written to calculate multipole array forces (\secref*{repro-research}) requires just an axis with which to align the array and the facing direction of its `strong' side.
+Rather than explicitly enumerating the location and magnetic orientation of each magnet, software written to calculate multipole array forces (Appendix~\ref{repro-research}) requires just an axis with which to align the array and the facing direction of its `strong' side.
 Input variables can be specified only as necessary by the user, and the unspecified properties of the multitude of magnets in the arrays can be inferred directly.
 
 For the design of such software, however, it is not entirely straightforward to determine how a variety of specified input variables should be processed to define the unspecified ones, since the equations of constraint are not orthogonal.
@@ -195,7 +195,7 @@ In this case, the left hand side of \eqref{mup-cons-matrix} is separated into tw
 \end{equation}
 and unspecified variables
 \begin{equation}
-\eqlabel{mup-cons-known}
+\eqlabel{mup-cons-unknown}
 \begin{bmatrix}
 -1 &  0 & 0 \\
 -1 & -1 & 0 \\
@@ -317,7 +317,7 @@ Magnet size ratio $\mupqratio=\mupqlh/\mupqlv$ is the measure used here to compa
 \end{figure}
 
 \Figref{ratios-compare} compares the force characteristic with a variety of magnet size ratios for arrays composed of nine magnets (\ie, two wavelengths of magnetisation with a symmetry magnet), of length $\muplength=\SI{100}{mm}$, and of cross-sectional area \SI{10x10}{mm}.
-As expected from the previous results, $\mupqratio=0$ results in smaller forces than for $\mupqratio=1$; however, $\mupqratio=0.5$ results in slightly greater forces again: an increase of 5\% at a displacement of approximately $\mupvdispl=1.3\mupheight$, tapering off as the displacement increases.
+As expected from the previous results, $\mupqratio=0$ results in smaller forces than for $\mupqratio=1$; however, $\mupqratio=0.5$ results in slightly greater forces again: an increase of \SI{5}{\%} at a displacement of approximately $\mupvdispl=1.3\mupheight$, tapering off as the displacement increases.
 (This value of $\mupqratio$ is close to optimum for this system; see \figref{ratios-forcesum}.)
 This result can be justified intuitively with the recognition that there is a stronger vertical force between opposing vertically-polarised magnets than between horizontally-polarised magnets; dedicating a greater proportion of the magnet volume to the vertical magnets yields an increase in the total force.
 
@@ -519,6 +519,17 @@ Each array configuration has a different magnetic field pattern and has a differ
 Force--displacement characteristics for the quasi-Halbach array have been shown recently \cite{janssen2009-jsdd} but it should be noted that an analysis of the forces generated between planar Halbach arrays has not yet been shown in the literature.
 Since the planar Halbach array uses magnetisations in directions non-orthogonal to its axes, the necessary calculations are more complex than for the quasi-Halbach array.
 
+\begin{figure}
+\begin{wide}
+\subfloat[\num{5x5} magnets; face area \SI{50x50}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare}}\hfil
+\subfloat[\num{9x9} magnets; face area \SI{90x90}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare-large}}
+\end{wide}
+\lofcaption{Vertical forces \vs\ vertical displacement between the array centres to compare the load-bearing ability of a range of magnet arrays.}{
+Two sizes of array are compared, each composed of multiple \SI{10}{mm} \SI{1}{T} cube magnets.
+The dashed vertical line indicates the displacement at which the array faces are in contact.}
+\figlabel{planar-compare}
+\end{figure}
+
 The vertical force \vs\ vertical displacement characteristics of each array considered (linear Halbach, planar Halbach, patchwork, and quasi-Halbach) are compared in \figref{planar-compare}, all with the same array size and volume.
 The linear Halbach, planar Halbach, and quasi-Halbach have all been chosen to have a single wavelength of magnetisation with an end magnet for symmetry.
 The linear Halbach array follows the same arrangement analysed in \secref{optim-halbach-1d} with long sides in the axis orthogonal to the plane of magnetisation (\figref{linear-halbach}).
@@ -541,17 +552,6 @@ In all cases, optimisation of the magnet forces for this particular array volume
 However, it must be noted that these results differ from the experimental results of diamagnetic levitation \cite{moser2002-maglev} and from another theoretical study which uses an alternate theory for calculating the forces \cite{campbell2002}.
 It is possible that the effect on the magnetisation of each magnet due to the magnetic field of the other magnets in the array, which is assumed to be negligible, actually has a measureable effect in practice.
 These differences highlight the need to study these systems in more detail outside of the realm of theoretical analysis.
-
-\begin{figure}
-\begin{wide}
-\subfloat[\num{5x5} magnets; face area \SI{50x50}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare}}\hfil
-\subfloat[\num{9x9} magnets; face area \SI{90x90}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare-large}}
-\end{wide}
-\lofcaption{Vertical forces \vs\ vertical displacement between the array centres to compare the load-bearing ability of a range of magnet arrays.}{
-Two sizes of array are compared, each composed of multiple \SI{10}{mm} \SI{1}{T} cube magnets.
-The dashed vertical line indicates the displacement at which the array faces are in contact.}
-\figlabel{planar-compare}
-\end{figure}
 
 \subsection{Forces due to horizontal displacement}
 \seclabel{multipole-coupling}
@@ -613,6 +613,7 @@ Such a system has an increased working range of horizontal displacement before f
 \figlabel{double-halbach}
 \end{figure}
 
+\clearpage
 \section{Conclusions on multipole arrays}
 
 This chapter contains material touching on the diverse field of multipole magnetic arrangements and formalising the theory for calculating forces between multipole arrays using cuboid magnets with arbitrary magnetisations.

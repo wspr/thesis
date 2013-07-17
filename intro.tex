@@ -811,7 +811,7 @@ This requirement cannot satisfy \eqref{earnshaw} and thus levitation cannot occu
 \end{figure}
 
 This situation is easy to visualise by analogy.
-\figref{saddle} shows a ball balancing on a saddle-shaped curve, which is a \twoD/ analogy for the condition of \eqref{earnshow}.
+\figref{saddle} shows a ball balancing on a saddle-shaped curve, which is a \twoD/ analogy for the condition of \eqref{earnshaw}.
 Perturbations on the ball left or right will result in reaction forces keeping it centred and stable, whereas small disturbances into or out from the page will result in increased perturbation as the ball `falls off' the saddle; \ie, a condition of instability.
 So it is with any permanent magnet arrangement.
 
@@ -1220,14 +1220,13 @@ The interesting static and dynamic force characteristics exhibited by magnetic s
 Of particular research interest is the nonlinear regimes that such systems can operate within; in some cases, these nonlinearities can be detrimental to vibration isolation, while in others they can help improve vibration suppression.
 For this thesis, the particular use of magnetic systems as softening springs allows them to overcome some limitations seen with linear mechanical springs, the desirable focus in these cases being the `\qzs/' regime to minimise the resonance frequency.
 
-\newpage
 \section{Structure of this thesis}
 \seclabel{thesis-structure}
 
 This chapter has introduced the themes of this thesis; at this point it is prudent to suggest where the following chapters will lead.
 
-The first half of this thesis is focused specifically on the analysis and design of purely magnetic systems, beginning with the theory on calculating forces between magnets (\chapref{magnet-theory}).
-\Chapref{magnet-design} then discusses load bearing systems composed of collections of singular magnets in various geometries and configurations, culminating in the analysis of a novel magnetic support that uses inclined magnets to achieve load-invariant resonance frequency.
+The first half of this thesis is focused specifically on the analysis and design of purely magnetic systems, beginning with the theory on calculating forces and torques between magnets of various shape and geometry (\chapref{magnet-theory}).
+\Chapref{magnet-design} then discusses and analyses load bearing systems composed of various arrangements of singular magnets, culminating in the analysis of a novel magnetic support that uses inclined magnets to achieve a load-invariant resonance frequency.
 These studies conclude in \chapref{multipole} with a discussion and analysis of using multipole or `Halbach' arrays, which are composed of many variously-oriented magnets, for improving the load bearing capabilities for magnetic supports.
 
 The thread of the second half of the thesis is the realisation of an experimental apparatus to demonstrate the ideas of a magnetic spring design.
@@ -1240,26 +1239,39 @@ Finally, a prototype based on this magnetic system is presented in \chapref{xpmt
 
 Much of the work in this thesis is publicly available for use in the research community under the principles of reproducible research \parencite{kovacevic2007-icassp}.
 This can be found in the code repository $\langle$\url{http://www.github.com/wspr/magcode}$\rangle$, which is a compilation of code for calculating the forces between magnets and magnetic systems.
-A discussion of the philosophy behind this effort and a summary of the reproducible work in this thesis are discussed in \chapref{repro-research}.
+A discussion of the philosophy behind this effort and a summary of the reproducible work in this thesis are discussed in Appendix~\ref{repro-research}.
 
-\newpage
 \section{Publications arising from this thesis}
 
 The following first-authored articles have been published over the course of this \PhD/{} research.
 In one form or another, most of these works have been incorporated into this thesis and are highlighted herein where appropriate.
 
+\def\citejournal#1{
+\item[\cite{#1}]
+\citeauthor{#1} (\citeyear{#1})
+\citetitle{#1}.
+\citefield{#1}{journaltitle}.
+}
+
+\def\citeconf#1{
+\item[\cite{#1}]
+\citeauthor{#1} (\citeyear{#1})
+\citetitle{#1}.
+\citefield{#1}{booktitle}.
+}
+
 \begin{itemize}
-\item\fullcite{robertson2005-ietm}
-\item\fullcite{robertson2006-activeconf}
-\item\fullcite{robertson2007-icsv}
-\item\fullcite{robertson2009-jsv}
-\item\fullcite{robertson2010-maglett}
-\item\fullcite{robertson2010-maglett-fix}
-\item\fullcite{robertson2011-ietm}
-\item\fullcite{robertson2012-jsv}
-\item\fullcite{robertson2012-ietm}
-\item\fullcite{robertson2013-aas-zks}
-\item\fullcite{robertson2013-aas-qzs}
+\citejournal{robertson2005-ietm}
+\citeconf{robertson2006-activeconf}
+\citeconf{robertson2007-icsv}
+\citejournal{robertson2009-jsv}
+\citejournal{robertson2010-maglett}
+\citejournal{robertson2010-maglett-fix}
+\citejournal{robertson2011-ietm}
+\citejournal{robertson2012-jsv}
+\citejournal{robertson2012-ietm}
+\citeconf{robertson2013-aas-zks} \emph{Under review}.
+\citeconf{robertson2013-aas-qzs} \emph{Under review}.
 \end{itemize}
 
 \end{document}
