@@ -105,7 +105,7 @@ This facilitates logical comparisons between different designs.
 A multipole array can be uniquely defined in terms of several sets of variables.
 The simplest such description is:
 \begin{itemize}
-\item Size of each magnet $[\mupmaglength,\mupdepth,\mupheight]\T$,
+\item Size of each magnet $\inlinevect{\mupmaglength,\mupdepth,\mupheight}$,
 \item Number of magnets $\mupNmag$,
 \item Magnetisation direction of the first magnet $\mupmagpol$ and rotation between successive magnets $\mupmagrot$, and
 \item Additional gap between adjacent magnet faces $\mupfacegap$ (optional).
@@ -519,17 +519,6 @@ Each array configuration has a different magnetic field pattern and has a differ
 Force--displacement characteristics for the quasi-Halbach array have been shown recently \cite{janssen2009-jsdd} but it should be noted that an analysis of the forces generated between planar Halbach arrays has not yet been shown in the literature.
 Since the planar Halbach array uses magnetisations in directions non-orthogonal to its axes, the necessary calculations are more complex than for the quasi-Halbach array.
 
-\begin{figure}
-\begin{wide}
-\subfloat[\num{5x5} magnets; face area \SI{50x50}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare}}\hfil
-\subfloat[\num{9x9} magnets; face area \SI{90x90}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare-large}}
-\end{wide}
-\lofcaption{Vertical forces \vs\ vertical displacement between the array centres to compare the load-bearing ability of a range of magnet arrays.}{
-Two sizes of array are compared, each composed of multiple \SI{10}{mm} \SI{1}{T} cube magnets.
-The dashed vertical line indicates the displacement at which the array faces are in contact.}
-\figlabel{planar-compare}
-\end{figure}
-
 The vertical force \vs\ vertical displacement characteristics of each array considered (linear Halbach, planar Halbach, patchwork, and quasi-Halbach) are compared in \figref{planar-compare}, all with the same array size and volume.
 The linear Halbach, planar Halbach, and quasi-Halbach have all been chosen to have a single wavelength of magnetisation with an end magnet for symmetry.
 The linear Halbach array follows the same arrangement analysed in \secref{optim-halbach-1d} with long sides in the axis orthogonal to the plane of magnetisation (\figref{linear-halbach}).
@@ -552,6 +541,17 @@ In all cases, optimisation of the magnet forces for this particular array volume
 However, it must be noted that these results differ from the experimental results of diamagnetic levitation \cite{moser2002-maglev} and from another theoretical study which uses an alternate theory for calculating the forces \cite{campbell2002}.
 It is possible that the effect on the magnetisation of each magnet due to the magnetic field of the other magnets in the array, which is assumed to be negligible, actually has a measureable effect in practice.
 These differences highlight the need to study these systems in more detail outside of the realm of theoretical analysis.
+
+\begin{figure}
+\begin{wide}
+\subfloat[\num{5x5} magnets; face area \SI{50x50}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare}}\hfil
+\subfloat[\num{9x9} magnets; face area \SI{90x90}{mm}.]{\psfragfig{magcode/examples/planar_compare/fig/planar-compare-large}}
+\end{wide}
+\lofcaption{Vertical forces \vs\ vertical displacement between the array centres to compare the load-bearing ability of a range of magnet arrays.}{
+Two sizes of array are compared, each composed of multiple \SI{10}{mm} \SI{1}{T} cube magnets.
+The dashed vertical line indicates the displacement at which the array faces are in contact.}
+\figlabel{planar-compare}
+\end{figure}
 
 \subsection{Forces due to horizontal displacement}
 \seclabel{multipole-coupling}
