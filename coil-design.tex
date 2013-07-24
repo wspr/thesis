@@ -755,11 +755,11 @@ This design is also better at dissipating heat, as the effective surface area is
 
 \begin{figure}
   \begin{wide}
-  \subbottom[Schematic of the system.\figlabel{dual-coil-schematic}]{%
+  \subbottom[Schematic of the dual-coil system.\figlabel{dual-coil-schematic}]{%
   \asyinclude{\jobname/dual-coil}
   }
   \hfil
-  \subbottom[Example dual-coil forces (dashed) against an equivalent single coil system (solid).
+  \subbottom[Example dual-coil forces (dashed) against an equivalent single coil system of equal resistance (solid).
     \figlabel{dual-coil-plot}]{%
   \psfragfig{PhD/Simulations/Coil/fig/dual-coil}}
   \end{wide}
@@ -790,6 +790,10 @@ Simulation parameters for this example are shown in \tabref{dual-coil-parameters
 The dual-coil design can achieve over 50\% greater peak force than the equivalent resistance single coil design; even when some additional gap is added (such as the $\coilDualGap=\SI{80}{mm}$ case), the peak force is still larger but the stroke length is greatly improved.
 As the coils are separated further, they exhibit a `double peak' characteristic (shown for $\coilDualGap=\SI{90}{mm}$) which essentially bounds the coil gap where the dual-coil design is advantageous over having a single coil alone.
 Larger improvement to the forces could be achieved by optimising the shapes of each separate coil in the dual-coil arrangement rather than taking the coil aspect ratio from the original single-coil design.
+
+This analysis does not take into account the effects of coil inductance or eddy current drag on the dynamics of the actuator, and it is possible that the dual-coil system, which exhibits larger quasi-static forces, has longer time constants than a single-coil system.
+The self-inductance of the coils governs the dynamics of the electric system only (the relationship between current and voltage), and eddy current drag is governed by the mutual inductance of the electromagnetic system.
+With new developments in this field allowing the analytical calculation of these parameters for cylindrical geometries \parencite{luo2013-ietm,babic2012-conf}, it is proposed for future work that these inductance effects be incorporated into the cost function for developing optimum electromagnetic actuator designs.
 
 \begin{table}
 \lofcaption
