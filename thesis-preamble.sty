@@ -222,9 +222,20 @@
 \renewbibmacro*{in:}{}% remove "In: " before the journal title
 \AtBeginDocument{\renewcommand\bibname{References}}
 
-\newcommand\epicite[1]{`\citetitle{#1}\rlap'\\\textcite{#1}}
-\newcommand\epicitenq[1]{\citetitle{#1}\\\textcite{#1}}
-
+\def\nobreakbefore{%
+  \relax\ifvmode\else
+    \ifhmode
+      \ifdim \lastskip > 0pt\relax
+        \unskip\nobreakspace
+      \fi
+    \fi
+  \fi
+}
+\let\oldcite\cite
+\renewcommand\cite{\nobreakbefore\oldcite}
+\let\oldcite\parencite
+\renewcommand\parencite{\nobreakbefore\oldcite}
+ 
 \ifpdf
 \setkeys{Gin}{quiet}
 \fi
