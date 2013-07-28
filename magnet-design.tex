@@ -72,9 +72,10 @@ While the comparison across axial displacement (\figref{gauss-vertical}) only sh
 \caption{Radial displacement with a \SI{5}{mm} offset.\figlabel{gauss-radial}}
 \end{subfigure}
 \end{wide}
-\lofcaption{
-  Magnetic field measurements for an \maggrade{35} \diameter\SI{100x30}{mm} cylindrical permanent magnet.
-}{
+\caption[
+  Magnetic field measurements of a cylindrical permanent magnet.
+]{
+  Magnetic field measurements of an \maggrade{35} \diameter\SI{100x30}{mm} cylindrical permanent magnet.
   The origin of the measurements is \SI{5}{mm} from the face of the magnet.
   Measured results are not consistent with the theoretical results that assume constant magnetisation.
 }
@@ -129,7 +130,7 @@ In order to compare the force versus displacement characteristics for a range of
    \figlabel{magratio2}]
   {\psfragfig{magcode/examples/fig/magratio2}}
 \end{wide}
-\caption{
+\caption[Normalised force for square-faced cuboid magnets as a function of displacement.]{
   Normalised force $\forceMag/\forceMag_s$ for square-faced cuboid magnets as a function of displacement $\displ$.
 }
 \figlabel{magratios}
@@ -186,7 +187,7 @@ Interestingly, the behaviour for cylindrical magnets shows a different trend tha
   [Cylindrical magnets. Note the greater force peaks compared to the cuboid magnets.\figlabel{magratio-cyl}]
   {\psfragfig{magcode/examples/fig/magratios-cyl}}
 \end{wide}
-\lofcaption{Force between two $\volMag=\gp{\SI{10}{mm}}^3$ magnets as a function of magnet ratio for a set of fixed displacements from \SIrange{1}{10}{mm}.}{ Dots mark the positions of maximum force.}
+\caption[Force between two magnets as a function of magnet ratio for a set of fixed displacements.]{Force between two $\volMag=\gp{\SI{10}{mm}}^3$ magnets as a function of magnet ratio for a set of fixed displacements from \SIrange{1}{10}{mm}. Dots mark the positions of maximum force.}
 \end{figure}
 
 \subsection{Comparing cuboid and cylindrical magnets}
@@ -370,7 +371,7 @@ This configuration has also been used for a tunable vibration energy harvesting 
 
 \begin{figure}
   \psfragfig{PhD/Simulations/Single_magnets/z_spring/fig/qzs-sum}
-  \lofcaption{`\QZS/' vertical spring forces \vs\ vertical displacement from the centred position.}{ The magnets are \SI{20}{mm} cubes with \SI{1}{T} magnetisation, and there is \SI{80}{mm} between the top and bottom magnet centres. Dotted region for the summation of forces corresponds to negative (unstable) stiffness.}
+  \lofcaption{\QZS/ vertical spring forces \vs\ vertical displacement from the centred position.}{ The magnets are \SI{20}{mm} cubes with \SI{1}{T} magnetisation, and there is \SI{80}{mm} between the top and bottom magnet centres. Dotted region for the summation of forces corresponds to negative (unstable) stiffness.}
   \figlabel{zspring-vary-gap}
 \end{figure}
 
@@ -387,7 +388,7 @@ Note this configuration of magnets adds stability in the out-of-plane ($\ay$) di
 
 \begin{figure}
   \asyinclude{\jobname/spring-ha}
-  \caption[`Horizontal' attraction magnetic spring.]{A horizontal spring with attracting magnets to create positive vertical stiffness.}
+  \caption{A horizontal spring with attracting magnets to create positive vertical stiffness.}
   \figlabel{hspring}
 \end{figure}
 
@@ -401,7 +402,7 @@ The inflection point where the horizontal spring force reaches its peak is a \qz
 
 \begin{figure}
   \psfragfig{\jobname/hvspring}
-  \caption[Spring forces of the repulsion \& horizontal springs.]{
+  \caption[Spring forces of the repulsion and horizontal springs.]{
     Vertical forces of the repulsion (dashed) and horizontal (solid) springs with cube magnets of size $\lengthCube=\SI{20}{mm}$. The horizontal spring has a magnet face gap of $\magnetGap/\lengthCube\in\{0.1,0.5,1\}$.
   }
   \figlabel{h+v-forces-v}
@@ -439,7 +440,7 @@ The addition of the horizontal magnets produces an asymmetry in the total vertic
 
 \begin{figure}
    \asyinclude{\jobname/spring-zhv}
-   \caption{Geometry of the combination \qzs/ magnetic spring with horizontal magnets for stabilisation.}
+   \caption{The combination \qzs/ magnetic spring with horizontal magnets for stabilisation.}
    \figlabel{zhv-spring}
 \end{figure}
 
@@ -454,7 +455,7 @@ The addition of the horizontal magnets produces an asymmetry in the total vertic
 \end{figure}
 
 
-\newcommand\isoforces[2]{%
+\newcommand\isoforces[3]{%
   \begin{figure}[p]
     \begin{wide}
       \vspace*{-0.5cm}
@@ -473,17 +474,17 @@ The addition of the horizontal magnets produces an asymmetry in the total vertic
       }%
       }%
     \end{wide}
-    \caption{#2}
+    \caption[#2.]{#2 (\secref*{#3}).}
     \figlabel{#1-forces}
   \end{figure}
 }
 
-\isoforces{vattr}{Isoforces of the unstable vertical spring (\secref*{unstable-spring}).}
-\isoforces{vrepl}{Isoforces of the stable vertical spring (\secref*{spring-repl}).}
-\isoforces{z}{Isoforces of the \qzs/ spring (\secref*{qzs-basics}).}
-\isoforces{h}{Isoforces of the horizontal spring (\secref*{hspring}).}
-\isoforces{hv}{Isoforces of the combination spring (\secref*{spring-hv}).}
-\isoforces{zhv}{Isoforces of the combination \qzs/ spring (\secref*{spring-zhv}).}
+\isoforces{vattr}{Isoforces of the unstable vertical spring}{unstable-spring}
+\isoforces{vrepl}{Isoforces of the stable vertical spring}{spring-repl}
+\isoforces{z}{Isoforces of the \qzs/ spring}{qzs-basics}
+\isoforces{h}{Isoforces of the horizontal spring}{hspring}
+\isoforces{hv}{Isoforces of the combination spring}{spring-hv}
+\isoforces{zhv}{Isoforces of the combination \qzs/ spring}{spring-zhv}
 
 \subsection{Isoforces for magnetic springs}
 \seclabel{isoforces}
@@ -622,7 +623,7 @@ This is depicted for a planar case in \figref{rot-couple}.
 
 \begin{figure}
    \asyinclude{\jobname/rot-couple}
-   \lofcaption{An example of stabilising rotationally unstable springs.}{ Forces due to magnets and gravity, $\forceMagnet$ and $\forceGrav$ are depicted. The rotationally unstable case is shown on the left; the right schematic shows the stablised coupling.}
+   \lofcaption{An example of stabilising rotationally-unstable springs.}{ Forces due to magnets and gravity, $\forceMagnet$ and $\forceGrav$ are depicted. The rotationally unstable case is shown on the left; the right schematic shows the stablised coupling.}
    \figlabel{rot-couple}
 \end{figure}
 
@@ -719,7 +720,7 @@ In this range, the rotation stiffness begins negative (as it is without any stab
     \end{subfigure}
   \end{wide}
   \lofcaption{
-    Moment of the magnet spring as it rotates around the $\ay$ and $\az$ axes with a varying lever arm of the stabilising magnets.%
+    Moment of the magnetic spring as it rotates around the $\ay$ and $\az$ axes with a varying lever arm for the stabilising magnets.%
   }{
     (The moment around the $\ax$ axis does not vary with lever arm and remains stable.)
     Plots are labelled in terms of the ratio $\leverArm_1/\leverArm_2$ between lever arm of the outer stabilising magnets and the inner strong magnets.
@@ -737,7 +738,7 @@ The relative sizes of the magnets is critical to achieving passive stability aro
   \psfragfig{\phdpath magdof/fig/stablerot-sizes-all}
 \end{wide}
   \lofcaption{
-    Varying the size of the stabilising magnets for the conceptual single-degree-of-freedom magnet spring.
+    Varying the size of the stabilising magnets for the conceptual single degree of freedom magnet spring.
   }{
     Magnet size ratios $\lengthCube_2/\lengthCube_1$ are labelled on each plot or indicated in increasing directions with an arrow.
     The lever arm remains constant, in contrast to \figref{stablerot-length}.
@@ -1060,7 +1061,9 @@ Calculating the force and torque in this way is only valid for small rotations, 
 
 \begin{figure}[t]
 \psfragfig{magcode/examples/oblique/fig/mbq-angle-schem}
-\lofcaption{Geometry of the planar system in which forces and torques due to rotation $\mbqrotz$ are calculated.}{
+\caption
+[Geometry of the planar system in which forces and torques due to rotation are calculated.]
+{Geometry of the planar system in which forces and torques due to rotation $\mbqrotz$ are calculated.
 The system is shown with $\mbqrotz=\SI{15}{\degree}$, lever arm ratio $\mbqlever/\mbqunit=\num{2}$, magnet angle $\mbqmagangle=\SI{30}{\degree}$ and magnet offset ratio $\mbqoffset/\mbqunit=\num{0.5}$.
 \figlabel{mbq-angle-schem}}
 \end{figure}
@@ -1190,12 +1193,15 @@ The equations of motion are defined as
 \mbqmomentofinertia \mbqaccrotz = \mbqptorque\fn{\mbqhdisp,\mbqvdisp,\mbqrotz} - \mbqzrotdamp \mbqvelrotz
 \end{dmath},
 \end{dgroup}
-for which a time-domain solution was produced numerically with a Runge-Kutta technique (Matlab's \texttt{ode45} function). Viscous damping terms $\mbqhdamp$, $\mbqvdamp$, and $\mbqzrotdamp$ account for energy loss in the system. The force and torque terms are those defined in \eqref{mbq-force3,mbq-torque} respectively.
+for which a time-domain solution was produced numerically with a Runge-Kutta technique (Matlab's \texttt{ode45} function). Viscous damping terms $\mbqhdamp$, $\mbqvdamp$, and $\mbqzrotdamp$ account for energy loss in the system.
+The force and torque terms are those defined in \eqref{mbq-force3,mbq-torque} respectively.
 
-The parameters shown in \Tabref{mbq-dyn-param} were used for the dynamic simulations. The equilibrium displacement $y_0$ is found by numerically inverting a static analysis of the magnet forces $\mbqvforce(0,\mbqvdisp_0,0)=\mbqmass \gravity$; a damping ratio of \SI{20}{\%} is assumed to account for eddy current damping and any other energy losses; and the moment of inertia is approximated with $\mbqmomentofinertia=\tfrac13\mbqmass\mbqlever^2$. The parameters have been selected such that the vertical, horizontal, and rotational direct stiffnesses are all positive for this equilibrium displacement.
+The parameters shown in \Tabref{mbq-dyn-param} were used for the dynamic simulations.
+The equilibrium displacement $y_0$ is found by numerically inverting a static analysis of the magnet forces $\mbqvforce(0,\mbqvdisp_0,0)=\mbqmass \gravity$; a damping ratio of \SI{20}{\%} is assumed to account for eddy current damping and any other energy losses; and the moment of inertia is approximated with $\mbqmomentofinertia=\tfrac13\mbqmass\mbqlever^2$.
+The parameters have been selected such that the vertical, horizontal, and rotational direct stiffnesses are all positive for this equilibrium displacement.
 
 \begin{table}
-\caption{Parameters used for the dynamic simulations.}
+\caption{Parameters used for dynamic simulations of the oblique magnetic spring.}
 \tablabel{mbq-dyn-param}
 \centering
 \begin{tabular}{@{}l >{$}c<{$} c l >{$}c<{$} c@{}}

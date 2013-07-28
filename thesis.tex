@@ -29,11 +29,12 @@ Modelling and design of magnetic levitation systems for vibration isolation
 
 \tableofcontents*
 \clearpage
-\listoftables*
+\listoftables
 \clearpage
-\listoffigures*
+\listoffigures
 \clearpage
 \renewcommand\glossarypreamble{%
+  \addcontentsline{toc}{chapter}{Nomenclature}
   \thispagestyle{chapter}
   Most mathematical symbols used in this document are listed herein with page number cross-referencing.
   Page numbers listed will not include where these symbols are used in graphs or some figures.
@@ -54,9 +55,10 @@ Modelling and design of magnetic levitation systems for vibration isolation
 \chapterinclude{qzs}
 \chapterinclude{xpmt}
 
+\renewcommand\insertchapterspace{} % kill LoF and LoT chapter headings
 \chapterinclude{conclusion}
 
-\backmatter
+%\backmatter % kills appendix numbering
 \clearpage
 
 \DeleteQuotes
@@ -73,3 +75,15 @@ Modelling and design of magnetic levitation systems for vibration isolation
 \clearpage
 
 \end{document}
+
+
+# Magnet properties between in chap 2 than chap 3?
+# Search for "degree-of-freedom"
+# \newmvar is screwed. fix it.
+# Power spectral density explanations are broken and need to be moved somewhere
+# Search for resonant
+# "Seed" -- ref. Glaros & Hergott
+# check affect/effect
+# "attentuation"
+# IEEE letters citations
+# ACOUSTICS citation

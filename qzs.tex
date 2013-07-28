@@ -92,7 +92,7 @@ $\ZKSstiffvert=\ZKSkratio\ZKSstiffincl$, with $\ZKSkratio$ denoted the `stiffnes
 The stiffness and deflection properties of the springs are summarised in \tabref{spring-properties}.
 
 \begin{table}
-  \caption{Properties of the springs in the \qzs/ inclined spring system
+  \caption[Properties of the springs in the inclined spring system]{Properties of the springs in the \qzs/ inclined spring system
 defining stiffness ratio $\ZKSkratio$ and length ratio $\ZKSlengthratio$.}
   \tablabel{spring-properties}
   \begin{tabular}{@{}lcc@{}}
@@ -247,9 +247,8 @@ the equivalent $\ZKSnormMin$, which are given by
   \figlabel{ZKSstiffness-horiz}
   ]{\psfragfig{PhD/Simulations/ZKS/fig/ZKSstiffnessH-total}}
 \end{wide}
-\lofcaption
- {Vertical and horizontal stiffness characteristics for a range of geometric ratios $\ZKSratio$ at $\ZKSkratio=1$.}
- { Plots are labelled with their ratio to $\ZKSratioQZS$, which is calculated for a length ratio of $\ZKSlengthratio=1$.}
+\caption[Vertical and horizontal stiffness characteristics for a range of geometric ratios.]
+ {Vertical and horizontal stiffness characteristics for a range of geometric ratios $\ZKSratio$ at $\ZKSkratio=1$. Plots are labelled with their ratio to $\ZKSratioQZS$, which is calculated for a length ratio of $\ZKSlengthratio=1$.}
 \figlabel{ZKSstiffness-both}
 \end{figure}
 
@@ -392,7 +391,7 @@ vertical stiffnesses may be tuned independently in order to achieve \qzs/ in bot
 \begin{figure}
 \psfragfig{PhD/Simulations/ZKS/fig/ZKSkratio-effect}
 \caption
-[Horizontal stiffness characteristic at the vertical \qzs/ condition.]
+[Horizontal stiffness characteristic at vertical \qzs/.]
 {Horizontal stiffness characteristic at the vertical \qzs/ condition
 for varying stiffness ratio $\ZKSkratio$ and length ratio $\ZKSlengthratio$,
 calculated with \eqref{ZKSstiffnessHnorm}.}
@@ -969,8 +968,8 @@ $\dmax$, limits the lower size of the magnet.
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateN3}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateNall}}
     }
-  \caption[Regions of $\mdim$ and $\ndispZ$ satisfying the
-    maximum displacement criterion.]{Regions of $\mdim$ and $\ndispZ$ satisfying the
+  \caption[Regions of $\mdim$ and $\ngap$ satisfying the
+    maximum displacement criterion.]{Regions of $\mdim$ and $\ngap$ satisfying the
     maximum displacement criterion
     of \eqref{saturate} for a range of disturbance
     displacements $\dmax$ and a mass $\mass=\SI{0.5}{kg}$. Darker
@@ -1010,7 +1009,7 @@ low equilibrium stiffnesses found just below the \qzs/ position.
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN2-2}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN3-2}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableNall-2}}}
-\caption[Region of $\mdim$, $\ngap$ satisfying the stability criterion.]{Region of $\mdim$, $\ngap$ satisfying the stability criterion
+\caption[Region of $\mdim$ and $\ngap$ satisfying the stability criterion.]{Region of $\mdim$, $\ngap$ satisfying the stability criterion
   of \eqref{stable} for a range of disturbance displacements $\dmax$
   and a normalised displacement tolerance $\dmin=\num{0.1}$. Darker
   sections denote overlap of the regions in the overlay plot.}
@@ -1218,7 +1217,7 @@ will be seen later in this section.
 \end{figure}
 
 \begin{table}
-  \caption{Nonlinearity values, $\nk$, of the responses shown in \figref{nl}.}
+  \caption[Nonlinearity values of the responses shown in \figref{nl}.]{Nonlinearity values, $\nk$, of the responses shown in \figref{nl}.}
   \tablabel{nl}
   \begin{tabular}{@{}ccc@{}}
     \toprule
@@ -1249,16 +1248,16 @@ the frequency response is not affected.
 
 \subsection{Variance gain of the magnetic system}
 
-The transmissibility $T_{yx}$ of a system characterises response of a system to inputs that are broadband in frequency.
+The transmissibility $\transmissibility{\freq}$ of a system characterises response of a system to inputs that are broadband in frequency.
 It is usually calculated using a transfer function approach, given by
 \begin{math}
-  T_{yx} = P_{yx}/P_{yy}
+  \transmissibility{\freq} = \crossSpectMagnetBase/\powerSpectBase
 \end{math},
-where $P_{yx}$ is the cross power spectral density between the input and output signals and $P_{yy}$ is the power spectral density of the input signal.
+where $\crossSpectMagnetBase$ is the cross power spectral density between the input and output signals and $\powerSpectBase$ is the power spectral density of the input signal.
 This formulation is generally only useful for linear systems as it is specifically designed to reject nonlinear signals that may arise due to nonlinearities in the system.
 
 One metric to evaluate the response of a nonlinear system in the frequency
-domain is known as the `variance gain' $V$ \cite{savaresi2007}, which
+domain is known as the `variance gain' $\varianceGain$ \cite{savaresi2007}, which
 is calculated as a ratio of the \RMS/
 output to input signals:
 \begin{dmath}[label=nl-trans]
@@ -1269,7 +1268,7 @@ output to input signals:
     \right. ,
 \end{dmath}
 where $\period$ is the time interval over which the variance gain is calculated,
-and $\bar \dispMass$ and $\bar \dispBase$ are the mean-zero output and input displacements
+and ${\let\maybedot\bar \dispMass}$ and ${\let\maybedot\bar \dispBase}$ are the mean-zero output and input displacements
 of the vibration isolator, respectively.
 For linear systems, this expression simplifies to the standard formulation for transmissibility.
 For nonlinear systems, \eqref{nl-trans} describes the ratio of output to input energy for
@@ -1320,8 +1319,10 @@ and maximum displacement are shown in \tabref{variance-amp}.}
 \end{figure}
 
 \begin{table}
-\lofcaption{Nonlinearity values, $\nk$, and maximum displacements, $x_{\text{max}}$,
-of the responses shown in \figref{variance-amp}.}{ The equilibrium stiffness is
+\caption
+  [Nonlinearity values and maximum displacements of the responses.]
+  {Nonlinearity values, $\nk$, and maximum displacements, $x_{\text{max}}$,
+of the responses shown in \figref{variance-amp}. The equilibrium stiffness is
 $\keq{}=\SI{46.6}{N/m}$. The nonlinearity can be seen to increase with excitation
 amplitude. In the most extreme case, the magnetic system departs \SI{0.24}{mm}
 from the \qzs/ position.}

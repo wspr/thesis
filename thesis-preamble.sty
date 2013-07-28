@@ -474,7 +474,15 @@
 %%%
 
 \raggedbottom
-\renewcommand{\insertchapterspace}{}
+\renewcommand{\insertchapterspace}{%
+      \addcontentsline{lof}{chapter}{%
+        \protect\chapternumberline{\thechapter}\f@rtoc}%
+      \addcontentsline{lot}{chapter}{%
+        \protect\chapternumberline{\thechapter}\f@rtoc}%
+}
+
+\renewcommand{\cfttablefont}{\normalfont\raggedright}
+\renewcommand{\cftfigurefont}{\normalfont\raggedright}
 
 %%% epigraphs 
 
