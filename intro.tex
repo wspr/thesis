@@ -1113,6 +1113,67 @@ An alternate design is shown by \textcite{hol2006}, which uses an axial bearing 
 Systems that use such negative stiffness between attracting magnets cannot be brought to a stable \qzs/ region due to their `softening spring' characteristic.
 In these cases the negative stiffness is used to reduce the resonance frequency as much as possible before instability occurs.
 
+
+\subsubsection{Quasi--infinite stiffness systems}
+\seclabel{infstiff}
+
+For completeness, this section covers the opposite of the \qzs/ system: with a different combination of spring elements it is possible to create quasi--\emph{infinite} stiffness, shown in a variety of systems over the last decade starting with single-\dof/ systems
+\cite{nijsse2001,mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2003c,mizuno2010-jvc} and later being extended to multi-\dof/ \cite{hoque2006,mizuno2007}.
+The quasi--infinite stiffness effect is produced with a series combination of a positive stiffness and a negative stiffness spring such that the resultant stiffness is given by
+\begin{dmath*}[compact]
+  \stiffness_T = \frac{ \stiffness_1 \stiffness_2 }{ \stiffness_1 + \stiffness_2 } = \infty
+  \condition{when $ \stiffness_2 = -\stiffness_1 $}
+\end{dmath*}.
+\textcite{xing2005} formalised the idea of \qzs/ and quasi--infinite stiffness systems.
+
+Like `zero stiffness', some qualification is required on the term `infinite stiffness' in this context.
+To achieve `true' infinite stiffness, a control system is required to stabilise the negative stiffness element of the plant.
+This control system will impart its own dynamics on the system such that the frequency response of the system will only approach the behaviour desired.
+In the case of the aformentioned studies, the static behaviour of the systems does converge to an infinite stiffness property, but \emph{dynamically} there are still dynamics associated with the connection.
+These are shown explicitly in the frequency response functions of such systems \parencite{mizuno2010-jvc}, which exhibit significant resonance peaks for both direct and ground-borne disturbance.
+
+\subsection{Measuring nonlinear vibrations: the variance gain}
+\seclabel{variance-gain}
+
+The transmissibility $\transmissibility{\freq}$ of a system characterises response of a system to inputs that are broadband in frequency.
+It is usually calculated using a transfer function approach, given by
+\begin{math}
+  \transmissibility{\freq} = \crossSpectMagnetBase/\powerSpectBase
+\end{math},
+where $\crossSpectMagnetBase$ is the cross power spectral density between the input and output signals and $\powerSpectBase$ is the power spectral density of the input signal.
+This formulation is generally only useful for linear systems as it is specifically designed to reject nonlinear signals that may arise due to nonlinearities in the system.
+
+One metric to evaluate the response of a nonlinear system in the frequency
+domain is known as the `variance gain' $\varianceGain$ \cite{savaresi2007}, which
+is calculated as a ratio of the \RMS/
+output to input signals:
+\begin{dmath}[label=nl-trans]
+\varianceGain = \left.\sqrt{
+      \tfrac1\period \Int{{\let\maybedot\bar \dispMass}\fn \Time^2}{\Time,0,\period}} \middle/
+    \sqrt{
+      \tfrac1\period \Int{{\let\maybedot\bar \dispBase}\fn \Time^2}{\Time,0,\period}}
+    \right. ,
+\end{dmath}
+where $\period$ is the time interval over which the variance gain is calculated,
+and ${\let\maybedot\bar \dispMass}$ and ${\let\maybedot\bar \dispBase}$ are the mean-zero output and input displacements
+of the vibration isolator, respectively.
+For linear systems, this expression simplifies to the standard formulation for transmissibility.
+For nonlinear systems, \eqref{nl-trans} describes the ratio of output to input energy for
+a given excitation.
+For a tonal input disturbance, the variance gain at the frequency of excitation $\freq_e$ is
+\begin{dmath}[label=nl-trans2]
+\varianceGain{\freq_e} = \frac{1}{\ampExcite}\sqrt{\frac{2}{\period} \Int{{\let\maybedot\bar \dispMass}\fn \Time^2 }{\Time,0,\period}} .
+\end{dmath}
+The variance gain allows the nonlinearity of the system to be visualised on a familiar transmissibility--like plot for a range of resonance frequencies and equilibrium positions.
+
+The variance gain technique is useful for broadly quantifying the behaviour of nonlinear systems.
+For measuring the frequency response function of a predominantly linear system that is contaminated by nonlinear signals whose effects should be discarded, other techniques are available \cite[\eg,][]{schoukens2001}.
+There are generalisations of the frequency response function for certain classes of nonlinear systems \cite{lang2007,peng2008}, but with nonlinear analysis different techniques focus on examining different behaviours in the response and there is no single approach that is suitable for all cases.
+For example, \textcite{peng2008a} compare two methods, one of which captures `jump phenomena', and the other which shows superharmonic behaviour.
+But there is not one general method for classes of nonlinear system, nor perhaps can one exist.
+For the purposes of this thesis, the variance gain is useful as it demonstrates the frequency-dependent behaviour in a manner similar to that which would be measured in a linear system under broadband disturbance.
+An example of using the variance gain for analysing the response of a nonlinear \qzs/ system is demonstrated in the next section.
+
 \subsubsection{\QZS/ is not zero stiffness}
 \seclabel{qzs-not-zerk}
 
@@ -1159,7 +1220,6 @@ For the purposes of broadband vibration isolation, however, it is instructive to
   \figlabel{cubic-resonance-disturb-linear}
 \end{figure}
 
-The square root of the ratio of the power spectra, sometimes known as the variance gain, is used to examine the non-linear system in the frequency domain, as the transmissibility removes nonlinear components of the original signals \cite{savaresi2007}.
 A comparison between the linear transmissibility and the variance gain of the system for $\disturb$ and $\disp$ is shown in \figref{cubic-resonance-disturb}, where $\disturb$ is a white noise signal of variance $\varianceNoise$.
 Parameters used in the simulation are shown in \tabref{duffing-param}.
 It can be seen that since the linear transmissibility attempts to reject non-correlated linear signals, as the input amplitude increases its response becomes noisier and much of the shape of the power spectrum is lost due to this.
@@ -1191,23 +1251,6 @@ When comparing against the nonlinear response, the linearised system response is
 This potentially restricts the use of nonlinear springs for vibration isolation application to achieve low resonance frequencies: only when it becomes infeasible to decrease the stiffness of a conventional linear system any further should a nonlinear system be chosen instead.
 Conversely, the broader `resonance peaks' of the type seen in \figref{cubic-resonance-disturb} have been shown to be useful for energy harvesting purposes, especially for wandering narrowband excitation \cite{ramlan2009-nd}.
 
-\subsubsection{Quasi--infinite stiffness systems}
-\seclabel{infstiff}
-
-For completeness, this section covers the opposite of the \qzs/ system: with a different combination of spring elements it is possible to create quasi--\emph{infinite} stiffness, shown in a variety of systems over the last decade starting with single-\dof/ systems
-\cite{nijsse2001,mizuno2001,mizuno2002,mizuno2003a,mizuno2003b,mizuno2003c,mizuno2010-jvc} and later being extended to multi-\dof/ \cite{hoque2006,mizuno2007}.
-The quasi--infinite stiffness effect is produced with a series combination of a positive stiffness and a negative stiffness spring such that the resultant stiffness is given by
-\begin{dmath*}[compact]
-  \stiffness_T = \frac{ \stiffness_1 \stiffness_2 }{ \stiffness_1 + \stiffness_2 } = \infty
-  \condition{when $ \stiffness_2 = -\stiffness_1 $}
-\end{dmath*}.
-\textcite{xing2005} formalised the idea of \qzs/ and quasi--infinite stiffness systems.
-
-Like `zero stiffness', some qualification is required on the term `infinite stiffness' in this context.
-To achieve `true' infinite stiffness, a control system is required to stabilise the negative stiffness element of the plant.
-This control system will impart its own dynamics on the system such that the frequency response of the system will only approach the behaviour desired.
-In the case of the aformentioned studies, the static behaviour of the systems does converge to an infinite stiffness property, but \emph{dynamically} there are still dynamics associated with the connection.
-These are shown explicitly in the frequency response functions of such systems \parencite{mizuno2010-jvc}, which exhibit significant resonance peaks for both direct and ground-borne disturbance.
 
 \subsection{Summary of vibrations and magnetics literature}
 

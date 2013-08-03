@@ -73,6 +73,8 @@ label("\vbox{\hbox{Normalised}\hbox{force, $\nforceZ$}}",(0,1.1 ht),align=E);
 // ticks
 draw((-ee,-t)--(-ee,+t));
 draw((-heq,-t)--(-heq,+t));
+draw((-heq+dmax,-t)--(-heq+dmax,+t));
+draw((-heq-dmax,-t)--(-heq-dmax,+t));
 draw((-gp,-t)--(-gp,+t));
 draw((-t,feq)--(t,feq));
 draw((-t,fmax)--(t,fmax));
@@ -86,4 +88,5 @@ label("$\nforceZ{1,-\ngap+1}$",(0,fmax),E);
 label("\strut$-\dmin$",(-ee,0),S);
 label("\strut$\heq{}$",(-heq,0),S);
 label("$\ndispZ\sb{\text{max}}$",(-heq+dmax,0),S);
+label("$\ndispZ\sb{\text{min}}$",(-heq-dmax,0),S);
 label("\strut$-\ngap+1$",(-gp,0),S);

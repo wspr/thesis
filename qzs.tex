@@ -1191,8 +1191,8 @@ peak-to-peak ground disturbance amplitudes in increments of \SI{0.2}{mm} up to $
 Because the excitation is at resonance, the output displacement is greater
 than the input displacement. The phase plot of the response becomes
 increasingly skewed as the amplitude of vibration, and hence the nonlinearity ratio,
-increases; \tabref{nl} summarises the nonlinearities calculated using
-\eqref{nl}. Physically, this is interpreted as the spring being perturbed
+increases.
+Physically, this is interpreted as the spring being perturbed
 further into the stiffer region as the mass is moved closer to the repulsive
 lower magnet, which results in stronger forces as the normalised displacement
 increases. Conversely, as the mass moves upwards, closer to the \qzs/
@@ -1207,19 +1207,10 @@ shifting of the resonance peak as the nonlinearity ratio increases, as
 will be seen later in this section.
 
 \begin{figure}
-  \psfragfig{PhD/Writings/QZS/fig/nl}
-\caption[Phase plot of the magnetic system at steady
-  state resonance.]{Phase plot of the magnetic system at steady
-  state resonance for a range of input disturbance amplitudes
-  shown in \tabref{nl}.
-  The light line is the equivalent linear response.}
-  \figlabel{nl}
-\end{figure}
-
-\begin{table}
-  \caption[Nonlinearity values of the responses shown in \figref{nl}.]{Nonlinearity values, $\nk$, of the responses shown in \figref{nl}.}
-  \tablabel{nl}
-  \begin{tabular}{@{}ccc@{}}
+  \parbox[c]{0.5\textwidth}{\psfragfig{PhD/Writings/QZS/fig/nl}}
+  \hfill
+  \parbox[c]{0.4\textwidth}{
+    \begin{tabular}[t]{@{}ccc@{}}
     \toprule
     $\ampExcite$, mm & $\Delta \magstiffnessZ{}$, \si{N/m} & $\nk$ \\
     \midrule
@@ -1229,8 +1220,13 @@ will be seen later in this section.
     \num{0.8} & \num{253} & \num{0.50} \\
     \num{1.0} & \num{297} & \num{0.59} \\
     \bottomrule
-  \end{tabular}
-\end{table}
+  \end{tabular}}
+\caption[Phase plot of the magnetic system at steady
+  state resonance.]{Phase plot of the magnetic system at steady
+  state resonance for a range of input disturbance amplitudes, shown with respective nonlinearity values $\nk$.
+  The light line is the equivalent linear response.}
+  \figlabel{nl}
+\end{figure}
 
 It is important to consider the role of damping in the results shown
 in \figref{nl}. A low damping coefficient results in a greater
@@ -1238,73 +1234,27 @@ displacement response at resonance in the low frequency range. This increase in 
 displacement response will also increase the nonlinear behaviour of
 the spring. However, the advantage of low damping is a very fast
 roll-off in vibration attenuation at frequencies above
-resonance. Since the damping of the non-contact magnetic spring is
-very low, either the bandwidth of excitation must lie above the
-resonance frequency or active sky-hook damping must be applied in
+resonance.
+Since the damping of the non-contact magnetic spring is
+very low, either the bandwidth of excitation must lie well above the
+resonance frequency or active vibration control must be applied in
 order to reduce the strong effect that the resonance has on the
-low-frequency response. As previously discussed, sky-hook damping is
+low-frequency response.
+As previously discussed, skyhook damping is
 especially suitable for this purpose because the isolation region of
-the frequency response is not affected.
+the frequency response is not affected \secref*[vref]{skyhook-intro}.
 
-\subsection{Variance gain of the magnetic system}
-
-The transmissibility $\transmissibility{\freq}$ of a system characterises response of a system to inputs that are broadband in frequency.
-It is usually calculated using a transfer function approach, given by
-\begin{math}
-  \transmissibility{\freq} = \crossSpectMagnetBase/\powerSpectBase
-\end{math},
-where $\crossSpectMagnetBase$ is the cross power spectral density between the input and output signals and $\powerSpectBase$ is the power spectral density of the input signal.
-This formulation is generally only useful for linear systems as it is specifically designed to reject nonlinear signals that may arise due to nonlinearities in the system.
-
-One metric to evaluate the response of a nonlinear system in the frequency
-domain is known as the `variance gain' $\varianceGain$ \cite{savaresi2007}, which
-is calculated as a ratio of the \RMS/
-output to input signals:
-\begin{dmath}[label=nl-trans]
-\varianceGain = \left.\sqrt{
-      \tfrac1\period \Int{{\let\maybedot\bar \dispMass}\fn \Time^2}{\Time,0,\period}} \middle/
-    \sqrt{
-      \tfrac1\period \Int{{\let\maybedot\bar \dispBase}\fn \Time^2}{\Time,0,\period}}
-    \right. ,
-\end{dmath}
-where $\period$ is the time interval over which the variance gain is calculated,
-and ${\let\maybedot\bar \dispMass}$ and ${\let\maybedot\bar \dispBase}$ are the mean-zero output and input displacements
-of the vibration isolator, respectively.
-For linear systems, this expression simplifies to the standard formulation for transmissibility.
-For nonlinear systems, \eqref{nl-trans} describes the ratio of output to input energy for
-a given excitation.
-For the tonal input disturbance of \eqref{y}, the variance
-gain at the frequency of excitation $\freq_e$ is
-\begin{dmath}[label=nl-trans2]
-\varianceGain{\freq_e} = \frac{1}{\ampExcite}\sqrt{\frac{2}{\period} \Int{{\let\maybedot\bar \dispMass}\fn \Time^2 }{\Time,0,\period}} .
-\end{dmath}
-The variance gain allows the nonlinearity of the system to be visualised on a familiar transmissibility--like plot for a range of resonant frequencies and equilibrium positions.
-
-The variance gain technique is useful for broadly quantifying the behaviour of nonlinear systems.
-For measuring the frequency response function of a predominantly linear system that is contaminated by nonlinear signals whose effects should be discarded, other techniques are available \cite[\eg,][]{schoukens2001}.
-There are generalisations of the frequency response function for certain classes of nonlinear systems \cite{lang2007,peng2008}, but with nonlinear analysis different techniques focus on examining different behaviours in the response and there is no single approach that is suitable for all cases.
-For example, \textcite{peng2008a} compare two methods, one of which captures `jump phenomena', and the other which shows superharmonic behaviour.
-But there is not one general method for classes of nonlinear system, nor perhaps can one exist.
-For the purposes of this study, the variance gain is useful as it demonstrates the frequency-dependent behaviour in a manner similar to that which would be measured in a linear system under broadband disturbance.
-
-\Figref{variance-amp} shows the variance gain for a magnetic system with
+\Figref{variance-amp} shows the variance gain (\secref*[vref]{variance-gain}) for a magnetic system with
 $\mass=\SI{0.5}{kg}$, $\mdim=\SI{20}{mm}$, and $\ngap=2.8$ with excitation
 amplitude ranging from \SI{0.1}{mm} to \SI{0.5}{mm}. With these parameters, the
 equilibrium position is \SI{1.55}{mm} below the \qzs/ position. As seen
 in the figure, the greater the excitation amplitude, the greater the softening
 nonlinearity of the spring.
-One particular aspect of the nonlinearity which can be seen is the `snap-through' phenomenon at the resonance peak; this is a common feature of such nonlinear systems in general \cite{dangola2006}, shown particularly clearly experimentally by \textcite{bonisoli2007-mrc} for a magnetic spring exhibiting a hardening nonlinearity.
+One particular aspect of the nonlinearity which can be seen is the `snap-through' phenomenon at the resonance peak; this is a common feature of such nonlinear systems in general \cite{dangola2006}, shown particularly clearly in the experiments of \textcite{bonisoli2007-mrc} for a magnetic spring exhibiting a hardening nonlinearity.
 
-\Tabref{variance-amp} shows some data from the
-simulated responses, including the maximum displacement of the spring towards
-the \qzs/ position, and the nonlinearity measures $\nk$ for each amplitude of
-excitation. The maximum displacement $x_{\text{max}}$ corresponds with the
-maximum normalised displacement $\ndispZ_{\text{max}}$ shown in \figref{heq};
-as $\ndispZ_{\text{max}}$ tends towards zero, the motion of the magnetic
-spring moves closer to the \qzs/ position. Note that the pronounced
-nonlinearity seen in \figref{variance-amp} belongs to a system that is
-approaching its bounds of stability, reaching \SI{0.24}{mm} below the \qzs/
-position in its most extreme displacement.
+\Tabref{variance-amp} shows some data from the simulated responses, including the maximum displacement of the spring towards the \qzs/ position, and the nonlinearity measures $\nk$ for each amplitude of excitation.
+The maximum displacement $x_{\text{max}}$ corresponds with the maximum normalised displacement $\ndispZ_{\text{max}}$ shown in \figref{heq};
+as $\ndispZ_{\text{max}}$ tends towards zero, the motion of the magnetic spring moves closer to the \qzs/ position. Note that the pronounced nonlinearity seen in \figref{variance-amp} belongs to a system that is approaching its bounds of stability, reaching \SI{0.24}{mm} below the \qzs/ position in its most extreme displacement.
 
 \begin{figure}\centering
 \let\labelsize\footnotesize
@@ -1353,13 +1303,10 @@ As the equilibrium position moves away from the instability at \qzs/, the varian
 \caption
 [Variance gain of the magnetic system comparing two excitation
 amplitudes.]
-{Variance gain of the magnetic system comparing two excitation
-amplitudes with varying values of magnet gap $\ngap$, as labelled. Low amplitude
-is $\ampExcite=\SI{0.1}{mm}$ and high amplitude is $\ampExcite=\SI{0.5}{mm}$; shown as dashed
-and solid lines, respectively. The nonlinear effects (snap-through resonance and superharmonic) are only prominent in the case
-close to \qzs/, with an excitation amplitude that almost destabilises the system.
-Tabulated values of nonlinearity and maximum displacement are shown for the high
-amplitude case in \tabref{variance-gaps}.}
+{Variance gain of the magnetic system comparing two excitation amplitudes with varying values of magnet gap $\ngap$, as labelled.
+Low amplitude, dashed,
+is $\ampExcite=\SI{0.1}{mm}$ and high amplitude, solid, is $\ampExcite=\SI{0.5}{mm}$.
+The nonlinear effects (snap-through resonance and superharmonic) are only prominent in the case close to \qzs/, with an excitation amplitude that almost destabilises the system.}
 \figlabel{variance-gaps}
 \end{figure}
 
@@ -1377,9 +1324,9 @@ moves closer to the point of \qzs/.}
 \toprule
 $\ngap$ & $\keq{}$, \si{N/m} & $\Delta \magstiffnessZ{}$, \si{N/m} & $x_{\text{max}}$, mm & $\nk$ \\
 \midrule
- 2.8 & \hphantom{1}66.3 & 46.6 & $-0.24$ & 0.71 \\
- 2.85 & 138.8 & 145.8 & $-2.72$ & 0.48 \\
- 3.0 & 167.6 & 253.5 & $-7.80$ & 0.33 \\
+ \num{2.8}\hphantom{\num{5}} & \hphantom{\num{1}}\num{66.3} & \hphantom{\num{1}}\num{46.6} & \num{-0.24} & \num{0.71} \\
+ \num{2.85} & \num{138.8} & \num{145.8} & \num{-2.72} & \num{0.48} \\
+ \num{3.0}\hphantom{\num{5}} & \num{167.6} & \num{253.5} & \num{-7.80} & \num{0.33} \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -1387,10 +1334,8 @@ $\ngap$ & $\keq{}$, \si{N/m} & $\Delta \magstiffnessZ{}$, \si{N/m} & $x_{\text{m
 \subsection{Summary of magnetic \qzs/ design}
 \seclabel{end}
 
-This section has analysed a magnetic spring for the purposes of
-load bearing with low stiffness. Approximate expressions
-were derived for cube-shaped magnets for analysing the behaviour of
-this system, which are simple and accurate over a large displacement range, and may be used for cubical magnets of any size.
+This section has analysed a magnetic spring for the purposes of load bearing with low stiffness.
+Empirical expressions were derived for cube-shaped magnets for analysing the behaviour of this system, which are simple and accurate over a large displacement range, and may be used for cubical magnets of any size.
 
 Four design criteria were imposed on the design in terms of the two variable design
 parameters: magnet size and gap between the fixed magnets. A technique for explicitly
@@ -1411,8 +1356,7 @@ design is scalable in that many such isolators may be used in parallel to
 achieve greater load bearing even if only small magnets are available. The
 inherent low damping of the system results in good high frequency performance,
 but low frequency disturbances will result in large outputs due to the high
-resonance peak. This effect could be mitigated by the application of sky-hook
-damping to the system.
+resonance peak. This effect could be mitigated by the application of absolute velocity feedback control (`skyhook damping') to the system.
 
 Further research on the practical development of this system is currently being undertaken at The University of Adelaide, with a particular focus on adaptive load balancing, and control for both stabilisation and vibration attenuation in six degrees of freedom \cite{zhu2011-icmt}.
 
@@ -1421,7 +1365,6 @@ Further research on the practical development of this system is currently being 
 This chapter consisted of separate analyses of two \qzs/ systems.
 The first was a mechanical design using linear springs, seen in the literature, and analysed in a planar form herein for the first time.
 It was shown that \qzs/ was possible to achieve in both horizontal and vertical directions simultaneously with careful tuning of the parameters of the system.
-However, were the operating conditions of the system to change, this tuning would be difficult to achieve in practice.
 
 The second analysis considered a simple magnetic \qzs/ arrangement and investigated the parameters necessary to design such a system based on desired load bearing and allowable operating parameters.
 A set of criteria was developed and the solution space for one such design investigated.
