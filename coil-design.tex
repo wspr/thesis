@@ -13,7 +13,7 @@
 
 The field of electromagnetic actuators spans a large variety of applications.
 The oldest of these is the voice-coil loudspeaker, which is an area still undergoing continued refinement.
-In the introduction of this thesis, a variety of other electromagnetic devices were discussed including planar and multi--\dof/ actuators (\secref{magnetic-actuators}).
+In the introduction of this thesis, a variety of other electromagnetic devices were discussed including planar and multi--\dof/ actuators (\secref*{magnetic-actuators}).
 %\textcite{yan2008-ietmx} designed a three \dof/ spherical actuator; their paper cites numerous other works to develop similar devices.
 In \chapref{magnet-theory} the theory was summarised for calculated forces between permanent magnets; many of these methods used a modelling technique in which a permanent magnet is represented as a surface current density around the circumference of the magnet.
 This theory also covers, therefore, the case where the force between a magnet and a coil is under investigation, provided that the coil being modelled can also be represented as an infinitely thin current density.
@@ -66,7 +66,7 @@ The permanent magnet is also assumed to be homogeneous with a constant magnetisa
 \subsection{Thick-coil/magnet axial force methods}
 \seclabel{magcoil-theory}
 
-In this section, the theory for calculating the interaction force between the thick coil and permanent magnet (\figref{coil-magnet}) will be discussed.
+In this section, the theory for calculating the interaction force between the thick coil and permanent magnet (\figref*{coil-magnet}) will be discussed.
 In the first two force calculation methods, `filament' and `shell', the coil and/or magnet are modelled in terms of discrete elements (such as single-turn or thin coils) for which the interaction forces may be summed through superposition of each combination of elements.
 The final method uses a single integral expression to calculate the force, and two formulations and solutions for this integral are discussed.
 The shell method and the first integral method were developed as part of the current study; the other two methods in from literature, examined for comparison.
@@ -85,7 +85,7 @@ The shell method and the first integral method were developed as part of the cur
 \subsubsection{The filament method}
 \seclabel{filament-method}
 
-For two circular coaxial loops (i.e., a single turn of a solenoid) carrying currents $\current_1$ and $\current_2$ respectively,
+For two circular coaxial loops (\ie, a single turn of a solenoid) carrying currents $\current_1$ and $\current_2$ respectively,
 the axial force between them is given by~\cite[\eg,][]{shiri2009-pier}
 \begin{dmath}[label=coaxial-filament]
 \forceFilament\fn{\radius_1,\radius_2,\dispaxial}=\permVac \current_1 \current_2 \dispaxial \sqrt{\frac{m}{4\radius_1\radius_2}}\gp{\EllipticK{m}-\frac{m/2-1}{m-1}\EllipticE{m}}
@@ -285,7 +285,7 @@ The thick coil force equation models the coil as a volumetric current density in
 \caption
   [Magnet--coil parameters for simulation of thin-coil forces.]
   {
-   Magnet--coil parameters used for simulation of thin-coil forces (\figref{magcoil-thin-compare}).
+   Magnet--coil parameters used for simulation of thin-coil forces (\figref*{magcoil-thin-compare}).
    Coil thickness is used for the thick coil equation only.
   }
 \tablabel{magcoil-thin-compare-param}
@@ -464,7 +464,7 @@ m_2 = \gp{\gp{\radius_1+v}^2+\dispaxial^2}^{-1/2}.
 Such a comparison is shown in \Figref{magcoil-ecc-compare}, which has system parameters as shown in \Tabref{magcoil-thin-compare-param}, aside from a larger inner coil radius of \SI{11.5}{mm} and an eccentric displacement of \SI{1.5}{mm}.
 This figure shows that the integral method proposed here gives results in agreement with the filament method.
 
-Eccentricity acts to increase the axial force of a coil/magnet system as the magnetic material comes closer to the region of greater magnetic field strength due to the solenoid (\figref{magcoil-ecc-vary}).
+Eccentricity acts to increase the axial force of a coil/magnet system as the magnetic material comes closer to the region of greater magnetic field strength due to the solenoid (\figref*{magcoil-ecc-vary}).
 This result indicates that decreasing the airgap between the coil and magnet as much as possible is desirable to maximise the forces obtained for a given input current.
 
 \begin{figure}
@@ -680,7 +680,7 @@ Primarily, the curves in \figref{magcoil-ratiomax} indicate that increasing the 
 
 \subsection{Trends in the optimisation results}
 
-It is interesting to consider the parameters chosen for the optimal values of magnet and coil ratios (\figref{magcoil-ratiomax-ratios}).
+It is interesting to consider the parameters chosen for the optimal values of magnet and coil ratios (\figref*{magcoil-ratiomax-ratios}).
 As discussed earlier, due to quantisation errors in the calculation of radial turns, the optimal magnet and coil ratios are not smooth with wire diameter.
 Secondly, the accuracy of the numerical methods used to calcute these optimal values introduces numerical error into the results, and improving this accuracy is prohibitive in terms of calculation time.
 
@@ -750,7 +750,7 @@ The force created by a single layer coil (that is, $\turnsRCoil=1$) cannot be im
 
 The study in \secref{magnetcoil-optimisation} has outlined an optimisation technique to achieve the maximum peak force given a fixed magnet volume and input resistance.
 This peak force can be subsequently improved upon by using a different coil design.
-By wiring two half-resistance coils in series and in opposite winding directions, with the permanent magnet in the gap between them (\figref{dual-coil-schematic}), greater forces can be achieved than with a single coil of equivalent resistance.
+By wiring two half-resistance coils in series and in opposite winding directions, with the permanent magnet in the gap between them (\figref*{dual-coil-schematic}), greater forces can be achieved than with a single coil of equivalent resistance.
 This design is also better at dissipating heat, as the effective surface area is greater.
 
 \begin{figure}
@@ -779,7 +779,7 @@ The two coils are assumed to be the same size.
 For a fixed dual-coil geometry, this equation allows an investigation of the force \vs\ displacement curves while varying the distance between the coils and the position of the permanent magnet.
 
 The improvement that can be achieved with the dual-coil design is demonstrated via an example.
-The results from the previous optimisation for coil and magnet aspect ratios (\figref{magcoil-ratiomax-ratios}) indicate that generally a longer coil than magnet produces larger forces (\ie, a larger coil aspect ratio).
+The results from the previous optimisation for coil and magnet aspect ratios (\figref*{magcoil-ratiomax-ratios}) indicate that generally a longer coil than magnet produces larger forces (\ie, a larger coil aspect ratio).
 In such cases, the maximum force experienced by the permanent magnet is seen at a displacement of half the coil length.
 The dual-coil spacing $\coilDualGap$ should be chosen such that the displacement for peak force aligns for both coils so as to achieve maximum force from both coils; for the case of longer coils than magnets, this spacing becomes equal to the coil length.
 In other words, there is zero gap between adjacent coils.

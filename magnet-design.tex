@@ -13,8 +13,8 @@
 \section{Overview}
 
 The force created between combinations of permanent magnets can be used in various ways for supporting load.
-This chapter investigates a number of different configurations for such magnetic springs, some of which having been used to various degrees in the literature and some of which are novel.
-Varieties in design lend themselves for different purposes, such as optimising for static load force, number of directions of instability, and low variability in resonance frequency.
+This chapter investigates a number of different configurations for such magnetic springs, of which some have been studied to various degrees in the literature and of which some are novel.
+Varieties in design lend themselves for different purposes, such as optimising for static load force, low stiffness, number of directions of instability, and low variability in resonance frequency.
 
 In \secref{magprop}, the selection of rare earth magnets is discussed, including some experimental results that indicate that large magnet sizes should be tested carefully to ensure they are magnetised homogeneously.
 
@@ -26,7 +26,7 @@ The chapter concludes with a theoretical (\secref*{oblique}) and experimental (\
 \section{Magnet properties and selection}
 \seclabel{magprop}
 
-Permanent magnets are available in a range of materials; for the purposes of this work we will consider only neodymium-boron-iron alloys, which are inexpensive and widely used nowadays.
+Permanent magnets are available in a range of materials; for the purposes of this research only neodymium-boron-iron alloys have been considered, which are inexpensive and widely used nowadays.
 These magnets are available in a variety of grades corresponding to their strength of magnetisation.
 Generally, the larger the magnet the lower the grade.
 
@@ -47,7 +47,7 @@ Since the conversion to metric for the units of $\BHmax$ is $\SI{1}{MG.Oe}=100/\
   \remanence = 2\sqrt{\permvac\BHmax} = 2\sqrt{\maggradesym/100}
 \end{dmath},
 which corresponds to $\remanence=2\sqrt{0.42}=\SI{1.3}{T}$ for an \maggrade{42} grade magnet.
-The analyses performed in this thesis are generally normalised by magnet strength; \ie, the remanence magnetisation for theoretical calculations are usually assumed to be $\remanence=\SI{1}{T}$.
+The analyses performed in this thesis are generally normalised by magnet strength; \ie, the remanence magnetisations for theoretical calculations are usually assumed to be $\remanence=\SI{1}{T}$.
 
 Magnets of grade \maggrade{52} have an approximately 12\% increase in magnetic flux density over \maggrade{42} grade, which corresponds to a force increase of 25\%, for an average cost increase of around 40\% (prices from \KJMagnetics/).
 As an aside, the highest-known theoretically achievable remanence magnetisation for a permanent magnet is around \SI{2.4}{T} \cite{sellmyer2002}, corresponding to a force increase of 236\% over \maggrade{42} grade magnets.
@@ -59,7 +59,7 @@ In \secref{magnet-forces} when deriving the equations for the forces between mag
 To be fabricated, a homogeneous permanent magnet requires a very strong magnetic field of constant direction and magnitude, and the larger the cross-section of the magnet the harder such a field is to obtain.
 For larger permanent magnets, care must be taken when using the force equations presented in the previous chapter.
 For example, the magnetic field of a grade \maggrade{35} cylindrical magnet with diameter \SI{100}{mm} and thickness \SI{30}{mm} was compared against theoretical calculations (performed with ANSYS) \cite{bruno2011-honoursthesis}.
-While the comparison across axial displacement (\figref{gauss-vertical}) only shows that the measured magnetic field is lower than expected, the lateral displacement results (\figref{gauss-radial}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
+While the comparison across axial position (\figref{gauss-vertical}) only shows that the measured magnetic field is lower than expected, the lateral position results (\figref{gauss-radial}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
 
 \begin{figure}
 \begin{wide}
@@ -73,9 +73,9 @@ While the comparison across axial displacement (\figref{gauss-vertical}) only sh
 \end{subfigure}
 \end{wide}
 \caption[
-  Magnetic field measurements of a cylindrical permanent magnet.
+  Magnetic flux density measurements of a cylindrical permanent magnet.
 ]{
-  Magnetic field measurements of an \maggrade{35} \diameter\SI{100x30}{mm} cylindrical permanent magnet.
+  Magnetic flux density measurements of an \maggrade{35} \diameter\SI{100x30}{mm} cylindrical permanent magnet.
   The origin of the measurements is \SI{5}{mm} from the face of the magnet.
   Measured results are not consistent with the theoretical results that assume constant magnetisation.
 }
@@ -91,10 +91,10 @@ An example of such a magnetic spring can be seen in \figref{magratio-schematic},
 With like poles facing, the two magnets repel each other and will hold the system at equilibrium with an air gap between them.
 Displacement towards each other is restored by the repulsive magnetic force, and displacement away is restored by gravity.
 The floating magnet must be constrained in both horizontal directions by guides.
-If the constraint is removed, it will be naturally unstable horizontally due to Earnshaw's theorem (see \secref{earnshaw}).
+If the constraint is removed, it will be naturally unstable horizontally due to Earnshaw's theorem (\secref*{earnshaw}).
 
 A natural question for magnet selection in such cases is `what size should the magnets be?'.
-As magnet price scales with volume (\figref{mag-price}), it is often desirable to minimise the magnet volume for a required force, and the question then becomes what magnet \emph{shape} to choose.
+As magnet price scales with volume (\figref*{mag-price}), it is often desirable to minimise the magnet volume for a required force, and the question then becomes what magnet \emph{shape} to choose.
 Permanent magnets in two different shapes are examined here: square-face cuboid and cylindrical.
 
 \subsection{Square-face cuboid magnets}
@@ -773,7 +773,7 @@ This result indicates that increasing the spring depth does not affect the stabi
 \end{figure}
 
 Variation of the magnetic spring parameters in this case indicates that it is possible to increase the load-bearing ability of such a design without compromising the stability of the system.
-In this section we have shown one magnetic system that has a single degree of translational instability, and the literature has a small number of other examples \cite{delamare1994-ietm,choi2003}.
+In this section one particular magnetic system has been shown that has a single degree of instability, and the literature has a small number of other examples \cite{delamare1994-ietm,choi2003}.
 To conclude, there are a plurality of magnet designs that can take advantage of mechanical lever arms to stabilise rotational degrees of freedom even if low-order magnet systems exhibit rotational instability.
 Optimisation of such systems is an open question that will require a large amount of ingenuity; it is likely that different requirements will yield varying solutions in this area.
 
@@ -911,7 +911,7 @@ The natural frequency $\natfreq\fn{\mbqvdisp}$ as a function of displacement was
 where the equivalent mass $\mbqmasseq=\mbqvforce\fn\mbqvdisp/\gravity$ is the mass required to load the spring such that its equilibrium position lies at the displacement $\mbqvdisp$.
 The force corresponding to this equivalent mass is referred to as the `load force'.
 
-By plotting natural frequency as a function of load force in \Figref{mbq-wvf-angle}, we can choose a magnet angle based on a certain load to satisfy a desired natural frequency.
+By plotting natural frequency as a function of load force in \Figref{mbq-wvf-angle}, it is possible to choose a magnet angle based on a certain load to satisfy a desired natural frequency.
 Specifically, for the case of zero offset between the magnets $\mbqoffset=0$ (\Figref{mbq-wvf-angle-1}), it can be seen that at a magnet angle of $\mbqmagangle=\SI{35}{\degree}$ the natural frequency is almost independent of force for a large range of applied load (approximately $\SI{30}{N}\pm\SI{10}{N}$).
 
 \begin{figure}

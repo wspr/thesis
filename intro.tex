@@ -55,7 +55,7 @@ However, due in part to this complex behaviour between them there are few design
 \begin{quote}
 It would be virtually impossible to find more than ten men in the United States who can properly design a permanent magnet for a wide variety of products in which the magnet is a critical operational element. \cite{moskowitz1995}
 \end{quote}
-We can speak broadly about their integrated use in force design: magnets can be used in conjunction with current-carrying coils to effect time-varying forces (as in shakers and speakers); soft iron can be used to guide the magnetic fields into desired regions or away from unwanted areas (\eg, latches and motors); or magnets can be used alone for unique force--displacement characteristics or simply for applying non-contact forces (\eg, rotational bearings).
+Their integrated use in force design can be discussed broadly: magnets can be used in conjunction with current-carrying coils to effect time-varying forces (as in shakers and speakers); soft iron can be used to guide the magnetic fields into desired regions or away from unwanted areas (\eg, latches and motors); or magnets can be used alone for unique force--displacement characteristics or simply for applying non-contact forces (\eg, rotational bearings).
 
 These ideas in mechanics and dynamics have application back to the field of vibrations.
 A `synergy' between the two fields is seen in areas such as energy harvesting from ambient vibration, the study of vibration in high-speed magnetic bearings, and one of the main themes of this thesis — nonlinear and/or non-contact forces for vibration isolation supports.
@@ -71,7 +71,7 @@ It is the possibility of overcoming the instability of levitated magnets by acti
 \seclabel{qzs-summary-intro}
 
 The transition between stable and unstable forces becomes interesting in the context of vibration isolation.
-Between positive and negative stiffness in a force \vs\ displacement characteristic, there is an inflexion point of zero stiffness.
+Between positive and negative stiffness in a force \vs\ displacement characteristic, there is an inflection point of zero stiffness.
 This point is termed a `\qzs/' position to emphasise that the dynamic behaviour of the system in this condition can be rather complex and usually unstable.
 `True' zero stiffness would imply \emph{no} connection between between the levitated object and the base, as if they were floating in free space — the motion of one would have no effect on the motion of the other.
 
@@ -195,7 +195,7 @@ First assume that there is no input force; taking the Laplace transform and rear
 
 For ideal linear state feedback control, the input force can be represented as a linear combination of measured relative displacement $\gp{\dispMass-\dispBase}$, relative velocity $\gp{\velMass-\velBase}$, and acceleration $\accMass$ of the mass.
 A force sensor can also be used for feedback purposes, but this yields results for lumped-parameter systems equivalent to acceleration feedback; for vibration isolation of flexible systems, there is evidence to suggest force feedback giving greater stability than acceleration feedback, especially for lightly damped structures \cite{preumont2002-jsv}.
-Absolute velocity $\velMass$ of the mass can be estimated by integrating the acceleration or through geophone measurements of the velocity, absolute displacement $\dispMass$ can be estimated through further integration, and for completeness we also consider the relative acceleration between the mass and the base ($\accMass-\accBase$) as a possible signal for feedback control.
+Absolute velocity $\velMass$ of the mass can be estimated by integrating the acceleration or through geophone measurements of the velocity, absolute displacement $\dispMass$ can be estimated through further integration, and for completeness the relative acceleration between the mass and the base ($\accMass-\accBase$) is also considered as a possible signal for feedback control.
 The generalised feedback force can then be represented by
 \begin{dmath}[label=feedback-force]
  \forceIn =
@@ -751,7 +751,7 @@ magnetisation.}
 
 In the early decades of magnetics research, it was not feasible to solve the magneto-static forces of these systems completely analytically.
 Magnetic bearings could be modelled using a \twoD/ field solution, simplifying the solutions.
-In such a way, \textcite{yonnet1978} showed that the forces between axially- and radially-magnetised bearings are equal (\figref{equalbearings}).
+In such a way, \textcite{yonnet1978} showed that the forces between axially- and radially-magnetised bearings are equal (\figref*{equalbearings}).
 However, this equality of forces for both orthogonal- or parallel-magnetised magnets should not be taken as a general result; it comes about due to modelling the two-dimensional model of the geometry \cite{anderson1987-ietm}, and it will be shown later that this is in fact not true for cube magnets (see \secref[vref]{cube-compare-orth}).
 \textcite{yonnet1981} described how such axial and radial magnetic bearings may be re-arranged to suit different applications, showing a complete taxonomy of simple magnetic bearing designs.
 Varying geometrical parameters of these magnetic bearings can significantly affect the force and stiffness characteristics \cite{bassani2006-trib-int}.
@@ -788,7 +788,7 @@ field or in the field from another such assemblage\dots
 \end{quote}
 An interesting retrospective on Earnshaw's theorem related to magnetic levitation is given by \textcite{bassani2006-meccanica}, and an alternative formulation given by \textcite{reusch1994}.
 A mathematical demonstration of Earnshaw's theorem is conceptually quite simple.
-We start with the equation for the magnetic flux density; when there are no external current terms, it can be shown to be expressed as Laplace's equation:
+Starting with the equation for the magnetic flux density, when there are no external current terms it can be shown to be expressed as Laplace's equation:
 \begin{dmath}[compact]
 \grad\magB = 0 \implies \divgrad\magB = 0
 \end{dmath}.
@@ -961,7 +961,7 @@ only the component of magnetic field in the perpendicular direction
 that influences the eddy force. This has implications on the
 arrangement of eddy current dampers for vibrating structures.
 Two configurations of eddy current dampers are shown in \figref{eddy}, which must be designed taking into account the exact shape of the magnetic field and the gap between the magnet and the conductor.
-The vertical configuration (\figref{eddy-v}) will exhibit a nonlinear damping force as the gap between the magnet and conductor varies with displacement of the mass.
+The vertical configuration (\figref*{eddy-v}) will exhibit a nonlinear damping force as the gap between the magnet and conductor varies with displacement of the mass.
 In practice this may not be a significant problem if the gap is somewhat larger than the motion of the mass.
 
 \begin{figure}
