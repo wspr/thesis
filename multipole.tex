@@ -10,10 +10,10 @@
 
 \referpaper{The material presented in \secref{optim-halbach-1d} is based on work that has been published as a journal paper~\cite{robertson2010-maglett}.}
 
-\section{Introduction}
+\section{Background of multipole arrays}
 
-The magnetic designs presented in \chapref{magnet-theory} are based around various configurations of multiple discrete magnets each oriented in specific directions.
-In this chapter, a preliminary analysis is presented on using `multipole' magnet arrays, which are groups of magnets stacked together with varying directions of magnetisation within the array.
+The magnetic designs presented in \chapref{magnet-design} were based around various configurations of multiple discrete magnets each oriented in specific directions.
+In this chapter, an analysis is presented on using `multipole' magnet arrays, which are groups of magnets stacked together with varying directions of magnetisation within the array.
 
 Early work in this area focussed on using multipole stacks for magnetic bearings (see \figref[vref]{backers-bearing}), which continue to see research focus in areas such as artificial hearts \parencite{chen2002,finocchiaro2008,samiappan2008}, and wind power generation \parencite{liu2008-ietm}.
 The theory for these magnetic bearings assumed originally that the effect of curvature of the ring magnets to be negligible and analysed the forces between two large flat plates with non-uniform magnetisation as if multiple magnets were stacked together to form a planar structure.
@@ -34,12 +34,12 @@ Early work by the author of this thesis demonstrated how these ideas could be us
 
 It was not until the wide-spread availability of the high energy density rare-earth magnets in the late 1970s that more complicated multipole magnetic geometries became feasible.
 The classic multipole array is a linear array of magnets stacked to approximate a single magnet with sinusoidal magnetisation, first analysed in the 1970s \parencite{halbach1981,shute2000-ietm}.
-  \note{Multipole magnet arrays are often refered to as `Halbach arrays' in a system approximating sinusoidal magnetisation such as shown in \figref{halbach}. The more generic `multipole' is used in this thesis to cover both Halbach arrays and planar arrays with \twoD/ magnetisation variation.}
+  \note{Multipole magnet arrays are often refered to as `Halbach arrays' in a system approximating sinusoidal magnetisation such as shown in \figref{halbach}. The more generic term `multipole' is used in this thesis to cover both Halbach arrays and planar arrays with \twoD/ magnetisation variation.}
 The main feature of these multipole arrays is to focus the magnetic field, which can increase the magnetic flux density on one side of the array and to reduce or eliminate any need for magnetic shielding on the reverse side.
-The lines of magnetic flux produced by one such multipole array is shown in \figref{halbach}, in which the single-sided nature of the magnetic field can clearly be seen.
-This figure shows magnets with \ang{45} increments of magnetisation, but any integer division of \ang{360} is possible.
+The lines of magnetic flux produced by one such multipole array (calculated with \ANSYS/) is shown in \figref{halbach}, in which the single-sided nature of the magnetic field can clearly be seen.
+This figure shows magnets with \ang{45} increments of magnetisation, but any integer division of \ang{360} is possible — indeed, irregular magnet shapes may also be used \parencite{meessen2008-ietm,janssen2009-ietm}.
 
-To emphasise the approximately single-sided nature of these arrays, consider the three multipole arrays shown in \figref{halbach-lion} with contours of magnetic field strength.
+To emphasise the approximately single-sided nature of these arrays, consider the three multipole arrays shown in \figref{halbach-lion} with contours of magnetic field strength (calculated with \ANSYS/).
 The multipole arrays are arranged all in repulsion, but the top pair have their strong sides facing whereas the bottom pair have their weak sides facing.
 In this static arrangement, the forces between the strong pair are about 200 times stronger than the weak pair.
 As well as increasing the stength of the magnetic field in the desired area of use, this has the added advantage of `shielding' external equipment from the field where the magnetic forces are not required, although there are other various possiblities to effect magnetic shielding \cite{becherini2009}.
@@ -55,7 +55,7 @@ Such inherent shielding makes these arrays particularly beneficial in \maglev/ t
 An examination of the flux lines of various facing Halbach arrays shows how flux interacts between the two separate linear arrays (\figref{halbach-flux}).
 It can be seen that by varying the direction of magnetisation of the first magnet in the second array, a full range of forces can be achieved between the arrays — at the limits, total
 attraction or repulsion in the vertical direction, as shown in \figref{halbach-flux-repl,halbach-flux-attr} \resp.
-The variation of vertical force with horizontal displacement must be carefully considered in the design of a levitation system using such multipole arrays.
+The variation of vertical force with horizontal displacement must therefore be carefully considered in the design of a levitation system using such multipole arrays.
 
 \begin{figure}
 \begin{wide}
@@ -72,7 +72,7 @@ The variation of vertical force with horizontal displacement must be carefully c
 \figlabel{halbach-flux}
 \end{figure}
 
-Multipole arrays have been analysed for a variety of force-producing applications; one particular area that has received significant attention that will not be considered here is for generating magnetic fields for use in rotary, linear, and planar actuations systems \parencite{marinescu1992,trumper1993-ieia-conf,cho2001,zhu2001-ipep,lee2004-mx,jang2005a,jang2005b,kimoulakis2008,lee2006-mx,min2010-ietm}.
+Multipole arrays have been analysed for a variety of force-producing applications; one particular area that has received significant attention that will not be considered further here is for generating magnetic fields for use in rotary, linear, and planar actuations systems \parencite{marinescu1992,trumper1993-ieia-conf,cho2001,zhu2001-ipep,lee2004-mx,jang2005a,jang2005b,kimoulakis2008,lee2006-mx,min2010-ietm}.
 There are a range of designs also presented for cylindrical and spherical actuator/bearing design \cite{zhu2001-ipep,yan2006-iemx,xia2008-ietm}, which is outside of the work considered in this thesis.
 Some of these devices use unique multipole arrangements, and in some cases these may be of interest for magnetic levitation as larger magnetic fields will produce larger magnetic forces.
 
@@ -100,23 +100,23 @@ It is shown how such systems may be optimised by considering the design paramete
 Having expressed the forces between two magnets with arbitrary magnetisation (\secref*{magforce-arbitary}), it becomes simple to use this expression iteratively over an array of magnets with varying magnetisation strengths or directions. The force between two arrays is simply the superposition of every combination of forces between the individual magnets in each array.
 While several authors have used the superposition method presented here \cite{allag2009-electromotion,janssen2009-jsdd}, this is the most detailed formalisation of the approach to date.
 
-Some abstractions to the manner in which the iteration over each combination of magnets is performed allows us to simplify the code necessary to express a variety of configurations of the multiple arrays.
+Some abstractions to the manner in which the iteration over each combination of magnets is performed allows us to simplify the terminology necessary to express a variety of configurations of the multiple arrays.
 This facilitates logical comparisons between different designs.
 
 A multipole array can be uniquely defined in terms of several sets of variables.
 The simplest such description is:
 \begin{itemize}
-\item Size of each magnet $\inlinevect{\mupmaglength,\mupdepth,\mupheight}$,
-\item Number of magnets $\mupNmag$,
-\item Magnetisation direction of the first magnet $\mupmagpol$ and rotation between successive magnets $\mupmagrot$, and
-\item Additional gap between adjacent magnet faces $\mupfacegap$ (optional).
+\item size of each magnet $\inlinevect{\mupmaglength,\mupdepth,\mupheight}$,
+\item number of magnets $\mupNmag$,
+\item magnetisation direction of the first magnet $\mupmagpol$ and rotation between successive magnets $\mupmagrot$, and
+\item additional gap between adjacent magnet faces $\mupfacegap$ (optional).
 \end{itemize}
 Other variables that can also be used to describe the array are:
 \begin{itemize}
-\item Length of the array $\muplength = \mupmaglength \mupNmag$,
-\item Number of magnets per wavelength $\mupmagperwave=2\pi/\mupmagpol$,
-\item Wavelength of magnetisation $\mupwavelength= \mupmaglength \mupmagperwave$, and
-\item Number of wavelengths $\mupNwaves=[\mupNmag-1]/\mupmagperwave$.
+\item length of the array $\muplength = \mupmaglength \mupNmag$,
+\item number of magnets per wavelength $\mupmagperwave=2\pi/\mupmagpol$,
+\item wavelength of magnetisation $\mupwavelength= \mupmaglength \mupmagperwave$, and
+\item number of wavelengths $\mupNwaves=[\mupNmag-1]/\mupmagperwave$.
 \end{itemize}
 \figref{multipole-variables} illustrates the relationship between magnet length, array length, and wavelength for an example linear array. The wavelength of magnetisation is the length required to achieve, with successive magnets, a full rotation of magnetisation direction.
 As the number of magnets per wavelength of magnetisation $\mupmagperwave$ increases, the magnetisation pattern of the array more closely approximates true sinusoidal magnetisation, as shown in \figref{wavelength}.
@@ -148,7 +148,7 @@ Since the variables considered previously are not all orthogonal, it is useful t
 \mupmagperwave &= 360\text{\textdegree}/\mupmagrot,
 \end{align}
 where, for convenience, the additional end magnet (for symmetry) is omitted.
-Taking logarithms and writing these constraints \eqref{mup-cons} in matrix form yields
+Taking logarithms and writing these constraints in matrix form yields
 \begin{equation}
 \eqlabel{mup-cons-matrix}
 \begin{bmatrix}
@@ -239,9 +239,9 @@ Therefore, these corrections are made in a separate step after the solution proc
 
 Having covered the theory for representing the geometry of linear multipole arrays in \secref{multipole-geom}, this section investigates the optimisation of force characteristics between linear multipole magnet arrays as a function of array size and magnet arrangement using cuboid-shaped magnets.
 
-A linear `Halbach array' composed of magnets with $\mupNmag$ magnets aligned along an horizontal axis is considered; planar and volumetric stacks that have multiple magnets in the other directions will be considered in \secref{planar-multipole}.
+A linear `Halbach array' composed of magnets with $\mupNmag$ magnets aligned along an horizontal axis is considered; planar stacks with multiple magnets in two directions will be considered in \secref{planar-multipole}.
 
-The magnetic flux pattern of the array is dependent also on the wavelength of magnetisation $\mupwavelength$. As the wavelength of magnetisation decreases, the total number of magnets used in the array increases, for a fixed array length $\muplength$. The relationship between wavelength, array length, and number of magnets has been shown in \figref{multipole-variables}.
+The magnetic field pattern of a multipole array is dependent on the wavelength of magnetisation $\mupwavelength$. As the wavelength of magnetisation decreases, the total number of magnets used in the array increases, for a fixed array length $\muplength$. The relationship between wavelength, array length, and number of magnets has been shown in \figref{multipole-variables}.
 The volume of magnetic material will be fixed, and the number of magnets will be inferred from the other specified variables.
 There are therefore only two independent variables to consider when choosing the parameters for a linear Halbach array of a certain size: number of magnets per wavelength $\mupmagperwave$, and total number of wavelengths~$\mupNwaves$ in the array.
 Note the one extra magnet will always be included to balance the forces in the horizontal direction (shown in \figref{wavelength,multipole-variables}) such that the total number of wavelengths \mbox{$\mupNwaves=[\muplength-\mupmaglength]/\mupwavelength$}.
@@ -261,7 +261,7 @@ Note the one extra magnet will always be included to balance the forces in the h
 \end{wide}
 \caption
 [Vertical force \vs\ displacement between two facing linear Halbach arrays with a varying number of magnets per wavelength and wavelengths of magnetisation.]
-{Vertical force \vs\ vertical displacement normalised by the array height $\mupheight$ between two facing linear Halbach arrays with a varying number of magnets per wavelength~$\mupmagperwave$ and a varying number of wavelengths of magnetisation~$\mupNwaves$. The dashed line is the force between two single magnets of equal size to the arrays.}
+{Vertical force \vs\ vertical displacement normalised by the array height~$\mupheight$ between two facing linear Halbach arrays with a varying number of magnets per wavelength~$\mupmagperwave$ and a varying number of wavelengths of magnetisation~$\mupNwaves$. The dashed line is the force between two single magnets of equal size to the arrays.}
 \figlabel{Nwaves}
 \end{figure}
 
@@ -313,14 +313,14 @@ Magnet size ratio $\mupqratio=\mupqlh/\mupqlv$ is the measure used here to compa
 
 \begin{figure}
 \asyinclude{\jobname/magratio}
-\lofcaption{Schematic of a four-magnet Halbach array with variable magnet sizes.}{ The number of magnets per wavelength $\mupmagperwave=4$ for all arrays of this type except in the degenerate case of $\mupqlh=0$, hence $\mupmagperwave=2$.}
+\lofcaption{Schematic of a four-magnet Halbach array with variable magnet sizes.}{ The number of magnets per wavelength $\mupmagperwave=4$ for all arrays of this type except in the degenerate case of $\mupqlh=0$, in which $\mupmagperwave=2$.}
 \figlabel{mupmagratio-schem}
 \end{figure}
 
 \Figref{ratios-compare} compares the force characteristic with a variety of magnet size ratios for arrays composed of nine magnets (\ie, two wavelengths of magnetisation with a symmetry magnet), of length $\muplength=\SI{100}{mm}$, and of cross-sectional area \SI{10x10}{mm}.
 As expected from the previous results, $\mupqratio=0$ results in smaller forces than for $\mupqratio=1$; however, $\mupqratio=0.5$ results in slightly greater forces again: an increase of \SI{5}{\%} at a displacement of approximately $\mupvdispl=1.3\mupheight$, tapering off as the displacement increases.
 (This value of $\mupqratio$ is close to optimum for this system; see \figref{ratios-forcesum}.)
-This result can be justified intuitively with the recognition that there is a stronger vertical force between opposing vertically-polarised magnets than between horizontally-polarised magnets; dedicating a greater proportion of the magnet volume to the vertical magnets yields an increase in the total force.
+This result can be justified intuitively with the recognition that there is a stronger vertical force between opposing vertically-polarised magnets than between horizontally-polarised magnets (\secref[vref]{cube-compare-orth}); dedicating a greater proportion of the magnet volume to the vertical magnets yields an increase in the total force.
 
 \begin{figure}
 \begin{wide}
@@ -331,20 +331,20 @@ This result can be justified intuitively with the recognition that there is a st
 \end{subfigure}\hfil
 \begin{subfigure}
 \psfragfig{magcode/examples/magspring/fig/ratios-forcesum}
-\caption{Integral of the force--displacement characteristic \vs\ magnet length ratio $\mupqratio$ of two modified Halbach arrays over a displacement range of \SIrange{10}{20}{mm}.}
+\caption{Integral of the force--displacement characteristic \vs\ magnet length ratio $\mupqratio$ of two modified Halbach arrays.}
 \figlabel{ratios-forcesum}
 \end{subfigure}
 \end{wide}
 \caption
   [Influence of the magnet length ratio on the force between two modified Halbach arrays.]
   {
-    Influence of the magnet length ratio $\mupqratio$ on the force characteristics of two modified Halbach arrays in opposition; each has size \SI{100x10x10}{mm}.
+    Influence of the magnet length ratio $\mupqratio$ on the force characteristics of two modified Halbach arrays in opposition over a displacement range of \SIrange{10}{20}{mm}; each array has size \SI{100x10x10}{mm}.
   }
 \end{figure}
 
 However, as the number of wavelengths of magnetisation~$\mupNwaves$ increases, there is a decrease in the improvement offered by reducing the size of the horizontal magnets.
 This can be quantified by comparing the integral of force over the displacement range of interest for a variety of magnet length ratios~$\mupqratio$.
-In \figref{ratios-forcesum}, such results are shown (for the same arrays discussed previously) comparing the relative difference of the force--displacement integral as a function of the magnet length ratio, normalised by the integral results for $\mupqratio=1$.
+In \figref{ratios-forcesum}, such results are shown (for the same arrays discussed previously) comparing the relative difference of the force--displacement integral as a function of the magnet length ratio, normalised by the integral results for~$\mupqratio=1$.
 Since the force improvement with adjusting $\mupqratio$ is only significant for low numbers of wavelength of magnetisation, this technique is only suitable for increasing the forces when a small total number of magnets are to be used, perhaps for ease of construction of the magnet array. Otherwise, it is more efficient simply to increase the number of magnets than to change the magnet size ratio.
 
 \subsubsection{Separation between successive magnets}
@@ -368,7 +368,7 @@ The results are presented in terms of normalised vertical displacement $\mupvdis
 Even comparatively thin wall thicknesses compared to the magnet size have a noticeable effect on the forces generated at small vertical displacements $\mupvdispl$ between the arrays.
 The far-field forces are less affected, implying for large multipole array structures it is indeed suitable to add a magnet separation using a nonmagnetic former to set the magnets in place.
 As shown in the figure, however, once the separation distance becomes large enough, it is better to simply use opposing magnets; the magnet separation is so large that the magnetic interaction between the magnets is limited to the directly opposing pairs.
-Since the magnetic force between opposing parallel magnets is less than anti-parallel opposing magnets (recall \secref*{cube-compare-orth}), this arrangement results in smaller forces than having a set of widely spaced magnets all magnetised in the same direction (\figref{mup-sep-eq}).
+Since the magnetic force between opposing parallel magnets is less than anti-parallel opposing magnets (\secref*[vref]{cube-compare-orth}), this arrangement results in smaller forces than having a set of widely spaced magnets all magnetised in the same direction (\figref{mup-sep-eq}).
 
 \begin{figure}[t]
 \centering
@@ -400,7 +400,7 @@ While keeping the array length constant, decreasing the wavelength of magnetisat
 In order to achieve significantly larger forces over homogeneous magnetisation, a large number of magnets should be used.
 When only a small number of magnets are used, small increases in the forces can be achieved by using magnets of non-uniform size.
 
-The analysis undertaken in the section has demonstrated some design principles for multipole arrays for a certain aspect ratio.
+The analysis undertaken in this section has demonstrated some design principles for multipole arrays for a certain aspect ratio.
 There is still scope for further analysis of the force behaviour between multipole arrays of varying height-to-width (and perhaps height-to-wavelength) aspect ratios.
 
 
@@ -416,10 +416,10 @@ There are a number of different arrangements that have been considered; in the s
 
 The simplest case is the result of \SI{180}{\degree} magnetisation rotations in each direction \cite{kim1997-thesis,cho2001}.
 The resultant magnetisation pattern looks like a checkerboard or `patchwork' (\figref{patchwork}).
-From the analysis performed on linear multipole arrays in the previous section, it can be expected that the patchwork design, with only two magnets per wavelength of magnetisation, will produce forces less than what could be achieved with an alternate design.
+From the analysis performed on linear multipole arrays in the previous section, it can be expected that the patchwork design, with only two magnets per wavelength of magnetisation, will produce smaller forces than could be achieved with an alternate design.
 
 Using cuboid magnets with \ang{0} or \ang{90} magnetisation directions is advantageous in that the magnets are readily available.
-Several authors have examined the `quasi-Halbach' planar multipole array in which all magnetisation directions are restricted to one of the orthogonal directions of the axes \cite{moser2002-maglev,rovers2009-ietm,janssen2009-jsdd}, shown in \figref{quasi-halbach}.
+Several authors have examined the `quasi-Halbach' planar multipole array, shown in \figref{quasi-halbach}, in which all magnetisation directions are restricted to one of the orthogonal directions of the axes \cite{moser2002-maglev,rovers2009-ietm,janssen2009-jsdd}.
 Due to the symmetry of the pattern, there are regions within this multipole array of zero magnetisation.
 
 \begin{figure}
@@ -434,7 +434,7 @@ Due to the symmetry of the pattern, there are regions within this multipole arra
 
 A more complex arrangement can be constructed by using superposition of orthogonal linear multipole arrays \cite[Appendix~A]{kim1997-thesis}.
 Such a system, called here a `planar Halbach' array, is shown in \figref{trumper-system}, with five magnets per side and 90\textdegree\ magnetisation rotation in both the $\ax$--$\az$ and $\ay$--$\az$ planes between successive magnets.
-This design requires magnets with \ang{45} magnetisation directions; it is possible to imagine superimposing designs with a greater number of magnets per wavelength to achieve even more complex magnetisation patterns.
+This design requires magnets with \ang{45} magnetisation directions; it is possible to consider superimposing designs with a greater number of magnets per wavelength to achieve even more complex magnetisation patterns.
 
 \begin{figure}
 \centerline{\includegraphics{PhD/Figures/Multipole/pa-trumper}}
@@ -454,7 +454,7 @@ An example is shown demonstrating a simple comparison between the more straightf
 \subsection{Equations describing planar magnetisation patterns}
 
 Planar magnet arrays are composed of $\mupNmag_x\times \mupNmag_y$ magnets each with magnetisation vector $\magM_{\mupi\mupj}$ for $\mupi\in\{1\dots \mupNmag_x\}$ and $\mupj\in\{1\dots \mupNmag_y\}$.
-The planar designs have periodic magnetisations as functions of $i$ and $j$, which are described as follows in terms of normalised magnetisation $\magN = \magM/\remanence$, where $\remanence$ is the remanence magnetisation of the magnet.
+The planar designs have periodic magnetisations as functions of $i$ and $j$, which are described in what follows in terms of normalised magnetisation $\magN = \magM/\remanence$, where $\remanence$ is the remanence magnetisation of the magnet.
 For example, the normalised magnetisation of a homogeneous magnet aligned vertically facing up would be $\magN=\inlinevect{0,0,1}$.
 In the equations to follow, the arrays are assumed to be aligned in the $\ax$--$\ay$ plane with their magnetic field extending largely into the $+\az$ direction (\ie, facing `up'); for arrays facing down in the $-\az$ direction, the normalised magnetisation in the $\az$ direction should have reversed sign.
 
@@ -469,7 +469,7 @@ The patchwork array is only magnetised in the out-of-plane direction.
 
 A linear Halbach array has homogeneous magnetisation along one horizontal direction; in this case, the array is chosen to vary magnetisation along the $\ax$ direction (\ie, $\mupNmag_y=1$).
 \begin{dmath}[label=linear-halbach]
-\magN\fn{\mupi} = \matr{}{\Cos{\mupmagpol+\mupmagrot\gp{\mupi-1}}; 0; \Sin{\mupmagrot+\mupmagrot\gp{\mupi-1}}}
+\magN\fn{\mupi} = \matr{}{\Cos{\mupmagpol+\mupmagrot\gp{\mupi-1}}; 0; \Sin{\mupmagpol+\mupmagrot\gp{\mupi-1}}}
 \end{dmath},
 where $\mupmagpol$ is the magnetisation direction of the first magnet in the $\ax$--$\az$ plane and $\mupmagrot$ is the magnetisation rotation per magnet.
 \Eg, for the linear Halbach array shown in \figref{linear-halbach} where $\mupmagpol=\ang{90}$, $\mupmagrot=\ang{90}$, and $\mupNmag_x=5$ (and $\mupi=1$ starts from the left), the normalised magnetisation vectors for each magnet are shown in \tabref{linear-halbach-magn}.
@@ -499,7 +499,7 @@ In the planary Halbach array, the \emph{directions} of magnetisation are found f
 \end{dmath},
 where $\mupmagpolx$ and $\mupmagpoly$ are the directions of magnetisation of the initial magnet in the $\ax$--$\az$ and $\ay$--$\az$ planes, \resp.
 However, as written this results in certain magnets having greater than unity normalised magnetisation, which implies that stronger than regular magnets would be required.
-Therefore, care must be taken when using this equation to ensure that the vectors for the magnetisations for each magnet are normalised.
+Therefore, care must be taken when using this equation to ensure that the magnetisation vectors for each magnet in direction $\magN\fn{\mupi,\mupj}$ have constant magnitude $\remanence$.
 
 \subsubsection{Quasi-Halbach array}
 
@@ -559,7 +559,7 @@ The dashed vertical line indicates the displacement at which the array faces are
 
 The sensitivity of multipole arrays to horizontal displacement, such as shown in \figref{mup-hdispl}, is an important consideration for levitation purposes.
 For homogeneous magnets, the coupling between horizontal displacement and vertical force was shown to be relatively small (\secref*{coupling}).
-For multipole arrays, it is dependent largely on the wavelength of magnetisation; the smaller that is, the more cross-coupling there will be.
+For multipole arrays, it is dependent largely on the wavelength of magnetisation; the smaller that it is, the more cross-coupling there will be.
 
 \begin{figure}[p]
 \asyinclude{\jobname/halbach-hdispl}
@@ -570,7 +570,7 @@ For multipole arrays, it is dependent largely on the wavelength of magnetisation
 The characteristic of this cross-coupling varies significantly between array designs.
 An example of this is shown in \figref{planar-horiz} for three multipole arrays under horizontal displacement with total size \SI{50x50x10}{mm}, four \SI{1}{T} magnets per wavelength of magnetisation, and fixed $\mupvdispl=\SI{15}{mm}$ vertical displacement between the array centres.
 Since the linear Halbach array is the only array considered which is not symmetrical in the horizontal plane, the vertical forces are considered due to displacements in both $\ax$ and $\ay$ directions (\figref{planarh-linear,planarhx-linear}).
-The planar Halbach and the quasi-Halbach coupling characteristics (\figref{planarh-halbach,planarh-quasi}) are calculated due to horizontal displacement $\muphdispl$ in the $\ay$ direction only; the results are identical in the $\ax$ direction.
+The planar Halbach and the quasi-Halbach coupling characteristics (\figref{planarh-halbach,planarh-quasi}) are calculated due to horizontal displacement $\muphdispl$ in the $\ay$ direction only; the results are identical in the $\ax$~direction.
 
 \begin{figure}
 \begin{wide}
@@ -586,10 +586,10 @@ The planar Halbach and the quasi-Halbach coupling characteristics (\figref{plana
 \end{figure}
 
 The horizontal coupling behaviour for the linear Halbach design is significant in that the negative stiffness in the `out-of-plane' $\ax$ direction (orthogonal to the plane of magnetisation) is less than in the $\ay$ direction.
-Comparing these results to the planar and quasi-Halbach arrays, the negative stiffness for those (equal in each direction) is approximately mid-way between the two negative stiffnesses in each direction of the linear-Halbach array.
+Comparing these results to the planar and quasi-Halbach arrays, the negative stiffness for those (equal in each direction) is approximately mid-way between the two negative stiffnesses in each direction of the linear Halbach array.
 Relatedly, the horizontal forces for the planar and quasi-Halbach arrays are around half the magnitude of the vertical forces, whereas for the linear Halbach array the forces in the $\ay$ direction are close to the magnitude of the vertical forces.
 
-It is interesting to note that the vertical force for the planar Halbach array is largely positive, even as the arrays shift by half a wavelength, whereas the linear Halbach and quasi-Halbach forces are more symmetrical and become significantly negative under a similar displacement.
+It is interesting to note that the vertical force for the planar Halbach array is largely positive, even as the arrays shift by half a wavelength, whereas the linear Halbach and quasi-Halbach forces are more symmetric and become significantly negative under a similar displacement.
 The effect of this is that the vertical force peak for the planar Halbach array is broader than the others, which will therefore be more suitable for cases where some horizontal displacement is expected and the vertical force variation must be minimised.
 
 In fact, since the planar Halbach array has the broadest peak, this suggests that adding multiple pairs of planar Halbach arrays to a system with certain horizontal offsets (\figref{mup-2planar}) may allow a decrease in the amount of cross coupling in the system.
