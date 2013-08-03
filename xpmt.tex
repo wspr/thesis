@@ -9,45 +9,33 @@
 
 \referpaper{The work presented in this chapter has been submitted in condensed form as a conference paper~\cite{robertson2013-aas-qzs}.}
 
-\noindent
+\section{Overview}
+
 In the previous chapter, a single \dof/ magnetic \qzs/ system was analysed theoretically.
 This chapter covers the implementation details, experiments performed, and results obtained from the experimental apparatus built for this project to validate some of the concepts and theory discussed in previous chapters.
 The behaviour of the open loop transmissibilities are examined in terms of magnet position; in addition, a velocity feedback vibration control system is implemented to improve the vibration isolation performance of the device.
 
-
 \section{Design of the experimental apparatus}
 
-A single \dof/ system was designed using one pair of magnets in repulsion for load bearing and one pair in attraction for stiffness reduction (\figref*{rig}).
-The system was tuned to achieve a minimal resonance frequency and active vibration isolation used to improve the transmissibility for vibration isolation.
+The experimental apparatus that was designed and built as part of this study is shown as a schematic in \figref{rig} and as a photograph in \figref{rig-photo}.
+The design consisted of one pair of magnets in repulsion for load bearing and one pair in attraction for stiffness reduction.
+The physical location of the fixed magnets may be moved vertically in order to vary the respective amounts of positive and negative stiffness.
 
-The experimental apparatus that was designed and built as part of this study
-is shown as a schematic in \figref{rig} and as a photograph in
-\figref{rig-photo}. Physical parameters of the design are shown in
+Physical parameters of the design are shown in
 \tabref{rigprop}. The experimental apparatus was built to serve as a platform for
 investigating the dynamics of a simple system supported by magnets with
 varying stiffnesses; specifically, for demonstrating a particular case of
 the concepts underpinning the \qzs/ arrangement analysed in detail in \secref{qzs}.
 
-The apparatus consists of an arrangement of magnets, of which two are
-fixed to the frame; `floating' magnets are supported by these of which one
-is situated below to apply a repulsive force (positive stiffness) and the
-other is situated above to apply an attractive force (negative stiffness). The
-physical location of the fixed magnets may be moved vertically in order to
-vary the respective amounts of positive and negative stiffness.
-
 \begin{figure}
-  \begin{wide}
-    \asyinclude{\jobname/rig-schematic}
-  \end{wide}
+  \scalebox{0.8}{\asyinclude{\jobname/rig-schematic}}
   \caption[Schematic of the experimental apparatus.]{
     Schematic of the experimental apparatus (not to scale). Position shown is
     the marginally stable configuration with equal gap between the lower
     and upper pairs of magnets.}
   \figlabel{rig}
-\end{figure}
-
-\begin{figure}
-  \includegraphics{PhD/Experiments/Rig/photo-labelled.pdf}
+  
+  \hspace*{1cm}\includegraphics[scale=0.8]{PhD/Experiments/Rig/photo-labelled.pdf}
   \lofcaption{Photo of the experimental apparatus.}{ Base shaker is not shown.}
   \figlabel{rig-photo}
 \end{figure}
@@ -57,6 +45,7 @@ vary the respective amounts of positive and negative stiffness.
 \caption{Physical properties of the experimental apparatus.}
 \tablabel{rigprop}
 \begin{minipage}{\textwidth}
+\centering
 \def\footnoterule{}
 \begin{tabular}{@{}lll@{}}
 \toprule
@@ -101,15 +90,14 @@ minimise weight and maximise stiffness; it is assumed to be a rigid body
 for the purposes of these experiments (especially at the low vibrational
 frequencies under investigation).
 
-The pin support was constructed by clamping the beam to a thin piece of flexible plastic which was clamped to the frame.
+The pin support was constructed by clamping the beam to a thin piece of flexible plastic which was in turn clamped to the frame.
 The use of a flexural element was chosen to avoid static friction that would be present in a bearing or hinge joint.
 The stiffness of this plastic can be assumed to be negligible as it played no part in the load bearing of the beam.
 Having a physical constraint on the motion of the floating magnets compromises
-the non-contact idea of using magnets for vibration isolation. This
-experimental apparatus has been designed to analyse the behaviour of the system in
-terms of vertical translational disturbances. For a completely non-contact
+the non-contact idea of using magnets for vibration isolation.
+For a completely non-contact
 system, a control system with electromagnets may be used to apply the
-horizontal constraint (also see \secref{coupling}).
+horizontal constraint.
 
 \subsection{Magnets}
 
@@ -138,177 +126,6 @@ The magnets were held in place within a hollow brass cylinder of outer diameter 
 Cylindrical magnets were chosen for their ease of integration into the
 construction of the apparatus; \eg, it is much easier to fix a cylindrical magnet
 into an object by boring a round hole as opposed to milling a square one.
-
-\subsection{Actuators}
-\seclabel{actuators}
-
-To highlight the dynamics of the magnetic support as much as possible, any
-additional actuators for applying control forces should affect the dynamics of
-the system as little as possible. Fitting with the theme of non-contact
-support, a non-contact actuator should be chosen if possible. An
-electromagnetic force was the obvious choice to satisfy these requirements.
-
-Electromagnetic actuators are usually designed in push-pull configurations,
-with fixed non-biased coils applying force on a moving ferrous material. Since
-only attractive forces can be generated in this configuration, such
-electromagnets must be used in pairs to achieve forces in two directions.
-
-An alternative is to use biased electromagnets, such that either the coil
-itself contains a permanent magnet, or the coil acts against a permanent
-magnet, or both. For a biased coil, instability results due to the presence of
-the negative stiffness attractive forces between the permanent magnet and the
-ferrous moving material. In these cases, pairs of electromagnets are no longer
-strictly necessary since the current in the coil may be reversed and a
-repulsive force generated.
-
-For example, \textcite{nandi2009} demonstrate a single-sided design in which a
-bias current is used to keep the structure in permanently `sprung' position;
-relaxing the current is the equivalent of a repulsive force, while increasing
-the current is the usual `pull' or attractive force of a regular
-electromagnetic actuator. This design is relatively inefficient since it
-requires a continuous energy expenditure to remain in equilibrium.
-
-Using a non-ferrous coil to apply forces to a moving permanent magnet,
-however, is passively stable and requires no steady current for operation.
-However, the forces applied by a coil to an external magnet are relatively
-small; larger forces are achieved when the magnet can be inserted within the
-coil itself. This suits a secondary requirement for the electromagnetic
-actuator to keep it aligned with the load-bearing magnets, and is suitable for a
-future application of such an arrangement for an apparatus built to support
-multiple degrees of freedom. The ferrous-free coil and moving permanent magnet
-approach was adopted for the choice of electromagnetic actuator for the apparatus,
-as has already been shown in the schematic \figref[vref]{rig}.
-
-The dual-coil electromagnetic arrangement described in \secref{dualcoil} was
-custom-built for the actuator for the experimental apparatus. A schematic of
-the dual-coil system is shown in \figref{rig-dual-coil} with parameters in
-\tabref{coil-prop}. The coil was designed to have an impedance of
-$\resistanceCoil=\SI{8}{\ohm}$, from which the outer radius of the coil was calculated given a
-certain wire diameter and resistance.
-
-\begin{figure}
-  \begin{wide}
-  \begin{sidefigure}
-  \asyinclude{\jobname/rig-coil}
-  \lofcaption{Schematic of the dual-coil electromagnet built for the apparatus.}{ (Not to scale.)}
-  \figlabel{rig-dual-coil}
-  \end{sidefigure}\hfil
-  \begin{sidefigure}
-  \psfragfig{\phdpath Simulations/Coil/fig/2coils-normdesign}
-  \lofcaption{Normalised force \vs\ displacement curve for the electromagnet.\figlabel{2coils-normdesign}}
-  { Force is normalised to the maximum value at zero displacement.}
-\end{sidefigure}
-  \end{wide}
-\end{figure}
-
-\begin{table}
-  \caption{Dual-coil electromagnet parameters.}
-  \tablabel{coil-prop}
-  \begin{tabular}{@{}lll@{}}
-    \toprule
-    Magnet radius & $\RadiusMag$ & \SI{6.4}{mm} \\
-    Magnet height & $\HeightMag$ & \SI{9.5}{mm}  \\
-    \midrule
-    Coil height & $\HeightCoil$ & \SI{7}{mm} \\
-    Coil inner radius & $\RadiusICoil$ & \SI{10}{mm} \\
-    Coil outer radius & $\RadiusOCoil$ & \SI{10.7}{mm} \\
-    Coil gap & $\GapCoil$ & \SI{7}{mm} \\
-    Turns (approx.) & & \num{105} \\
-    Resistance (total) & $\resistanceCoil$ & \SI{8}{\ohm} \\
-    \midrule
-    Former inner radius & & \SI{14.2}{mm} \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-The dimensions of the coil were chosen based on the trends shown in the
-analytical calculations from \secref{dualcoil} to ensure sufficient force over the displacement range expected from the system.
-A force \vs\  displacement curve of this particuar coil is shown in \figref{2coils-normdesign}; from this
-graph, it can be seen that around the centred position (displacement of zero
-in the curve), the force imparted by the coil remains within \SI{10}{\%} of maximum
-over a displacement range of around \SI{\pm2}{mm}, which is acceptable for the purposes of the design.
-
-\subsection{Sensors}
-\seclabel{xpmt-sensors}
-
-The requirements for the sensing equipment is similar to that of the actuators; noncontact spatial measurement is desired to remove any possibility of adding further dynamics to the system.
-A displacement sensor is required to measure the position of the fixed and moving magnets in the system.
-Velocity sensors can be used for feedback control to add damping to the system (see \secref[vref]{skyhook-intro}) in order to aid the vibration isolation characteristic of the system.
-Accelerometers are used to measure the vibration response on the beam and on the base and thus determine the transmissibility of the system.
-
-\subsubsection{Displacement sensors}
-
-There are five main choices for non-contact distance sensing: ultrasonic, inductive, capacitive, linear variable differential transformers, and laser sensors \cite{boehm1993}.
-The sensor purchased for the experimental apparatus was a Wenglor 05\,MGV\,80
-opto-electronic sensor, which uses a laser to measure distance over a
-range of \SI{10}{mm}. It was selected for its convenient availability,
-flexibility of application due to its large working range, and good performance characteristics.
-Relevant operating properties are listed in \tabref{wenglor}.
-
-\begin{table}
-  \caption{Relevant properties of the Wenglor~05\,MGV\,80 laser distance sensor.}
-  \tablabel{wenglor}
-  \begin{tabular}{@{}ll@{}}
-    \toprule
-    Measurement offset & \SI{43}{mm} \\
-    Measurement range & \SI{10}{mm} \\
-    \midrule
-    Working range & \SI{43}{mm}--\SI{53}{mm} \\
-    Output range & \SI{10}{V}--\SI{0}{V} \\
-    \midrule
-    Resolution & $<\SI{10}{\micro m}$ \\
-    Response time & \SI{0.5}{ms} \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-\subsubsection{Velocity sensors}
-
-As velocity is defined in terms of a change in displacement from some reference point, it is only meaningful to refer to the velocity of an object with respect to an inertial reference frame.
-With a sensor attached to another body, separate from the object, relative velocity can be measured between the disturbance and the resulting excitation ($\velMass-\velBase$ in terms of \figref{simple-isolation}).
-Laser sensors
-    \note{Also known as vibrometers, such as sold by Polytec GmbH: \url{http://www.polytec.com/}}
-and capacitive sensors \cite{nijsse2001} may be used to measure relative velocity directly, while relative velocity may be estimated by differentiating the output of a displacement sensor.
-Such estimation is prone to high frequency noise that must be filtered away.
-
-Absolute velocity sensors must use more complex physical processes to obtain a measure of an object with respect to the `fixed' earth.
-Absolute angular velocity can be infered by measuring the coriolis force induced on a vibrating element due to the rotational energy of the earth \cite{konno1996} and is the basis of solid state gyroscope sensors.
-A geophone uses a moving magnet or moving coil arrangement to generate \backemf/ from the motion of an inertial mass \cite{oome2009-saa} from which absolute velocity can be calculated.
-This process is limited in the low frequency by the resonance frequency of the inertial mass and in the high frequency by the roll-off of the frequency response.
-Absolute translational velocity can be estimated by integrating a measured acceleration; this technique (which is used in the experimental apparatus) is discussed in the next section.
-
-\subsubsection{Acceleration sensors}
-
-For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system (\tabref{rig-apparatus}).
-The accelerometers were used with \BnK/ 2635 charge amplifiers set to appropriate gain values for the input signals.
-The signals were low-pass filtered at \SI{50}{Hz} to avoid aliasing effects using a Krohn-Hite Model 3362 digital filter (using a 4-pole Butterworth filter).
-
-\begin{table}
-  \caption{Relevant properties of the accelerometers used in the experimentation.}
-  \tablabel{rig-apparatus}
-  \begin{tabular}{@{}lllll@{}}
-    \toprule
-           & Model & Charge sensitivity & Weight \\
-    \cmidrule{2-4}
-      Base & 4367 & \SI{20.1}{pC/g} & \SI{13}{g} \\
-      Beam & 4332 & \SI{75.4}{pC/g} & \SI{30}{g} \\
-    \bottomrule
-  \end{tabular}
-\end{table}
-
-
-For open loop measurements, these accelerometers were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals to estimate the velocities.
-The high-pass filter in the charge amplifiers used a \SI{0.1}{Hz} cut-on frequency when measuring acceleration and \SI{1}{Hz} for velocity.
-The higher frequency is necessary for velocity to avoid drift due to accumulation of errors in the integrator circuit.
-An alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signals; for transient or wide-band signals, the typical approach is better suited.
-
-Low frequency velocity signals can also be estimated by differentiating a displacement measurement.
-If the displacement sensor is fixed to a fixed inertial reference frame, then this estimate may be combined with an integrated accelerometer measurement to obtain a more accurate estimate of the velocity \cite{bennett2007}.
-However, if relative displacement is measured between two coupled systems (as often the case for vibration isolation) then this technique does not capture the absolute velocity. (\Eg, with reference to \figref{simple-isolation}, the signal $\gp{\velMass-\velBase}$ is being estimated, not $\velMass$.)
-
-Recently, \textcite{williams2009} showed a filter system designed to estimate absolute velocity from accelerometer measurements that can mitigate the low-frequency resonance issues seen due the high-pass filters present in the charge amplifiers used (seen in the experimental results in \secref*{acc-resonance}).
-This research was published after experimental measurements for this thesis had been completed and their ideas were not able to be tested in the apparatus discussed in this section.
-
 
 \subsection{Translational effects of the rotating beam}
 \seclabel{rotating-beam}
@@ -360,7 +177,6 @@ relationship $\Cos{\ArcSin{a}}=\sqrt{1-a^2}$:
 \begin{dmath}
   x = h \dispvert / l + l - \sqrt{l^2-z^2}
 \end{dmath}.
-
 From the dimensions chosen for the apparatus, $l=\SI{300}{mm}$ and
 $h\approx\SI{50}{mm}$, the minimum horizontal tolerance for a vertical
 displacement $\dispvert=\SI{1}{mm}$ is $x=\SI{0.168}{mm}$ and for $\dispvert=\SI{2}{mm}$ is
@@ -372,10 +188,172 @@ significantly diminished force characteristic from the air gap required to
 avoid contact.
 It should be noted that this tolerance caused a degree of inconvenience since the attachment and positioning of the coil required careful alignment in order to allow free movement of the cylinder holding the magnets.
 
+\subsection{Actuators}
+\seclabel{actuators}
+
+To highlight the dynamics of the magnetic support as much as possible, any
+additional actuators for applying control forces should affect the dynamics of
+the system as little as possible. Fitting with the theme of non-contact
+support, a non-contact actuator should be chosen if possible. An
+electromagnetic force was the obvious choice to satisfy these requirements.
+
+Electromagnetic actuators are often designed in push-pull configurations,
+with fixed soft-iron-core coils applying force on a moving ferrous but non-magnetised material.
+Since only attractive forces can be generated in this configuration, such electromagnets must be used in pairs to achieve forces in two directions.
+
+An alternative is to use biased electromagnets, such that either the coil
+itself contains a permanent magnet, or the coil acts against a permanent
+magnet, or both. For a biased coil, instability results due to the presence of
+the negative stiffness attractive forces between the permanent magnet and the
+ferrous moving material. In these cases, pairs of electromagnets are no longer
+strictly necessary since the current in the coil may be reversed and a
+repulsive force generated.
+
+For example, \textcite{nandi2009} demonstrate a single-sided actuator design in which a
+bias current is used to keep the structure in a permanently `sprung' position;
+relaxing the current is the equivalent of a repulsive force, while increasing
+the current is the usual `pull' or attractive force of a regular
+electromagnetic actuator.
+This design is inefficient since it requires a continuous energy expenditure to remain in equilibrium.
+
+Alternatively, using a non-ferrous coil to apply forces to a moving permanent magnet is passively stable and requires no steady current for operation.
+However, the forces applied by a coil to an external magnet are relatively
+small; larger forces are achieved when the magnet can be inserted within the
+coil itself. This suits a secondary requirement for the electromagnetic
+actuator to keep it aligned with the load-bearing magnets, and is suitable for a
+future application of such an arrangement for an apparatus built to support
+multiple degrees of freedom.
+
+The dual-coil electromagnetic arrangement described in \secref{dualcoil} was
+custom-built for the actuator for the experimental apparatus. A schematic of
+the dual-coil system is shown in \figref{rig-dual-coil} with parameters in
+\tabref{coil-prop}. The coil was designed to have an impedance of
+$\resistanceCoil=\SI{8}{\ohm}$, from which the outer radius of the coil was calculated given a
+certain wire diameter and resistance.
+
+\begin{figure}
+  \begin{wide}
+  \begin{sidefigure}
+  \asyinclude{\jobname/rig-coil}
+  \lofcaption{Schematic of the dual-coil electromagnet built for the apparatus.}{ (Not to scale.)}
+  \figlabel{rig-dual-coil}
+  \end{sidefigure}\hfil
+  \begin{sidefigure}
+  \psfragfig{\phdpath Simulations/Coil/fig/2coils-normdesign}
+  \lofcaption{Normalised force \vs\ displacement curve for the electromagnet.\figlabel{2coils-normdesign}}
+  { Force is normalised to the maximum value at zero displacement.}
+\end{sidefigure}
+  \end{wide}
+\end{figure}
+
+\begin{table}
+  \caption{Dual-coil electromagnet parameters.}
+  \tablabel{coil-prop}
+  \begin{tabular}{@{}lll@{}}
+    \toprule
+    Magnet radius & $\RadiusMag$ & \SI{6.4}{mm} \\
+    Magnet height & $\HeightMag$ & \SI{9.5}{mm}  \\
+    \midrule
+    Coil height & $\HeightCoil$ & \SI{7}{mm} \\
+    Coil inner radius & $\RadiusICoil$ & \SI{10}{mm} \\
+    Coil outer radius & $\RadiusOCoil$ & \SI{10.7}{mm} \\
+    Coil gap & $\GapCoil$ & \SI{7}{mm} \\
+    Turns (approx.) & & \num{105} \\
+    Resistance (total) & $\resistanceCoil$ & \SI{8}{\ohm} \\
+    \midrule
+    Former inner radius & & \SI{14.2}{mm} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+The dimensions of the coil were chosen based on the trends shown in the
+analytical calculations from \secref{dualcoil} to ensure sufficient force over the displacement range expected from the system.
+A normalised force \vs\  displacement curve of this particuar coil is shown in \figref{2coils-normdesign}; from this
+graph, it can be seen that around the centred position (displacement of zero
+in the curve), the force imparted by the coil remains within \SI{10}{\%} of maximum
+over a displacement range of around \SI{\pm2}{mm}, which is acceptable for the purposes of the design.
+
+\subsection{Sensors}
+\seclabel{xpmt-sensors}
+
+The requirements for the sensing equipment is similar to that of the actuators; noncontact spatial measurement is desired to remove any possibility of adding further dynamics to the system.
+A displacement sensor is required to measure the position of the fixed and moving magnets in the system.
+Velocity sensors can be used for feedback control to add damping to the system (see \secref[vref]{skyhook-intro}) in order to aid the vibration isolation characteristic of the system.
+Accelerometers are used to measure the vibration response on the beam and on the base and thus determine the transmissibility of the system.
+
+\subsubsection{Displacement sensors}
+
+There are five main choices for non-contact distance sensing: ultrasonic, inductive, capacitive, linear variable differential transformers, and laser sensors \cite{boehm1993}.
+The sensor purchased for the experimental apparatus was a Wenglor 05\,MGV\,80
+opto-electronic sensor, which uses a laser to measure distance over a
+range of \SI{10}{mm}. It was selected for its convenient availability,
+flexibility of application due to its large working range, and good performance characteristics.
+Relevant operating properties are listed in \tabref{wenglor}.
+
+\begin{table}[h]
+  \caption{Relevant properties of the Wenglor~05\,MGV\,80 laser distance sensor.}
+  \tablabel{wenglor}
+  \begin{tabular}{@{}ll@{}}
+    \toprule
+    Measurement offset & \SI{43}{mm} \\
+    Measurement range & \SI{10}{mm} \\
+    \midrule
+    Working range & \SI{43}{mm}--\SI{53}{mm} \\
+    Output range & \SI{10}{V}--\SI{0}{V} \\
+    \midrule
+    Resolution & $<\SI{10}{\micro m}$ \\
+    Response time & \SI{0.5}{ms} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+\subsubsection{Velocity sensors}
+
+As velocity is defined in terms of a change in displacement from some reference point, it is only meaningful to refer to the velocity of an object with respect to an inertial reference frame.
+With a sensor attached to another body, separate from the object, relative velocity can be measured between the disturbance and the resulting excitation ($\gp{\velMass-\velBase}$ in terms of \figref{simple-isolation}).
+Laser vibrometer sensors and capacitive sensors \cite{nijsse2001} may be used to measure relative velocity directly.
+
+Low frequency relative velocity signals can also be estimated by differentiating a displacement measurement.
+If the displacement sensor is fixed to a fixed inertial reference frame, then this estimate may be combined with an integrated accelerometer measurement to obtain a more accurate estimate of the velocity \cite{bennett2007}.
+However, if relative displacement is measured between two coupled systems (as often the case for vibration isolation) then this technique does not capture the absolute velocity. (\Eg, with reference to \figref{simple-isolation}, the signal $\gp{\velMass-\velBase}$ is being estimated, not $\velMass$.)
+
+Absolute velocity sensors must use more complex physical processes to obtain a measure of an object with respect to the `fixed' earth.
+Absolute angular velocity can be infered by measuring the coriolis force induced on a vibrating element due to the rotational energy of the earth \cite{konno1996} and is the basis of solid state gyroscope sensors.
+A geophone uses a moving magnet or moving coil arrangement to generate \backemf/ from the motion of an inertial mass \cite{oome2009-saa} from which absolute velocity can be estimated.
+This process is limited in the low frequency by the resonance frequency of the inertial mass and in the high frequency by the roll-off of the frequency response.
+
+\subsubsection{Acceleration sensors}
+
+For the beam, a \BnK/ 4367 accelerometer was used to measure the `output' signal; for the base, a 4332 accelerometer measured the `input' signal of the system (\tabref{rig-apparatus}).
+The accelerometers were used with \BnK/ 2635 charge amplifiers set to appropriate gain values for the input signals.
+The signals were low-pass filtered at \SI{50}{Hz} to avoid aliasing effects using a Krohn-Hite Model 3362 digital filter (using a 4-pole Butterworth filter).
+
+\begin{table}
+  \caption{Relevant properties of the accelerometers used in the experimentation.}
+  \tablabel{rig-apparatus}
+  \begin{tabular}{@{}lllll@{}}
+    \toprule
+           & Model & Charge sensitivity & Weight \\
+    \cmidrule{2-4}
+      Base & 4367 & \SI{20.1}{pC/g} & \SI{13}{g} \\
+      Beam & 4332 & \SI{75.4}{pC/g} & \SI{30}{g} \\
+    \bottomrule
+  \end{tabular}
+\end{table}
+
+For open loop measurements, these accelerometers were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals to estimate the velocities.
+The high-pass filter in the charge amplifiers used a \SI{0.1}{Hz} cut-on frequency when measuring acceleration and \SI{1}{Hz} for velocity.
+The higher frequency is necessary for velocity to avoid drift due to accumulation of errors in the integrator circuit.
+A potential alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signals; for transient or wide-band signals, the typical approach is better suited.
+
+Recently, \textcite{williams2009} showed a filter system designed to estimate absolute velocity from accelerometer measurements that can mitigate the low-frequency resonance issues seen due the high-pass filters present in the charge amplifiers used (seen in the experimental results in \secref*{acc-resonance}).
+This research was published after experimental measurements for this thesis had been completed and their ideas were not able to be tested in the apparatus discussed in this section.
+
+
 \section{Experimental results}
 
-A number of measurements were performed using the experimental apparatus;
-in the sections following, measured data is presented for:
+A number of measurements were performed using the experimental apparatus.
+In the sections following, measured data is presented for:
 magnet gap versus beam displacement;
 open loop frequency responses for a range of magnet gaps; and,
 velocity feedback in a single configuration.
@@ -383,7 +361,7 @@ velocity feedback in a single configuration.
 \subsection{Static displacement measurements}
 \seclabel{xpmt-displ}
 
-The upper magnet's position was varied until the limit of stability was
+The position of the upper magnet was varied until the limit of stability was
 reached. The lower fixed magnet was kept fixed, which means that the position
 of \qzs/ was changing; with counter-threaded mounts for the upper and lower
 magnets, they could be adjusted in parallel to achieve a fixed \qzs/ location.
@@ -435,7 +413,8 @@ This moving magnet displacement can be written with respect to the origin of the
 Accordingly, the displacement of the system $\DispMag$ from the \qzs/ location is given by
 \begin{dmath}
   \DispMag\fn{\DisplSensor,\OriginMagHigh} = \DisplMag - \OriginQZS
-\end{dmath}.
+\end{dmath},
+where $\DispMag$ is written as a function of measured sensor output $\DisplSensor$ and known upper magnet position $\OriginMagHigh$.
 
 The displacements between the centres of each magnet in the interacting pairs can be similarly calculated based on the displacement of the moving magnet assembly $\DisplMag$.
 With respect to the frame origin, the magnet centres for the base magnet $\MagCentre_1$, upper magnet $\MagCentre_2$, lower moving magnet $\MagCentre_3$, and upper moving magnet $\MagCentre_4$ are
@@ -495,22 +474,13 @@ control, as discussed in \secref{vibes-feedback}.
 Open loop measurements were taken both with and without the electromagnetic
 actuator connected (wired as both a short circuit and an open circuit). In
 the closed circuit configuration, the coil adds damping via induced eddy
-currents from the moving magnet. As an open circuit, the coil has no effect on
-the dynamics of the system.
+currents from the moving magnet due to their mutual inductance.
+As an open circuit, the coil has no effect on the dynamics of the system.
 
-Open loop measurements without the coil connected are shown in
+Open loop transmissibility measurements without the coil connected are shown in
 \figref{ol-undamped-frflin} and measurements taken with the coil (\ie, with
 added damping) are shown in \figref{ol-damped-frflin}.
-For both of these results, the transmissibility $\transmissibility{}$ shown is the transfer function between the accelerometer measurements of the base and magnet-supported beam:
-\note{Calculated with \Matlab/'s \texttt{tfestimate} command.}
-\begin{dmath}[label=Tbm,compact]
-  \transmissibility{\freq} = \frac{\crossSpectMagnetBase\fn{\freq}}{\powerSpectBase\fn{\freq}}
-\end{dmath},
-% TODO: bigger better definition
-where $\powerSpectMagnet$ is the power spectral density of the accelerometer
-measurements at the moving magnet, ($\powerSpectBase$ is the power spectral density
-of the accelerometer measurements of the base,) and $\crossSpectMagnetBase$ is the cross power spectral density of the two.
-The variance gain (also see \secref*{qzs-not-zerk}) of the measurements is analysed in \secref{xpmt-nonlin}.
+The variance gain (\secref*{variance-gain}) of the measurements is analysed in \secref{xpmt-nonlin}.
 
 \begin{figure}
   \begin{wide}
@@ -530,8 +500,8 @@ The variance gain (also see \secref*{qzs-not-zerk}) of the measurements is analy
   \end{subfigure}
   \end{wide}
   \caption
-  [Open loop measurements with the electromagnetic coil connected in an open and closed circuit.]
-  {Open loop measurements with the electromagnetic coil connected in an open and closed circuit as a function of normalised gap~$\rigNormGap$.}
+  [Open loop measurements of transmissibility with the electromagnetic coil connected in an open and closed circuit.]
+  {Open loop measurements of transmissibility with the electromagnetic coil connected in an open and closed circuit as a function of normalised gap~$\rigNormGap$.}
 \end{figure}
 
 
@@ -591,11 +561,9 @@ With the actuator connected, movement of the actuator magnet causes eddy current
 
 The curve of the measured resonance frequencies (\figref*{ol-reson}) follows the same trend as the predicted natural frequencies (redrawn from \figref{xpmt-magres}).
 However, their magnitudes are not well matched.
-As the system approaches the \qzs/ position, even small changes in alignment and physical tolerances have significant effects on the calculated instability region; as seen in the low end of the quasi-static measurements, \figref{xpmt-magres}, a fraction of a millimetre change in the position of the top magnet can change the natural frequency by 25\%.
+As the system approaches the \qzs/ position, even small changes in alignment and physical tolerances have significant effects on the calculated instability region; as seen in the low end of the quasi-static measurements (\figref*{xpmt-magres}), a fraction of a millimetre change in the position of the top magnet can change the natural frequency by 25\%.
 Associatively, with larger magnet gaps the discrepancy becomes lower.
-Therefore, the discrepancy seen between theoretical and measured results should be expected.
-
-The resonance frequency of the system was unaffected by the presence of the electromagnetic coil (which can also be observed by comparing \figref{ol-undamped-frflin,ol-damped-frflin}) but the damping was increased significantly when the coil circuit was closed.
+Therefore, the discrepancy seen between theoretical and measured results should be expected due to experimental limitations.
 
 
 \subsection{Observed nonlinear behaviour}
@@ -603,12 +571,9 @@ The resonance frequency of the system was unaffected by the presence of the elec
 
 The dynamics shown in the undamped case are more nonlinear than the damped
 case; this is due to the greater displacements experienced by the beam moving
-the magnets through greater ranges of stiffness variation. When the
-transmissibility is calculated as the transfer function between the input and
-output signals, the system is assumed to be linear and nonlinearities are
-rejected by the ratio of the cross-spectrum and power-spectrum terms in
-\eqref{Tbm}.
-A different result can be shown by instead calculating the transmissibility via a ratio of the individual power spectra of the magnet and base:
+the magnets through greater ranges of stiffness variation.
+When the transmissibility is used to examine the broadband behaviour, the system is assumed to be linear and nonlinearities are rejected by the ratio of the cross-spectrum and power-spectrum terms in \eqref[vref]{Tbm}.
+An alternative to transmissibility that does not reject nonlinearities can be calculated using the ratio of the individual power spectra of the magnet and base:
 \begin{dmath}[label=frfnl]
   \transmissibility{\freq} = \sqrt{\frac{\powerSpectMagnet\fn{\freq}}{\powerSpectBase\fn{\freq}}},
 \end{dmath}
@@ -657,22 +622,20 @@ ratio of the velocity measurements instead of acceleration measurements.
 Due to the presence of higher-order dynamics in the structure, a low pass
 filter was used to reject signals above \SI{50}{Hz}. This also ensured that
 aliasing was avoided when taking the frequency response measurements and when
-feeding back the velocity signal for the controller.
+using the velocity signal for feedback control.
 
-The overall improvement to the vibration isolation can be shown by calculating
+A metric of improvement to the vibration isolation characteristics of the system can be shown by calculating
 the \RMS/ of the transmissibility over a certain frequency range:
 \begin{dmath}
   \RMSof{\transmissibility{}} =
   \sqrt{\Sum{\transmissibility{\freq}^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}.
-The lower frequency limit is defined as $\freq_1=\SI{1}{Hz}$, as the results
-become very noisy below this frequency. The upper frequency limit
-$\freq_2=\SI{11}{Hz}$ was chosen as the higher-order dynamics (not shown in
-\figref{cl-results}) have little impact below this frequency.
+For the experimental results reported here, the lower frequency limit is defined as $\freq_1=\SI{1}{Hz}$, as the results become very noisy below this frequency.
+The upper frequency limit $\freq_2=\SI{11}{Hz}$ was chosen as the higher-order dynamics (not shown in \figref{cl-results}) have little impact below this frequency.
 
 \Figref{cl-reduction} shows the reduction in \RMS/ transmissibility
 $\RMSof{\transmissibility{}}$ as the negative feedback gain increases.
-The overal transmissibility reduction is calculated as $1-\RMSof{\transmissibility{}}/\transmissibility{}_0$, where $\transmissibility{}_0$ is the \RMS/ transmissibility of the open loop system.
+The overall transmissibility reduction is calculated as $1-\RMSof{\transmissibility{}}/\transmissibility{}_0$, where $\transmissibility{}_0$ is the \RMS/ transmissibility of the open loop system.
 The resonance at \SI{1}{Hz} observed in \figref{cl-results} as the feedback gain increases causes the overall transmissibility reduction to have a local maximum.
 
 \begin{figure}
@@ -694,11 +657,11 @@ until instability appears.
 \subsection{Analysis of the gain-induced resonance}
 \seclabel{acc-resonance}
 
-The appearance of a low frequency peak at \SI{1}{Hz} in \figref{cl-results} as the feedback
-gain is increased is explained by the presence of the high-pass filter
-incorporated in the accelerometer charge amplifier, which also has a pole at \SI{1}{Hz}.
+The appearance of a low frequency peak in \figref{cl-results} as the feedback
+gain is increased can be explained by the presence of the \SI{1}{Hz} high-pass filter
+incorporated in the accelerometer charge amplifier.
 This behaviour has been shown previously for single \dof/ structures with velocity feedback \parencite{brennan2007-jsv}.
-Here, the same type of analysis will be used to investigate the response of a linear two \dof/ isolator
+Here, the same type of analysis will be used to investigate the response of a linear vibration isolation
 system (shown in \figref{vibration-base-feedback}) with integrated accelerometer measurements used for velocity feedback control.
 
 \begin{figure}
@@ -720,12 +683,12 @@ system (shown in \figref{vibration-base-feedback}) with integrated accelerometer
 
 In the time domain, the response of this linear system is given by
 \begin{dmath}
-\mass \accMass =
-  \forceIn - \damping\gp{\velMass-\velBase} - \stiffness\gp{\dispMass-\dispBase}
+\mass \accMass\fn{\Time} =
+  \forceIn\fn{\Time} - \damping\gp{\velMass\fn{\Time}-\velBase\fn{\Time}} - \stiffness\gp{\dispMass\fn{\Time}-\dispBase\fn{\Time}}
 \end{dmath},
 which can be re-written in the Laplace domain as
 \begin{dmath}[label=simple-isolator-laplace]
-\s^2 \laplaceMass \underbrace{\gp{\mass+\damping/\s+\stiffness/\s^2}}_{\gp{\Block[2]}^{-1}} =
+\s^2 \laplaceMass \underbrace{\gp{\mass+\damping/\s+\stiffness/\s^2}}_{1/\Block[2]} =
   \laplaceForce + \s^2 \laplaceBase \underbrace{\gp{\damping/\s+\stiffness/\s^2}}_{\Block[1]}
 \end{dmath}.
 This is shown as a block diagram in \figref{simple-isolator-block}. If the
@@ -819,7 +782,7 @@ A lower resonance frequency than this could potentially be achieved with larger 
 Without feedback control and without the actuator coil connected, the system showed very small damping ratios of around \num{0.005}; these were dependent on the distance between the magnets at equilibrium.
 Connecting the non-contact electromagnetic actuator increased this damping ratio to around \num{0.03}--\num{0.04} due to eddy currents induced in the coils from the permanent magnet.
 
-Dynamically, the system showed transmissibilities which could be modelled well by standard single degree of freedom models.
+Dynamically, the system showed transmissibilities which could be modelled well by standard linear vibration isolator models.
 With the very low damping of the open loop system, superharmonics were clearly visible in the variance gain but the resonance peaks remained linear-like.
 Once the actuator was connected, the additional eddy current damping suppressed these nonlinearities.
 

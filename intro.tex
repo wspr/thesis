@@ -1137,7 +1137,7 @@ These are shown explicitly in the frequency response functions of such systems \
 
 The transmissibility $\transmissibility{\freq}$ of a system characterises response of a system to inputs that are broadband in frequency.
 It is usually calculated using a transfer function approach, given by
-\begin{math}
+\begin{math}[label=Tbm]
   \transmissibility{\freq} = \crossSpectMagnetBase/\powerSpectBase
 \end{math},
 where $\crossSpectMagnetBase$ is the cross power spectral density between the input and output signals and $\powerSpectBase$ is the power spectral density of the input signal.
@@ -1145,7 +1145,7 @@ This formulation is generally only useful for linear systems as it is specifical
 
 One metric to evaluate the response of a nonlinear system in the frequency
 domain is known as the `variance gain' $\varianceGain$ \cite{savaresi2007}, which
-is calculated as a ratio of the \RMS/
+can be calculated as a ratio of the \RMS/
 output to input signals:
 \begin{dmath}[label=nl-trans]
 \varianceGain = \left.\sqrt{

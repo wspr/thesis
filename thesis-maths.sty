@@ -409,9 +409,10 @@
 
 % todo
 \newcommand\Block[1][999]{%
-  \ifcase #1 \transferFunction_0\or \transferFunction_1\or \transferFunction_2\or \transferFunction_3\or \transferFunction_4\else \transferFunction\fi
+  {\ifcase #1 \def\maybesubscript{_0}\or \def\maybesubscript{_1}\or \def\maybesubscript{_2}\or \def\maybesubscript{_3}\or \def\maybesubscript{_4}\else\fi\transferFunction}
 }
-\newvariable\transferFunction[nom=Transfer function,label=transferfunction]{G\fn{\s}}
+\def\maybesubscript{}
+\newvariable\transferFunction[nom=Transfer function,label=transferfunction]{G\noexpand\maybesubscript\fn{\s}}
 \newvariable\BlockController[nom=Controller transfer function]{K_c\fn{\s}}
 \newcommand\freqHPfilter{\freq_c}
 
@@ -731,11 +732,11 @@
 \newvariable\OriginQZS[nom=\QZS/ position]{p_q}
 
 \newvariable\MassRigMagnets[nom=Mass of the floating magnets and support]{m_m}
-\newvariable\LengthRigMagnets[nom=Horizontal offset of the magnets support,label=lengthrigmagnets]{L_m}
+\newvariable\LengthRigMagnets[nom=Horizontal offset of the magnets support,label=lengthrigmagnets]{l_m}
 \newvariable\HeightRigMagnets[nom=Height of the magnets support]{h_m}
 \newvariable\HeightBuffer[nom=Height `buffer' to account for additional thicknesses]{h_{\epsilon}}
 
-\newvariable\LengthSensor[nom=Horizontal offset of the laser sensor]{L_s}
+\newvariable\LengthSensor[nom=Horizontal offset of the laser sensor]{l_s}
 \newvariable\HeightSensor[nom=Height of the laser sensor]{h_s}
 
 \newvariable\DisplSensor[nom=Displacement measured by the laser sensor]{x_s}
@@ -750,7 +751,8 @@
 \let\RadiusOCoil\oradiusCoil
 \let\RadiusMag\oradiusMag
 
-\newvariable\HeightMag[label=hh,nom=Height of the magnets]{h}
+%\newvariable\HeightMag[label=hh,nom=Height of the magnets]{h}
+\let\HeightMag\lengthMag
 \newvariable\HeightRig[nom=Height of the apparatus,label=HH]{H}
 \newvariable\HeightCoil[nom=Height of the coil]{h_c}
 \newvariable\GapCoil[nom=Axial gap between the dual coils,label=gap-coil]{G}

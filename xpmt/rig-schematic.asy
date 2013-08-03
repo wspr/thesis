@@ -20,10 +20,12 @@ import phdfig;
 
 unitsize(1mm);
 
-real frameW = 55, frameH = 70, frameD = 10, frameT = 5, frameB = 70;
-real emH = 15, emRi = 8, emRo = 12, emMagR = 5, emMagH = 8, emMagGap = 4;
-real magH = 10, magY = 10;
-real groundW = 15, groundH = 5, groundY = 10, groundWhiskers = 7;
+real frameW = 55, frameH = 70, frameD = 5, frameT = 5, frameB = 70;
+real emH = 10, emRi = 8, emRo = 12, emMagR = 5, emMagH = 6, emMagGap = 4;
+
+real magY = 5; // height of shaker magnet above ground
+
+real groundW = 15, groundH = 5, groundY = 5, groundWhiskers = 7;
 real whiskersL = 0.6*groundH;
 
 real beamY = 20, beamL = 1.8(frameW-frameT), beamH = 7;
@@ -52,8 +54,7 @@ z[1] = O + (frameT/2,0);
 z[2] = O - (frameT/2,0);
 z[3] = z[1] + (0,magY);
 z[4] = z[2] + (0,magY);
-
-draw(z[1]--z[3]--z[4]--z[2]--cycle);
+draw(z[1]--z[3]--z[4]--z[2]--cycle); // shaker magnet support
 
 drawground(width=groundW,wlen=whiskersL,whiskers=groundWhiskers);
 magnet2d(width=2emMagR,height=emMagH,dist=(0,magY+emMagH/2),magangle=90);
@@ -128,7 +129,7 @@ drawpinonly( origin = z[35],
 	 height = pinH,
 	 angle  = -90);
 
-label("\minibox{Pin\\joint}",z[35],NNE);
+label("\minibox{Pin\\joint}",z[35],NE);
 
 z[36] = z[35] + (beamL,0);
 z[37] = z[36] + (0,-beamH);
@@ -187,6 +188,9 @@ z[61] = (z[60].x , z[31].y);
 z[62] = z[61] - (suppW,0);
 z[63] = z[60] - (suppW,0);
 
+
+
+
 // INNER
 
 // sensor support:
@@ -213,7 +217,7 @@ draw(z[29]
      --z[40]--z[43]--z[42]--z[41]     // (:bottom magnet support)
      --cycle );
 
-label(L="Frame",z[30]/2+z[29]/2,S);
+label(L="Frame",z[30]/2+z[29]/2,N);
 
 // sensor
 
