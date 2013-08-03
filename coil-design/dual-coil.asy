@@ -17,4 +17,4 @@ coilxo(Ri, Ro, Lc, (Lgap+Lc,0) ,swap=true );
 magnet2d(Lm,2*Rm,(Disp,0),0);
 
 draw((0,-Ro-offset)--(Lgap+Lc,-Ro-offset),Arrows,L="\providecommand\coilDualGap{G}$\coilDualGap$",align=N);
-draw((0,Ro+offset)--(Disp,Ro+offset),Arrow,L="$\dispaxial_1$",align=N);
+draw((0,Ro+offset)--(Disp,Ro+offset),Arrow,L="$\dispaxial$",align=N);

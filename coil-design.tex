@@ -7,7 +7,7 @@
 \chapter{Electromagnetic actuators}
 \chaplabel{coil-design}
 
-\referpaper{The work presented in \secref{magnetcoil-forces,magnetcoil-optimisation} is based on material that has been published as a journal paper~\cite{robertson2012-ietm}.}
+\referpaper{The work presented in \secref{magcoil-theory,magnetcoil-optimisation} is based on material that has been published as a journal paper~\cite{robertson2012-ietm}.}
 
 \section{Introduction}
 
@@ -32,10 +32,10 @@ In this chapter, a simple electromagnetic actuator is analysed in detail, using 
 A new equation is developed for calculating the force between cylindrical coils and magnets with eccentric displacement.
 The analysis herein of a single \dof/ actuator shows that it can be possible to optimise coil size, magnet size, and wire diameter to achieve a given force maximum.
 Other cost functions can be used in the design methodology to achieve other metrics, such as linearity \cite{merit2009-ietm}.
-Finally, an example of an alternate `dual-coil' electromagnet design is provided, which based on the modelling results is shown to achieve greater forces than the single-coil design, all else being equal.
+Finally, an example of an alternate `dual-coil' electromagnet design is provided, which based on the modelling results is shown to achieve greater forces than a single-coil design, all else being equal.
 
 
-\section{Geometry}
+\section{Cylindrical magnet and thick coil systems}
 
 The system under investigation is shown in \figref{coil-magnet,coil-schem}.
 In this study there is no restriction on the size or geometry of the magnet or coil.
@@ -67,9 +67,9 @@ The permanent magnet is also assumed to be homogeneous with a constant magnetisa
 \seclabel{magcoil-theory}
 
 In this section, the theory for calculating the interaction force between the thick coil and permanent magnet (\figref*{coil-magnet}) will be discussed.
-In the first two force calculation methods, `filament' and `shell', the coil and/or magnet are modelled in terms of discrete elements (such as single-turn or thin coils) for which the interaction forces may be summed through superposition of each combination of elements.
+In the first two force calculation methods, denoted `filament' and `shell', the coil and/or magnet are modelled in terms of discrete elements (such as single-turn or thin coils) for which the interaction forces may be summed through superposition of each combination of elements.
 The final method uses a single integral expression to calculate the force, and two formulations and solutions for this integral are discussed.
-The shell method and the first integral method were developed as part of the current study; the other two methods in from literature, examined for comparison.
+The shell method and the first integral method were developed as part of the current study; the other two methods are taken from the literature, examined for comparison.
 
 \begin{figure}
   \subbottom[Filament model.]{\asyinclude{\jobname/coil-filament}}\hfil
@@ -93,7 +93,7 @@ the axial force between them is given by~\cite[\eg,][]{shiri2009-pier}
 \begin{dmath}[label=coaxial-filament-aux]
 m=\frac{4\radius_1\radius_2}{\gp{\radius_1+\radius_2}^2+\dispaxial^2}
 \end{dmath}
-where $\radius_1$ and $\radius_2$ are the coil radii and $\dispaxial$ is the axial distance between them. The functions $\EllipticK{m}$ and $\EllipticE{m}$ are the complete first and second elliptic integrals respectively with parameter $m$. These functions can also be referred to with notation $\EllipticK{k}$ and $\EllipticE{k}$ in terms of a modulus $k$, where $m=k^2$.
+where $\radius_1$ and $\radius_2$ are the coil radii and $\dispaxial$ is the axial distance between them. The functions $\EllipticK{m}$ and $\EllipticE{m}$ are the complete first and second elliptic integrals respectively with parameter $m$. These functions can also be referred to elsewhere with notation $\EllipticK{k}$ and $\EllipticE{k}$ in terms of a modulus $k$, where $m=k^2$.
 
 Using the `filament method', \eqref{coaxial-filament,coaxial-filament-aux} can be used to calculate the force between any arrangement of coaxial solenoids by representing each turn of the solenoid as a separate coil, and summing the forces through superposition for every pair-wise combination of coil interaction forces \cite[\eg,][]{babic2008-ietm,akyel2009-pier}.
 \figref{filament-shell} shows such a filament model for the interaction between a thin coil (representing a permanent magnet) and a thick coil.
@@ -128,7 +128,7 @@ The force between them is calculated by summing the forces through superposition
 \begin{dmath}
 r\fn{n_r}=\iradiusCoil+\frac{n_r-1}{\turnsRCoil-1}\gp{\oradiusCoil-\iradiusCoil}
 \end{dmath}
-where $\forceShell\fn{\oradiusMag,r,\lengthMag,\lengthCoil,\dispaxial}$ is the force between a permanent magnet and a thin coil, shown previously in \eqref[vref]{simpl4}, in which $J_1=\remanence$ is the strength of the permanent magnet and $J_2=\permVac \turnsZCoil \current/\lengthCoil$, where $\current$ is the current in the coil.
+where $\forceShell\fn{\oradiusMag,r,\lengthMag,\lengthCoil,\dispaxial}$ is the force between a permanent magnet and a thin coil, shown previously in \eqref[vref]{simpl4}, in which $\magn1=\remanence$ is the strength of the permanent magnet and $\magn2\equiv\permVac \turnsZCoil \current/\lengthCoil$, where $\current$ is the current in the coil.
 
 \subsubsection{An integral method}
 
@@ -139,12 +139,12 @@ A solenoid with current volume density~$\magJ$ generates a magnetic field~$\magB
 \magB\fn{\distrMag} = \magconst\Int{\frac{\magJ\fn{\distrCoil}\cross\gp{\distrCoil -
 \distrMag}}{\Abs{\distrCoil-\distrMag}^3}}{\diffvolCoil,\volCoil}
 \end{dmath},
-where $\distrCoil$ is the distance vector to the differential coil volume~$d\diffvolCoil$.
+where $\distrCoil$ is the distance vector to the differential coil volume~$\dee\diffvolCoil$.
 The vector force $\forceVec$ due to that field on a permanent magnet with magnetisation vector $\magM$ is given by the integral over the magnet surface $\surfMag$ with normal vector $\normn$
 \begin{dmath}[label=magcoil-force-integral]
-\forceVec = \oint_{\surfMag} \gp{\magM\cross\normn}\cross\magB\fn{\distrMag}\,d{\diffsurfMag}
+\forceVec = \oint_{\surfMag} \gp{\magM\cross\normn}\cross\magB\fn{\distrMag}\,\dee{\diffsurfMag}
 \end{dmath},
-where $\distrMag$ is the distance vector to the differential magnet surface $d\diffsurfMag$.
+where $\distrMag$ is the distance vector to the differential magnet surface $\dee\diffsurfMag$.
 Following the magnetic field expression in polar coordinates shown by Ravaud et al.~\cite{ravaud2010-emwaves} and taking only the axial component of the force results, \eqref{magcoil-force-integral} is written in full as a function of axial displacement $\dispaxial$ as
 \begin{dmath}[label=magcoil-integral]
 \hspace*{-1cm}{\forceThickCoil}_3\fn{\dispaxial} =
@@ -185,7 +185,7 @@ m_6^2 &= \gp{\oradiusMag+\distrCoil{1}}^2+\gp{\dispaxial+\half e_1 \lengthMag-\d
 \end{align}
 Note that $\distrCoil{3}$ and $\distrCoil{1}$ in \eqref{cylforcez-auxiii} are variables of integration.
 
-Computing \eqref{cylforcez} using numerical integration is an efficient means to calculate the axial force between a coaxial magnet and solenoid.
+Computing \eqref{cylforcez} using numerical integration is an efficient means to calculate the axial force between a coaxial magnet and thick solenoid.
 This method is here referred to as the `integral' method.
 
 \subsubsection{The integral method of Babic et al.}
@@ -194,7 +194,7 @@ Babic et al.~\cite{babic2011-ietm} presented a different solution for the integr
 Their solution consists of an entirely analytical component with one separate term requiring a single numerical integration.
 Corrected for a typographical error \parencite{babic2012-ietm-corr} and rewritten, their expression is shown in \eqref{babicforce} and herein is refered to as the `Babic' method.
 The sign of the result has been reversed over the original expression to ensure consistency with the results presented in this paper.
-With parameters are as described earlier in this section, the force exerted on a permanent magnet by a thick coil using Babic's method, ${\forceThickCoil}_4$,~is
+With parameters as described earlier in this section, the force exerted on a permanent magnet by a thick coil using Babic's method, ${\forceThickCoil}_4$,~is
 \def\ti{t}
 \def\ri{\rho}
 \def\HeumanLambda{\Lambda_0}
@@ -267,18 +267,24 @@ When implementing \eqref{babicforce}, note that $t f_{c_4}=0$ when $t=0$ and the
 
 \subsubsection{Comparison of these methods}
 
-The filament model with a single radial turn ($\turnsRCoil=1$) can be used to verify the thin-coil magnet force, and an initial verification of the integral solution can be performed by comparing the thin-coil results for a thick-coil with coil thickness equal to the wire diameter.
+The filament model with a single radial turn ($\turnsRCoil=1$) can be used to verify the thin coil magnet force, and an initial verification of the integral solution can be performed by comparing the thin coil results for a thick coil with coil thickness equal to the wire diameter.
 Force versus displacement calculations are performed with these three techniques (\eqref{filamentforce,shellforce,cylforcez}) using the physical parameters defined in \tabref{magcoil-thin-compare-param}; results of these calculations are shown in \figref{magcoil-thin-compare} and it can be see that the three models produce comparable results.
 The results due to the filament model have a small discrepancy around the trough of the curve due to the discretisation of the magnet that this technique requires.
 
 
 \begin{figure}
-\centering
-\psfragfig{magcode/examples/fig/thin-compare}
-\lofcaption{Results of three methods for calculating the force versus axial displacement between a coaxial thin coil and magnet.}{
-For the filament and shell methods, the thin coil is modelled as having zero thickness.
-The thick coil force equation models the coil as a volumetric current density in this case with a radial thickness equal to the wire diameter.}
-\figlabel{magcoil-thin-compare}
+\begin{wide}
+\hspace*{-1.5cm}%
+\subbottom
+  [Three methods for a thin coil.
+  \figlabel{magcoil-thin-compare}]
+  {\scalebox{1.051}{\psfragfig{magcode/examples/fig/thin-compare}}}
+\subbottom
+  [Four methods for a thick coil.
+  \figlabel{magcoil-thickthin-compare}]
+  {\psfragfig{magcode/examples/fig/thickthin-compare}}
+\end{wide}
+\caption{Results of various methods for calculating the force versus axial displacement between a coaxial coil and magnet.}
 \end{figure}
 
 \begin{table}
@@ -311,25 +317,18 @@ The force versus displacement results for the thick coil/magnet calculations are
 In particular, the equation by Babic et al.~\cite{babic2011-ietm} produces results consistent with the integral expression developed in this chapter.
 The discrepancy due to the discretisation of the filament model is larger here than for the results of \figref{magcoil-thin-compare}.
 
-\begin{figure}
-\centering
-\psfragfig{magcode/examples/fig/thickthin-compare}
-\caption{Results of four methods for calculating the force versus axial displacement between a coaxial thick coil and magnet.}
-\figlabel{magcoil-thickthin-compare}
-\end{figure}
-
 The four methods compared in \figref{magcoil-thickthin-compare} all use different algorithms, and their execution speed varies significantly as a result.
-The shell method is more efficient than the filament method, since its execution time is linear with the number of radial layers of turns $\turnsRCoil$ due to a single summation term.
+The shell method is more efficient than the filament method, since its execution time is linear with the number of radial layers of turns $\turnsRCoil$ due to the presence of only a single summation term in its equation.
 The filament method is the slowest to execute of the four methods, as it has computation time proportional to $\turnsZCoil \times \turnsRCoil\times \turnsZMag$, which is approximately cubic with the number of turns in total.
 
 Of the integral and Babic methods (\eqref{cylforcez,babicforce} \resp), for calculations requiring less stringent accuracy (say, to four significant figures precision) it is more efficient to use the integral method due to the mathematical complexity of the latter, despite it requiring a lesser amount of numerical integration.
 This is illustrated in \figref{magcoil-prec-timing}, in which it can be seen that increasing the integration precision when performing calculations using Mathematica causes the time for numerical evaluation of the integral to increase exponentially, whereas the `Babic' method has a constant execution speed as its single term requiring numerical integration is only a small component of the overall equation.
 Nonetheless, as shown in the numerical results (\tabref{prec-results}), the integral solution will generally produce results to a sufficient level of accuracy even with low integration accuracy thresholds and therefore may be the preferred solution in some cases, such as for optimisation studies.
 
-In contrast, the shell method is much more efficient than either of the integral methods; it executes faster than the Babic method by up to two orders of magnitude.
+In contrast, the shell method is more efficient than either of the integral methods in this case; it executes faster than the Babic method by up to two orders of magnitude.
 In comparison to the \SI{40}{ms} time shown in \figref{magcoil-prec-timing} for the Babic method, the shell method executes in around \SI{0.26}{ms} per radial turn with an output result differing by \SI{0.0125}{\%} from the most accurate of \tabref{prec-results}.
 The large improvement in execution speed of the shell method is due to the mathematical simplicity of its solution which does not require numerical integration.
-Despite the presence of small variations in the results due to the discretisation of the algorithm, this method will be significantly faster and achieve comparable results than the other techniques discussed in this section for analysing thick coils with a number of radial turns up to around $10^2$.
+Despite the presence of small variations in the results due to the discretisation of the algorithm, this method will be significantly faster and achieve comparable results than the other techniques discussed in this section for analysing thick coils with up to $10^2$ radial turns.
 
 \begin{figure}
 \centering
@@ -405,7 +404,7 @@ Due to the additional complexity introduced by this transformation, the original
 The variable $\distrMag{1}'$ is not an integration term and therefore $\distrMag{1}'=\radiusMag$.
 Accordingly, after rederiving the integral, the axial force due to both axial and radial displacement is now given by
 \begin{dmath}[label=cylforcez-ecc]
-f_{c_4}=
+{\forceThickCoil}_4 =
 \frac{\turnsCoil \currentCoil \remanence}{\pi\lengthCoil\gp{\oradiusCoil-\iradiusCoil}}
 \Int{
   \sum_{e_1}^{\{1,-1\}} \!\!\! \gp{e_1 \m2 f_{c_4} }
@@ -417,7 +416,7 @@ f_{c_4}=
 where the intermediate term is
 \def\P{\distrMag{2}}
 \begin{dmath}
-f_z=\gp{1-\frac{\m1}{2}}
+f_{c_4}=\gp{1-\frac{\m1}{2}}
       \EllipticK{\m1}-\EllipticE{\m1}
 \end{dmath},
 with parameters
@@ -425,7 +424,6 @@ with parameters
 \m1&=\frac{4 \distrMag{1} \distrCoil{1}}{\m2^2}, &
 \m2^2 &= \gp{\distrMag{1}+\distrCoil{1}}^2+\gp{\dispaxial+\half e_1\lengthMag-\distrCoil{3}}^2 .
 \end{align}
-
 Due to the additional numerical integral that must be evaluated when using \eqref{cylforcez-ecc}, it is approximately an order of magnitude slower to calculate than \eqref{cylforcez}.
 The expression is slightly optimised for efficiency; from $0$ to $2\pi$ around $\distrMag{2}'$ the integral is symmetric so only the first half is calculated; this approximately halves the execution time of numerical integration.
 
@@ -433,22 +431,21 @@ The filament method can again be used to verify \eqref{cylforcez-ecc}.
 Kim et al.~\cite{kim1996-ietm} presented an expression for calculating the filamentary force between two non-coaxial circular coils; their equations were corrected for typographical errors and reprinted by Hull and Cansiz~\cite{hull1999-japplphys}.
 However, it is believed that their work is incorrect as the results produced from Kim et al.'s equation are not consistent with either the coaxial filament force  (\eqref{coaxial-filament}) nor the recently published generalisation by Babic and Aykel~\cite{babic2011-ietm-incl-coil} for calculating the force between noncoaxial and inclined circular coils.
 
-The non-coaxial filamentary coil force in the axial direction for eccentric (radial) displacement $\dispradial$ is taken from the third special case given by Babic and Aykel~\cite{babic2011-ietm-incl-coil}:
+The non-coaxial filamentary coil force in the axial direction for eccentric (radial) displacement $\dispradial$ is taken from the third special case given by Babic and Aykel~\cite{babic2011-ietm-incl-coil}, adapted:
 \begin{dmath}[label=eccfilament]
 \forceFilament\fn{\radius_1,\radius_2,\dispaxial,\dispradial} = \frac{\permVac \dispaxial \radius_2 \current_1 \current_2}{4\pi}
 \Integrate{
-  \frac{m_2}{v^2}
-  \gp[2]{ y\Cos{t}-x\Sin{t} }\times
-  \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
+  \frac{m_2}{v} \Sin{\theta-t} \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
 }{t,0,2\pi}
 \end{dmath},
 where
 \begin{gather}
-x = e - r_2\Sin{t} ,\quad  y = r_2\Cos{t} ,\quad
-v = \sqrt{x^2+y^2},
-\notag\\
 m = 4 \radius_1 v m_2^2 , \quad
-m_2 = \gp{\gp{\radius_1+v}^2+\dispaxial^2}^{-1/2}.
+m_2 = \gp{\gp{\radius_1+v}^2+\dispaxial^2}^{-1/2}, \quad
+\theta = \ArcTan{y/x},
+\notag\\
+v = \sqrt{x^2+y^2},\quad
+x = \dispradial - r_2\Sin{t} ,\quad  y = r_2\Cos{t} .
 \end{gather}
 %and the radial (or eccentric) force given by
 %\begin{dmath}[label=eccfilamentecc]
@@ -465,7 +462,7 @@ Such a comparison is shown in \Figref{magcoil-ecc-compare}, which has system par
 This figure shows that the integral method proposed here gives results in agreement with the filament method.
 
 Eccentricity acts to increase the axial force of a coil/magnet system as the magnetic material comes closer to the region of greater magnetic field strength due to the solenoid (\figref*{magcoil-ecc-vary}).
-This result indicates that decreasing the airgap between the coil and magnet as much as possible is desirable to maximise the forces obtained for a given input current.
+This result indicates that decreasing the air gap between the coil and magnet as much as possible is desirable to maximise the forces obtained for a given input current.
 
 \begin{figure}
 \begin{wide}
@@ -498,9 +495,9 @@ This result indicates that decreasing the airgap between the coil and magnet as 
 In the previous section, methods were presented for calculating coil forces with arbitrary examples used for verification.
 These equations can be used for optimisation of a magnetic actuator; for example, to choose geometric parameters for an inertial shaker to maximise the peak force or to maximise the stroke length.
 In this section, a common `sleeve coil' configuration is investigated in which a cylindrical magnet moves axially within a hollow coil, such that the inner coil radius is greater than the magnet radius; $\iradiusCoil>\oradiusMag$.
-A schematic of this system is shown in \figref{coil-schem}.
+A schematic of this system was shown in \figref{coil-schem}.
 
-\subsubsection{Relationship between coil impedance and outer diameter}
+\subsection{Relationship between coil impedance and outer diameter}
 \seclabel{magcoil-radii}
 
 When attempting to optimise the force output of a coil/magnet design, it is important to carefully consider the parameters to be varied so that comparisons between different cases are fair.
@@ -512,30 +509,29 @@ The resistance of the coil $\resistanceCoil$ directly infers the length of the w
 \begin{dmath}
 \lengthWire = \resistanceCoil \areaWire / \resistivity,
 \end{dmath}
-for wire of cross sectional area $\areaWire$ (assumed here as having circular cross section $\areaWire=\pi \gp{\half\diamWire}^2$), and resistivity~$\resistivity$.
+for wire of resistivity~$\resistivity$ and cross sectional area $\areaWire$, assumed here as having circular cross section $\areaWire=\pi \gp{\half\diamWire}^2$ where $\diamWire$ is the wire diameter.
 
-The fixed parameters of the coil are driving voltage, resistance, wire thickness and material, which in turn fix the total length of wire.
-Given a total length of wire, it is possible to derive a relation between the coil length, $\lengthCoil$, and the coil radii, $\iradiusCoil$ and $\oradiusCoil$.
+The fixed parameters of the coil are driving voltage, resistance, wire diameter and material, which in turn determine the total length of wire to be used.
+Given a fixed length of wire, it is possible to derive a relation between the coil length~$\lengthCoil$ and the coil radii, $\iradiusCoil$ and $\oradiusCoil$.
 Assuming that each turn of wire sits directly above or adjacent to its neighbours, an approximate expression for the total wire length is given by
 \begin{dmath}[label=coil-lengthwire,compact]
 \lengthWire = \turnsZCoil\Sum{2\pi\gp[2]{\iradiusCoil+\diamWire\gp{n+\half}}}{n,0,\turnsRCoil-1}
   = 2\pi \turnsRCoil \turnsZCoil \gp{\iradiusCoil+\half\turnsRCoil\diamWire},
 \end{dmath}
-where $\turnsRCoil=\gp{\oradiusCoil-\iradiusCoil}/\diamWire$ and $\turnsZCoil=\lengthCoil/\diamWire$ are the number of turns in the axial and radial directions respectively.
+where $\turnsRCoil=\mathord{\gp{\oradiusCoil-\iradiusCoil}}/\diamWire$ and $\turnsZCoil=\lengthCoil/\diamWire$ are the number of turns in the axial and radial directions respectively.
 While this relationship does not model any wire coating or the packing effect of how tightly-wound coils will sit,
 \note{
   Taking into account of the packing factor will reduce the outer radius by around 10\% of the thickness of the coil \cite{yan2008-ietmx}.
 }
 this equation is simple and allows some conservatism in the quality of the construction of the electromagnet.
-
-Therefore, an expression for the outer radius of the coil for a coil of fixed inner radius and fixed total wire length is
+Solving \eqref{coil-lengthwire} for $\oradiusCoil$, the outer radius of the coil for a coil of fixed inner radius and fixed total wire length is given by
 \begin{dmath}[label=coil-outerdiam]
   \oradiusCoil = \sqrt{\frac{\lengthWire\diamWire^2}{\pi \lengthCoil}+\iradiusCoil^2}
 \end{dmath}.
 
-\subsubsection{Notation}
+\subsection{Notation}
 
-From \secref{magcoil-theory}, the axial force versus displacement for a thick-coil/magnet system can be expressed as a function of its gross geometric parameters (defined in \figref{coil-magnet}) as
+From \secref{magcoil-theory}, the axial force versus displacement $\dispaxial$ for a thick-coil/magnet system can be expressed as a function of its gross geometric parameters (defined in \figref{coil-magnet}) as
 \begin{dmath}[label=magcoil-ffn1]
 \forceThickCoil\fn{\remanence,\currentCoil,\turnsZCoil,\turnsRCoil,\oradiusMag,\lengthMag,\iradiusCoil,\oradiusCoil,\lengthCoil|\dispaxial}
 \end{dmath},
@@ -545,7 +541,7 @@ The magnet radius $\oradiusMag$ can be expressed in terms of the magnet ratio $\
 \begin{align}
 \oradiusMag&=\gp{\frac{\volMag}{\pi \ratioMag}}^{1/3},
 \end{align}
-from which the magnet length $\lengthMag=\ratioMag\oradiusMag$, coil inner radius $\iradiusCoil=\oradiusMag+\cradiusCoil$, and coil length $\lengthCoil=\ratioCoil\iradiusCoil$ are inferred directly from the geometric ratios and clearance between the coil and magnet $\cradiusCoil$.
+from which the magnet length $\lengthMag=\ratioMag\oradiusMag$, coil inner radius $\iradiusCoil=\oradiusMag+\cradiusCoil$, and coil length $\lengthCoil=\ratioCoil\iradiusCoil$ are inferred directly from the geometric ratios and clearance $\cradiusCoil$ between the coil and magnet.
 
 As discussed in \secref{magcoil-radii}, the outer coil radius $\oradiusCoil$ and the coil turns $\turnsZCoil$ and $\turnsRCoil$ can be calculated from the coil resistance $\resistanceCoil$, wire diameter $\diamWire$ and wire resistivity~$\resistivity$.
 Therefore, the force function of \eqref{magcoil-ffn1} can be expressed in terms of the following different set of parameters which are more useful for design optimisation:
@@ -553,18 +549,18 @@ Therefore, the force function of \eqref{magcoil-ffn1} can be expressed in terms 
 \forceThickCoil\fn{\remanence,\currentCoil,\resistivity,\volMag,\resistanceCoil,\diamWire,\ratioMag,\ratioCoil,\cradiusCoil|\dispaxial}
 \end{dmath}.
 Of these parameters, the magnet strength is set to be $\remanence=\SI{1}{T}$, the radial clearance is fixed at $\cradiusCoil=\iradiusCoil-\oradiusMag=\SI{0.5}{mm}$, and the resistivity of copper of $\resistivity=\SI{1.7e-8}{\ohm.m}$ is used.
-Initially the normalised force per unit current $\fnorm$ is considered, which is calculated by evaluating the force for a current of $\currentCoil=\SI{1}{A}$.
-Removing these fixed parameters from \eqref{magcoil-ffn2} produces
+Initially the force per unit current $\fnorm$ is considered, which is calculated by evaluating the force for a current of $\currentCoil=\SI{1}{A}$.
+Removing these fixed parameters from \eqref{magcoil-ffn2} produces the function for force
 \begin{dmath}[label=magcoil-ffn3]
 \fnorm\fn{\volMag,\resistanceCoil,\diamWire,\ratioMag,\ratioCoil|\dispaxial}
 \end{dmath}.
 
-In the sections to come, the coil-magnet force $F_z$ will be discussed as a function of magnet volume $\volMag$, coil resistance $\resistanceCoil$, wire diameter $\diamWire$, magnet ratio $\ratioMag$, coil ratio $\ratioCoil$, and axial displacement $\dispaxial$.
+In the sections to come, the coil-magnet force $\forceThickCoil$ will be discussed as a function of magnet volume $\volMag$, coil resistance $\resistanceCoil$, wire diameter $\diamWire$, magnet ratio $\ratioMag$, coil ratio $\ratioCoil$, and axial displacement $\dispaxial$.
 The goal of the analysis will be to derive optimum values for certain of these parameters.
 
 At the outset it is assumed that increasing the magnet volume $\volMag$ will result in greater forces since there will be a greater amount of magnetic energy in the system; this is not then a parameter to be varied but instead to be selected as necessary.
 
-\subsubsection{Optimisation of magnet and coil geometry}
+\subsection{Optimisation of magnet and coil geometry}
 \seclabel{sleeve}
 
 To perform the optimisation of magnet and coil geometries, the shell method, \eqref{shellforce}, is used to calculate the force as a function of displacement with varying magnet and coil ratios.
@@ -612,10 +608,12 @@ This surface can be seen to be concave, and therefore a single value for $\ratio
 \figlabel{magcoil-fmax-ratios}
 \end{figure}
 
-\subsubsection{Optimisation of wire diameter}
+
+
+\subsection{Optimisation of wire diameter}
 \seclabel{wire-diam}
 
-In \secref{sleeve}, the peak force results were normalised against coil current and the effect of wire diameter has not been taken into account.
+In \secref{sleeve}, the peak force results were normalised against coil current and the effect of wire diameter was not taken into account.
 However, the wire diameter is a particularly important parameter, as it directly infers the length of wire to be used but more importantly restricts the current carrying capacity of the coil.
 A larger diameter wire will produce a lower resistance per unit length, and hence for a given input impedance a longer wire length in total.
 Depending on the geometry of the coil, having a longer wire length could cause the coil to become unnecessarily thick, moving magnetic energy away from where it is required, which is as close as possible to the permanent magnet.
@@ -634,8 +632,8 @@ As the wire diameter increases, the resistance per unit length decreases and a l
 \begin{subfigure}
 \hspace*{-1.5cm}
 \psfragfig{magcode/examples/fig/magcoil-ratiomax-norm}
-\caption{Maximum normalised force per ampere of current.\figlabel{magcoil-ratiomax-norm}}
-\end{subfigure}\hfil
+\caption{Maximum normalised force per ampere of \mbox{current}.\figlabel{magcoil-ratiomax-norm}}
+\end{subfigure}\qquad
 \begin{subfigure}
 \psfragfig{magcode/examples/fig/magcoil-ratiomax}
 \caption{Maximum peak force $\fmax$ versus wire diameter with and without a safety factor.\figlabel{magcoil-ratiomax}
@@ -645,8 +643,8 @@ As the wire diameter increases, the resistance per unit length decreases and a l
 \lofcaption{
   Maximum peak and normalised force per ampere of current, optimised by magnet and coil geometry as a function of wire diameter.
 }{
-  Results are shown for three values of coil impedance while the magnet volume is fixed at $\volMag=(\SI{20}{mm})^3$.
-Solid, labelled lines have a safety factor of 100\%; dashed lines represent the same curves using a \SI{20}{\%} safety factor on allowable maximum current; they exhibit the same shape with a proportionally lower peak amplitude.
+  Results are shown for three values of coil impedance while the magnet volume is fixed at $\volMag=\gp{\SI{20}{mm}}^3$.
+Solid, labelled lines have a safety factor of \SI{100}{\%}; dashed lines represent the same curves using a \SI{20}{\%} safety factor on allowable maximum current; they exhibit the same shape with a proportionally lower peak amplitude.
 }
 \figlabel{magcoil-ratiomax-comb}
 \end{figure}
@@ -671,11 +669,15 @@ Using this data, an estimate of the maximum peak force (after optimising the mag
 \figlabel{magcoil-maxcurr}
 \end{figure}
 
-An upper estimate of the maximum force obtainable with a coil of certain wire diameter is found by multiplying the normalised maximum peak force by the maximum current rating, $\fmax\fn{\volMag,\resistanceCoil,\diamWire,\safetyFactor}=\fnmax\fn{\volMag,\resistanceCoil,\diamWire}\times\currmax\times \safetyFactor$, using a safety factor~$\safetyFactor$ to account for unmodelled thermal effects.
+An upper estimate of the maximum force obtainable with a coil of certain wire diameter is found by multiplying the normalised maximum peak force by the maximum current rating,
+\begin{equation}
+\fmax\fn{\volMag,\resistanceCoil,\diamWire,\safetyFactor}=\fnmax\fn{\volMag,\resistanceCoil,\diamWire}\times\currmax\times \safetyFactor \,,
+\end{equation}
+using a safety factor~$\safetyFactor$ to account for unmodelled thermal effects.
 This produces the curves of maximum peak force shown in \figref{magcoil-ratiomax}, which each show a global maximum against wire diameter, although as the wire diameter increases the achievable peak force remains largely flat for wire diameters above the optimum values.
 
 It is important to consider that these results can only be considered an upper limit on the possible forces achievable as the maximum operating temperature will be greatly limited due to thermal effects.
-The shape of these curves, and hence the value of suitable wire diameter, is not affected by the safety factor chosen.
+Nonetheless, the shape of these curves and hence the value of suitable wire diameter, is not affected by the safety factor chosen.
 Primarily, the curves in \figref{magcoil-ratiomax} indicate that increasing the wire diameter is not effective past a certain point for the chosen constraints, being a maximum diameter of around \SIrange{1}{1.5}{mm}.
 
 \subsection{Trends in the optimisation results}
@@ -688,7 +690,7 @@ Despite this, two broad characteristics can be seen.
 The magnet ratio is bound in most cases by around $1\le\lengthMag/\oradiusMag\le2$.
 Secondly, as the wire diameter increases so does the coil ratio in an approximately linear relationship.
 The implication of this trend is that as the wire resistance per unit length decreases and the total length of wire increases (requiring more turns), it is advantageous to extend the length of the coil rather than to extend its outer radius.
-As shown in \figref{magcoil-ratiomax-norm}, however, as the length of the coil exceeds the magnet length significantly, the normalised amount of force produced quickly decreases; driving the coil with a larger current is the only way to achieve parity with the shorter coils with smaller wire diameter.
+As shown in \figref{magcoil-ratiomax-norm}, however, as the length of the coil exceeds the magnet length significantly, the normalised amount of force produced quickly decreases; driving the coil with a larger current is the only way to achieve parity with shorter coils with smaller wire diameter.
 
 \begin{figure}
 \begin{wide}
@@ -712,7 +714,7 @@ using a safety factor of $\safetyFactor=20\%$ on the maximum current to accommod
 
 Qualitatively, this diminishing return in the maximum peak force can be explained by the fact that the larger the total coil resistance the longer the length of wire needed and the less compact the coil can be, resulting in a movement of the magnet field away from the permanent magnet.
 Therefore, despite the larger electrical energy input, this can only be achieved with a less efficient geometric design of the electromagnetic system.
-As added disadvantages to increasing the force in this way, the larger the resistance the greater the electrical power required to drive the coil at a certain current, the more windings required to construct the coil, and the greater the chance of thermal difficulties with the cooling of bulkier coils.
+To add to the disadvantage of increasing the force in this way, the larger the resistance the greater the electrical power required to drive the coil at a certain current, the more windings required to construct the coil, and the greater the chance of thermal difficulties with the cooling of bulkier coils.
 Increasing the volume of the permanent magnet will generally be a more suitable approach to generating larger forces.
 
 \begin{figure}
@@ -746,7 +748,7 @@ This design methodology can also be used to optimise the system parameters using
 \seclabel{dualcoil}
 
 Considering the force equation between a magnet and coil (\eqref{magcoil-integral}, and other methods), the constant term $\turnsCoil\currentCoil/\gp{\oradiusCoil-\iradiusCoil}$ is the cause of some subtle considerations when designing electromagnetic actuators.
-The force created by a single layer coil (that is, $\turnsRCoil=1$) cannot be improved upon for a fixed input power by adding more layers radially, because the total length of wire (and hence the resistance, and the inverse of current) will grow faster than the linear gains achieved in the force.
+The force created by a single layer coil (that is, $\turnsRCoil=1$) cannot be improved upon for a fixed input power by adding more layers radially, because the total length of wire (and hence the resistance, and the inverse of current) will increase faster than the linear gains achieved in the force.
 
 The study in \secref{magnetcoil-optimisation} has outlined an optimisation technique to achieve the maximum peak force given a fixed magnet volume and input resistance.
 This peak force can be subsequently improved upon by using a different coil design.
@@ -768,25 +770,25 @@ This design is also better at dissipating heat, as the effective surface area is
 \end{figure}
 
 For two coaxial coils with a distance $\coilDualGap$ between their centres, superposition can be used to calculate the forces ${\forceThickCoil}_1$ and ${\forceThickCoil}_2$ generated between each and a permanent magnet free to move between them.
-The axial distance between the permanent magnet and the two coils is denoted by
-$\dispaxial_1$ and $\gp{-\coilDualGap+\dispaxial_1}$.
-The total axial force on the magnet is given by
+The axial distances between the permanent magnet and the two coils is denoted by
+$\dispaxial$ and $\gp{-\coilDualGap+\dispaxial}$ \resp.
+The two coils are assumed to be the same size, and
+the total axial force on the magnet is given by
 \begin{dmath}[compact]
-{\forceThickCoil}_{\mathrm{T}}\fn{\dispaxial_1,\coilDualGap}
-  ={\forceThickCoil}_1\fn{\dispaxial_1}+{\forceThickCoil}_2\fn{-\coilDualGap+\dispaxial_1}
+{\forceThickCoil}_{\mathrm{T}}\fn{\dispaxial,\coilDualGap}
+  ={\forceThickCoil}_1\fn{\dispaxial}+{\forceThickCoil}_2\fn{-\coilDualGap+\dispaxial}
 \end{dmath}.
-The two coils are assumed to be the same size.
 For a fixed dual-coil geometry, this equation allows an investigation of the force \vs\ displacement curves while varying the distance between the coils and the position of the permanent magnet.
 
 The improvement that can be achieved with the dual-coil design is demonstrated via an example.
 The results from the previous optimisation for coil and magnet aspect ratios (\figref*{magcoil-ratiomax-ratios}) indicate that generally a longer coil than magnet produces larger forces (\ie, a larger coil aspect ratio).
 In such cases, the maximum force experienced by the permanent magnet is seen at a displacement of half the coil length.
 The dual-coil spacing $\coilDualGap$ should be chosen such that the displacement for peak force aligns for both coils so as to achieve maximum force from both coils; for the case of longer coils than magnets, this spacing becomes equal to the coil length.
-In other words, there is zero gap between adjacent coils.
+In other words, there will be zero gap between the adjacent coils.
 When the separation distance is larger than this, a long stroke actuator can be designed with such a setup by sacrificing maximum force to achieve a wider but lower force peak.
 
 These ideas are shown by example in \figref{dual-coil}, which shows a dual-coil design with varying coil gap $\coilDualGap$.
-Simulation parameters for this example are shown in \tabref{dual-coil-parameters}; note in the dual-coil design, the outer radius of the coil is the only difference, corresponding to fewer radial turns to achieve half the coil resistance.
+Simulation parameters for this example are shown in \tabref{dual-coil-parameters}; note that in the dual-coil design the outer radius of the coil is the only difference, corresponding to fewer radial turns to achieve half the coil resistance.
 The dual-coil design can achieve over 50\% greater peak force than the equivalent resistance single coil design; even when some additional gap is added (such as the $\coilDualGap=\SI{80}{mm}$ case), the peak force is still larger but the stroke length is greatly improved.
 As the coils are separated further, they exhibit a `double peak' characteristic (shown for $\coilDualGap=\SI{90}{mm}$) which essentially bounds the coil gap where the dual-coil design is advantageous over having a single coil alone.
 Larger improvement to the forces could be achieved by optimising the shapes of each separate coil in the dual-coil arrangement rather than taking the coil aspect ratio from the original single-coil design.
