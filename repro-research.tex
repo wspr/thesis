@@ -1,7 +1,7 @@
 \chapter{Reproducible research}
 \label{repro-research}
 
-One of my strong beliefs that has risen out from my short time in the academic world is that as work is distributed electronically and the sheer amount of knowledge grows ever larger, the utility of academic work in a vacuum grows smaller.
+One of my strong beliefs that has arisen from my short time in the academic world is that as work is distributed electronically and the sheer amount of human knowledge grows ever larger, the utility of academic work in a vacuum grows smaller.
 My views here follow closely in the wake of the `reproducible research' movement, which is pithily espoused by \textcite{kovacevic2007-icassp}:
 \begin{quote}
 \textup [A\textup] scientific article is merely advertisement of scholarship; the real scholarship includes software and data which went into producing the article.
@@ -55,7 +55,7 @@ If code is provided, there is no chance of misunderstanding.
 \def\code#1{`\textsf{#1}'}
 
 As mentioned previously, the source for the reproducible material in this thesis is located in the \code{magcode} Github repository, which contains both Matlab and Mathematica libraries for various magnetic calculations.
-(And even an automatic bridge from Matlab to \ANSYS/ for certain types of magnetic force calculation.)
+(And even a bridge from Matlab to \ANSYS/ for certain types of magnetic force calculation, although this work is preliminary.)
 The libraries have evolved independently for each mathematical language and currently contain differences in their coverage of this work and the literature; the principle goal is to have them extended (beyond the lifetime of this thesis) to complete coverage across a wide range of magnetic systems for a multitude of programming languages.
 
 The following list ties sections of this thesis with code from the repository.
@@ -69,7 +69,7 @@ Not all figures in each section will be reproducible from this list, but most sh
 \secref{optim-halbach-1d} & \code{examples/magspring/} \\
 \secref{planar-multipole} & \code{examples/planar\_compare/} \\
  & \code{examples/multipole_example.m} \\
-\secref*{magnetcoil-forces,magnetcoil-optimisation} & \code{examples/Thick-Coil-Magnet-Forces.nb} \\
+\secref{cyl-magnet-thick-coil,magnetcoil-optimisation} & \code{examples/Thick-Coil-Magnet-Forces.nb} \\
 \bottomrule
 \end{tabular}
 \end{center}

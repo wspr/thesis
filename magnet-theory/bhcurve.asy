@@ -49,8 +49,8 @@ draw( -knee -- sat , blue+dashed );
 
 draw( -AX -- AX , Arrows(size=6pt));
 draw( -AY -- AY , Arrows(size=6pt));
-label("$\magH$",AX,align=SE);
-label("$\magB$",AY,align=NE);
+label("$|\magH|$",AX,align=SE);
+label("$|\magB|$",AY,align=NE);
 
 // curves
 
