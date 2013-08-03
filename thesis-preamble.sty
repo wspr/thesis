@@ -8,6 +8,9 @@
 
 \newcommand\code[1]{\texttt{#1}}
 \newcommand\note[1]{\unskip\footnote{#1}}
+\feetbelowfloat
+\setlength{\footmarkwidth}{1em}\setlength{\footmarksep}{0em}\setlength{\footparindent}{0em}
+\footmarkstyle{#1.~}
 
 \DeclareRobustCommand\dash{%
   \unskip\nobreak\thinspace\textemdash\allowbreak\thinspace\ignorespaces}
@@ -137,7 +140,7 @@
 \RequirePackage[format=hang,indent=-3em,labelfont={sc,small},textfont={rm,small,stretch=1.15}]{caption}
 \captionsetup[table]{position=top}
 \subcaptionlabelfont{\normalfont}
-\subcaptionfont{\sffamily}
+\subcaptionfont{\normalfont}
 
 %%% NOMEN
 
