@@ -16,70 +16,10 @@ The force created between combinations of permanent magnets can be used in vario
 This chapter investigates a number of different configurations for such magnetic springs, of which some have been studied to various degrees in the literature and of which some are novel.
 Varieties in design lend themselves for different purposes, such as optimising for static load force, low stiffness, number of directions of instability, and low variability in resonance frequency.
 
-In \secref{magprop}, the selection of rare earth magnets is discussed, including some experimental results that indicate that large magnet sizes should be tested carefully to ensure they are magnetised homogeneously.
-
 Single-axis magnetic springs are discussed in \secref{unstable-vertical}, comparing cuboid and cylindrical magnets.
 A variety of magnetic spring designs are considered in \secref{magcuboid}, especially in regard to the stability of different designs; it is shown that it is possible in theory to design a rotationally-stable magnetic spring.
 
 The chapter concludes with a theoretical (\secref*{oblique}) and experimental (\secref*{mbq-prototype}) analysis of a new magnetic spring design using inclined permanent magnets that decouples load bearing and resonance frequency.
-
-\section{Magnet properties and selection}
-\seclabel{magprop}
-
-Permanent magnets are available in a range of materials; for the purposes of this research only neodymium-boron-iron alloys have been considered, which are inexpensive and widely used nowadays.
-These magnets are available in a variety of grades corresponding to their strength of magnetisation.
-Generally, the larger the magnet the lower the grade.
-
-Magnet price is approximately linear with the volume of magnetic material, as shown in the cost graph from a typical magnet supplier shown in \figref{mag-price}.
-Prices for permanent magnets have increased dramatically in recent years with greater demand for rare-earth metals in the global market \cite{coey2011-ietm}.
-
-\begin{figure}
-  \psfragfig{\jobname/mag-price}
-  \lofcaption{Magnet price versus magnet volume for rare earth magnets.}{
-    Data obtained from \KJMagnetics/ for cube magnets of magnetisation grade \maggrade{42}.
-    Late 2012 prices are slightly lower than those shown for 2011.}
-  \figlabel{mag-price}
-\end{figure}
-
-Permanent magnets are graded according to their maximum energy product (\eqref[vref]{bhmax}); \eg, a magnet with grade \maggrade{42} has $\BHmax=\SI{42}{MG.Oe}$.
-Since the conversion to metric for the units of $\BHmax$ is $\SI{1}{MG.Oe}=100/\gp{4\pi}$\,\si{kJ/m^3}, the metric remanence $\remanence$ (units Tesla) of a grade $\maggradesym$ magnet can be calculated with
-\begin{dmath}[compact]
-  \remanence = 2\sqrt{\permvac\BHmax} = 2\sqrt{\maggradesym/100}
-\end{dmath},
-which corresponds to $\remanence=2\sqrt{0.42}=\SI{1.3}{T}$ for an \maggrade{42} grade magnet.
-The analyses performed in this thesis are generally normalised by magnet strength; \ie, the remanence magnetisations for theoretical calculations are usually assumed to be $\remanence=\SI{1}{T}$.
-
-Magnets of grade \maggrade{52} have an approximately 12\% increase in magnetic flux density over \maggrade{42} grade, which corresponds to a force increase of 25\%, for an average cost increase of around 40\% (prices from \KJMagnetics/).
-As an aside, the highest-known theoretically achievable remanence magnetisation for a permanent magnet is around \SI{2.4}{T} \cite{sellmyer2002}, corresponding to a force increase of 236\% over \maggrade{42} grade magnets.
-No permanent magnetic material has yet been discovered to achieve anywhere near this magnetisation strength.
-
-\subsection{Homogeneity of magnetisation}
-
-In \secref{magnet-forces} when deriving the equations for the forces between magnets, it was assumed that each magnet had a constant and uniform magnetisation.
-To be fabricated, a homogeneous permanent magnet requires a very strong magnetic field of constant direction and magnitude, and the larger the cross-section of the magnet the harder such a field is to obtain.
-For larger permanent magnets, care must be taken when using the force equations presented in the previous chapter.
-For example, the magnetic field of a grade \maggrade{35} cylindrical magnet with diameter \SI{100}{mm} and thickness \SI{30}{mm} was compared against theoretical calculations (performed with \ANSYS/) \cite{bruno2011-honoursthesis}.
-While the comparison across axial position (\figref*{gauss-vertical}) only shows that the measured magnetic field is lower than expected, the lateral position results (\figref*{gauss-radial}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
-
-\begin{figure}
-\begin{wide}
-\begin{subfigure}
-\psfragfig{PhD/Experiments/Gauss/fig/gauss-vertical}
-\caption{Axial displacement down the centreline.\figlabel{gauss-vertical}}
-\end{subfigure}\hfil
-\begin{subfigure}
-\psfragfig{PhD/Experiments/Gauss/fig/gauss-radial}
-\caption{Radial displacement with a \SI{5}{mm} offset.\figlabel{gauss-radial}}
-\end{subfigure}
-\end{wide}
-\caption[
-  Magnetic flux density measurements of a cylindrical permanent magnet.
-]{
-  Magnetic flux density measurements of an \maggrade{35} \diameter\SI{100x30}{mm} cylindrical permanent magnet.
-  The origin of the measurements is \SI{5}{mm} from the face of the magnet.
-  Measured results are not consistent with the theoretical results that assume constant magnetisation.
-}
-\end{figure}
 
 \section{Single-axis magnetic spring}
 \seclabel{unstable-vertical}
