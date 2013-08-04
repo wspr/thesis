@@ -480,7 +480,7 @@ As an open circuit, the coil has no effect on the dynamics of the system.
 Open loop transmissibility measurements without the coil connected are shown in
 \figref{ol-undamped-frflin} and measurements taken with the coil (\ie, with
 added damping) are shown in \figref{ol-damped-frflin}.
-The variance gain (\secref*{variance-gain}) of the measurements is analysed in \secref{xpmt-nonlin}.
+An alternate `nonlinear transmissibility' analysis of the measurements is performed in \secref{xpmt-nonlin}.
 
 \begin{figure}
   \begin{wide}
@@ -516,12 +516,12 @@ given by \eqref{simple-isolation-freq} in terms of the natural frequency, $\natf
 \sqrt{\stiffness/\mass}$, and damping ratio $\dampingratio = \damping /
 (2\sqrt{\stiffness\mass})$:
 \begin{dmath}[label=fit-model]
-  \transmissibility{\freq} = \left| \frac
+  \transmissibility\fn{\freq} = \left| \frac
     {2\ii\dampingratio\freq\natfreq + \natfreq^2}
     {-\freq^2 + 2\ii\dampingratio\freq\natfreq + \natfreq^2} \right|
 \end{dmath},
 where $\freq$ is the frequency at which to calculate the transmissibility
-$\transmissibility{\freq}$. The data was fit
+$\transmissibility\fn{\freq}$. The data was fit
     \note{Using \Matlab/'s \code{fminsearch}.} % check
 to \eqref{fit-model} between $\half\natfreq \le \freq
 \le 2\natfreq$, with well-fit transmissibility around the resonance peak at each measurement taken.
@@ -575,16 +575,16 @@ the magnets through greater ranges of stiffness variation.
 When the transmissibility is used to examine the broadband behaviour, the system is assumed to be linear and nonlinearities are rejected by the ratio of the cross-spectrum and power-spectrum terms in \eqref[vref]{Tbm}.
 An alternative to transmissibility that does not reject nonlinearities can be calculated using the ratio of the individual power spectra of the magnet and base:
 \begin{dmath}[label=frfnl]
-  \transmissibility{\freq} = \sqrt{\frac{\powerSpectMagnet\fn{\freq}}{\powerSpectBase\fn{\freq}}},
-\end{dmath}
-In this case, any nonlinearities in the signals are retained in the final result.
-(Recall \secref{qzs-not-zerk} for a comparison between the transmissibility and the variance gain for a cubic stiffness nonlinearity.)
+  \transmissibility\fn{\freq} = \sqrt{\frac{\powerSpectMagnet}{\powerSpectBase}}
+\end{dmath},
+where $\powerSpectMagnet$ and $\powerSpectBase$ are the power spectral densities of the output magnet vibration and input base disturbance, \resp.
+In this case, any nonlinearities in the signals are retained in the final result, and this calculation is referred to as the `nonlinear transmissibility' in this section.
+(Recall a similar idea in \secref{qzs-not-zerk} comparing transmissibility with the variance gain.)
 
-The transmissibility calculated with this method is shown in
-\figref{ol-undamped-frfnl} for the coil in an open circuit (\ie, low damping).
+The nonlinear transmissibility for the coil in an open circuit (\ie, low damping) is shown in \figref{ol-undamped-frfnl}.
 In this case, there are significant nonlinearities present in the data, seen by a clear peak in each spectrum at close to twice the `linear' resonance frequency.
-This superharmonic behaviour is similar to that seen in simulations of such a \qzs/ system (\figref[vref]{variance-gaps}).
-When the coil is connected and the damping present in the system increased, these nonlinearities are no longer seen (the results are indistinguishable to those shown in \figref{ol-damped-frflin}).
+This superharmonic behaviour is similar to that seen in previous simulations in this thesis of such a \qzs/ system (\figref[vref]{variance-gaps}).
+When the coil is connected and the damping present in the system increased, these nonlinearities are no longer apparent (the results are indistinguishable to those shown in \figref{ol-damped-frflin}).
 The reduced nonlinearity with increased damping is consistent with the work of other researchers \cite{jazar2006}.
 
 
@@ -627,20 +627,20 @@ using the velocity signal for feedback control.
 A metric of improvement to the vibration isolation characteristics of the system can be shown by calculating
 the \RMS/ of the transmissibility over a certain frequency range:
 \begin{dmath}
-  \RMSof{\transmissibility{}} =
-  \sqrt{\Sum{\transmissibility{\freq}^2}{\freq,\freq_1,\freq_2}}
+  \RMSof{\transmissibility} =
+  \sqrt{\Sum{\transmissibility\fn{\freq}^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}.
 For the experimental results reported here, the lower frequency limit is defined as $\freq_1=\SI{1}{Hz}$, as the results become very noisy below this frequency.
 The upper frequency limit $\freq_2=\SI{11}{Hz}$ was chosen as the higher-order dynamics (not shown in \figref{cl-results}) have little impact below this frequency.
 
 \Figref{cl-reduction} shows the reduction in \RMS/ transmissibility
-$\RMSof{\transmissibility{}}$ as the negative feedback gain increases.
-The overall transmissibility reduction is calculated as $1-\RMSof{\transmissibility{}}/\transmissibility{}_0$, where $\transmissibility{}_0$ is the \RMS/ transmissibility of the open loop system.
+$\RMSof{\transmissibility}$ as the negative feedback gain increases.
+The overall transmissibility reduction is calculated as $1-\RMSof{\transmissibility}/\transmissibility_0$, where $\transmissibility_0$ is the \RMS/ transmissibility of the open loop system.
 The resonance at \SI{1}{Hz} observed in \figref{cl-results} as the feedback gain increases causes the overall transmissibility reduction to have a local maximum.
 
 \begin{figure}
   \psfragfig{PhD/Experiments/XPMT/latex/cl-reduction-2}
-  \caption[{Transmissiblity reduction for increased velocity feedback gain.}]{Affect on overall transmissiblity $\RMSof{\transmissibility{}}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
+  \caption[{Transmissiblity reduction for increased velocity feedback gain.}]{Affect on overall transmissiblity $\RMSof{\transmissibility}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
   \figlabel{cl-reduction}
 \end{figure}
 
@@ -695,11 +695,11 @@ This is shown as a block diagram in \figref{simple-isolator-block}. If the
 control force is written as a function of the acceleration of the mass,
 $\laplaceForce=\s^2\laplaceMass\BlockController$, the transmissibility of the system is
 \begin{dmath}[label=cl-generic]
-  \frac\laplaceMass\laplaceBase = \frac{\Block[1]\Block[2]}{1+\BlockController\Block[2]}
+  \frac{\laplaceMass\fn{\s}}{\laplaceBase\fn{\s}} = \frac{\Block[1]\Block[2]}{1+\BlockController\Block[2]}
 \end{dmath}.
 When the controller is some gain $\gainSkyhook$ in series with an ideal integration of the accelerometer signal, $\BlockController = \gainSkyhook/\s$, \eqref{cl-generic} simplifies to the idealised absolute velocity feedback expression:
 \begin{dmath}
-\frac\laplaceMass\laplaceBase =\frac{\stiffness+\damping \s}{\stiffness+\gp{\damping+\gainSkyhook}\s+\mass \s^2}
+\frac{\laplaceMass\fn{\s}}{\laplaceBase\fn{\s}} = \frac{\stiffness+\damping \s}{\stiffness+\gp{\damping+\gainSkyhook}\s+\mass \s^2}
 \end{dmath}.
 This result is plotted in \figref{cl-ideal} for equivalent values of stiffness and damping as the experimental setup.
 
@@ -721,7 +721,7 @@ of the two high pass filters in the charge amplifier.
 Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
 the final transfer function between the mass and base states,
 \begin{dmath}[label=cl-filter]
-  \frac\laplaceMass\laplaceBase =
+  \frac{\laplaceMass\fn{\s}}{\laplaceBase\fn{\s}} =
     \frac{ \gp{\damping \s+\stiffness} \gp{\s+\freqHPfilter}^2 }
          {
            \gainSkyhook \s^3 +
@@ -783,7 +783,7 @@ Without feedback control and without the actuator coil connected, the system sho
 Connecting the non-contact electromagnetic actuator increased this damping ratio to around \num{0.03}--\num{0.04} due to eddy currents induced in the coils from the permanent magnet.
 
 Dynamically, the system showed transmissibilities which could be modelled well by standard linear vibration isolator models.
-With the very low damping of the open loop system, superharmonics were clearly visible in the variance gain but the resonance peaks remained linear-like.
+With the very low damping of the open loop system, superharmonics were clearly visible in the `nonlinear transmissibility' but the resonance peaks remained linear-like.
 Once the actuator was connected, the additional eddy current damping suppressed these nonlinearities.
 
 Absolute velocity feedback control was successful in reducing the transmissibility peaks, but as the gain was increased the additional poles added by the integration filters caused an additional lower frequency peak to appear as the closed loop system approached the gain margin.
