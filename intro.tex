@@ -182,13 +182,13 @@ Feedback control allows the properties of the system to be adjusted according th
 
 The dynamic response of the isolated mass $\mass$ is
 \begin{dmath}[label=simple-isolation]
-  \mass\accMass +
-  \dampingRel\gp{\velMass-\velBase} +
-  \stiffnessRel\gp{\dispMass-\dispBase} = \forceIn
+  \mass\accMass\fn\Time +
+  \dampingRel\gp{\velMass\fn\Time-\velBase\fn\Time} +
+  \stiffnessRel\gp{\dispMass\fn\Time-\dispBase\fn\Time} = \forceIn\fn\Time
 \end{dmath}.
-First assume that there is no input force; taking the Laplace transform and rearranging produces the transmissibility $\transmissibility$ of the system in the frequency domain:
+First assume that there is no input force; taking the Laplace transform and rearranging produces the transfer function of the system in the frequency domain:
 \begin{dmath}[compact,label=simple-isolation-freq]
-  \transmissibility = \frac{\laplaceMass}{\laplaceBase} =
+  \frac{\laplaceMass}{\laplaceBase} =
   \frac{\ii\freq\dampingRel + \stiffnessRel}
   {-\mass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
@@ -219,8 +219,9 @@ Substituting the feedback force \eqref{feedback-force} into the system dynamics 
   = 0 \,.
 \eqlabel{isolation-feedback}
 \end{multline}
-The transfer function between base and mass displacement for this generalised feedback case is
-\begin{dmath}[label=tf-genfeedback]
+The transfer function, or transmissibility $\transmissibility{}$, between base and mass displacement for this generalised feedback case is
+\begin{dmath}[label=tf-genfeedback,compact]
+  \transmissibility{\s} = 
   \frac{\laplaceMass\fn{\s}}{\laplaceBase\fn{\s}} =
   \frac{
           \gainAcc \s^2 +
@@ -328,7 +329,7 @@ which is true for $\gainSkyhook+\gainVel>-\damping$.
 While increased damping is usually desired, it is possible to reduce the effective damping in the system with negative velocity feedback gain, with the effect of increasing the amplitude of the resonance peak.
 Such active damping reduction has been performed to aid the efficacy of `tuned mass dampers' or vibration neutralisers \cite{kidner1998}, which are discussed briefly in \secref{vibneut}.
 
-The absolute and relative velocity feedback results may be compared by calculating the \RMS/ transmissibilities over a frequency range of interest ($\sqrt{\Int{\transmissibility}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases.
+The absolute and relative velocity feedback results may be compared by calculating the \RMS/ transmissibilities over a frequency range of interest ($\sqrt{\Int{\Abs{\transmissibility{\ii\freq}}}{\freq,\freq_1,\freq_2}}$) as a function of increasing feedback gain for the two cases.
 This is shown in \figref{rms-transmissibility}, where the relative feedback \RMS/ transmissibility has a local minimum whereas the absolute feedback case continuously decreases.
 It is clear in the ideal case that absolute velocity feedback is the more effective at reducing the total vibration of a system.
 (The maximum frequency in this case was chosen to be much greater than the resonance frequency; $[\freq_1,\freq_2]=[0,\SI{1000}{rad/s}]$.)
@@ -1162,7 +1163,7 @@ For nonlinear systems, \eqref{nl-trans} describes the ratio of output to input e
 a given excitation.
 For a tonal input disturbance, the variance gain at the frequency of excitation $\freq_e$ is
 \begin{dmath}[label=nl-trans2]
-\varianceGain{\freq_e} = \frac{1}{\ampExcite}\sqrt{\frac{2}{\period} \Int{{\let\maybedot\bar \dispMass}\fn \Time^2 }{\Time,0,\period}} .
+\varianceGain\fn{\freq_e} = \frac{1}{\ampExcite}\sqrt{\frac{2}{\period} \Int{{\let\maybedot\bar \dispMass}\fn \Time^2 }{\Time,0,\period}} .
 \end{dmath}
 The variance gain allows the nonlinearity of the system to be visualised on a familiar transmissibility--like plot for a range of resonance frequencies and equilibrium positions.
 

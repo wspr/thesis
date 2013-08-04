@@ -114,10 +114,13 @@
 
 \DeclareDocumentCommand \newvariable { m O{} m }
  {
-  \tl_clear:N \nomennom \tl_clear:N \nomenlabel \tl_clear:N \nomensort
+  \tl_clear:N \nomennom
+  \tl_clear:N \nomensort
+  \tl_clear:N \nomenentry
   \setkeys{thesisnomen}{#2}
 
-  \ifx \nomenlabel \empty \edef \nomenlabel { \detokenize{#3} } \fi
+  \edef \nomenlabel { \detokenize{#1} }
+  \ifx \nomenentry \empty \def \nomenentry{ \unexpanded{\ensuremath{#3}} } \fi
   \ifx \empty \nomensort \tl_set:Nn \nomensort {#3} \fi
   \wspr_greek_trans:N \nomensort
 
@@ -128,7 +131,8 @@
       {\nomenlabel}
       {
 %       parent = \nomenparent,
-       name = \unexpanded{\ensuremath{#3}},
+       name = \exp_not:V \nomenentry,       % used in glossary
+       text = \unexpanded{\ensuremath{#3}}, % used in text
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
       }%
@@ -142,30 +146,31 @@
 % E.G.: \newmvar\newfunc\magforce{F_m}[elem={\mdim,\ndisp},index={1,2}]{nom={Magnet force vector}}
  {
   \tl_clear:N \nomennom
-  \tl_clear:N \nomenlabel
   \tl_clear:N \nomensort
   \tl_clear:N \nomenentry
   \setkeys{thesisnomen}{#5}
 
   \ifx \nomenentry \empty
     \ifx #1 \newvect
-      \gdef \nomenentry { \unexpanded { \ensuremath{\vect #3} } }    
+      \gdef \nomenentry { \unexpanded{\ensuremath{\vect #3}} }   
     \else
-      \gdef \nomenentry { \unexpanded { \ensuremath{#3} } }
+      \gdef \nomenentry { \unexpanded{\ensuremath{#3}} }
     \fi
   \fi
-  \ifx \nomenlabel \empty \edef \nomenlabel { \detokenize{#3} } \fi
+  \edef \nomenlabel { \detokenize{#2} }
   \ifx \empty \nomensort \tl_set:Nn \nomensort {#3} \fi
   \wspr_greek_trans:N \nomensort
 
   \tl_if_empty:NT \nomennom \ERROR
+  
   \use:x
    {
     \exp_not:N \newglossaryentry
      {\nomenlabel}
      {
 %      parent = \nomenparent,
-      name = \exp_not:o \nomenentry,
+      text = \unexpanded { \ensuremath{#3} }, % used in text
+      name = \exp_not:V \nomenentry,          % used in glossary
       sort = \nomensort,
       description = { \exp_not:V \nomennom },
      }
@@ -185,27 +190,26 @@
 \define@key{thesisnomen}{nom}{\gdef\nomennom{#1}}
 \define@key{thesisnomen}{sort}{\gdef\nomensort{#1}}
 \define@key{thesisnomen}{entry}{\gdef\nomenentry{#1}}
-\define@key{thesisnomen}{label}{\gdef\nomenlabel{#1}}
 \let\nomenparent\empty
 
 %%%%%%%%%%%%%%%%%%%%%%%
 \newcommand\RMSof[1]{#1_{\textsc{rms}}}
 
-\newvariable\s[nom=Laplace variable,label=laplace-s]{s}
+\newvariable\s[nom=Laplace variable]{s}
 
 %%%%%%%%%%%%%%%%%%%%%%%
 %% MAGNETS
 
 \newvariable\incr[nom={Displacement increment}]{\delta}
 
-\newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio,label=cuboidaspect]{\gamma}
+\newvariable\ratioCub[nom=Square-face cuboid magnet aspect ratio]{\gamma}
 \newvariable\ratioCoil[nom=Coil aspect ratio]{\beta}
-\newvariable\ratioMag[nom=Cylindrical magnet aspect ratio,label=cylaspect]{\alpha}
+\newvariable\ratioMag[nom=Cylindrical magnet aspect ratio]{\alpha}
 \newvariable\ratioLengthArea[nom={Ratio of magnet length squared to face area}]{\nu}
 
-\newvariable\lengthCub[nom=Cuboid magnet depth,label=cubdept]{a}
-\newvariable\faceCub[nom=Cuboid magnet face side length,label=cubside]{b}
-\newvariable\lengthCube[nom=Cube magnet side length,label=cubelength]{c}
+\newvariable\lengthCub[nom=Cuboid magnet depth]{a}
+\newvariable\faceCub[nom=Cuboid magnet face side length]{b}
+\newvariable\lengthCube[nom=Cube magnet side length]{c}
 \newvariable\magnetGap[nom=Gap between magnets in various magnetic spring designs]{G}
 \let\choiGap\magnetGap
 
@@ -220,7 +224,7 @@
 \newvariable\area[nom=Area]{A}
 \newvariable\surface[nom=Integration surface]{S}
 \newvariable\diffsurface[nom=Differential region of the integration surface]{s}
-\newvariable\diffvolume[nom=Differential region of the integration volume,label=diffvolume]{v}
+\newvariable\diffvolume[nom=Differential region of the integration volume]{v}
 \newvariable\vecarea[nom=Vector area (direction normal to plane)]{\vect A}
 
 \let\olddot\dot
@@ -232,19 +236,19 @@
 
 \newvariable\varianceNoise[nom=White noise variance]{S_w}
 \newvariable\normn[nom=Surface normal vector,sort=n]{\hat{\vect{n}}}
-\newvariable\forceMag[label=FFF,nom=Magnitude of force]{F}
-%\newvariable\forceMagnet[label=Fm,nom=Magnetic force]{F_m}
+\newvariable\forceMag[nom=Magnitude of force]{F}
+%\newvariable\forceMagnet[nom=Magnetic force]{F_m}
 \def\forceMagnet{\forceMag_m}
-\newvariable\stiffnessMag[label=KKK,nom={Magnitude of stiffness characteristic (derivative of force with respect to displacement)}]{K}
+\newvariable\stiffnessMag[nom={Magnitude of stiffness characteristic (derivative of force with respect to displacement)}]{K}
 \newvariable\forceVec[nom=Force vector]{\vect F}
 \newmvar\newvect\torque{T}{nom=Torque vector}
 \newmvar\newvect\lever{r}{nom=Lever arm vector}
 
-\newvariable\forceGrav[label=forceGrav,nom=Gravity force]{F_g}
-\newvariable\gravity[label=grav,nom=Acceleration due to gravity]{g}
-\newvariable\disp[label=disp,nom=Displacement]{x}
+\newvariable\forceGrav[nom=Gravity force]{F_g}
+\newvariable\gravity[nom=Acceleration due to gravity]{g}
+\newvariable\disp[nom=Displacement]{x}
 \let\displ\disp
-\newvariable\disturb[nom=Disturbance,label=disturbance]{p}
+\newvariable\disturb[nom=Disturbance]{p}
 
 \newcommand\equil{\text{eq}}
 
@@ -261,7 +265,7 @@
 \newvariable\magH[nom=Magnetic field strength vector]{\vect H}
 \newvariable\magB[nom=Magnetic flux density vector]{\vect B}
 \newvariable\remanence[nom=Remanence magnetisation]{B_r}
-\newvariable\maggradesym[nom={Magnet grade, units \si{MG.Oe}},label=maggradesym]{N}
+\newvariable\maggradesym[nom={Magnet grade, units \si{MG.Oe}}]{N}
 \newcommand\magn[1]{{\remanence}_{#1}}
 \newvariable\coerce[nom=Coercivity]{H_c}
 \newvariable\Msat[nom=Magnetisation at saturation]{M_{\mathrm{sat}}}
@@ -291,14 +295,14 @@
 \newcommand\cdz{d_z}
 \newvariable\magcd[nom={Distance vector between the centres of two magnets, $\magcd=\inlinevect{\cdx,\cdy,\cdz}$}]{\vect d}
 
-%\newvariable\cnrx[nom={$\ax$ component of $\cornerd$},label=cnrx]{\delta_x}
-%\newvariable\cnry[nom={$\ay$ component of $\cornerd$},label=cnry]{\delta_y}
-%\newvariable\cnrz[nom={$\az$ component of $\cornerd$},label=cnrz]{\delta_z}
+%\newvariable\cnrx[nom={$\ax$ component of $\cornerd$}]{\delta_x}
+%\newvariable\cnry[nom={$\ay$ component of $\cornerd$}]{\delta_y}
+%\newvariable\cnrz[nom={$\az$ component of $\cornerd$}]{\delta_z}
 \newcommand\cnrx{\delta_x}
 \newcommand\cnry{\delta_y}
 \newcommand\cnrz{\delta_z}
 \newvariable\cornerd[nom={Distance vector between a pair of corners/nodes of two magnets, $\cornerd=\inlinevect{\cnrx,\cnry,\cnrz}$}]{\bm\delta}
-\newvariable\cnrl[nom={Euclidean distance of $\cornerd$, $\sqrt{\cnrx^2+\cnry^2+\cnrz^2}$},label=cnrl]{r}
+\newvariable\cnrl[nom={Euclidean distance of $\cornerd$, $\sqrt{\cnrx^2+\cnry^2+\cnrz^2}$}]{r}
 
 \newvariable\cdcnrX[nom={Distance vector between a magnet's centre and one of its corners/nodes (fixed magnet)}]{\vect r}
 \newvariable\cdcnrF[nom={Distance vector between a magnet's centre and one of its corners/nodes (floating magnet)}]{\vect R}
@@ -320,9 +324,9 @@
 \newvariable\Tzznode[nom={`Torque' between two magnetic nodes for cuboid magnets magnetised in the $\az$ direction, used to calculate $\Tzz$},sort=zzzgreek-w]{\bm\psi}
 \newvariable\Tzy[nom={Torque between two cuboid magnets; the first magnetised in the $\az$ direction, the second in $\ay$},sort=Tzy]{\vect T_{z,y}}
 
-\newvariable\hwx[nom={Half-length of cuboid magnet, $\ax$ direction},label=hwx]{a}
-\newvariable\hwy[nom={Half-length of cuboid magnet, $\ay$ direction},label=hwy]{b}
-\newvariable\hwz[nom={Half-length of cuboid magnet, $\az$ direction},label=hwz]{c}
+\newvariable\hwx[nom={Half-length of cuboid magnet, $\ax$ direction}]{a}
+\newvariable\hwy[nom={Half-length of cuboid magnet, $\ay$ direction}]{b}
+\newvariable\hwz[nom={Half-length of cuboid magnet, $\az$ direction}]{c}
 
 \newcommand\hwxX{\hwx_1}
 \newcommand\hwyX{\hwy_1}
@@ -338,7 +342,7 @@
 \newvariable\rotY[nom={Planar rotation matrix around the $\ay$ axis}]{\vect R_y}
 \newvariable\rotZ[nom={Planar rotation matrix around the $\az$ axis}]{\vect R_z}
 
-\newvariable\mrot[nom={Magnet rotation/inclination},label=magrot]{\theta}
+\newvariable\mrot[nom={Magnet rotation/inclination}]{\theta}
 \let\mbqmagangle\mrot
 
 %%%%%%%%%%%%%%%%%%%%%%%%
@@ -391,12 +395,12 @@
 
 \def\maybedot{}
 \newvariable\dispBase[nom=Base displacement,sort=x1]{\noexpand\maybedot x_1}
-\newvariable\laplaceBase[nom={Base response, Laplace domain},sort=X1]{X_1\fn{\s}}
+\newvariable\laplaceBase[nom={Base response, Laplace domain},sort=X1,entry=X_1\fn{\s}]{X_1}
 \newcommand\velBase{{\let\maybedot\dot \dispBase}}
 \newcommand\accBase{{\let\maybedot\ddot \dispBase}}
 
 \newvariable\dispMass[nom=Displacement of the vibration mass,sort=x2]{\noexpand\maybedot x_2}
-\newvariable\laplaceMass[nom={Vibration mass response, Laplace domain},sort=X2]{X_2\fn{\s}}
+\newvariable\laplaceMass[nom={Vibration mass response, Laplace domain},sort=X2,entry=X_2\fn{\s}]{X_2}
 \newcommand\velMass{{\let\maybedot\dot \dispMass}}
 \newcommand\accMass{{\let\maybedot\ddot \dispMass}}
 
@@ -412,7 +416,7 @@
   {\ifcase #1 \def\maybesubscript{_0}\or \def\maybesubscript{_1}\or \def\maybesubscript{_2}\or \def\maybesubscript{_3}\or \def\maybesubscript{_4}\else\fi\transferFunction}
 }
 \def\maybesubscript{}
-\newvariable\transferFunction[nom=Transfer function,label=transferfunction]{G\noexpand\maybesubscript\fn{\s}}
+\newvariable\transferFunction[nom=Transfer function]{G\noexpand\maybesubscript\fn{\s}}
 \newvariable\BlockController[nom=Controller transfer function]{K_c\fn{\s}}
 \newcommand\freqHPfilter{\freq_c}
 
@@ -420,14 +424,14 @@
 \newvariable\dampingAbs[nom=Absolute velocity (skyhook) damping coefficient]{c_{\mathrm{sky}}}
 \let\stiffnessRel\stiffness
 \newvariable\forceIn[nom=Force input]{f}
-\newvariable\laplaceForce[nom={Force input response, Laplace domain},label=laplaceF]{F\fn{\s}}
-\newvariable\forceDisturb[label=gg,nom=Force disturbance]{p}
-\newvariable\laplaceForceDisturb[label=laplaceG,nom={Force disturbance response, Laplace domain}]{P\fn{\s}}
+\newvariable\laplaceForce[nom={Force input response, Laplace domain}]{F\fn{\s}}
+\newvariable\forceDisturb[nom=Force disturbance]{p}
+\newvariable\laplaceForceDisturb[nom={Force disturbance response, Laplace domain}]{P\fn{\s}}
 
-\newmvar\newfunc\transmissibility{T}[elem=\freq,index=1]{nom=Transmissibility,label=transmissibility,entry={T\fn{\freq}}}
-\newvariable\varianceGain[nom={Variance gain, alternative of transmissibility $\transmissibility$},label=varianceGain]{V\fn{\freq}}
-\newvariable\Time[nom=Time,label=time]{t}
-\newvariable\period[nom=Period,label=period]{T}
+\newmvar\newfunc\transmissibility{T}[elem=\freq,index=1]{nom=Transmissibility,entry={T\fn{\freq}}}
+\newvariable\varianceGain[nom={Variance gain, alternative of transmissibility $\transmissibility$},entry=V\fn{\freq}]{V}
+\newvariable\Time[nom=Time]{t}
+\newvariable\period[nom=Period]{T}
 
 \newcommand\gainArbitrary{g_{(\cdot)}}
 \newvariable\gainDisp[nom=Feedback gain on relative displacement]{g_k}
@@ -449,7 +453,7 @@
   [nom=Cross spectrum accelerometer measurements between the moving magnet and base disturbance]
   {P_{mb}\fn{\freq}}
 
-\newvariable\potentialEnergy[nom=Potential energy,label=potential]{U}
+\newvariable\potentialEnergy[nom=Potential energy]{U}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %% COIL
@@ -469,10 +473,10 @@
 \newcommand\diffsurfMag{\diffsurface_\SuffixMagnet}
 \newcommand\diffvolMag{\diffvolume_\SuffixMagnet}
 
-\newmvar\newvect\distrMag{d}[headcmd=\boldsubs{1},elemcmd=\mlistelem,elem={\distr_1,\dista_1,\distz_1}]{nom={Position vector for magnet volume $\distrMag=\inlinevect{\distrMag{1},\distrMag{2},\distrMag{3}}$},label=d1,entry={\vect d_1}}
-\newmvar\newvect\distrCoil{d}[headcmd=\boldsubs{2},elemcmd=\mlistelem,elem={\distr_2,\dista_2,\distz_2}]{nom={Position vector for differential coil volume in cylindrical coordinates, $\inlinevect{\distrCoil{1},\distrCoil{2},\distrCoil{3}}$},label=d2,entry={\vect d_2}}
+\newmvar\newvect\distrMag{d}[headcmd=\boldsubs{1},elemcmd=\mlistelem,elem={\distr_1,\dista_1,\distz_1}]{nom={Position vector for magnet volume $\distrMag=\inlinevect{\distrMag{1},\distrMag{2},\distrMag{3}}$},entry={\vect d_1}}
+\newmvar\newvect\distrCoil{d}[headcmd=\boldsubs{2},elemcmd=\mlistelem,elem={\distr_2,\dista_2,\distz_2}]{nom={Position vector for differential coil volume in cylindrical coordinates, $\inlinevect{\distrCoil{1},\distrCoil{2},\distrCoil{3}}$},entry={\vect d_2}}
 
-\newvariable\distr[nom={Radial component of distance vector in cylindrical coordinates},label=distr]{r}
+\newvariable\distr[nom={Radial component of distance vector in cylindrical coordinates}]{r}
 \newvariable\dista[nom={Angular component of distance vector in cylindrical coordinates}]{\phi}
 \newvariable\distz[nom={Axial component of distance vector in cylindrical coordinates}]{z}
 
@@ -508,13 +512,13 @@
 
 \newvariable\COILnmag[nom=Number of smaller permanent magnets]{n}
 
-%\newvariable\coilDualGap[label=G-coil,nom=Gap (axial) between adjacent coils]{G}
+%\newvariable\coilDualGap[nom=Gap (axial) between adjacent coils]{G}
 
 \newvariable\forceFilament[nom={Axial force between two circular current loops}]{F_f}
 \newvariable\forceThickCoil[nom={Axial force between a thick coil and a magnet}]{F_c}
-\newvariable\radius[nom=Radius,label=radius]{r}
+\newvariable\radius[nom=Radius]{r}
 
-\newvariable\Fax[nom={Axial force between two cylindrical thin coils/magnets},label=Fax]{F_z}
+\newvariable\Fax[nom={Axial force between two cylindrical thin coils/magnets}]{F_z}
 \newvariable\Fecc[nom={Radial force between two cylindrical thin coils/magnets}]{F_r}
 \let\Fr\Fecc
 \let\forceShell\Fax
@@ -530,7 +534,7 @@
 \newcommand\fnmax{\expandafter\hat\fmax}
 \newcommand\currmax{\currentCoil_{\mathrm{max}}\fn{\diamWire}}
 
-\newvariable\safetyFactor[nom={Factor of safety},label=safetyFactor]{S_f}
+\newvariable\safetyFactor[nom={Factor of safety}]{S_f}
 
 %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 %%%%%%%%%%%%%%%%%%%%   QZS   %%%%%%%%%%%%%%%%%%%%%%%%%
@@ -539,26 +543,26 @@
 \def\nomenparent{qzs}
 
 % parameters
-\newvariable\mdim[nom=Cube magnet side length,label=qzsa]{a}
-\newvariable\ngap[nom=Normalised magnet gap,label=qzs-ngap]{d}
-\newvariable\ndisp[nom=Normalised nominal magnet displacement,label=qzsl]{l}
-\newvariable\ndispZ[nom=Normalised nominal magnet displacement,label=qzsh]{h}
-\newvariable\dmax[nom=Maximum displacement bound,label=qzsdelta]{\delta}
-\newvariable\dmin[nom={Closest (normalised) allowable displacement from \qzs/ to avoid instability},label=qzsepsilon]{\epsilon}
+\newvariable\mdim[nom=Cube magnet side length]{a}
+\newvariable\ngap[nom=Normalised magnet gap]{d}
+\newvariable\ndisp[nom=Normalised nominal magnet displacement]{l}
+\newvariable\ndispZ[nom=Normalised nominal magnet displacement]{h}
+\newvariable\dmax[nom=Maximum displacement bound]{\delta}
+\newvariable\dmin[nom={Closest (normalised) allowable displacement from \qzs/ to avoid instability}]{\epsilon}
 \newvariable\mass[nom=Mass]{m}
 \let\massMass\mass %% rm
 \let\freqdesign\resfreq
-\newvariable\damping[nom=Damping coefficient,label=qzs-damping]{c}
+\newvariable\damping[nom=Damping coefficient]{c}
 
 \newvariable\qqO[nom={Polynomial coefficient for modelling magnet force},sort=Qz1]{q_0\fn{\ngap}}
 \newvariable\qqII[nom={Polynomial coefficient for modelling magnet force},sort=Qz2]{q_2\fn{\ngap}}
 \newvariable\qqIV[nom={Polynomial coefficient for modelling magnet force},sort=Qz2]{q_4\fn{\ngap}}
 
-\newvariable\ccA[nom=Coefficient for empirical magnet force equation,label=coeffA]{Q_0}
-\newvariable\ccB[nom=Coefficient for empirical magnet force equation,label=coeffB]{Q_1}
+\newvariable\ccA[nom=Coefficient for empirical magnet force equation]{Q_0}
+\newvariable\ccB[nom=Coefficient for empirical magnet force equation]{Q_1}
 \newvariable\ccC[nom=Coefficient for empirical magnet force equation]{Q_2}
 \newvariable\ccD[nom=Coefficient for empirical magnet force equation]{Q_3}
-\newvariable\nn[nom=Exponential for empirical magnet force equation,label=qzs-n]{n}
+\newvariable\nn[nom=Exponential for empirical magnet force equation]{n}
 
 \newvariable\nk[nom=Nonlinearity measure]{\eta_k}
 
@@ -600,23 +604,23 @@
 
 \providecommand\labelsize{\scriptsize}
 
-\newvariable\dispvert[nom={Vertical displacement},label=dispvert]{z}
-\newvariable\dispaxial[nom={Axial displacement},label=dispaxial]{z}
+\newvariable\dispvert[nom={Vertical displacement}]{z}
+\newvariable\dispaxial[nom={Axial displacement}]{z}
 \newvariable\dispradial[nom=Radial distance between two cylindrical objects]{e_r}
-\newvariable\disphoriz[nom=Horizontal displacement,label=disphoriz]{y}
+\newvariable\disphoriz[nom=Horizontal displacement]{y}
 %\newvariable\ZKSdisp[nom=Vertical displacement of the inclined spring]{z}
 \let\ZKSdisp\dispvert
 \newvariable\ZKSdispMin[nom=Maximum deflection of the vertical spring]{z_{\mathrm{min}}}
-\newvariable\ZKSshift[nom=Horizontal displacement of the inclined spring,label=ZKS-x]{x}
+\newvariable\ZKSshift[nom=Horizontal displacement of the inclined spring]{x}
 
-\newvariable\ZKSwidth[nom=Inclined spring horizontal dimension,label=ZKSwidth]{w}
+\newvariable\ZKSwidth[nom=Inclined spring horizontal dimension]{w}
 \newvariable\ZKSheight[nom=Inclined spring vertical dimension]{h}
 \newvariable\ZKSlength[nom=Undeflected inclined spring length]{L_0}
 \newmvar\newfunc\ZKSlengthcomp{L}[elem={\ZKSshift,\ZKSdisp},index={1,2}]{nom=Length of inclined spring under load}
 
 \newvariable\ZKSvlength[nom=Undeflected vertical spring length]{H_0}
 
-\newmvar\newfunc\ZKSvlengthcomp{H}[elem={\ZKSshift,\ZKSdisp},index={1,2}]{nom=Length of vertical spring under load,label=ZKS-H}
+\newmvar\newfunc\ZKSvlengthcomp{H}[elem={\ZKSshift,\ZKSdisp},index={1,2}]{nom=Length of vertical spring under load}
 
 \newcommand\ZKSincl{i}
 \newcommand\ZKSvert{v}
@@ -632,12 +636,10 @@
     nom=Ratio between inclined and vertical
         spring lengths]{\eta}
 \newvariable\ZKSratio[
-    label=ZKSratio,
     nom=Ratio between the inclined spring
         width and height]
   {\gamma}
 \newvariable\ZKSkratio[
-    label=ZKSkratio,
     nom=Ratio between the inclined and
         vertical spring stiffnesses]
   {\alpha}
@@ -705,7 +707,7 @@
 \newglossaryentry{xpmt}{name={Experimental prototype}, description={\nopostdesc}}
 \def\nomenparent{xpmt}
 
-\newvariable\InertiaMoment[label=inertiaI,nom=Moment of inertia]{I}
+\newvariable\InertiaMoment[nom=Moment of inertia]{I}
 \newvariable\InertiaMomentBeam[nom=Beam moment of inertia]{\InertiaMoment_b}
 \newvariable\InertiaMomentMagnets[nom=Magnets moment of inertia]{\InertiaMoment_m}
 \newvariable\InertiaMomentTotal[nom=Total moment of inertia]{\InertiaMoment_t}
@@ -713,7 +715,7 @@
 %\newvariable\BlockInertiaLength[nom=Block length for calculating moment of inertia]{a}
 %\newvariable\BlockInertiaHeight[nom=Block height for calculating moment of inertia]{b}
 %\newvariable\BlockInertiaOffset[nom=Block offset for calculating moment of inertia]{d}
-%\newvariable\BlockInertiaMass[label=mm,nom=Block mass for calculating moment of inertia]{m}
+%\newvariable\BlockInertiaMass[nom=Block mass for calculating moment of inertia]{m}
 
 \newvariable\MassBeam[nom=Beam mass]{m_b}
 \newvariable\MassBeamOuter[nom=Beam `outer' mass]{m_1}
@@ -732,7 +734,7 @@
 \newvariable\OriginQZS[nom=\QZS/ position]{p_q}
 
 \newvariable\MassRigMagnets[nom=Mass of the floating magnets and support]{m_m}
-\newvariable\LengthRigMagnets[nom=Horizontal offset of the magnets support,label=lengthrigmagnets]{l_m}
+\newvariable\LengthRigMagnets[nom=Horizontal offset of the magnets support]{l_m}
 \newvariable\HeightRigMagnets[nom=Height of the magnets support]{h_m}
 \newvariable\HeightBuffer[nom=Height `buffer' to account for additional thicknesses]{h_{\epsilon}}
 
@@ -744,28 +746,28 @@
 \newvariable\DisplSensorBeamProj[nom=Projected displacement of the beam to the magnets support]{ x_p}
 \newvariable\DisplMag[nom=Displacement of the magnets support]{x_m}
 
-%\newvariable\RadiusMag[nom=Radius of the magnets,label=magr]{r}
+%\newvariable\RadiusMag[nom=Radius of the magnets]{r}
 %\newvariable\RadiusICoil[nom=Inner radius of the coil]{r_1}
 %\newvariable\RadiusOCoil[nom=Outer radius of the coil]{r_2}
 \let\RadiusICoil\iradiusCoil
 \let\RadiusOCoil\oradiusCoil
 \let\RadiusMag\oradiusMag
 
-%\newvariable\HeightMag[label=hh,nom=Height of the magnets]{h}
+%\newvariable\HeightMag[nom=Height of the magnets]{h}
 \let\HeightMag\lengthMag
-\newvariable\HeightRig[nom=Height of the apparatus,label=HH]{H}
+\newvariable\HeightRig[nom=Height of the apparatus]{H}
 \newvariable\HeightCoil[nom=Height of the coil]{h_c}
-\newvariable\GapCoil[nom=Axial gap between the dual coils,label=gap-coil]{G}
+\newvariable\GapCoil[nom=Axial gap between the dual coils]{G}
 \let\coilDualGap\GapCoil
 
-%\newvariable\DispMag[label=xx,nom=Displacement from \qzs/]{x}
+%\newvariable\DispMag[nom=Displacement from \qzs/]{x}
 \let\DispMag\disp
 %\newvariable\AngleMag[nom=Angle of the beam]{\theta}
 \newvariable\MomentMag[nom=Moment produced by the magnet forces]{M_\theta}
 \newvariable\ForceRigMagnets[nom=Force to the magnets]{F_x}
 \newvariable\EquivMassRig[nom=Equivalent mass of the beam]{m_e}
 
-\newvariable\rigNormGap[label=rignormgap,nom=Normalised magnet gap]{g}
+\newvariable\rigNormGap[nom=Normalised magnet gap]{g}
 
 \newvariable\MagCentre[nom={Magnet centre position},sort=xm]{{x_m}}
 
@@ -776,42 +778,42 @@
 \newglossaryentry{mup}{name={Multipole magnet design}, description={\nopostdesc}}
 \def\nomenparent{mup}
 
-\newvariable\mupi[nom={Magnet index in the $\ax$ direction.},label=mupi]{i}
-\newvariable\mupj[nom={Magnet index in the $\ay$ direction.},label=mupj]{j}
+\newvariable\mupi[nom={Magnet index in the $\ax$ direction.}]{i}
+\newvariable\mupj[nom={Magnet index in the $\ay$ direction.}]{j}
 
-\newvariable\muplength[nom=Multipole array length,label=l-mup]{l}
-\newvariable\mupheight[nom=Multipole array height,label=h-mup]{h}
-%\newvariable\mupdepth[nom=Multipole array depth,label=d-mup]{d}
-\newvariable\springDepth[nom=Magnetic spring depth,label=springdepth]{d}
+\newvariable\muplength[nom=Multipole array length]{l}
+\newvariable\mupheight[nom=Multipole array height]{h}
+%\newvariable\mupdepth[nom=Multipole array depth]{d}
+\newvariable\springDepth[nom=Magnetic spring depth]{d}
 \let\mupdepth\springDepth
 
 \newvariable\mupwavelength[nom=Multipole array wavelength]{\lambda}
-%\newvariable\mupfacegap[nom=Multipole array face gap,label=g-mup]{G}
+%\newvariable\mupfacegap[nom=Multipole array face gap]{G}
 \let\mupfacegap\magnetGap
-%\newvariable\mupmaglength[nom=Length of each magnet in a multipole array,label=m-mup]{b}
+%\newvariable\mupmaglength[nom=Length of each magnet in a multipole array]{b}
 \let\mupmaglength\faceCub
-\newvariable\mupmagperwave[nom=Multipole array number of magnets per wavelength,label=R-mup]{R}
-\newvariable\mupNmag[nom=Multipole array number of magnets,label=N-mup]{N}
+\newvariable\mupmagperwave[nom=Multipole array number of magnets per wavelength]{R}
+\newvariable\mupNmag[nom=Multipole array number of magnets]{N}
 \newvariable\mupNwaves[nom=Multipole array number of wavelengths]{W}
 \let\mupNwave\mupNwaves % oops
 
-%\newvariable\mupqlh[label=mup-ql,nom={Length of horizontally-magnetised quasi-Halbach array magnets}]{m_1}
-%\newvariable\mupqlv[label=mup-qL,nom={Length of vertically-magnetised quasi-Halbach array magnets}]{m_2}
+%\newvariable\mupqlh[nom={Length of horizontally-magnetised quasi-Halbach array magnets}]{m_1}
+%\newvariable\mupqlv[nom={Length of vertically-magnetised quasi-Halbach array magnets}]{m_2}
 \newcommand\mupqlh{\mupmaglength_1}
 \newcommand\mupqlv{\mupmaglength_2}
-\newvariable\mupqratio[label=gamma-mup,nom={Ratio between magnet lengths in a quasi-Halbach array}]{\gamma}
+\newvariable\mupqratio[nom={Ratio between magnet lengths in a quasi-Halbach array}]{\gamma}
 
 \newvariable\mupmagrot[nom=Multipole array magnetisation rotation between successive magnets]{\vartheta}
 \newvariable\mupmagpol[nom=Magnetisation direction of the first magnet in a multipole array]{\vartheta_0}
 \newvariable\mupmagpolx[nom=Magnetisation direction in the $\ax$--$\az$ plane of the first magnet in a multipole array]{\vartheta_{xz}}
 \newvariable\mupmagpoly[nom=Magnetisation direction in the $\ay$--$\az$ plane of the first magnet in a multipole array]{\vartheta_{yz}}
 \newvariable\muphdgap[nom={Dual-multipole array horizontal offset}]{p}
-%\newvariable\muphdispl[label=beta-mup,nom={Multipole array horizontal displacement}]{y}
-%\newvariable\mupvdispl[label=delta-mup,nom={Multipole array vertical displacement}]{z}
+%\newvariable\muphdispl[nom={Multipole array horizontal displacement}]{y}
+%\newvariable\mupvdispl[nom={Multipole array vertical displacement}]{z}
 \let\muphdispl\disphoriz
 \let\mupvdispl\dispvert
-%\newvariable\volume[nom=Multipole array volume,label=V-mup]{V}
-\newvariable\magnamp[nom=Amplitude of magnetisation vector,label=M-mup]{M}
+%\newvariable\volume[nom=Multipole array volume]{V}
+\newvariable\magnamp[nom=Amplitude of magnetisation vector]{M}
 
 %%%%%%%%% OBLIQUE
 
@@ -832,7 +834,7 @@
 % \newvariable\mbqmass[nom=Inclined]{M}
 \let\mbqmass\mass
 \newvariable\mbqmomentofinertia[nom=Inclined magnet system moment of inertia]{I_m}
-\newvariable\mbqrotz[label=zzzgreek-uu,nom=Inclined magnets planar rotation]{\varphi}
+\newvariable\mbqrotz[nom=Inclined magnets planar rotation]{\varphi}
 \newcommand\mbqvelrotz{\dot{\mbqrotz}}
 \newcommand\mbqaccrotz{\ddot{\mbqrotz}}
 \newvariable\mbqvdisp[nom=Inclined magnets vertical displacement]{\mbqvdir}
@@ -844,12 +846,12 @@
 \newcommand\mbqvacc{\ddot{\mbqvdisp}}
 \newcommand\mbqhacc{\ddot{\mbqhdisp}}
 \newcommand\mbqpacc{\ddot{\mbqpdisp}}
-%\newvariable\mbqmagh[label=a-mbq,nom=Cuboid magnet depth]{a}
-%\newvariable\mbqmagw[label=b-mbq,nom=Cuboid magnet face size]{b}
+%\newvariable\mbqmagh[nom=Cuboid magnet depth]{a}
+%\newvariable\mbqmagw[nom=Cuboid magnet face size]{b}
 \let\mbqmagh\lengthCub
 \let\mbqmagw\faceCub
 
-%\newvariable\mbqforce[label=Fxyz-mbq,nom=Force vector between inclined magnets in the global coordinate system]{\vect F}
+%\newvariable\mbqforce[nom=Force vector between inclined magnets in the global coordinate system]{\vect F}
 \let\mbqforce\forceVec
 \newvariable\mbqptorque[nom=Inclined magnets torque]{T_\mbqpdir}
 
@@ -865,28 +867,27 @@
 \newcommand\mbqzrotdamp{\dampingRel_\varphi}
 
 \newvariable\mbqmforce[nom=Force vector between inclined magnets in the local coordinate systems of the fixed magnet]{\vect G}
-%\newvariable\mbqmagangle[label=theta-mbq,nom=Inclined magnets inclination]{\theta}
+%\newvariable\mbqmagangle[nom=Inclined magnets inclination]{\theta}
 \newcommand\mbqcompmagangle{\mbqmagangle'}
-%\newvariable\mbqcompmagangle[label=phi-mbq,nom=Inlined magnets inclination (complementary)]{\phi}
-\newvariable\mbqoffset[label=d-mbq,nom=Inclined magnets horizontal offset at the nominal position]{d}
+%\newvariable\mbqcompmagangle[nom=Inlined magnets inclination (complementary)]{\phi}
+\newvariable\mbqoffset[nom=Inclined magnets horizontal offset at the nominal position]{d}
 
-\newvariable\mbqunit[nom={Cuboid magnet unit length, cube root of volume},label=mbqunit]{u}
+\newvariable\mbqunit[nom={Cuboid magnet unit length, cube root of volume}]{u}
 \let\msize\mbqunit
-\newvariable\mbqlever[label=l-mbq,nom={Lever arm}]{l}
+\newvariable\mbqlever[nom={Lever arm}]{l}
 \let\leverArm\mbqlever
-\newvariable\mbqCoMvec[label=lvec-mbq,nom={Displacement vector between magnet centre and centre of mass}]{\vect l}
-\newvariable\mbqCoMvec[label=tvec-mbq,nom={Lever arm vector }]{\vect t}
-\newvariable\mbqleverdispl[label=pvec-mbq,nom={Displacement vector due to rotation around centre of mass}]{\vect p}
-%\newvariable\mbqmagratio[label=gamma-mbq]{\gamma}
-%\newvariable\mbqvolume[label=V-mbq]{V}
+\newvariable\mbqCoMvec[nom={Displacement vector between magnet centre and centre of mass (lever arm)}]{\vect l}
+\newvariable\mbqleverdispl[nom={Displacement vector due to rotation around centre of mass}]{\vect p}
+%\newvariable\mbqmagratio[]{\gamma}
+%\newvariable\mbqvolume[]{V}
 \let\mbqmagratio\ratioCub
 \let\mbqvolume\volume
 \newvariable\mbqmasseq[nom=Equivalent mass]{m_{\mathrm{eq}}}
 \let\masseq\mbqmasseq
 
-\newvariable\mbqdispl[nom=Position vector,label=mbqdispl]{\vect r}
-\newvariable\mbqmdispl[nom=Position vector,label=mbqmdispl]{\vect s}
-\newvariable\mbqlocl[nom=Displacement vectors from the spring magnet centres to the centre of rotation in the coordinate system of the magnets,label=mbqlocl]{\vect q}
+\newvariable\mbqdispl[nom=Position vector]{\vect r}
+\newvariable\mbqmdispl[nom=Position vector]{\vect s}
+\newvariable\mbqlocl[nom=Displacement vectors from the spring magnet centres to the centre of rotation in the coordinate system of the magnets]{\vect t}
 
 %\newcommand\mbqrot[1]{\mathbf R(#1)}
 \let\mbqrot\rotZ
