@@ -119,7 +119,7 @@
   \tl_clear:N \nomenentry
   \setkeys{thesisnomen}{#2}
 
-  \edef \nomenlabel { \detokenize{#1} }
+  \edef \nomenlabel { \cs_to_str:N #1 }
   \ifx \nomenentry \empty \def \nomenentry{ \unexpanded{\ensuremath{#3}} } \fi
   \ifx \empty \nomensort \tl_set:Nn \nomensort {#3} \fi
   \wspr_greek_trans:N \nomensort
@@ -131,7 +131,7 @@
       {\nomenlabel}
       {
 %       parent = \nomenparent,
-       name = \exp_not:V \nomenentry,       % used in glossary
+       name = \exp_not:N \ensuremath { \exp_not:V \nomenentry },          % used in glossary
        text = \unexpanded{\ensuremath{#3}}, % used in text
        sort = \nomensort,
        description = {\unexpanded\expandafter{\nomennom}},
@@ -152,12 +152,12 @@
 
   \ifx \nomenentry \empty
     \ifx #1 \newvect
-      \gdef \nomenentry { \unexpanded{\ensuremath{\vect #3}} }   
+      \gdef \nomenentry {\vect #3}   
     \else
-      \gdef \nomenentry { \unexpanded{\ensuremath{#3}} }
+      \gdef \nomenentry {#3}
     \fi
   \fi
-  \edef \nomenlabel { \detokenize{#2} }
+  \edef \nomenlabel { \cs_to_str:N #2 }
   \ifx \empty \nomensort \tl_set:Nn \nomensort {#3} \fi
   \wspr_greek_trans:N \nomensort
 
@@ -169,8 +169,8 @@
      {\nomenlabel}
      {
 %      parent = \nomenparent,
-      text = \unexpanded { \ensuremath{#3} }, % used in text
-      name = \exp_not:V \nomenentry,          % used in glossary
+      text = \exp_not:n { \ensuremath{#3} }, % used in text
+      name = \exp_not:N \ensuremath { \exp_not:V \nomenentry },          % used in glossary
       sort = \nomensort,
       description = { \exp_not:V \nomennom },
      }
@@ -241,8 +241,6 @@
 \def\forceMagnet{\forceMag_m}
 \newvariable\stiffnessMag[nom={Magnitude of stiffness characteristic (derivative of force with respect to displacement)}]{K}
 \newvariable\forceVec[nom=Force vector]{\vect F}
-\newmvar\newvect\torque{T}{nom=Torque vector}
-\newmvar\newvect\lever{r}{nom=Lever arm vector}
 
 \newvariable\forceGrav[nom=Gravity force]{F_g}
 \newvariable\gravity[nom=Acceleration due to gravity]{g}
@@ -252,11 +250,9 @@
 
 \newcommand\equil{\text{eq}}
 
-\newmvar\newvect\displacement{x}{nom=Displacement vector}
-%\newvariable\pos[nom=Displacement vector]{\vect{x}}
-\let\pos\displacement
+\newvariable\pos[nom=Displacement vector]{\vect x}
+\newvariable\velocity[nom=Velocity vector]{\vect v}
 
-\newmvar\newvect\velocity{v}{nom=Velocity vector}
 \newvariable\natfreq[nom={Natural frequency, $\sqrt{\stiffness/\mass}$}]{\omega_n}
 \newvariable\resfreq[nom={Resonance frequency, $\natfreq\sqrt{1-\dampingratio^2}$}]{\omega_d}
 \newcommand\approaches{\rightarrow}
@@ -271,9 +267,9 @@
 \newvariable\Msat[nom=Magnetisation at saturation]{M_{\mathrm{sat}}}
 %\newvect\magflux{B}
 \let\magflux\magB
-\newmvar\newvect\magM{M}{nom=Magnetisation vector}
-\newmvar\newvect\magN{\hat M}{nom=Unit magnetisation vector}
-\newmvar\newvect\magJ{J}{nom=Current density vector}
+\newvariable\magM[nom=Magnetisation vector]{\vect M}
+\newvariable\magN[nom=Unit magnetisation vector, sort=\vect M]{\hat{\vect M}}
+\newvariable\magJ[nom=Current density vector]{\vect J}
 \newvariable\magJm[nom=Equivalent `surface current' vector due to magnetisation]{\vect J_m}
 \newvariable\magjm[nom=Differential `Surface current' due to magnetisation]{\vect j_m}
 
@@ -349,7 +345,7 @@
 
 \newvariable{\mdip}[nom=Magnetic dipole]{\vect m}
 \newvariable{\BHmax}[nom=Maximum energy product,sort=BHmax]{\ensuremath{\gp{BH}_{\mathrm{max}}}}
-\newmacro \bhcurve {$\magB$--$\magH$ curve}
+\newmacro \bhcurve {$B$$H$ curve}
 \newmacro \Hinf {\ensuremath{H^\infty}}
 
 %%%%%%%%%%%%%%%%
@@ -406,7 +402,7 @@
 
 \newvariable\massAbsorb[nom=Vibration neutraliser mass]{m_a}
 \newvariable\dispAbsorb[nom=Vibration neutraliser displacement]{x_a}
-\newvariable\respAbsorb[nom={Vibration neutraliser response, Laplace domain}]{X_a\fn{\s}}
+%\newvariable\respAbsorb[nom={Vibration neutraliser response, Laplace domain}]{X_a\fn{\s}}
 \newvariable\dampingAbsorb[nom=Damping coefficient of the vibration neutraliser]{c_a}
 \newvariable\stiffnessAbsorb[nom=Stiffness of the vibration neutraliser]{k_a}
 \newvariable\forceAbsorb[nom=Active force input for an inertial mass or vibration neutraliser]{f_a}
@@ -425,10 +421,9 @@
 \let\stiffnessRel\stiffness
 \newvariable\forceIn[nom=Force input]{f}
 \newvariable\laplaceForce[nom={Force input response, Laplace domain}]{F\fn{\s}}
-\newvariable\forceDisturb[nom=Force disturbance]{p}
-\newvariable\laplaceForceDisturb[nom={Force disturbance response, Laplace domain}]{P\fn{\s}}
+\newvariable\forceDisturb[nom=Force disturbance]{f_d}
 
-\newmvar\newfunc\transmissibility{T}[elem=\freq,index=1]{nom=Transmissibility,entry={T\fn{\freq}}}
+\newvariable\transmissibility[nom=Transmissibility,entry={T\fn{\s}, T\fn{\freq}}]{T}
 \newvariable\varianceGain[nom={Variance gain, alternative of transmissibility $\transmissibility$},entry=V\fn{\freq}]{V}
 \newvariable\Time[nom=Time]{t}
 \newvariable\period[nom=Period]{T}
@@ -473,8 +468,14 @@
 \newcommand\diffsurfMag{\diffsurface_\SuffixMagnet}
 \newcommand\diffvolMag{\diffvolume_\SuffixMagnet}
 
-\newmvar\newvect\distrMag{d}[headcmd=\boldsubs{1},elemcmd=\mlistelem,elem={\distr_1,\dista_1,\distz_1}]{nom={Position vector for magnet volume $\distrMag=\inlinevect{\distrMag{1},\distrMag{2},\distrMag{3}}$},entry={\vect d_1}}
-\newmvar\newvect\distrCoil{d}[headcmd=\boldsubs{2},elemcmd=\mlistelem,elem={\distr_2,\dista_2,\distz_2}]{nom={Position vector for differential coil volume in cylindrical coordinates, $\inlinevect{\distrCoil{1},\distrCoil{2},\distrCoil{3}}$},entry={\vect d_2}}
+\newmvar\newvect\distrMag{d}
+  [headcmd=\boldsubs{1},elemcmd=\mlistelem,elem={\distr_1,\dista_1,\distz_1}]
+  {nom={Position vector for differential magnet volume in cylindrical coordinates $\distrMag=\inlinevect{\distrMag{1},\distrMag{2},\distrMag{3}}$},
+   entry={\vect d_1}}
+\newmvar\newvect\distrCoil{d}
+  [headcmd=\boldsubs{2},elemcmd=\mlistelem,elem={\distr_2,\dista_2,\distz_2}]
+  {nom={Position vector for differential coil volume in cylindrical coordinates, $\distrCoil=\inlinevect{\distrCoil{1},\distrCoil{2},\distrCoil{3}}$},
+   entry={\vect d_2}}
 
 \newvariable\distr[nom={Radial component of distance vector in cylindrical coordinates}]{r}
 \newvariable\dista[nom={Angular component of distance vector in cylindrical coordinates}]{\phi}
@@ -712,14 +713,9 @@
 \newvariable\InertiaMomentMagnets[nom=Magnets moment of inertia]{\InertiaMoment_m}
 \newvariable\InertiaMomentTotal[nom=Total moment of inertia]{\InertiaMoment_t}
 
-%\newvariable\BlockInertiaLength[nom=Block length for calculating moment of inertia]{a}
-%\newvariable\BlockInertiaHeight[nom=Block height for calculating moment of inertia]{b}
-%\newvariable\BlockInertiaOffset[nom=Block offset for calculating moment of inertia]{d}
-%\newvariable\BlockInertiaMass[nom=Block mass for calculating moment of inertia]{m}
-
-\newvariable\MassBeam[nom=Beam mass]{m_b}
-\newvariable\MassBeamOuter[nom=Beam `outer' mass]{m_1}
-\newvariable\MassBeamInner[nom=Beam `inner' mass]{m_2}
+%\newvariable\MassBeam[nom=Beam mass]{m_b}
+%\newvariable\MassBeamOuter[nom=Beam `outer' mass]{m_1}
+%\newvariable\MassBeamInner[nom=Beam `inner' mass]{m_2}
 \newvariable\LengthBeam[nom=Beam length]{L_b}
 \newvariable\HeightBeam[nom=Beam height]{h_b}
 \newvariable\WidthBeam[nom=Beam width]{w_b}
@@ -733,7 +729,7 @@
 \newvariable\OriginMagGap[nom=Magnet gap]{ p_g }
 \newvariable\OriginQZS[nom=\QZS/ position]{p_q}
 
-\newvariable\MassRigMagnets[nom=Mass of the floating magnets and support]{m_m}
+%\newvariable\MassRigMagnets[nom=Mass of the floating magnets and support]{m_m}
 \newvariable\LengthRigMagnets[nom=Horizontal offset of the magnets support]{l_m}
 \newvariable\HeightRigMagnets[nom=Height of the magnets support]{h_m}
 \newvariable\HeightBuffer[nom=Height `buffer' to account for additional thicknesses]{h_{\epsilon}}
@@ -765,7 +761,7 @@
 %\newvariable\AngleMag[nom=Angle of the beam]{\theta}
 \newvariable\MomentMag[nom=Moment produced by the magnet forces]{M_\theta}
 \newvariable\ForceRigMagnets[nom=Force to the magnets]{F_x}
-\newvariable\EquivMassRig[nom=Equivalent mass of the beam]{m_e}
+%\newvariable\EquivMassRig[nom=Equivalent mass of the beam]{m_e}
 
 \newvariable\rigNormGap[nom=Normalised magnet gap]{g}
 
