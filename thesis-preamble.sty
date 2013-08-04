@@ -9,7 +9,9 @@
 \newcommand\code[1]{\texttt{#1}}
 \newcommand\note[1]{\unskip\footnote{#1}}
 \feetbelowfloat
-\setlength{\footmarkwidth}{1em}\setlength{\footmarksep}{0em}\setlength{\footparindent}{0em}
+\setlength{\footmarkwidth}{1.5em}
+\setlength{\footmarksep}{0em}
+\setlength{\footparindent}{0em}
 \footmarkstyle{#1.~}
 
 \DeclareRobustCommand\dash{%
@@ -474,7 +476,8 @@
 
 %%% LISTS
 \renewcommand*{\descriptionlabel}[1]{\hspace\labelsep\normalfont\itshape #1}
-\tightlists
+\firmlists*
+\renewcommand\labelitemi{\textbf{--}}
 
 
 \renewcommand \cftchapterfont   {\scshape}
