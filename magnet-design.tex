@@ -188,15 +188,15 @@ This simulation was performed on a magnetic system with \SI{10}{mm} cubes in ver
 The base magnet was excited with a sinusoidal input $\disturb$ at the vertical resonance of the system with a magnitude of \SI{1}{mm}.
 The dynamics were defined in the horizontal and vertical directions, \resp,~as
 \begin{gather}
-\mass \ddot {\disphoriz}\fn\Time + \damping \gp{\dot {\disphoriz}\fn\Time - \dot {\disturb}\fn\Time} - \forceMag_y\fn{0,\disphoriz\fn\Time-\disturb\fn\Time,\dispvert\fn\Time} + \gainDisp \gp{\disphoriz\fn\Time-\disturb\fn\Time} = 0 \,, \\
-\mass \ddot {\dispvert}\fn\Time + \damping \dot {\dispvert}\fn\Time - \forceMag_z\fn{0,\disphoriz\fn\Time-\disturb\fn\Time,\dispvert\fn\Time} + \mass \gravity = 0 \,,
+\mass \ddot {\disphoriz} + \damping \gp{\dot {\disphoriz} - \dot {\disturb}} - \forceMag_y\fn{0,\disphoriz-\disturb,\dispvert} + \gainDisp \gp{\disphoriz-\disturb} = 0 \,, \\
+\mass \ddot {\dispvert} + \damping \dot {\dispvert} - \forceMag_z\fn{0,\disphoriz-\disturb,\dispvert} + \mass \gravity = 0 \,,
 \end{gather}
 where $\forceMag_y\fn{x,y,z}$ and $\forceMag_z\fn{x,y,z}$ are the planar magnetic forces calculated with \eqref{akoun} due to displacement $\inlinevect{x,y,z}$, and $\gainDisp$ is the feedback gain on the relative horizontal displacement term.
 The (unstable) horizontal stiffness for this system was calculated as around \SI{-200}{N/m} and the displacement feedback gain was chosen as $\gainDisp=250$ to overcome the instability due to this.
 
 \begin{figure}[!b]
   \subbottom[Schematic.]{\asyinclude{\jobname/coupling}}\hfill
-  \subbottom[Displacement trace.]{\psfragfig{\jobname/coupling-oscillations}}
+  \subbottom[Relative displacement trace.]{\psfragfig{\jobname/coupling-oscillations}}
   \lofcaption{Oscillations over time of the displacement of a suspended magnet that is excited through horizontal vibrations of the base magnet.}{ The figure-eight trajectory shows that the horizontal vibration couples to the vertical forces.}
   \figlabel{coupling-oscillations}
 \end{figure}
@@ -213,21 +213,18 @@ shown in \figref{mag-couplingratio-equil}.
 
 \begin{figure}[b!]
 \begin{wide}
-  \begin{subfigure}
-  \psfragfig{\phdpath Simulations/Coupling/fig/mag-coupling-equil}
-  \caption{Equilibrium positions of a suspended magnet bearing a range of
-  masses varying with horizontal displacement.\figlabel{mag-coupling-equil}}
-  \end{subfigure}\hfil
-  \begin{subfigure}
-  \scalebox{1.05}{\psfragfig{\phdpath Simulations/Coupling/fig/mag-couplingratio-equil}}
-  \caption{Ratio of vertical to horizontal displacement (`coupling ratio') of
+  \subbottom[Equilibrium positions of a suspended magnet bearing a range of
+  masses varying with horizontal displacement.\figlabel{mag-coupling-equil}]
+  {\psfragfig{\jobname/mag-coupling-equil}}
+  \hfil
+  \subbottom[Ratio of vertical to horizontal displacement (`coupling ratio') of
   a suspended magnet bearing a range of masses varying with horizontal
-  displacement.\figlabel{mag-couplingratio-equil}}
-  \end{subfigure}
+  displacement.\figlabel{mag-couplingratio-equil}]
+  {\psfragfig{\jobname/mag-couplingratio-equil}}
 \end{wide}
   \lofcaption{
     Evaluating the coupling between horizontal offset and vertical forces.}{
-    The range of displacement is one quarter of the magnet width.
+    The range of displacement is one half of the magnet width.
   }
 \end{figure}
 
@@ -664,7 +661,7 @@ In this range, the rotation stiffness begins negative (as it is without any stab
     Plots are labelled in terms of the ratio $\leverArm_1/\leverArm_2$ between lever arm of the outer stabilising magnets and the inner strong magnets.
   }
   \figlabel{stablerot-length}
-  
+
 \begin{wide}
   \psfragfig{\phdpath magdof/fig/stablerot-sizes-all}
 \end{wide}
@@ -981,7 +978,7 @@ Only by evaluating a number of trial solutions for magnet angle and magnet offse
 \seclabel{stabl-3dof}
 
 In \secref{stabl-v}, the translational stiffness of the system in three directions was discussed in terms of a change in the vertical equilibrium position of the spring (\eg, corresponding to a variation in applied load).
-However, this is not enough to establish the global stability of the system due to cross-axis coupling and rotational affects that were not included as part of the model.
+However, this is not enough to establish the global stability of the system due to cross-axis coupling and rotational effects that were not included as part of the model.
 Here, the planar stability of the system will be investigated to attempt to provide some picture of the complex kinetics seen due to planar translation and rotation; the system is assumed to be constrained in a single plane for this analysis with geometry shown in \figref{mbq-angle-schem}.
 
 An analytical formulation for calculating the torques between two cuboid parallel magnets has recently been presented by \textcite{janssen2010-ietm}.
@@ -1118,13 +1115,13 @@ Stability results will be shown using perturbations of a dynamic simulation of t
 The equations of motion are defined as
 \begin{dgroup}[label=mbq-dyn]
 \begin{dmath}
-\mbqmass \mbqhacc \fn\Time = \mbqhforce\fn{\mbqhdisp\fn\Time,\mbqvdisp\fn\Time,\mbqrotz\fn\Time} - \mbqhdamp \mbqhvel \fn\Time
+\mbqmass \mbqhacc = \mbqhforce\fn{\mbqhdisp,\mbqvdisp,\mbqrotz} - \mbqhdamp \mbqhvel
 \end{dmath},
 \begin{dmath}
-\mbqmass \mbqvacc \fn\Time = \mbqvforce\fn{\mbqhdisp\fn\Time,\mbqvdisp\fn\Time,\mbqrotz\fn\Time} - \mbqvdamp \mbqvvel \fn\Time -\mbqmass \gravity
+\mbqmass \mbqvacc = \mbqvforce\fn{\mbqhdisp,\mbqvdisp,\mbqrotz} - \mbqvdamp \mbqvvel  -\mbqmass \gravity
 \end{dmath},
 \begin{dmath}
-\mbqmomentofinertia \mbqaccrotz \fn\Time = \mbqptorque\fn{\mbqhdisp\fn\Time,\mbqvdisp\fn\Time,\mbqrotz\fn\Time} - \mbqzrotdamp \mbqvelrotz \fn\Time
+\mbqmomentofinertia \mbqaccrotz = \mbqptorque\fn{\mbqhdisp,\mbqvdisp,\mbqrotz} - \mbqzrotdamp \mbqvelrotz
 \end{dmath},
 \end{dgroup}
 for which a time-domain solution was produced numerically with a Runge-Kutta technique (Matlab's \texttt{ode45} function). Viscous damping terms $\mbqhdamp$, $\mbqvdamp$, and $\mbqzrotdamp$ account for energy loss in the system.

@@ -179,7 +179,7 @@
 \EndPreamble
 
 
-\RequirePackage{csquotes}
+\RequirePackage[style=british]{csquotes}
 \MakeOuterQuote{"}
 
 %% Hyperref
@@ -224,6 +224,27 @@
 \bibliography{journals,phd,ARK}
 \renewbibmacro*{in:}{}% remove "In: " before the journal title
 \AtBeginDocument{\renewcommand\bibname{References}}
+
+% bibtex default to apply SENTENCE CASE to bib titles
+\DeclareFieldFormat{sentencecase}{\MakeSentenceCase{#1}}
+
+\renewbibmacro*{title}{%
+  \ifthenelse{\iffieldundef{title}\AND\iffieldundef{subtitle}}
+    {}
+    {\ifthenelse{\ifentrytype{article}\OR\ifentrytype{inbook}%
+      \OR\ifentrytype{incollection}\OR\ifentrytype{inproceedings}%
+      \OR\ifentrytype{inreference}}
+      {\printtext[title]{%
+        \printfield[sentencecase]{title}%
+        \setunit{\subtitlepunct}%
+        \printfield[sentencecase]{subtitle}}}%
+      {\printtext[title]{%
+        \printfield[sentencecase]{title}%
+        \setunit{\subtitlepunct}%
+        \printfield[sentencecase]{subtitle}}}%
+     \newunit}%
+  \printfield{titleaddon}}
+
 
 \def\nobreakbefore{%
   \relax\ifvmode\else

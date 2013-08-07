@@ -87,16 +87,17 @@ The shell method and the first integral method were developed as part of the cur
 \seclabel{filament-method}
 
 For two circular coaxial loops (\ie, a single turn of a solenoid) carrying currents $\current_1$ and $\current_2$ respectively,
-the axial force between them is given by~\cite[\eg,][]{shiri2009-pier}
+the axial force between them is given by \cite{shiri2009-pier}
 \begin{dmath}[label=coaxial-filament]
 \forceFilament\fn{\radius_1,\radius_2,\dispaxial}=\permVac \current_1 \current_2 \dispaxial \sqrt{\frac{m}{4\radius_1\radius_2}}\gp{\EllipticK{m}-\frac{m/2-1}{m-1}\EllipticE{m}}
-\end{dmath}
+\end{dmath},
+where
 \begin{dmath}[label=coaxial-filament-aux]
 m=\frac{4\radius_1\radius_2}{\gp{\radius_1+\radius_2}^2+\dispaxial^2}
-\end{dmath}
-where $\radius_1$ and $\radius_2$ are the coil radii and $\dispaxial$ is the axial distance between them. The functions $\EllipticK{m}$ and $\EllipticE{m}$ are the complete first and second elliptic integrals respectively with parameter $m$. These functions can also be referred to elsewhere with notation $\EllipticK{k}$ and $\EllipticE{k}$ in terms of a modulus $k$, where $m=k^2$.
+\end{dmath},
+where $\radius_1$ and $\radius_2$ are the coil radii and $\dispaxial$ is the axial distance between the coils. The functions $\EllipticK{m}$ and $\EllipticE{m}$ are the complete first and second elliptic integrals, \resp, with parameter $m$. These functions are also referred to elsewhere in the literature with notation $\EllipticK{k}$ and $\EllipticE{k}$ in terms of the modulus~$k$, where $m=k^2$.
 
-Using the `filament method', \eqref{coaxial-filament,coaxial-filament-aux} can be used to calculate the force between any arrangement of coaxial solenoids by representing each turn of the solenoid as a separate coil, and summing the forces through superposition for every pair-wise combination of coil interaction forces \cite[\eg,][]{babic2008-ietm,akyel2009-pier}.
+Using the `filament method' \cite[\eg,][]{babic2008-ietm,akyel2009-pier}, \eqref{coaxial-filament,coaxial-filament-aux} can be used to calculate the force between any arrangement of coaxial solenoids by representing each turn of the solenoid as a separate coil, and summing the forces through superposition for every pair-wise combination of coil interaction forces.
 \figref{filament-shell} shows such a filament model for the interaction between a thin coil (representing a permanent magnet) and a thick coil.
 Using this technique, the total force between them is given by
 \begin{dgroup}
@@ -320,7 +321,7 @@ The discrepancy due to the discretisation of the filament model is larger here t
 
 The four methods compared in \figref{magcoil-thickthin-compare} all use different algorithms, and their execution speed varies significantly as a result.
 The shell method is more efficient than the filament method, since its execution time is linear with the number of radial layers of turns $\turnsRCoil$ due to the presence of only a single summation term in its equation.
-The filament method is the slowest to execute of the four methods, as it has computation time proportional to $\turnsZCoil \times \turnsRCoil\times \turnsZMag$, which is approximately cubic with the number of turns in total.
+The filament method is the slowest to execute of the four methods, as it has computation time proportional to $\turnsZCoil \times \turnsRCoil\times \turnsZMag$, which is approximately cubic with the number of turns in~total.
 
 Of the integral and Babic methods (\eqref{cylforcez,babicforce} \resp), for calculations requiring less stringent accuracy (say, to four significant figures precision) it is more efficient to use the integral method due to the mathematical complexity of the latter, despite it requiring a lesser amount of numerical integration.
 This is illustrated in \figref{magcoil-prec-timing}, in which it can be seen that increasing the integration precision when performing calculations using Mathematica causes the time for numerical evaluation of the integral to increase exponentially, whereas the `Babic' method has a constant execution speed as its single term requiring numerical integration is only a small component of the overall equation.
@@ -384,7 +385,7 @@ Under eccentric displacement in the radial direction, the limits of integration 
 \asyinclude{\jobname/circle-offset}
 \caption
 [Region of integration for a radially displaced magnet.]
-{Region of integration for a radially displaced magnet, shifted by $\smash{\matr{}{\xi;\eta}}$ from the original coordinate system.}
+{Region of integration for a radially displaced magnet, shifted by $\inlinevect{\xi,\eta}$ from the original coordinate system.}
 \figlabel{int-offset}
 \end{figure}
 
@@ -417,12 +418,12 @@ Accordingly, after rederiving the integral, the axial force due to both axial an
 where the intermediate term is
 \def\P{\distrMag{2}}
 \begin{dmath}
-f_{c_4}=\gp{1-\frac{\m1}{2}}
-      \EllipticK{\m1}-\EllipticE{\m1}
+f_{c_4}=\gp{1-\frac{m}{2}}
+      \EllipticK{m}-\EllipticE{m}
 \end{dmath},
 with parameters
 \begin{align}
-\m1&=\frac{4 \distrMag{1} \distrCoil{1}}{\m2^2}, &
+m &= \frac{4 \distrMag{1} \distrCoil{1}}{\m2^2}, &
 \m2^2 &= \gp{\distrMag{1}+\distrCoil{1}}^2+\gp{\dispaxial+\half e_1\lengthMag-\distrCoil{3}}^2 .
 \end{align}
 Due to the additional numerical integral that must be evaluated when using \eqref{cylforcez-ecc}, it is approximately an order of magnitude slower to calculate than \eqref{cylforcez}.
@@ -434,16 +435,16 @@ However, it is believed that their work is incorrect as the results produced fro
 
 The non-coaxial filamentary coil force in the axial direction for eccentric (radial) displacement $\dispradial$ is taken from the third special case given by Babic and Aykel~\cite{babic2011-ietm-incl-coil}, adapted:
 \begin{dmath}[label=eccfilament]
-\forceFilament\fn{\radius_1,\radius_2,\dispaxial,\dispradial} = \frac{\permVac \dispaxial \radius_2 \current_1 \current_2}{4\pi}
+\forceFilament\fn{\radius_1,\radius_2,\dispaxial,\dispradial} = \frac{\permVac}{4\pi} \current_1 \current_2 \radius_2 \dispaxial 
 \Integrate{
-  \frac{m_2}{v} \Sin{\theta-t} \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
+  \frac{m_2}{v} \Cos{\theta+t} \gp{ 2\EllipticK{m} - \EllipticE{m}\frac{2-m}{1-m} }
 }{t,0,2\pi}
 \end{dmath},
 where
 \begin{gather}
 m = 4 \radius_1 v m_2^2 , \quad
 m_2 = \gp{\gp{\radius_1+v}^2+\dispaxial^2}^{-1/2}, \quad
-\theta = \ArcTan{y/x},
+\theta = \ArcTan{y,x},
 \notag\\
 v = \sqrt{x^2+y^2},\quad
 x = \dispradial - r_2\Sin{t} ,\quad  y = r_2\Cos{t} .
@@ -470,11 +471,10 @@ This result indicates that decreasing the air gap between the coil and magnet as
 \begin{subfigure}
 \hspace*{-1.5cm}%
 \psfragfig{magcode/examples/fig/ecc-compare}
-\lofcaption{
-  Comparison of the filament and integral methods for calculating eccentric thick coil--magnet forces.}{ Due to discretisation in the filament method the results vary near their extremum.
-  \figlabel{magcoil-ecc-compare}
+\caption{
+  Comparison of the filament and integral methods for calculating eccentric thick coil--magnet forces.\figlabel{magcoil-ecc-compare}
 }
-\end{subfigure}\hfil\hfil
+\end{subfigure}\hfil
 \begin{subfigure}
 \hspace*{-1.5cm}%
 \psfragfig{magcode/examples/fig/ecc-vary}
@@ -578,7 +578,7 @@ For simplicity, in the examples to follow the metric to be maximised is chosen t
 
 \begin{figure}
 \begin{wide}
-\subbottom[Varying magnet ratio $\ratioMag$ for a fixed coil ratio $\ratioCoil=1$.]{\minibox[c]{\psfragfig{magcode/examples/fig/magcoil-magratio}\\[0.5ex] \qquad\footnotesize Displacement, mm\\[1.5ex]}}\quad
+\subbottom[Varying magnet ratio $\ratioMag$ for a fixed coil ratio $\ratioCoil=1$.]{\hspace{-1.3cm}\minibox[c]{\psfragfig{magcode/examples/fig/magcoil-magratio}\\[0.5ex] \qquad\footnotesize Displacement, mm\\[1.5ex]}}\quad
 \subbottom[Varying coil ratio $\ratioCoil$ for a fixed magnet ratio $\ratioMag=2$.]{\minibox{\psfragfig{magcode/examples/fig/magcoil-coilratio}}}
 \end{wide}
 \caption
@@ -796,7 +796,7 @@ This analysis does not take into account the effects of coil inductance or eddy 
 The self-inductance of the coils governs the dynamics of the electric system only (the relationship between current and voltage), and eddy current drag is governed by the mutual inductance of the electromagnetic system.
 With new developments in this field allowing the analytical calculation of these parameters for cylindrical geometries \parencite{luo2013-ietm,babic2012-conf}, it is proposed for future work that these inductance effects be incorporated into the cost function for developing optimum electromagnetic actuator designs.
 
-\begin{table}
+\begin{table}[h]
 \lofcaption
   {
     Explicit and implicit parameters for the dual-coil example.}

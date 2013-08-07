@@ -817,6 +817,17 @@ may be applied over variations in magnet gap.
 \subsection{Design criteria}
 \seclabel{cons}
 
+\begin{figure}[t]
+  \psfragfig{PhD/Writings/QZS/fig/heq-map}
+  \caption
+  [Map of the normalised equilibrium position over varying
+    magnet size and normalised magnet gap.]
+  {Map of the normalised equilibrium position $\heq{}$ over varying
+    magnet size $\mdim$ and normalised magnet gap $\ngap$ for a system
+    with mass $\mass=\SI{0.5}{kg}$.}
+  \figlabel{heq-map}
+\end{figure}
+
 In the previous section, a magnetic system was introduced with an exact
 expression and various approximations for calculating the force \vs\  displacement
 characteristics for a range of system designs. It is proposed that this system is
@@ -836,17 +847,6 @@ A positive displacement of the mass ($\ndispZ\ge0$) is unstable, and so
 \eqref{eq} must be solved such that $\heq{}<0$. \Figref{heq-map}
 shows the equilibrium position $\heq{}$ varying over $\mdim$ and $\ngap$ for a
 system of mass $\mass=\SI{0.5}{kg}$.
-
-\begin{figure}
-  \psfragfig{PhD/Writings/QZS/fig/heq-map}
-  \caption
-  [Map of the normalised equilibrium position over varying
-    magnet size and normalised magnet gap.]
-  {Map of the normalised equilibrium position $\heq{}$ over varying
-    magnet size $\mdim$ and normalised magnet gap $\ngap$ for a system
-    with mass $\mass=\SI{0.5}{kg}$.}
-  \figlabel{heq-map}
-\end{figure}
 
 The normalised equilibrium position $\heq{}$ of a mass can be approximated
 from the polynomial fits of the force curve by equating, \eg, \eqref{quartic}
@@ -885,21 +885,19 @@ required to support larger loads.
 \end{figure}
 
 \begin{figure}
-  \centerline{
+  \begin{wide}
     {\psfragfig{PhD/Writings/QZS/fig/cons-strongN1}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-strongN2}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-strongN3}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-strongNall}}
-    }
+  \end{wide}
   \caption
   [Regions of $\mdim$ and $\ngap$ satisfying
     the static deflection criterion.]
   {
     Regions of $\mdim$ and $\ngap$ satisfying
     the static deflection criterion
-    of \eqref{strong} for a range of masses.
-    Darker sections denote overlap of the
-    regions in the overlay plot.}
+    of \eqref{strong} for a range of masses.}
   \figlabel{cons-strong}
 \end{figure}
 
@@ -918,18 +916,17 @@ This criterion is shown for a range of desired nominal stiffnesses in
 \figref{cons-soft}. As the resonance frequency decreases, larger
 magnets are required to support the load with a small force gradient.
 
-\begin{figure}
-  \centerline{
+\begin{figure}[h]
+  \begin{wide}
     {\psfragfig{PhD/Writings/QZS/fig/cons-softN1}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-softN2}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-softN3}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-softNall}}
-    }
+  \end{wide}
 \caption[Regions of $\mdim$ and $\ngap$ satisfying the resonance frequency
   criterion.]{Regions of $\mdim$ and $\ngap$ satisfying the resonance frequency
   criterion of \eqref{soft} for a range of allowable resonance frequencies and a
-  mass $\mass=\SI{0.5}{kg}$. Darker sections denote overlap of the
-  regions in the overlay plot.}
+  mass $\mass=\SI{0.5}{kg}$.}
   \figlabel{cons-soft}
 \end{figure}
 
@@ -954,19 +951,18 @@ system. The maximum displacement criterion, shown in \figref{cons-saturate} as
 a region over the parameters $\mdim$ and $\ngap$ for a range of
 $\dmax$, limits the lower size of the magnet.
 
-\begin{figure}
-  \centerline{
+\begin{figure}[htbp]
+  \begin{wide}
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateN1}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateN2}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateN3}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateNall}}
-    }
+  \end{wide}
   \caption[Regions of $\mdim$ and $\ngap$ satisfying the
     maximum displacement criterion.]{Regions of $\mdim$ and $\ngap$ satisfying the
     maximum displacement criterion
     of \eqref{saturate} for a range of disturbance
-    displacements $\dmax$ and a mass $\mass=\SI{0.5}{kg}$. Darker
-    sections denote overlap of the regions in the overlay plot.}
+    displacements $\dmax$ and a mass $\mass=\SI{0.5}{kg}$.}
   \figlabel{cons-saturate}
 \end{figure}
 
@@ -979,16 +975,18 @@ with the same symbol.
 The stability criterion is governed by two parameters, $\dmax$ and
 $\dmin$, which are varied in \figref{cons-stable-1,cons-stable-2}
 respectively. Again, this criterion only has a small effect on the
-constraint region, but it is an important effect. Because the stability
+constraint region, but it is an important one. Because the stability
 criterion limits the minimum distance between the \qzs/ position and the
 equilibrium position, this prevents the spring from reaching the very
 low equilibrium stiffnesses found just below the \qzs/ position.
 
-\begin{figure}
-  \centerline{{\psfragfig{PhD/Writings/QZS/fig/cons-stableN1-1}}
+\begin{figure}[htbp]
+  \begin{wide}
+    {\psfragfig{PhD/Writings/QZS/fig/cons-stableN1-1}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN2-1}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN3-1}}
-         {\psfragfig{PhD/Writings/QZS/fig/cons-stableNall-1}}}
+         {\psfragfig{PhD/Writings/QZS/fig/cons-stableNall-1}}
+  \end{wide}
 \caption[Regions of $\mdim$ and $\ngap$ satisfying the
   the stability criterion.]{Regions of $\mdim$ and $\ngap$ satisfying the
   the stability criterion of \eqref{stable} for a range of normalised displacement
@@ -997,11 +995,13 @@ low equilibrium stiffnesses found just below the \qzs/ position.
   \figlabel{cons-stable-1}
 \end{figure}
 
-\begin{figure}
-  \centerline{{\psfragfig{PhD/Writings/QZS/fig/cons-stableN1-2}}
+\begin{figure}[htbp]
+  \begin{wide}
+  {\psfragfig{PhD/Writings/QZS/fig/cons-stableN1-2}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN2-2}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN3-2}}
-         {\psfragfig{PhD/Writings/QZS/fig/cons-stableNall-2}}}
+         {\psfragfig{PhD/Writings/QZS/fig/cons-stableNall-2}}
+  \end{wide}
 \caption[Region of $\mdim$ and $\ngap$ satisfying the stability criterion.]{Region of $\mdim$, $\ngap$ satisfying the stability criterion
   of \eqref{stable} for a range of disturbance displacements $\dmax$
   and a normalised displacement tolerance $\dmin=\num{0.1}$. Darker
@@ -1175,27 +1175,7 @@ highly model-dependent, the damping ratio $\dampingratio=0.5\damping/\sqrt{\keq{
 small damping forces due to eddy current and air resistance effects
 \cite{fung2005,bonisoli2006,nijsse2001}.
 
-\Figref{nl} shows the steady state response of \eqref{response} for a range of
-peak-to-peak ground disturbance amplitudes in increments of \SI{0.2}{mm} up to $\ampExcite=\SI{1}{mm}$.
-Because the excitation is at resonance, the output displacement is greater
-than the input displacement. The phase plot of the response becomes
-increasingly skewed as the amplitude of vibration, and hence the nonlinearity ratio,
-increases.
-Physically, this is interpreted as the spring being perturbed
-further into the stiffer region as the mass is moved closer to the repulsive
-lower magnet, which results in stronger forces as the normalised displacement
-increases. Conversely, as the mass moves upwards, closer to the \qzs/
-position, the stiffness and force both decrease.
-
-The results shown in \figref{nl} indicate that for small magnitude
-disturbances the phase plot is very similar to a linear system.
-As the amplitude increases, the
-nonlinear system response increases at a slower rate than the linear
-spring. This slowdown is due to a
-shifting of the resonance peak as the nonlinearity ratio increases, as
-will be seen later in this section.
-
-\begin{figure}
+\begin{figure}[b!]
   \parbox[c]{0.5\textwidth}{\psfragfig{PhD/Writings/QZS/fig/nl}}
   \hfill
   \parbox[c]{0.4\textwidth}{
@@ -1217,6 +1197,26 @@ will be seen later in this section.
   \figlabel{nl}
 \end{figure}
 
+\Figref{nl} shows the steady state response of \eqref{response} for a range of
+peak-to-peak ground disturbance amplitudes in increments of \SI{0.2}{mm} up to $\ampExcite=\SI{1}{mm}$.
+Because the excitation is at resonance, the output displacement is greater
+than the input displacement. The phase plot of the response becomes
+increasingly skewed as the amplitude of vibration, and hence the nonlinearity ratio,
+increases.
+Physically, this is interpreted as the spring being perturbed
+further into the stiffer region as the mass is moved closer to the repulsive
+lower magnet, which results in stronger forces as the normalised displacement
+increases. Conversely, as the mass moves upwards, closer to the \qzs/
+position, the stiffness and force both decrease.
+
+The results shown in \figref{nl} indicate that for small magnitude
+disturbances the phase plot is very similar to a linear system.
+As the amplitude increases, the
+nonlinear system response increases at a slower rate than the linear
+spring. This slowdown is due to a
+shifting of the resonance peak as the nonlinearity ratio increases, as
+will be seen later in this section.
+
 It is important to consider the role of damping in the results shown
 in \figref{nl}. A low damping coefficient results in a greater
 displacement response at resonance in the low frequency range. This increase in the
@@ -1233,19 +1233,7 @@ As previously discussed, skyhook damping is
 especially suitable for this purpose because the isolation region of
 the frequency response is not affected \secref*[vref]{skyhook-intro}.
 
-\Figref{variance-amp} shows the variance gain (\secref*[vref]{variance-gain}) for a magnetic system with
-$\mass=\SI{0.5}{kg}$, $\mdim=\SI{20}{mm}$, and $\ngap=2.8$ with excitation
-amplitude ranging from \SI{0.1}{mm} to \SI{0.5}{mm}. With these parameters, the
-equilibrium position is \SI{1.55}{mm} below the \qzs/ position. As seen
-in the figure, the greater the excitation amplitude, the greater the softening
-nonlinearity of the spring.
-One particular aspect of the nonlinearity which can be seen is the `snap-through' phenomenon at the resonance peak; this is a common feature of such nonlinear systems in general \cite{dangola2006}, shown particularly clearly in the experiments of \textcite{bonisoli2007-mrc} for a magnetic spring exhibiting a hardening nonlinearity.
-
-\Tabref{variance-amp} shows some data from the simulated responses, including the maximum displacement of the spring towards the \qzs/ position, and the nonlinearity measures $\nk$ for each amplitude of excitation.
-The maximum displacement $x_{\text{max}}$ corresponds with the maximum normalised displacement $\ndispZ_{\text{max}}$ shown in \figref{heq};
-as $\ndispZ_{\text{max}}$ tends towards zero, the motion of the magnetic spring moves closer to the \qzs/ position. Note that the pronounced nonlinearity seen in \figref{variance-amp} belongs to a system that is approaching its bounds of stability, reaching \SI{0.24}{mm} below the \qzs/ position in its most extreme displacement.
-
-\begin{figure}\centering
+\begin{figure}
 \let\labelsize\footnotesize
 \psfragfig{PhD/Writings/QZS/fig/variance-amp-crop}
 \caption
@@ -1261,9 +1249,7 @@ be clearly seen as the amplitude increases.}
   [Nonlinearity values and maximum displacements of the responses.]
   {Nonlinearity values, $\nk$, and maximum displacements, $x_{\text{max}}$,
 of the responses shown in \figref{variance-amp}. The equilibrium stiffness is
-$\keq{}=\SI{46.6}{N/m}$. The nonlinearity can be seen to increase with excitation
-amplitude. In the most extreme case, the magnetic system departs \SI{0.24}{mm}
-from the \qzs/ position.}
+$\keq{}=\SI{46.6}{N/m}$.}
 \tablabel{variance-amp}
 \begin{tabular}{@{}cccc@{}}
 \toprule
@@ -1276,16 +1262,7 @@ $\ampExcite$, mm & $\Delta \magstiffnessZ{}$, \si{N/m} & $x_{\text{max}}$, mm & 
 \end{tabular}
 \end{table}
 
-\Figref{variance-gaps} shows the variance gain of the same system as the magnet gap
-$\ngap$ is increased. Results are shown for excitations of both $\ampExcite=\SI{0.1}{mm}$
-and $\ampExcite=\SI{0.5}{mm}$. Data for the simulations with $\ampExcite=\SI{0.5}{mm}$, including
-nonlinearity measure $\nk$ and maximum displacement $x_{\text{max}}$, are shown in
-\tabref{variance-gaps}. Two related features are important to note from \figref{variance-gaps}.
-The first is the large decrease in resonance frequency as the magnet gap decreases. The second
-is the corresponding increase in nonlinear behaviour as this occurs, seen with both a snap-through resonance and a superharmonic-like behaviour at twice the resonance frequency.
-As the equilibrium position moves away from the instability at \qzs/, the variance gain quickly exhibits linear behaviour.
-
-\begin{figure}\centering
+\begin{figure}
 \let\labelsize\footnotesize
 \psfragfig{\jobname/variance-gaps}
 \caption
@@ -1318,6 +1295,27 @@ $\ngap$ & $\keq{}$, \si{N/m} & $\Delta \magstiffnessZ{}$, \si{N/m} & $x_{\text{m
 \bottomrule
 \end{tabular}
 \end{table}
+
+\Figref{variance-amp} shows the variance gain (\secref*[vref]{variance-gain}) for a magnetic system with
+$\mass=\SI{0.5}{kg}$, $\mdim=\SI{20}{mm}$, and $\ngap=2.8$ with excitation
+amplitude ranging from \SI{0.1}{mm} to \SI{0.5}{mm}. With these parameters, the
+equilibrium position is \SI{1.55}{mm} below the \qzs/ position. As seen
+in the figure, the greater the excitation amplitude, the greater the softening
+nonlinearity of the spring.
+One particular aspect of the nonlinearity which can be seen is the `snap-through' phenomenon at the resonance peak; this is a common feature of such nonlinear systems in general \cite{dangola2006}, shown particularly clearly in the experiments of \textcite{bonisoli2007-mrc} for a magnetic spring exhibiting a hardening nonlinearity.
+
+\Tabref{variance-amp} shows some data from the simulated responses, including the maximum displacement of the spring towards the \qzs/ position, and the nonlinearity measures $\nk$ for each amplitude of excitation.
+The maximum displacement $x_{\text{max}}$ corresponds with the maximum normalised displacement $\ndispZ_{\text{max}}$ shown in \figref{heq};
+as $\ndispZ_{\text{max}}$ tends towards zero, the motion of the magnetic spring moves closer to the \qzs/ position. Note that the pronounced nonlinearity seen in \figref{variance-amp} belongs to a system that is approaching its bounds of stability, reaching \SI{0.24}{mm} below the \qzs/ position in its most extreme displacement.
+
+\Figref{variance-gaps} shows the variance gain of the same system as the magnet gap
+$\ngap$ is increased. Results are shown for excitations of both $\ampExcite=\SI{0.1}{mm}$
+and $\ampExcite=\SI{0.5}{mm}$. Data for the simulations with $\ampExcite=\SI{0.5}{mm}$, including
+nonlinearity measure $\nk$ and maximum displacement $x_{\text{max}}$, are shown in
+\tabref{variance-gaps}. Two related features are important to note from \figref{variance-gaps}.
+The first is the large decrease in resonance frequency as the magnet gap decreases. The second
+is the corresponding increase in nonlinear behaviour as this occurs, seen with both a snap-through resonance and a superharmonic-like behaviour at twice the resonance frequency.
+As the equilibrium position moves away from the instability at \qzs/, the variance gain quickly exhibits linear behaviour.
 
 \subsection{Summary of magnetic \qzs/ design}
 \seclabel{end}

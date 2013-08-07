@@ -485,12 +485,12 @@ An alternate `nonlinear transmissibility' analysis of the measurements is perfor
 \begin{figure}
   \begin{wide}
   \begin{subfigure}
-  \centerline{\psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frflin}}
+  \hspace*{-1cm}\psfragfig{PhD/Experiments/XPMT/latex/ol-undamped-frflin}
   \caption{Open circuit coil; no additional damping is added to the system.\figlabel{ol-undamped-frflin}}
   \end{subfigure}
-  \hfil
+  \qquad\qquad
   \begin{subfigure}
-  \centerline{\psfragfig{PhD/Experiments/XPMT/latex/ol-damped-frflin}}
+  \hspace*{-1cm}\psfragfig{PhD/Experiments/XPMT/latex/ol-damped-frflin}
   \caption
   {Closed circuit coil.
            The coil adds damping to the system, which can
@@ -640,19 +640,9 @@ The resonance at \SI{1}{Hz} observed in \figref{cl-results} as the feedback gain
 
 \begin{figure}
   \psfragfig{PhD/Experiments/XPMT/latex/cl-reduction-2}
-  \caption[{Transmissiblity reduction for increased velocity feedback gain.}]{Affect on overall transmissiblity $\RMSof{\transmissibility}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
+  \caption[{Transmissiblity reduction for increased velocity feedback gain.}]{Effect on overall transmissiblity $\RMSof{\transmissibility}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
   \figlabel{cl-reduction}
 \end{figure}
-
-\subsubsection{On the feedback gain magnitude}
-
-\Figref{cl-results,cl-reduction}
-plot results in terms of a `feedback gain' given in dimensionless units. This
-gain is the multiplier from the controller on the velocity signal that also
-incorporates the effects of the amplifiers for both sensors and actuators;
-therefore, the absolute magnitude of this number is unimportant and is used
-purely to demonstrate the range of behaviours seen as the gain is increased
-until instability appears.
 
 \subsection{Analysis of the gain-induced resonance}
 \seclabel{acc-resonance}
@@ -663,22 +653,6 @@ incorporated in the accelerometer charge amplifier.
 This behaviour has been shown previously for single \dof/ structures with velocity feedback \parencite{brennan2007-jsv}.
 Here, the same type of analysis will be used to investigate the response of a linear vibration isolation
 system (shown in \figref{vibration-base-feedback}) with integrated accelerometer measurements used for velocity feedback control.
-
-\begin{figure}
-\begin{wide}
-\begin{minipage}[b]{0.4\linewidth}\centering
-  \asyinclude{\jobname/vibration-base-feedback}
-  \caption{Vibration isolation schematic with active feedback.}
-  \figlabel{vibration-base-feedback}
-\end{minipage}\qquad
-\begin{minipage}[b]{0.5\linewidth}\centering
-  \asyinclude{\jobname/simple-isolator-block}
-  \caption{Block diagram of \eqref{simple-isolator-laplace} representing
-  the system shown in \figref{vibration-base-feedback}.}
-  \figlabel{simple-isolator-block}
-\end{minipage}
-\end{wide}
-\end{figure}
 
 
 In the time domain, the response of this linear system is given by
@@ -718,6 +692,23 @@ the controller block is defined as
 where $\gainSkyhook$ is the absolute velocity feedback gain and $\freqHPfilter$ is the corner frequency
 of the two high pass filters in the charge amplifier.
 
+\begin{figure}[t]
+\begin{wide}
+\hspace{-1cm}
+\begin{minipage}[b]{0.4\linewidth}\centering
+  \asyinclude{\jobname/vibration-base-feedback}
+  \caption{Vibration isolation schematic with active feedback.}
+  \figlabel{vibration-base-feedback}
+\end{minipage}\qquad
+\begin{minipage}[b]{0.5\linewidth}\centering
+  \asyinclude{\jobname/simple-isolator-block}
+  \caption{Block diagram of \eqref{simple-isolator-laplace} representing
+  the system shown in \figref{vibration-base-feedback}.}
+  \figlabel{simple-isolator-block}
+\end{minipage}
+\end{wide}
+\end{figure}
+
 Using \eqref{cl-filter-controller} in \eqref{cl-generic} gives
 the final transfer function between the mass and base states,
 \begin{dmath}[label=cl-filter]
@@ -744,7 +735,15 @@ $\Imag{\BlockController\Block[2]}=0$; this frequency was then substituted into
 $\Real{\BlockController\Block[2]}=-1$, which was solved for $\gainSkyhook$ to find
 the gain margin.
 
-\begin{figure}[!htbp]
+Comparing the simulated results of \figref{cl-filter} with the experimental results of \figref{cl-results} shows a clear similarity between the two.
+The corner frequency of the high pass filter at \SI{1}{Hz} in the
+charge amplifier to measure velocity is an impediment to the vibration
+isolation properties of the feedback-controlled system.
+This is a fundamental limitation in the use of accelerometers for estimating velocity for vibration control.
+To avoid this issue, the use of geophone sensors which measure velocity directly (such as used by \textcite{hong2010-rsi}) are a promising alternative to integrated accelerometer measurements.
+However, geophones are not a panacea since their response rolls off at low frequencies, limiting their performance at the frequency range of interest in this case.
+
+\begin{figure}[t]
   \begin{wide}
   \begin{subfigure}
     \psfragfig{\phdpath Simulations/Springs/fig/cl-ideal}
@@ -760,14 +759,6 @@ the gain margin.
   [Closed loop simulation with increasing gain before instability.]
   {Closed loop simulation with gains $\{0, 5, 10, 20, 50, 99\}$ percent of the gain margin in \figref{cl-filter}.}
 \end{figure}
-
-Comparing the simulated results of \figref{cl-filter} with the experimental results of \figref{cl-results} shows a clear similarity between the two.
-The corner frequency of the high pass filter at \SI{1}{Hz} in the
-charge amplifier to measure velocity is an impediment to the vibration
-isolation properties of the feedback-controlled system.
-This is a fundamental limitation in the use of accelerometers for estimating velocity for vibration control.
-To avoid this issue, the use of geophone sensors which measure velocity directly (such as used by \textcite{hong2010-rsi}) are a promising alternative to integrated accelerometer measurements.
-However, geophones are not a panacea since their response rolls off at low frequencies, limiting their performance at the frequency range of interest in this case.
 
 \section{Conclusion on the experimental results}
 

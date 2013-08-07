@@ -79,7 +79,7 @@ As systems approach \qzs/, their vibration isolation improves as the resonance f
 Operation at the \qzs/ position is not possible as the system is, at best, only marginally stable, and the system must be tuned (based on the applied loading) as close to the \qzs/ position as possible to achieve best results.
 
 Certain magnetic systems are not the only ones to exhibit \qzs/, as will be examined in more detail in \secref{qzs-explore}.
-The phenomenon was first proposed using inclined springs to achieve negative stiffness with a `snap-through' effect.
+The phenomenon was first proposed using inclined springs to achieve negative stiffness with a `snap-through' mechanism.
 Magnets are more convenient in many ways than inclined or buckling springs in that the negative stiffness can be applied directly without having to exploit the byproduct of a mechanical spring or linkage arrangement, which can be more bulky.
 
 Active control systems can be used with \qzs/ systems to improve their performance in one of three ways:
@@ -188,7 +188,9 @@ The dynamic response of the isolated mass $\mass$ is
 \end{dmath}.
 First assume that there is no input force; taking the Laplace transform and rearranging produces the transfer function of the system in the frequency domain:
 \begin{dmath}[compact,label=simple-isolation-freq]
-  \frac{\laplaceMass}{\laplaceBase} =
+  \frac{\laplaceMass\fn\s}{\laplaceBase\fn\s} =
+  \frac{\dampingRel\s + \stiffnessRel}
+  {\mass\s^2 + \dampingRel\s + \stiffnessRel}=
   \frac{\ii\freq\dampingRel + \stiffnessRel}
   {-\mass\freq^2 + \ii\freq\dampingRel + \stiffnessRel}.
 \end{dmath}
@@ -221,7 +223,7 @@ Substituting the feedback force \eqref{feedback-force} into the system dynamics 
 \end{multline}
 The transfer function, or transmissibility $\transmissibility$, between base and mass displacement for this generalised feedback case is
 \begin{dmath}[label=tf-genfeedback,compact]
-  \transmissibility\fn{\s} = 
+  \transmissibility\fn{\s} =
   \frac{\laplaceMass\fn{\s}}{\laplaceBase\fn{\s}} =
   \frac{
           \gainAcc \s^2 +
@@ -248,7 +250,7 @@ In both cases, the resonance frequency is increased with increased feedback gain
 This is usually detrimental to vibration isolation performance.
 Relative displacement feedback corresponds to an increased stiffness and a higher resonance frequency, whereas absolute displacement feedback increases the vibration isolation at low frequencies; this scheme is notable for its less than unity response even as the frequency of excitation tends to zero, while the high frequency attenuation is unaffected.
 
-The system with displacement feedback is stable according to the inequality
+The system with displacement feedback is stable according to
 \begin{dmath}
   \damping>\Real{\sqrt{\damping^2-4 \gp{\gainDisp+\gainSkyspring+\stiffness} \mass}}
 \end{dmath},
@@ -388,12 +390,12 @@ Such practical implications have a significant effect on the performance and sui
 As one example, \textcite{serrand2000} discuss absolute velocity feedback applied to a two \dof/ structure with emphasis on the effects, for their system, due to possible base flexibility.
 They showed, amongst other results, that using integrated accelerometer measurements as a velocity feedback term has a low frequency phase shift due to filters in accelerometer charge amplifiers that can induce instability for sufficiently high control gains.
 
-The general limits of vibration control in practical applications of single \dof/ vibration suppression systems have been studied over the last decade \cite{ananthaganeshan2001,brennan2007-jsv}. Time delays and phase lags introduced by digital filters
+The general limits of control in practical applications of single \dof/ vibration suppression systems have been studied over the last decade \cite{ananthaganeshan2001,brennan2007-jsv}. Time delays and phase lags introduced by digital filters
 \note{When absence of all vibrations are required, the side-effects of digital control (which can be as extreme as chaotic effects due to quantisation and time delays \cite{csernak2007}) may prove deleterious for extreme applications.
 On the other hand, any sufficiently expensive system should be able to reduce these effects to be negligible.
 For the purposes of this thesis, such small effects are of no concern.}
 and integrators can have quite significant effects over the ideal case of pure displacement or velocity or acceleration feedback.
-As well stated by \textcite{williams2009}:
+As stated by \mbox{\textcite{williams2009}}:
 \begin{quote}
 In theory integration of accelerometer signals is easily done; however, in practice, inertially referenced velocity proves to be as \mbox{elusive} as it is useful.
 \end{quote}
@@ -1226,7 +1228,7 @@ It can be seen that since the linear transmissibility attempts to reject non-cor
 Note that the resonance peak changes frequency with input amplitude.
 
 \begin{table}
-\caption{Parameters used to simulate the dynamics of \eqref{duffing} shown in \figref{cubic-resonance-disturb}.}
+\caption{Parameters used to simulate the dynamics of \eqref{duffing} (\figref*{cubic-resonance-disturb}).}
 \tablabel{duffing-param}
 \begin{tabular}{lll}
 \toprule
@@ -1258,6 +1260,7 @@ The interesting static and dynamic force characteristics exhibited by magnetic s
 Of particular research interest is the nonlinear regimes that such systems can operate within; in some cases, these nonlinearities can be detrimental to vibration isolation, while in others they can help improve vibration suppression.
 For this thesis, the particular use of magnetic systems as softening springs allows them to overcome some limitations seen with linear mechanical springs, the desirable focus in these cases being the `\qzs/' regime to minimise the resonance frequency.
 
+\clearpage
 \section{Structure of this thesis}
 \seclabel{thesis-structure}
 
