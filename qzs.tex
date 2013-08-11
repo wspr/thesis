@@ -92,7 +92,7 @@ $\ZKSstiffvert=\ZKSkratio\ZKSstiffincl$, with $\ZKSkratio$ denoted the `stiffnes
 The stiffness and deflection properties of the springs are summarised in \tabref{spring-properties}.
 
 \begin{table}
-  \caption[Properties of the springs in the inclined spring system]{Properties of the springs in the \qzs/ inclined spring system
+  \caption[Properties of the springs in the inclined spring system.]{Properties of the springs in the \qzs/ inclined spring system
 defining stiffness ratio $\ZKSkratio$ and length ratio $\ZKSlengthratio$.}
   \tablabel{spring-properties}
   \begin{tabular}{@{}lcc@{}}
@@ -916,7 +916,7 @@ This criterion is shown for a range of desired nominal stiffnesses in
 \figref{cons-soft}. As the resonance frequency decreases, larger
 magnets are required to support the load with a small force gradient.
 
-\begin{figure}[h]
+\begin{figure}[t]
   \begin{wide}
     {\psfragfig{PhD/Writings/QZS/fig/cons-softN1}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-softN2}}
@@ -946,12 +946,7 @@ displacement bound lies above the face of the fixed lower magnet.
 that the moving magnet is not perturbed past the \qzs/ position into the
 unstable zone.
 
-These latter constraints impose only small limits on the design of the
-system. The maximum displacement criterion, shown in \figref{cons-saturate} as
-a region over the parameters $\mdim$ and $\ngap$ for a range of
-$\dmax$, limits the lower size of the magnet.
-
-\begin{figure}[htbp]
+\begin{figure}[t]
   \begin{wide}
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateN1}}
     {\psfragfig{PhD/Writings/QZS/fig/cons-saturateN2}}
@@ -966,11 +961,16 @@ $\dmax$, limits the lower size of the magnet.
   \figlabel{cons-saturate}
 \end{figure}
 
+These latter constraints impose only small limits on the design of the
+system. The maximum displacement criterion, shown in \figref{cons-saturate} as
+a region over the parameters $\mdim$ and $\ngap$ for a range of
+$\dmax$, limits the lower size of the magnet.
+
 Note that the maximum displacement of the spring will not be symmetric
 with input displacement due to the softening spring stiffness.
 This analysis is simplified, however, by representing the maximum displacement
 in the stability and maximum displacement criteria (\eqref{saturate,stable})
-with the same symbol.
+with the same term.
 
 The stability criterion is governed by two parameters, $\dmax$ and
 $\dmin$, which are varied in \figref{cons-stable-1,cons-stable-2}
@@ -987,11 +987,11 @@ low equilibrium stiffnesses found just below the \qzs/ position.
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN3-1}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableNall-1}}
   \end{wide}
-\caption[Regions of $\mdim$ and $\ngap$ satisfying the
-  the stability criterion.]{Regions of $\mdim$ and $\ngap$ satisfying the
+\caption[Regions of $\mdim$ and $\ngap$ satisfying
+  the stability criterion.]{Regions of $\mdim$ and $\ngap$ satisfying
   the stability criterion of \eqref{stable} for a range of normalised displacement
   tolerances $\dmin$ and a maximum disturbance displacement of
-  $\dmax=\SI{5}{mm}$. Darker sections denote overlap of the regions in the overlay plot.}
+  $\dmax=\SI{5}{mm}$.}
   \figlabel{cons-stable-1}
 \end{figure}
 
@@ -1002,10 +1002,9 @@ low equilibrium stiffnesses found just below the \qzs/ position.
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableN3-2}}
          {\psfragfig{PhD/Writings/QZS/fig/cons-stableNall-2}}
   \end{wide}
-\caption[Region of $\mdim$ and $\ngap$ satisfying the stability criterion.]{Region of $\mdim$, $\ngap$ satisfying the stability criterion
+\caption[Regions of $\mdim$ and $\ngap$ satisfying the (other) stability criterion.]{Regions of $\mdim$, $\ngap$ satisfying the stability criterion
   of \eqref{stable} for a range of disturbance displacements $\dmax$
-  and a normalised displacement tolerance $\dmin=\num{0.1}$. Darker
-  sections denote overlap of the regions in the overlay plot.}
+  and a normalised displacement tolerance $\dmin=\num{0.1}$.}
   \figlabel{cons-stable-2}
 \end{figure}
 
@@ -1048,8 +1047,7 @@ Stability& \eqref*{stable}   & \ref*{fig:cons-stable-1}, \ref*{fig:cons-stable-2
     \psfragfig{PhD/Writings/QZS/fig/cons-allNall}
 \caption[Regions of $\mdim$ and $\ngap$ satisfying all design criteria.]{Regions of $\mdim$ and $\ngap$ satisfying all design criteria,
   demonstrating the effects of changing the mass $\mass$ and the
-  resonance frequency $\freq$ of the desired system. Darker sections
-  denote overlap of the regions in the overlay plot.}
+  resonance frequency $\freq$ of the desired system.}
   \figlabel{cons-all}
 \end{figure}
 

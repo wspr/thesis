@@ -397,36 +397,37 @@ An attempt to do so here highlights the difficulties involved.
 In this case, representative force component contours are plotted against displacement in each direction separately; these contours are termed `isoforces' as they trace contours of equal force (\figrangeref{vattr-forces}{zhv-forces}).
 
 
-\newcommand\isoforces[3]{%
+\newcommand\isoforces[4][10mm]{%
   \begin{figure}[p]
     \begin{wide}
       \vspace*{-0.5cm}
       \centerline{
-      \subfloat[$\ax$ forces.\figlabel{iso-#1-x}]{%
+      \hspace*{#1}%
+      \subfloat[$\ax$ forces.\figlabel{iso-#2-x}]{%
         \psfragfig
-          {PhD/Simulations/Single_magnets/all_springs/frag/#1-xforce}%
-      }\hspace*{-0.5cm}%
-      \subfloat[$\ay$ forces.\figlabel{iso-#1-y}]{%
+          {PhD/Simulations/Single_magnets/all_springs/frag/#2-xforce}%
+      }\hspace*{-3mm}%
+      \subfloat[$\ay$ forces.\figlabel{iso-#2-y}]{%
         \psfragfig
-          {PhD/Simulations/Single_magnets/all_springs/frag/#1-yforce}%
-      }\hspace*{-0.5cm}%
-      \subfloat[$\az$ forces.\figlabel{iso-#1-z}]{%
+          {PhD/Simulations/Single_magnets/all_springs/frag/#2-yforce}%
+      }\hspace*{-3mm}%
+      \subfloat[$\az$ forces.\figlabel{iso-#2-z}]{%
         \psfragfig
-          {PhD/Simulations/Single_magnets/all_springs/frag/#1-zforce}%
+          {PhD/Simulations/Single_magnets/all_springs/frag/#2-zforce}%
       }%
       }%
     \end{wide}
-    \caption[#2.]{#2 (\secref*{#3}).}
-    \figlabel{#1-forces}
+    \caption[#3.]{#3 (\secref*{#4}).}
+    \figlabel{#2-forces}
   \end{figure}
 }
 
-\isoforces{vattr}{Isoforces of the unstable vertical spring}{unstable-spring}
-\isoforces{vrepl}{Isoforces of the stable vertical spring}{spring-repl}
-\isoforces{z}{Isoforces of the \qzs/ spring}{qzs-basics}
-\isoforces{h}{Isoforces of the horizontal spring}{hspring}
-\isoforces{hv}{Isoforces of the combination spring}{spring-hv}
-\isoforces{zhv}{Isoforces of the combination \qzs/ spring}{spring-zhv}
+\isoforces[-13mm]{vattr}{Isoforces of the unstable vertical spring}{unstable-spring}
+\isoforces[-13mm]{vrepl}{Isoforces of the stable vertical spring}{spring-repl}
+\isoforces[-13mm]{z}{Isoforces of the \qzs/ spring}{qzs-basics}
+\isoforces[13mm]{h}{Isoforces of the horizontal spring}{hspring}
+\isoforces[13mm]{hv}{Isoforces of the combination spring}{spring-hv}
+\isoforces[13mm]{zhv}{Isoforces of the combination \qzs/ spring}{spring-zhv}
 
 The simple magnetic systems of a pair of magnets in either attraction (\secref*{unstable-spring}) or repulsion (\secref*{spring-repl}) will be treated first as their qualitative analysis is straightforward; consider their isoforces shown in \figref{vattr-forces,vrepl-forces}, \resp.
 Each figure shows three plots which correspond to each component of force: $\forceMag_x$, $\forceMag_y$, $\forceMag_z$.
@@ -888,6 +889,7 @@ This indicates that the magnet angle should be chosen only after the tolerances 
 
 \begin{figure}[t]
 \begin{wide}
+\hspace*{-1cm}
 \subfloat[Vertical stiffness.\figlabel{mbq-kvxyz-gaps-v}]
   {\psfragfig[crop=preview]
     {magcode/examples/oblique/fig/mbq-kvx-gaps}}%

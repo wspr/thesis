@@ -2,6 +2,9 @@
 \ProvidesPackage{thesis-preamble}
 
 
+\RequirePackage{printlen}
+\uselengthunit{pt}
+
 %%% SHORTCUTS
 
 \RequirePackage[english]{shortwrite}
@@ -183,17 +186,14 @@
 \MakeOuterQuote{"}
 
 %% Hyperref
-\RequirePackage[ocgcolorlinks,breaklinks,
-            plainpages=false,pdfpagelabels,linktocpage]{hyperref}
+\RequirePackage[breaklinks,plainpages=false,pdfpagelabels]{hyperref}
 \pdfstringdefDisableCommands{\def\dash{ - }}
 
 \definecolor{darkred}{rgb}{0.4,0,0}
 \definecolor{darkgreen}{rgb}{0,0.4,0}
 \definecolor{darkblue}{rgb}{0,0,0.4}
-\hypersetup{
-  linkcolor=darkred, citecolor=darkblue, filecolor=black, urlcolor=black
-}
-%\hypersetup{linkcolor=black,citecolor=black,filecolor=black,urlcolor=black}
+%\hypersetup{linkcolor=darkred, citecolor=darkblue, filecolor=black, urlcolor=black}
+\hypersetup{linkcolor=black  , citecolor=black   , filecolor=black, urlcolor=black}
 \AtBeginDocument{\hypersetup{pdfauthor={\@author},pdftitle={\@title}}}
 
 \RequirePackage[open,openlevel=4]{bookmark}
@@ -500,12 +500,15 @@
 \firmlists*
 \renewcommand\labelitemi{\textbf{--}}
 
+\addtolength\cftbeforechapterskip{-1pt}
 
 \renewcommand \cftchapterfont   {\scshape}
 \renewcommand \cftsectionfont   {\normalfont}
 \renewcommand \cftsubsectionfont     {\itshape\small}
 \renewcommand \cftsubsectionpagefont {\upshape\small}
 
+\renewcommand \cftfigurefont   {\small}
+\renewcommand \cfttablefont   {\small}
 
 %%%
 
@@ -516,9 +519,6 @@
       \addcontentsline{lot}{chapter}{%
         \protect\chapternumberline{\thechapter}\f@rtoc}%
 }
-
-\renewcommand{\cfttablefont}{\normalfont\raggedright}
-\renewcommand{\cftfigurefont}{\normalfont\raggedright}
 
 %%% epigraphs 
 
