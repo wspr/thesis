@@ -56,5 +56,5 @@ real dt2=dt1+20, dr2=dr1+0.4;
 filldraw(
     arc(L,dr1,dt1,dt2)
   --arc(L,dr2,dt2,dt1)
-  --cycle,grey);
+  --cycle,green);
 label("$\mathrm{d}a$",L+dr1*dir(dt1),S);

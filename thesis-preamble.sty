@@ -69,6 +69,7 @@
 \newmacro \qzs {quasi--zero stiffness}
 \newmacro \QZS {Quasi--zero stiffness}
 \newmacro \RMS {root-mean-square}
+\newmacro \RSS {root-sum-square}
 
 % COMPOUND WORDS
 \newcommand \compound [2] {#1\-#2}
@@ -129,7 +130,6 @@
   epstopdf,
   etex,
   import,
-  flafter,
   minibox,
   multicol,
   psfrag,
@@ -142,7 +142,7 @@
 }
 
 \let\setstretch\setSpacing % memoir is stupid
-\RequirePackage[format=hang,indent=-3em,labelfont={sc,small},textfont={rm,small,stretch=1.15}]{caption}
+\RequirePackage[format=plain,indent=\parindent,labelfont={sc,small},textfont={rm,small,stretch=1.15}]{caption}
 \captionsetup[table]{position=top}
 \subcaptionlabelfont{\normalfont}
 \subcaptionfont{\normalfont}
@@ -151,7 +151,26 @@
 
 \usepackage[section,sanitize]{glossaries}
 \usepackage{glossary-longragged}
-\glossarystyle{longragged3colheader}
+
+\newglossarystyle{wspr}{%
+  \renewenvironment{theglossary}%
+    {\begin{longtable}{@{}l@{\,}>{\raggedright}p{\glsdescwidth}%
+       >{\raggedright}p{\glspagelistwidth}@{}}}%
+    {\end{longtable}}%
+  \renewcommand*{\glossaryheader}{%
+    \bfseries\entryname~&\bfseries\descriptionname&
+    \bfseries\pagelistname\tabularnewline\endhead}%
+  \renewcommand*{\glsgroupheading}[1]{}%
+  \renewcommand*{\glossaryentryfield}[5]{%
+    \glsentryitem{##1}\glstarget{##1}{##2} & ##3 & ##5\tabularnewline}%
+  \renewcommand*{\glossarysubentryfield}[6]{%
+     &
+     \glssubentryitem{##2}%
+     \glstarget{##2}{\strut}##4 & ##6\tabularnewline}%
+  \renewcommand*{\glsgroupskip}{ & &\tabularnewline}%
+}
+
+\glossarystyle{wspr}
 \glsdisablehyper
 
 \makeglossaries
@@ -159,7 +178,7 @@
 \renewcommand\entryname{Symbol}
 \renewcommand\pagelistname{Page}
 %\addtolength\glsdescwidth{1cm}
-\addtolength\glspagelistwidth{1.6cm}
+\addtolength\glspagelistwidth{1.8cm}
 
 
 \usepackage{docmute}

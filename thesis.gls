@@ -154,7 +154,7 @@
 		\setentrycounter[]{page}\glsnumberformat{78}\delimN
 		\setentrycounter[]{page}\glsnumberformat{80\delimN 81}\delimN
 		\setentrycounter[]{page}\glsnumberformat{109}\delimN
-		\setentrycounter[]{page}\glsnumberformat{118}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{118}}}%
 \glossaryentryfield{forceEddy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect F_{\mathrm {eddy}}}}}}}{Eddy current force vector}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{33}}}%
 \glossaryentryfield{forceMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F}}}}}{Magnitude of force}{\relax }{\glossaryentrynumbers{\relax
@@ -230,6 +230,7 @@
 \glossaryentryfield{nforce}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {f_s}}}}}{Normalised magnet force for coaxial cube magnets}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{64}\delimN
 		\setentrycounter[]{page}\glsnumberformat{193\delimR 195}}}%
+\glsgroupskip
 \glsgroupheading{G}\relax \glsresetentrylist %
 \glossaryentryfield{mbqmforce}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect G}}}}}{Force vector between inclined magnets in the local coordinate systems of the fixed magnet}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{109}}}%
@@ -337,13 +338,14 @@
 		\setentrycounter[]{page}\glsnumberformat{170\delimN 171}\delimN
 		\setentrycounter[]{page}\glsnumberformat{175}}}%
 \glossaryentryfield{mbqmomentofinertia}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {I_m}}}}}{Inclined magnet system moment of inertia}{\relax }{\glossaryentrynumbers{\relax
-		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}}}%
 \glossaryentryfield{ii}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {i}}}}}{The imaginary number $\sqrt {-1}$}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
 		\setentrycounter[]{page}\glsnumberformat{10}\delimN
 		\setentrycounter[]{page}\glsnumberformat{226}}}%
 \glossaryentryfield{mupi}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {i}}}}}{Magnet index in the $\ax $ direction.}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{144\delimR 147}}}%
+\glsgroupskip
 \glsgroupheading{J}\relax \glsresetentrylist %
 \glossaryentryfield{magJ}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect J}}}}}{Current density vector}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{48}\delimN
@@ -351,9 +353,10 @@
 \glossaryentryfield{magJm}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect J_m}}}}}{Equivalent `surface current' vector due to magnetisation}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{48}}}%
 \glossaryentryfield{magJeddy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect J_{\mathrm {eddy}}}}}}}{Eddy current density vector}{\relax }{\glossaryentrynumbers{\relax
-		\setentrycounter[]{page}\glsnumberformat{33}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{33}}}%
 \glossaryentryfield{mupj}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {j}}}}}{Magnet index in the $\ay $ direction.}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{144\delimR 147}}}%
+\glsgroupskip
 \glsgroupheading{K}\relax \glsresetentrylist %
 \glossaryentryfield{Kzy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect K_{z,y}}}}}}{Stiffness between two cuboid magnets; the first magnetised in the $\az $ direction, the second in $\ax $}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{63}}}%
@@ -472,7 +475,8 @@
 		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
 		\setentrycounter[]{page}\glsnumberformat{223}}}%
 \glossaryentryfield{lengthWire}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {l_w}}}}}{Length of the wire in the coil}{\relax }{\glossaryentrynumbers{\relax
-		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}}}%
+\glsgroupskip
 \glsgroupheading{M}\relax \glsresetentrylist %
 \glossaryentryfield{magM}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect M}}}}}{Magnetisation vector}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{28}\delimN
@@ -588,7 +592,8 @@
 \glossaryentryfield{qqII}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {q_2\fn {\ngap }}}}}}{Polynomial coefficient for modelling magnet force}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{194\delimN 195}}}%
 \glossaryentryfield{qqIV}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {q_4\fn {\ngap }}}}}}{Polynomial coefficient for modelling magnet force}{\relax }{\glossaryentrynumbers{\relax
-		\setentrycounter[]{page}\glsnumberformat{194\delimN 195}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{194\delimN 195}}}%
+\glsgroupskip
 \glsgroupheading{R}\relax \glsresetentrylist %
 \glossaryentryfield{rotX}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect R_x}}}}}{Planar rotation matrix around the $\ax $ axis}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{66\delimN 67}}}%
@@ -713,7 +718,8 @@
 		\setentrycounter[]{page}\glsnumberformat{110\delimR 112}\delimN
 		\setentrycounter[]{page}\glsnumberformat{114}\delimN
 		\setentrycounter[]{page}\glsnumberformat{117}\delimN
-		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}}}
+\glsgroupskip
 \glsgroupheading{V}\relax \glsresetentrylist %
 \glossaryentryfield{volume}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {V}}}}}{Volume}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{33}\delimN
@@ -728,10 +734,11 @@
 \glossaryentryfield{varianceGain}{\glsnamefont{\ensuremath {V\fn {\freq }}}}{Variance gain, alternative of transmissibility $\transmissibility $}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{40}}}%
 \glossaryentryfield{velocity}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect v}}}}}{Velocity vector}{\relax }{\glossaryentrynumbers{\relax
-		\setentrycounter[]{page}\glsnumberformat{33}}}\glsgroupskip
+		\setentrycounter[]{page}\glsnumberformat{33}}}%
 \glossaryentryfield{diffvolume}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {v}}}}}{Differential region of the integration volume}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{33}\delimN
 		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glsgroupskip
 \glsgroupheading{W}\relax \glsresetentrylist %
 \glossaryentryfield{mupNwaves}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {W}}}}}{Multipole array number of wavelengths}{\relax }{\glossaryentrynumbers{\relax
 		\setentrycounter[]{page}\glsnumberformat{133\delimR 140}}}%

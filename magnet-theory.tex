@@ -9,6 +9,13 @@
 
 \referpaper{The work presented in \secref{cyl-forces} is based on material that has been published as a journal paper~\cite{robertson2011-ietm}.}
 
+\section{Introduction}
+
+In this chapter, a summary of various electromagnetic theories used in the remainder of this thesis is presented.
+The first section covers the basic terminology and physics behind magnetic fields, followed (\secref*{magprop}) by a discussion of the properties of permanent magnets.
+\Secref{magnet-forces} introduces the methods for calculating the force and torque between permanent magnets and coils, followed by an extensive review (\secref*{cuboid}) on analytical equations for forces and torques between cuboid magnets.
+The chapter concludes on the forces between cylindrical magnets (\secref*{cyl-forces}), in which a new expression for the force between coaxial cylindrical magnets is presented.
+
 \section{Whence magnetic fields}
 
 The following is a brief introduction to the physics behind magnets, largely to introduce the notation used later in the thesis.
@@ -60,10 +67,10 @@ in which $\magB$ is referred to as the magnetic flux density, $\magH$ is the mag
   are both sometimes known as the magnetic field in different contexts.}
 
 \Eqref{BHM} may now be used to describe the situation at all points in space (\figref*{BHM}).
-In the presence of an external magnetic field, the magnetic flux density $\magB$ inside a permanent magnet is the vector sum of $\magH$ and $\magM$, whereas outside the magnet,  the magnetisation $\magM=0$ and the magnetic flux density $\magB$ is related to the magnetic field strength $\magH$ by a constant.
+Even in the presence of an external magnetic field, the magnetic flux density $\magB$ inside a permanent magnet is the vector sum of $\magH$ and $\magM$, whereas outside the magnet,  the magnetisation $\magM=0$ and the magnetic flux density $\magB$ is related to the magnetic field strength $\magH$ by a constant.
 This results in $\magB$ being continuous everywhere, and both $\magM$~and $\magH$ being discontinuous.
 
-\begin{figure}[htbp]
+\begin{figure}
    \centering
    \includegraphics{PhD/Figures/Theory/BHM}
    \caption{The magnetic field and its components, both inside and outside a magnet.}
@@ -85,46 +92,26 @@ It is often convenient to express permeability as a relative measure
   \end{math},
 known as the relative permeability.
 
-\enlargethispage{-\baselineskip}
 The relative permeability of the vacuum is unity, and materials considered `non-magnetic' such as air, wood, water, and so on, have permeabilities very close to unity (within \num{1e-5}) as a result.
 (The consequences of permeability less than unity, diamagnetism, has been discussed on page~\pageref{sec:diamag}.)
 Materials which are more strongly affected by magnetic fields have greater permeabilities; \eg, within the soft iron core of an electromagnet, current in the coil generates an applied magnetic field on the core, which induces its own internal magnetic field as a result, and which increases the overall strength of the electromagnet (until the core saturates).
 The larger the permeability, the larger this `amplification' effect.
-Despite having strong remanence and coercivity values, rare earth magnets have a relative permeability of $\permrel=\num{1.05}$.
+Despite having strong remanence and coercivity values, rare earth magnets can be modelled as having a relative permeability of around $\permrel=\num{1.05}$ under most circumstances (see later discussion on the second quadrant of \figref{BHcurve-strong}), and for most published analytical expressions for field strength the difference from unity is neglected \parencite{kremers2013-ietm}.
+
 
 Refering to \eqref{BHM}, in free space where $\magM=0$ the relationship between $\magB$ and $\magH$ is quite simple, which is essentially the reason that there is a historical terminological confusion between the two.
 It can be seen that within a magnet, however, their relationship is more complex and important.
 Consider a magnetic material which has not yet been magnetised.
 As an external magnetic field is applied to it, the magnetic dipoles within the material begin to align along the direction of the applied field.
-If the external magnetic field is sufficiently large, the material becomes completely magnetised (such that all of its dipoles are in alignment) and this magnetisation will be retained even once the applied magnetic field is removed.
+If the external magnetic field is sufficiently large, the material becomes completely magnetised (such that most of its dipoles are in alignment) and this magnetisation will be retained even once the applied magnetic field is removed.
 If the magnetic field is increased further, the magnitude of magnetisation of the magnet cannot increase, and it is thus said to be `saturated'; this saturation magnetisation is denoted $\Msat$.
 This process is conducted under high temperatures; once the magnetic material cools (with the applied magnetic field still in place) the magnetisation `sets' and the magnet is formed.
 This magnetisation is retained unless a large demagnetisation field (which is simply a magnetic field applied in the opposite direction to its magnetisation) is applied to it or the magnet is heated sufficiently to allow its magnetic dipoles to lose their alignment due to thermal effects.
 
-The performance of a magnet is linked to its behaviour under demagnetisation, as a strong magnet that demagnetises easily is of little use in practical application.
-The behaviour is shown by the \bhcurve/ of the magnetic material, an example of which is shown for an ideal strong and weak magnet in \figref{BHcurve}.
-The \bhcurve/ of a magnetic material describes how the magnetic flux density generated by the magnet changes according to applied magnetic field.
-For the case of using magnetic fields for doing work (such as generating forces), only the second quadrant of the \bhcurve/ is considered.
 
-\enlargethispage{-\baselineskip}
-Two important features are shown in \figref{BHcurve}.
-First, the remanence of the magnet, $\remanence=\permvac\Msat$, is the value used to indicate the `strength' of the magnet alone corresponding to its saturation magnetisation.
-The remanence refers to the amount of magnetic flux density that is measured in the absence of an applied external magnetic field, and it is a common term in practice since the internal magnetisation of a magnet $\Msat$ cannot be measured directly.
-
-The second feature of interest on the \bhcurve/ is the coercivity, $\coerce$, which is the amount of magnetic field strength required to reduce the magnetic flux density within the magnet to zero.
-The larger the coercivity, the greater the ability of a permanent magnet to resist demagnetisation due to the influence of external magnetic fields.
-For the purposes of this thesis, rare earth magnets will be considered which have sufficiently large coercivities to avoid demagnetisation effects.
-
-For theoretical magnetic force analysis (covered in \secref{magnet-forces} and later), the `strength' value to model the permanent magnets is defined in practice by the remanence of the magnet.
-For cases such as finite element analysis, it can be necessary to instead define the permeability and coercivity of the magnets.
-In which case, it can be convenient to calculate the coercivity with the relation
-\begin{dmath}
-\coerce = \frac{\remanence}{\perm\permvac}
-\end{dmath}.
-
-\begin{figure}[htbp]
+\begin{figure}
   \centerline{
-    \subbottom[Strong magnet with `linear' second-quadrant.]{\asyinclude{\jobname/bhcurve}}\qquad
+    \subbottom[Strong magnet with `linear' second-quadrant.\figlabel{BHcurve-strong}]{\asyinclude{\jobname/bhcurve}}\qquad
     \subbottom[Weak magnet with its knee in the second quadrant.]{\raisebox{5mm}{\asyinclude{\jobname/bhknee}}}
   }
   \lofcaption{Characteristic \bhcurve/s for a strong magnet and a weak magnet.}
@@ -135,15 +122,35 @@ In which case, it can be convenient to calculate the coercivity with the relatio
   \figlabel{BHcurve}
 \end{figure}
 
+The performance of a magnet is linked to its behaviour under demagnetisation, as a strong magnet that demagnetises easily is of little use in practical application.
+The behaviour is shown by the \bhcurve/ of the magnetic material, an example of which is shown for an ideal strong and weak magnet in \figref{BHcurve}.
+The \bhcurve/ of a magnetic material describes how the magnetic flux density generated by the magnet changes according to applied magnetic field.
+For the case of using magnetic fields for doing work (such as generating forces), only the second quadrant of the \bhcurve/ is considered.
+
+Two important features are shown in \figref{BHcurve}.
+First, the remanence of the magnet, $\remanence=\permvac\Msat$, is the value used to indicate the `strength' of the magnet alone corresponding to its saturation magnetisation.
+The remanence refers to the amount of magnetic flux density that is measured in the absence of an applied external magnetic field, and it is a common term in practice since the internal magnetisation of a magnet $\Msat$ cannot be measured directly.
+
+The second feature of interest on the \bhcurve/ is the coercivity, $\coerce$, which is the amount of magnetic field strength required to reduce the magnetic flux density within the magnet to zero.
+The larger the coercivity, the greater the ability of a permanent magnet to resist demagnetisation due to the influence of external magnetic fields.
+For the purposes of this thesis, rare earth magnets will be considered which have sufficiently large coercivities to avoid demagnetisation effects.
+
 As well as the remanence $\remanence$ and coercivity $\coerce$, two other parameters are often used to describe the `strength' of a permanent magnet.
 The first is known as the `maximum energy product' $\BHmax$, relating to the amount of potential energy that can be supplied by the magnetic field in the second quadrant of the \bhcurve/.
-In an ideal magnet with a linear \bhcurve/, the maximum energy product is directly related to its saturation magnetisation via \cite{campbell1994}
+In an ideal magnet with a \bhcurve/ that is linear in the second quadrant, the maximum energy product is directly related to its saturation magnetisation via \cite{campbell1994}
 \begin{dmath}[label=bhmax]
   -\BHmax = \permvac\gp{\frac{\Msat}{2}}^2
 \end{dmath}.
 It can be seen in \figref{BHcurve}(a) that for strong permanent magnets the region of the curve in the second quadrant does indeed approximate a linear function.
 
-The final term of interest is known as `intrinsic coercivity' $\coerce{}_i$, which is the magnetic field strength required to completely magnetise a magnetic domain (\ie, a collection of dipoles) or to completely reverse the polarity of magnetisation for the same.
+For theoretical magnetic force analysis (covered in \secref{magnet-forces} and later), the `strength' value to model the permanent magnets is defined in practice by the remanence of the magnet.
+When using finite element analysis to model rare earth magnets that can be assumed to have a \bhcurve/ that is linear in the second quadrant, it can be necessary to instead define the permeability and coercivity of the magnets.
+These three terms are related in this case using the relation
+\begin{dmath}
+\coerce = \frac{\remanence}{\perm\permvac}
+\end{dmath}.
+
+The final term of interest in the \bhcurve/ is known as `intrinsic coercivity' $\coerce{}_i$, which is the magnetic field strength required to completely magnetise a magnetic domain (\ie, a collection of dipoles) or to completely reverse the polarity of magnetisation for the same.
   \note{Since a permanent magnet is made up of a very large number of magnetic domains, the magnetic field strength used to initially magnetise a permanent magnet is said to be around $5\coerce{}_i$ as a rule of thumb.}
 For weak magnetic material, the intrinsic coercivity is low enough such that the `knee' of the \bhcurve/ enters the second quadrant as shown in \figref{BHcurve}(b), causing the magnet to be easily demagnetised.
 
@@ -171,7 +178,6 @@ areas of greater permeability, it occasionally can deviate from these simple pat
 \figlabel{magflux}
 \end{figure}
 
-\enlargethispage{-\baselineskip}
 An analysis of how to derive the paths of magnetic flux is a beyond the scope of this document, but it is important to discuss the flux lines themselves.
 Typical flux lines for a rectangular cross-section magnet are shown in \figref{magflux}.
 It is more instructive for a basic understanding of how magnets behave to examine the ways their flux lines interact.
@@ -187,12 +193,12 @@ magnetic or ferrous material than air, and more readily through air
 (although only slightly) than diamagnetic material.
 \item Flux lines travelling in the same direction repel each other. This means
 flux lines will never cross.
-\item Flux lines enter ferrous material at right angles in a low-permeability surrounding.
+\item Flux lines enter (non-saturated) ferrous material at right angles in a low-permeability surrounding.
 \item Permeability of ferrous material is `used up' by flowing flux; when the
 material reaches saturation, flux lines travel as easily though air as through
-the saturated material.
-\item Flux lines travel from North to South magnetic poles in closed loops.
-\item Magnets are made up of a very large number of unit magnetic poles.
+the saturated material. Saturation is the limiting factor for the design of magnetic shielding.
+\item Considering a unit magnetic dipole, flux lines travel from north to south magnetic poles in closed loops.
+\item Permanent magnets are made up of a very large number of unit magnetic dipoles.
 \end{enumerate}
 From these axioms, one can generate incorrect, yet applicable,
 theories how and why magnets attract and repel each other. For
@@ -202,9 +208,9 @@ It can be imagined that the reason forces occur between them is
 due to a `squashing' of the flux lines which the magnets try to
 oppose—but theories like this only help visualising magnetic
 behaviour, \emph{not} for explaining the reasons behind it.
-\note{Just ask \textcite{sodano2006}, who received nitpicking comments about their terminology \cite{marneffe2007}.}
+%\note{Just ask \textcite{sodano2006}, who received nitpicking comments about their terminology \cite{marneffe2007}.}
 
-
+\newpage
 \section{Magnet properties and selection}
 \seclabel{magprop}
 
@@ -219,7 +225,7 @@ than these old fashioned magnets.
 Magnet price is approximately linear with the volume of magnetic material, as shown in the cost graph from a typical magnet supplier shown in \figref{mag-price}.
 Prices for permanent magnets have increased dramatically in recent years with greater demand for rare-earth metals in the global market \cite{coey2011-ietm}.
 
-\begin{figure}
+\begin{figure}[b!]
   \psfragfig{\jobname/mag-price}
   \lofcaption{Magnet price versus magnet volume for rare earth magnets.}{
     Data obtained from \KJMagnetics/ for cube magnets of magnetisation grade \maggrade{42}.
@@ -273,13 +279,20 @@ No permanent magnetic material has yet been discovered to achieve anywhere near 
 
 \subsection{Homogeneity of magnetisation}
 
-In \secref{magnet-forces} when deriving the equations for the forces between magnets, it was assumed that each magnet had a constant and uniform magnetisation.
+When deriving the equations for the forces between magnets in \secref{magnet-forces}, it was assumed that each magnet had a constant and uniform magnetisation and a relative permeability of unity.
 To be fabricated, a homogeneous permanent magnet requires a very strong magnetic field of constant direction and magnitude, and the larger the cross-section of the magnet the harder such a field is to obtain.
 For larger permanent magnets, care must be taken when using the force equations presented in the previous chapter.
-For example, the magnetic field of a grade \maggrade{35} cylindrical magnet with diameter \SI{100}{mm} and thickness \SI{30}{mm} was compared against theoretical calculations (performed with \ANSYS/) \cite{bruno2011-honoursthesis}.
-While the comparison across axial position (\figref*{gauss-vertical}) only shows that the measured magnetic field is lower than expected, the lateral position results (\figref*{gauss-radial}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
+For example, the magnetic field of a neodymium grade \maggrade{35} cylindrical magnet with diameter \SI{100}{mm} and thickness \SI{30}{mm} was compared against theoretical calculations (performed with \ANSYS/) \cite{bruno2011-honoursthesis}.
+While the \bhcurve/ of the magnet is unknown, for rare earth magnets it can be assumed that they have a linear relationship in the second quadrant of the \bhcurve/.
 
-\begin{figure}[b!]
+To perform these measurements, a gauss meter (Hirst Magnetic Instruments GM07 Gaussmeter) was used to manually sample the magnetic flux density at a number of locations relative to the centre of the top face of the magnet.
+The results are shown in \figref{gauss-meas}.
+While the comparison across axial position (\figref*{gauss-vertical}) only shows that the measured magnetic field is lower than expected in the near field, the lateral position results (\figref*{gauss-radial}) indicates why: the magnetic field is lower than expected closer to the centre of the magnet.
+While some of this discrepancy will be caused by the assumption of unity relative permeability \parencite{kremers2013-ietm}, this cannot account for the large difference between theory and measurement seen in \figref{gauss-meas}.
+One possibility may be that the magnet is not uniformly magnetised due to its large radius.
+As a result of this discrepancy in field strength, smaller forces than predicted were measured when using this magnet in repulsion with another large magnet.
+
+\begin{figure}
 \begin{wide}
 \begin{subfigure}
 \psfragfig{PhD/Experiments/Gauss/fig/gauss-vertical}
@@ -293,20 +306,21 @@ While the comparison across axial position (\figref*{gauss-vertical}) only shows
 \caption[
   Magnetic flux density measurements of a cylindrical permanent magnet.
 ]{
-  Magnetic flux density measurements of an \maggrade{35} \diameter\SI{100x30}{mm} cylindrical permanent magnet.
+  Magnetic flux density measurements of an \maggrade{35} neodymium \diameter\SI{100x30}{mm} cylindrical permanent magnet.
   The origin of the measurements is \SI{5}{mm} from the face of the magnet.
 }
+\figlabel{gauss-meas}
 \end{figure}
 
 
-\section{General technieques for calculating forces between magnets}
+\section{General techniques for calculating forces between magnets}
 \seclabel{magnet-forces}
 
 A general technique for finding the forces between two magnets is
 simple to describe. The first magnet creates a magnetic field in the
 region of the second magnet; the force is calculated due to the
 interaction of the first magnet's field and the internal field of the
-second magnet. Or vice versa; reciprocity holds here.
+second magnet.
 
 There are two methods that will be outlined here for calculating the magnetic field of a permanent magnet, known as the charge and current models.
 Respectively, these consist of modelling the magnets as having two surfaces of `magnetic charge', or modelling the magnet as being circumscribed of an equivalent surface current density.
@@ -343,7 +357,8 @@ and for the current model is
 \end{dmath}.
 
 \Eqref{charge-force,current-force} are general recipes for deriving equations to calculate the forces between permanent magnets of arbitrary geometry, and a similar formulation allows for the modelling of electromagnetic coils as well.
-It is not clear before attempting a solution to the integrals which of \eqref{charge-force,current-force} will be more suitable in a given situation.
+In certain circumstances, the geometry of the permanent magnet can dictate which integral expression should be used; \eg, triangular magnets lend themselves towards the charge model \parencite{janssen2010-compel}.
+In other cases is not always clear before attempting a solution to the integrals which of \eqref{charge-force,current-force} will be more suitable in a given situation.
 For example, a comparison between the current and charge models for calculating the magnetic field for radially-magnetised arc-shaped magnets was made by \textcite{ravaud2009-pier-compare}, who stated:
 \begin{quote}
 The problem is thus to guess what model is the most appropriate for calculating the three components of the magnetic field produced by permanent magnets.
@@ -354,7 +369,7 @@ As an example, the theory of \textcite{akoun1984} for calculating the force betw
 Since a permanent magnet can be modelled as a thin coil, the two expressions can be compared numerically and they only give equivalent results when the two volumes do not overlap.
 
 \Eqref{charge-force,current-force} cannot be solved analytically for complex geometries as the integrals become intractable; numerical integration must be used in this case \cite{charpentier2001-compel}.
-When this is necessary, the integrals are generally simplified as much as possible before numerical integration is applied to the remaining terms; for this reason this technique is often called a `semi-numerical' approach, and is capable of obtaining results in a more straightforward and efficient manner than finite element analysis.
+When this is necessary, the integrals are generally simplified as much as possible before numerical integration is applied to the remaining terms; for this reason this technique is often called a `semi-analytical' approach, and is capable of obtaining results in a more straightforward and efficient manner than finite element analysis.
 
 An alternative method to the numerical integration approach is proposed by \textcite{furlani2001-magnetbook} in which a magnetic source is discretised into a large number of `point charges' and the analytical expression for force between each pair combination is summed through superposition.
 In this case, a general equation for calculating the force between two magnets using the surface charge method can be written as: \cite{furlani1993-ietm}
@@ -366,7 +381,7 @@ In this case, a general equation for calculating the force between two magnets u
 \end{dmath},
 where $\area_1$ and $\area_2$ are the areas of surface charge in the two magnets, and $\pos_1$ and $\pos_2$ are the position vectors of each surface charge in the interactive pair.
 While this method does allow the modelling of arbitrary geometries, care must be taken to use a fine enough discretisation mesh to achieve convergence of the solution, and as the mesh becomes finer the algorithm increases in solution time at a rate approximately square to the number of point charges in the model.
-This discretisation method is avoided in this thesis due to the limited advantage it has over using the semi-numerical approach that uses numerical integration directly.
+This discretisation method is avoided in this thesis due to the limited advantage it has over using the semi-analytical approach that uses numerical integration directly.
 
 
 \section{Equations for calculating the magnetic flux density}
@@ -447,13 +462,13 @@ For multiple integrations the summation becomes
 \Int{ f\fn{x,y,z} } {x,x_0,x_1} {y,y_0,y_1} {z,z_0,z_1}=
   \sum_{i,j,k\in\{0,1\}^3} F\fn{x_i,y_j,z_k}\cdot\gp{-1}^{i+j+k}
 \end{dmath}.
-For $N$ nested integrals, it may be convenient to express this in a product form instead, where $f$ is integrated over variables $x_i$ from $u_i\fn{0}$ to $u_i\fn{1}$:
+For $N$ nested integrals, in which $f$ is integrated over variables $x_i$ from $u_i\fn{0}$ to $u_i\fn{1}$:
 \begin{dmath}
 \Int{\cdots\Int{ f\fn{x_1,x_2,\dots} }{x_1,u_1\fn{0},u_1\fn{1}}{x_2,u_2\fn{0},u_2\fn{1}} \cdots}{x_n,u_n\fn{0},u_n\fn{1}} =
   \sum_{e_1,e_2,\dots,e_n\in\{0,1\}^N}
     F\fn{u_1\fn{e_1},u_2\fn{e_2},\dots,u_n\fn{e_n}}
     \cdot
-    \gp{-1}^{\prod_{n=1}^{N} e_n}
+    \gp{-1}^{\sum_{n=1}^{N} e_n}
 \end{dmath}
 
 As the limits of the integral occur at the corners of the cuboid magnets, $\Fzznode$ is an intermediate function acting between each combination of corners between the first and second magnet.
@@ -534,7 +549,7 @@ The $\Fzynode=\inlinevect{\phi_x,\phi_y,\phi_z}$ terms required for calculating 
 \begin{split}
 \phi_x\fn{\cornerd} &= \cnry\cnrz\Log{\cnrl-\cnrx}-\cnrx\cnry\Log{\cnrl+\cnrz}-\cnrx\cnrz\Log{\cnrl+\cnry}+\\&\qquad\half \cnrx^2\ArcTan{\frac{\cnry\cnrz}{\cnrl\cnrx}}+\half \cnry^2\ArcTan{\frac{\cnrx\cnrz}{\cnrl\cnry}}+\half \cnrz^2\ArcTan{\frac{\cnrx\cnry}{\cnrl\cnrz}} \,,\\
 \phi_y\fn{\cornerd} &= -\half\gp{\cnrx^2-\cnry^2}\Log{\cnrl+\cnrz}+\cnrx\cnrz\Log{\cnrl-\cnrx}+\cnrx\cnry\arctan\fn{\tfrac{\cnrx\cnrz}{\cnrl\cnry}}+\half \cnrl\cnrz \,,\\
-\phi_z\fn{\cornerd} &= -\half\gp{\cnrx^2-\cnrz^2}\Log{\cnrl+\cnry}+\cnrx\cnry\Log{\cnrl-\cnrx}+\cnrx\cnrz\arctan\fn{\tfrac{\cnrx\cnrz}{\cnrl\cnry}}+\half \cnrl\cnry \,.
+\phi_z\fn{\cornerd} &= -\half\gp{\cnrx^2-\cnrz^2}\Log{\cnrl+\cnry}+\cnrx\cnry\Log{\cnrl-\cnrx}+\cnrx\cnrz\arctan\fn{\tfrac{\cnrx\cnry}{\cnrl\cnrz}}+\half \cnrl\cnry \,.
 \end{split}
 \end{align}
 The stiffness characteristics can be derived by differentiating \eqref{orth-magforce} with respect to displacement in each respective direction, resulting in
@@ -544,9 +559,11 @@ The stiffness characteristics can be derived by differentiating \eqref{orth-magf
 \end{dmath}
 in which $\Kzynode=\inlinevect{\kappa_x,\kappa_y,\kappa_z}$ where
 \begin{align}
+\begin{split}
 \kappa_x &= \frac{\cnrx^2\cnry}{\cnrx^2+\cnry^2} + \frac{\cnrx^2\cnrz}{\cnrx^2+\cnrz^2}-\cnrx\ArcTan{\frac{\cnry\cnrz}{\cnrx\cnrl}} + \cnrz\Log{\cnry+\cnrl} + \cnry\Log{\cnrz+\cnrl} \,,\\
-\kappa_y &= -\cnry^2+\frac{\cnrx^2\cnry}{\cnrx^2+\cnry^2} - \frac{\cnrx\cnry\cnrz}{\cnry^2+\cnrz^2}-\cnrx\ArcTan{\frac{\cnrx\cnrz}{\cnry\cnrl}} + \cnry\Log{\cnrz+\cnrl}  \,,\\
+\kappa_y &= -\half\cnry+\frac{\cnrx^2\cnry}{\cnrx^2+\cnry^2} - \frac{\cnrx\cnry\cnrz}{\cnry^2+\cnrz^2}-\cnrx\ArcTan{\frac{\cnrx\cnrz}{\cnry\cnrl}} + \cnry\Log{\cnrz+\cnrl}  \,,\\
 \kappa_z &= -\kappa_x-\kappa_y \,.
+\end{split}
 \end{align}
 
 
@@ -554,7 +571,7 @@ in which $\Kzynode=\inlinevect{\kappa_x,\kappa_y,\kappa_z}$ where
 \subsection{Simplified force and stiffness expression for cube magnets}
 \seclabel{cube-forces}
 
-The function $\magforce$ is the simplication of the force between parallel magnets, \eqref{akoun}, for equal-size coaxial cube magnets, where $\mdim$ is the side length, $\ndisp=\gamma/\mdim$ is the normalised vertical displacement, and $\magn1$ and $\magn2$ are the remanence magnetisations of the two magnets:
+The function $\magforce$ is the simplication of the force between parallel magnets, \eqref{akoun}, for equal-size coaxial cube magnets, where $\mdim$ is the side length, $\ndisp=\cdz/\mdim$ is the normalised vertical displacement, and $\magn1$ and $\magn2$ are the remanence magnetisations of the two magnets:
 \begin{dmath}[label=magforce]
 \magforce = \mdim^2 \nforce
 \end{dmath},
@@ -859,7 +876,7 @@ A series of experiments were performed on a custom built rotating magnet assembl
 An apparatus for the work of an honours project \cite{byfield2012-honoursthesis} was constructed to position two magnets relatively to each other with some fixed rotation and horizontal offset with unconstrained vertical motion (\figref*{magrig}).
 The vertical displacement was measured with a Wenglor CP35MHT80 laser sensor, and the base magnet was mounted to an ATI Mini85 SI-950-40 load cell to measure the reaction forces generated by the magnets.
 
-\begin{figure}[b!]
+\begin{figure}
 \includegraphics{PhD/Figures/Rig/magrig-label}
 \caption{Photo of the experimental apparatus to measure magnet forces.}
 \figlabel{magrig}
@@ -887,6 +904,7 @@ Larger errors with smaller displacements are believed to be caused due to misali
 
 \begin{figure}
   \begin{wide}
+  \hspace{-1cm}%
   \subbottom[\SI{15x20x10}{mm} \maggrade{45} cuboid magnets.]{\psfragfig{PhD/magrotate/Results/rot-cuboid-15x10x20}}\hfil
   \subbottom[\SI{25x25x10}{mm} \maggrade{52} cuboid magnets.]{\psfragfig{PhD/magrotate/Results/rot-cuboid-25x10x25}}
   \end{wide}
@@ -898,7 +916,6 @@ Larger errors with smaller displacements are believed to be caused due to misali
   \figlabel{magrotmeas}
 \end{figure}
 
-\clearpage
 \subsection{Torques between cuboid magnets}
 
 \textcite{allag2009-ietm} have proposed a method, corrected later \cite{yonnet2011-ietm}, using the magnetic nodes approach to calculate the torques between cuboid magnets.
@@ -906,18 +923,16 @@ It is interesting to analyse their approach used to derive their equations, as i
 
 The assertion given by Allag and Yonnet is that since the `forces' between the nodes of the magnets can be calculated, these corner forces can be used to calculate the applied torque on the magnets.
 Their expression for the torque (on the second magnet) can be written as per the previous style in the following form:
-\begin{equation}\eqlabel{torque}
+\begin{gather}\eqlabel{torque}
 \Tzz=\frac{\magn1\magn2}{4\pi\permVac}
   \sum_{i,j,k,l,p,q\in\{0,1\}^6}
   \Tzznode_{i,j,k,l,p,q}
   \cdot
-  \gp{-1}^{i+j+k+l+p+q} ,
-\end{equation}
-where
-\begin{equation}
-\Tzznode_{i,j,k,l,p,q} = \cdcnrF_{j,l,q}\vect\times \Fzznode\fn{\cornerd_{i,j,k,l,p,q}} .
+  \gp{-1}^{i+j+k+l+p+q} \,,\\
+\Tzznode_{i,j,k,l,p,q} = \cdcnrF_{j,l,q}\vect\times \Fzznode\fn{\cornerd_{i,j,k,l,p,q}} \,,
 \eqlabel{torque-inner}
-\end{equation}
+\end{gather}
+where $\cdcnrF_{j,l,q}$ is the vector of magnet side lengths as defined in \eqref{rRvec}.
 The interpretation of \eqref{torque} and \eqref{torque-inner} is that the inner terms of the summation represent the torque applied on the second magnet due to the influence of one corner of the first magnet and one corner of the second magnet. Allag and Yonnet write this slightly differently in terms of the total torque applied from the entire first magnet on each corner of the second:
 \begin{equation}\eqlabel{torqu-1}
 \Tzz = \sum_{j,l,q\in\{0,1\}^3} \cdcnrF_{j,l,q}\vect\times \vect f_{j,l,q} ,
@@ -960,11 +975,9 @@ The magnetic node force calculated in these two cases are not the same, violatin
 \caption{Two examples of interacting magnetic nodes.}
 \end{figure}
 
-Second, consider a fixed magnet of size $\inlinevect{2a,2b,2c}$ reacting with another magnet of some fixed vertical distance away. Compare two cases for the second magnet:
-\begin{itemize}
-\item	of equal size with $\inlinevect{2A, 2B, 2C}=\inlinevect{2a, 2b, 2c}$, and
-\item	of greater size with $\inlinevect{2A, 2B, 2C}=\inlinevect{6a, 6b, 2c}$.
-\end{itemize}
+\enlargethispage{\baselineskip}
+
+Second, consider a fixed magnet of size $\inlinevect{2a,2b,2c}$ reacting with another magnet of some fixed vertical distance away. Compare two cases for the second magnet: the first of equal size as the first with $\inlinevect{2A, 2B, 2C}=\inlinevect{2a, 2b, 2c}$, and the second of greater size with $\inlinevect{2A, 2B, 2C}=\inlinevect{6a, 6b, 2c}$.
 These two cases are shown in \figref{nodes-bigsmall} highlighting the interaction between two equivalent corners.
 The magnetic node force calculated for these cases show that the interaction between the further-apart nodes produces greater magnetic node forces than for the closer nodes.
 This result violates the well-known inverse-displacement relationship that magnetic forces have.
@@ -1000,7 +1013,7 @@ The forces between non-coaxial cylindrical magnets were considered by \textcite{
 All such integral equations require some degree of numerical integration to evaluate, excepting those of Furlani who uses the discretision method instead.
 
 \textcite{babic2008-ietm} and \textcite{ravaud2010-pier} presented closed form expressions for calculating the force between pairs of thin coils (in which there are many turns axially but the coil is modelled as having zero radial thickness).
-At part of the work of this thesis, a simplification of the force equation of \citeauthor{ravaud2010-pier} has been developed \cite{robertson2011-ietm}.
+As part of the work of this thesis, a simplification of the force equation of \citeauthor{ravaud2010-pier} has been developed \cite{robertson2011-ietm}.
 This simplification, \eqref[vref]{simpl4}, results in a faster execution time and more convenient calculation with numerical software.
 
 

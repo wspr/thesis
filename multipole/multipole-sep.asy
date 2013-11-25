@@ -13,7 +13,7 @@ texpreamble("
   \providecommand\mupfacegap{G}
 ");
 
-real h = 1, w = 1, H = 2.5, g = 0.3;
+real h = 1, w = 1, H = 1.75, g = 0.3;
 
 real T = 9;
 

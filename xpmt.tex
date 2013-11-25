@@ -34,7 +34,7 @@ the concepts underpinning the \qzs/ arrangement analysed in detail in \secref{qz
     the marginally stable configuration with equal gap between the lower
     and upper pairs of magnets.}
   \figlabel{rig}
-  
+
   \hspace*{1cm}\includegraphics[scale=0.8]{PhD/Experiments/Rig/photo-labelled.pdf}
   \lofcaption{Photo of the experimental apparatus.}{ Base shaker is not shown.}
   \figlabel{rig-photo}
@@ -341,13 +341,14 @@ The signals were low-pass filtered at \SI{50}{Hz} to avoid aliasing effects usin
   \end{tabular}
 \end{table}
 
-For open loop measurements, these accelerometers were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals to estimate the velocities.
+For open loop measurements, these accelerometers were used to measure acceleration directly; for closed loop control, the charge amplifier was used to integrate the measured signals to estimate the absolute velocities.
 The high-pass filter in the charge amplifiers used a \SI{0.1}{Hz} cut-on frequency when measuring acceleration and \SI{1}{Hz} for velocity.
 The higher frequency is necessary for velocity to avoid drift due to accumulation of errors in the integrator circuit.
 A potential alternative is the use of `drift-free' integrators \cite{gavin1998}, in which the drift is compensated for using alternative signal processing methods, but this approach is only advantageous for measuring low-frequency periodic signals; for transient or wide-band signals, the typical approach is better suited.
 
 Recently, \textcite{williams2009} showed a filter system designed to estimate absolute velocity from accelerometer measurements that can mitigate the low-frequency resonance issues seen due the high-pass filters present in the charge amplifiers used (seen in the experimental results in \secref*{acc-resonance}).
 This research was published after experimental measurements for this thesis had been completed and their ideas were not able to be tested in the apparatus discussed in this section.
+As will be shown (\secref*{cl-results}), the control methodology used for the results later in this chapter was indeed successful; it is expected that the method of \textcite{williams2009} may further improve the performance at low frequencies.
 
 
 \section{Experimental results}
@@ -429,7 +430,7 @@ With respect to the frame origin, the magnet centres for the base magnet $\MagCe
 
 From the displacement results shown in \secref{xpmt-displ}, predicted resonance frequencies can be calculated for this system as a function of magnet gap.
 The expected magnetic forces $F$ due to the measured displacements were calculated using the theory for coaxial cylindrical magnets (\secref[vref]{cyl-forces}) based on magnet centre displacements $\MagCentre_3-\MagCentre_1$ and $\MagCentre_2-\MagCentre_4$.
-Numerical differentiation was used to calculate the stiffnesses $k$ at these displacements, and the natural frequency at each location calculated with $\natfreq=\sqrt{\stiffness/\smash{\masseq}}$ where $\masseq=\forceMag/\gravity$ is the equivalent mass borne by the static force $\forceMag$.
+Numerical differentiation was used to calculate the stiffnesses $k$ at these displacements, and the natural frequency at each location calculated with $\natfreq=\sqrt{\stiffness/\smash{\masseq}}$ where $\masseq=\forceMag/\gravity$ is the equivalent mass borne by the static force $\forceMag$ due to gravity $\gravity$.
 With parameters as specified, the expected natural frequency versus magnet gap results are shown in \figref{xpmt-magres}.
 
 \begin{figure}
@@ -597,6 +598,7 @@ The reduced nonlinearity with increased damping is consistent with the work of o
 \end{figure}
 
 \subsection{Closed loop velocity feedback dynamic measurements}
+\seclabel{cl-results}
 
 In this section, results are shown using closed loop feedback control to improve the vibration isolation characteristics of the system.
 For this experiment, the rest position of the spring was chosen to achieve an arbitrary low
@@ -624,23 +626,21 @@ filter was used to reject signals above \SI{50}{Hz}. This also ensured that
 aliasing was avoided when taking the frequency response measurements and when
 using the velocity signal for feedback control.
 
-A metric of improvement to the vibration isolation characteristics of the system can be shown by calculating
-the \RMS/ of the transmissibility over a certain frequency range:
+A metric of improvement to the vibration isolation characteristics of the system can be shown by calculating the \RSS/ transmissibility over a certain frequency range (recall \eqref[vref]{rsstrans}):
 \begin{dmath}
-  \RMSof{\transmissibility} =
-  \sqrt{\Sum{\transmissibility\fn{\freq}^2}{\freq,\freq_1,\freq_2}}
+  \inttrans = \sqrt{\Sum{\Abs{\transmissibility\fn{\freq}}^2}{\freq,\freq_1,\freq_2}}
 \end{dmath}.
 For the experimental results reported here, the lower frequency limit is defined as $\freq_1=\SI{1}{Hz}$, as the results become very noisy below this frequency.
 The upper frequency limit $\freq_2=\SI{11}{Hz}$ was chosen as the higher-order dynamics (not shown in \figref{cl-results}) have little impact below this frequency.
 
-\Figref{cl-reduction} shows the reduction in \RMS/ transmissibility
-$\RMSof{\transmissibility}$ as the negative feedback gain increases.
-The overall transmissibility reduction is calculated as $1-\RMSof{\transmissibility}/\transmissibility_0$, where $\transmissibility_0$ is the \RMS/ transmissibility of the open loop system.
+\Figref{cl-reduction} shows the reduction in \RSS/ transmissibility
+$\inttrans$ as the negative feedback gain increases.
+The overall transmissibility reduction is calculated as $1-\inttrans/\transmissibility_0$, where $\transmissibility_0$ is the \RSS/ transmissibility of the open loop system.
 The resonance at \SI{1}{Hz} observed in \figref{cl-results} as the feedback gain increases causes the overall transmissibility reduction to have a local maximum.
 
 \begin{figure}
   \psfragfig{PhD/Experiments/XPMT/latex/cl-reduction-2}
-  \caption[{Transmissiblity reduction for increased velocity feedback gain.}]{Effect on overall transmissiblity $\RMSof{\transmissibility}$ between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
+  \caption[{Transmissiblity reduction for increased velocity feedback gain.}]{Effect on overall transmissiblity reduction between \SI{1}{Hz} and \SI{11}{Hz} as velocity feedback gain was increased.}
   \figlabel{cl-reduction}
 \end{figure}
 
@@ -778,6 +778,6 @@ With the very low damping of the open loop system, superharmonics were clearly v
 Once the actuator was connected, the additional eddy current damping suppressed these nonlinearities.
 
 Absolute velocity feedback control was successful in reducing the transmissibility peaks, but as the gain was increased the additional poles added by the integration filters caused an additional lower frequency peak to appear as the closed loop system approached the gain margin.
-At best, the resonance peak was reduced by over an order of magnitude and the \RMS/ transmissibility was reduced by around 65\%.
+At best, the resonance peak was reduced by over an order of magnitude and the \RSS/ transmissibility was reduced by around 65\%.
 
 \end{document}
