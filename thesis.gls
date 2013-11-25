@@ -1,0 +1,1045 @@
+\glossarysection[\glossarytoctitle]{\glossarytitle}\glossarypreamble
+\begin{theglossary}\glossaryheader
+\glsgroupheading{A}\relax \glsresetentrylist %
+\glossaryentryfield{vecarea}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect A}}}}}{Vector area (direction normal to plane)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{48}\delimN
+		\setentrycounter[]{page}\glsnumberformat{52}}}%
+\glossaryentryfield{area}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {A}}}}}{Area}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{58\delimN 59}}}%
+\glossaryentryfield{ampExcite}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {A_e}}}}}{Amplitude of sinusoidal base excitation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{40}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208\delimR 211}}}%
+\glossaryentryfield{hwx}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {a}}}}}{Half-length of cuboid magnet, $\ax $ direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{60}\delimN
+		\setentrycounter[]{page}\glsnumberformat{62}\delimN
+		\setentrycounter[]{page}\glsnumberformat{65}\delimN
+		\setentrycounter[]{page}\glsnumberformat{67\delimN 68}}}%
+\glossaryentryfield{lengthCub}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {a}}}}}{Cuboid magnet depth}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{80}\delimN
+		\setentrycounter[]{page}\glsnumberformat{84}\delimN
+		\setentrycounter[]{page}\glsnumberformat{109\delimN 110}}}%
+\glossaryentryfield{mdim}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {a}}}}}{Cube magnet side length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xii\delimN xiii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{64\delimN 65}\delimN
+		\setentrycounter[]{page}\glsnumberformat{192\delimR 194}\delimN
+		\setentrycounter[]{page}\glsnumberformat{196\delimR 209}}}%
+\glossaryentryfield{areaWire}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {a_w}}}}}{Cross-sectional area of the wire in the coil}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{166}}}\glsgroupskip
+\glsgroupheading{B}\relax \glsresetentrylist %
+\glossaryentryfield{magB}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect B}}}}}{Magnetic flux density vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{28}\delimN
+		\setentrycounter[]{page}\glsnumberformat{33}\delimN
+		\setentrycounter[]{page}\glsnumberformat{48\delimR 52}\delimN
+		\setentrycounter[]{page}\glsnumberformat{57}\delimN
+		\setentrycounter[]{page}\glsnumberformat{59}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{remanence}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {B_r}}}}}{Remanence magnetisation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{50\delimR 52}\delimN
+		\setentrycounter[]{page}\glsnumberformat{55}\delimN
+		\setentrycounter[]{page}\glsnumberformat{58}\delimN
+		\setentrycounter[]{page}\glsnumberformat{61\delimR 68}\delimN
+		\setentrycounter[]{page}\glsnumberformat{73}\delimN
+		\setentrycounter[]{page}\glsnumberformat{75\delimN 76}\delimN
+		\setentrycounter[]{page}\glsnumberformat{120}\delimN
+		\setentrycounter[]{page}\glsnumberformat{144}\delimN
+		\setentrycounter[]{page}\glsnumberformat{146}\delimN
+		\setentrycounter[]{page}\glsnumberformat{155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{157\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167}\delimN
+		\setentrycounter[]{page}\glsnumberformat{195\delimR 197}\delimN
+		\setentrycounter[]{page}\glsnumberformat{215}}}%
+\glossaryentryfield{faceCub}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {b}}}}}{Cuboid magnet face side length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{80}\delimN
+		\setentrycounter[]{page}\glsnumberformat{84}\delimN
+		\setentrycounter[]{page}\glsnumberformat{108\delimR 110}\delimN
+		\setentrycounter[]{page}\glsnumberformat{133\delimR 136}\delimN
+		\setentrycounter[]{page}\glsnumberformat{138\delimN 139}\delimN
+		\setentrycounter[]{page}\glsnumberformat{141}}}%
+\glossaryentryfield{hwy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {b}}}}}{Half-length of cuboid magnet, $\ay $ direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{60}\delimN
+		\setentrycounter[]{page}\glsnumberformat{62}\delimN
+		\setentrycounter[]{page}\glsnumberformat{65}\delimN
+		\setentrycounter[]{page}\glsnumberformat{67\delimR 69}}}%
+\glossaryentryfield{BHmax}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ensuremath {\gp {BH}_{\mathrm {max}}}}}}}}{Maximum energy product}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{51}\delimN
+		\setentrycounter[]{page}\glsnumberformat{55}}}\glsgroupskip
+\glsgroupheading{C}\relax \glsresetentrylist %
+\glossaryentryfield{ZKScompressI}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ZKScompress _\ZKSincl }}}}}{Compression of the inclined springs at \qzs /}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{ZKScompressV}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ZKScompress _\ZKSvert }}}}}{Compression of the vertical spring at \qzs /}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{dampingRel}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {c}}}}}{Relative velocity damping coefficient}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{5}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}}}%
+\glossaryentryfield{damping}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {c}}}}}{Damping coefficient}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{5}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 10}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}\delimN
+		\setentrycounter[]{page}\glsnumberformat{41}\delimN
+		\setentrycounter[]{page}\glsnumberformat{43}\delimN
+		\setentrycounter[]{page}\glsnumberformat{85}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231\delimR 233}}}%
+\glossaryentryfield{hwz}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {c}}}}}{Half-length of cuboid magnet, $\az $ direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{60}\delimN
+		\setentrycounter[]{page}\glsnumberformat{62}\delimN
+		\setentrycounter[]{page}\glsnumberformat{65}\delimN
+		\setentrycounter[]{page}\glsnumberformat{67\delimN 68}}}%
+\glossaryentryfield{lengthCube}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {c}}}}}{Cube magnet side length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{91}\delimN
+		\setentrycounter[]{page}\glsnumberformat{103}\delimN
+		\setentrycounter[]{page}\glsnumberformat{106}}}%
+\glossaryentryfield{dampingAbsorb}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {c_a}}}}}{Damping coefficient of the vibration neutraliser}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}}}\glsgroupskip
+\glsgroupheading{D}\relax \glsresetentrylist %
+\glossaryentryfield{magcd}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect d}}}}}{Distance vector between the centres of two magnets, $\magcd =\inlinevect {\cdx ,\cdy ,\cdz }$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{60}\delimN
+		\setentrycounter[]{page}\glsnumberformat{62\delimN 63}\delimN
+		\setentrycounter[]{page}\glsnumberformat{65\delimR 67}\delimN
+		\setentrycounter[]{page}\glsnumberformat{73}}}%
+\glossaryentryfield{distrMag}{\glsnamefont{\ensuremath {\vect d_1}}}{Position vector for differential magnet volume in cylindrical coordinates $\distrMag =\inlinevect {\distrMag {1},\distrMag {2},\distrMag {3}}$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{distrCoil}{\glsnamefont{\ensuremath {\vect d_2}}}{Position vector for differential coil volume in cylindrical coordinates, $\distrCoil =\inlinevect {\distrCoil {1},\distrCoil {2},\distrCoil {3}}$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{mbqoffset}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {d}}}}}{Inclined magnets horizontal offset at the nominal position}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{108\delimR 112}\delimN
+		\setentrycounter[]{page}\glsnumberformat{114}\delimN
+		\setentrycounter[]{page}\glsnumberformat{117\delimR 120}}}%
+\glossaryentryfield{ngap}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {d}}}}}{Normalised magnet gap}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xii\delimN xiii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xix}\delimN
+		\setentrycounter[]{page}\glsnumberformat{192\delimR 195}\delimN
+		\setentrycounter[]{page}\glsnumberformat{197\delimR 211}}}%
+\glossaryentryfield{springDepth}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {d}}}}}{Magnetic spring depth}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{103}\delimN
+		\setentrycounter[]{page}\glsnumberformat{105\delimN 106}\delimN
+		\setentrycounter[]{page}\glsnumberformat{133}}}%
+\glossaryentryfield{diamWire}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {d_w}}}}}{Diameter of wire}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{166\delimR 171}\delimN
+		\setentrycounter[]{page}\glsnumberformat{173}}}\glsgroupskip
+\glsgroupheading{E}\relax \glsresetentrylist %
+\glossaryentryfield{dispradial}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {e_r}}}}}{Radial distance between two cylindrical objects}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{164\delimN 165}}}\glsgroupskip
+\glsgroupheading{F}\relax \glsresetentrylist %
+\glossaryentryfield{forceVec}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect F}}}}}{Force vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{57\delimN 58}\delimN
+		\setentrycounter[]{page}\glsnumberformat{68}\delimN
+		\setentrycounter[]{page}\glsnumberformat{99}\delimN
+		\setentrycounter[]{page}\glsnumberformat{109\delimN 110}\delimN
+		\setentrycounter[]{page}\glsnumberformat{116}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118\delimN 119}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{Fzx}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect F_{z,x}}}}}}{Force between two cuboid magnets; the first magnetised in the $\az $ direction, the second in $\ax $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{66}}}%
+\glossaryentryfield{Fzy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect F_{z,y}}}}}}{Force between two cuboid magnets; the first magnetised in the $\az $ direction, the second in $\ay $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{63}\delimN
+		\setentrycounter[]{page}\glsnumberformat{66}\delimN
+		\setentrycounter[]{page}\glsnumberformat{78}}}%
+\glossaryentryfield{Fzz}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect F_{z,z}}}}}}{Force between two cuboid magnets both magnetised in the $\az $ direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{61}\delimN
+		\setentrycounter[]{page}\glsnumberformat{65\delimN 66}\delimN
+		\setentrycounter[]{page}\glsnumberformat{78}\delimN
+		\setentrycounter[]{page}\glsnumberformat{80\delimN 81}\delimN
+		\setentrycounter[]{page}\glsnumberformat{109}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118}}}\glsgroupskip
+\glossaryentryfield{forceEddy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect F_{\mathrm {eddy}}}}}}}{Eddy current force vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{33}}}%
+\glossaryentryfield{forceMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F}}}}}{Magnitude of force}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{41}\delimN
+		\setentrycounter[]{page}\glsnumberformat{68}\delimN
+		\setentrycounter[]{page}\glsnumberformat{78}\delimN
+		\setentrycounter[]{page}\glsnumberformat{80\delimN 81}\delimN
+		\setentrycounter[]{page}\glsnumberformat{85}\delimN
+		\setentrycounter[]{page}\glsnumberformat{93}\delimN
+		\setentrycounter[]{page}\glsnumberformat{102}\delimN
+		\setentrycounter[]{page}\glsnumberformat{107}\delimN
+		\setentrycounter[]{page}\glsnumberformat{110\delimR 113}\delimN
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}\delimN
+		\setentrycounter[]{page}\glsnumberformat{169\delimR 171}\delimN
+		\setentrycounter[]{page}\glsnumberformat{173}\delimN
+		\setentrycounter[]{page}\glsnumberformat{224}}}%
+\glossaryentryfield{laplaceForce}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F\fn {\s }}}}}}{Force input response, Laplace domain}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{231\delimN 232}}}%
+\glossaryentryfield{forceThickCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F_c}}}}}{Axial force between a thick coil and a magnet}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{156\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167\delimR 169}\delimN
+		\setentrycounter[]{page}\glsnumberformat{175\delimN 176}}}%
+\glossaryentryfield{forceFilament}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F_f}}}}}{Axial force between two circular current loops}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{156}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}}}%
+\glossaryentryfield{forceGrav}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F_g}}}}}{Gravity force}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{102}}}%
+\glossaryentryfield{Fecc}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F_r}}}}}{Radial force between two cylindrical thin coils/magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{78}}}%
+\glossaryentryfield{magforceZ}{\glsnamefont{\ensuremath {F_T}}}{\QZS / vertical magnet force function}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}}}%
+\glossaryentryfield{Fax}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F_z}}}}}{Axial force between two cylindrical thin coils/magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{76}\delimN
+		\setentrycounter[]{page}\glsnumberformat{78}\delimN
+		\setentrycounter[]{page}\glsnumberformat{157}}}%
+\glossaryentryfield{fattr}{\glsnamefont{\ensuremath {F_{\mathrm {attr}}}}}{Magnet force (attraction magnet)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194}}}%
+\glossaryentryfield{frepl}{\glsnamefont{\ensuremath {F_{\mathrm {repl}}}}}{Magnet force (repulsion magnet)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194}}}%
+\glossaryentryfield{ZKSforceincl}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ZKSforce _{\ZKSincl \SUBSUB }\gdef \SUBSUB {}}}}}}{Force characteristic of the inclined spring, with vertical component $\ZKSforceinclV $ and horizontal component $\ZKSforceinclH $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xvi}\delimN
+		\setentrycounter[]{page}\glsnumberformat{182}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}}}%
+\glossaryentryfield{ZKSforcevert}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ZKSforce _{\ZKSvert \SUBSUB }\gdef \SUBSUB {}}}}}}{Force characteristic of the vertical spring, with vertical component $\ZKSforcevertV $ and horizontal component $\ZKSforcevertH $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xvi}\delimN
+		\setentrycounter[]{page}\glsnumberformat{182}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}}}%
+\glossaryentryfield{ZKSforcetotal}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ZKSforce _{t\SUBSUB }\gdef \SUBSUB {}}}}}}{Force characteristic of the overall inclined spring \qzs / mechanism, with vertical component $\ZKSforcetotalV $ and horizontal component $\ZKSforcetotalH $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xvi}\delimN
+		\setentrycounter[]{page}\glsnumberformat{182\delimR 186}}}%
+\glossaryentryfield{magforce}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {F_s}}}}}{Magnet force for coaxial cube magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{64}\delimN
+		\setentrycounter[]{page}\glsnumberformat{81}\delimN
+		\setentrycounter[]{page}\glsnumberformat{193\delimN 194}\delimN
+		\setentrycounter[]{page}\glsnumberformat{196\delimN 197}}}%
+\glossaryentryfield{forceIn}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {f}}}}}{Force input}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{5\delimR 7}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231}\delimN
+		\setentrycounter[]{page}\glsnumberformat{233}}}%
+\glossaryentryfield{forceAbsorb}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {f_a}}}}}{Active force input for an inertial mass or vibration neutraliser}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{viii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{16\delimN 17}}}%
+\glossaryentryfield{forceDisturb}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {f_d}}}}}{Force disturbance}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{5}}}%
+\glossaryentryfield{feq}{\glsnamefont{\ensuremath {f_q}}}{Normalised force at equilibrium}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{198\delimN 199}}}%
+\glossaryentryfield{nforceZ}{\glsnamefont{\ensuremath {f_T}}}{Normalised \QZS / vertical magnet force}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194}\delimN
+		\setentrycounter[]{page}\glsnumberformat{197\delimR 200}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}}}%
+\glossaryentryfield{nforce}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {f_s}}}}}{Normalised magnet force for coaxial cube magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{64}\delimN
+		\setentrycounter[]{page}\glsnumberformat{193\delimR 195}}}%
+\glsgroupheading{G}\relax \glsresetentrylist %
+\glossaryentryfield{mbqmforce}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect G}}}}}{Force vector between inclined magnets in the local coordinate systems of the fixed magnet}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{109}}}%
+\glossaryentryfield{GapCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {G}}}}}{Axial gap between the dual coils}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{175\delimN 176}\delimN
+		\setentrycounter[]{page}\glsnumberformat{219}}}%
+\glossaryentryfield{magnetGap}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {G}}}}}{Gap between magnets in various magnetic spring designs}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{91}\delimN
+		\setentrycounter[]{page}\glsnumberformat{99\delimN 100}\delimN
+		\setentrycounter[]{page}\glsnumberformat{103}\delimN
+		\setentrycounter[]{page}\glsnumberformat{133}\delimN
+		\setentrycounter[]{page}\glsnumberformat{141\delimN 142}}}%
+\glossaryentryfield{transferFunction}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {G\noexpand \maybesubscript \fn {\s }}}}}}{Transfer function}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{231\delimR 233}}}%
+\glossaryentryfield{gravity}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g}}}}}{Acceleration due to gravity}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{85}\delimN
+		\setentrycounter[]{page}\glsnumberformat{107}\delimN
+		\setentrycounter[]{page}\glsnumberformat{111}\delimN
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}\delimN
+		\setentrycounter[]{page}\glsnumberformat{179}\delimN
+		\setentrycounter[]{page}\glsnumberformat{198}\delimN
+		\setentrycounter[]{page}\glsnumberformat{200}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}\delimN
+		\setentrycounter[]{page}\glsnumberformat{224}}}%
+\glossaryentryfield{rigNormGap}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g}}}}}{Normalised magnet gap}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{222}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}}}%
+\glossaryentryfield{gainAcc}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g_a}}}}}{Feedback gain on relative acceleration}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 9}\delimN
+		\setentrycounter[]{page}\glsnumberformat{11}}}%
+\glossaryentryfield{gainVel}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g_c}}}}}{Feedback gain on relative velocity}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{10\delimN 11}}}%
+\glossaryentryfield{gainSkyspring}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g_d}}}}}{Feedback gain on absolute acceleration}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 9}\delimN
+		\setentrycounter[]{page}\glsnumberformat{11}}}%
+\glossaryentryfield{gainDisp}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g_k}}}}}{Feedback gain on relative displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 9}\delimN
+		\setentrycounter[]{page}\glsnumberformat{11}\delimN
+		\setentrycounter[]{page}\glsnumberformat{85}}}%
+\glossaryentryfield{gainSkymass}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g_m}}}}}{Feedback gain on absolute displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 9}\delimN
+		\setentrycounter[]{page}\glsnumberformat{11}}}%
+\glossaryentryfield{gainSkyhook}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {g_v}}}}}{Feedback gain on absolute velocity}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{10\delimN 11}\delimN
+		\setentrycounter[]{page}\glsnumberformat{232\delimN 233}}}\glsgroupskip
+\glsgroupheading{H}\relax \glsresetentrylist %
+\glossaryentryfield{magH}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect H}}}}}{Magnetic field strength vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{48\delimR 51}}}%
+\glossaryentryfield{HeightRig}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {H}}}}}{Height of the apparatus}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{222\delimR 224}}}%
+\glossaryentryfield{ZKSvlengthcomp}{\glsnamefont{\ensuremath {H}}}{Length of vertical spring under load}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{181}\delimN
+		\setentrycounter[]{page}\glsnumberformat{183}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}\delimN
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{ZKSvlength}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {H_0}}}}}{Undeflected vertical spring length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimN 181}\delimN
+		\setentrycounter[]{page}\glsnumberformat{183}\delimN
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{coerce}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {H_c}}}}}{Coercivity}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{51\delimN 52}}}%
+\glossaryentryfield{ZKSheight}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h}}}}}{Inclined spring vertical dimension}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimR 183}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}}}%
+\glossaryentryfield{mupheight}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h}}}}}{Multipole array height}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133}\delimN
+		\setentrycounter[]{page}\glsnumberformat{136\delimR 138}\delimN
+		\setentrycounter[]{page}\glsnumberformat{140\delimN 141}}}%
+\glossaryentryfield{ndispZ}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h}}}}}{Normalised nominal magnet displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{192}\delimN
+		\setentrycounter[]{page}\glsnumberformat{194\delimN 195}\delimN
+		\setentrycounter[]{page}\glsnumberformat{197\delimR 199}\delimN
+		\setentrycounter[]{page}\glsnumberformat{201}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}\delimN
+		\setentrycounter[]{page}\glsnumberformat{210}}}%
+\glossaryentryfield{HeightBeam}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h_b}}}}}{Beam height}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glossaryentryfield{HeightCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h_c}}}}}{Height of the coil}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{219}}}%
+\glossaryentryfield{HeightRigMagnets}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h_m}}}}}{Height of the magnets support}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{222\delimR 224}}}%
+\glossaryentryfield{heq}{\glsnamefont{\ensuremath {h_q}}}{Normalised displacement at equilibrium}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{198\delimR 201}\delimN
+		\setentrycounter[]{page}\glsnumberformat{205\delimN 206}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}}}%
+\glossaryentryfield{HeightSensor}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h_s}}}}}{Height of the laser sensor}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glossaryentryfield{HeightBuffer}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {h_{\epsilon }}}}}}{Height `buffer' to account for additional thicknesses}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{222}\delimN
+		\setentrycounter[]{page}\glsnumberformat{224}}}\glsgroupskip
+\glsgroupheading{I}\relax \glsresetentrylist %
+\glossaryentryfield{current}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {I}}}}}{Current}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{48}\delimN
+		\setentrycounter[]{page}\glsnumberformat{75}\delimN
+		\setentrycounter[]{page}\glsnumberformat{155\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167}\delimN
+		\setentrycounter[]{page}\glsnumberformat{170\delimN 171}\delimN
+		\setentrycounter[]{page}\glsnumberformat{175}}}%
+\glossaryentryfield{mbqmomentofinertia}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {I_m}}}}}{Inclined magnet system moment of inertia}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}}}\glsgroupskip
+\glossaryentryfield{ii}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {i}}}}}{The imaginary number $\sqrt {-1}$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{10}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}}}%
+\glossaryentryfield{mupi}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {i}}}}}{Magnet index in the $\ax $ direction.}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{144\delimR 147}}}%
+\glsgroupheading{J}\relax \glsresetentrylist %
+\glossaryentryfield{magJ}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect J}}}}}{Current density vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{48}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{magJm}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect J_m}}}}}{Equivalent `surface current' vector due to magnetisation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{48}}}%
+\glossaryentryfield{magJeddy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect J_{\mathrm {eddy}}}}}}}{Eddy current density vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{33}}}\glsgroupskip
+\glossaryentryfield{mupj}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {j}}}}}{Magnet index in the $\ay $ direction.}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{144\delimR 147}}}%
+\glsgroupheading{K}\relax \glsresetentrylist %
+\glossaryentryfield{Kzy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect K_{z,y}}}}}}{Stiffness between two cuboid magnets; the first magnetised in the $\az $ direction, the second in $\ax $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{63}}}%
+\glossaryentryfield{Kzz}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect K_{z,z}}}}}}{Stiffness between two cuboid magnets magnetised in the $\az $ direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{62}}}
+\glossaryentryfield{stiffnessMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {K}}}}}{Magnitude of stiffness characteristic (derivative of force with respect to displacement)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{87\delimR 90}\delimN
+		\setentrycounter[]{page}\glsnumberformat{92}}}%
+\glossaryentryfield{BlockController}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {K_c\fn {\s }}}}}}{Controller transfer function}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{232\delimN 233}}}%
+\glossaryentryfield{ZKSstiffnessH}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {K_h}}}}}{Stiffness characteristic in the horizontal direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{186\delimN 187}}}%
+\glossaryentryfield{keq}{\glsnamefont{\ensuremath {K_q}}}{Stiffness at equilibrium}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{200}\delimN
+		\setentrycounter[]{page}\glsnumberformat{205}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{210}}}%
+\glossaryentryfield{magstiffnessZ}{\glsnamefont{\ensuremath {K_T}}}{\QZS / vertical magnet stiffness function}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194}\delimN
+		\setentrycounter[]{page}\glsnumberformat{200}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{210}}}%
+\glossaryentryfield{ZKSstiffnessV}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {K_v}}}}}{Stiffness characteristic in the vertical direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{184}}}%
+\glossaryentryfield{kattr}{\glsnamefont{\ensuremath {K_{\mathrm {attr}}}}}{Magnet stiffness (attraction magnet)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{205}}}%
+\glossaryentryfield{krepl}{\glsnamefont{\ensuremath {K_{\mathrm {repl}}}}}{Magnet stiffness (repulsion magnet)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{205}}}%
+\glossaryentryfield{magstiffness}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {K_s}}}}}{Magnet stiffness characteristic for coaxial cube magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{64}\delimN
+		\setentrycounter[]{page}\glsnumberformat{193}}}%
+\glossaryentryfield{stiffness}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {k}}}}}{Stiffness coefficient}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiii\delimN xxiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{5}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 10}\delimN
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}\delimN
+		\setentrycounter[]{page}\glsnumberformat{39}\delimN
+		\setentrycounter[]{page}\glsnumberformat{41}\delimN
+		\setentrycounter[]{page}\glsnumberformat{43}\delimN
+		\setentrycounter[]{page}\glsnumberformat{107}\delimN
+		\setentrycounter[]{page}\glsnumberformat{110\delimN 111}\delimN
+		\setentrycounter[]{page}\glsnumberformat{113}\delimN
+		\setentrycounter[]{page}\glsnumberformat{120}\delimN
+		\setentrycounter[]{page}\glsnumberformat{179}\delimN
+		\setentrycounter[]{page}\glsnumberformat{224}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231\delimR 233}}}%
+\glossaryentryfield{ZKSstiffincl}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ZKSstiff _\ZKSincl }}}}}{Inclined spring stiffness}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimR 184}\delimN
+		\setentrycounter[]{page}\glsnumberformat{187}}}%
+\glossaryentryfield{ZKSstiffvert}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\ZKSstiff _\ZKSvert }}}}}{Vertical spring stiffness}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimR 183}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}}}%
+\glossaryentryfield{stiffnessAbsorb}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {k_a}}}}}{Stiffness of the vibration neutraliser}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}}}%
+\glossaryentryfield{nstiffnessZ}{\glsnamefont{\ensuremath {k_T}}}{Normalised \QZS / vertical magnet stiffness}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194}\delimN
+		\setentrycounter[]{page}\glsnumberformat{197}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}}}%
+\glossaryentryfield{klin}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {k_{\mathrm {lin}}}}}}}{Linearised stiffness at a certain point}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{43}}}%
+\glossaryentryfield{nstiffness}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {k_s}}}}}{Normalised magnet stiffness characteristic for coaxial cube magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{64\delimN 65}\delimN
+		\setentrycounter[]{page}\glsnumberformat{193\delimN 194}}}%
+\glsgroupskip
+\glsgroupheading{L}\relax \glsresetentrylist %
+\glossaryentryfield{ZKSlengthcomp}{\glsnamefont{\ensuremath {L}}}{Length of inclined spring under load}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{181\delimN 182}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}\delimN
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{ZKSlength}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {L_0}}}}}{Undeflected inclined spring length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimR 182}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}\delimN
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{LengthBeam}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {L_b}}}}}{Beam length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{215}}}%
+\glossaryentryfield{lengthCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {L_c}}}}}{Coil length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{75}\delimN
+		\setentrycounter[]{page}\glsnumberformat{154\delimN 155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{157\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}}}%
+\glossaryentryfield{lengthMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {L_m}}}}}{Magnet length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{82\delimR 84}\delimN
+		\setentrycounter[]{page}\glsnumberformat{154\delimN 155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{157\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167}\delimN
+		\setentrycounter[]{page}\glsnumberformat{172}\delimN
+		\setentrycounter[]{page}\glsnumberformat{215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{219}\delimN
+		\setentrycounter[]{page}\glsnumberformat{222\delimR 224}}}%
+\glossaryentryfield{mbqCoMvec}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect l}}}}}{Displacement vector between magnet centre and centre of mass (lever arm)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{118}}}%
+\glossaryentryfield{mbqlever}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {l}}}}}{Lever arm}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{103}\delimN
+		\setentrycounter[]{page}\glsnumberformat{105}\delimN
+		\setentrycounter[]{page}\glsnumberformat{117\delimR 120}}}%
+\glossaryentryfield{muplength}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {l}}}}}{Multipole array length}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133\delimR 136}\delimN
+		\setentrycounter[]{page}\glsnumberformat{138}}}%
+\glossaryentryfield{ndisp}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {l}}}}}{Normalised nominal magnet displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{64\delimN 65}\delimN
+		\setentrycounter[]{page}\glsnumberformat{193}\delimN
+		\setentrycounter[]{page}\glsnumberformat{195}}}%
+\glossaryentryfield{LengthRigMagnets}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {l_m}}}}}{Horizontal offset of the magnets support}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glossaryentryfield{LengthSensor}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {l_s}}}}}{Horizontal offset of the laser sensor}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glossaryentryfield{lengthWire}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {l_w}}}}}{Length of the wire in the coil}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}}}\glsgroupskip
+\glsgroupheading{M}\relax \glsresetentrylist %
+\glossaryentryfield{magM}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect M}}}}}{Magnetisation vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{28}\delimN
+		\setentrycounter[]{page}\glsnumberformat{48\delimR 50}\delimN
+		\setentrycounter[]{page}\glsnumberformat{57}\delimN
+		\setentrycounter[]{page}\glsnumberformat{144}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{magN}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\hat {\vect M}}}}}}{Unit magnetisation vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{144\delimR 147}}}%
+\glossaryentryfield{Msat}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {M_{\mathrm {sat}}}}}}}{Magnetisation at saturation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{50\delimN 51}}}%
+\glossaryentryfield{mdip}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect m}}}}}{Magnetic dipole}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{48}}}%
+\glossaryentryfield{mass}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {m}}}}}{Mass}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiii\delimN xxiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{5}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimR 10}\delimN
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}\delimN
+		\setentrycounter[]{page}\glsnumberformat{41}\delimN
+		\setentrycounter[]{page}\glsnumberformat{43}\delimN
+		\setentrycounter[]{page}\glsnumberformat{85}\delimN
+		\setentrycounter[]{page}\glsnumberformat{107}\delimN
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}\delimN
+		\setentrycounter[]{page}\glsnumberformat{179}\delimN
+		\setentrycounter[]{page}\glsnumberformat{198\delimR 202}\delimN
+		\setentrycounter[]{page}\glsnumberformat{204\delimR 209}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231\delimR 233}}}%
+\glossaryentryfield{massAbsorb}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {m_a}}}}}{Vibration neutraliser mass}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}}}%
+\glossaryentryfield{mbqmasseq}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {m_{\mathrm {eq}}}}}}}{Equivalent mass}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{111}\delimN
+		\setentrycounter[]{page}\glsnumberformat{224}}}%
+\glsgroupskip
+\glsgroupheading{N}\relax \glsresetentrylist %
+\glossaryentryfield{maggradesym}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {N}}}}}{Magnet grade, units \si {MG.Oe}}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{55}}}%
+\glossaryentryfield{mupNmag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {N}}}}}{Multipole array number of magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133\delimR 136}\delimN
+		\setentrycounter[]{page}\glsnumberformat{144}\delimN
+		\setentrycounter[]{page}\glsnumberformat{146}}}%
+\glossaryentryfield{turnsCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {N}}}}}{Number of turns in the coil}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{75}\delimN
+		\setentrycounter[]{page}\glsnumberformat{155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158\delimN 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{175}}}%
+\glossaryentryfield{turnsZMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {N_m}}}}}{Magnet equivalent `turns' for filament current model}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{156\delimN 157}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}}}%
+\glossaryentryfield{turnsRCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {N_r}}}}}{Number of turns in the radial direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{155\delimR 157}\delimN
+		\setentrycounter[]{page}\glsnumberformat{160\delimN 161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}\delimN
+		\setentrycounter[]{page}\glsnumberformat{175}}}%
+\glossaryentryfield{turnsZCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {N_z}}}}}{Number of turns in the axial direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{155\delimR 157}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}}}%
+\glossaryentryfield{normn}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\hat {\vect {n}}}}}}}{Surface normal vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{57}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{nn}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {n}}}}}{Exponential for empirical magnet force equation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{195\delimR 197}\delimN
+		\setentrycounter[]{page}\glsnumberformat{200}}}%
+\glsgroupskip
+\glsgroupheading{P}\relax \glsresetentrylist %
+\glossaryentryfield{powerSpectBase}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {P_{bb}\fn {\freq }}}}}}{Power spectrum accelerometer measurements of the base disturbance}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{39\delimN 40}\delimN
+		\setentrycounter[]{page}\glsnumberformat{228}}}%
+\glossaryentryfield{crossSpectMagnetBase}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {P_{mb}\fn {\freq }}}}}}{Cross spectrum accelerometer measurements between the moving magnet and base disturbance}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{39\delimN 40}}}%
+\glossaryentryfield{powerSpectMagnet}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {P_{mm}\fn {\freq }}}}}}{Power spectrum accelerometer measurements of the moving magnet}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{228}}}%
+\glossaryentryfield{mbqleverdispl}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect p}}}}}{Displacement vector due to rotation around centre of mass}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{118}}}%
+\glossaryentryfield{disturb}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {p}}}}}{Disturbance}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{41}\delimN
+		\setentrycounter[]{page}\glsnumberformat{43}\delimN
+		\setentrycounter[]{page}\glsnumberformat{85\delimN 86}}}%
+\glossaryentryfield{muphdgap}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {p}}}}}{Dual-multipole array horizontal offset}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{150\delimN 151}}}%
+\glossaryentryfield{OriginBeam}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {p_b}}}}}{Beam pin origin height}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glossaryentryfield{OriginMagGap}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath { p_g }}}}}{Magnet gap}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{222\delimN 223}}}%
+\glossaryentryfield{OriginMagLow}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath { p_m }}}}}{Low magnet height}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{222}\delimN
+		\setentrycounter[]{page}\glsnumberformat{224}}}%
+\glossaryentryfield{OriginMagHigh}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath { p_n }}}}}{High magnet height}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{222\delimR 224}}}%
+\glossaryentryfield{OriginQZS}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {p_q}}}}}{\QZS / position}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{222\delimN 223}}}%
+\glsgroupskip
+\glsgroupheading{Q}\relax \glsresetentrylist %
+\glossaryentryfield{ccA}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {Q_0}}}}}{Coefficient for empirical magnet force equation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{195\delimR 197}\delimN
+		\setentrycounter[]{page}\glsnumberformat{200}}}%
+\glossaryentryfield{ccB}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {Q_1}}}}}{Coefficient for empirical magnet force equation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{195\delimR 197}\delimN
+		\setentrycounter[]{page}\glsnumberformat{200}}}%
+\glossaryentryfield{ccC}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {Q_2}}}}}{Coefficient for empirical magnet force equation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{195}}}%
+\glossaryentryfield{ccD}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {Q_3}}}}}{Coefficient for empirical magnet force equation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{195}}}%
+\glossaryentryfield{qqO}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {q_0\fn {\ngap }}}}}}{Polynomial coefficient for modelling magnet force}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194\delimN 195}}}%
+\glossaryentryfield{qqII}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {q_2\fn {\ngap }}}}}}{Polynomial coefficient for modelling magnet force}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194\delimN 195}}}%
+\glossaryentryfield{qqIV}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {q_4\fn {\ngap }}}}}}{Polynomial coefficient for modelling magnet force}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{194\delimN 195}}}\glsgroupskip
+\glsgroupheading{R}\relax \glsresetentrylist %
+\glossaryentryfield{rotX}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect R_x}}}}}{Planar rotation matrix around the $\ax $ axis}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{66\delimN 67}}}%
+\glossaryentryfield{rotY}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect R_y}}}}}{Planar rotation matrix around the $\ay $ axis}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{66}}}%
+\glossaryentryfield{rotZ}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect R_z}}}}}{Planar rotation matrix around the $\az $ axis}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{66}\delimN
+		\setentrycounter[]{page}\glsnumberformat{109}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118}}}%
+\glossaryentryfield{cdcnrF}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect R}}}}}{Distance vector between a magnet's centre and one of its corners/nodes (floating magnet)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{62\delimN 63}\delimN
+		\setentrycounter[]{page}\glsnumberformat{73}}}%
+\glossaryentryfield{mupmagperwave}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {R}}}}}{Multipole array number of magnets per wavelength}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133\delimR 139}}}%
+\glossaryentryfield{resistanceCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {R}}}}}{Coil resistance}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{166\delimR 171}\delimN
+		\setentrycounter[]{page}\glsnumberformat{173}\delimN
+		\setentrycounter[]{page}\glsnumberformat{218\delimN 219}}}%
+\glossaryentryfield{oradiusCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {R_c}}}}}{Thick coil outer radius}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{157\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}\delimN
+		\setentrycounter[]{page}\glsnumberformat{175}\delimN
+		\setentrycounter[]{page}\glsnumberformat{219}}}%
+\glossaryentryfield{oradiusMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {R_m}}}}}{Magnet outer radius}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{82\delimR 84}\delimN
+		\setentrycounter[]{page}\glsnumberformat{154\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}\delimN
+		\setentrycounter[]{page}\glsnumberformat{172}\delimN
+		\setentrycounter[]{page}\glsnumberformat{215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{219}}}%
+\glossaryentryfield{cdcnrX}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect r}}}}}{Distance vector between a magnet's centre and one of its corners/nodes (fixed magnet)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{62\delimN 63}}}%
+\glossaryentryfield{cnrl}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {r}}}}}{Euclidean distance of $\cornerd $, $\sqrt {\cnrx ^2+\cnry ^2+\cnrz ^2}$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{62\delimR 64}}}%
+\glossaryentryfield{distr}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {r}}}}}{Radial component of distance vector in cylindrical coordinates}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}\delimN
+		\setentrycounter[]{page}\glsnumberformat{163\delimN 164}}}%
+\glossaryentryfield{radius}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {r}}}}}{Radius}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{156}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164\delimN 165}}}%
+\glossaryentryfield{iradiusCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {r_c}}}}}{Thick coil inner radius}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{154\delimN 155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{157\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{161}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}\delimN
+		\setentrycounter[]{page}\glsnumberformat{175}\delimN
+		\setentrycounter[]{page}\glsnumberformat{219}}}%
+\glossaryentryfield{cradiusCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {r_g}}}}}{Clearance between magnet and inner coil radii}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{154}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167}}}%
+\glsgroupskip
+\glsgroupheading{S}\relax \glsresetentrylist %
+\glossaryentryfield{mwF}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect S}}}}}{Vector of magnet side lengths (floating)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{65\delimR 67}}}%
+\glossaryentryfield{surface}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {S}}}}}{Integration surface}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{57}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{safetyFactor}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {S_f}}}}}{Factor of safety}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{171}\delimN
+		\setentrycounter[]{page}\glsnumberformat{173}}}%
+\glossaryentryfield{varianceNoise}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {S_w}}}}}{White noise variance}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{41\delimR 43}}}%
+\glossaryentryfield{mbqmdispl}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect s}}}}}{Position vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{109}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118}}}%
+\glossaryentryfield{mwX}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect s}}}}}{Vector of magnet side lengths (fixed)}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{65\delimR 67}}}%
+\glossaryentryfield{diffsurface}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {s}}}}}{Differential region of the integration surface}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{57}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glossaryentryfield{s}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {s}}}}}{Laplace variable}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xv\delimR xvii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xx\delimN xxi}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231\delimR 233}}}%
+\glsgroupskip
+\glsgroupheading{T}\relax \glsresetentrylist %
+\glossaryentryfield{Tzy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect T_{z,y}}}}}}{Torque between two cuboid magnets; the first magnetised in the $\az $ direction, the second in $\ay $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{78}}}%
+\glossaryentryfield{Tzz}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect T_{z,z}}}}}}{Torque between two cuboid magnets magnetised in the $\az $ direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{73}\delimN
+		\setentrycounter[]{page}\glsnumberformat{78}}}%
+\glossaryentryfield{period}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {T}}}}}{Period}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{40}}}%
+\glossaryentryfield{transmissibility}{\glsnamefont{\ensuremath {T\fn {\s }, T\fn {\freq }}}}{Transmissibility}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxi}\delimN
+		\setentrycounter[]{page}\glsnumberformat{8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{10}\delimN
+		\setentrycounter[]{page}\glsnumberformat{39}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}\delimN
+		\setentrycounter[]{page}\glsnumberformat{228}\delimN
+		\setentrycounter[]{page}\glsnumberformat{230\delimN 231}}}%
+\glossaryentryfield{inttrans}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {T_{\textsc {rss}}}}}}}{Root-sum-square of the transmissibility magnitude}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{10}\delimN
+		\setentrycounter[]{page}\glsnumberformat{230\delimN 231}}}%
+\glossaryentryfield{mbqptorque}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {T_\mbqpdir }}}}}{Inclined magnets torque}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{118\delimN 119}}}%
+\glossaryentryfield{mbqlocl}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect t}}}}}{Displacement vectors from the spring magnet centres to the centre of rotation in the coordinate system of the magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{118}}}%
+\glossaryentryfield{Time}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {t}}}}}{Time}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7}\delimN
+		\setentrycounter[]{page}\glsnumberformat{40\delimN 41}\delimN
+		\setentrycounter[]{page}\glsnumberformat{43}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231}}}%
+\glossaryentryfield{ThicknessBeam}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {t_b}}}}}{Beam shell thickness}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glsgroupskip
+\glsgroupheading{U}\relax \glsresetentrylist %
+\glossaryentryfield{potentialEnergy}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {U}}}}}{Potential energy}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{28}}}%
+\glossaryentryfield{mbqunit}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {u}}}}}{Cuboid magnet unit length, cube root of volume}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{110\delimR 112}\delimN
+		\setentrycounter[]{page}\glsnumberformat{114}\delimN
+		\setentrycounter[]{page}\glsnumberformat{117}\delimN
+		\setentrycounter[]{page}\glsnumberformat{119\delimN 120}}}\glsgroupskip
+\glsgroupheading{V}\relax \glsresetentrylist %
+\glossaryentryfield{volume}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {V}}}}}{Volume}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{33}\delimN
+		\setentrycounter[]{page}\glsnumberformat{48}\delimN
+		\setentrycounter[]{page}\glsnumberformat{80\delimN 81}\delimN
+		\setentrycounter[]{page}\glsnumberformat{83}\delimN
+		\setentrycounter[]{page}\glsnumberformat{110}\delimN
+		\setentrycounter[]{page}\glsnumberformat{114}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167\delimR 171}\delimN
+		\setentrycounter[]{page}\glsnumberformat{173}}}%
+\glossaryentryfield{varianceGain}{\glsnamefont{\ensuremath {V\fn {\freq }}}}{Variance gain, alternative of transmissibility $\transmissibility $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{40}}}%
+\glossaryentryfield{velocity}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect v}}}}}{Velocity vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{33}}}\glsgroupskip
+\glossaryentryfield{diffvolume}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {v}}}}}{Differential region of the integration volume}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{33}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}}}%
+\glsgroupheading{W}\relax \glsresetentrylist %
+\glossaryentryfield{mupNwaves}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {W}}}}}{Multipole array number of wavelengths}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133\delimR 140}}}%
+\glossaryentryfield{ZKSwidth}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {w}}}}}{Inclined spring horizontal dimension}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimR 182}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186}}}%
+\glossaryentryfield{WidthBeam}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {w_b}}}}}{Beam width}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{215}}}\glsgroupskip
+\glsgroupheading{X}\relax \glsresetentrylist %
+\glossaryentryfield{laplaceBase}{\glsnamefont{\ensuremath {X_1\fn {\s }}}}{Base response, Laplace domain}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231\delimR 233}}}%
+\glossaryentryfield{laplaceMass}{\glsnamefont{\ensuremath {X_2\fn {\s }}}}{Vibration mass response, Laplace domain}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{18}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231\delimR 233}}}%
+\glossaryentryfield{pos}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vect x}}}}}{Displacement vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{57\delimR 59}}}%
+\glossaryentryfield{ZKSshift}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {x}}}}}{Horizontal displacement of the inclined spring}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimR 187}\delimN
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{ax}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\hat x}}}}}{Cartesian unit vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{x}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xvi\delimR xviii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xx}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xxiii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{60\delimN 61}\delimN
+		\setentrycounter[]{page}\glsnumberformat{66\delimN 67}\delimN
+		\setentrycounter[]{page}\glsnumberformat{69}\delimN
+		\setentrycounter[]{page}\glsnumberformat{78}\delimN
+		\setentrycounter[]{page}\glsnumberformat{88}\delimN
+		\setentrycounter[]{page}\glsnumberformat{91\delimN 92}\delimN
+		\setentrycounter[]{page}\glsnumberformat{94\delimR 99}\delimN
+		\setentrycounter[]{page}\glsnumberformat{101\delimR 103}\delimN
+		\setentrycounter[]{page}\glsnumberformat{105\delimN 106}\delimN
+		\setentrycounter[]{page}\glsnumberformat{109}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118}\delimN
+		\setentrycounter[]{page}\glsnumberformat{121}\delimN
+		\setentrycounter[]{page}\glsnumberformat{124}\delimN
+		\setentrycounter[]{page}\glsnumberformat{144\delimR 146}\delimN
+		\setentrycounter[]{page}\glsnumberformat{149\delimN 150}}}%
+\glossaryentryfield{disp}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {x}}}}}{Displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{41}\delimN
+		\setentrycounter[]{page}\glsnumberformat{43}\delimN
+		\setentrycounter[]{page}\glsnumberformat{80\delimN 81}\delimN
+		\setentrycounter[]{page}\glsnumberformat{179}\delimN
+		\setentrycounter[]{page}\glsnumberformat{222\delimN 223}}}%
+\glossaryentryfield{mbqhdisp}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\mbqhdir }}}}}{Inclined magnets horizontal displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{109\delimN 110}\delimN
+		\setentrycounter[]{page}\glsnumberformat{112}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118\delimN 119}\delimN
+		\setentrycounter[]{page}\glsnumberformat{121\delimR 123}}}%
+\glossaryentryfield{dispBase}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\noexpand \maybedot x_1}}}}}{Base displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{viii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{5}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{40}\delimN
+		\setentrycounter[]{page}\glsnumberformat{192}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{220\delimN 221}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231}\delimN
+		\setentrycounter[]{page}\glsnumberformat{233}}}%
+\glossaryentryfield{dispMass}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\noexpand \maybedot x_2}}}}}{Displacement of the vibration mass}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{viii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{5}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{16}\delimN
+		\setentrycounter[]{page}\glsnumberformat{40}\delimN
+		\setentrycounter[]{page}\glsnumberformat{192}\delimN
+		\setentrycounter[]{page}\glsnumberformat{194}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206}\delimN
+		\setentrycounter[]{page}\glsnumberformat{220\delimN 221}\delimN
+		\setentrycounter[]{page}\glsnumberformat{231}\delimN
+		\setentrycounter[]{page}\glsnumberformat{233}}}%
+\glossaryentryfield{dispAbsorb}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {x_a}}}}}{Vibration neutraliser displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{16}}}%
+\glossaryentryfield{DisplSensorBeam}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath { x_b}}}}}{Displacement of the beam at the position of the laser sensor from `zero'}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glossaryentryfield{DisplMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {x_m}}}}}{Displacement of the magnets support}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{223\delimN 224}}}%
+\glossaryentryfield{DisplSensorBeamProj}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath { x_p}}}}}{Projected displacement of the beam to the magnets support}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{223}}}%
+\glossaryentryfield{DisplSensor}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {x_s}}}}}{Displacement measured by the laser sensor}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{214\delimN 215}\delimN
+		\setentrycounter[]{page}\glsnumberformat{222\delimN 223}}}%
+\glossaryentryfield{MagCentre}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {{x_m}}}}}}{Magnet centre position}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{224}}}\glsgroupskip
+\glsgroupheading{Y}\relax \glsresetentrylist %
+\glossaryentryfield{ay}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\hat y}}}}}{Cartesian unit vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{x}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xvi\delimN xvii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xx}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xxiii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{60\delimN 61}\delimN
+		\setentrycounter[]{page}\glsnumberformat{63}\delimN
+		\setentrycounter[]{page}\glsnumberformat{66}\delimN
+		\setentrycounter[]{page}\glsnumberformat{68}\delimN
+		\setentrycounter[]{page}\glsnumberformat{70\delimN 71}\delimN
+		\setentrycounter[]{page}\glsnumberformat{86}\delimN
+		\setentrycounter[]{page}\glsnumberformat{90}\delimN
+		\setentrycounter[]{page}\glsnumberformat{94\delimR 98}\delimN
+		\setentrycounter[]{page}\glsnumberformat{103\delimR 105}\delimN
+		\setentrycounter[]{page}\glsnumberformat{107}\delimN
+		\setentrycounter[]{page}\glsnumberformat{109}\delimN
+		\setentrycounter[]{page}\glsnumberformat{121}\delimN
+		\setentrycounter[]{page}\glsnumberformat{123\delimN 124}\delimN
+		\setentrycounter[]{page}\glsnumberformat{144\delimR 146}\delimN
+		\setentrycounter[]{page}\glsnumberformat{149\delimR 151}}}%
+\glossaryentryfield{disphoriz}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {y}}}}}{Horizontal displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{85\delimN 86}\delimN
+		\setentrycounter[]{page}\glsnumberformat{149\delimN 150}}}%
+\glossaryentryfield{mbqvdisp}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\mbqvdir }}}}}{Inclined magnets vertical displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{108\delimR 111}\delimN
+		\setentrycounter[]{page}\glsnumberformat{113}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118\delimR 123}}}\glsgroupskip
+\glsgroupheading{Z}\relax \glsresetentrylist %
+\glossaryentryfield{az}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\hat z}}}}}{Cartesian unit vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{x}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xvi}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xviii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xx}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xxiii\delimN xxiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{60\delimN 61}\delimN
+		\setentrycounter[]{page}\glsnumberformat{63}\delimN
+		\setentrycounter[]{page}\glsnumberformat{66}\delimN
+		\setentrycounter[]{page}\glsnumberformat{68}\delimN
+		\setentrycounter[]{page}\glsnumberformat{70\delimN 71}\delimN
+		\setentrycounter[]{page}\glsnumberformat{86}\delimN
+		\setentrycounter[]{page}\glsnumberformat{88}\delimN
+		\setentrycounter[]{page}\glsnumberformat{91\delimR 99}\delimN
+		\setentrycounter[]{page}\glsnumberformat{101\delimR 107}\delimN
+		\setentrycounter[]{page}\glsnumberformat{109}\delimN
+		\setentrycounter[]{page}\glsnumberformat{117\delimN 118}\delimN
+		\setentrycounter[]{page}\glsnumberformat{144\delimR 146}\delimN
+		\setentrycounter[]{page}\glsnumberformat{149\delimN 150}}}%
+\glossaryentryfield{dispaxial}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {z}}}}}{Axial displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{155\delimR 159}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164\delimN 165}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167\delimR 169}\delimN
+		\setentrycounter[]{page}\glsnumberformat{175\delimN 176}}}%
+\glossaryentryfield{dispvert}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {z}}}}}{Vertical displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{85\delimN 86}\delimN
+		\setentrycounter[]{page}\glsnumberformat{99\delimN 100}\delimN
+		\setentrycounter[]{page}\glsnumberformat{103}\delimN
+		\setentrycounter[]{page}\glsnumberformat{136}\delimN
+		\setentrycounter[]{page}\glsnumberformat{140\delimN 141}\delimN
+		\setentrycounter[]{page}\glsnumberformat{149\delimN 150}\delimN
+		\setentrycounter[]{page}\glsnumberformat{180\delimR 186}\delimN
+		\setentrycounter[]{page}\glsnumberformat{189}\delimN
+		\setentrycounter[]{page}\glsnumberformat{217}}}%
+\glossaryentryfield{distz}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {z}}}}}{Axial component of distance vector in cylindrical coordinates}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}}}%
+\glossaryentryfield{mbqpdisp}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\mbqpdir }}}}}{Inclined magnets out-of-plane displacement}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{109\delimN 110}\delimN
+		\setentrycounter[]{page}\glsnumberformat{118}}}%
+\glossaryentryfield{ZKSdispMin}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {z_{\mathrm {min}}}}}}}{Maximum deflection of the vertical spring}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{183}}}%
+\glossaryentryfield{ZKSkratio}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\alpha }}}}}{Ratio between the inclined and vertical spring stiffnesses}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimN 181}\delimN
+		\setentrycounter[]{page}\glsnumberformat{183\delimN 184}\delimN
+		\setentrycounter[]{page}\glsnumberformat{187\delimR 190}}}%
+\glossaryentryfield{ratioMag}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\alpha }}}}}{Cylindrical magnet aspect ratio}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{82\delimR 84}\delimN
+		\setentrycounter[]{page}\glsnumberformat{154\delimN 155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167\delimR 170}\delimN
+		\setentrycounter[]{page}\glsnumberformat{173}}}%
+\glossaryentryfield{ratioCoil}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\beta }}}}}{Coil aspect ratio}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{154\delimN 155}\delimN
+		\setentrycounter[]{page}\glsnumberformat{167\delimR 170}\delimN
+		\setentrycounter[]{page}\glsnumberformat{173}}}%
+\glossaryentryfield{ZKSratio}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\gamma }}}}}{Ratio between the inclined spring width and height}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{182\delimR 187}\delimN
+		\setentrycounter[]{page}\glsnumberformat{189}}}%
+\glossaryentryfield{mupqratio}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\gamma }}}}}{Ratio between magnet lengths in a quasi-Halbach array}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{138}\delimN
+		\setentrycounter[]{page}\glsnumberformat{140}}}%
+\glossaryentryfield{ratioCub}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\gamma }}}}}{Square-face cuboid magnet aspect ratio}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{80\delimN 81}\delimN
+		\setentrycounter[]{page}\glsnumberformat{84}\delimN
+		\setentrycounter[]{page}\glsnumberformat{110}\delimN
+		\setentrycounter[]{page}\glsnumberformat{120}}}%
+\glossaryentryfield{cornerd}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\bm \delta }}}}}{Distance vector between a pair of corners/nodes of two magnets, $\cornerd =\inlinevect {\cnrx ,\cnry ,\cnrz }$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xx}\delimN
+		\setentrycounter[]{page}\glsnumberformat{xxii}\delimN
+		\setentrycounter[]{page}\glsnumberformat{61\delimR 63}\delimN
+		\setentrycounter[]{page}\glsnumberformat{73}}}%
+\glossaryentryfield{dmax}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\delta }}}}}{Maximum displacement bound}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{199}\delimN
+		\setentrycounter[]{page}\glsnumberformat{201\delimR 203}\delimN
+		\setentrycounter[]{page}\glsnumberformat{205\delimR 207}}}%
+\glossaryentryfield{incr}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\delta }}}}}{Displacement increment}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{110\delimN 111}\delimN
+		\setentrycounter[]{page}\glsnumberformat{113}}}%
+\glossaryentryfield{ZKSoff}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\epsilon }}}}}{Percentage difference between $\ZKSratio $ and $\ZKSratioQZS $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{185\delimN 186}}}%
+\glossaryentryfield{dmin}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\epsilon }}}}}{Closest (normalised) allowable displacement from \qzs / to avoid instability}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{199}\delimN
+		\setentrycounter[]{page}\glsnumberformat{201\delimR 203}\delimN
+		\setentrycounter[]{page}\glsnumberformat{205}\delimN
+		\setentrycounter[]{page}\glsnumberformat{207}}}%
+\glossaryentryfield{dampingratio}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\zeta }}}}}{Damping ratio, $0.5\dampingRel /\sqrt {\stiffness \mass }$.}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{120}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}\delimN
+		\setentrycounter[]{page}\glsnumberformat{232}\delimN
+		\setentrycounter[]{page}\glsnumberformat{236}}}%
+\glossaryentryfield{ZKSlengthratio}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\eta }}}}}{Ratio between inclined and vertical spring lengths}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{180\delimN 181}\delimN
+		\setentrycounter[]{page}\glsnumberformat{183\delimN 184}\delimN
+		\setentrycounter[]{page}\glsnumberformat{186\delimR 190}}}%
+\glossaryentryfield{nk}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\eta _k}}}}}{Nonlinearity measure}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{206\delimR 208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{210}}}%
+\glossaryentryfield{mrot}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\theta }}}}}{Magnet rotation/inclination}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{67\delimR 70}\delimN
+		\setentrycounter[]{page}\glsnumberformat{72}\delimN
+		\setentrycounter[]{page}\glsnumberformat{108\delimR 112}\delimN
+		\setentrycounter[]{page}\glsnumberformat{114}\delimN
+		\setentrycounter[]{page}\glsnumberformat{117\delimR 120}}}%
+\glossaryentryfield{mupmagrot}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vartheta }}}}}{Multipole array magnetisation rotation between successive magnets}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133\delimR 135}\delimN
+		\setentrycounter[]{page}\glsnumberformat{146}}}%
+\glossaryentryfield{mupmagpol}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vartheta _0}}}}}{Magnetisation direction of the first magnet in a multipole array}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133}\delimN
+		\setentrycounter[]{page}\glsnumberformat{146}}}%
+\glossaryentryfield{mupmagpolx}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vartheta _{xz}}}}}}{Magnetisation direction in the $\ax $--$\az $ plane of the first magnet in a multipole array}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{146}}}%
+\glossaryentryfield{mupmagpoly}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\vartheta _{yz}}}}}}{Magnetisation direction in the $\ay $--$\az $ plane of the first magnet in a multipole array}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{146}}}%
+\glossaryentryfield{Kzynode}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\bm \kappa _{z,y}}}}}}{`Stiffness' between two magnetic nodes for cuboid magnets magnetised in the $\az $ and $\ay $ directions respectively, used to calculate $\Kzz $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{63\delimN 64}}}%
+\glossaryentryfield{Kzznode}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\bm \kappa _{z,z}}}}}}{`Stiffness' between two magnetic nodes for cuboid magnets magnetised in the $\az $ direction, used to calculate $\Kzz $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{62\delimN 63}}}%
+\glossaryentryfield{QZSkratio}{\glsnamefont{\ensuremath {\kappa }}}{Stiffness ratio}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{205}}}%
+\glossaryentryfield{mupwavelength}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\lambda }}}}}{Multipole array wavelength}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{133\delimR 136}\delimN
+		\setentrycounter[]{page}\glsnumberformat{139}}}%
+\glossaryentryfield{perm}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\mu }}}}}{Magnetic permeability of a material}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{30\delimN 31}\delimN
+		\setentrycounter[]{page}\glsnumberformat{49}\delimN
+		\setentrycounter[]{page}\glsnumberformat{52}}}%
+\glossaryentryfield{permVac}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\mu _0}}}}}{Magnetic permeability of the vacuum}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{48\delimR 52}\delimN
+		\setentrycounter[]{page}\glsnumberformat{55}\delimN
+		\setentrycounter[]{page}\glsnumberformat{57\delimN 58}\delimN
+		\setentrycounter[]{page}\glsnumberformat{61\delimR 65}\delimN
+		\setentrycounter[]{page}\glsnumberformat{68}\delimN
+		\setentrycounter[]{page}\glsnumberformat{73}\delimN
+		\setentrycounter[]{page}\glsnumberformat{75\delimN 76}\delimN
+		\setentrycounter[]{page}\glsnumberformat{156\delimR 158}\delimN
+		\setentrycounter[]{page}\glsnumberformat{164}\delimN
+		\setentrycounter[]{page}\glsnumberformat{274}}}%
+\glossaryentryfield{permrel}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\mu _r}}}}}{Relative permeability of a material}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{49\delimN 50}}}%
+\glossaryentryfield{ratioLengthArea}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\nu }}}}}{Ratio of magnet length squared to face area}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{84}}}%
+\glossaryentryfield{ZKSnorm}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\xi }}}}}{Inclined spring normalised displacement in the load bearing direction}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{182\delimR 185}\delimN
+		\setentrycounter[]{page}\glsnumberformat{187\delimN 188}\delimN
+		\setentrycounter[]{page}\glsnumberformat{190}}}%
+\glossaryentryfield{resistivity}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\rho }}}}}{Resistivity}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{166\delimN 167}}}%
+\glossaryentryfield{conductivity}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\sigma }}}}}{Conductivity}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{33}}}%
+\glossaryentryfield{flux}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\bm \Phi }}}}}{Magnetic flux vector}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{52}}}%
+\glossaryentryfield{Fzynode}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\bm \phi _{z,y}}}}}}{`Force' between two magnetic nodes for orthogonally-magnetised cuboid magnets, used to calculate $\Fzy $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{63}}}%
+\glossaryentryfield{Fzznode}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\bm \phi _{z,z}}}}}}{`Force' between two magnetic nodes for cuboid magnets magnetised in the $\az $ direction, used to calculate $\Fzz $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{61\delimN 62}\delimN
+		\setentrycounter[]{page}\glsnumberformat{73}}}%
+\glossaryentryfield{dista}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\phi }}}}}{Angular component of distance vector in cylindrical coordinates}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{158}\delimN
+		\setentrycounter[]{page}\glsnumberformat{163\delimN 164}}}%
+\glossaryentryfield{mbqrotz}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\varphi }}}}}{Inclined magnets planar rotation}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{116\delimR 123}}}%
+\glossaryentryfield{Tzznode}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\bm \psi }}}}}{`Torque' between two magnetic nodes for cuboid magnets magnetised in the $\az $ direction, used to calculate $\Tzz $}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{73}}}%
+\glossaryentryfield{freq}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\omega }}}}}{Frequency}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xix\delimR xxi}\delimN
+		\setentrycounter[]{page}\glsnumberformat{7\delimN 8}\delimN
+		\setentrycounter[]{page}\glsnumberformat{10}\delimN
+		\setentrycounter[]{page}\glsnumberformat{39\delimN 40}\delimN
+		\setentrycounter[]{page}\glsnumberformat{202}\delimN
+		\setentrycounter[]{page}\glsnumberformat{204\delimN 205}\delimN
+		\setentrycounter[]{page}\glsnumberformat{226}\delimN
+		\setentrycounter[]{page}\glsnumberformat{228}\delimN
+		\setentrycounter[]{page}\glsnumberformat{230\delimR 232}}}%
+\glossaryentryfield{resfreq}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\omega _d}}}}}{Resonance frequency, $\natfreq \sqrt {1-\dampingratio ^2}$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{200}\delimN
+		\setentrycounter[]{page}\glsnumberformat{206\delimN 207}}}%
+\glossaryentryfield{natfreq}{\glsnamefont{\ensuremath {\unexpanded {\ensuremath {\omega _n}}}}}{Natural frequency, $\sqrt {\stiffness /\mass }$}{\relax }{\glossaryentrynumbers{\relax
+		\setentrycounter[]{page}\glsnumberformat{xxiv}\delimN
+		\setentrycounter[]{page}\glsnumberformat{107}\delimN
+		\setentrycounter[]{page}\glsnumberformat{111}\delimN
+		\setentrycounter[]{page}\glsnumberformat{179}\delimN
+		\setentrycounter[]{page}\glsnumberformat{208}\delimN
+		\setentrycounter[]{page}\glsnumberformat{224\delimR 226}}}%
+\end{theglossary}\glossarypostamble
