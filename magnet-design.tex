@@ -1287,7 +1287,7 @@ Four electromagnetic actuators were placed at the corners of the device for acti
 For the project, passive levitation control was achieved using a linear bearing to constrain the device to vertical displacement, coupled with a rotational bearing to permit rotation around the long horizontal axis.
 The device was stable even under large displacements and rotations in this partially-constrained configuration, but when analysed for active stabilisation a strong instability around the $\ay$ axis (yaw rotation) was found.
 
-\begin{figure}
+\begin{figure}[p]
 \centerline{\includegraphics{PhD/Figures/Oblique/oblique-rig}}
 \caption
 [Prototype inclined magnet isolation device.]
@@ -1295,15 +1295,7 @@ The device was stable even under large displacements and rotations in this parti
 \figlabel{oblique-rig}
 \end{figure}
 
-The transmissibility of the system was measured using a custom-built shaker frame using a MB Model 110 shaker. Two \BnK/ Type 4393 accelerometers were used with NVMS charge amplifiers to measure the input vibration and platform response.
-The frequency analysis was performed using a SignalCalc ACE Signal Analyser with a sample rate of \SI{125}{Hz}, 1600 spectral lines, \SI{50}{\%} Hanning window overlap, and 30 averages.
-
-The six degree of freedom system was modelled using an extension of the theory developed in \secref{oblique-planar-theory} for the planar three \dof/ system \parencite{frizenschaf2011-honoursthesis}.
-The model predicted the behaviour of the prototype well; \tabref{oblique-rig-resonances} shows the measured and modelled resonance frequency for two magnet angles, which differ by around 5\%.
-The resonance frequencies as a function of load mass are shown in \figref{oblique-resonance}.
-Due to limitations of the resonance frequency measurements, the measured data is quite noisy but the correspondence with the expected modelled results can still be seen.
-
-\begin{table}
+\begin{table}[p]
 \caption{Modelled and measured vibration results for the prototype isolator.}
 \tablabel{oblique-rig-resonances}
 \begin{tabular}{@{}lll@{}}
@@ -1315,6 +1307,14 @@ Measured damping ratio & \SI{4.4}{\%} & \SI{9.0}{\%} \\
 \bottomrule
 \end{tabular}
 \end{table}
+
+The transmissibility of the system was measured using a custom-built shaker frame using a MB Model 110 shaker. Two \BnK/ Type 4393 accelerometers were used with NVMS charge amplifiers to measure the input vibration and platform response.
+The frequency analysis was performed using a SignalCalc ACE Signal Analyser with a sample rate of \SI{125}{Hz}, 1600 spectral lines, \SI{50}{\%} Hanning window overlap, and 30 averages.
+
+The six degree of freedom system was modelled using an extension of the theory developed in \secref{oblique-planar-theory} for the planar three \dof/ system \parencite{frizenschaf2011-honoursthesis}.
+The model predicted the behaviour of the prototype well; \tabref{oblique-rig-resonances} shows the measured and modelled resonance frequency for two magnet angles, which differ by around 5\%.
+The resonance frequencies as a function of load mass are shown in \figref{oblique-resonance}.
+Due to limitations of the resonance frequency measurements, the measured data is quite noisy but the correspondence with the expected modelled results can still be seen.
 
 \begin{figure}
 \begin{wide}
@@ -1329,14 +1329,6 @@ Measured damping ratio & \SI{4.4}{\%} & \SI{9.0}{\%} \\
 \caption{Measured values of resonance frequency and damping ratio of the inclined magnet isolation prototype as a function of load force.}
 \end{figure}
 
-\begin{figure}[t]
-\psfragfig{PhD/Experiments/Oblique/TF}
-\caption
-[Measured and modelled transmissibility of the inclined magnet isolation prototype.]
-{Measured and modelled transmissibility of the passive inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet offset ratio of \num{0.5}. Behaviour from \SI{15}{Hz} is assumed to be due to bearing friction.}
-\figlabel{oblique-frf}
-\end{figure}
-
 It is interesting to compare the significant difference in damping ratio for these two magnet angles (\tabref{oblique-rig-resonances}).
 The strongest contributor to the damping ratio in this system is from induced eddy currents in each permanent magnet by the magnetic field of the other (\secref*{damping}), as viscous damping in the bearings and due to air resistance can be assumed to be constant.
 There are two main factors that would cause changes in the magnitude of the induced eddy currents.
@@ -1344,6 +1336,15 @@ For a varying magnet angle, the vertical displacement between the magnet pairs w
 Secondly, as the angle between the direction of displacement (vertical, in this case) and the direction of magnetisation increases, the gradient of magnetisation decreases over a certain displacement.
 The effect on the damping ratio with a variety of load masses is shown in \figref{oblique-damping}, where it can be seen that as the magnets become closer together, the magnitude of the induced eddy currents are increased and so does the damping ratio.
 These values were taken in a different configuration than the data shown in \tabref{oblique-rig-resonances}, and the damping ratios are not comparable between these two cases.
+
+
+\begin{figure}
+\psfragfig{PhD/Experiments/Oblique/TF}
+\caption
+[Measured and modelled transmissibility of the inclined magnet isolation prototype.]
+{Measured and modelled transmissibility of the passive inclined magnet isolation prototype with a magnet angle of \SI{60}{\degree} and a magnet offset ratio of \num{0.5}. Behaviour from \SI{15}{Hz} is assumed to be due to bearing friction.}
+\figlabel{oblique-frf}
+\end{figure}
 
 The theoretical model was also used in a dynamic simulation which predicted the transmissibility of the isolator against ground disturbance.
 The measured and modelled transmissibility is shown in \figref{oblique-frf}, which shows good agreement at low frequencies around the resonance peak.
