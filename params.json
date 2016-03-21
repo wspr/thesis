@@ -1,0 +1,6 @@
+{
+  "name": "Will Robertson's PhD Thesis",
+  "tagline": "My now-completed PhD thesis",
+  "body": "# My PhD thesis\r\n\r\n## Download\r\n\r\n[thesis.pdf](https://github.com/wspr/thesis/raw/master/thesis.pdf)\r\n\r\n## Information\r\n\r\nDuring my PhD I experimented with the idea of writing my thesis in a public code repository.\r\nI hoped that by making my work on my thesis public, my time would become more accountable by the fact that anyone would be able to see when I was or was not working. \r\nThis didn't really work out as planned, but the PhD was completed eventually.\r\n\r\nI also believe that all academic research should be made more open.\r\nThis is a small step towards such a philosophy.\r\n(Making my code itself available would be better again, but one step at a time. The bulk of my magnetic force code is indeed [available here](http://wspr.io/magcode).)\r\n\r\nIn the [Github repository](http://www.github.com/wspr/thesis) for this work I've started to list open [issues](http://www.github.com/wspr/thesis/issues) that I'm aware of, such as typos and (gasp) mistakes.\r\n\r\n## Copyright\r\n\r\nThe work herein is Copyright 2003--2013 Will Robertson and The University of\r\nAdelaide. **No rights are given to reproduce or modify this work.**\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}
